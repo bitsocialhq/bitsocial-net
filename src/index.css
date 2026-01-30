@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-bg-primary text-silver-bright font-body;
+    letter-spacing: 0.01em;
+  }
+}
+
+@layer utilities {
+  .chrome-text {
+    background: linear-gradient(
+      90deg,
+      #6b7280 0%,
+      #e5e7eb 25%,
+      #6b7280 50%,
+      #e5e7eb 75%,
+      #6b7280 100%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 3s linear infinite;
+  }
+
+  .glass-card {
+    @apply bg-bg-secondary/50 backdrop-blur-md border border-silver-dark/30 rounded-lg;
+  }
+
+  .ring-glow {
+    @apply transition-all duration-300;
+  }
+
+  .ring-glow:hover {
+    box-shadow: 0 0 30px rgba(37, 99, 235, 0.5);
+  }
+}

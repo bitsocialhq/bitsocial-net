@@ -1,0 +1,15 @@
+{
+  "plugins": ["react"],
+  "rules": {
+    "react/react-in-jsx-scope": "off",
+    "react/rules-of-hooks": "error",
+    "react/exhaustive-deps": "warn"
+  },
+  "ignore": [
+    "node_modules/**",
+    "build/**",
+    "dist/**",
+    ".vite/**",
+    "public/**"
+  ]
+}

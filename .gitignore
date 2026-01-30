@@ -1,0 +1,7 @@
+.cursor
+node_modules
+dist
+.vite
+*.local
+.DS_Store
+bun.lockb

@@ -1,0 +1,37 @@
+{
+  "name": "bitsocial-net",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "bunx rolldown-vite",
+    "build": "bunx tsgo --noEmit --project tsconfig.json && bunx rolldown-vite build",
+    "lint": "bunx oxlint --react-plugin",
+    "lint:fix": "bunx oxlint --fix --react-plugin",
+    "format": "bunx oxfmt .",
+    "format:check": "bunx oxfmt --check .",
+    "typecheck": "bunx tsgo --noEmit --project tsconfig.json",
+    "preview": "bunx rolldown-vite preview"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.26.0",
+    "framer-motion": "^11.5.4",
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^2.5.2"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@typescript/native-preview": "^7.0.0-dev",
+    "rolldown-vite": "^7.3.1",
+    "@vitejs/plugin-react": "^4.3.1",
+    "autoprefixer": "^10.4.19",
+    "oxfmt": "^0.1.0",
+    "oxlint": "^1.0.0",
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.4",
+    "typescript": "^5.5.3"
+  }
+}

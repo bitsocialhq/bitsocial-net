@@ -172,3 +172,92 @@ All three must pass before committing.
 - [ ] Format check passes (`bun run format:check`)
 - [ ] Responsive design tested (mobile + desktop)
 - [ ] Animations smooth (60fps)
+
+---
+
+## AI Agent Configuration (Contributors)
+
+This project includes recommended AI agent configurations (skills, hooks, agents, commands) stored in `.cursor/` (gitignored). Contributors using AI coding tools should copy these to their tool's config directory.
+
+### Tool-Specific Directories
+
+| Tool | Config Directory |
+|------|------------------|
+| Cursor | `.cursor/` |
+| Claude Code | `.claude/` |
+| Codex CLI | `.codex/` |
+
+Copy the contents from `.cursor/` to your tool's directory, or symlink if your tool supports it.
+
+### Available Hooks
+
+Scripts triggered automatically by agent actions (copy `hooks/` folder and `hooks.json`):
+
+| Hook | Trigger | Script | Purpose |
+|------|---------|--------|---------|
+| `afterFileEdit` | After any file edit | `hooks/format.sh` | Auto-format JS/TS files with oxfmt |
+| `stop` | When agent finishes | `hooks/verify.sh` | Run build + lint + typecheck + audit |
+
+### Available Agents
+
+Custom agent definitions (copy `agents/` folder):
+
+| Agent | Description |
+|-------|-------------|
+| `code-quality` | Runs format/verify hooks, analyzes output, auto-fixes issues |
+| `plan-implementer` | Executes markdown plans in parallel with sub-agents (max 4) |
+| `react-patterns-enforcer` | Enforces React best practices, prevents useState/useEffect anti-patterns |
+
+### Available Commands
+
+Slash commands (copy `commands/` folder):
+
+| Command | Purpose |
+|---------|---------|
+| `/commit` | Create Conventional Commits with proper formatting |
+| `/deslop` | Remove AI-generated code slop (extra comments, defensive checks, `any` casts) |
+
+### Available Skills
+
+Reusable skill definitions (copy `skills/` folder):
+
+| Skill | Trigger | Purpose |
+|-------|---------|---------|
+| `commit-format` | Writing commits | Conventional Commits format with backtick-wrapped titles |
+| `issue-format` | Creating issues | GitHub issue title/description formatting |
+| `context7` | Looking up docs | Fetch current library documentation via Context7 API |
+| `frontend-design` | Building UI | Create distinctive, production-grade interfaces (avoid AI slop aesthetics) |
+| `find-skills` | "How do I...?" | Discover installable skills from marketplace |
+| `programmatic-seo` | SEO at scale | Template-driven page generation for SEO |
+| `seo-audit` | SEO review | Technical SEO analysis and diagnostics |
+| `seo-fundamentals` | SEO questions | Core SEO principles (E-E-A-T, Core Web Vitals) |
+| `vercel-react-best-practices` | React perf | 57 Vercel Engineering rules for React/Next.js optimization |
+
+### Vercel React Best Practices Rules
+
+The `vercel-react-best-practices` skill includes 57+ performance rules in `skills/vercel-react-best-practices/rules/`:
+
+| Category | Priority | Rules |
+|----------|----------|-------|
+| Async/Waterfalls | CRITICAL | `async-*` - parallel fetching, suspense boundaries |
+| Bundle Size | CRITICAL | `bundle-*` - dynamic imports, barrel files, preload |
+| Server-Side | HIGH | `server-*` - caching, serialization, parallel fetch |
+| Client Data | MEDIUM-HIGH | `client-*` - SWR dedup, event listeners |
+| Re-renders | MEDIUM | `rerender-*` - derived state, memo, transitions |
+| Rendering | MEDIUM | `rendering-*` - content-visibility, hydration |
+| JS Performance | LOW-MEDIUM | `js-*` - loops, caching, Set/Map lookups |
+| Advanced | LOW | `advanced-*` - refs, init-once patterns |
+
+### Setup for New Contributors
+
+```bash
+# Example: Copy configs for Claude Code
+cp -r .cursor/skills .claude/skills
+cp -r .cursor/hooks .claude/hooks
+cp .cursor/hooks.json .claude/hooks.json
+
+# Or symlink (if tool supports)
+ln -s ../.cursor/skills .claude/skills
+```
+
+Verify your tool recognizes the configs by checking if skills appear in your agent's available tools.

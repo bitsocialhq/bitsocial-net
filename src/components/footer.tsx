@@ -69,9 +69,7 @@ export default function Footer() {
 
         <div className="pt-8 border-t border-silver-dark text-center text-silver-mid text-sm">
           <p className="font-display">Decentralize all social media</p>
-          <p className="mt-2">
-            © {new Date().getFullYear()} Bitsocial Labs
-          </p>
+          <p className="mt-2">© {new Date().getFullYear()} Bitsocial Labs</p>
         </div>
       </div>
     </footer>

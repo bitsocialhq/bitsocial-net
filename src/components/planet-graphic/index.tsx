@@ -224,7 +224,7 @@ export default function PlanetGraphic() {
     // Ring parameters - closer to the sphere like the logo
     const ringRadius = 8.2 // Closer to sphere (sphere is 7 radius)
     const tubeWidth = 0.3 // Width of the rectangular cross-section
-    const tubeHeight = 0.1 // Height (thickness) of the ring
+    const tubeHeight = 0.2 // Height (thickness) of the ring
 
     // Metallic material for rings (silver/chrome look)
     const ringMaterial = new THREE.MeshStandardMaterial({
@@ -263,7 +263,7 @@ export default function PlanetGraphic() {
     //
     // Position offsets (relative to sphere center):
     // - X: left (-) / right (+)
-    // - Y: down (-) / up (+)  
+    // - Y: down (-) / up (+)
     // - Z: back (-) / forward (+)
 
     // Ring 1 Configuration (upper arc - tilted forward over the planet)
@@ -277,9 +277,9 @@ export default function PlanetGraphic() {
     // Ring 2 Configuration (diagonal sweep - upper right to lower left)
     const ring2RotX = Math.PI * 0.77 // Forward/backward tilt (more vertical)
     const ring2RotY = -0.35 // Rotation around Y-axis (affects start position)
-    const ring2RotZ = -1.1 // Sideways tilt (leaning right)
-    const ring2PosX = 1 // Horizontal offset
-    const ring2PosY = 1 // Vertical offset (0 = same as sphere center)
+    const ring2RotZ = -1.3 // Sideways tilt (leaning right)
+    const ring2PosX = 0.1 // Horizontal offset
+    const ring2PosY = 0.5 // Vertical offset (0 = same as sphere center)
     const ring2PosZ = 1 // Depth offset
 
     // ============================================
@@ -326,10 +326,11 @@ export default function PlanetGraphic() {
       if (!container) return
       const width = container.clientWidth
       const height = container.clientHeight
-      const isMobileNow = width < 768 || (navigator.hardwareConcurrency || 4) < 4
+      const isMobileNow =
+        width < 768 || (navigator.hardwareConcurrency || 4) < 4
       const fov = isMobileNow ? 55 : 45
       const cameraZ = isMobileNow ? 18 : 14
-      
+
       camera.fov = fov
       camera.aspect = width / height
       camera.position.z = cameraZ

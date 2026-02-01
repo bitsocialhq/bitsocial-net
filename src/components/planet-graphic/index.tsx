@@ -372,8 +372,8 @@ export default function PlanetGraphic() {
           ease: "none",
           scrollTrigger: {
             trigger: containerRef.current,
-            start: "top 30%",
-            end: "top 20%",
+            start: "top 40%",
+            end: "top 10%",
             scrub: 1,
           },
         },
@@ -386,7 +386,7 @@ export default function PlanetGraphic() {
   return (
     <div
       ref={containerRef}
-      className="w-screen h-[60vh] md:h-[80vh] relative pointer-events-none left-1/2 -translate-x-1/2 overflow-hidden"
+      className="w-screen h-[60vh] md:h-[65vh] relative pointer-events-none left-1/2 -translate-x-1/2 overflow-hidden"
       style={{ marginTop: "-2rem" }}
     >
       <canvas ref={canvasRef} className="w-full h-full" />

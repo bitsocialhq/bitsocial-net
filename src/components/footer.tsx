@@ -10,7 +10,7 @@ export default function Footer() {
               Bitsocial
             </h3>
             <p className="text-silver-mid text-sm">
-              Decentralized social protocol for the open web.
+              Open source P2P social media protocol.
             </p>
           </div>
 
@@ -45,7 +45,7 @@ export default function Footer() {
             <ul className="space-y-2">
               <li>
                 <a
-                  href="https://github.com/bitsocial"
+                  href="https://github.com/bitsocialhq"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-silver-mid hover:text-blue-glow transition-colors text-sm font-display"
@@ -55,7 +55,7 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="https://twitter.com/bitsocial"
+                  href="https://twitter.com/bitsocialhq"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-silver-mid hover:text-blue-glow transition-colors text-sm"
@@ -68,9 +68,9 @@ export default function Footer() {
         </div>
 
         <div className="pt-8 border-t border-silver-dark text-center text-silver-mid text-sm">
-          <p className="font-display">Built for the decentralized web</p>
+          <p className="font-display">Decentralize all social media</p>
           <p className="mt-2">
-            © {new Date().getFullYear()} Bitsocial. Open source.
+            © {new Date().getFullYear()} Bitsocial Labs
           </p>
         </div>
       </div>

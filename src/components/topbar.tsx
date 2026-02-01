@@ -12,7 +12,7 @@ export default function Topbar() {
       <div className="max-w-7xl mx-auto px-4 md:px-6 py-4 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2 group">
           <img src="/logo.png" alt="Bitsocial" className="h-8 w-8" />
-          <span className="text-xl font-display font-semibold chrome-text">
+          <span className="text-xl font-display font-regular text-silver-mid">
             Bitsocial
           </span>
         </Link>
@@ -33,7 +33,7 @@ export default function Topbar() {
             <span className="absolute bottom-0 left-0 w-0 h-px bg-blue-glow group-hover:w-full transition-all duration-300" />
           </Link>
           <a
-            href="https://github.com/bitsocial"
+            href="https://github.com/bitsocialhq"
             target="_blank"
             rel="noopener noreferrer"
             className="text-silver-mid hover:text-silver-bright transition-colors relative group text-sm md:text-base font-display"

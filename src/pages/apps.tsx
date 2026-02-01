@@ -1,5 +1,5 @@
-import Topbar from "../components/Topbar"
-import Footer from "../components/Footer"
+import Topbar from "../components/topbar"
+import Footer from "../components/footer"
 import { motion } from "framer-motion"
 
 export default function Apps() {

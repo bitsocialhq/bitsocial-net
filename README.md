@@ -86,18 +86,18 @@ bitsocial-net/
 │   ├── assets/
 │   │   └── logo.png      # Logo for imports
 │   ├── components/
-│   │   ├── Topbar.tsx    # Navigation bar
-│   │   ├── Hero.tsx      # Hero section
-│   │   ├── Features.tsx  # Features grid
-│   │   ├── Roadmap.tsx   # Timeline roadmap
-│   │   └── Footer.tsx    # Footer
+│   │   ├── topbar.tsx    # Navigation bar
+│   │   ├── hero.tsx      # Hero section
+│   │   ├── features.tsx  # Features grid
+│   │   ├── roadmap.tsx   # Timeline roadmap
+│   │   └── footer.tsx    # Footer
 │   ├── pages/
-│   │   ├── Home.tsx      # Home page
-│   │   ├── Docs.tsx      # Documentation page
-│   │   └── Apps.tsx      # Apps showcase page
+│   │   ├── home.tsx      # Home page
+│   │   ├── docs.tsx      # Documentation page
+│   │   └── apps.tsx      # Apps showcase page
 │   ├── lib/
 │   │   └── utils.ts      # Utility functions
-│   ├── App.tsx           # Main app component
+│   ├── app.tsx           # Main app component
 │   ├── main.tsx          # Entry point
 │   └── index.css         # Global styles
 ├── index.html

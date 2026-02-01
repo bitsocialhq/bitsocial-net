@@ -1,6 +1,6 @@
 import { motion } from "framer-motion"
 import { Link } from "react-router-dom"
-import PlanetGraphic from "./PlanetGraphic"
+import PlanetGraphic from "./planet-graphic"
 
 export default function Hero() {
   return (

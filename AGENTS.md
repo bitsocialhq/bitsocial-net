@@ -46,9 +46,9 @@ src/
 
 ### DO: Follow These Examples
 
-- **Animated section**: `src/components/Hero.tsx` - motion variants, responsive sizing
-- **Card grid with stagger**: `src/components/Features.tsx` - whileInView, viewport once
-- **Page composition**: `src/pages/Home.tsx` - Topbar + sections + Footer
+- **Animated section**: `src/components/hero.tsx` - motion variants, responsive sizing
+- **Card grid with stagger**: `src/components/features.tsx` - whileInView, viewport once
+- **Page composition**: `src/pages/home.tsx` - Topbar + sections + Footer
 - **Class utilities**: `src/lib/utils.ts` - cn() for clsx + tailwind-merge
 
 ### DON'T
@@ -94,7 +94,7 @@ src/
 rg -n "export default function" src/components/
 
 # Find page routes
-rg -n "Route path=" src/App.tsx
+rg -n "Route path=" src/app.tsx
 
 # Find Tailwind custom classes
 rg -n "@apply" src/index.css
@@ -110,7 +110,7 @@ rg -n "colors:" tailwind.config.ts
 
 | Purpose | File |
 |---------|------|
-| App routing | `src/App.tsx` |
+| App routing | `src/app.tsx` |
 | Global styles | `src/index.css` |
 | Design tokens | `tailwind.config.ts` |
 | Class utility | `src/lib/utils.ts` |
@@ -118,7 +118,7 @@ rg -n "colors:" tailwind.config.ts
 
 ## Adding New Components
 
-1. Create file in `src/components/ComponentName.tsx`
+1. Create file in `src/components/component-name.tsx` (use kebab-case)
 2. Use function component with `export default`
 3. Import motion from `framer-motion` for animations
 4. Use design tokens, not hardcoded colors
@@ -145,10 +145,10 @@ export default function ComponentName() {
 
 ## Adding New Pages
 
-1. Create file in `src/pages/PageName.tsx`
-2. Add route in `src/App.tsx`
+1. Create file in `src/pages/page-name.tsx` (use kebab-case)
+2. Add route in `src/app.tsx`
 3. Include `<Topbar />` and `<Footer />` for consistency
-4. Reference `src/pages/Home.tsx` for page structure
+4. Reference `src/pages/home.tsx` for page structure
 
 ## Common Gotchas
 

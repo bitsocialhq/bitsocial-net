@@ -40,7 +40,7 @@ export default function Hero() {
       </motion.div>
 
       {/* Planet and Mesh container - mesh behind planet */}
-      <div className="w-full mt-4 md:mt-6 relative">
+      <div className="mt-4 md:mt-6 relative -mx-6 w-[calc(100%+3rem)]">
         {/* P2P Mesh Network - behind the planet */}
         <motion.div
           initial={{ opacity: 0 }}

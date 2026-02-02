@@ -44,8 +44,11 @@ export default function MeshGraphic() {
       0.1,
       1000,
     )
-    camera.position.set(0, 0, 30)
-    camera.lookAt(0, 0, 0)
+    // Shift camera up to create empty space at top of canvas (nodes won't be cut off)
+    // Mobile needs more offset to prevent clipping, desktop needs less to show more mesh
+    const cameraYOffset = isMobile ? 4 : 0
+    camera.position.set(0, cameraYOffset, 30)
+    camera.lookAt(0, cameraYOffset, 0)
 
     // Renderer
     const renderer = new THREE.WebGLRenderer({
@@ -73,10 +76,10 @@ export default function MeshGraphic() {
     const aspectRatio = container.clientWidth / container.clientHeight
     const visibleWidth = visibleHeight * aspectRatio
 
-    // Node parameters - 1px thin circles
+    // Node parameters - 1px thin circles (same size on mobile and desktop)
     const nodeCount = isMobile ? 150 : 300
-    const connectionDistance = isMobile ? 5.5 : 5
-    const nodeSize = isMobile ? 0.06 : 0.05 // Smaller node radius
+    const connectionDistance = 5
+    const nodeSize = 0.05 // Smaller node radius
 
     // Create nodes evenly distributed across entire U-shape area
     const nodes: Node[] = []
@@ -377,8 +380,8 @@ export default function MeshGraphic() {
   return (
     <div
       ref={containerRef}
-      className="w-screen h-[60vh] md:h-[65vh] absolute top-0 left-1/2 -translate-x-1/2 pointer-events-none overflow-hidden"
-      style={{ marginTop: "-2rem" }}
+      className="h-[65vh] md:h-[70vh] absolute inset-x-0 pointer-events-none overflow-hidden"
+      style={{ top: "-5vh" }}
     >
       <canvas ref={canvasRef} className="w-full h-full" />
     </div>

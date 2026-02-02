@@ -426,7 +426,7 @@ export default function PlanetGraphic() {
   return (
     <div
       ref={containerRef}
-      className="w-screen h-[60vh] md:h-[65vh] relative pointer-events-none left-1/2 -translate-x-1/2 overflow-hidden"
+      className="h-[60vh] md:h-[65vh] relative pointer-events-none w-full overflow-hidden"
       style={{ marginTop: "-2rem" }}
     >
       <canvas ref={canvasRef} className="w-full h-full" />

@@ -2,6 +2,7 @@ import { useRef, useLayoutEffect, useState, useEffect } from "react"
 import * as THREE from "three"
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
+import { useTheme } from "next-themes"
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -100,6 +101,7 @@ export default function PlanetGraphic() {
   const containerRef = useRef<HTMLDivElement>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const [isMobile, setIsMobile] = useState(false)
+  const { resolvedTheme } = useTheme()
 
   useEffect(() => {
     const checkMobile = () => {
@@ -118,6 +120,9 @@ export default function PlanetGraphic() {
 
     const canvas = canvasRef.current
     const container = containerRef.current
+
+    // Check if dark mode
+    const isDark = resolvedTheme === "dark" || (!resolvedTheme && window.matchMedia("(prefers-color-scheme: dark)").matches)
 
     // Scene setup
     const scene = new THREE.Scene()
@@ -138,9 +143,11 @@ export default function PlanetGraphic() {
       canvas,
       alpha: true,
       antialias: !isMobile,
+      premultipliedAlpha: false,
     })
     renderer.setSize(container.clientWidth, container.clientHeight)
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+    renderer.setClearColor(0x000000, 0) // Transparent background but objects are opaque
 
     // Lights for metallic reflections
     const ambientLight = new THREE.AmbientLight(0xffffff, 0.2)
@@ -161,8 +168,10 @@ export default function PlanetGraphic() {
     rimLight.position.set(0, -5, -10)
     scene.add(rimLight)
 
-    // Top light for sphere gradient
-    const topLight = new THREE.DirectionalLight(0x4a90d9, 0.7)
+    // Top light for sphere gradient - muted in dark mode
+    const topLightColor = isDark ? 0x5a6a80 : 0x4a90d9
+    const topLightIntensity = isDark ? 0.5 : 0.7
+    const topLight = new THREE.DirectionalLight(topLightColor, topLightIntensity)
     topLight.position.set(0, 15, 5)
     scene.add(topLight)
 
@@ -172,11 +181,20 @@ export default function PlanetGraphic() {
     const sphereGeometry = new THREE.SphereGeometry(sphereRadius, 128, 128)
 
     // Custom shader for gradient effect (bright blue on top, darker on bottom)
+    // Muted colors in dark mode
+    const sphereTopColor = isDark ? 0x2a4a80 : 0x1e4fd0
+    const sphereBottomColor = isDark ? 0x0f1f30 : 0x0a2440
+    const sphereGlowColor = isDark ? 0x3a5a90 : 0x2d6ae0
+    const sphereFresnelIntensity = isDark ? 0.2 : 0.3
+    
     const sphereMaterial = new THREE.ShaderMaterial({
+      transparent: false,
+      depthWrite: true,
       uniforms: {
-        topColor: { value: new THREE.Color(0x1e4fd0) }, // Slightly darker blue
-        bottomColor: { value: new THREE.Color(0x0a2440) }, // Darker blue
-        glowColor: { value: new THREE.Color(0x2d6ae0) }, // Softer edge glow
+        topColor: { value: new THREE.Color(sphereTopColor) },
+        bottomColor: { value: new THREE.Color(sphereBottomColor) },
+        glowColor: { value: new THREE.Color(sphereGlowColor) },
+        fresnelIntensity: { value: sphereFresnelIntensity },
       },
       vertexShader: `
         varying vec3 vNormal;
@@ -194,6 +212,7 @@ export default function PlanetGraphic() {
         uniform vec3 topColor;
         uniform vec3 bottomColor;
         uniform vec3 glowColor;
+        uniform float fresnelIntensity;
         
         varying vec3 vNormal;
         varying vec3 vPosition;
@@ -210,7 +229,7 @@ export default function PlanetGraphic() {
           vec3 viewDirection = normalize(cameraPosition - vPosition);
           float fresnel = pow(1.0 - abs(dot(vNormal, viewDirection)), 2.0);
           
-          vec3 finalColor = mix(baseColor, glowColor, fresnel * 0.3);
+          vec3 finalColor = mix(baseColor, glowColor, fresnel * fresnelIntensity);
           
           gl_FragColor = vec4(finalColor, 1.0);
         }
@@ -226,12 +245,18 @@ export default function PlanetGraphic() {
     const tubeWidth = 0.3 // Width of the rectangular cross-section
     const tubeHeight = 0.2 // Height (thickness) of the ring
 
-    // Metallic material for rings (silver/chrome look)
+    // Metallic material for rings (silver/chrome look) - muted in dark mode
+    const ringColor = isDark ? 0x909090 : 0xc0c0c0
+    const ringRoughness = isDark ? 0.25 : 0.2
+    const ringEnvMapIntensity = isDark ? 0.3 : 0.5
+    
     const ringMaterial = new THREE.MeshStandardMaterial({
-      color: 0xb0b0b0,
-      metalness: 0.95,
-      roughness: 0.12,
-      envMapIntensity: 0.9,
+      color: ringColor,
+      metalness: 0.7,
+      roughness: ringRoughness,
+      envMapIntensity: ringEnvMapIntensity,
+      depthWrite: true,
+      side: THREE.DoubleSide,
     })
 
     // Create an environment map for reflections
@@ -246,11 +271,16 @@ export default function PlanetGraphic() {
       )
       return
     }
+    // Environment map gradient - muted in dark mode
+    const envGradientTop = isDark ? "#556677" : "#778899"
+    const envGradientMid = isDark ? "#8899aa" : "#ffffff"
+    const envGradientBottom = isDark ? "#223344" : "#334455"
+    
     const gradient = envCtx.createLinearGradient(0, 0, 0, envMapSize)
-    gradient.addColorStop(0, "#778899")
-    gradient.addColorStop(0.4, "#ffffff")
-    gradient.addColorStop(0.6, "#ffffff")
-    gradient.addColorStop(1, "#334455")
+    gradient.addColorStop(0, envGradientTop)
+    gradient.addColorStop(0.4, envGradientMid)
+    gradient.addColorStop(0.6, envGradientMid)
+    gradient.addColorStop(1, envGradientBottom)
     envCtx.fillStyle = gradient
     envCtx.fillRect(0, 0, envMapSize, envMapSize)
     const envTexture = new THREE.CanvasTexture(envMapCanvas)
@@ -363,7 +393,7 @@ export default function PlanetGraphic() {
 
       renderer.dispose()
     }
-  }, [isMobile])
+  }, [isMobile, resolvedTheme])
 
   // GSAP scroll parallax
   useLayoutEffect(() => {

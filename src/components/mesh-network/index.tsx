@@ -57,10 +57,14 @@ export default function MeshNetwork() {
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 
     // Mesh color - adapts to theme
-    // Light mode: darker color for visibility, Dark mode: lighter color
+    // Light mode: darker color for visibility, Dark mode: brighter color
     const isDark = resolvedTheme === "dark" || (!resolvedTheme && window.matchMedia("(prefers-color-scheme: dark)").matches)
-    const meshColorHex = isDark ? 0xe5e7eb : 0x4b5563 // silver-bright for dark, gray-600 for light
+    const meshColorHex = isDark ? 0xffffff : 0x4b5563 // white for dark mode (brighter), gray-600 for light
     const meshColor = new THREE.Color(meshColorHex)
+    
+    // Brightness multipliers - higher in dark mode
+    const nodeAlphaMultiplier = isDark ? 0.35 : 0.2
+    const lineAlphaMultiplier = isDark ? 0.6 : 0.4
 
     // Calculate visible frustum dimensions at z=0 (where nodes are placed)
     const fov = 50
@@ -145,6 +149,7 @@ export default function MeshNetwork() {
       uniforms: {
         color: { value: meshColor },
         size: { value: nodeSize * 100 },
+        alphaMultiplier: { value: nodeAlphaMultiplier },
       },
       vertexShader: `
         uniform float size;
@@ -156,6 +161,7 @@ export default function MeshNetwork() {
       `,
       fragmentShader: `
         uniform vec3 color;
+        uniform float alphaMultiplier;
         void main() {
           vec2 center = gl_PointCoord - vec2(0.5);
           float dist = length(center);
@@ -169,7 +175,7 @@ export default function MeshNetwork() {
           float innerAlpha = smoothstep(innerRadius - edge, innerRadius, dist);
           float alpha = outerAlpha * innerAlpha;
           if (alpha < 0.01) discard;
-          gl_FragColor = vec4(color, alpha * 0.2);
+          gl_FragColor = vec4(color, alpha * alphaMultiplier);
         }
       `,
       transparent: true,
@@ -198,6 +204,7 @@ export default function MeshNetwork() {
     const linesMaterial = new THREE.ShaderMaterial({
       uniforms: {
         color: { value: meshColor },
+        alphaMultiplier: { value: lineAlphaMultiplier },
       },
       vertexShader: `
         attribute float alpha;
@@ -209,9 +216,10 @@ export default function MeshNetwork() {
       `,
       fragmentShader: `
         uniform vec3 color;
+        uniform float alphaMultiplier;
         varying float vAlpha;
         void main() {
-          gl_FragColor = vec4(color, vAlpha * 0.4);
+          gl_FragColor = vec4(color, vAlpha * alphaMultiplier);
         }
       `,
       transparent: true,

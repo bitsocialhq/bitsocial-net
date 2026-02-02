@@ -173,6 +173,83 @@ All three must pass before committing.
 - [ ] Responsive design tested (mobile + desktop)
 - [ ] Animations smooth (60fps)
 
+## Workflow
+
+### GitHub Commits
+
+When proposing or implementing code changes, always suggest a commit message. Format:
+
+- **Title**: Use [Conventional Commits](https://www.conventionalcommits.org/) style. Use `perf` for performance optimizations (not `fix`). Keep it short. **MUST be wrapped in backticks.**
+- **Description**: Optional. 2-3 informal sentences describing the solution (not the problem). Concise, technical, no bullet points. Use backticks for code references.
+
+Example output:
+
+> **Commit title:** `feat: add glassmorphism card component`
+>
+> Created reusable `glass-card` component with blur backdrop and subtle border. Uses design tokens from `tailwind.config.ts`.
+
+### GitHub Issues
+
+When proposing or implementing code changes, always suggest a GitHub issue to track the problem. Format:
+
+- **Title**: As short as possible. **MUST be wrapped in backticks.**
+- **Description**: 2-3 informal sentences describing the problem (not the solution). Write as if the issue hasn't been fixed yet. Use backticks for code references.
+
+Example output:
+
+> **GitHub issue:**
+> - **Title:** `Hero animation jank on mobile Safari`
+> - **Description:** The chrome shimmer effect in `hero.tsx` causes frame drops on iOS Safari. The CSS animation isn't GPU-accelerated properly.
+
+### Troubleshooting
+
+When stuck on a bug or issue, search the web for solutions. Developer communities often have recent fixes or workarounds that aren't in training data.
+
+## Recommended Skills
+
+Skills are more efficient than docs—they inject targeted guidance without bloating the context window.
+
+### Frontend Design
+
+For building distinctive, production-grade UI that avoids generic AI aesthetics. Essential for a premium landing page.
+
+```bash
+npx skills add https://github.com/vercel-labs/agent-skills --skill frontend-design
+```
+
+### Vercel React Best Practices
+
+For React performance guidance. Provides 57 prioritized rules across 8 categories. Useful even for simple landing pages to ensure smooth animations and fast load times.
+
+```bash
+npx skills add https://github.com/vercel-labs/agent-skills --skill vercel-react-best-practices
+```
+
+### SEO Fundamentals
+
+For understanding Core Web Vitals, E-E-A-T, and how search engines evaluate pages. Important for a public-facing landing page.
+
+```bash
+npx skills add https://github.com/vercel-labs/agent-skills --skill seo-fundamentals
+```
+
+### Find Skills
+
+Discover and install skills from the open agent skills ecosystem.
+
+```bash
+npx skills add https://github.com/vercel-labs/skills --skill find-skills
+```
+
+## Boundaries
+
+- Never commit secrets or API keys
+- Use Bun, not npm or yarn
+- Keep components focused—split large components
+- Add comments for complex/unclear code (skip for obvious code)
+- Test on mobile viewport (this is a responsive landing page)
+- Use design tokens from `tailwind.config.ts`, not hardcoded colors
+
 ---
 
 ## AI Agent Configuration (Contributors)

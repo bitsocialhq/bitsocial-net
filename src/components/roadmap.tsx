@@ -65,7 +65,7 @@ export default function Roadmap() {
               >
                 {/* Timeline dot */}
                 <div className="relative z-10 flex-shrink-0">
-                  <div className="w-4 h-4 bg-blue-core ring-4 ring-bg-primary border-2 border-blue-glow" />
+                  <div className="w-4 h-4 bg-blue-core ring-4 ring-background border-2 border-blue-glow" />
                 </div>
 
                 {/* Content card */}
@@ -73,10 +73,10 @@ export default function Roadmap() {
                   <div className="text-sm text-blue-glow font-display font-semibold mb-2">
                     {item.phase}
                   </div>
-                  <h3 className="text-2xl font-display font-bold mb-3 text-silver-bright">
+                  <h3 className="text-2xl font-display font-bold mb-3 text-foreground">
                     {item.title}
                   </h3>
-                  <p className="text-silver-mid leading-relaxed">
+                  <p className="text-muted-foreground leading-relaxed">
                     {item.description}
                   </p>
                 </div>

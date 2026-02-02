@@ -12,7 +12,7 @@ export default function Hero() {
         transition={{ delay: 0.3, duration: 0.6 }}
         className="max-w-3xl text-center mb-12 px-4 relative z-10"
       >
-        <p className="text-xl md:text-2xl lg:text-3xl text-silver-mid leading-relaxed font-display font-normal">
+        <p className="text-xl md:text-2xl lg:text-3xl text-muted-foreground leading-relaxed font-display font-normal">
           Bitsocial is an open-source peer-to-peer protocol for social apps,
           with no servers, no global bans, where users and communities are
           cryptographic property.
@@ -27,13 +27,13 @@ export default function Hero() {
       >
         <Link
           to="/docs"
-          className="px-8 py-3 border border-silver-dark bg-bg-secondary/50 backdrop-blur-md text-silver-bright font-display font-semibold hover:border-blue-glow ring-glow transition-all duration-300"
+          className="px-8 py-3 border border-border bg-card/50 backdrop-blur-md text-foreground font-display font-semibold hover:border-blue-glow ring-glow transition-all duration-300"
         >
           Read Docs
         </Link>
         <Link
           to="/apps"
-          className="px-8 py-3 border border-blue-core bg-blue-core/20 backdrop-blur-md text-silver-bright font-display font-semibold hover:bg-blue-core/30 hover:border-blue-glow ring-glow transition-all duration-300"
+          className="px-8 py-3 border border-blue-core bg-blue-core/20 backdrop-blur-md text-foreground font-display font-semibold hover:bg-blue-core/30 hover:border-blue-glow ring-glow transition-all duration-300"
         >
           Browse Apps
         </Link>

@@ -2,6 +2,7 @@ import { useRef, useEffect, useState, useLayoutEffect } from "react"
 import * as THREE from "three"
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
+import { useTheme } from "next-themes"
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -15,6 +16,7 @@ export default function MeshNetwork() {
   const containerRef = useRef<HTMLDivElement>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const [isMobile, setIsMobile] = useState(false)
+  const { resolvedTheme } = useTheme()
 
   useEffect(() => {
     const checkMobile = () => {
@@ -54,8 +56,11 @@ export default function MeshNetwork() {
     renderer.setSize(container.clientWidth, container.clientHeight)
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 
-    // Mesh color - silver-bright #e5e7eb
-    const meshColor = new THREE.Color(0xe5e7eb)
+    // Mesh color - adapts to theme
+    // Light mode: darker color for visibility, Dark mode: lighter color
+    const isDark = resolvedTheme === "dark" || (!resolvedTheme && window.matchMedia("(prefers-color-scheme: dark)").matches)
+    const meshColorHex = isDark ? 0xe5e7eb : 0x4b5563 // silver-bright for dark, gray-600 for light
+    const meshColor = new THREE.Color(meshColorHex)
 
     // Calculate visible frustum dimensions at z=0 (where nodes are placed)
     const fov = 50
@@ -324,7 +329,7 @@ export default function MeshNetwork() {
       linesMaterial.dispose()
       renderer.dispose()
     }
-  }, [isMobile])
+  }, [isMobile, resolvedTheme])
 
   // GSAP scroll parallax - same as planet graphic
   useLayoutEffect(() => {

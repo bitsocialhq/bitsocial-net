@@ -239,7 +239,13 @@ export default function PlanetGraphic() {
     const envMapCanvas = document.createElement("canvas")
     envMapCanvas.width = envMapSize
     envMapCanvas.height = envMapSize
-    const envCtx = envMapCanvas.getContext("2d")!
+    const envCtx = envMapCanvas.getContext("2d")
+    if (!envCtx) {
+      console.error(
+        "Failed to get 2D context from canvas for environment map generation",
+      )
+      return
+    }
     const gradient = envCtx.createLinearGradient(0, 0, 0, envMapSize)
     gradient.addColorStop(0, "#778899")
     gradient.addColorStop(0.4, "#ffffff")
@@ -345,11 +351,14 @@ export default function PlanetGraphic() {
       cancelAnimationFrame(animationId)
       window.removeEventListener("resize", handleResize)
 
+      scene.remove(ring1)
+      scene.remove(ring2)
       sphereGeometry.dispose()
       sphereMaterial.dispose()
       ring1Geometry.dispose()
       ring2Geometry.dispose()
       ringMaterial.dispose()
+      ring2Material.dispose()
       envTexture.dispose()
 
       renderer.dispose()
@@ -392,7 +401,7 @@ export default function PlanetGraphic() {
     >
       <canvas ref={canvasRef} className="w-full h-full" />
       {/* Bottom fade gradient overlay */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 md:h-40 bg-gradient-to-t from-bg-primary via-bg-primary/80 to-transparent pointer-events-none" />
+      <div className="absolute bottom-0 left-0 right-0 h-32 md:h-40 bg-gradient-to-t from-background via-background/80 to-transparent pointer-events-none" />
     </div>
   )
 }

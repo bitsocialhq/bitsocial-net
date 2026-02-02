@@ -19,13 +19,13 @@ export default function Apps() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="glass-card p-6 hover:border-silver-mid/50 transition-all duration-300"
+                className="glass-card p-6 hover:border-muted-foreground/50 transition-all duration-300"
               >
                 <div className="text-4xl mb-4">📱</div>
-                <h3 className="text-xl font-display font-semibold mb-3 text-silver-bright">
+                <h3 className="text-xl font-display font-semibold mb-3 text-foreground">
                   App {i}
                 </h3>
-                <p className="text-silver-mid text-sm leading-relaxed mb-4">
+                <p className="text-muted-foreground text-sm leading-relaxed mb-4">
                   A Bitsocial-powered application. More apps coming soon!
                 </p>
                 <a

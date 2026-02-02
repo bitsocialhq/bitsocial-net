@@ -61,6 +61,15 @@ export default function Hero() {
           <PlanetGraphic />
         </motion.div>
       </div>
+
+      {/* Bottom fade gradient - seamless transition to next section */}
+      <div
+        className="absolute bottom-0 left-0 right-0 h-48 md:h-64 pointer-events-none z-20"
+        style={{
+          background:
+            "linear-gradient(to bottom, transparent 0%, hsl(var(--background)) 100%)",
+        }}
+      />
     </section>
   )
 }

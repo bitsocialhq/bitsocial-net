@@ -4,26 +4,28 @@ A premium dark-themed landing page for bitsocial.net built with Vite + React + T
 
 ## Tech Stack
 
-- **Bun** - Package manager and runtime
-- **Vite** - Build tool and dev server
-- **React 18** - UI framework
-- **TypeScript** - Type safety
-- **TailwindCSS** - Styling
-- **Framer Motion** - Animations
-- **React Router** - Client-side routing
-- **Oxlint** - Fast linter
-- **Oxfmt** - Code formatter
-- **tsgo** - TypeScript type checker
+| Category | Tools |
+|----------|-------|
+| Runtime | Bun |
+| Build | Rolldown-Vite |
+| Framework | React 18, TypeScript |
+| Styling | TailwindCSS, tailwindcss-animate |
+| Animation | Framer Motion, GSAP |
+| 3D Graphics | Three.js |
+| UI Components | Radix UI, Lucide icons |
+| Routing | React Router |
+| Code Quality | Oxlint, Oxfmt, tsgo |
 
 ## Features
 
-- 🎨 Premium dark aesthetic with silver-rings-on-blue-globe motif
-- ✨ Chrome shimmer text effects
-- 🌐 Glassmorphism cards with silver borders
-- 📱 Fully responsive design
-- 🎭 Smooth animations and transitions
-- 🗺️ Interactive roadmap timeline
-- 📄 Three pages: Home, Docs, Apps
+- 3D animated planet graphic with orbiting rings (Three.js)
+- Interactive mesh network visualization
+- Chrome shimmer text effects
+- Glassmorphism cards with silver borders
+- Dark/light theme toggle
+- Fully responsive design
+- Smooth scroll-triggered animations
+- Three pages: Home, Docs, Apps
 
 ## Getting Started
 
@@ -79,34 +81,27 @@ bun run typecheck
 ## Project Structure
 
 ```
-bitsocial-net/
-├── public/
-│   └── logo.png          # Logo asset
-├── src/
-│   ├── assets/
-│   │   └── logo.png      # Logo for imports
-│   ├── components/
-│   │   ├── topbar.tsx    # Navigation bar
-│   │   ├── hero.tsx      # Hero section
-│   │   ├── features.tsx  # Features grid
-│   │   ├── roadmap.tsx   # Timeline roadmap
-│   │   └── footer.tsx    # Footer
-│   ├── pages/
-│   │   ├── home.tsx      # Home page
-│   │   ├── docs.tsx      # Documentation page
-│   │   └── apps.tsx      # Apps showcase page
-│   ├── lib/
-│   │   └── utils.ts      # Utility functions
-│   ├── app.tsx           # Main app component
-│   ├── main.tsx          # Entry point
-│   └── index.css         # Global styles
-├── index.html
-├── tailwind.config.ts
-├── vite.config.ts
-├── oxlint.json
-├── oxfmt.json
-├── tsgo.json
-└── package.json
+src/
+├── components/
+│   ├── topbar.tsx           # Navigation bar
+│   ├── hero.tsx             # Hero section with CTA
+│   ├── features.tsx         # Features grid
+│   ├── roadmap.tsx          # Timeline roadmap
+│   ├── footer.tsx           # Footer
+│   ├── mode-toggle.tsx      # Dark/light theme toggle
+│   ├── theme-provider.tsx   # Theme context provider
+│   ├── planet-graphic/      # 3D globe with Three.js
+│   ├── mesh-network/        # Network visualization
+│   └── ui/                  # Radix-based primitives
+├── pages/
+│   ├── home.tsx             # Home page
+│   ├── docs.tsx             # Documentation page
+│   └── apps.tsx             # Apps showcase page
+├── lib/
+│   └── utils.ts             # cn() and utilities
+├── app.tsx                  # Router + providers
+├── main.tsx                 # Entry point
+└── index.css                # Global styles + Tailwind
 ```
 
 ## Design System
@@ -128,20 +123,8 @@ bitsocial-net/
 
 ## Pages
 
-### Home (`/`)
-- Hero section with animated logo
-- Features showcase
-- Roadmap timeline
-- Footer
-
-### Docs (`/docs`)
-- Documentation placeholder
-- Sidebar navigation (to be implemented)
-
-### Apps (`/apps`)
-- Grid of app cards
-- Placeholder for Bitsocial clients
-
-## License
-
-Open source - see LICENSE file for details.
+| Route | Page | Content |
+|-------|------|---------|
+| `/` | Home | Hero with 3D planet, features grid, roadmap timeline |
+| `/docs` | Docs | Documentation (placeholder) |
+| `/apps` | Apps | App showcase grid (placeholder) |

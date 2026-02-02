@@ -10,7 +10,7 @@ export default function Footer() {
               Bitsocial
             </h3>
             <p className="text-muted-foreground text-sm">
-              Open source P2P social media protocol.
+              Open source P2P network for social apps.
             </p>
           </div>
 

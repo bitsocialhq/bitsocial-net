@@ -8,7 +8,7 @@ export default function Hero() {
     <section className="min-h-screen flex flex-col items-center justify-start pt-28 md:pt-40 px-6 relative overflow-hidden">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
+        animate={{ opacity: 1, y: -20 }}
         transition={{ delay: 0.3, duration: 0.6 }}
         className="max-w-3xl text-center mb-12 px-4 relative z-10"
       >
@@ -21,7 +21,7 @@ export default function Hero() {
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
+        animate={{ opacity: 1, y: -20 }}
         transition={{ delay: 0.5, duration: 0.6 }}
         className="flex flex-col sm:flex-row gap-4 relative z-10"
       >

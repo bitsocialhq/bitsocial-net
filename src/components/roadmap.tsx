@@ -3,33 +3,33 @@ import { motion } from "framer-motion"
 const phases = [
   {
     phase: "Phase 1",
-    title: "Protocol Core",
+    title: "Lorem Ipsum",
     description:
-      "Development of the core P2P protocol, IPFS integration, and basic networking layer.",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
   },
   {
     phase: "Phase 2",
-    title: "Token Launch ($BSO)",
+    title: "Dolor Sit Amet",
     description:
-      "Launch of the Bitsocial token to incentivize network participation and governance.",
+      "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
   },
   {
     phase: "Phase 3",
-    title: "L2 on Ethereum",
+    title: "Consectetur Adipiscing",
     description:
-      "Deployment of Layer 2 solution on Ethereum for enhanced scalability and interoperability.",
+      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
   },
   {
     phase: "Phase 4",
-    title: "Stage 2 Decentralization",
+    title: "Sed Do Eiusmod",
     description:
-      "Further decentralization of network infrastructure and governance mechanisms.",
+      "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
   },
   {
     phase: "Phase 5",
-    title: "Ecosystem Growth",
+    title: "Tempor Incididunt",
     description:
-      "Expansion of the ecosystem with third-party apps, tools, and community-driven initiatives.",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
   },
 ]
 

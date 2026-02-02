@@ -2,27 +2,27 @@ import { motion } from "framer-motion"
 
 const features = [
   {
-    title: "P2P Architecture",
+    title: "Lorem Ipsum",
     description:
-      "Decentralized peer-to-peer networking eliminates single points of failure and ensures true user autonomy.",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     icon: "🌐",
   },
   {
-    title: "IPFS Storage",
+    title: "Dolor Sit Amet",
     description:
-      "Content stored on IPFS provides permanent, censorship-resistant data persistence across the network.",
+      "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
     icon: "💾",
   },
   {
-    title: "Anti-Spam Challenges",
+    title: "Consectetur Adipiscing",
     description:
-      "Cryptographic challenges prevent spam and abuse without requiring centralized moderation or identity verification.",
+      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
     icon: "🛡️",
   },
   {
-    title: "Cryptographic Ownership",
+    title: "Sed Do Eiusmod",
     description:
-      "Users and communities are cryptographic property, giving true ownership and control over digital identity.",
+      "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     icon: "🔐",
   },
 ]

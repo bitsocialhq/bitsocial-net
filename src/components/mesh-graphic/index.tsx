@@ -16,6 +16,7 @@ export default function MeshGraphic() {
   const containerRef = useRef<HTMLDivElement>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const [isMobile, setIsMobile] = useState(false)
+  const [dimensions, setDimensions] = useState({ width: 0, height: 0 })
   const { resolvedTheme } = useTheme()
 
   useEffect(() => {
@@ -28,6 +29,33 @@ export default function MeshGraphic() {
     checkMobile()
     window.addEventListener("resize", checkMobile)
     return () => window.removeEventListener("resize", checkMobile)
+  }, [])
+
+  // Debounced resize handler to trigger scene rebuild
+  useEffect(() => {
+    let timeoutId: ReturnType<typeof setTimeout>
+
+    const updateDimensions = () => {
+      if (!containerRef.current) return
+      setDimensions({
+        width: containerRef.current.clientWidth,
+        height: containerRef.current.clientHeight,
+      })
+    }
+
+    const handleResize = () => {
+      clearTimeout(timeoutId)
+      timeoutId = setTimeout(updateDimensions, 250)
+    }
+
+    // Set initial dimensions
+    updateDimensions()
+
+    window.addEventListener("resize", handleResize)
+    return () => {
+      clearTimeout(timeoutId)
+      window.removeEventListener("resize", handleResize)
+    }
   }, [])
 
   useEffect(() => {
@@ -347,7 +375,7 @@ export default function MeshGraphic() {
       linesMaterial.dispose()
       renderer.dispose()
     }
-  }, [isMobile, resolvedTheme])
+  }, [isMobile, resolvedTheme, dimensions.width, dimensions.height])
 
   // GSAP scroll parallax - same as planet graphic
   useLayoutEffect(() => {

@@ -64,7 +64,7 @@ export default function MeshGraphic() {
     
     // Brightness multipliers - higher in dark mode
     const nodeAlphaMultiplier = isDark ? 0.35 : 0.2
-    const lineAlphaMultiplier = isDark ? 0.6 : 0.4
+    const lineAlphaMultiplier = isDark ? 0.9 : 0.7 // Increased for better contrast
 
     // Calculate visible frustum dimensions at z=0 (where nodes are placed)
     const fov = 50

@@ -85,7 +85,7 @@ export default function MeshGraphic() {
     const uWidth = visibleWidth + 8 // Extend past visible edges
     const uDepth = 8 // Depth variation for parallax
     const bottomY = -10 // Bottom of the U (behind planet)
-    const topY = isMobile ? 8 : 4 // On mobile, reach higher (near buttons)
+    const topY = isMobile ? 14 : 10 // Extended upward for more height
 
     // Distribute nodes uniformly across entire space using grid-like distribution with jitter
     const gridCols = Math.ceil(Math.sqrt(nodeCount * (uWidth / (topY - bottomY))))

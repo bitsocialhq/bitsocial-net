@@ -12,7 +12,7 @@ export default function Topbar() {
     >
       <div className="max-w-7xl mx-auto px-4 md:px-6 py-2 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-1 group">
-          <img src="/logo.png" alt="Bitsocial" className="h-8 w-8" />
+          <img src="/logo-small.png" alt="Bitsocial" className="h-8 w-8" />
           <span className="text-xl font-display font-regular text-muted-foreground">
             Bitsocial
           </span>

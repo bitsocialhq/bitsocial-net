@@ -91,7 +91,7 @@ src/
 │   ├── theme-toggle.tsx      # Dark/light theme toggle
 │   ├── theme-provider.tsx   # Theme context provider
 │   ├── planet-graphic/      # 3D globe with Three.js
-│   ├── mesh-network/        # Network visualization
+│   ├── mesh-graphic/        # Network visualization
 │   └── ui/                  # Radix-based primitives
 ├── pages/
 │   ├── home.tsx             # Home page

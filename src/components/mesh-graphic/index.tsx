@@ -12,7 +12,7 @@ interface Node {
   basePosition: THREE.Vector3
 }
 
-export default function MeshNetwork() {
+export default function MeshGraphic() {
   const containerRef = useRef<HTMLDivElement>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const [isMobile, setIsMobile] = useState(false)

@@ -1,7 +1,7 @@
 import { motion } from "framer-motion"
 import { Link } from "react-router-dom"
 import PlanetGraphic from "./planet-graphic"
-import MeshNetwork from "./mesh-network"
+import MeshGraphic from "./mesh-graphic"
 
 export default function Hero() {
   return (
@@ -48,7 +48,7 @@ export default function Hero() {
           transition={{ delay: 0.8, duration: 1.2 }}
           className="absolute inset-0 z-0"
         >
-          <MeshNetwork />
+          <MeshGraphic />
         </motion.div>
 
         {/* Planet animation with parallax scroll */}

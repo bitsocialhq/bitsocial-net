@@ -20,12 +20,17 @@ const languages = [
 export default function LanguageSelector() {
   const [selectedLanguage, setSelectedLanguage] = useState("en")
 
-  const currentLanguage = languages.find((lang) => lang.code === selectedLanguage) || languages[0]
+  const currentLanguage =
+    languages.find((lang) => lang.code === selectedLanguage) || languages[0]
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="sm" className="gap-2 text-muted-foreground hover:text-foreground font-display">
+        <Button
+          variant="ghost"
+          size="sm"
+          className="gap-2 text-muted-foreground hover:text-foreground font-display"
+        >
           <Globe className="h-4 w-4" />
           <span className="hidden sm:inline">{currentLanguage.name}</span>
         </Button>
@@ -38,7 +43,9 @@ export default function LanguageSelector() {
             className="flex items-center justify-between cursor-pointer"
           >
             <span>{language.name}</span>
-            {selectedLanguage === language.code && <Check className="h-4 w-4" />}
+            {selectedLanguage === language.code && (
+              <Check className="h-4 w-4" />
+            )}
           </DropdownMenuItem>
         ))}
       </DropdownMenuContent>

@@ -89,10 +89,13 @@ export default function MeshGraphic() {
 
     // Mesh color - adapts to theme
     // Light mode: darker color for visibility, Dark mode: brighter color
-    const isDark = resolvedTheme === "dark" || (!resolvedTheme && window.matchMedia("(prefers-color-scheme: dark)").matches)
+    const isDark =
+      resolvedTheme === "dark" ||
+      (!resolvedTheme &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches)
     const meshColorHex = isDark ? 0xffffff : 0x4b5563 // white for dark mode (brighter), gray-600 for light
     const meshColor = new THREE.Color(meshColorHex)
-    
+
     // Brightness multipliers - higher in dark mode
     const nodeAlphaMultiplier = isDark ? 0.35 : 0.2
     const lineAlphaMultiplier = isDark ? 0.9 : 0.7 // Increased for better contrast
@@ -119,30 +122,33 @@ export default function MeshGraphic() {
     const topY = isMobile ? 14 : 10 // Extended upward for more height
 
     // Distribute nodes uniformly across entire space using grid-like distribution with jitter
-    const gridCols = Math.ceil(Math.sqrt(nodeCount * (uWidth / (topY - bottomY))))
+    const gridCols = Math.ceil(
+      Math.sqrt(nodeCount * (uWidth / (topY - bottomY))),
+    )
     const gridRows = Math.ceil(nodeCount / gridCols)
-    
+
     for (let i = 0; i < nodeCount; i++) {
       let x: number, y: number, z: number
-      
+
       // Use grid-based distribution for even spacing
       const col = i % gridCols
       const row = Math.floor(i / gridCols)
-      
+
       // Base grid position
       const baseX = -uWidth / 2 + (col / (gridCols - 1 || 1)) * uWidth
       const baseY = bottomY + (row / (gridRows - 1 || 1)) * (topY - bottomY)
-      
+
       // Add jitter to avoid perfect grid
       const jitterX = (Math.random() - 0.5) * (uWidth / gridCols) * 0.8
-      const jitterY = (Math.random() - 0.5) * ((topY - bottomY) / gridRows) * 0.8
-      
+      const jitterY =
+        (Math.random() - 0.5) * ((topY - bottomY) / gridRows) * 0.8
+
       x = baseX + jitterX
       y = baseY + jitterY
-      
+
       // Add some depth variation
       z = -3 + (Math.random() - 0.5) * uDepth
-      
+
       // For nodes near bottom, push them back further (behind planet)
       if (y < bottomY + 2) {
         z = -5 + (Math.random() - 0.5) * 4

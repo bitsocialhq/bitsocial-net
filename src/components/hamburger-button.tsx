@@ -7,7 +7,10 @@ interface HamburgerButtonProps {
   onClick: () => void
 }
 
-export default function HamburgerButton({ isOpen, onClick }: HamburgerButtonProps) {
+export default function HamburgerButton({
+  isOpen,
+  onClick,
+}: HamburgerButtonProps) {
   const buttonRef = useRef<HTMLButtonElement>(null)
 
   const handleClick = () => {

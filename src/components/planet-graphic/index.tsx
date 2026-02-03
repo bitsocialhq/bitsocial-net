@@ -122,7 +122,10 @@ export default function PlanetGraphic() {
     const container = containerRef.current
 
     // Check if dark mode
-    const isDark = resolvedTheme === "dark" || (!resolvedTheme && window.matchMedia("(prefers-color-scheme: dark)").matches)
+    const isDark =
+      resolvedTheme === "dark" ||
+      (!resolvedTheme &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches)
 
     // Scene setup
     const scene = new THREE.Scene()
@@ -171,7 +174,10 @@ export default function PlanetGraphic() {
     // Top light for sphere gradient - muted in dark mode
     const topLightColor = isDark ? 0x5a6a80 : 0x4a90d9
     const topLightIntensity = isDark ? 0.5 : 0.7
-    const topLight = new THREE.DirectionalLight(topLightColor, topLightIntensity)
+    const topLight = new THREE.DirectionalLight(
+      topLightColor,
+      topLightIntensity,
+    )
     topLight.position.set(0, 15, 5)
     scene.add(topLight)
 
@@ -186,7 +192,7 @@ export default function PlanetGraphic() {
     const sphereBottomColor = isDark ? 0x0f1f30 : 0x0a2440
     const sphereGlowColor = isDark ? 0x3a5a90 : 0x2d6ae0
     const sphereFresnelIntensity = isDark ? 0.2 : 0.3
-    
+
     const sphereMaterial = new THREE.ShaderMaterial({
       transparent: false,
       depthWrite: true,
@@ -249,7 +255,7 @@ export default function PlanetGraphic() {
     const ringColor = isDark ? 0x909090 : 0xc0c0c0
     const ringRoughness = isDark ? 0.25 : 0.2
     const ringEnvMapIntensity = isDark ? 0.3 : 0.5
-    
+
     const ringMaterial = new THREE.MeshStandardMaterial({
       color: ringColor,
       metalness: 0.7,
@@ -275,7 +281,7 @@ export default function PlanetGraphic() {
     const envGradientTop = isDark ? "#556677" : "#778899"
     const envGradientMid = isDark ? "#8899aa" : "#ffffff"
     const envGradientBottom = isDark ? "#223344" : "#334455"
-    
+
     const gradient = envCtx.createLinearGradient(0, 0, 0, envMapSize)
     gradient.addColorStop(0, envGradientTop)
     gradient.addColorStop(0.4, envGradientMid)

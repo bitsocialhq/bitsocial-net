@@ -13,8 +13,8 @@ export default function Hero() {
         className="max-w-3xl text-center mb-12 px-4 relative z-10"
       >
         <p className="text-xl md:text-2xl lg:text-3xl text-muted-foreground leading-relaxed font-display font-normal">
-          Bitsocial is an open-source peer-to-peer network for social apps,
-          with no servers, no global bans, where users and communities are
+          Bitsocial is an open-source peer-to-peer network for social apps, with
+          no servers, no global bans, where users and communities are
           cryptographic property.
         </p>
       </motion.div>

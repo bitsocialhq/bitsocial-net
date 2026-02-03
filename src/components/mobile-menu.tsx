@@ -7,7 +7,11 @@ interface MobileMenuProps {
   onHeightChange?: (height: number) => void
 }
 
-export default function MobileMenu({ isOpen, children, onHeightChange }: MobileMenuProps) {
+export default function MobileMenu({
+  isOpen,
+  children,
+  onHeightChange,
+}: MobileMenuProps) {
   const menuRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {

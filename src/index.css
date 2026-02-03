@@ -14,6 +14,73 @@
     letter-spacing: 0.01em;
     overflow-x: hidden;
   }
+  button,
+  [role="button"] {
+    -webkit-tap-highlight-color: transparent !important;
+    -webkit-touch-callout: none !important;
+    -webkit-appearance: none !important;
+    appearance: none !important;
+    outline: none !important;
+    outline-width: 0 !important;
+    outline-style: none !important;
+    outline-offset: 0 !important;
+    outline-color: transparent !important;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  button:focus,
+  button:active,
+  button:focus-visible,
+  button:focus-within,
+  button:-webkit-any-link:focus,
+  [role="button"]:focus,
+  [role="button"]:active,
+  [role="button"]:focus-visible,
+  [role="button"]:focus-within {
+    outline: none !important;
+    outline-width: 0 !important;
+    outline-style: none !important;
+    outline-offset: 0 !important;
+    outline-color: transparent !important;
+    box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    border-color: inherit !important;
+  }
+  button::before,
+  button::after,
+  button:focus::before,
+  button:focus::after,
+  [role="button"]::before,
+  [role="button"]::after,
+  [role="button"]:focus::before,
+  [role="button"]:focus::after {
+    outline: none !important;
+    box-shadow: none !important;
+  }
+  /* Mobile-specific: remove any focus ring on touch */
+  @media (hover: none) and (pointer: coarse) {
+    button,
+    [role="button"] {
+      -webkit-tap-highlight-color: transparent !important;
+      outline: none !important;
+    }
+    button:focus,
+    button:active,
+    button:focus-visible,
+    [role="button"]:focus,
+    [role="button"]:active,
+    [role="button"]:focus-visible {
+      outline: none !important;
+      outline-width: 0 !important;
+      outline-style: none !important;
+      outline-color: transparent !important;
+      box-shadow: none !important;
+      -webkit-box-shadow: none !important;
+      /* Reset Tailwind ring */
+      --tw-ring-shadow: 0 0 #0000 !important;
+      --tw-ring-offset-shadow: 0 0 #0000 !important;
+    }
+  }
   :root {
     --background: 0 0% 100%;
     --foreground: 0 0% 10%;

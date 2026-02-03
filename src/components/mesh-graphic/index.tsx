@@ -104,10 +104,10 @@ export default function MeshGraphic() {
     const aspectRatio = container.clientWidth / container.clientHeight
     const visibleWidth = visibleHeight * aspectRatio
 
-    // Node parameters - 1px thin circles (same size on mobile and desktop)
-    const nodeCount = isMobile ? 150 : 300
-    const connectionDistance = 5
-    const nodeSize = 0.05 // Smaller node radius
+    // Node parameters - smaller and fewer on mobile
+    const nodeCount = isMobile ? 80 : 300
+    const connectionDistance = isMobile ? 6 : 5 // Slightly larger on mobile to maintain connectivity with fewer nodes
+    const nodeSize = isMobile ? 0.03 : 0.05
 
     // Create nodes evenly distributed across entire U-shape area
     const nodes: Node[] = []

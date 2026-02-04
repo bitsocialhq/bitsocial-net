@@ -62,26 +62,36 @@
   Always review the dynamic key warnings before using --force!
 */
 
-import fs from 'fs/promises'
-import path from 'path'
+import fs from "fs/promises"
+import path from "path"
 
 function parseArgs(argv) {
   const out = { flags: new Set() }
   for (let i = 0; i < argv.length; i++) {
     const arg = argv[i]
     const next = i + 1 < argv.length ? argv[i + 1] : undefined
-    if (arg.startsWith('--')) {
-      if (['--dry', '--dry-run', '--write', '--include-en', '--delete', '--audit', '--force'].includes(arg)) {
+    if (arg.startsWith("--")) {
+      if (
+        [
+          "--dry",
+          "--dry-run",
+          "--write",
+          "--include-en",
+          "--delete",
+          "--audit",
+          "--force",
+        ].includes(arg)
+      ) {
         out.flags.add(arg)
         continue
       }
       const key = arg
       let value
-      if (next && !next.startsWith('--')) {
+      if (next && !next.startsWith("--")) {
         value = next
         i++
       }
-      out[key] = value ?? ''
+      out[key] = value ?? ""
     }
   }
   return out
@@ -90,7 +100,7 @@ function parseArgs(argv) {
 function usage(exitCode = 1, msg) {
   if (msg) console.error(msg)
   console.error(
-    'Usage: node scripts/update-translations.js --key <name> [--delete] [--from <lang>] [--value <string> | --map <file>] [--only <langs>] [--exclude <langs>] [--include-en] [--dry|--write]'
+    "Usage: node scripts/update-translations.js --key <name> [--delete] [--from <lang>] [--value <string> | --map <file>] [--only <langs>] [--exclude <langs>] [--include-en] [--dry|--write]",
   )
   process.exit(exitCode)
 }
@@ -108,14 +118,14 @@ function parseCsv(val) {
   if (!val) return new Set()
   return new Set(
     val
-      .split(',')
+      .split(",")
       .map((s) => s.trim())
-      .filter(Boolean)
+      .filter(Boolean),
   )
 }
 
 async function loadJson(filePath) {
-  const text = await fs.readFile(filePath, 'utf8')
+  const text = await fs.readFile(filePath, "utf8")
   try {
     return JSON.parse(text)
   } catch (err) {
@@ -124,11 +134,18 @@ async function loadJson(filePath) {
 }
 
 async function writeJson(filePath, data) {
-  const json = JSON.stringify(data, null, 2) + '\n'
-  await fs.writeFile(filePath, json, 'utf8')
+  const json = JSON.stringify(data, null, 2) + "\n"
+  await fs.writeFile(filePath, json, "utf8")
 }
 
-async function handleDelete(key, translationsRoot, only, exclude, dryRun, write) {
+async function handleDelete(
+  key,
+  translationsRoot,
+  only,
+  exclude,
+  dryRun,
+  write,
+) {
   const dirents = await fs.readdir(translationsRoot, { withFileTypes: true })
   const langs = dirents.filter((d) => d.isDirectory()).map((d) => d.name)
 
@@ -138,7 +155,7 @@ async function handleDelete(key, translationsRoot, only, exclude, dryRun, write)
     if (only.size && !only.has(lang)) continue
     if (exclude.size && exclude.has(lang)) continue
 
-    const filePath = path.join(translationsRoot, lang, 'default.json')
+    const filePath = path.join(translationsRoot, lang, "default.json")
     if (!(await fileExists(filePath))) continue
 
     const json = await loadJson(filePath)
@@ -153,15 +170,20 @@ async function handleDelete(key, translationsRoot, only, exclude, dryRun, write)
   }
 
   if (!planned.length) {
-    console.log('No changes planned.')
+    console.log("No changes planned.")
     return
   }
 
   for (const change of planned) {
     const { lang, filePath, prevVal } = change
-    const prevPreview = typeof prevVal === 'undefined' ? '<missing>' : String(prevVal).substring(0, 60)
+    const prevPreview =
+      typeof prevVal === "undefined"
+        ? "<missing>"
+        : String(prevVal).substring(0, 60)
     console.log(`[${lang}] ${key}:`)
-    console.log(`  - deleted: ${prevPreview}${String(prevVal).length > 60 ? '...' : ''}`)
+    console.log(
+      `  - deleted: ${prevPreview}${String(prevVal).length > 60 ? "..." : ""}`,
+    )
     if (!dryRun) {
       delete change.json[key]
       await writeJson(filePath, change.json)
@@ -169,7 +191,9 @@ async function handleDelete(key, translationsRoot, only, exclude, dryRun, write)
   }
 
   if (dryRun) {
-    console.log(`\nDry run complete. ${planned.length} file(s) would change. Re-run with --write to apply.`)
+    console.log(
+      `\nDry run complete. ${planned.length} file(s) would change. Re-run with --write to apply.`,
+    )
   } else if (write) {
     console.log(`\nWrote ${planned.length} file(s).`)
   }
@@ -185,7 +209,7 @@ async function getFilesRecursive(dir, extensions) {
     const fullPath = path.join(dir, entry.name)
     if (entry.isDirectory()) {
       // Skip node_modules and hidden directories
-      if (entry.name === 'node_modules' || entry.name.startsWith('.')) continue
+      if (entry.name === "node_modules" || entry.name.startsWith(".")) continue
       files.push(...(await getFilesRecursive(fullPath, extensions)))
     } else if (extensions.some((ext) => entry.name.endsWith(ext))) {
       files.push(fullPath)
@@ -203,7 +227,7 @@ async function getFilesRecursive(dir, extensions) {
 async function extractUsedKeys(srcDir) {
   const usedKeys = new Set()
   const dynamicUsages = []
-  const extensions = ['.ts', '.tsx', '.js', '.jsx']
+  const extensions = [".ts", ".tsx", ".js", ".jsx"]
   const files = await getFilesRecursive(srcDir, extensions)
 
   // Patterns to match static translation key usage:
@@ -221,14 +245,25 @@ async function extractUsedKeys(srcDir) {
   // - i18nKey={variable} where variable is not a string literal
   // Note: We use (?<![a-zA-Z]) negative lookbehind to avoid matching clearTimeout(), parseInt(), etc.
   const dynamicPatterns = [
-    { pattern: /(?<![a-zA-Z])t\(\s*`[^`]*\$\{[^}]+\}[^`]*`/g, type: 't() with template literal interpolation' },
-    { pattern: /(?<![a-zA-Z])t\(\s*([a-zA-Z_$][a-zA-Z0-9_$]*)\s*[,)]/g, type: 't() with variable', checkCapture: true },
-    { pattern: /i18nKey\s*=\s*\{\s*([a-zA-Z_$][a-zA-Z0-9_$.]*)\s*\}/g, type: 'i18nKey with variable', checkCapture: true },
+    {
+      pattern: /(?<![a-zA-Z])t\(\s*`[^`]*\$\{[^}]+\}[^`]*`/g,
+      type: "t() with template literal interpolation",
+    },
+    {
+      pattern: /(?<![a-zA-Z])t\(\s*([a-zA-Z_$][a-zA-Z0-9_$]*)\s*[,)]/g,
+      type: "t() with variable",
+      checkCapture: true,
+    },
+    {
+      pattern: /i18nKey\s*=\s*\{\s*([a-zA-Z_$][a-zA-Z0-9_$.]*)\s*\}/g,
+      type: "i18nKey with variable",
+      checkCapture: true,
+    },
   ]
 
   for (const file of files) {
-    const content = await fs.readFile(file, 'utf8')
-    const lines = content.split('\n')
+    const content = await fs.readFile(file, "utf8")
+    const lines = content.split("\n")
 
     // Extract static keys
     for (const pattern of staticPatterns) {
@@ -249,7 +284,8 @@ async function extractUsedKeys(srcDir) {
         if (checkCapture) {
           const captured = match[1]
           // Skip common false positives: the match is actually a string literal we already caught
-          if (!captured || captured.startsWith("'") || captured.startsWith('"')) continue
+          if (!captured || captured.startsWith("'") || captured.startsWith('"'))
+            continue
         }
 
         // Find line number
@@ -278,17 +314,23 @@ async function extractUsedKeys(srcDir) {
 }
 
 async function handleAudit(translationsRoot, srcDir, dryRun, write, force) {
-  console.log('Scanning codebase for translation key usage...\n')
+  console.log("Scanning codebase for translation key usage...\n")
 
   // Get all keys used in the codebase (and dynamic usage warnings)
   const { usedKeys, dynamicUsages } = await extractUsedKeys(srcDir)
-  console.log(`Found ${usedKeys.size} static translation keys used in the codebase.`)
+  console.log(
+    `Found ${usedKeys.size} static translation keys used in the codebase.`,
+  )
 
   // Report dynamic key usages (these could reference any key at runtime)
   const hasDynamicUsages = dynamicUsages.length > 0
   if (hasDynamicUsages) {
-    console.log(`\n⚠️  WARNING: Found ${dynamicUsages.length} dynamic translation key usage(s):\n`)
-    console.log('These use variables or template literals, so the actual keys cannot be determined statically.')
+    console.log(
+      `\n⚠️  WARNING: Found ${dynamicUsages.length} dynamic translation key usage(s):\n`,
+    )
+    console.log(
+      "These use variables or template literals, so the actual keys cannot be determined statically.",
+    )
     console.log('Some "unused" keys below may actually be used at runtime!\n')
 
     // Group by file for cleaner output
@@ -302,15 +344,17 @@ async function handleAudit(translationsRoot, srcDir, dryRun, write, force) {
       const relPath = path.relative(process.cwd(), file)
       console.log(`  ${relPath}:`)
       for (const u of usages) {
-        console.log(`    Line ${u.line}: ${u.code}${u.code.length >= 60 ? '...' : ''}`)
+        console.log(
+          `    Line ${u.line}: ${u.code}${u.code.length >= 60 ? "..." : ""}`,
+        )
         console.log(`             (${u.type})`)
       }
     }
-    console.log('')
+    console.log("")
   }
 
   // Load the English translation file as the reference
-  const enPath = path.join(translationsRoot, 'en', 'default.json')
+  const enPath = path.join(translationsRoot, "en", "default.json")
   if (!(await fileExists(enPath))) {
     console.error(`English translation file not found: ${enPath}`)
     process.exit(1)
@@ -322,7 +366,7 @@ async function handleAudit(translationsRoot, srcDir, dryRun, write, force) {
   const unusedKeys = definedKeys.filter((key) => !usedKeys.has(key))
 
   if (unusedKeys.length === 0) {
-    console.log('No unused translation keys found. All keys are in use.')
+    console.log("No unused translation keys found. All keys are in use.")
     return
   }
 
@@ -330,36 +374,54 @@ async function handleAudit(translationsRoot, srcDir, dryRun, write, force) {
   for (const key of unusedKeys) {
     const value = enJson[key]
     const preview = String(value).substring(0, 50)
-    console.log(`  - ${key}: "${preview}${String(value).length > 50 ? '...' : ''}"`)
+    console.log(
+      `  - ${key}: "${preview}${String(value).length > 50 ? "..." : ""}"`,
+    )
   }
 
   if (dryRun) {
-    console.log(`\nDry run complete. ${unusedKeys.length} key(s) would be removed from all language files.`)
+    console.log(
+      `\nDry run complete. ${unusedKeys.length} key(s) would be removed from all language files.`,
+    )
     if (hasDynamicUsages) {
-      console.log('\n⚠️  Dynamic key usage detected! Review the warnings above before removing keys.')
-      console.log('Re-run with --write --force to remove them anyway (after manual review).')
+      console.log(
+        "\n⚠️  Dynamic key usage detected! Review the warnings above before removing keys.",
+      )
+      console.log(
+        "Re-run with --write --force to remove them anyway (after manual review).",
+      )
     } else {
-      console.log('Re-run with --write to remove them.')
+      console.log("Re-run with --write to remove them.")
     }
     return
   }
 
   // Block --write if dynamic usages detected and --force not provided
   if (hasDynamicUsages && !force) {
-    console.log('\n❌ BLOCKED: Cannot remove keys automatically when dynamic key usage is detected.')
-    console.log('Some "unused" keys may actually be referenced by dynamic expressions at runtime.')
-    console.log('')
-    console.log('Please:')
-    console.log('  1. Review the dynamic key warnings above')
-    console.log('  2. Manually verify that the "unused" keys are truly not needed')
-    console.log('  3. Re-run with --write --force to proceed with deletion')
-    console.log('')
-    console.log('Alternatively, refactor dynamic keys to use static strings where possible.')
+    console.log(
+      "\n❌ BLOCKED: Cannot remove keys automatically when dynamic key usage is detected.",
+    )
+    console.log(
+      'Some "unused" keys may actually be referenced by dynamic expressions at runtime.',
+    )
+    console.log("")
+    console.log("Please:")
+    console.log("  1. Review the dynamic key warnings above")
+    console.log(
+      '  2. Manually verify that the "unused" keys are truly not needed',
+    )
+    console.log("  3. Re-run with --write --force to proceed with deletion")
+    console.log("")
+    console.log(
+      "Alternatively, refactor dynamic keys to use static strings where possible.",
+    )
     process.exit(1)
   }
 
   if (hasDynamicUsages && force) {
-    console.log('\n⚠️  Proceeding with --force despite dynamic key usage warnings...')
+    console.log(
+      "\n⚠️  Proceeding with --force despite dynamic key usage warnings...",
+    )
   }
 
   // Remove unused keys from all language files
@@ -368,7 +430,7 @@ async function handleAudit(translationsRoot, srcDir, dryRun, write, force) {
 
   let filesChanged = 0
   for (const lang of langs) {
-    const filePath = path.join(translationsRoot, lang, 'default.json')
+    const filePath = path.join(translationsRoot, lang, "default.json")
     if (!(await fileExists(filePath))) continue
 
     const json = await loadJson(filePath)
@@ -391,15 +453,29 @@ async function handleAudit(translationsRoot, srcDir, dryRun, write, force) {
   console.log(`\nRemoved unused keys from ${filesChanged} language file(s).`)
 }
 
-async function handleUpdate(key, translationsRoot, fromLang, includeEn, only, exclude, literalValue, mapFile, map, dryRun, write) {
+async function handleUpdate(
+  key,
+  translationsRoot,
+  fromLang,
+  includeEn,
+  only,
+  exclude,
+  literalValue,
+  mapFile,
+  map,
+  dryRun,
+  write,
+) {
   let sourceValue = undefined
   if (!literalValue && !map) {
     // default to --from
-    const srcPath = path.join(translationsRoot, fromLang, 'default.json')
-    if (!(await fileExists(srcPath))) usage(1, `Source file not found for --from ${fromLang}: ${srcPath}`)
+    const srcPath = path.join(translationsRoot, fromLang, "default.json")
+    if (!(await fileExists(srcPath)))
+      usage(1, `Source file not found for --from ${fromLang}: ${srcPath}`)
     const srcJson = await loadJson(srcPath)
     sourceValue = srcJson[key]
-    if (typeof sourceValue === 'undefined') usage(1, `Key "${key}" not found in source language ${fromLang}`)
+    if (typeof sourceValue === "undefined")
+      usage(1, `Key "${key}" not found in source language ${fromLang}`)
   }
 
   const dirents = await fs.readdir(translationsRoot, { withFileTypes: true })
@@ -412,7 +488,7 @@ async function handleUpdate(key, translationsRoot, fromLang, includeEn, only, ex
     if (only.size && !only.has(lang)) continue
     if (exclude.size && exclude.has(lang)) continue
 
-    const filePath = path.join(translationsRoot, lang, 'default.json')
+    const filePath = path.join(translationsRoot, lang, "default.json")
     if (!(await fileExists(filePath))) continue
 
     const json = await loadJson(filePath)
@@ -420,13 +496,13 @@ async function handleUpdate(key, translationsRoot, fromLang, includeEn, only, ex
     let nextVal
     if (map && Object.prototype.hasOwnProperty.call(map, lang)) {
       nextVal = map[lang]
-    } else if (typeof literalValue !== 'undefined') {
+    } else if (typeof literalValue !== "undefined") {
       nextVal = literalValue
     } else {
       nextVal = sourceValue
     }
 
-    if (typeof nextVal === 'undefined') {
+    if (typeof nextVal === "undefined") {
       // No value for this lang in the chosen mode; skip
       continue
     }
@@ -438,17 +514,24 @@ async function handleUpdate(key, translationsRoot, fromLang, includeEn, only, ex
   }
 
   if (!planned.length) {
-    console.log('No changes planned.')
+    console.log("No changes planned.")
     return
   }
 
   for (const change of planned) {
     const { lang, filePath, prevVal, nextVal } = change
-    const prevPreview = typeof prevVal === 'undefined' ? '<missing>' : String(prevVal).substring(0, 60)
+    const prevPreview =
+      typeof prevVal === "undefined"
+        ? "<missing>"
+        : String(prevVal).substring(0, 60)
     const nextPreview = String(nextVal).substring(0, 60)
     console.log(`[${lang}] ${key}:`)
-    console.log(`  - from: ${prevPreview}${String(prevVal).length > 60 ? '...' : ''}`)
-    console.log(`  + to  : ${nextPreview}${String(nextVal).length > 60 ? '...' : ''}`)
+    console.log(
+      `  - from: ${prevPreview}${String(prevVal).length > 60 ? "..." : ""}`,
+    )
+    console.log(
+      `  + to  : ${nextPreview}${String(nextVal).length > 60 ? "..." : ""}`,
+    )
     if (!dryRun) {
       change.json[key] = nextVal
       await writeJson(filePath, change.json)
@@ -456,7 +539,9 @@ async function handleUpdate(key, translationsRoot, fromLang, includeEn, only, ex
   }
 
   if (dryRun) {
-    console.log(`\nDry run complete. ${planned.length} file(s) would change. Re-run with --write to apply.`)
+    console.log(
+      `\nDry run complete. ${planned.length} file(s) would change. Re-run with --write to apply.`,
+    )
   } else if (write) {
     console.log(`\nWrote ${planned.length} file(s).`)
   }
@@ -466,49 +551,67 @@ async function main() {
   const argv = process.argv.slice(2)
   const args = parseArgs(argv)
 
-  const translationsRoot = path.join(process.cwd(), 'public', 'translations')
+  const translationsRoot = path.join(process.cwd(), "public", "translations")
   if (!(await fileExists(translationsRoot))) {
     usage(1, `Translations directory not found: ${translationsRoot}`)
   }
 
-  const isAudit = args.flags.has('--audit')
-  const isDelete = args.flags.has('--delete')
-  const dryRun = args.flags.has('--dry') || args.flags.has('--dry-run') || !args.flags.has('--write')
-  const write = args.flags.has('--write')
-  const force = args.flags.has('--force')
+  const isAudit = args.flags.has("--audit")
+  const isDelete = args.flags.has("--delete")
+  const dryRun =
+    args.flags.has("--dry") ||
+    args.flags.has("--dry-run") ||
+    !args.flags.has("--write")
+  const write = args.flags.has("--write")
+  const force = args.flags.has("--force")
 
   if (isAudit) {
     // Audit mode: scan codebase and remove unused keys
-    const srcDir = path.join(process.cwd(), 'src')
+    const srcDir = path.join(process.cwd(), "src")
     await handleAudit(translationsRoot, srcDir, dryRun, write, force)
     return
   }
 
-  const key = args['--key']
-  if (!key) usage(1, 'Missing required --key')
+  const key = args["--key"]
+  if (!key) usage(1, "Missing required --key")
 
-  const fromLang = args['--from'] || 'en'
-  const includeEn = args.flags.has('--include-en')
-  const only = parseCsv(args['--only'])
-  const exclude = parseCsv(args['--exclude'])
+  const fromLang = args["--from"] || "en"
+  const includeEn = args.flags.has("--include-en")
+  const only = parseCsv(args["--only"])
+  const exclude = parseCsv(args["--exclude"])
 
   if (isDelete) {
     // Delete mode
     await handleDelete(key, translationsRoot, only, exclude, dryRun, write)
   } else {
     // Update mode
-    let literalValue = args['--value']
-    let mapFile = args['--map']
+    let literalValue = args["--value"]
+    let mapFile = args["--map"]
     let map = undefined
 
     if (mapFile) {
-      const absMap = path.isAbsolute(mapFile) ? mapFile : path.join(process.cwd(), mapFile)
+      const absMap = path.isAbsolute(mapFile)
+        ? mapFile
+        : path.join(process.cwd(), mapFile)
       if (!(await fileExists(absMap))) usage(1, `--map not found: ${absMap}`)
       map = await loadJson(absMap)
-      if (typeof map !== 'object' || map === null) usage(1, '--map must be a JSON object of { lang: value }')
+      if (typeof map !== "object" || map === null)
+        usage(1, "--map must be a JSON object of { lang: value }")
     }
 
-    await handleUpdate(key, translationsRoot, fromLang, includeEn, only, exclude, literalValue, mapFile, map, dryRun, write)
+    await handleUpdate(
+      key,
+      translationsRoot,
+      fromLang,
+      includeEn,
+      only,
+      exclude,
+      literalValue,
+      mapFile,
+      map,
+      dryRun,
+      write,
+    )
   }
 }
 
@@ -516,6 +619,3 @@ main().catch((err) => {
   console.error(err)
   process.exit(1)
 })
-
-
-

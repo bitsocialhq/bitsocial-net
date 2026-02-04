@@ -30,7 +30,7 @@ const features: Feature[] = [
     id: "social-apps",
     title: "...for social apps,...",
     description:
-      "Anyone can build a Bitsocial app (also known as a \"client\" for the Bitsocial protocol), with any interface of their choice.",
+      'Anyone can build a Bitsocial app (also known as a "client" for the Bitsocial protocol), with any interface of their choice.',
     expandedContent:
       "Bitsocial is a free protocol, nobody decides how many clients there may be. Build your own, share it, see it grow a userbase. The entire Bitsocial userbase is shared across clients, each client should be designed to be compatible with each other. The more clients there are, the more opportunities the userbase has to grow, exponentially.",
   },
@@ -38,17 +38,17 @@ const features: Feature[] = [
     id: "no-servers",
     title: "...with no servers,...",
     description:
-      "Bitsocial is serverless, so it's impossible for the network to \"go down\". No government can shut it down, either, and nobody owns the network as a whole.",
+      'Bitsocial is serverless, so it\'s impossible for the network to "go down". No government can shut it down, either, and nobody owns the network as a whole.',
     expandedContent:
-      "Users own their own communities, they run them with bitsocial nodes, so each community acts as its own \"server\" (P2P node). Crucially, Bitsocial nodes don't need a domain to function, no SSL, and they run on very low resources (e.g., a node runs on a raspberry pi, powering thousands of bitsocial communities at a time).",
+      'Users own their own communities, they run them with bitsocial nodes, so each community acts as its own "server" (P2P node). Crucially, Bitsocial nodes don\'t need a domain to function, no SSL, and they run on very low resources (e.g., a node runs on a raspberry pi, powering thousands of bitsocial communities at a time).',
   },
   {
     id: "no-global-bans",
     title: "...no global bans,...",
     description:
-      "Bitsocial itself is adminless; it is the true \"digital public square\" of the internet. Users are admins and moderators of their own communities and profiles, and nobody can ban them from the whole network.",
+      'Bitsocial itself is adminless; it is the true "digital public square" of the internet. Users are admins and moderators of their own communities and profiles, and nobody can ban them from the whole network.',
     expandedContent:
-      "Nobody owns Bitsocial, therefore nobody can ban users from Bitsocial as a whole, as there are no \"global admins\" running the network. Bitsocial app developers may choose to blacklist certain users addresses and/or community addresses from their app, but nobody can ban them from the network as a whole, and anyone can create their own Bitsocial app as well. Interestingly, Twitter/\"X\" praised itself as the \"digital town square\" where people can speak freely, and yet a corporation (X Corp.) owns this so-called \"public square\"—a corporation whose admins can ban anyone at will. Bitsocial isn't controlled by any corporation, thus it is the true public square of the internet.",
+      'Nobody owns Bitsocial, therefore nobody can ban users from Bitsocial as a whole, as there are no "global admins" running the network. Bitsocial app developers may choose to blacklist certain users addresses and/or community addresses from their app, but nobody can ban them from the network as a whole, and anyone can create their own Bitsocial app as well. Interestingly, Twitter/"X" praised itself as the "digital town square" where people can speak freely, and yet a corporation (X Corp.) owns this so-called "public square"—a corporation whose admins can ban anyone at will. Bitsocial isn\'t controlled by any corporation, thus it is the true public square of the internet.',
   },
   {
     id: "cryptographic-property",
@@ -93,7 +93,10 @@ export default function Features() {
     }
   }, [])
 
-  const toggleExpand = (id: string, event: React.MouseEvent<HTMLButtonElement>) => {
+  const toggleExpand = (
+    id: string,
+    event: React.MouseEvent<HTMLButtonElement>,
+  ) => {
     setExpandedId(expandedId === id ? null : id)
     // Remove focus after click to ensure hover state works properly
     event.currentTarget.blur()

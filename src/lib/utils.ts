@@ -19,16 +19,16 @@ export function triggerFeatureGlow(hash: string) {
 
     // Find the glass-card within the scrolled element and add glow effect
     const card = element.querySelector(".glass-card")
-    if (card) {
+    if (card && card instanceof HTMLElement) {
       // Remove any existing glow class first
       card.classList.remove("highlight-glow")
-      
+
       // Force reflow to ensure class removal is processed
       void card.offsetWidth
-      
+
       // Add glow effect - animation handles the fade-out automatically
       card.classList.add("highlight-glow")
-      
+
       // Clear any previous timeout so the glow doesn't end early
       const existingTimeout = glowTimeouts.get(card)
       if (existingTimeout) {

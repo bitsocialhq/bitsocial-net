@@ -12,7 +12,11 @@ const taglinePhrases = [
   { text: " with no servers,", hash: "no-servers", isLink: true },
   { text: " no global bans,", hash: "no-global-bans", isLink: true },
   { text: " where users and communities are ", hash: null, isLink: false },
-  { text: " cryptographic property", hash: "cryptographic-property", isLink: true },
+  {
+    text: " cryptographic property",
+    hash: "cryptographic-property",
+    isLink: true,
+  },
   { text: ".", hash: null, isLink: false },
 ]
 
@@ -45,10 +49,12 @@ export default function Hero() {
                     filter: "drop-shadow(0 0 0 transparent)",
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.filter = "drop-shadow(0 0 12px rgba(37, 99, 235, 0.8))"
+                    e.currentTarget.style.filter =
+                      "drop-shadow(0 0 12px rgba(37, 99, 235, 0.8))"
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.filter = "drop-shadow(0 0 0 transparent)"
+                    e.currentTarget.style.filter =
+                      "drop-shadow(0 0 0 transparent)"
                   }}
                 >
                   {phrase.text}

@@ -263,7 +263,7 @@ npx skills add vercel-labs/agent-browser
   agent-browser snapshot -i
   agent-browser click @e5    # or fill, type, screenshot, etc.
   ```
-- **Install once globally if not present:** `npm install -g agent-browser && agent-browser install`
+- **Install once globally if not present:** `bun add -g agent-browser && agent-browser install`
 - **Never fall back to other browser tools** unless agent-browser explicitly fails after 2–3 retries (and explain why in your reasoning).
 - **This applies doubly to localhost/dev previews** where repeated snapshots would otherwise explode context.
 

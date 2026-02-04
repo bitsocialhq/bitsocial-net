@@ -1,4 +1,4 @@
-import { motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
 import { useState } from "react"
 
 const phases = [
@@ -111,28 +111,30 @@ export default function MasterPlan() {
       </div>
 
       {/* GIF overlay */}
-      {showGif && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm"
-          onClick={() => setShowGif(false)}
-        >
-          <motion.img
-            src="https://media1.tenor.com/m/zI1Evz0Qc24AAAAd/spongebob-squarepants-nickelodeon.gif"
-            alt="Spongebob"
-            className="max-w-[90vw] max-h-[90vh] cursor-pointer"
-            onClick={(e) => {
-              e.stopPropagation()
-              setShowGif(false)
-            }}
-            initial={{ scale: 0.8 }}
-            animate={{ scale: 1 }}
-            transition={{ duration: 0.3 }}
-          />
-        </motion.div>
-      )}
+      <AnimatePresence>
+        {showGif && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm"
+            onClick={() => setShowGif(false)}
+          >
+            <motion.img
+              src="https://media1.tenor.com/m/zI1Evz0Qc24AAAAd/spongebob-squarepants-nickelodeon.gif"
+              alt="Spongebob"
+              className="max-w-[90vw] max-h-[90vh] cursor-pointer"
+              onClick={(e) => {
+                e.stopPropagation()
+                setShowGif(false)
+              }}
+              initial={{ scale: 0.8 }}
+              animate={{ scale: 1 }}
+              transition={{ duration: 0.3 }}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   )
 }

@@ -349,7 +349,7 @@ export default function PlanetGraphic() {
     ring2.position.set(ring2PosX, sphereY + ring2PosY, ring2PosZ)
     scene.add(ring2)
 
-    const ringRotationDuration = 5
+    const ringRotationDuration = 7
     const ringRotationDelay = 3
     const ringRotationPause = 5
     const ringRotationEase = "sine.inOut"

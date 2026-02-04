@@ -160,4 +160,23 @@
   .ring-glow:hover {
     box-shadow: 0 0 30px rgba(37, 99, 235, 0.5);
   }
+
+  .highlight-glow {
+    animation: glow-fade 5s ease-in-out forwards;
+  }
+
+  @keyframes glow-fade {
+    0% {
+      box-shadow: 0 0 30px rgba(37, 99, 235, 0);
+    }
+    20% {
+      box-shadow: 0 0 30px rgba(37, 99, 235, 0.5);
+    }
+    80% {
+      box-shadow: 0 0 30px rgba(37, 99, 235, 0.5);
+    }
+    100% {
+      box-shadow: 0 0 30px rgba(37, 99, 235, 0);
+    }
+  }
 }

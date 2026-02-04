@@ -2,6 +2,7 @@ import { motion } from "framer-motion"
 import { Link } from "react-router-dom"
 import PlanetGraphic from "./planet-graphic"
 import MeshGraphic from "./mesh-graphic"
+import { triggerFeatureGlow } from "@/lib/utils"
 
 const taglinePhrases = [
   { text: "Bitsocial is ", hash: null, isLink: false },
@@ -17,13 +18,10 @@ const taglinePhrases = [
 
 function handleTaglineClick(hash: string | null) {
   if (!hash) return
-  window.location.hash = hash
-  const element = document.getElementById(hash)
-  if (element) {
-    setTimeout(() => {
-      element.scrollIntoView({ behavior: "smooth", block: "center" })
-    }, 50)
-  }
+  // Update URL instantly without triggering browser scroll
+  window.history.replaceState(null, "", `#${hash}`)
+  // Trigger glow effect (includes smooth scroll)
+  triggerFeatureGlow(hash)
 }
 
 export default function Hero() {

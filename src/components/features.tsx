@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion"
 import { useState, useEffect } from "react"
+import { triggerFeatureGlow } from "@/lib/utils"
 
 interface Feature {
   id: string
@@ -63,14 +64,24 @@ export default function Features() {
   const [expandedId, setExpandedId] = useState<string | null>(null)
 
   useEffect(() => {
-    const hash = window.location.hash.slice(1)
-    if (hash && features.some((f) => f.id === hash)) {
-      const element = document.getElementById(hash)
-      if (element) {
+    const handleHashChange = () => {
+      const hash = window.location.hash.slice(1)
+      if (hash && features.some((f) => f.id === hash)) {
+        // Small delay to ensure DOM is ready
         setTimeout(() => {
-          element.scrollIntoView({ behavior: "smooth", block: "center" })
+          triggerFeatureGlow(hash)
         }, 100)
       }
+    }
+
+    // Handle initial hash on mount
+    handleHashChange()
+
+    // Listen for hash changes (navigation, back/forward buttons, etc.)
+    window.addEventListener("hashchange", handleHashChange)
+
+    return () => {
+      window.removeEventListener("hashchange", handleHashChange)
     }
   }, [])
 
@@ -109,7 +120,7 @@ export default function Features() {
                 >
                   {/* Card Content */}
                   <div className="flex-1 w-full md:w-1/2">
-                    <div className="glass-card p-6 md:p-8 hover:border-silver-mid/50 transition-all duration-300">
+                    <div className="glass-card p-6 md:p-8">
                       <h3 className="text-xl md:text-2xl font-display font-normal mb-4 text-muted-foreground italic">
                         {feature.title}
                       </h3>

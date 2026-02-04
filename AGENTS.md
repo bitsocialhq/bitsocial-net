@@ -241,6 +241,34 @@ Discover and install skills from the open agent skills ecosystem.
 npx skills add https://github.com/vercel-labs/skills --skill find-skills
 ```
 
+### Agent Browser
+
+For browser automation and web interaction. Essential for testing, UI verification, form filling, screenshots, and any web-based tasks. Provides 85–93% token reduction vs alternatives.
+
+```bash
+npx skills add vercel-labs/agent-browser
+```
+
+**Installation for contributors:** Copy `.cursor/skills/agent-browser/` to your tool's skills directory (e.g., `.claude/skills/agent-browser/` for Claude Code).
+
+## Browser / Web Interaction Rules (Token Efficiency Priority)
+
+**CRITICAL:** If you need to interact with ANY webpage (including localhost dev servers, external sites for verification, UI testing, screenshots, form filling, navigation, or data extraction):
+
+- **ABSOLUTELY use Vercel's agent-browser CLI** instead of Cursor's built-in browser, Playwright MCP, Chrome DevTools MCP, Puppeteer, or any other browser tool.
+- **Reasons:** agent-browser uses compact interactive snapshots + element refs (`@e1`, `@e2`, etc.) → typically 85–93% fewer tokens per action vs alternatives, faster execution, higher reliability in agent loops.
+- **Command pattern example:**
+  ```bash
+  agent-browser open http://localhost:5173
+  agent-browser snapshot -i
+  agent-browser click @e5    # or fill, type, screenshot, etc.
+  ```
+- **Install once globally if not present:** `npm install -g agent-browser && agent-browser install`
+- **Never fall back to other browser tools** unless agent-browser explicitly fails after 2–3 retries (and explain why in your reasoning).
+- **This applies doubly to localhost/dev previews** where repeated snapshots would otherwise explode context.
+
+Always prefer agent-browser even for simple checks — the token savings compound quickly in iterative agent runs.
+
 ## Boundaries
 
 - Never commit secrets or API keys
@@ -309,6 +337,7 @@ Reusable skill definitions (copy `skills/` folder):
 | `seo-audit` | SEO review | Technical SEO analysis and diagnostics |
 | `seo-fundamentals` | SEO questions | Core SEO principles (E-E-A-T, Core Web Vitals) |
 | `vercel-react-best-practices` | React perf | 57 Vercel Engineering rules for React/Next.js optimization |
+| `agent-browser` | Browser automation | Web interaction, testing, form filling, screenshots (85–93% token reduction vs alternatives) |
 
 ### Vercel React Best Practices Rules
 

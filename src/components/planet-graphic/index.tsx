@@ -171,6 +171,23 @@ export default function PlanetGraphic() {
     rimLight.position.set(0, -5, -10)
     scene.add(rimLight)
 
+    // Side lights to create chrome-like edge highlights on rings
+    const edgeLightColor = 0xf5f7ff
+    const edgeLightIntensity = isDark ? 0.65 : 0.75
+    const edgeLightLeft = new THREE.DirectionalLight(
+      edgeLightColor,
+      edgeLightIntensity,
+    )
+    edgeLightLeft.position.set(-12, 0, 6)
+    scene.add(edgeLightLeft)
+
+    const edgeLightRight = new THREE.DirectionalLight(
+      edgeLightColor,
+      edgeLightIntensity,
+    )
+    edgeLightRight.position.set(12, 1, 6)
+    scene.add(edgeLightRight)
+
     // Top light for sphere gradient - muted in dark mode
     const topLightColor = isDark ? 0x5a6a80 : 0x4a90d9
     const topLightIntensity = isDark ? 0.5 : 0.7
@@ -251,16 +268,21 @@ export default function PlanetGraphic() {
     const tubeWidth = 0.3 // Width of the rectangular cross-section
     const tubeHeight = 0.2 // Height (thickness) of the ring
 
-    // Metallic material for rings (silver/chrome look) - muted in dark mode
+    // Metallic material for rings (silver/chrome look) - keep gray, boost shine
     const ringColor = isDark ? 0x909090 : 0xc0c0c0
-    const ringRoughness = isDark ? 0.25 : 0.2
-    const ringEnvMapIntensity = isDark ? 0.3 : 0.5
+    const ringMetalness = isDark ? 0.9 : 0.95
+    const ringRoughness = isDark ? 0.18 : 0.14
+    const ringEnvMapIntensity = isDark ? 0.7 : 0.9
+    const ringClearcoat = isDark ? 0.5 : 0.6
+    const ringClearcoatRoughness = isDark ? 0.1 : 0.06
 
-    const ringMaterial = new THREE.MeshStandardMaterial({
+    const ringMaterial = new THREE.MeshPhysicalMaterial({
       color: ringColor,
-      metalness: 0.7,
+      metalness: ringMetalness,
       roughness: ringRoughness,
       envMapIntensity: ringEnvMapIntensity,
+      clearcoat: ringClearcoat,
+      clearcoatRoughness: ringClearcoatRoughness,
       depthWrite: true,
       side: THREE.DoubleSide,
     })

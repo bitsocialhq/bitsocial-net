@@ -105,7 +105,7 @@ export default function Features() {
                   transition={{ delay: index * 0.1, duration: 0.5 }}
                   className={`flex flex-col ${
                     isEven ? "md:flex-row" : "md:flex-row-reverse"
-                  } gap-6 md:gap-8 items-center`}
+                  } gap-2 md:gap-8 items-center`}
                 >
                   {/* Card Content */}
                   <div className="flex-1 w-full md:w-1/2">
@@ -140,7 +140,7 @@ export default function Features() {
                       transition={{ duration: 0.4, ease: "easeOut" }}
                       className="overflow-hidden"
                     >
-                      <div className="mt-6 md:mt-8">
+                      <div className="mt-2 md:mt-8">
                         <div className="glass-card p-6 md:p-8">
                           <p className="text-muted-foreground text-sm md:text-base leading-relaxed">
                             {feature.expandedContent}

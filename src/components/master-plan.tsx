@@ -34,7 +34,7 @@ const phases = [
   },
 ]
 
-export default function Roadmap() {
+export default function MasterPlan() {
   const [showGif, setShowGif] = useState(false)
 
   return (
@@ -47,7 +47,7 @@ export default function Roadmap() {
           transition={{ duration: 0.6 }}
           className="text-4xl md:text-5xl font-display font-normal text-center mb-16 text-muted-foreground"
         >
-          Roadmap
+          Master Plan
         </motion.h2>
 
         <div className="relative">

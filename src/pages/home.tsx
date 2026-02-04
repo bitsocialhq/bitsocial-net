@@ -1,7 +1,7 @@
 import Topbar from "../components/topbar"
 import Hero from "../components/hero"
 import Features from "../components/features"
-import Roadmap from "../components/roadmap"
+import MasterPlan from "../components/master-plan"
 import Footer from "../components/footer"
 
 export default function Home() {
@@ -10,7 +10,7 @@ export default function Home() {
       <Topbar />
       <Hero />
       <Features />
-      <Roadmap />
+      <MasterPlan />
       <Footer />
     </div>
   )

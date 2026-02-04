@@ -15,7 +15,8 @@ function createMetallicRing(
   const indices: number[] = []
 
   // Create ring by extruding a rectangle along a circular path
-  for (let i = 0; i <= segments; i++) {
+  // Use exactly `segments` slices and wrap indices to avoid a visible seam.
+  for (let i = 0; i < segments; i++) {
     const angle = (i / segments) * Math.PI * 2
 
     // Center of the ring at this angle
@@ -63,7 +64,7 @@ function createMetallicRing(
   // Create faces connecting each segment to the next
   for (let i = 0; i < segments; i++) {
     const curr = i * 4
-    const next = ((i + 1) % (segments + 1)) * 4
+    const next = ((i + 1) % segments) * 4
 
     // Bottom face (innerBottom -> outerBottom)
     indices.push(curr + 0, next + 0, next + 1)

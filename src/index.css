@@ -157,7 +157,8 @@
     @apply transition-all duration-300;
   }
 
-  .ring-glow:hover {
+  .ring-glow:hover,
+  .ring-glow:hover:focus {
     box-shadow: 0 0 30px rgba(37, 99, 235, 0.5);
   }
 

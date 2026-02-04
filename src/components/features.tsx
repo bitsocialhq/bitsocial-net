@@ -93,8 +93,10 @@ export default function Features() {
     }
   }, [])
 
-  const toggleExpand = (id: string) => {
+  const toggleExpand = (id: string, event: React.MouseEvent<HTMLButtonElement>) => {
     setExpandedId(expandedId === id ? null : id)
+    // Remove focus after click to ensure hover state works properly
+    event.currentTarget.blur()
   }
 
   return (
@@ -141,7 +143,7 @@ export default function Features() {
                   {/* Learn More Button */}
                   <div className="flex-1 w-full md:w-1/2 flex items-center justify-center">
                     <button
-                      onClick={() => toggleExpand(feature.id)}
+                      onClick={(e) => toggleExpand(feature.id, e)}
                       className="px-8 py-3 border border-border bg-card/50 backdrop-blur-md text-muted-foreground hover:text-foreground font-display font-semibold hover:border-blue-glow ring-glow transition-all duration-300 w-full md:w-auto"
                     >
                       {isExpanded ? "Show Less" : "Learn More"}

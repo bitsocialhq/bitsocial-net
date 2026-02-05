@@ -2,6 +2,6 @@
   "hero": {
     "tagline": "Bitsocial është një rrjet <openSource>me burim të hapur</openSource> <p2p>peer-to-peer</p2p> <socialApps>për aplikacione sociale</socialApps>, pa <noServers>serverë</noServers>, pa <noBans>ndalime globale</noBans>, ku përdoruesit dhe komunitetet janë <crypto>pronë kriptografike</crypto>.",
     "readDocs": "Read Docs",
-    "browseApps": "Browse Apps"
+    "exploreApps": "Eksploro Aplikacionet"
   }
 }

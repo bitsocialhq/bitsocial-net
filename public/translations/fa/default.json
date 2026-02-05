@@ -2,6 +2,6 @@
   "hero": {
     "tagline": "Bitsocial یک شبکه <openSource>متن‌باز</openSource> <p2p>همتا به همتا</p2p> <socialApps>برای اپلیکیشن‌های اجتماعی</socialApps> است، بدون <noServers>سرور</noServers>، بدون <noBans>مسدودسازی جهانی</noBans>، جایی که کاربران و جوامع <crypto>دارایی رمزنگاری‌شده</crypto> هستند.",
     "readDocs": "Read Docs",
-    "browseApps": "Browse Apps"
+    "exploreApps": "کاوش برنامه‌ها"
   }
 }

@@ -82,7 +82,7 @@ export default function Hero() {
           to="/apps"
           className="px-8 py-3 border border-blue-core bg-blue-core/20 backdrop-blur-md text-muted-foreground hover:text-foreground font-display font-semibold hover:bg-blue-core/30 hover:border-blue-glow ring-glow transition-all duration-300"
         >
-          {t("hero.browseApps")}
+          {t("hero.exploreApps")}
         </Link>
       </motion.div>
 

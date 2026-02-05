@@ -2,6 +2,6 @@
   "hero": {
     "tagline": "Το Bitsocial είναι ένα <openSource>ανοιχτού κώδικα</openSource> <p2p>δίκτυο peer-to-peer</p2p> <socialApps>για κοινωνικές εφαρμογές</socialApps>, χωρίς <noServers>διακομιστές</noServers>, χωρίς <noBans>καθολικές απαγορεύσεις</noBans>, όπου οι χρήστες και οι κοινότητες είναι <crypto>κρυπτογραφική ιδιοκτησία</crypto>.",
     "readDocs": "Read Docs",
-    "browseApps": "Browse Apps"
+    "exploreApps": "Εξερεύνηση Εφαρμογών"
   }
 }

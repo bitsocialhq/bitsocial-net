@@ -2,6 +2,6 @@
   "hero": {
     "tagline": "Bitsocial é uma rede <openSource>de código aberto</openSource> <p2p>peer-to-peer</p2p> <socialApps>para aplicativos sociais</socialApps>, sem <noServers>servidores</noServers>, sem <noBans>banimentos globais</noBans>, onde usuários e comunidades são <crypto>propriedade criptográfica</crypto>.",
     "readDocs": "Read Docs",
-    "browseApps": "Browse Apps"
+    "exploreApps": "Explorar Apps"
   }
 }

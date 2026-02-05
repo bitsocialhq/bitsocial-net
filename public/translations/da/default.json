@@ -1,6 +1,6 @@
 {
   "hero": {
-    "tagline": "Bitsocial er et <openSource>open-source</openSource> <p2p>peer-to-peer netværk</p2p> <socialApps>til sociale apps</socialApps>, <noServers>uden servere</noServers>, <noBans>uden globale forbud</noBans>, hvor brugere og fællesskaber er <crypto>kryptografisk ejendom</crypto>.",
+    "tagline": "Bitsocial er et <openSource>open source</openSource> <p2p>peer-to-peer netværk</p2p> <socialApps>til sociale apps</socialApps>, uden <noServers>servere</noServers>, uden <noBans>globale forbud</noBans>, hvor brugere og fællesskaber er <crypto>kryptografisk ejendom</crypto>.",
     "readDocs": "Read Docs",
     "browseApps": "Browse Apps"
   }

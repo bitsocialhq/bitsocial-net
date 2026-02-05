@@ -1,6 +1,6 @@
 {
   "hero": {
-    "tagline": "Ang Bitsocial ay isang <openSource>open-source</openSource> <p2p>peer-to-peer network</p2p> <socialApps>para sa social apps</socialApps>, <noServers>walang mga server</noServers>, <noBans>walang global na ban</noBans>, kung saan ang mga user at komunidad ay <crypto>cryptographic property</crypto>.",
+    "tagline": "Ang Bitsocial ay isang <openSource>open-source</openSource> na <p2p>peer-to-peer network</p2p> <socialApps>para sa mga social app</socialApps>, walang <noServers>mga server</noServers>, walang <noBans>global na pagbabawal</noBans>, kung saan ang mga user at komunidad ay <crypto>cryptographic na pag-aari</crypto>.",
     "readDocs": "Read Docs",
     "browseApps": "Browse Apps"
   }

@@ -1,6 +1,6 @@
 {
   "hero": {
-    "tagline": "Bitsocial是一个<openSource>开源</openSource> <p2p>点对点网络</p2p> <socialApps>用于社交应用</socialApps>，<noServers>无服务器</noServers>，<noBans>无全球禁令</noBans>，用户和社区是<crypto>加密财产</crypto>。",
+    "tagline": "Bitsocial 是一个<openSource>开源</openSource>的<p2p>点对点网络</p2p>，<socialApps>专为社交应用设计</socialApps>，<noServers>无需服务器</noServers>，<noBans>没有全局封禁</noBans>，用户和社区都是<crypto>加密资产</crypto>。",
     "readDocs": "Read Docs",
     "browseApps": "Browse Apps"
   }

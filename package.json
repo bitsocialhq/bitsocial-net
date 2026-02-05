@@ -1,9 +1,10 @@
 {
-  "name": "bitsocial-net",
-  "description": "A landing page for bitsocial.net",
+  "name": "bitsocial-web",
+  "description": "Official Bitsocial web frontend: landing page, docs, apps explorer, and future flagship client",
   "author": "Bitsocial Labs",
   "private": true,
-  "version": "0.0.0",
+  "license": "AGPL-3.0-only",
+  "version": "0.1.0",
   "type": "module",
   "scripts": {
     "dev": "bunx rolldown-vite",

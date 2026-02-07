@@ -39,7 +39,7 @@ bun run format:check # Check formatting
 - **`oxlint` + `oxfmt`, not eslint + prettier.** Linting and formatting are Oxidation Compiler tools.
 - **`@/` path alias.** Use `@/` for all imports from `src/`, never relative `../` paths.
 - **Fonts loaded in `index.html`**, not imported in JS. Outfit (headings) and Inter (body).
-- **Commitizen + Husky.** `git commit` triggers an interactive Commitizen prompt that will hang the agent. Use `git commit --no-verify -m "message"` instead, or `bun run commit` / `bunx cz` for interactive mode.
+- **Commitizen + Husky.** `git commit` triggers an interactive Commitizen prompt that will hang in a non-interactive shell. Agents must use `git commit --no-verify -m "message"` to bypass hooks. Humans can use `bun run commit` / `bunx cz` for the interactive flow.
 - **Animations must respect `prefers-reduced-motion`.** Don't add animations without a reduced-motion fallback.
 - **35 language files.** Don't hand-edit translation files across languages. Use `scripts/update-translations.js` to add/remove/audit keys (see the translations skill). Only edit individual language files for translation corrections.
 
@@ -95,7 +95,7 @@ When stuck on a bug, search the web. Developer communities often have fixes that
 
 ## Browser Testing
 
-Use `agent-browser` CLI, not Playwright MCP, Chrome DevTools MCP, Puppeteer, or Cursor's built-in browser. It uses 85-93% fewer tokens.
+Use `agent-browser` CLI, not Playwright MCP, Chrome DevTools MCP, Puppeteer, or Cursor's built-in browser. It uses compact snapshots + element refs instead of full DOM, which keeps agent context small.
 
 ```bash
 agent-browser open http://localhost:5173

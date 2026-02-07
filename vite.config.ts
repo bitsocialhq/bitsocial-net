@@ -1,4 +1,4 @@
-import { defineConfig } from "rolldown-vite"
+import { defineConfig } from "vite"
 import react from "@vitejs/plugin-react"
 import path from "path"
 import reactScan from "@react-scan/vite-plugin-react-scan"

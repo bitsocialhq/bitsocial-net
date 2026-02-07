@@ -53,7 +53,7 @@ export default function MasterPlan() {
         <div className="relative">
           {/* Phases container with timeline line */}
           <div className="relative">
-            {/* Timeline line - only covers phases */}
+            {/* Timeline line */}
             <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-gradient-to-b from-blue-core via-blue-glow to-blue-core" />
 
             <div className="space-y-12">
@@ -93,8 +93,33 @@ export default function MasterPlan() {
             </div>
           </div>
 
-          {/* Logo at the end of timeline with 5px gap */}
-          <div className="flex justify-center mt-[5px]">
+          <div className="hidden md:flex flex-col items-center">
+            <div className="w-0.5 h-16 bg-blue-glow" />
+            <svg width="2" height="64" className="text-blue-glow">
+              <line
+                x1="1"
+                y1="0"
+                x2="1"
+                y2="64"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeDasharray="6 4"
+              />
+            </svg>
+            <svg width="2" height="56" className="text-blue-glow">
+              <line
+                x1="1"
+                y1="0"
+                x2="1"
+                y2="56"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeDasharray="2 4"
+              />
+            </svg>
+          </div>
+
+          <div className="flex justify-center mt-2">
             <motion.button
               onClick={() => setShowGif(true)}
               className="relative z-10 flex-shrink-0 cursor-pointer transition-all duration-300 hover:scale-110"

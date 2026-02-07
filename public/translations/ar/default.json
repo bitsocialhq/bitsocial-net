@@ -1,7 +1,14 @@
 {
   "hero": {
     "tagline": "Bitsocial هي شبكة <openSource>مفتوحة المصدر</openSource> <p2p>نظير إلى نظير</p2p> <socialApps>للتطبيقات الاجتماعية</socialApps>، بدون <noServers>خوادم</noServers>، بدون <noBans>حظر عالمي</noBans>، حيث المستخدمون والمجتمعات هم <crypto>ملكية مشفرة</crypto>.",
-    "readDocs": "Read Docs",
+    "readDocs": "قراءة الوثائق",
     "exploreApps": "استكشف التطبيقات"
+  },
+  "nav": {
+    "apps": "التطبيقات",
+    "docs": "الوثائق",
+    "status": "الحالة",
+    "language": "اللغة",
+    "theme": "المظهر"
   }
 }

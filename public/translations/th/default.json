@@ -1,7 +1,14 @@
 {
   "hero": {
     "tagline": "Bitsocial เป็นเครือข่าย<openSource>โอเพนซอร์ส</openSource> <p2p>แบบ peer-to-peer</p2p> <socialApps>สำหรับแอปโซเชียล</socialApps> ไม่มี<noServers>เซิร์ฟเวอร์</noServers> ไม่มี<noBans>การแบนทั่วโลก</noBans> ที่ซึ่งผู้ใช้และชุมชนเป็น<crypto>ทรัพย์สินเข้ารหัส</crypto>",
-    "readDocs": "Read Docs",
+    "readDocs": "อ่านเอกสาร",
     "exploreApps": "สำรวจแอป"
+  },
+  "nav": {
+    "apps": "แอป",
+    "docs": "เอกสาร",
+    "status": "สถานะ",
+    "language": "ภาษา",
+    "theme": "ธีม"
   }
 }

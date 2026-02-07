@@ -1,7 +1,14 @@
 {
   "hero": {
     "tagline": "Bitsocial er et <openSource>åpen kildekode</openSource> <p2p>peer-to-peer-nettverk</p2p> <socialApps>for sosiale apper</socialApps>, uten <noServers>servere</noServers>, uten <noBans>globale utestengelser</noBans>, der brukere og fellesskap er <crypto>kryptografisk eiendom</crypto>.",
-    "readDocs": "Read Docs",
-    "exploreApps": "Utforsk apper"
+    "readDocs": "Les Dokumentasjon",
+    "exploreApps": "Utforsk Apper"
+  },
+  "nav": {
+    "apps": "Apper",
+    "docs": "Dokumentasjon",
+    "status": "Status",
+    "language": "Språk",
+    "theme": "Tema"
   }
 }

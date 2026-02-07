@@ -49,8 +49,8 @@ const languages = [
   { code: "zh", name: "中文" },
 ]
 
-export default function LanguageSelector() {
-  const { i18n } = useTranslation()
+export default function LanguageSelector({ mobile }: { mobile?: boolean }) {
+  const { i18n, t } = useTranslation()
   const [open, setOpen] = useState(false)
   const [searchQuery, setSearchQuery] = useState("")
 
@@ -76,18 +76,30 @@ export default function LanguageSelector() {
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
-        <Button
-          variant="ghost"
-          size="sm"
-          className="gap-2 text-muted-foreground hover:text-foreground font-display"
-        >
-          <Globe className="h-4 w-4" />
-          <span className="hidden sm:inline">{currentLanguage.name}</span>
-        </Button>
+        {mobile ? (
+          <button className="flex items-center justify-center w-full border border-border px-3 py-3 text-muted-foreground hover:text-foreground hover:border-muted-foreground/40 transition-colors font-display text-sm">
+            <span className="flex items-center gap-2">
+              <Globe className="h-4 w-4 shrink-0" />
+              <span>{t("nav.language")}</span>
+            </span>
+          </button>
+        ) : (
+          <Button
+            variant="ghost"
+            size="sm"
+            className="h-9 gap-2 px-3 text-sm text-muted-foreground hover:bg-border/70 hover:text-foreground focus-visible:bg-border/70 font-display"
+          >
+            <Globe className="h-4 w-4" />
+            <span className="hidden sm:inline">{currentLanguage.name}</span>
+          </Button>
+        )}
       </SheetTrigger>
-      <SheetContent side="right" className="w-full sm:max-w-md">
+      <SheetContent
+        side="right"
+        className="w-full sm:max-w-md rounded-none [&>button]:rounded-none"
+      >
         <SheetHeader>
-          <SheetTitle>Select Language</SheetTitle>
+          <SheetTitle className="font-display">Select Language</SheetTitle>
         </SheetHeader>
         <div className="mt-6 space-y-4">
           <div className="relative">
@@ -97,7 +109,7 @@ export default function LanguageSelector() {
               placeholder="Search languages..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full rounded-md border border-input bg-background px-10 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              className="w-full rounded-none border border-input bg-background px-10 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             />
           </div>
           <div className="max-h-[calc(100vh-200px)] overflow-y-auto">
@@ -107,7 +119,7 @@ export default function LanguageSelector() {
                   key={language.code}
                   onClick={() => handleLanguageChange(language.code)}
                   className={cn(
-                    "flex items-center justify-between rounded-md border border-input bg-background px-4 py-3 text-left transition-colors hover:bg-secondary",
+                    "flex items-center justify-between rounded-none border border-input bg-background px-4 py-3 text-left transition-colors hover:bg-secondary",
                     i18n.language === language.code &&
                       "border-blue-glow bg-secondary",
                   )}

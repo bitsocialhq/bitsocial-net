@@ -1,7 +1,14 @@
 {
   "hero": {
     "tagline": "Bitsocial, <noServers>sunucusuz</noServers>, <noBans>küresel yasaklar olmadan</noBans>, kullanıcıların ve toplulukların <crypto>kriptografik mülkiyet</crypto> olduğu, <socialApps>sosyal uygulamalar için</socialApps> <openSource>açık kaynaklı</openSource> bir <p2p>eşler arası ağdır</p2p>.",
-    "readDocs": "Read Docs",
+    "readDocs": "Dokümantasyonu Oku",
     "exploreApps": "Uygulamaları Keşfet"
+  },
+  "nav": {
+    "apps": "Uygulamalar",
+    "docs": "Dokümantasyon",
+    "status": "Durum",
+    "language": "Dil",
+    "theme": "Tema"
   }
 }

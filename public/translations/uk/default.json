@@ -1,7 +1,14 @@
 {
   "hero": {
     "tagline": "Bitsocial — це <openSource>мережа з відкритим кодом</openSource> <p2p>peer-to-peer</p2p> <socialApps>для соціальних додатків</socialApps>, без <noServers>серверів</noServers>, без <noBans>глобальних банів</noBans>, де користувачі та спільноти є <crypto>криптографічною власністю</crypto>.",
-    "readDocs": "Read Docs",
-    "exploreApps": "Дослідити додатки"
+    "readDocs": "Читати Документацію",
+    "exploreApps": "Дослідити Додатки"
+  },
+  "nav": {
+    "apps": "Додатки",
+    "docs": "Документація",
+    "status": "Статус",
+    "language": "Мова",
+    "theme": "Тема"
   }
 }

@@ -1,7 +1,14 @@
 {
   "hero": {
     "tagline": "A Bitsocial egy <openSource>nyílt forráskódú</openSource> <p2p>peer-to-peer hálózat</p2p> <socialApps>közösségi alkalmazásokhoz</socialApps>, <noServers>szerverek nélkül</noServers>, <noBans>globális tiltások nélkül</noBans>, ahol a felhasználók és közösségek <crypto>kriptográfiai tulajdon</crypto>.",
-    "readDocs": "Read Docs",
-    "exploreApps": "Alkalmazások felfedezése"
+    "readDocs": "Dokumentáció Olvasása",
+    "exploreApps": "Alkalmazások Felfedezése"
+  },
+  "nav": {
+    "apps": "Alkalmazások",
+    "docs": "Dokumentáció",
+    "status": "Állapot",
+    "language": "Nyelv",
+    "theme": "Téma"
   }
 }

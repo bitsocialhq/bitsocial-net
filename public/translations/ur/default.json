@@ -1,7 +1,14 @@
 {
   "hero": {
     "tagline": "Bitsocial ایک <openSource>اوپن سورس</openSource> <p2p>پیئر ٹو پیئر نیٹ ورک</p2p> ہے <socialApps>سوشل ایپس کے لیے</socialApps>، بغیر <noServers>سرورز</noServers>، بغیر <noBans>عالمی پابندیوں</noBans>، جہاں صارفین اور کمیونٹیز <crypto>کرپٹوگرافک ملکیت</crypto> ہیں۔",
-    "readDocs": "Read Docs",
+    "readDocs": "دستاویزات پڑھیں",
     "exploreApps": "ایپس دریافت کریں"
+  },
+  "nav": {
+    "apps": "ایپس",
+    "docs": "دستاویزات",
+    "status": "حالت",
+    "language": "زبان",
+    "theme": "تھیم"
   }
 }

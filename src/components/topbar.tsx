@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
 import { motion } from "framer-motion"
+import { useTranslation } from "react-i18next"
 import { ThemeToggle } from "./theme-toggle"
 import HamburgerButton from "./hamburger-button"
 import LanguageSelector from "./language-selector"
@@ -12,37 +13,28 @@ function NavLink({
   children,
   onClick,
   className: extraClassName,
-  disabled,
+  noUnderline,
 }: {
   to?: string
   href?: string
   children: React.ReactNode
   onClick?: () => void
   className?: string
-  disabled?: boolean
+  noUnderline?: boolean
 }) {
   const baseClassName =
-    "text-muted-foreground hover:text-foreground transition-colors relative group text-sm md:text-base font-display py-2 block"
-  const disabledClassName = "opacity-50 cursor-not-allowed"
+    "text-muted-foreground hover:text-foreground transition-colors relative group text-base md:text-base font-display leading-none py-2 px-2 block"
   const className = extraClassName
-    ? `${baseClassName} ${disabled ? disabledClassName : ""} ${extraClassName}`
-    : `${baseClassName} ${disabled ? disabledClassName : ""}`
+    ? `${baseClassName} ${extraClassName}`
+    : baseClassName
   const content = (
     <>
       {children}
-      {!disabled && (
-        <span className="absolute bottom-0 left-0 w-0 h-px bg-blue-glow group-hover:w-full transition-all duration-300" />
+      {!noUnderline && (
+        <span className="absolute bottom-1 left-0 w-0 h-px bg-blue-glow group-hover:w-full transition-all duration-300" />
       )}
     </>
   )
-
-  if (disabled) {
-    return (
-      <span className={className} title="Coming soon">
-        {content}
-      </span>
-    )
-  }
 
   if (href) {
     return (
@@ -74,6 +66,7 @@ function NavLink({
 }
 
 export default function Topbar() {
+  const { t } = useTranslation()
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [menuHeight, setMenuHeight] = useState(0)
 
@@ -98,20 +91,34 @@ export default function Topbar() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-4 md:gap-8">
-            <NavLink disabled>About</NavLink>
-            <NavLink disabled>Blog</NavLink>
-            <NavLink to="/docs" onClick={handleNavClick}>
-              Docs
-            </NavLink>
-            <LanguageSelector />
-            <ThemeToggle />
-            <NavLink
-              href="https://github.com/bitsocialhq"
-              onClick={handleNavClick}
-            >
-              GitHub
-            </NavLink>
+          <div className="hidden md:flex items-center">
+            {/* Nav links */}
+            <div className="flex items-center gap-5">
+              <NavLink to="/apps" onClick={handleNavClick}>
+                {t("nav.apps")}
+              </NavLink>
+              <NavLink to="/docs" onClick={handleNavClick}>
+                {t("nav.docs")}
+              </NavLink>
+              <NavLink to="/status" onClick={handleNavClick}>
+                {t("nav.status")}
+              </NavLink>
+              <NavLink
+                href="https://github.com/bitsocialhq"
+                onClick={handleNavClick}
+              >
+                GitHub
+              </NavLink>
+            </div>
+
+            {/* Divider */}
+            <div className="h-4 w-px bg-border mx-4" />
+
+            {/* Utility controls */}
+            <div className="flex items-center gap-2">
+              <LanguageSelector />
+              <ThemeToggle />
+            </div>
           </div>
 
           {/* Mobile Navigation */}
@@ -125,34 +132,35 @@ export default function Topbar() {
 
         {/* Mobile Menu - positioned absolutely below topbar */}
         <MobileMenu isOpen={isMobileMenuOpen} onHeightChange={setMenuHeight}>
-          <NavLink disabled className="text-base">
-            About
-          </NavLink>
-          <NavLink disabled className="text-base">
-            Blog
-          </NavLink>
-          <NavLink to="/docs" onClick={handleNavClick} className="text-base">
-            Docs
-          </NavLink>
-          <div className="flex items-center gap-4 py-2 border-t border-border pt-4 mt-2">
-            <span className="text-sm text-muted-foreground font-display">
-              Language
-            </span>
-            <LanguageSelector />
+          {/* Nav links */}
+          <div className="flex flex-col gap-1">
+            <NavLink to="/apps" onClick={handleNavClick} noUnderline>
+              {t("nav.apps")}
+            </NavLink>
+            <NavLink to="/docs" onClick={handleNavClick} noUnderline>
+              {t("nav.docs")}
+            </NavLink>
+            <NavLink to="/status" onClick={handleNavClick} noUnderline>
+              {t("nav.status")}
+            </NavLink>
+            <NavLink
+              href="https://github.com/bitsocialhq"
+              onClick={handleNavClick}
+              noUnderline
+            >
+              GitHub
+            </NavLink>
           </div>
-          <div className="flex items-center gap-4 py-2 border-t border-border pt-4">
-            <span className="text-sm text-muted-foreground font-display">
-              Theme
-            </span>
-            <ThemeToggle />
+
+          {/* Controls */}
+          <div className="border-t border-border pt-4 mt-2 flex flex-row gap-2">
+            <div className="flex-1">
+              <LanguageSelector mobile />
+            </div>
+            <div className="flex-1">
+              <ThemeToggle mobile />
+            </div>
           </div>
-          <NavLink
-            href="https://github.com/bitsocialhq"
-            onClick={handleNavClick}
-            className="text-base border-t border-border pt-4 mt-2"
-          >
-            GitHub
-          </NavLink>
         </MobileMenu>
       </motion.nav>
       {/* Spacer to push content down when menu is open */}

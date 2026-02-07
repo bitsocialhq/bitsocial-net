@@ -1,7 +1,14 @@
 {
   "hero": {
     "tagline": "Bitsocialは<openSource>オープンソース</openSource>の<p2p>ピアツーピアネットワーク</p2p>で、<socialApps>ソーシャルアプリ向け</socialApps>に設計されています。<noServers>サーバーなし</noServers>、<noBans>グローバルBANなし</noBans>、ユーザーとコミュニティは<crypto>暗号資産</crypto>です。",
-    "readDocs": "Read Docs",
+    "readDocs": "ドキュメントを読む",
     "exploreApps": "アプリを探索"
+  },
+  "nav": {
+    "apps": "アプリ",
+    "docs": "ドキュメント",
+    "status": "ステータス",
+    "language": "言語",
+    "theme": "テーマ"
   }
 }

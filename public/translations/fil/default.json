@@ -1,7 +1,14 @@
 {
   "hero": {
     "tagline": "Ang Bitsocial ay isang <openSource>open-source</openSource> na <p2p>peer-to-peer network</p2p> <socialApps>para sa mga social app</socialApps>, walang <noServers>mga server</noServers>, walang <noBans>global na pagbabawal</noBans>, kung saan ang mga user at komunidad ay <crypto>cryptographic na pag-aari</crypto>.",
-    "readDocs": "Read Docs",
-    "exploreApps": "Tuklasin ang mga App"
+    "readDocs": "Basahin ang Dokumento",
+    "exploreApps": "Tuklasin ang Mga App"
+  },
+  "nav": {
+    "apps": "Mga App",
+    "docs": "Mga Dokumento",
+    "status": "Katayuan",
+    "language": "Wika",
+    "theme": "Tema"
   }
 }

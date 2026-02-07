@@ -123,13 +123,13 @@ export default function Hero() {
       >
         <Link
           to="/docs"
-          className="px-8 py-3 border border-border bg-card/50 backdrop-blur-md text-muted-foreground hover:text-foreground font-display font-semibold hover:border-blue-glow ring-glow transition-all duration-300"
+          className="px-8 py-3 border border-border bg-card/50 backdrop-blur-md text-muted-foreground hover:text-foreground font-display font-semibold hover:border-blue-glow ring-glow transition-all duration-300 text-center md:text-left"
         >
           {t("hero.readDocs")}
         </Link>
         <Link
           to="/apps"
-          className="px-8 py-3 border border-blue-core bg-blue-core/20 backdrop-blur-md text-muted-foreground hover:text-foreground font-display font-semibold hover:bg-blue-core/30 hover:border-blue-glow ring-glow transition-all duration-300"
+          className="px-8 py-3 border border-blue-core bg-blue-core/20 backdrop-blur-md text-muted-foreground hover:text-foreground font-display font-semibold hover:bg-blue-core/30 hover:border-blue-glow ring-glow transition-all duration-300 text-center md:text-left"
         >
           {t("hero.exploreApps")}
         </Link>

@@ -7,14 +7,14 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
-    "dev": "bunx rolldown-vite",
-    "build": "bunx tsgo --noEmit --project tsconfig.json && bunx rolldown-vite build",
+    "dev": "bunx vite",
+    "build": "bunx tsgo --noEmit --project tsconfig.json && bunx vite build",
     "lint": "bunx oxlint --react-plugin",
     "lint:fix": "bunx oxlint --fix --react-plugin",
     "format": "bunx oxfmt .",
     "format:check": "bunx oxfmt --check .",
     "typecheck": "bunx tsgo --noEmit --project tsconfig.json",
-    "preview": "bunx rolldown-vite preview",
+    "preview": "bunx vite preview",
     "commit": "cz"
   },
   "dependencies": {
@@ -55,9 +55,9 @@
     "postcss": "^8.4.38",
     "react-grab": "0.1.9",
     "react-scan": "0.4.3",
-    "rolldown-vite": "^7.3.1",
     "tailwindcss": "^3.4.4",
-    "typescript": "^5.5.3"
+    "typescript": "^5.5.3",
+    "vite": "^7.3.1"
   },
   "husky": {
     "hooks": {

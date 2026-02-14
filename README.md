@@ -122,34 +122,92 @@ Use the [Conventional Commits](https://www.conventionalcommits.org/) format:
 
 ## Roadmap for this repository
 
-### Frontpage
+### Milestone #1: Frontpage
 
-- [x] **Init and front page hero**: Initial site design and repo init, hero with performant three.js animations giving life to the token + animated p2p mesh, both degrading gracefully on low-end devices and respect prefers-reduced-motion. Tagline translated in all languages.
-- [ ] **Core features section**: Explaining the tagline word for word, with hash links, expanded "learn more" sections for each with details (maybe load a docs page in each) - all translated
-- [ ] **Master plan section**: Possibly with "learn more" expandable sections, should explain the full vision from the current short term goals, to the pipe dream features (flagship everything-app, L2, federated RPCs, etc) - all translated, probably should also have hash links for each, or maybe just one hash link for the masterplan as a whole
-- [ ] **Footer and topbar finished**: With other links, also with light/dark mode, language selection
+#### Topbar
+- [x] Small size logo with no background, and logo text with official font (`Exo`)
+- [x] Most important links, with underline animation
+- [x] Language selector for as many languages as possible
+- [x] Hamburger menu on mobile and mobile topbar design
+- [ ] Dark/light theme button
 
-### Apps Page (`/apps`)
+#### Hero background graphic
+- [x] Cool and impactful original hero background concept
+- [x] 3D design and animation with three.js (planet graphic + p2p mesh graphic)
+- [ ] Optional GSAP scroll animation (previous attempt was buggy, may revisit)
+- [x] Static version for low-end devices and `prefers-reduced-motion`
+- [x] Light and dark mode variants should look slightly different
 
-- [ ] **Initial design**: Similar to nostrapps.com for each client, with categories. Categories should probably exist even if empty, with a short description for each, for example we're sure challenges will be listed here so we should explain the category and have it anyway even if empty (visitors could also be inspired by it, and work on an app/service for the category), or indexers, rpc services, as well as subcategories for clients (profile-based, community-based, imageboard, blog, crowdfunding, etc.) - everything translated especially category and subcategory descriptions
-- [ ] **List integration**: Each list should be in bitsocialhq/lists, there should be a button per category/subcategory to open a pr to the list, telling the user "submit your own!" or something
-- [ ] **Listing requirements**: Probably some info on listing requirements, e.g. must be compatible with future BSO pubsub voting maybe? not sure
+#### Hero tagline text
+- [x] Translated in all languages
+- [x] Interactive keyword/key phrase jump to matching Core Features section
+- [ ] GSAP animation to highlight each keyword
 
-### Docs Page (`/docs`)
+#### Hero buttons
+- [x] Funnel developers to docs
+- [x] Funnel users to apps dashboard
 
-- [ ] **Choose best docs client**: Needs to be fully optimized for scraping by LLMs. mintlify might be worth it, e.g. https://www.mintlify.com/blog/agent-analytics but need to research more, alternatively gitbook maybe. or of course docusaurus
-- [ ] **Write documentation**: Doesn't need to be perfect (low priority) but at least should cover the essentials, we can expand later
-- [ ] **Translate documentation**: Translate docs to all supported languages
+#### Core Features section
+- [x] Explains hero tagline concepts
+- [x] Initial card design (`S`-pattern)
+- [x] Hash-link-friendly navigation to feature sections
+- [x] "Learn more" expand button for each feature
+- [x] GSAP animation for cards on scroll
+- [ ] Fill expanded sections (or switch to full-page overlay pattern)
+- [ ] Translate all expanded content
+- [ ] Link each feature section to specific docs pages (card, expanded section, or both)
 
-### Status Page (`/status`)
+#### Master Plan section
+- [x] Initial roadmap-like design
+- [ ] Write each phase (concise and somewhat vague)
+- [ ] Maybe add per-phase expand buttons (similar to Core Features)
+- [ ] Improve tone and trust (honest/professional)
+- [ ] Link each phase to detailed docs pages
+- [ ] Cover both short-term goals and long-term vision
+- [ ] Add hash links for each phase (or one for master plan)
+- [x] Hidden easter egg
 
-- [ ] **Init status page**: Init as plebbit.online but rebranded fully
-- [ ] **Categories and filters**: Dividing by client default list, all lists in one, all communities found by x indexer
-- [ ] **ENS query list**: Could add a list of all communities found by ENS query with alert saying it could show any address
+#### Footer
+- [ ] Prominent mailing list in footer, with three.js graphic (+ static fallback for low-end devices)
+- [ ] Hash link for mailing list section to share directly
+- [ ] Visual quality comparable to topbar/hero, translucent design + static fallback for low-end devices
+- [ ] Include all important links and mailing list field again
 
-### Other
+### Milestone #2: App Dashboard (`/apps`)
 
-- [ ] **LLM scraping support**: Add `/llms.txt`, `/llms-full.txt`, `/llms-small.txt` - guide: https://www.mintlify.com/blog/real-llms-txt-examples - example: https://effect.website/docs#docs-for-llms - also submit to https://directory.llmstxt.cloud/
+#### Goal
+- Make it at least as good as [nostrapps.com](https://nostrapps.com/) while matching Bitsocial site design.
+
+#### Scope
+- [ ] Initial design similar to nostrapps.com, with Bitsocial visual language
+- [ ] Categories and subcategories per app/client type (including profile-based, community-based, imageboard, blog, crowdfunding, indexers, RPC services)
+- [ ] Keep useful categories visible even when empty, with translated descriptions
+- [ ] Integrate lists from `bitsocialhq/lists`
+- [ ] Add "submit your own" PR flow per category/subcategory
+- [ ] Define and publish listing requirements
+
+### Milestone #3: Docs (`/docs`)
+
+#### Goal
+- Build docs with strong LLM discoverability and scraping compatibility.
+
+- [ ] Choose docs stack optimized for LLM scraping/indexing (e.g. Mintlify, GitBook, Docusaurus)
+- [ ] Write essential docs first, expand over time
+- [ ] Translate docs to all supported languages
+- [ ] Add `/llms.txt`, `/llms-full.txt`, and `/llms-small.txt`
+- [ ] Submit docs metadata to [llmstxt.cloud directory](https://directory.llmstxt.cloud/)
+
+### Milestone #4: Status/Analytics Page (`/status`)
+
+#### Goal
+- Rebuild plebbit.online but fully rebranded and aligned with frontpage design.
+- Position as "pro analytics" rather than a traditional "status page".
+
+- [ ] Initialize status/analytics page from plebbit.online architecture, fully rebranded
+- [ ] Categories and filters: default client list, merged/all lists view, and indexer-based discovery views
+- [ ] Let users discover non-default subs (e.g. via ENS queries) with clear safety disclaimers
+- [ ] Add ENS-query-based discovery list with explicit "search results may be unsafe" warning
+- [ ] Consider "pro analytics" branding direction inspired by products like [Arkham](https://arkm.com/)
 
 ---
 

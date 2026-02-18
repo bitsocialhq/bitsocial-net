@@ -54,6 +54,22 @@ This repo is the public-facing website only. Don't build or scaffold:
 
 This is intentional -- these live elsewhere in the ecosystem.
 
+## React Doctor (Advisory)
+
+React Doctor is advisory quality tooling for React architecture/perf/correctness checks.
+
+**Standard commands:**
+- `bun run doctor`, `bun run doctor:score`, `bun run doctor:verbose`
+
+**Trigger rules:**
+- Run after touching React UI logic (`components`, `hooks`, route/page/view files, state/store code used by UI).
+- Run before opening PRs that include React behavior changes.
+
+**Interpretation:**
+- Treat diagnostics as actionable recommendations.
+- Prioritize `error` diagnostics first, then `warning`.
+- Score is informative only; no merge blocking based on score yet.
+
 ## Pre-PR Checks
 
 All three must pass before committing:

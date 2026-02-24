@@ -23,7 +23,7 @@ src/
 
 ```bash
 bun install          # Install dependencies
-bun run dev          # Start dev server (localhost:5173)
+bun run dev          # Start dev server (http://bitsocial.localhost:1355)
 bun run build        # Type check + production build
 bun run typecheck    # Type check with tsgo
 bun run lint         # Lint with oxlint
@@ -31,6 +31,12 @@ bun run lint:fix     # Auto-fix lint issues
 bun run format       # Format with oxfmt
 bun run format:check # Check formatting
 ```
+
+## Local Development URLs
+
+This project uses [Portless](https://github.com/vercel-labs/portless) for local dev. The dev server is available at http://bitsocial.localhost:1355 instead of a random port. Other Bitsocial projects use the same proxy (5chan, seedit, mintpass at `.localhost:1355`), so they can all run simultaneously without port conflicts.
+
+To bypass Portless: `PORTLESS=0 bun run dev`
 
 ## Where This Project Is Weird
 

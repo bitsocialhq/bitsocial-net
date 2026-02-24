@@ -7,7 +7,7 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
-    "dev": "bunx vite",
+    "dev": "portless bitsocial vite",
     "build": "bunx tsgo --noEmit --project tsconfig.json && bunx vite build",
     "lint": "bunx oxlint --react-plugin",
     "lint:fix": "bunx oxlint --fix --react-plugin",

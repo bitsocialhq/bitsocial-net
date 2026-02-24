@@ -39,14 +39,16 @@ This separation is intentional to keep the web frontend lightweight, durable, an
 
 ## Getting Started
 
-Requires [Bun](https://bun.sh).
+Requires [Bun](https://bun.sh) and [Portless](https://github.com/vercel-labs/portless): `npm install -g portless`
 
 ```bash
 bun install          # Install dependencies
-bun run dev          # Start dev server (localhost:5173)
+bun run dev          # Start dev server (http://bitsocial.localhost:1355)
 bun run build        # Production build
 bun run preview      # Preview production build
 ```
+
+The dev server runs at http://bitsocial.localhost:1355 via [Portless](https://port1355.dev/), which gives each Bitsocial project a stable, named URL instead of a random port. To bypass Portless: `PORTLESS=0 bun run dev`
 
 ---
 
@@ -56,7 +58,7 @@ This repo includes an `AGENTS.md` file with detailed guidance for AI coding agen
 When using an AI assistant to make changes, it is expected to follow the conventions defined there.
 
 ### Making Changes
-1.	Run `bun run dev`
+1.	Run `bun run dev` (opens at http://bitsocial.localhost:1355)
 2.	Make your changes (manually or via an AI agent)
 3.	Test on desktop and mobile viewports
 4.	Verify performance and animations

@@ -211,6 +211,20 @@ Use the [Conventional Commits](https://www.conventionalcommits.org/) format:
 - [ ] Add ENS-query-based discovery list with explicit "search results may be unsafe" warning
 - [ ] Consider "pro analytics" branding direction inspired by products like [Arkham](https://arkm.com/)
 
+### Milestone #5: Official Core Team Blog (`/blog`)
+
+#### Goal
+- Launch an official Bitsocial Core Team blog powered by protocol-native, P2P-loaded content.
+- Use it as the canonical source for development updates and team-authored long-form posts.
+
+#### Scope
+- [ ] Build a dedicated blog experience that matches the current Bitsocial visual language
+- [ ] Source posts from a Bitsocial community operated in the background by the core developer team
+- [ ] Load and render blog content P2P via the Bitsocial protocol
+- [ ] Publish development news, release updates, and protocol progress reports
+- [ ] Publish team-member articles for opinions, analysis, and ecosystem commentary
+- [ ] Define simple content categories/tags (e.g. development news vs team opinions)
+
 ---
 
 ## License

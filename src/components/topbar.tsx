@@ -2,6 +2,8 @@ import { useState } from "react"
 import { Link } from "react-router-dom"
 import { motion } from "framer-motion"
 import { useTranslation } from "react-i18next"
+import { useGraphicsMode } from "@/lib/graphics-mode"
+import { cn } from "@/lib/utils"
 import { ThemeToggle } from "./theme-toggle"
 import HamburgerButton from "./hamburger-button"
 import LanguageSelector from "./language-selector"
@@ -67,6 +69,7 @@ function NavLink({
 
 export default function Topbar() {
   const { t } = useTranslation()
+  const graphicsMode = useGraphicsMode()
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [menuHeight, setMenuHeight] = useState(0)
 
@@ -80,7 +83,10 @@ export default function Topbar() {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5 }}
-        className="fixed top-0 left-0 right-0 z-50 bg-card backdrop-blur-md border-b border-border"
+        className={cn(
+          "fixed top-0 left-0 right-0 z-50 border-b border-border",
+          graphicsMode === "full" ? "topbar-frosted" : "bg-card",
+        )}
       >
         <div className="max-w-7xl mx-auto px-4 md:px-6 py-2 flex items-center justify-between relative">
           <Link to="/" className="flex items-center gap-1 group">

@@ -99,7 +99,7 @@ export default function LanguageSelector({ mobile }: { mobile?: boolean }) {
         className="w-full sm:max-w-md rounded-none [&>button]:rounded-none"
       >
         <SheetHeader>
-          <SheetTitle className="font-display">Select Language</SheetTitle>
+          <SheetTitle className="font-display text-muted-foreground">Select Language</SheetTitle>
         </SheetHeader>
         <div className="mt-6 space-y-4">
           <div className="relative">
@@ -125,7 +125,7 @@ export default function LanguageSelector({ mobile }: { mobile?: boolean }) {
                   )}
                   dir={language.dir}
                 >
-                  <span className="font-medium">{language.name}</span>
+                  <span className="font-medium text-muted-foreground">{language.name}</span>
                   {i18n.language === language.code && (
                     <Check className="h-4 w-4 text-blue-glow" />
                   )}

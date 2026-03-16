@@ -192,7 +192,7 @@
     inset: 0;
     border-radius: inherit;
     z-index: -1;
-    border: 1px solid rgba(100, 100, 100, 0.08);
+    border: 1px solid rgba(70, 70, 70, 0.14);
     background: linear-gradient(
       rgba(170, 182, 200, 0.133),
       rgba(144, 160, 185, 0.1),
@@ -201,7 +201,7 @@
   }
 
   .dark .topbar-frosted::after {
-    border-color: rgba(211, 211, 211, 0.03);
+    border-color: rgba(255, 255, 255, 0.07);
     background: linear-gradient(
       rgba(222, 244, 255, 0.04),
       rgba(171, 188, 197, 0.05),

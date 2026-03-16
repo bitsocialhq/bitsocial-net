@@ -99,7 +99,7 @@ export default function LanguageSelector({ mobile }: { mobile?: boolean }) {
         className="w-full sm:max-w-md [&>button]:rounded-full"
       >
         <SheetHeader>
-          <SheetTitle className="font-display text-muted-foreground">Select Language</SheetTitle>
+          <SheetTitle className="font-display text-foreground/80">Select Language</SheetTitle>
         </SheetHeader>
         <div className="mt-6 space-y-4">
           <div className="relative">
@@ -109,7 +109,7 @@ export default function LanguageSelector({ mobile }: { mobile?: boolean }) {
               placeholder="Search languages..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full rounded-full border border-input bg-background px-10 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              className="w-full rounded-full bg-foreground/[0.04] border border-foreground/[0.08] px-10 py-2.5 text-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring transition-colors"
             />
           </div>
           <div className="max-h-[calc(100vh-200px)] overflow-y-auto">
@@ -119,13 +119,17 @@ export default function LanguageSelector({ mobile }: { mobile?: boolean }) {
                   key={language.code}
                   onClick={() => handleLanguageChange(language.code)}
                   className={cn(
-                    "flex items-center justify-between rounded-2xl border border-input bg-background px-4 py-3 text-left transition-all hover:bg-secondary",
+                    "flex items-center justify-between rounded-2xl px-4 py-3 text-left transition-all",
+                    "bg-foreground/[0.03] border border-foreground/[0.06] hover:bg-foreground/[0.07] hover:border-foreground/[0.12]",
                     i18n.language === language.code &&
-                      "border-blue-glow bg-secondary",
+                      "border-blue-glow bg-blue-glow/[0.08] hover:bg-blue-glow/[0.12] hover:border-blue-glow",
                   )}
                   dir={language.dir}
                 >
-                  <span className="font-medium text-muted-foreground">{language.name}</span>
+                  <span className={cn(
+                    "font-medium",
+                    i18n.language === language.code ? "text-foreground" : "text-muted-foreground",
+                  )}>{language.name}</span>
                   {i18n.language === language.code && (
                     <Check className="h-4 w-4 text-blue-glow" />
                   )}

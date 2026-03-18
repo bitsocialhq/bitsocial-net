@@ -1,23 +1,23 @@
-import { createContext, lazy, Suspense, useContext, useEffect, useState } from "react"
-import { motion } from "framer-motion"
-import { Link } from "react-router-dom"
-import { Trans, useTranslation } from "react-i18next"
-import { useTheme } from "next-themes"
-import { useGraphicsMode } from "@/lib/graphics-mode"
-import { triggerFeatureGlow } from "@/lib/utils"
+import { createContext, lazy, Suspense, useContext, useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import { Trans, useTranslation } from "react-i18next";
+import { useTheme } from "next-themes";
+import { useGraphicsMode } from "@/lib/graphics-mode";
+import { triggerFeatureGlow } from "@/lib/utils";
 
-const PlanetGraphic = lazy(() => import("./planet-graphic"))
-const MeshGraphic = lazy(() => import("./mesh-graphic"))
+const PlanetGraphic = lazy(() => import("./planet-graphic"));
+const MeshGraphic = lazy(() => import("./mesh-graphic"));
 
-const HighlightIndexCtx = createContext(-1)
+const HighlightIndexCtx = createContext(-1);
 
-const TAGLINE_LINK_COUNT = 6
-const INTRO_START_DELAY = 1800
-const INTRO_STEP_MS = 1000
+const TAGLINE_LINK_COUNT = 6;
+const INTRO_START_DELAY = 1800;
+const INTRO_STEP_MS = 1000;
 
 function handleTaglineClick(hash: string) {
-  window.history.replaceState(null, "", `#${hash}`)
-  triggerFeatureGlow(hash)
+  window.history.replaceState(null, "", `#${hash}`);
+  triggerFeatureGlow(hash);
 }
 
 function TaglineLink({
@@ -25,17 +25,18 @@ function TaglineLink({
   index,
   children,
 }: {
-  hash: string
-  index?: number
-  children?: React.ReactNode
+  hash: string;
+  index?: number;
+  children?: React.ReactNode;
 }) {
-  const highlightedIndex = useContext(HighlightIndexCtx)
-  const isIntroActive = typeof index === "number" && highlightedIndex === index
+  const highlightedIndex = useContext(HighlightIndexCtx);
+  const isIntroActive = typeof index === "number" && highlightedIndex === index;
 
   return (
-    <span
+    <button
+      type="button"
       onClick={() => handleTaglineClick(hash)}
-      className="cursor-pointer transition-all duration-500 hover:text-blue-glow relative"
+      className="relative inline cursor-pointer border-0 bg-transparent p-0 font-inherit text-inherit transition-all duration-500 hover:text-blue-glow"
       style={{
         filter: isIntroActive
           ? "drop-shadow(0 0 12px rgba(37, 99, 235, 0.8))"
@@ -43,34 +44,31 @@ function TaglineLink({
         color: isIntroActive ? "#2563eb" : undefined,
       }}
       onMouseEnter={(e) => {
-        e.currentTarget.style.filter =
-          "drop-shadow(0 0 12px rgba(37, 99, 235, 0.8))"
-        e.currentTarget.style.color = "#2563eb"
+        e.currentTarget.style.filter = "drop-shadow(0 0 12px rgba(37, 99, 235, 0.8))";
+        e.currentTarget.style.color = "#2563eb";
       }}
       onMouseLeave={(e) => {
-        e.currentTarget.style.filter = "drop-shadow(0 0 0 transparent)"
-        e.currentTarget.style.color = ""
+        e.currentTarget.style.filter = "drop-shadow(0 0 0 transparent)";
+        e.currentTarget.style.color = "";
       }}
     >
       {children}
-    </span>
-  )
+    </button>
+  );
 }
 
 function HeroFallbackImage() {
-  const { resolvedTheme } = useTheme()
+  const { resolvedTheme } = useTheme();
   const isDark =
     resolvedTheme === "dark" ||
     (!resolvedTheme &&
       typeof window !== "undefined" &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches)
+      window.matchMedia("(prefers-color-scheme: dark)").matches);
 
   const desktopSrc = isDark
     ? "/hero-fallback-desktop-dark.png"
-    : "/hero-fallback-desktop-light.png"
-  const mobileSrc = isDark
-    ? "/hero-fallback-mobile-dark.png"
-    : "/hero-fallback-mobile-light.png"
+    : "/hero-fallback-desktop-light.png";
+  const mobileSrc = isDark ? "/hero-fallback-mobile-dark.png" : "/hero-fallback-mobile-light.png";
 
   return (
     <picture>
@@ -84,32 +82,32 @@ function HeroFallbackImage() {
         decoding="async"
       />
     </picture>
-  )
+  );
 }
 
 function useTaglineIntro() {
-  const [index, setIndex] = useState(-1)
+  const [index, setIndex] = useState(-1);
   useEffect(() => {
-    const timers: ReturnType<typeof setTimeout>[] = []
+    const timers: ReturnType<typeof setTimeout>[] = [];
     const start = setTimeout(() => {
       for (let i = 0; i < TAGLINE_LINK_COUNT; i++) {
-        timers.push(setTimeout(() => setIndex(i), i * INTRO_STEP_MS))
+        timers.push(setTimeout(() => setIndex(i), i * INTRO_STEP_MS));
       }
-      timers.push(
-        setTimeout(() => setIndex(-1), TAGLINE_LINK_COUNT * INTRO_STEP_MS)
-      )
-    }, INTRO_START_DELAY)
-    timers.push(start)
-    return () => timers.forEach(clearTimeout)
-  }, [])
-  return index
+      timers.push(setTimeout(() => setIndex(-1), TAGLINE_LINK_COUNT * INTRO_STEP_MS));
+    }, INTRO_START_DELAY);
+    timers.push(start);
+    return () => timers.forEach(clearTimeout);
+  }, []);
+  return index;
 }
 
 export default function Hero() {
-  const { t } = useTranslation()
-  const graphicsMode = useGraphicsMode()
-  const showGraphics = graphicsMode === "full"
-  const highlightedIndex = useTaglineIntro()
+  const { t, i18n } = useTranslation();
+  const graphicsMode = useGraphicsMode();
+  const showGraphics = graphicsMode === "full";
+  const highlightedIndex = useTaglineIntro();
+  const activeLanguage = i18n.resolvedLanguage ?? i18n.language ?? i18n.languages[0] ?? "";
+  const isEnglishTagline = activeLanguage.toLowerCase().startsWith("en");
 
   const staticFallback = (
     <div className="absolute bottom-8 md:bottom-12 left-0 right-0 w-full h-[60vh] md:h-[48vh] pointer-events-none overflow-visible md:overflow-hidden overscroll-none">
@@ -122,7 +120,7 @@ export default function Hero() {
         }}
       />
     </div>
-  )
+  );
 
   return (
     <section className="min-h-[100svh] md:min-h-screen flex flex-col items-center justify-start pt-28 md:pt-40 px-6 relative overflow-x-hidden overflow-y-visible">
@@ -134,17 +132,44 @@ export default function Hero() {
       >
         <p className="text-xl md:text-2xl lg:text-3xl text-muted-foreground leading-relaxed font-display font-normal">
           <HighlightIndexCtx.Provider value={highlightedIndex}>
-            <Trans
-              i18nKey="hero.tagline"
-              components={{
-                openSource: <TaglineLink hash="open-source" index={0} />,
-                p2p: <TaglineLink hash="peer-to-peer" index={1} />,
-                socialApps: <TaglineLink hash="social-apps" index={2} />,
-                noServers: <TaglineLink hash="no-servers" index={3} />,
-                noBans: <TaglineLink hash="no-global-bans" index={4} />,
-                crypto: <TaglineLink hash="cryptographic-property" index={5} />,
-              }}
-            />
+            {isEnglishTagline ? (
+              <>
+                <TaglineLink hash="open-source" index={0}>
+                  Bitsocial is an open-source
+                </TaglineLink>{" "}
+                <TaglineLink hash="peer-to-peer" index={1}>
+                  peer-to-peer network
+                </TaglineLink>{" "}
+                <TaglineLink hash="social-apps" index={2}>
+                  for social apps
+                </TaglineLink>
+                ,{" "}
+                <TaglineLink hash="no-servers" index={3}>
+                  with no servers
+                </TaglineLink>
+                ,{" "}
+                <TaglineLink hash="no-global-bans" index={4}>
+                  no global bans
+                </TaglineLink>
+                ,{" "}
+                <TaglineLink hash="cryptographic-property" index={5}>
+                  where users and communities are cryptographic property
+                </TaglineLink>
+                .
+              </>
+            ) : (
+              <Trans
+                i18nKey="hero.tagline"
+                components={{
+                  openSource: <TaglineLink hash="open-source" index={0} />,
+                  p2p: <TaglineLink hash="peer-to-peer" index={1} />,
+                  socialApps: <TaglineLink hash="social-apps" index={2} />,
+                  noServers: <TaglineLink hash="no-servers" index={3} />,
+                  noBans: <TaglineLink hash="no-global-bans" index={4} />,
+                  crypto: <TaglineLink hash="cryptographic-property" index={5} />,
+                }}
+              />
+            )}
           </HighlightIndexCtx.Provider>
         </p>
       </motion.div>
@@ -215,5 +240,5 @@ export default function Hero() {
         }}
       />
     </section>
-  )
+  );
 }

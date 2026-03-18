@@ -5,6 +5,7 @@ import App from "./app.tsx"
 import { ThemeProvider } from "./components/theme-provider"
 import { GraphicsModeProvider, useGraphicsMode } from "@/lib/graphics-mode"
 import "@/lib/i18n"
+import "@/lib/react-scan"
 import "./index.css"
 
 function AnimationGate({ children }: { children: React.ReactNode }) {

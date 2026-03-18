@@ -30,7 +30,9 @@ Bitsocial Web is the public-facing landing page and ecosystem entrypoint for Bit
 | `package.json` changed | Run `bun install` to keep `bun.lock` in sync |
 | Translation key/value changed | Use `docs/agent-playbooks/translations.md` |
 | Bug report in a specific file/line | Start with git history scan from `docs/agent-playbooks/bug-investigation.md` before editing |
-| UI or visual behavior changed | Verify in browser with `agent-browser`; check desktop and mobile behavior when relevant |
+| UI or visual behavior changed | Verify in browser with `playwright-cli`; check desktop and mobile behavior when relevant |
+| Browsing performance regression, rerender hotspot, or route jank needs investigation | Use the `profile-browsing` skill |
+| Need to map a rendered DOM node back to the React file that produced it | Use the `inspect-elements` skill |
 | Long-running task spans multiple sessions, handoffs, or spawned agents | Use `docs/agent-playbooks/long-running-agent-workflow.md`, keep a machine-readable feature list plus a progress log, and run `./scripts/agent-init.sh --smoke` before starting a fresh feature slice |
 | New reviewable feature, fix, docs change, or chore started while on `master` | Create a short-lived `codex/feature/*`, `codex/fix/*`, `codex/docs/*`, or `codex/chore/*` branch from `master` before editing; use a separate worktree only for parallel tasks |
 | New unrelated task started while another task branch is already checked out or being worked on by another agent | Create a separate worktree from `master`, create a new short-lived task branch there, and keep each agent on its own worktree, branch, and PR |
@@ -114,7 +116,7 @@ src/
 - Before handing off a PR or commit, also run `bun run format:check`.
 - After React UI logic changes, run `bun run doctor`.
 - Treat React Doctor output as actionable guidance; prioritize `error` then `warning`.
-- For UI or visual changes, verify with `agent-browser` on the local dev URL and cover a mobile flow when the change affects layout, touch behavior, or responsiveness.
+- For UI or visual changes, verify with `playwright-cli` on the local dev URL and cover a mobile viewport flow when the change affects layout, touch behavior, or responsiveness.
 - The shared hook verification path is strict by default. Only set `AGENT_VERIFY_MODE=advisory` when you intentionally need signal from a broken tree without blocking the session.
 - If verification fails, fix and re-run until passing or until you hit a real blocker you can explain concretely.
 - Do not commit or force-add generated build output. `dist/` is the main generated output in this repo; remove or restore it after local verification before committing.
@@ -123,7 +125,7 @@ src/
 
 - Use `gh` CLI for GitHub work.
 - Do not use GitHub MCP.
-- Do not use browser MCP servers. Use `agent-browser`.
+- Do not use browser MCP servers. Use `playwright-cli`.
 - If many MCP tools are present in context, warn the user and suggest disabling the unused ones.
 
 ### AI Tooling Rules

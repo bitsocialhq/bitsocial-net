@@ -85,7 +85,7 @@ After code changes, follow repo verification rules from `AGENTS.md`:
 
 - run `bun run build`, `bun run lint`, `bun run typecheck`, and `bun run format:check`
 - run `bun run doctor` after React UI logic changes
-- use `agent-browser` for UI or visual changes on desktop and mobile when relevant
+- use `playwright-cli` for UI or visual changes on desktop and mobile when relevant
 
 ### 5. Report back on the PR before merging
 

@@ -12,14 +12,19 @@ For up-to-date docs on libraries.
 npx skills add https://github.com/intellectronica/agent-skills --skill context7
 ```
 
-### agent-browser
+### Playwright CLI
 
-Use `agent-browser` for browser automation, verification, screenshots, and web interaction.
+Use `playwright-cli` for browser automation (navigation, interaction, screenshots, tests, extraction).
 
 ```bash
-bun add -g agent-browser
-agent-browser install
+npm install -g @playwright/cli@latest
+playwright-cli install --skills
 ```
+
+Skill install locations:
+
+- `.cursor/skills/playwright-cli/`
+- `.claude/skills/playwright-cli/`
 
 ### Vercel React Best Practices
 
@@ -42,4 +47,4 @@ npx skills add https://github.com/vercel-labs/skills --skill find-skills
 Avoid GitHub MCP and browser MCP servers for this project because they add significant tool-schema/context overhead.
 
 - GitHub operations: use `gh` CLI.
-- Browser operations: use `agent-browser`.
+- Browser operations: use `playwright-cli`.

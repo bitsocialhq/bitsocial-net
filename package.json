@@ -42,7 +42,6 @@
     "three": "^0.182.0"
   },
   "devDependencies": {
-    "@react-scan/vite-plugin-react-scan": "0.1.8",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "@types/three": "^0.182.0",
@@ -51,6 +50,7 @@
     "autoprefixer": "^10.4.19",
     "commitizen": "^4.3.1",
     "cz-conventional-changelog": "^3.3.0",
+    "element-source": "0.0.5",
     "husky": "4",
     "lint-staged": "^16.2.7",
     "oxfmt": "^0.20.0",

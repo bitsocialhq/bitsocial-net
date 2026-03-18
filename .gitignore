@@ -1,4 +1,3 @@
-.cursor
 .firecrawl
 .playwright-cli
 node_modules
@@ -7,4 +6,4 @@ dist
 *.local
 .DS_Store
 bun.lockb
-.codex
+.cursor/worktrees.json

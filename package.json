@@ -1,10 +1,10 @@
 {
   "name": "bitsocial-web",
-  "description": "Official Bitsocial web frontend: landing page, docs, apps explorer, and future flagship client",
-  "author": "Bitsocial Labs",
-  "private": true,
-  "license": "AGPL-3.0-only",
   "version": "0.1.0",
+  "private": true,
+  "description": "Official Bitsocial web frontend: landing page, docs, apps explorer, and future flagship client",
+  "license": "AGPL-3.0-only",
+  "author": "Bitsocial Forge",
   "type": "module",
   "scripts": {
     "dev": "portless bitsocial vite",
@@ -33,28 +33,28 @@
     "i18next-http-backend": "^3.0.2",
     "lucide-react": "^0.563.0",
     "next-themes": "^0.4.6",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
+    "react": "^19.1.2",
+    "react-dom": "^19.1.2",
     "react-i18next": "^16.5.4",
-    "react-router-dom": "^6.26.0",
+    "react-router-dom": "^6.30.2",
     "tailwind-merge": "^3.4.0",
     "tailwindcss-animate": "^1.0.7",
     "three": "^0.182.0"
   },
   "devDependencies": {
     "@react-scan/vite-plugin-react-scan": "0.1.8",
-    "@types/react": "^18.3.3",
-    "@types/react-dom": "^18.3.0",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
     "@types/three": "^0.182.0",
-    "@typescript/native-preview": "^7.0.0-dev",
-    "@vitejs/plugin-react": "^4.3.1",
+    "@typescript/native-preview": "^7.0.0-dev.20251226.1",
+    "@vitejs/plugin-react": "^6.0.0",
     "autoprefixer": "^10.4.19",
     "commitizen": "^4.3.1",
     "cz-conventional-changelog": "^3.3.0",
     "husky": "4",
     "lint-staged": "^16.2.7",
-    "oxfmt": "^0.1.0",
-    "oxlint": "^1.0.0",
+    "oxfmt": "^0.20.0",
+    "oxlint": "^1.35.0",
     "portless": "0.7.0",
     "postcss": "^8.4.38",
     "react-doctor": "0.0.28",
@@ -62,12 +62,12 @@
     "react-scan": "0.5.3",
     "tailwindcss": "^3.4.4",
     "typescript": "^5.5.3",
-    "vite": "^7.3.1"
+    "vite": "^8.0.0"
   },
   "husky": {
     "hooks": {
-      "prepare-commit-msg": "exec < /dev/tty && cz --hook || true",
-      "pre-commit": "lint-staged"
+      "pre-commit": "lint-staged",
+      "prepare-commit-msg": "exec < /dev/tty && cz --hook || true"
     }
   },
   "lint-staged": {
@@ -81,5 +81,6 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
-  }
+  },
+  "packageManager": "bun@1.3.11"
 }

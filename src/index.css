@@ -103,26 +103,27 @@
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
     --radius: 1.25rem;
+    --glass-border-subtle: rgba(68, 74, 88, 0.16);
   }
   .dark {
-    --background: 0 0% 0%;
-    --foreground: 0 0% 90%;
-    --card: 0 0% 4%;
-    --card-foreground: 0 0% 90%;
-    --popover: 0 0% 0%;
-    --popover-foreground: 0 0% 90%;
+    --background: 0 0% 7%;
+    --foreground: 0 0% 93%;
+    --card: 0 0% 12%;
+    --card-foreground: 0 0% 93%;
+    --popover: 0 0% 12%;
+    --popover-foreground: 0 0% 93%;
     --primary: 0 0% 98%;
     --primary-foreground: 0 0% 9%;
-    --secondary: 0 0% 18%;
-    --secondary-foreground: 0 0% 90%;
-    --muted: 0 0% 18%;
-    --muted-foreground: 0 0% 61%;
-    --accent: 0 0% 18%;
-    --accent-foreground: 0 0% 90%;
+    --secondary: 0 0% 20%;
+    --secondary-foreground: 0 0% 93%;
+    --muted: 0 0% 20%;
+    --muted-foreground: 0 0% 68%;
+    --accent: 0 0% 20%;
+    --accent-foreground: 0 0% 93%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 18%;
-    --input: 0 0% 18%;
+    --border: 0 0% 27%;
+    --input: 0 0% 27%;
     --ring: 0 0% 83.1%;
     --chart-1: 220 70% 50%;
     --chart-2: 160 60% 45%;
@@ -153,7 +154,7 @@
     @apply rounded-3xl;
     position: relative;
     isolation: isolate;
-    border: 1px solid rgba(100, 100, 100, 0.08);
+    border: 1px solid var(--glass-border-subtle);
     background: linear-gradient(
       rgba(170, 182, 200, 0.133),
       rgba(144, 160, 185, 0.1),
@@ -164,20 +165,20 @@
   }
 
   .dark .glass-card {
-    border-color: rgba(211, 211, 211, 0.03);
+    border-color: rgba(232, 238, 247, 0.14);
     background: linear-gradient(
-      rgba(222, 244, 255, 0.04),
-      rgba(171, 188, 197, 0.05),
-      rgba(93, 103, 109, 0.1)
+      rgba(222, 244, 255, 0.1),
+      rgba(171, 188, 197, 0.11),
+      rgba(120, 135, 148, 0.14)
     );
   }
 
   .feature-connector-path {
-    stroke: rgba(100, 100, 100, 0.08);
+    stroke: var(--glass-border-subtle);
   }
 
   .dark .feature-connector-path {
-    stroke: rgba(211, 211, 211, 0.03);
+    stroke: rgba(232, 238, 247, 0.14);
   }
 
   .topbar-frosted {
@@ -209,11 +210,11 @@
   }
 
   .dark .topbar-frosted::after {
-    border-color: rgba(255, 255, 255, 0.07);
+    border-color: rgba(232, 238, 247, 0.14);
     background: linear-gradient(
-      rgba(222, 244, 255, 0.04),
-      rgba(171, 188, 197, 0.05),
-      rgba(93, 103, 109, 0.1)
+      rgba(188, 200, 214, 0.045),
+      rgba(118, 128, 140, 0.06),
+      rgba(52, 58, 68, 0.075)
     );
   }
 
@@ -227,9 +228,9 @@
     }
     .dark .topbar-frosted::after {
       background: linear-gradient(
-        rgba(222, 244, 255, 0.06),
-        rgba(171, 188, 197, 0.05),
-        rgba(93, 103, 109, 0.1)
+        rgba(188, 200, 214, 0.055),
+        rgba(118, 128, 140, 0.072),
+        rgba(52, 58, 68, 0.09)
       );
     }
   }
@@ -252,13 +253,13 @@
   .dark .sheet-glass {
     background: linear-gradient(
       180deg,
-      rgba(14, 14, 18, 0.94) 0%,
-      rgba(10, 10, 14, 0.92) 50%,
-      rgba(8, 8, 12, 0.9) 100%
+      rgba(24, 24, 30, 0.97) 0%,
+      rgba(18, 18, 24, 0.95) 50%,
+      rgba(14, 14, 20, 0.93) 100%
     );
-    border-color: rgba(255, 255, 255, 0.06);
+    border-color: rgba(232, 238, 247, 0.12);
     box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.04),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08),
       -8px 0 40px rgba(0, 0, 0, 0.4);
   }
 
@@ -266,7 +267,7 @@
     @apply rounded-t-[2rem];
     position: relative;
     isolation: isolate;
-    border: 1px solid rgba(100, 100, 100, 0.08);
+    border: 1px solid var(--glass-border-subtle);
     border-bottom: none;
     background: linear-gradient(
       rgba(170, 182, 200, 0.133),
@@ -278,11 +279,11 @@
   }
 
   .dark .footer-glass {
-    border-color: rgba(211, 211, 211, 0.03);
+    border-color: rgba(232, 238, 247, 0.14);
     background: linear-gradient(
-      rgba(222, 244, 255, 0.04),
-      rgba(171, 188, 197, 0.05),
-      rgba(93, 103, 109, 0.1)
+      rgba(222, 244, 255, 0.1),
+      rgba(171, 188, 197, 0.11),
+      rgba(120, 135, 148, 0.14)
     );
   }
 

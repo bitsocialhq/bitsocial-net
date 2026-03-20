@@ -1,7 +1,7 @@
-import { useRef, useState, useEffect } from "react"
-import * as THREE from "three"
-import { gsap } from "gsap"
-import { useTheme } from "next-themes"
+import { useRef, useState, useEffect } from "react";
+import * as THREE from "three";
+import { gsap } from "gsap";
+import { useTheme } from "next-themes";
 
 // Create a 3D ring with rectangular cross-section (like the logo)
 function createMetallicRing(
@@ -10,35 +10,35 @@ function createMetallicRing(
   tubeHeight: number,
   segments: number,
 ): THREE.BufferGeometry {
-  const positions: number[] = []
-  const normals: number[] = []
-  const indices: number[] = []
+  const positions: number[] = [];
+  const normals: number[] = [];
+  const indices: number[] = [];
 
   // Create ring by extruding a rectangle along a circular path
   // Use exactly `segments` slices and wrap indices to avoid a visible seam.
   for (let i = 0; i < segments; i++) {
-    const angle = (i / segments) * Math.PI * 2
+    const angle = (i / segments) * Math.PI * 2;
 
     // Center of the ring at this angle
-    const cx = Math.cos(angle) * radius
-    const cz = Math.sin(angle) * radius
+    const cx = Math.cos(angle) * radius;
+    const cz = Math.sin(angle) * radius;
 
     // Radial direction (pointing outward from center)
-    const rx = Math.cos(angle)
-    const rz = Math.sin(angle)
+    const rx = Math.cos(angle);
+    const rz = Math.sin(angle);
 
     // Four corners of the rectangular cross-section
     // Inner-bottom, outer-bottom, outer-top, inner-top
-    const halfW = tubeWidth / 2
-    const halfH = tubeHeight / 2
+    const halfW = tubeWidth / 2;
+    const halfH = tubeHeight / 2;
 
     // Positions for the 4 corners at this segment
-    const innerBottom = [cx - rx * halfW, -halfH, cz - rz * halfW]
-    const outerBottom = [cx + rx * halfW, -halfH, cz + rz * halfW]
-    const outerTop = [cx + rx * halfW, halfH, cz + rz * halfW]
-    const innerTop = [cx - rx * halfW, halfH, cz - rz * halfW]
+    const innerBottom = [cx - rx * halfW, -halfH, cz - rz * halfW];
+    const outerBottom = [cx + rx * halfW, -halfH, cz + rz * halfW];
+    const outerTop = [cx + rx * halfW, halfH, cz + rz * halfW];
+    const innerTop = [cx - rx * halfW, halfH, cz - rz * halfW];
 
-    positions.push(...innerBottom, ...outerBottom, ...outerTop, ...innerTop)
+    positions.push(...innerBottom, ...outerBottom, ...outerTop, ...innerTop);
 
     // Normals for each face
     // Bottom face normals (pointing down)
@@ -58,83 +58,78 @@ function createMetallicRing(
       -rx,
       0.5,
       -rz, // inner-top: blend of inner and top
-    )
+    );
   }
 
   // Create faces connecting each segment to the next
   for (let i = 0; i < segments; i++) {
-    const curr = i * 4
-    const next = ((i + 1) % segments) * 4
+    const curr = i * 4;
+    const next = ((i + 1) % segments) * 4;
 
     // Bottom face (innerBottom -> outerBottom)
-    indices.push(curr + 0, next + 0, next + 1)
-    indices.push(curr + 0, next + 1, curr + 1)
+    indices.push(curr + 0, next + 0, next + 1);
+    indices.push(curr + 0, next + 1, curr + 1);
 
     // Outer face (outerBottom -> outerTop)
-    indices.push(curr + 1, next + 1, next + 2)
-    indices.push(curr + 1, next + 2, curr + 2)
+    indices.push(curr + 1, next + 1, next + 2);
+    indices.push(curr + 1, next + 2, curr + 2);
 
     // Top face (outerTop -> innerTop)
-    indices.push(curr + 2, next + 2, next + 3)
-    indices.push(curr + 2, next + 3, curr + 3)
+    indices.push(curr + 2, next + 2, next + 3);
+    indices.push(curr + 2, next + 3, curr + 3);
 
     // Inner face (innerTop -> innerBottom)
-    indices.push(curr + 3, next + 3, next + 0)
-    indices.push(curr + 3, next + 0, curr + 0)
+    indices.push(curr + 3, next + 3, next + 0);
+    indices.push(curr + 3, next + 0, curr + 0);
   }
 
-  const geometry = new THREE.BufferGeometry()
-  geometry.setAttribute(
-    "position",
-    new THREE.Float32BufferAttribute(positions, 3),
-  )
-  geometry.setAttribute("normal", new THREE.Float32BufferAttribute(normals, 3))
-  geometry.setIndex(indices)
-  geometry.computeVertexNormals()
+  const geometry = new THREE.BufferGeometry();
+  geometry.setAttribute("position", new THREE.Float32BufferAttribute(positions, 3));
+  geometry.setAttribute("normal", new THREE.Float32BufferAttribute(normals, 3));
+  geometry.setIndex(indices);
+  geometry.computeVertexNormals();
 
-  return geometry
+  return geometry;
 }
 
 export default function PlanetGraphic() {
-  const containerRef = useRef<HTMLDivElement>(null)
-  const canvasRef = useRef<HTMLCanvasElement>(null)
+  const containerRef = useRef<HTMLDivElement>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
   const [isMobile, setIsMobile] = useState(() => {
-    if (typeof window === "undefined") return false
-    const hardwareConcurrency = navigator.hardwareConcurrency || 4
-    return window.innerWidth < 768 || hardwareConcurrency < 4
-  })
-  const { resolvedTheme } = useTheme()
+    if (typeof window === "undefined") return false;
+    const hardwareConcurrency = navigator.hardwareConcurrency || 4;
+    return window.innerWidth < 768 || hardwareConcurrency < 4;
+  });
+  const { resolvedTheme } = useTheme();
 
   useEffect(() => {
-    if (!canvasRef.current || !containerRef.current) return
+    if (!canvasRef.current || !containerRef.current) return;
 
-    const canvas = canvasRef.current
-    const container = containerRef.current
-    const resizeDebounceMs = 140
-    const getIsMobile = (width: number) =>
-      width < 768 || (navigator.hardwareConcurrency || 4) < 4
+    const canvas = canvasRef.current;
+    const container = containerRef.current;
+    const resizeDebounceMs = 140;
+    const getIsMobile = (width: number) => width < 768 || (navigator.hardwareConcurrency || 4) < 4;
 
     // Check if dark mode
     const isDark =
       resolvedTheme === "dark" ||
-      (!resolvedTheme &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches)
+      (!resolvedTheme && window.matchMedia("(prefers-color-scheme: dark)").matches);
 
     // Scene setup
-    const scene = new THREE.Scene()
+    const scene = new THREE.Scene();
     // Adjust FOV and camera position for mobile to show more of the scene
-    const initialIsMobile = getIsMobile(container.clientWidth)
-    setIsMobile((prev) => (prev === initialIsMobile ? prev : initialIsMobile))
-    const fov = initialIsMobile ? 65 : 45 // Wider FOV on mobile for more visibility
-    const cameraZ = initialIsMobile ? 20 : 17 // Further back on mobile to zoom out
+    const initialIsMobile = getIsMobile(container.clientWidth);
+    setIsMobile((prev) => (prev === initialIsMobile ? prev : initialIsMobile));
+    const fov = initialIsMobile ? 65 : 45; // Wider FOV on mobile for more visibility
+    const cameraZ = initialIsMobile ? 20 : 17; // Further back on mobile to zoom out
     const camera = new THREE.PerspectiveCamera(
       fov,
       container.clientWidth / container.clientHeight,
       0.1,
       100,
-    )
-    camera.position.set(0, 1, cameraZ)
-    camera.lookAt(0, -2, 0)
+    );
+    camera.position.set(0, 1, cameraZ);
+    camera.lookAt(0, -2, 0);
 
     // Renderer
     const renderer = new THREE.WebGLRenderer({
@@ -142,68 +137,59 @@ export default function PlanetGraphic() {
       alpha: true,
       antialias: !initialIsMobile,
       premultipliedAlpha: false,
-    })
-    renderer.setSize(container.clientWidth, container.clientHeight)
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
-    renderer.setClearColor(0x000000, 0) // Transparent background but objects are opaque
+    });
+    renderer.setSize(container.clientWidth, container.clientHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setClearColor(0x000000, 0); // Transparent background but objects are opaque
 
     // Lights for metallic reflections
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.2)
-    scene.add(ambientLight)
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.2);
+    scene.add(ambientLight);
 
     // Key light (main light from top-right)
-    const keyLight = new THREE.DirectionalLight(0xffffff, 1.0)
-    keyLight.position.set(5, 8, 10)
-    scene.add(keyLight)
+    const keyLight = new THREE.DirectionalLight(0xffffff, 1.0);
+    keyLight.position.set(5, 8, 10);
+    scene.add(keyLight);
 
     // Fill light (softer, from left)
-    const fillLight = new THREE.DirectionalLight(0x8899aa, 0.5)
-    fillLight.position.set(-8, 2, 5)
-    scene.add(fillLight)
+    const fillLight = new THREE.DirectionalLight(0x8899aa, 0.5);
+    fillLight.position.set(-8, 2, 5);
+    scene.add(fillLight);
 
     // Rim light (from behind for edge highlights)
-    const rimLight = new THREE.DirectionalLight(0xffffff, 0.4)
-    rimLight.position.set(0, -5, -10)
-    scene.add(rimLight)
+    const rimLight = new THREE.DirectionalLight(0xffffff, 0.4);
+    rimLight.position.set(0, -5, -10);
+    scene.add(rimLight);
 
     // Side lights to create chrome-like edge highlights on rings
-    const edgeLightColor = 0xf5f7ff
-    const edgeLightIntensity = isDark ? 0.65 : 0.75
-    const edgeLightLeft = new THREE.DirectionalLight(
-      edgeLightColor,
-      edgeLightIntensity,
-    )
-    edgeLightLeft.position.set(-12, 0, 6)
-    scene.add(edgeLightLeft)
+    const edgeLightColor = 0xf5f7ff;
+    const edgeLightIntensity = isDark ? 0.65 : 0.75;
+    const edgeLightLeft = new THREE.DirectionalLight(edgeLightColor, edgeLightIntensity);
+    edgeLightLeft.position.set(-12, 0, 6);
+    scene.add(edgeLightLeft);
 
-    const edgeLightRight = new THREE.DirectionalLight(
-      edgeLightColor,
-      edgeLightIntensity,
-    )
-    edgeLightRight.position.set(12, 1, 6)
-    scene.add(edgeLightRight)
+    const edgeLightRight = new THREE.DirectionalLight(edgeLightColor, edgeLightIntensity);
+    edgeLightRight.position.set(12, 1, 6);
+    scene.add(edgeLightRight);
 
     // Top light for sphere gradient - muted in dark mode
-    const topLightColor = isDark ? 0x5a6a80 : 0x4a90d9
-    const topLightIntensity = isDark ? 0.5 : 0.7
-    const topLight = new THREE.DirectionalLight(
-      topLightColor,
-      topLightIntensity,
-    )
-    topLight.position.set(0, 15, 5)
-    scene.add(topLight)
+    const topLightColor = isDark ? 0x5a6a80 : 0x4a90d9;
+    const topLightIntensity = isDark ? 0.5 : 0.7;
+    const topLight = new THREE.DirectionalLight(topLightColor, topLightIntensity);
+    topLight.position.set(0, 15, 5);
+    scene.add(topLight);
 
     // Large planet sphere - BIGGER
-    const sphereRadius = 7
-    const sphereY = -5 // Position lower so it's partially cut off at bottom
-    const sphereGeometry = new THREE.SphereGeometry(sphereRadius, 128, 128)
+    const sphereRadius = 7;
+    const sphereY = -5; // Position lower so it's partially cut off at bottom
+    const sphereGeometry = new THREE.SphereGeometry(sphereRadius, 128, 128);
 
     // Custom shader for gradient effect (bright blue on top, darker on bottom)
     // Muted colors in dark mode
-    const sphereTopColor = isDark ? 0x2a4a80 : 0x1e4fd0
-    const sphereBottomColor = isDark ? 0x0f1f30 : 0x0a2440
-    const sphereGlowColor = isDark ? 0x3a5a90 : 0x2d6ae0
-    const sphereFresnelIntensity = isDark ? 0.2 : 0.3
+    const sphereTopColor = isDark ? 0x2a4a80 : 0x1e4fd0;
+    const sphereBottomColor = isDark ? 0x0f1f30 : 0x0a2440;
+    const sphereGlowColor = isDark ? 0x3a5a90 : 0x2d6ae0;
+    const sphereFresnelIntensity = isDark ? 0.2 : 0.3;
 
     const sphereMaterial = new THREE.ShaderMaterial({
       transparent: false,
@@ -252,24 +238,24 @@ export default function PlanetGraphic() {
           gl_FragColor = vec4(finalColor, 1.0);
         }
       `,
-    })
+    });
 
-    const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial)
-    sphere.position.set(0, sphereY, 0)
-    scene.add(sphere)
+    const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
+    sphere.position.set(0, sphereY, 0);
+    scene.add(sphere);
 
     // Ring parameters - closer to the sphere like the logo
-    const ringRadius = 8.2 // Closer to sphere (sphere is 7 radius)
-    const tubeWidth = initialIsMobile ? 0.5 : 0.3 // Width of the rectangular cross-section
-    const tubeHeight = 0.2 // Height (thickness) of the ring
+    const ringRadius = 8.2; // Closer to sphere (sphere is 7 radius)
+    const tubeWidth = initialIsMobile ? 0.5 : 0.3; // Width of the rectangular cross-section
+    const tubeHeight = 0.2; // Height (thickness) of the ring
 
     // Metallic material for rings (silver/chrome look) - keep gray, boost shine
-    const ringColor = isDark ? 0x909090 : 0xc0c0c0
-    const ringMetalness = isDark ? 0.9 : 0.95
-    const ringRoughness = isDark ? 0.18 : 0.14
-    const ringEnvMapIntensity = isDark ? 0.7 : 0.9
-    const ringClearcoat = isDark ? 0.5 : 0.6
-    const ringClearcoatRoughness = isDark ? 0.1 : 0.06
+    const ringColor = isDark ? 0xa8aeb8 : 0xc0c0c0;
+    const ringMetalness = isDark ? 0.9 : 0.95;
+    const ringRoughness = isDark ? 0.18 : 0.14;
+    const ringEnvMapIntensity = isDark ? 0.7 : 0.9;
+    const ringClearcoat = isDark ? 0.5 : 0.6;
+    const ringClearcoatRoughness = isDark ? 0.1 : 0.06;
 
     const ringMaterial = new THREE.MeshPhysicalMaterial({
       color: ringColor,
@@ -280,35 +266,33 @@ export default function PlanetGraphic() {
       clearcoatRoughness: ringClearcoatRoughness,
       depthWrite: true,
       side: THREE.DoubleSide,
-    })
+    });
 
     // Create an environment map for reflections
-    const envMapSize = 64
-    const envMapCanvas = document.createElement("canvas")
-    envMapCanvas.width = envMapSize
-    envMapCanvas.height = envMapSize
-    const envCtx = envMapCanvas.getContext("2d")
+    const envMapSize = 64;
+    const envMapCanvas = document.createElement("canvas");
+    envMapCanvas.width = envMapSize;
+    envMapCanvas.height = envMapSize;
+    const envCtx = envMapCanvas.getContext("2d");
     if (!envCtx) {
-      console.error(
-        "Failed to get 2D context from canvas for environment map generation",
-      )
-      return
+      console.error("Failed to get 2D context from canvas for environment map generation");
+      return;
     }
     // Environment map gradient - muted in dark mode
-    const envGradientTop = isDark ? "#556677" : "#778899"
-    const envGradientMid = isDark ? "#8899aa" : "#ffffff"
-    const envGradientBottom = isDark ? "#223344" : "#334455"
+    const envGradientTop = isDark ? "#6a7a8c" : "#778899";
+    const envGradientMid = isDark ? "#9aabbc" : "#ffffff";
+    const envGradientBottom = isDark ? "#2c3d52" : "#334455";
 
-    const gradient = envCtx.createLinearGradient(0, 0, 0, envMapSize)
-    gradient.addColorStop(0, envGradientTop)
-    gradient.addColorStop(0.4, envGradientMid)
-    gradient.addColorStop(0.6, envGradientMid)
-    gradient.addColorStop(1, envGradientBottom)
-    envCtx.fillStyle = gradient
-    envCtx.fillRect(0, 0, envMapSize, envMapSize)
-    const envTexture = new THREE.CanvasTexture(envMapCanvas)
-    envTexture.mapping = THREE.EquirectangularReflectionMapping
-    ringMaterial.envMap = envTexture
+    const gradient = envCtx.createLinearGradient(0, 0, 0, envMapSize);
+    gradient.addColorStop(0, envGradientTop);
+    gradient.addColorStop(0.4, envGradientMid);
+    gradient.addColorStop(0.6, envGradientMid);
+    gradient.addColorStop(1, envGradientBottom);
+    envCtx.fillStyle = gradient;
+    envCtx.fillRect(0, 0, envMapSize, envMapSize);
+    const envTexture = new THREE.CanvasTexture(envMapCanvas);
+    envTexture.mapping = THREE.EquirectangularReflectionMapping;
+    ringMaterial.envMap = envTexture;
 
     // ============================================
     // RING CONFIGURATION
@@ -326,75 +310,65 @@ export default function PlanetGraphic() {
     // - Z: back (-) / forward (+)
 
     // Ring 1 Configuration (upper arc - tilted forward over the planet)
-    const ring1RotX = Math.PI * 0.79 // Forward/backward tilt
-    const ring1RotY = -0.3 // Rotation around Y-axis (affects start position)
-    const ring1RotZ = 0.15 // Sideways tilt
-    const ring1PosX = -0.5 // Horizontal offset
-    const ring1PosY = -0.5 // Vertical offset (0 = same as sphere center)
-    const ring1PosZ = 1 // Depth offset
+    const ring1RotX = Math.PI * 0.79; // Forward/backward tilt
+    const ring1RotY = -0.3; // Rotation around Y-axis (affects start position)
+    const ring1RotZ = 0.15; // Sideways tilt
+    const ring1PosX = -0.5; // Horizontal offset
+    const ring1PosY = -0.5; // Vertical offset (0 = same as sphere center)
+    const ring1PosZ = 1; // Depth offset
 
     // Ring 2 Configuration (diagonal sweep - upper right to lower left)
-    const ring2RotX = Math.PI * 0.77 // Forward/backward tilt (more vertical)
-    const ring2RotY = -0.35 // Rotation around Y-axis (affects start position)
-    const ring2RotZ = -1.3 // Sideways tilt (leaning right)
-    const ring2PosX = 0.1 // Horizontal offset
-    const ring2PosY = 0.5 // Vertical offset (0 = same as sphere center)
-    const ring2PosZ = 1 // Depth offset
+    const ring2RotX = Math.PI * 0.77; // Forward/backward tilt (more vertical)
+    const ring2RotY = -0.35; // Rotation around Y-axis (affects start position)
+    const ring2RotZ = -1.3; // Sideways tilt (leaning right)
+    const ring2PosX = 0.1; // Horizontal offset
+    const ring2PosY = 0.5; // Vertical offset (0 = same as sphere center)
+    const ring2PosZ = 1; // Depth offset
 
     // ============================================
 
-    const ring1Geometry = createMetallicRing(
-      ringRadius,
-      tubeWidth,
-      tubeHeight,
-      128,
-    )
-    const ring1 = new THREE.Mesh(ring1Geometry, ringMaterial)
-    ring1.rotation.set(ring1RotX, ring1RotY, ring1RotZ)
-    ring1.position.set(ring1PosX, sphereY + ring1PosY, ring1PosZ)
-    scene.add(ring1)
+    const ring1Geometry = createMetallicRing(ringRadius, tubeWidth, tubeHeight, 128);
+    const ring1 = new THREE.Mesh(ring1Geometry, ringMaterial);
+    ring1.rotation.set(ring1RotX, ring1RotY, ring1RotZ);
+    ring1.position.set(ring1PosX, sphereY + ring1PosY, ring1PosZ);
+    scene.add(ring1);
 
-    const ring2Geometry = createMetallicRing(
-      ringRadius,
-      tubeWidth,
-      tubeHeight,
-      128,
-    )
-    const ring2Material = ringMaterial.clone()
-    const ring2 = new THREE.Mesh(ring2Geometry, ring2Material)
-    ring2.rotation.set(ring2RotX, ring2RotY, ring2RotZ)
-    ring2.position.set(ring2PosX, sphereY + ring2PosY, ring2PosZ)
-    scene.add(ring2)
+    const ring2Geometry = createMetallicRing(ringRadius, tubeWidth, tubeHeight, 128);
+    const ring2Material = ringMaterial.clone();
+    const ring2 = new THREE.Mesh(ring2Geometry, ring2Material);
+    ring2.rotation.set(ring2RotX, ring2RotY, ring2RotZ);
+    ring2.position.set(ring2PosX, sphereY + ring2PosY, ring2PosZ);
+    scene.add(ring2);
 
-    const ringRotationDuration = 7
-    const ringRotationDelay = 3
-    const ringRotationPause = 5
-    const ringRotationEase = "sine.inOut"
-    const ringRotationAmount = Math.PI * 2
-    const ring1BaseQuaternion = ring1.quaternion.clone()
-    const ring2BaseQuaternion = ring2.quaternion.clone()
-    const ring1RotationQuaternion = new THREE.Quaternion()
-    const ring2RotationQuaternion = new THREE.Quaternion()
+    const ringRotationDuration = 7;
+    const ringRotationDelay = 3;
+    const ringRotationPause = 5;
+    const ringRotationEase = "sine.inOut";
+    const ringRotationAmount = Math.PI * 2;
+    const ring1BaseQuaternion = ring1.quaternion.clone();
+    const ring2BaseQuaternion = ring2.quaternion.clone();
+    const ring1RotationQuaternion = new THREE.Quaternion();
+    const ring2RotationQuaternion = new THREE.Quaternion();
 
     const getRandomRotationAxis = () => {
       const axis = new THREE.Vector3(
         Math.random() * 2 - 1,
         Math.random() * 2 - 1,
         Math.random() * 2 - 1,
-      )
+      );
       if (axis.lengthSq() < 0.0001) {
-        axis.set(0, 1, 0)
+        axis.set(0, 1, 0);
       }
-      return axis.normalize()
-    }
+      return axis.normalize();
+    };
 
     const createRingRotationTween = (
       ring: THREE.Mesh,
       baseQuaternion: THREE.Quaternion,
       rotationQuaternion: THREE.Quaternion,
     ) => {
-      const progress = { value: 0 }
-      let rotationAxis = getRandomRotationAxis()
+      const progress = { value: 0 };
+      let rotationAxis = getRandomRotationAxis();
       return gsap.to(progress, {
         value: 1,
         duration: ringRotationDuration,
@@ -403,111 +377,106 @@ export default function PlanetGraphic() {
         repeat: -1,
         repeatDelay: ringRotationPause,
         onStart: () => {
-          rotationAxis = getRandomRotationAxis()
+          rotationAxis = getRandomRotationAxis();
         },
         onRepeat: () => {
-          rotationAxis = getRandomRotationAxis()
-          ring.quaternion.copy(baseQuaternion)
+          rotationAxis = getRandomRotationAxis();
+          ring.quaternion.copy(baseQuaternion);
         },
         onUpdate: () => {
-          rotationQuaternion.setFromAxisAngle(
-            rotationAxis,
-            progress.value * ringRotationAmount,
-          )
-          ring.quaternion.copy(baseQuaternion).premultiply(rotationQuaternion)
+          rotationQuaternion.setFromAxisAngle(rotationAxis, progress.value * ringRotationAmount);
+          ring.quaternion.copy(baseQuaternion).premultiply(rotationQuaternion);
         },
-      })
-    }
+      });
+    };
 
     const ring1RotationTween = createRingRotationTween(
       ring1,
       ring1BaseQuaternion,
       ring1RotationQuaternion,
-    )
+    );
     const ring2RotationTween = createRingRotationTween(
       ring2,
       ring2BaseQuaternion,
       ring2RotationQuaternion,
-    )
+    );
 
     // Animation
-    let animationId: number
+    let animationId: number;
 
     const animate = () => {
-      animationId = requestAnimationFrame(animate)
+      animationId = requestAnimationFrame(animate);
 
       // Very slow rotation of the sphere
-      sphere.rotation.y += 0.0005
+      sphere.rotation.y += 0.0005;
 
-      renderer.render(scene, camera)
-    }
+      renderer.render(scene, camera);
+    };
 
-    animate()
+    animate();
 
     // Handle resize (debounced to avoid excessive reflows)
-    let resizeTimeoutId: ReturnType<typeof setTimeout> | null = null
+    let resizeTimeoutId: ReturnType<typeof setTimeout> | null = null;
     const handleResize = () => {
-      if (!container) return
-      const width = container.clientWidth
-      const height = container.clientHeight
-      if (!width || !height) return
-      const isMobileNow = getIsMobile(width)
-      const nextFov = isMobileNow ? 65 : 45
-      const nextCameraZ = isMobileNow ? 20 : 17
+      if (!container) return;
+      const width = container.clientWidth;
+      const height = container.clientHeight;
+      if (!width || !height) return;
+      const isMobileNow = getIsMobile(width);
+      const nextFov = isMobileNow ? 65 : 45;
+      const nextCameraZ = isMobileNow ? 20 : 17;
 
-      setIsMobile((prev) => (prev === isMobileNow ? prev : isMobileNow))
-      camera.fov = nextFov
-      camera.aspect = width / height
-      camera.position.set(0, 1, nextCameraZ)
-      camera.updateProjectionMatrix()
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
-      renderer.setSize(width, height)
-    }
+      setIsMobile((prev) => (prev === isMobileNow ? prev : isMobileNow));
+      camera.fov = nextFov;
+      camera.aspect = width / height;
+      camera.position.set(0, 1, nextCameraZ);
+      camera.updateProjectionMatrix();
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      renderer.setSize(width, height);
+    };
 
     const scheduleResize = () => {
       if (resizeTimeoutId) {
-        clearTimeout(resizeTimeoutId)
+        clearTimeout(resizeTimeoutId);
       }
-      resizeTimeoutId = setTimeout(handleResize, resizeDebounceMs)
-    }
+      resizeTimeoutId = setTimeout(handleResize, resizeDebounceMs);
+    };
 
-    const resizeObserver = new ResizeObserver(scheduleResize)
-    resizeObserver.observe(container)
-    window.addEventListener("resize", scheduleResize, { passive: true })
+    const resizeObserver = new ResizeObserver(scheduleResize);
+    resizeObserver.observe(container);
+    window.addEventListener("resize", scheduleResize, { passive: true });
 
     // Cleanup
     return () => {
-      cancelAnimationFrame(animationId)
+      cancelAnimationFrame(animationId);
       if (resizeTimeoutId) {
-        clearTimeout(resizeTimeoutId)
+        clearTimeout(resizeTimeoutId);
       }
-      window.removeEventListener("resize", scheduleResize)
-      resizeObserver.disconnect()
+      window.removeEventListener("resize", scheduleResize);
+      resizeObserver.disconnect();
 
-      ring1RotationTween.kill()
-      ring2RotationTween.kill()
-      scene.remove(ring1)
-      scene.remove(ring2)
-      sphereGeometry.dispose()
-      sphereMaterial.dispose()
-      ring1Geometry.dispose()
-      ring2Geometry.dispose()
-      ringMaterial.dispose()
-      ring2Material.dispose()
-      envTexture.dispose()
+      ring1RotationTween.kill();
+      ring2RotationTween.kill();
+      scene.remove(ring1);
+      scene.remove(ring2);
+      sphereGeometry.dispose();
+      sphereMaterial.dispose();
+      ring1Geometry.dispose();
+      ring2Geometry.dispose();
+      ringMaterial.dispose();
+      ring2Material.dispose();
+      envTexture.dispose();
 
-      renderer.dispose()
-    }
-  }, [resolvedTheme])
+      renderer.dispose();
+    };
+  }, [resolvedTheme]);
 
   return (
     <div
       ref={containerRef}
       className="h-[55vh] md:h-[75vh] relative pointer-events-none w-full overflow-hidden overscroll-none"
       style={{
-        transform: isMobile
-          ? "translateY(calc(-1rem - 12vh))"
-          : "translateY(calc(-2rem - 4vh))",
+        transform: isMobile ? "translateY(calc(-1rem - 12vh))" : "translateY(calc(-2rem - 4vh))",
       }}
     >
       <canvas ref={canvasRef} className="block w-full h-full touch-pan-y" />
@@ -520,5 +489,5 @@ export default function PlanetGraphic() {
         }}
       />
     </div>
-  )
+  );
 }

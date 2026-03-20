@@ -1,4 +1,4 @@
-import type { Config } from "tailwindcss"
+import type { Config } from "tailwindcss";
 
 export default {
   darkMode: ["class"],
@@ -6,8 +6,8 @@ export default {
   theme: {
     extend: {
       colors: {
-        "bg-primary": "#0a0a0a",
-        "bg-secondary": "#000",
+        "bg-primary": "#121218",
+        "bg-secondary": "#0c0c10",
         "blue-core": "#1a4fd0",
         "blue-glow": "#2563eb",
         "silver-dark": "#2f3336",
@@ -92,4 +92,4 @@ export default {
     },
   },
   plugins: [require("tailwindcss-animate")],
-} satisfies Config
+} satisfies Config;

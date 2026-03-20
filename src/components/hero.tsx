@@ -187,7 +187,7 @@ export default function Hero() {
         </Link>
         <Link
           to="/apps"
-          className="px-8 py-3 rounded-full border border-blue-core/30 bg-blue-core/10 backdrop-blur-[10px] text-muted-foreground hover:text-foreground font-display font-semibold hover:bg-blue-core/20 hover:border-blue-glow ring-glow transition-all duration-300 text-center md:text-left"
+          className="px-8 py-3 rounded-full border border-blue-core/30 bg-blue-core/10 backdrop-blur-[10px] text-muted-foreground hover:text-foreground font-display font-semibold hover:bg-blue-core/20 hover:border-blue-glow ring-glow transition-all duration-300 text-center md:text-left dark:border-blue-core/55 dark:bg-blue-core/28 dark:hover:bg-blue-core/42"
         >
           {t("hero.exploreApps")}
         </Link>

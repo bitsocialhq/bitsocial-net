@@ -3,11 +3,11 @@ if (import.meta.env.DEV) {
     scan({
       enabled: true,
       showToolbar: !(window as any).__PROFILING__,
-    })
+    });
 
     const notReady = async () => ({
       error: "element-source is not ready yet.",
-    })
+    });
 
     const elementSourceApi: any = {
       ready: false,
@@ -20,10 +20,10 @@ if (import.meta.env.DEV) {
         error: "element-source is not ready yet.",
       }),
       formatStack: () => "",
-    }
+    };
 
-    ;(window as any).__getReactScanReport = getReport
-    ;(window as any).__ELEMENT_SOURCE__ = elementSourceApi
+    (window as any).__getReactScanReport = getReport;
+    (window as any).__ELEMENT_SOURCE__ = elementSourceApi;
 
     import("element-source")
       .then(({ formatStack, resolveElementInfo }) => {
@@ -31,49 +31,49 @@ if (import.meta.env.DEV) {
           if (!(node instanceof Element)) {
             return {
               error: "Expected a DOM Element.",
-            }
+            };
           }
 
           try {
-            const info = await resolveElementInfo(node)
+            const info = await resolveElementInfo(node);
             return {
               ...info,
               available: Boolean(info.source || info.stack.length || info.componentName),
-            }
+            };
           } catch (error) {
             return {
               error: error instanceof Error ? error.message : String(error),
-            }
+            };
           }
-        }
+        };
 
         Object.assign(elementSourceApi, {
           ready: true,
           resolve,
           resolveBySelector: async (selector: string) => {
-            const element = document.querySelector(selector)
+            const element = document.querySelector(selector);
             if (!(element instanceof Element)) {
               return {
                 error: `No element matched selector: ${selector}`,
-              }
+              };
             }
-            return resolve(element)
+            return resolve(element);
           },
           resolveAtPoint: async (x: number, y: number) => {
-            const element = document.elementFromPoint(x, y)
+            const element = document.elementFromPoint(x, y);
             if (!(element instanceof Element)) {
               return {
                 error: `No element found at point (${x}, ${y})`,
-              }
+              };
             }
-            return resolve(element)
+            return resolve(element);
           },
           formatStack: (stack: unknown, maxLines = 3) =>
             Array.isArray(stack) ? formatStack(stack as any, maxLines) : "",
-        })
+        });
       })
       .catch((error) => {
-        elementSourceApi.error = error instanceof Error ? error.message : String(error)
-      })
-  })
+        elementSourceApi.error = error instanceof Error ? error.message : String(error);
+      });
+  });
 }

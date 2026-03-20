@@ -1,11 +1,11 @@
-import { useState, useEffect, useRef } from "react"
-import { Link } from "react-router-dom"
-import { motion } from "framer-motion"
-import { useTranslation } from "react-i18next"
-import { ThemeToggle } from "./theme-toggle"
-import HamburgerButton from "./hamburger-button"
-import LanguageSelector from "./language-selector"
-import MobileMenu from "./mobile-menu"
+import { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
+import { ThemeToggle } from "./theme-toggle";
+import HamburgerButton from "./hamburger-button";
+import LanguageSelector from "./language-selector";
+import MobileMenu from "./mobile-menu";
 
 function NavLink({
   to,
@@ -15,18 +15,16 @@ function NavLink({
   className: extraClassName,
   noUnderline,
 }: {
-  to?: string
-  href?: string
-  children: React.ReactNode
-  onClick?: () => void
-  className?: string
-  noUnderline?: boolean
+  to?: string;
+  href?: string;
+  children: React.ReactNode;
+  onClick?: () => void;
+  className?: string;
+  noUnderline?: boolean;
 }) {
   const baseClassName =
-    "text-muted-foreground hover:text-foreground transition-colors relative group text-lg md:text-base font-display leading-none py-2 px-2 block"
-  const className = extraClassName
-    ? `${baseClassName} ${extraClassName}`
-    : baseClassName
+    "text-muted-foreground hover:text-foreground transition-colors relative group text-lg md:text-base font-display leading-none py-2 px-2 block";
+  const className = extraClassName ? `${baseClassName} ${extraClassName}` : baseClassName;
   const content = (
     <>
       {children}
@@ -34,7 +32,7 @@ function NavLink({
         <span className="absolute bottom-1 left-0 w-0 h-px bg-blue-glow group-hover:w-full transition-all duration-300" />
       )}
     </>
-  )
+  );
 
   if (href) {
     return (
@@ -47,7 +45,7 @@ function NavLink({
       >
         {content}
       </a>
-    )
+    );
   }
 
   if (to) {
@@ -55,47 +53,47 @@ function NavLink({
       <Link to={to} className={className} onClick={onClick}>
         {content}
       </Link>
-    )
+    );
   }
 
   return (
     <button className={className} onClick={onClick}>
       {content}
     </button>
-  )
+  );
 }
 
 export default function Topbar() {
-  const { t } = useTranslation()
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const [isMenuExpanded, setIsMenuExpanded] = useState(false)
-  const [menuHeight, setMenuHeight] = useState(0)
-  const barRef = useRef<HTMLDivElement>(null)
-  const [pillRadius, setPillRadius] = useState(24)
+  const { t } = useTranslation();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMenuExpanded, setIsMenuExpanded] = useState(false);
+  const [menuHeight, setMenuHeight] = useState(0);
+  const barRef = useRef<HTMLDivElement>(null);
+  const [pillRadius, setPillRadius] = useState(24);
 
   useEffect(() => {
-    if (barRef.current) setPillRadius(barRef.current.offsetHeight / 2)
-  }, [])
+    if (barRef.current) setPillRadius(barRef.current.offsetHeight / 2);
+  }, []);
 
   useEffect(() => {
-    if (isMobileMenuOpen) setIsMenuExpanded(true)
-  }, [isMobileMenuOpen])
+    if (isMobileMenuOpen) setIsMenuExpanded(true);
+  }, [isMobileMenuOpen]);
 
   useEffect(() => {
-    const mql = window.matchMedia("(min-width: 768px)")
+    const mql = window.matchMedia("(min-width: 768px)");
     const handler = () => {
       if (mql.matches) {
-        setIsMobileMenuOpen(false)
-        setIsMenuExpanded(false)
+        setIsMobileMenuOpen(false);
+        setIsMenuExpanded(false);
       }
-    }
-    mql.addEventListener("change", handler)
-    return () => mql.removeEventListener("change", handler)
-  }, [])
+    };
+    mql.addEventListener("change", handler);
+    return () => mql.removeEventListener("change", handler);
+  }, []);
 
   const handleNavClick = () => {
-    setIsMobileMenuOpen(false)
-  }
+    setIsMobileMenuOpen(false);
+  };
 
   return (
     <>
@@ -106,14 +104,8 @@ export default function Topbar() {
         className="fixed top-3 left-4 right-4 z-50 mx-auto max-w-7xl topbar-frosted"
         style={{ borderRadius: isMenuExpanded ? pillRadius : 9999 }}
       >
-        <div
-          ref={barRef}
-          className="px-5 md:px-7 py-2 flex items-center justify-between relative"
-        >
-          <Link
-            to="/"
-            className="flex items-center gap-1 group transition-colors"
-          >
+        <div ref={barRef} className="px-5 md:px-7 py-2 flex items-center justify-between relative">
+          <Link to="/" className="flex items-center gap-1 group transition-colors">
             <img
               src="/logo-small.png"
               alt="Bitsocial"
@@ -137,11 +129,7 @@ export default function Topbar() {
               <NavLink to="/status" onClick={handleNavClick} noUnderline>
                 {t("nav.status")}
               </NavLink>
-              <NavLink
-                href="https://github.com/bitsocialnet"
-                onClick={handleNavClick}
-                noUnderline
-              >
+              <NavLink href="https://github.com/bitsocialnet" onClick={handleNavClick} noUnderline>
                 GitHub
               </NavLink>
             </div>
@@ -182,11 +170,7 @@ export default function Topbar() {
             <NavLink to="/status" onClick={handleNavClick} noUnderline>
               {t("nav.status")}
             </NavLink>
-            <NavLink
-              href="https://github.com/bitsocialnet"
-              onClick={handleNavClick}
-              noUnderline
-            >
+            <NavLink href="https://github.com/bitsocialnet" onClick={handleNavClick} noUnderline>
               GitHub
             </NavLink>
           </div>
@@ -213,5 +197,5 @@ export default function Topbar() {
         aria-hidden="true"
       />
     </>
-  )
+  );
 }

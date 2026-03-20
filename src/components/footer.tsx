@@ -1,35 +1,43 @@
-import { Link } from "react-router-dom"
-import { useTranslation } from "react-i18next"
+import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import { Github, Send } from "lucide-react";
 
-const linkClassName =
-  "text-muted-foreground hover:text-foreground transition-colors text-lg md:text-sm"
+const linkClassName = "text-muted-foreground hover:text-foreground transition-colors text-sm";
+
+function XIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
+      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+    </svg>
+  );
+}
 
 export default function Footer() {
-  const { t } = useTranslation()
+  const { t } = useTranslation();
 
   return (
-    <footer className="footer-glass py-12 px-6 mt-12">
+    <footer className="footer-glass py-14 px-6 mt-12">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-10 mb-10">
           {/* Branding */}
           <div className="col-span-2 md:col-span-1">
-            <Link to="/" className="flex items-center gap-1 mb-4">
+            <Link to="/" className="flex items-center gap-1.5 mb-4 group">
               <img src="/logo-small.png" alt="Bitsocial" className="h-6 w-6" />
-              <span className="text-lg font-display font-regular text-muted-foreground">
+              <span className="text-lg font-display text-muted-foreground group-hover:text-foreground transition-colors">
                 Bitsocial
               </span>
             </Link>
-            <p className="text-muted-foreground text-sm leading-relaxed">
+            <p className="text-muted-foreground text-sm leading-relaxed max-w-xs">
               {t("footer.tagline")}
             </p>
           </div>
 
           {/* Product */}
           <div>
-            <h4 className="font-display font-semibold mb-4 text-foreground text-sm">
+            <h4 className="text-xs font-display font-semibold uppercase tracking-widest text-foreground/70 mb-5">
               {t("footer.product")}
             </h4>
-            <ul className="space-y-2">
+            <ul className="space-y-2.5">
               <li>
                 <Link to="/apps" className={linkClassName}>
                   {t("footer.apps")}
@@ -50,10 +58,10 @@ export default function Footer() {
 
           {/* Resources */}
           <div>
-            <h4 className="font-display font-semibold mb-4 text-foreground text-sm">
+            <h4 className="text-xs font-display font-semibold uppercase tracking-widest text-foreground/70 mb-5">
               {t("footer.resources")}
             </h4>
-            <ul className="space-y-2">
+            <ul className="space-y-2.5">
               <li>
                 <Link to="/blog" className={linkClassName}>
                   {t("footer.blog")}
@@ -69,17 +77,18 @@ export default function Footer() {
 
           {/* Community */}
           <div>
-            <h4 className="font-display font-semibold mb-4 text-foreground text-sm">
+            <h4 className="text-xs font-display font-semibold uppercase tracking-widest text-foreground/70 mb-5">
               {t("footer.community")}
             </h4>
-            <ul className="space-y-2">
+            <ul className="space-y-2.5">
               <li>
                 <a
                   href="https://github.com/bitsocialnet"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={linkClassName}
+                  className={`${linkClassName} inline-flex items-center gap-2`}
                 >
+                  <Github className="h-3.5 w-3.5" />
                   {t("footer.github")}
                 </a>
               </li>
@@ -88,8 +97,9 @@ export default function Footer() {
                   href="https://twitter.com/bitsocialnet"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={linkClassName}
+                  className={`${linkClassName} inline-flex items-center gap-2`}
                 >
+                  <XIcon className="h-3.5 w-3.5" />
                   {t("footer.twitter")}
                 </a>
               </li>
@@ -98,8 +108,9 @@ export default function Footer() {
                   href="https://t.me/bitsocialnet"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={linkClassName}
+                  className={`${linkClassName} inline-flex items-center gap-2`}
                 >
+                  <Send className="h-3.5 w-3.5" />
                   {t("footer.telegram")}
                 </a>
               </li>
@@ -107,9 +118,9 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="pt-8 border-t border-border/30 flex flex-col sm:flex-row items-center justify-between gap-4 text-muted-foreground text-sm">
-          <p className="font-display">{t("footer.bottomTagline")}</p>
-          <div className="flex items-center gap-4">
+        <div className="pt-8 border-t border-border/20 flex flex-col sm:flex-row items-center justify-between gap-4 text-muted-foreground/70 text-xs">
+          <p className="font-display tracking-wide">{t("footer.bottomTagline")}</p>
+          <div className="flex items-center gap-3 text-xs">
             <a
               href="https://github.com/bitsocialnet/bitsocial-web/blob/master/LICENSE"
               target="_blank"
@@ -118,10 +129,11 @@ export default function Footer() {
             >
               {t("footer.license")}
             </a>
-            <span>&copy; {new Date().getFullYear()} Bitsocial Labs</span>
+            <span className="text-border/50">&bull;</span>
+            <span>&copy; {new Date().getFullYear()} Bitsocial Forge, Inc.</span>
           </div>
         </div>
       </div>
     </footer>
-  )
+  );
 }

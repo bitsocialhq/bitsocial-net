@@ -1,15 +1,9 @@
-import { useEffect, useMemo, useRef, useState } from "react"
-import { Globe, Check, Search } from "lucide-react"
-import { useTranslation } from "react-i18next"
-import {
-  Sheet,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet"
-import { Button } from "@/components/ui/button"
-import { cn } from "@/lib/utils"
+import { useEffect, useMemo, useRef, useState } from "react";
+import { Globe, Check, Search } from "lucide-react";
+import { useTranslation } from "react-i18next";
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 const languages = [
   { code: "ar", name: "العربية", dir: "rtl" },
@@ -47,18 +41,17 @@ const languages = [
   { code: "ur", name: "اردو", dir: "rtl" },
   { code: "vi", name: "Tiếng Việt" },
   { code: "zh", name: "中文" },
-]
+];
 
 export default function LanguageSelector({ mobile }: { mobile?: boolean }) {
-  const { i18n, t } = useTranslation()
-  const [open, setOpen] = useState(false)
-  const [searchQuery, setSearchQuery] = useState("")
-  const [activeIndex, setActiveIndex] = useState(0)
-  const inputRef = useRef<HTMLInputElement>(null)
-  const optionRefs = useRef<Array<HTMLButtonElement | null>>([])
+  const { i18n, t } = useTranslation();
+  const [open, setOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [activeIndex, setActiveIndex] = useState(0);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const optionRefs = useRef<Array<HTMLButtonElement | null>>([]);
 
-  const currentLanguage =
-    languages.find((lang) => lang.code === i18n.language) || languages[6] // Default to English
+  const currentLanguage = languages.find((lang) => lang.code === i18n.language) || languages[6]; // Default to English
 
   const filteredLanguages = useMemo(
     () =>
@@ -68,80 +61,72 @@ export default function LanguageSelector({ mobile }: { mobile?: boolean }) {
           lang.code.toLowerCase().includes(searchQuery.toLowerCase()),
       ),
     [searchQuery],
-  )
+  );
   const effectiveActiveIndex =
-    filteredLanguages.length === 0
-      ? -1
-      : Math.min(activeIndex, filteredLanguages.length - 1)
-  const activeLanguage =
-    effectiveActiveIndex >= 0 ? filteredLanguages[effectiveActiveIndex] : null
+    filteredLanguages.length === 0 ? -1 : Math.min(activeIndex, filteredLanguages.length - 1);
+  const activeLanguage = effectiveActiveIndex >= 0 ? filteredLanguages[effectiveActiveIndex] : null;
 
   const handleLanguageChange = (code: string) => {
-    i18n.changeLanguage(code)
-    setOpen(false)
-    setSearchQuery("")
-    setActiveIndex(0)
-  }
+    i18n.changeLanguage(code);
+    setOpen(false);
+    setSearchQuery("");
+    setActiveIndex(0);
+  };
 
   useEffect(() => {
-    if (!open) return
+    if (!open) return;
 
     const focusTimer = window.setTimeout(() => {
-      inputRef.current?.focus()
-    }, 0)
+      inputRef.current?.focus();
+    }, 0);
 
-    return () => window.clearTimeout(focusTimer)
-  }, [open])
+    return () => window.clearTimeout(focusTimer);
+  }, [open]);
 
   useEffect(() => {
-    if (!open || effectiveActiveIndex < 0) return
-    optionRefs.current[effectiveActiveIndex]?.scrollIntoView({ block: "nearest" })
-  }, [effectiveActiveIndex, open])
+    if (!open || effectiveActiveIndex < 0) return;
+    optionRefs.current[effectiveActiveIndex]?.scrollIntoView({ block: "nearest" });
+  }, [effectiveActiveIndex, open]);
 
   const handleOpenChange = (nextOpen: boolean) => {
-    setOpen(nextOpen)
+    setOpen(nextOpen);
 
     if (nextOpen) {
       const selectedIndex = filteredLanguages.findIndex(
         (language) => language.code === i18n.language,
-      )
-      setActiveIndex(selectedIndex >= 0 ? selectedIndex : 0)
-      return
+      );
+      setActiveIndex(selectedIndex >= 0 ? selectedIndex : 0);
+      return;
     }
 
-    setSearchQuery("")
-    setActiveIndex(0)
-  }
+    setSearchQuery("");
+    setActiveIndex(0);
+  };
 
   const handleSearchKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (filteredLanguages.length === 0) return
+    if (filteredLanguages.length === 0) return;
 
     if (event.key === "ArrowDown") {
-      event.preventDefault()
-      setActiveIndex((current) =>
-        current >= filteredLanguages.length - 1 ? 0 : current + 1,
-      )
-      return
+      event.preventDefault();
+      setActiveIndex((current) => (current >= filteredLanguages.length - 1 ? 0 : current + 1));
+      return;
     }
 
     if (event.key === "ArrowUp") {
-      event.preventDefault()
-      setActiveIndex((current) =>
-        current <= 0 ? filteredLanguages.length - 1 : current - 1,
-      )
-      return
+      event.preventDefault();
+      setActiveIndex((current) => (current <= 0 ? filteredLanguages.length - 1 : current - 1));
+      return;
     }
 
     if (event.key === "Enter") {
-      const nextLanguage =
-        filteredLanguages.length === 1 ? filteredLanguages[0] : activeLanguage
+      const nextLanguage = filteredLanguages.length === 1 ? filteredLanguages[0] : activeLanguage;
 
-      if (!nextLanguage) return
+      if (!nextLanguage) return;
 
-      event.preventDefault()
-      handleLanguageChange(nextLanguage.code)
+      event.preventDefault();
+      handleLanguageChange(nextLanguage.code);
     }
-  }
+  };
 
   return (
     <Sheet open={open} onOpenChange={handleOpenChange}>
@@ -164,10 +149,7 @@ export default function LanguageSelector({ mobile }: { mobile?: boolean }) {
           </Button>
         )}
       </SheetTrigger>
-      <SheetContent
-        side="right"
-        className="w-full sm:max-w-md [&>button]:rounded-full"
-      >
+      <SheetContent side="right" className="w-full sm:max-w-md [&>button]:rounded-full">
         <SheetHeader>
           <SheetTitle className="font-display text-foreground/80">Select Language</SheetTitle>
         </SheetHeader>
@@ -180,8 +162,8 @@ export default function LanguageSelector({ mobile }: { mobile?: boolean }) {
               placeholder="Search languages..."
               value={searchQuery}
               onChange={(e) => {
-                setSearchQuery(e.target.value)
-                setActiveIndex(0)
+                setSearchQuery(e.target.value);
+                setActiveIndex(0);
               }}
               onKeyDown={handleSearchKeyDown}
               className="w-full rounded-full bg-foreground/[0.04] border border-foreground/[0.08] px-10 py-2.5 text-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring transition-colors"
@@ -193,7 +175,7 @@ export default function LanguageSelector({ mobile }: { mobile?: boolean }) {
                 <button
                   key={language.code}
                   ref={(node) => {
-                    optionRefs.current[index] = node
+                    optionRefs.current[index] = node;
                   }}
                   type="button"
                   onClick={() => handleLanguageChange(language.code)}
@@ -208,13 +190,15 @@ export default function LanguageSelector({ mobile }: { mobile?: boolean }) {
                   )}
                   dir={language.dir}
                 >
-                  <span className={cn(
-                    "font-medium",
-                    i18n.language === language.code ? "text-foreground" : "text-muted-foreground",
-                  )}>{language.name}</span>
-                  {i18n.language === language.code && (
-                    <Check className="h-4 w-4 text-blue-glow" />
-                  )}
+                  <span
+                    className={cn(
+                      "font-medium",
+                      i18n.language === language.code ? "text-foreground" : "text-muted-foreground",
+                    )}
+                  >
+                    {language.name}
+                  </span>
+                  {i18n.language === language.code && <Check className="h-4 w-4 text-blue-glow" />}
                 </button>
               ))}
             </div>
@@ -227,5 +211,5 @@ export default function LanguageSelector({ mobile }: { mobile?: boolean }) {
         </div>
       </SheetContent>
     </Sheet>
-  )
+  );
 }

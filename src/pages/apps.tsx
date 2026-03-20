@@ -1,6 +1,6 @@
-import Topbar from "../components/topbar"
-import Footer from "../components/footer"
-import { motion } from "framer-motion"
+import Topbar from "../components/topbar";
+import Footer from "../components/footer";
+import { motion } from "framer-motion";
 
 export default function Apps() {
   return (
@@ -22,9 +22,7 @@ export default function Apps() {
                 className="glass-card p-6 hover:border-muted-foreground/40 transition-all duration-300 hover:shadow-xl"
               >
                 <div className="text-4xl mb-4">📱</div>
-                <h3 className="text-xl font-display font-semibold mb-3 text-foreground">
-                  App {i}
-                </h3>
+                <h3 className="text-xl font-display font-semibold mb-3 text-foreground">App {i}</h3>
                 <p className="text-muted-foreground text-sm leading-relaxed mb-4">
                   A Bitsocial-powered application. More apps coming soon!
                 </p>
@@ -41,5 +39,5 @@ export default function Apps() {
       </main>
       <Footer />
     </div>
-  )
+  );
 }

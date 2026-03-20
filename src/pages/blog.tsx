@@ -1,5 +1,5 @@
-import Topbar from "../components/topbar"
-import Footer from "../components/footer"
+import Topbar from "../components/topbar";
+import Footer from "../components/footer";
 
 export default function Blog() {
   return (
@@ -7,14 +7,11 @@ export default function Blog() {
       <Topbar />
       <main className="pt-24 px-6 pb-12">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-5xl font-display font-bold mb-8 chrome-text">
-            Blog
-          </h1>
+          <h1 className="text-5xl font-display font-bold mb-8 chrome-text">Blog</h1>
           <div className="glass-card p-8">
             <p className="text-muted-foreground leading-relaxed mb-4">
-              The Bitsocial blog will feature protocol updates, development
-              progress, ecosystem news, and deep dives into the technology
-              behind decentralized social media.
+              The Bitsocial blog will feature protocol updates, development progress, ecosystem
+              news, and deep dives into the technology behind decentralized social media.
             </p>
             <p className="text-muted-foreground leading-relaxed">
               Posts are coming soon. Stay tuned!
@@ -24,5 +21,5 @@ export default function Blog() {
       </main>
       <Footer />
     </div>
-  )
+  );
 }

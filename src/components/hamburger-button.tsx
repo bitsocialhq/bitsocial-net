@@ -1,25 +1,22 @@
-import { motion } from "framer-motion"
-import { useRef } from "react"
-import { Button } from "@/components/ui/button"
+import { motion } from "framer-motion";
+import { useRef } from "react";
+import { Button } from "@/components/ui/button";
 
 interface HamburgerButtonProps {
-  isOpen: boolean
-  onClick: () => void
+  isOpen: boolean;
+  onClick: () => void;
 }
 
-export default function HamburgerButton({
-  isOpen,
-  onClick,
-}: HamburgerButtonProps) {
-  const buttonRef = useRef<HTMLButtonElement>(null)
+export default function HamburgerButton({ isOpen, onClick }: HamburgerButtonProps) {
+  const buttonRef = useRef<HTMLButtonElement>(null);
 
   const handleClick = () => {
-    onClick()
+    onClick();
     // Blur on mobile to remove persistent focus outline
     requestAnimationFrame(() => {
-      buttonRef.current?.blur()
-    })
-  }
+      buttonRef.current?.blur();
+    });
+  };
 
   return (
     <Button
@@ -73,5 +70,5 @@ export default function HamburgerButton({
         />
       </div>
     </Button>
-  )
+  );
 }

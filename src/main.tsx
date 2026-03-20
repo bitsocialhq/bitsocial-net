@@ -1,23 +1,21 @@
-import React from "react"
-import ReactDOM from "react-dom/client"
-import { MotionConfig } from "framer-motion"
-import App from "./app.tsx"
-import { ThemeProvider } from "./components/theme-provider"
-import { GraphicsModeProvider, useGraphicsMode } from "@/lib/graphics-mode"
-import "@/lib/i18n"
-import "@/lib/react-scan"
-import "./index.css"
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { MotionConfig } from "framer-motion";
+import App from "./app.tsx";
+import { ThemeProvider } from "./components/theme-provider";
+import { GraphicsModeProvider, useGraphicsMode } from "@/lib/graphics-mode";
+import "@/lib/i18n";
+import "@/lib/react-scan";
+import "./index.css";
 
 function AnimationGate({ children }: { children: React.ReactNode }) {
-  const graphicsMode = useGraphicsMode()
+  const graphicsMode = useGraphicsMode();
 
   return (
-    <MotionConfig
-      reducedMotion={graphicsMode === "fallback" ? "always" : "never"}
-    >
+    <MotionConfig reducedMotion={graphicsMode === "fallback" ? "always" : "never"}>
       {children}
     </MotionConfig>
-  )
+  );
 }
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
@@ -30,4 +28,4 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
       </GraphicsModeProvider>
     </ThemeProvider>
   </React.StrictMode>,
-)
+);

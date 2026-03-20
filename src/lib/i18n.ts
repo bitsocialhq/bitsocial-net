@@ -1,7 +1,7 @@
-import i18n from "i18next"
-import { initReactI18next } from "react-i18next"
-import LanguageDetector from "i18next-browser-languagedetector"
-import HttpBackend from "i18next-http-backend"
+import i18n from "i18next";
+import { initReactI18next } from "react-i18next";
+import LanguageDetector from "i18next-browser-languagedetector";
+import HttpBackend from "i18next-http-backend";
 
 const supportedLngs = [
   "ar",
@@ -39,7 +39,7 @@ const supportedLngs = [
   "ur",
   "vi",
   "zh",
-]
+];
 
 i18n
   .use(HttpBackend)
@@ -67,6 +67,6 @@ i18n
       caches: ["localStorage"],
       lookupQuerystring: "lang",
     },
-  })
+  });
 
-export default i18n
+export default i18n;

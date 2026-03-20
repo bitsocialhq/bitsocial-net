@@ -1,11 +1,11 @@
-import { motion, AnimatePresence } from "framer-motion"
-import { useRef, useEffect } from "react"
+import { motion, AnimatePresence } from "framer-motion";
+import { useRef, useEffect } from "react";
 
 interface MobileMenuProps {
-  isOpen: boolean
-  children: React.ReactNode
-  onHeightChange?: (height: number) => void
-  onExitComplete?: () => void
+  isOpen: boolean;
+  children: React.ReactNode;
+  onHeightChange?: (height: number) => void;
+  onExitComplete?: () => void;
 }
 
 export default function MobileMenu({
@@ -14,16 +14,16 @@ export default function MobileMenu({
   onHeightChange,
   onExitComplete,
 }: MobileMenuProps) {
-  const menuRef = useRef<HTMLDivElement>(null)
+  const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (menuRef.current && isOpen) {
-      const height = menuRef.current.scrollHeight
-      onHeightChange?.(height)
+      const height = menuRef.current.scrollHeight;
+      onHeightChange?.(height);
     } else {
-      onHeightChange?.(0)
+      onHeightChange?.(0);
     }
-  }, [isOpen, children, onHeightChange])
+  }, [isOpen, children, onHeightChange]);
 
   return (
     <AnimatePresence onExitComplete={onExitComplete}>
@@ -54,5 +54,5 @@ export default function MobileMenu({
         </motion.div>
       )}
     </AnimatePresence>
-  )
+  );
 }

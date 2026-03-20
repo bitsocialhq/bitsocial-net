@@ -1,27 +1,27 @@
-import { Moon, Sun } from "lucide-react"
-import { useTheme } from "next-themes"
-import { useEffect, useState, useRef } from "react"
-import { useTranslation } from "react-i18next"
+import { Moon, Sun } from "lucide-react";
+import { useTheme } from "next-themes";
+import { useEffect, useState, useRef } from "react";
+import { useTranslation } from "react-i18next";
 
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 
 export function ThemeToggle({ mobile }: { mobile?: boolean }) {
-  const { resolvedTheme, setTheme } = useTheme()
-  const { t } = useTranslation()
-  const [mounted, setMounted] = useState(false)
-  const buttonRef = useRef<HTMLButtonElement>(null)
+  const { resolvedTheme, setTheme } = useTheme();
+  const { t } = useTranslation();
+  const [mounted, setMounted] = useState(false);
+  const buttonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
-    setMounted(true)
-  }, [])
+    setMounted(true);
+  }, []);
 
   const toggleTheme = () => {
-    setTheme(resolvedTheme === "dark" ? "light" : "dark")
+    setTheme(resolvedTheme === "dark" ? "light" : "dark");
     // Blur on mobile to remove persistent focus outline
     requestAnimationFrame(() => {
-      buttonRef.current?.blur()
-    })
-  }
+      buttonRef.current?.blur();
+    });
+  };
 
   if (!mounted) {
     if (mobile) {
@@ -32,7 +32,7 @@ export function ThemeToggle({ mobile }: { mobile?: boolean }) {
             <span>{t("nav.theme")}</span>
           </span>
         </button>
-      )
+      );
     }
     return (
       <Button
@@ -43,7 +43,7 @@ export function ThemeToggle({ mobile }: { mobile?: boolean }) {
         <Sun className="h-4 w-4 text-muted-foreground" />
         <span className="sr-only">Toggle theme</span>
       </Button>
-    )
+    );
   }
 
   if (mobile) {
@@ -62,7 +62,7 @@ export function ThemeToggle({ mobile }: { mobile?: boolean }) {
           <span>{t("nav.theme")}</span>
         </span>
       </button>
-    )
+    );
   }
 
   return (
@@ -77,5 +77,5 @@ export function ThemeToggle({ mobile }: { mobile?: boolean }) {
       <Moon className="absolute h-4 w-4 text-muted-foreground rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
       <span className="sr-only">Toggle theme</span>
     </Button>
-  )
+  );
 }

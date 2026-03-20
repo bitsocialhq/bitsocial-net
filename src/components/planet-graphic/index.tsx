@@ -246,8 +246,14 @@ export default function PlanetGraphic() {
 
     // Ring parameters - closer to the sphere like the logo
     const ringRadius = 8.2; // Closer to sphere (sphere is 7 radius)
-    const tubeWidth = initialIsMobile ? 0.5 : 0.3; // Width of the rectangular cross-section
+    const ringTubeWidthMobile = 0.5;
+    const ringTubeWidthDesktop = 0.3;
+    const getRingTubeWidth = (mobile: boolean) =>
+      mobile ? ringTubeWidthMobile : ringTubeWidthDesktop;
     const tubeHeight = 0.2; // Height (thickness) of the ring
+
+    let ringLayoutIsMobile = initialIsMobile;
+    let tubeWidth = getRingTubeWidth(initialIsMobile);
 
     // Metallic material for rings (silver/chrome look) - keep gray, boost shine
     const ringColor = isDark ? 0xa8aeb8 : 0xc0c0c0;
@@ -327,13 +333,13 @@ export default function PlanetGraphic() {
 
     // ============================================
 
-    const ring1Geometry = createMetallicRing(ringRadius, tubeWidth, tubeHeight, 128);
+    let ring1Geometry = createMetallicRing(ringRadius, tubeWidth, tubeHeight, 128);
     const ring1 = new THREE.Mesh(ring1Geometry, ringMaterial);
     ring1.rotation.set(ring1RotX, ring1RotY, ring1RotZ);
     ring1.position.set(ring1PosX, sphereY + ring1PosY, ring1PosZ);
     scene.add(ring1);
 
-    const ring2Geometry = createMetallicRing(ringRadius, tubeWidth, tubeHeight, 128);
+    let ring2Geometry = createMetallicRing(ringRadius, tubeWidth, tubeHeight, 128);
     const ring2Material = ringMaterial.clone();
     const ring2 = new THREE.Mesh(ring2Geometry, ring2Material);
     ring2.rotation.set(ring2RotX, ring2RotY, ring2RotZ);
@@ -433,6 +439,20 @@ export default function PlanetGraphic() {
       camera.updateProjectionMatrix();
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
       renderer.setSize(width, height);
+
+      // Ring cross-section matches mobile vs desktop layout; rebuild only when crossing breakpoint.
+      if (isMobileNow !== ringLayoutIsMobile) {
+        ringLayoutIsMobile = isMobileNow;
+        tubeWidth = getRingTubeWidth(isMobileNow);
+        const newGeo1 = createMetallicRing(ringRadius, tubeWidth, tubeHeight, 128);
+        const newGeo2 = createMetallicRing(ringRadius, tubeWidth, tubeHeight, 128);
+        ring1Geometry.dispose();
+        ring2Geometry.dispose();
+        ring1Geometry = newGeo1;
+        ring2Geometry = newGeo2;
+        ring1.geometry = ring1Geometry;
+        ring2.geometry = ring2Geometry;
+      }
     };
 
     const scheduleResize = () => {

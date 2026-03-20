@@ -18,12 +18,12 @@ Creates a GitHub issue, commits relevant changes, closes the issue with the comm
 
 Ask the user using AskQuestion (multi-select):
 
-| Option | When |
-|--------|------|
-| `bug` | Bug fix |
-| `enhancement` | New feature |
-| `bug` + `enhancement` | New feature that also fixes a bug |
-| `documentation` | README, AGENTS.md, docs-only changes |
+| Option                | When                                 |
+| --------------------- | ------------------------------------ |
+| `bug`                 | Bug fix                              |
+| `enhancement`         | New feature                          |
+| `bug` + `enhancement` | New feature that also fixes a bug    |
+| `documentation`       | README, AGENTS.md, docs-only changes |
 
 ### 2. Review diffs for relevance
 

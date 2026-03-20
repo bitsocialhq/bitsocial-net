@@ -22,12 +22,12 @@ Focus on files in `src/components/`, `src/pages/`, `src/lib/`, `src/app.tsx`, an
 
 Read each changed file and check for these project-critical anti-patterns:
 
-| Violation | Fix |
-|-----------|-----|
-| `useEffect` syncing derived state | Calculate during render instead |
-| Reusable UI duplicated across pages | Extract to `src/components/` |
-| New relative imports into `src/**` | Replace with `@/` imports |
-| Motion without reduced-motion fallback | Add `prefers-reduced-motion` handling |
+| Violation                                         | Fix                                         |
+| ------------------------------------------------- | ------------------------------------------- |
+| `useEffect` syncing derived state                 | Calculate during render instead             |
+| Reusable UI duplicated across pages               | Extract to `src/components/`                |
+| New relative imports into `src/**`                | Replace with `@/` imports                   |
+| Motion without reduced-motion fallback            | Add `prefers-reduced-motion` handling       |
 | Page components mixing too much reusable UI logic | Split page composition from shared sections |
 
 Refer to the repo-root `AGENTS.md` for additional context.

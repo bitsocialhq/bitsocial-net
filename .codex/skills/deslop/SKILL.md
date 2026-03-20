@@ -17,6 +17,7 @@ Scan the diff against main and remove AI-generated slop introduced in this branc
    ```
 
    If there are also uncommitted changes, include them:
+
    ```bash
    git diff main
    ```
@@ -33,7 +34,7 @@ Scan the diff against main and remove AI-generated slop introduced in this branc
 
 ### Unnecessary comments
 
-AI loves adding comments that restate the code. Remove comments that a human wouldn't write. Keep comments that explain *why* — domain reasoning, constraints, trade-offs, or non-obvious intent.
+AI loves adding comments that restate the code. Remove comments that a human wouldn't write. Keep comments that explain _why_ — domain reasoning, constraints, trade-offs, or non-obvious intent.
 
 ```typescript
 // ❌ Slop — restates the code
@@ -79,6 +80,7 @@ AI tends to add unnecessary abstractions, utility functions, or wrapper componen
 ## Judgment Call: When to Keep Comments
 
 Comments are necessary when code expresses:
+
 - Non-obvious intent or domain-specific reasoning
 - Constraints that aren't apparent from the implementation
 - Trade-offs or "why not X" decisions

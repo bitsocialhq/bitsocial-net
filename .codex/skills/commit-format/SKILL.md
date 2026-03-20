@@ -8,11 +8,13 @@ description: Formats GitHub commit messages following Conventional Commits style
 ## Template (copy this structure exactly)
 
 Title only — raw markdown:
+
 ```
 > **Commit title:** `type: short description here`
 ```
 
 Title with description — raw markdown:
+
 ```
 > **Commit title:** `type: short description here`
 >
@@ -32,16 +34,19 @@ Title with description — raw markdown:
 ## Wrong vs Right
 
 ❌ WRONG — missing backticks around title:
+
 ```
 > **Commit title:** refactor: rename from /queue to /modqueue
 ```
 
 ❌ WRONG — backticks around individual words instead of whole title:
+
 ```
 > **Commit title:** refactor: rename from `/queue` to `/modqueue`
 ```
 
 ✅ CORRECT — entire title in one backtick pair, no backticks inside:
+
 ```
 > **Commit title:** `refactor: rename from /queue to /modqueue`
 ```
@@ -49,6 +54,7 @@ Title with description — raw markdown:
 ## Self-check
 
 Before outputting, verify:
+
 - [ ] Lines start with `>`
 - [ ] Title is wrapped in exactly one backtick pair: `` `like this` ``
 - [ ] No backticks inside the title text

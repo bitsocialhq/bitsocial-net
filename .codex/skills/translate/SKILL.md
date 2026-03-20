@@ -18,6 +18,7 @@ This skill orchestrates translation of i18next keys by spawning **translator** s
 ### Step 1 — Parse the keys
 
 Identify all translation keys from the user's request. Keys may be provided as:
+
 - A comma-separated list: `upload_failed, media_hosting, file`
 - A numbered/bulleted list
 - Inline in a sentence: "translate the key `upload_failed`"
@@ -29,6 +30,7 @@ For each key, check if the English value already exists in `public/translations/
 ### Step 3 — Spawn translator subagents
 
 For **each key**, spawn a `translator` subagent (using the Task tool with `subagent_type: "generalPurpose"` and `model: "fast"`). The prompt for each subagent must include:
+
 - The key name
 - The English value
 - An instruction to follow the translator subagent's system prompt
@@ -45,12 +47,14 @@ Follow your system prompt for the full workflow (create dictionary file, dry run
 ```
 
 **Parallelism rules:**
+
 - Spawn up to 4 subagents concurrently (Task tool limit).
 - If there are more than 4 keys, batch them: spawn 4, wait for completion, then spawn the next batch.
 
 ### Step 4 — Report results
 
 After all subagents complete, summarize:
+
 - Which keys were translated successfully
 - Any failures or issues
 
@@ -81,16 +85,16 @@ node scripts/update-translations.js --audit --write
 
 ## Important Flags
 
-| Flag | Description |
-|------|-------------|
-| `--key <name>` | Translation key to update/delete |
-| `--map <file>` | JSON file with per-language values |
-| `--include-en` | Include English in updates (required when using `--map`) |
-| `--from <lang>` | Source language to copy from (default: en) |
-| `--dry` | Preview changes without writing |
-| `--write` | Actually write the files |
-| `--delete` | Delete the key from all languages |
-| `--audit` | Find and remove unused translation keys |
+| Flag            | Description                                              |
+| --------------- | -------------------------------------------------------- |
+| `--key <name>`  | Translation key to update/delete                         |
+| `--map <file>`  | JSON file with per-language values                       |
+| `--include-en`  | Include English in updates (required when using `--map`) |
+| `--from <lang>` | Source language to copy from (default: en)               |
+| `--dry`         | Preview changes without writing                          |
+| `--write`       | Actually write the files                                 |
+| `--delete`      | Delete the key from all languages                        |
+| `--audit`       | Find and remove unused translation keys                  |
 
 ## Supported Languages
 

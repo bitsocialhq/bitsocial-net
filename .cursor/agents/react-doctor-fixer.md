@@ -27,13 +27,13 @@ If either is missing, report back immediately asking for the missing information
 
 Follow the plan provided by the parent agent. Apply changes using project patterns:
 
-| Concern | Avoid | Use Instead |
-|---------|-------|-------------|
-| Derived state | `useEffect` syncing local state | Calculate during render |
-| Reusable UI | Copy-paste across pages | Extract components in `src/components/` |
-| Navigation | Manual `window.location` changes | React Router navigation |
-| Source imports | `../` chains inside `src` | `@/` alias |
-| Motion | Always-on animation | Respect `prefers-reduced-motion` |
+| Concern           | Avoid                               | Use Instead                                   |
+| ----------------- | ----------------------------------- | --------------------------------------------- |
+| Derived state     | `useEffect` syncing local state     | Calculate during render                       |
+| Reusable UI       | Copy-paste across pages             | Extract components in `src/components/`       |
+| Navigation        | Manual `window.location` changes    | React Router navigation                       |
+| Source imports    | `../` chains inside `src`           | `@/` alias                                    |
+| Motion            | Always-on animation                 | Respect `prefers-reduced-motion`              |
 | Large route files | Mixed page and reusable UI concerns | Split page composition from reusable sections |
 
 ### Step 3: Verify the Fix

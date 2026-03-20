@@ -22,5 +22,6 @@ Example:
 Example:
 
 > **GitHub issue:**
+>
 > - **Title:** `Date formatting displays incorrect timezone`
 > - **Description:** Comment timestamps show incorrect timezones when users view posts from different regions. The `formatDate()` function doesn't account for user's local timezone settings.

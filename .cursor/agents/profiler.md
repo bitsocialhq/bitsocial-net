@@ -88,24 +88,24 @@ playwright-cli -s=SESSION close
 
 **Browser-level thresholds:**
 
-| Metric | Warning | Critical |
-|--------|---------|----------|
-| SPA navigation | 300–1000ms | >1000ms |
-| LCP | 2.5–4s | >4s |
-| Long task | 50–100ms | >100ms |
-| CLS total | 0.1–0.25 | >0.25 |
-| Resource load | 200–500ms | >500ms |
-| JS heap | 50–100MB | >100MB |
+| Metric         | Warning    | Critical |
+| -------------- | ---------- | -------- |
+| SPA navigation | 300–1000ms | >1000ms  |
+| LCP            | 2.5–4s     | >4s      |
+| Long task      | 50–100ms   | >100ms   |
+| CLS total      | 0.1–0.25   | >0.25    |
+| Resource load  | 200–500ms  | >500ms   |
+| JS heap        | 50–100MB   | >100MB   |
 
 **React-level thresholds:**
 
-| Metric | Warning | Critical |
-|--------|---------|----------|
-| Commits per route load | 5–15 | >15 |
-| Commits per scroll (3 wheels) | 10–30 | >30 |
+| Metric                             | Warning  | Critical  |
+| ---------------------------------- | -------- | --------- |
+| Commits per route load             | 5–15     | >15       |
+| Commits per scroll (3 wheels)      | 10–30    | >30       |
 | Render burst (>5 commits in 100ms) | 1+ burst | 3+ bursts |
-| Component renders (react-scan) | 10–30 | >30 |
-| Component render time (react-scan) | 16–50ms | >50ms |
+| Component renders (react-scan)     | 10–30    | >30       |
+| Component render time (react-scan) | 16–50ms  | >50ms     |
 
 Return this exact format:
 

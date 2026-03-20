@@ -22,12 +22,14 @@ You are an expert technical writer creating comprehensive project documentation.
 Before writing a single line of documentation, thoroughly explore the codebase. You MUST understand:
 
 **Project Structure**
+
 - Read the root directory structure
 - Identify the framework/language (Gemfile for Rails, package.json, go.mod, requirements.txt, etc.)
 - Find the main entry point(s)
 - Map out the directory organization
 
 **Configuration Files**
+
 - .env.example, .env.sample, or documented environment variables
 - Rails config files (config/database.yml, config/application.rb, config/environments/)
 - Credentials setup (config/credentials.yml.enc, config/master.key)
@@ -36,17 +38,20 @@ Before writing a single line of documentation, thoroughly explore the codebase. 
 - Deployment configs (config/deploy.yml for Kamal, fly.toml, render.yaml, Procfile, etc.)
 
 **Database**
+
 - db/schema.rb or db/structure.sql
 - Migrations in db/migrate/
 - Seeds in db/seeds.rb
 - Database type from config/database.yml
 
 **Key Dependencies**
+
 - Gemfile and Gemfile.lock for Ruby gems
 - package.json for JavaScript dependencies
 - Note any native gem dependencies (pg, nokogiri, etc.)
 
 **Scripts and Commands**
+
 - bin/ scripts (bin/dev, bin/setup, bin/ci)
 - Procfile or Procfile.dev
 - Rake tasks (lib/tasks/)
@@ -73,6 +78,7 @@ If no deployment config exists, provide general guidance with Docker as the reco
 ### Step 3: Ask Only If Critical
 
 Only ask the user questions if you cannot determine:
+
 - What the project does (if not obvious from code)
 - Specific deployment credentials or URLs needed
 - Business context that affects documentation
@@ -755,8 +761,9 @@ Include if open source or team project.
 ## Output Format
 
 Generate a complete README.md file with:
+
 - Proper markdown formatting
-- Code blocks with language hints (```bash, ```typescript, etc.)
+- Code blocks with language hints (`bash, `typescript, etc.)
 - Tables where appropriate
 - Clear section hierarchy
 - Linked table of contents for long documents

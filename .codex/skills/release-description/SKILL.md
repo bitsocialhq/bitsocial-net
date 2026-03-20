@@ -27,14 +27,14 @@ If there are no commits since the tag, stop — nothing to update.
 
 Categorize by Conventional Commits prefix:
 
-| Prefix | Category |
-|--------|----------|
-| `feat:` | New features |
-| `fix:` | Bug fixes |
-| `perf:` | Performance improvements |
-| `refactor:` | Refactors / internal changes |
+| Prefix                   | Category                                  |
+| ------------------------ | ----------------------------------------- |
+| `feat:`                  | New features                              |
+| `fix:`                   | Bug fixes                                 |
+| `perf:`                  | Performance improvements                  |
+| `refactor:`              | Refactors / internal changes              |
 | `chore:`, `docs:`, `ci:` | Maintenance (mention only if significant) |
-| No prefix | Read the title to infer category |
+| No prefix                | Read the title to infer category          |
 
 ### 4. Write the one-liner
 
@@ -48,6 +48,7 @@ Compose a single sentence that summarizes the release at a high level. Rules:
 - **Don't mention every commit** — summarize the theme
 
 Examples of good one-liners:
+
 - "This version adds backlinks for quoted posts, a copy user ID menu item, and several bug fixes."
 - "This version introduces mod queue improvements and performance optimizations."
 - "This release adds pseudonymity mode support per-reply and fixes timezone display issues."
@@ -63,6 +64,7 @@ const oneLinerDescription = 'Your new one-liner here.';
 ### 6. Verify
 
 Read the updated line back to confirm it looks right. The string should:
+
 - Be a single sentence
 - End with a period
 - Not contain backticks or markdown

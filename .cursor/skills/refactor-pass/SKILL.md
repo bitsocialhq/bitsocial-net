@@ -20,6 +20,7 @@ description: Perform a refactor pass focused on simplicity after recent changes.
    - Extract duplicated logic into custom hooks (`src/hooks/`) or shared components (`src/components/`)
 
 3. **Verify** — run all three checks:
+
    ```bash
    yarn build && yarn lint && yarn typecheck
    ```
@@ -30,14 +31,14 @@ description: Perform a refactor pass focused on simplicity after recent changes.
 
 When refactoring, watch for these anti-patterns from AGENTS.md:
 
-| Anti-pattern | Refactor to |
-|---|---|
-| `useState` for shared state | Zustand store in `src/stores/` |
-| `useEffect` for data fetching | plebbit-react-hooks (`useComment`, `useFeed`, etc.) |
-| `useEffect` to sync derived state | Calculate during render |
-| Copy-pasted logic across components | Custom hook in `src/hooks/` |
-| Boolean flag soup (`isLoading`, `isError`, `isSuccess`) | State machine in Zustand |
-| Prop drilling through many layers | Zustand store |
+| Anti-pattern                                            | Refactor to                                         |
+| ------------------------------------------------------- | --------------------------------------------------- |
+| `useState` for shared state                             | Zustand store in `src/stores/`                      |
+| `useEffect` for data fetching                           | plebbit-react-hooks (`useComment`, `useFeed`, etc.) |
+| `useEffect` to sync derived state                       | Calculate during render                             |
+| Copy-pasted logic across components                     | Custom hook in `src/hooks/`                         |
+| Boolean flag soup (`isLoading`, `isError`, `isSuccess`) | State machine in Zustand                            |
+| Prop drilling through many layers                       | Zustand store                                       |
 
 ## Rules
 

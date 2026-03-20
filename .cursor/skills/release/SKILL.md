@@ -56,12 +56,12 @@ Rules:
 
 Read `package.json`, compute the new version from the bump level, and update the `"version"` field.
 
-| Bump | Effect |
-|------|--------|
+| Bump    | Effect            |
+| ------- | ----------------- |
 | `patch` | `0.1.0` → `0.1.1` |
 | `minor` | `0.1.0` → `0.2.0` |
 | `major` | `0.1.0` → `1.0.0` |
-| `x.y.z` | Set exactly |
+| `x.y.z` | Set exactly       |
 
 ### Step 4: Verify the Release Build
 

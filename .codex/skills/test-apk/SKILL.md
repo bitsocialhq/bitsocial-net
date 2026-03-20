@@ -15,13 +15,13 @@ Bitsocial Web itself is a web repository and does not contain an Android project
 
 Before delegating, gather or infer:
 
-| Requirement | Why it matters |
-|-------------|----------------|
-| Wrapper project root | Needed for build and install commands |
-| App/package id | Needed to launch the installed app |
-| Emulator or device target | Needed for `adb` and launch commands |
-| Build/install commands | This repo does not define them |
-| Exact flow to test | Prevents broad, low-signal exploration |
+| Requirement               | Why it matters                         |
+| ------------------------- | -------------------------------------- |
+| Wrapper project root      | Needed for build and install commands  |
+| App/package id            | Needed to launch the installed app     |
+| Emulator or device target | Needed for `adb` and launch commands   |
+| Build/install commands    | This repo does not define them         |
+| Exact flow to test        | Prevents broad, low-signal exploration |
 
 If any of those are missing and cannot be inferred safely, stop and ask for them instead of guessing.
 
@@ -78,13 +78,13 @@ Return a structured summary:
 
 ## Common Scenarios
 
-| Scenario | What to run |
-|----------|-------------|
-| WebView shell smoke test | Launch app, open key routes, capture logcat |
-| Routing and back-button debugging | Launch specific route, navigate, test Android back behavior |
-| Storage persistence debugging | Relaunch app and verify local storage/cookie/session behavior |
-| Asset loading issues | Capture logcat plus screenshot for failed asset or blank-screen cases |
-| Manual shell interaction | Build, install, launch, and capture diagnostics |
+| Scenario                          | What to run                                                           |
+| --------------------------------- | --------------------------------------------------------------------- |
+| WebView shell smoke test          | Launch app, open key routes, capture logcat                           |
+| Routing and back-button debugging | Launch specific route, navigate, test Android back behavior           |
+| Storage persistence debugging     | Relaunch app and verify local storage/cookie/session behavior         |
+| Asset loading issues              | Capture logcat plus screenshot for failed asset or blank-screen cases |
+| Manual shell interaction          | Build, install, launch, and capture diagnostics                       |
 
 ## Diagnostics to Prioritize
 

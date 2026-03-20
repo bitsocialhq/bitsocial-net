@@ -1,7 +1,9 @@
 # Commit current work
+
 Commit current work.
 
 ## Instructions
+
 - Always check git diffs before committing. First you check the diffs for all uncommitted changes, so you can figure out what should be the commit title for the diffs.
 - If some diffs/uncommitted changes are unrelated to each other, then we need to do multiple commits. Each commit should describe a specific set of diffs. If a set of diffs is completely unrelated to another set of diffs, each set should be committed separately.
 - The commit title should be very short and concise, and follow commitizen rules such as: always include the scope, always include the commit type (feat, fix, refactor, chore, docs, perf, etc.).

@@ -31,6 +31,7 @@ disable-model-invocation: true
 3. **Stage and commit each group**
 
    For each logical group:
+
    ```bash
    git add <relevant files>
    git commit -m "title here"
@@ -42,8 +43,8 @@ disable-model-invocation: true
 
 - **Title format:** Conventional Commits with a **required scope**. The scope should be a short, human-readable name for the area of the codebase affected.
 
-  | Pattern | Example |
-  |---------|---------|
+  | Pattern                    | Example                           |
+  | -------------------------- | --------------------------------- |
   | `type(scope): description` | `feat(reply modal): add textarea` |
 
 - **Never omit the scope.** `feat: add textarea` is wrong. `feat(reply modal): add textarea` is correct.

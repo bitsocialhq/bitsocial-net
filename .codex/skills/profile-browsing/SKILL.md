@@ -41,11 +41,11 @@ Split routes into batches of 2 to 4 for parallel profiling.
 
 Default batches for this app:
 
-| Batch | Session | Routes | Focus |
-|-------|---------|--------|-------|
-| 1 | `prof-1` | `/`, `/docs` | Home page plus docs content |
-| 2 | `prof-2` | `/apps`, `/about` | App directory plus about page |
-| 3 | `prof-3` | `/blog`, `/status` | Secondary content plus status page |
+| Batch | Session  | Routes             | Focus                              |
+| ----- | -------- | ------------------ | ---------------------------------- |
+| 1     | `prof-1` | `/`, `/docs`       | Home page plus docs content        |
+| 2     | `prof-2` | `/apps`, `/about`  | App directory plus about page      |
+| 3     | `prof-3` | `/blog`, `/status` | Secondary content plus status page |
 
 Adjust batches to match the routes relevant to the change under investigation.
 
@@ -106,14 +106,14 @@ Collect structured output from each subagent and merge:
 
 ## Interpreting React Metrics
 
-| Signal | Likely cause | Fix direction |
-|--------|-------------|---------------|
-| High commits, no long tasks | Frequent cheap rerenders | `React.memo`, stabilize props |
-| High commits + long tasks | Expensive rerenders | Profile render cost, split components |
-| High scroll commits | Scroll or intersection observer work triggering renders | Throttle handlers, memoize heavy list items |
-| Render bursts (>5 in 100ms) | Cascading state updates | Batch updates, remove derived-state effects |
-| `react-scan`: component with >30 renders | Missing memoization or unstable references | Stabilize props and parent renders |
-| `react-scan`: component with >50ms time | Expensive render function | Split component, move work out of render |
+| Signal                                   | Likely cause                                            | Fix direction                               |
+| ---------------------------------------- | ------------------------------------------------------- | ------------------------------------------- |
+| High commits, no long tasks              | Frequent cheap rerenders                                | `React.memo`, stabilize props               |
+| High commits + long tasks                | Expensive rerenders                                     | Profile render cost, split components       |
+| High scroll commits                      | Scroll or intersection observer work triggering renders | Throttle handlers, memoize heavy list items |
+| Render bursts (>5 in 100ms)              | Cascading state updates                                 | Batch updates, remove derived-state effects |
+| `react-scan`: component with >30 renders | Missing memoization or unstable references              | Stabilize props and parent renders          |
+| `react-scan`: component with >50ms time  | Expensive render function                               | Split component, move work out of render    |
 
 ## Element-source Follow-up
 

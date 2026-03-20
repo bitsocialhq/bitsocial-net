@@ -29,19 +29,20 @@ Collect files with `U` statuses or containing `<<<<<<<` / `=======` / `>>>>>>>` 
 Open each conflicting file and remove conflict markers. Merge both sides logically when feasible.
 
 **When sides are mutually exclusive**, pick the variant that:
+
 1. Compiles and passes type checks
 2. Preserves existing public APIs and behavior
 
 **File-type strategies:**
 
-| File type | Strategy |
-|-----------|----------|
-| `package.json` | Merge keys conservatively, then `yarn install` to regenerate `yarn.lock` |
-| `yarn.lock` | Never manually edit — regenerate with `yarn install` |
-| Config files (`.json`, `.yaml`) | Preserve union of safe settings; don't delete required fields |
-| Markdown / text | Include both unique sections, deduplicate headings |
-| Binary files | Prefer current branch (ours) |
-| Generated / build artifacts | Prefer current branch (ours), or regenerate |
+| File type                       | Strategy                                                                 |
+| ------------------------------- | ------------------------------------------------------------------------ |
+| `package.json`                  | Merge keys conservatively, then `yarn install` to regenerate `yarn.lock` |
+| `yarn.lock`                     | Never manually edit — regenerate with `yarn install`                     |
+| Config files (`.json`, `.yaml`) | Preserve union of safe settings; don't delete required fields            |
+| Markdown / text                 | Include both unique sections, deduplicate headings                       |
+| Binary files                    | Prefer current branch (ours)                                             |
+| Generated / build artifacts     | Prefer current branch (ours), or regenerate                              |
 
 ### 3. Validate
 

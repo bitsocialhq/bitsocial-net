@@ -132,16 +132,17 @@ if (typeof window !== 'undefined') {
 
 ## Project-Specific Replacements
 
-| useEffect pattern | Replace with |
-|-------------------|-------------|
-| Fetch data | `useComment`, `useFeed`, `useSubplebbit`, etc. from plebbit-react-hooks |
-| Sync shared state | Zustand store in `src/stores/` |
-| Derive values from state | Calculate during render |
-| Boolean loading/error flags | `state` field from plebbit-react-hooks, or state machine in Zustand |
+| useEffect pattern           | Replace with                                                            |
+| --------------------------- | ----------------------------------------------------------------------- |
+| Fetch data                  | `useComment`, `useFeed`, `useSubplebbit`, etc. from plebbit-react-hooks |
+| Sync shared state           | Zustand store in `src/stores/`                                          |
+| Derive values from state    | Calculate during render                                                 |
+| Boolean loading/error flags | `state` field from plebbit-react-hooks, or state machine in Zustand     |
 
 ## When useEffect IS Appropriate
 
 Not every effect is wrong. Keep `useEffect` for:
+
 - Subscribing to browser APIs (resize, intersection observer, etc.) with proper cleanup
 - Synchronizing with non-React systems (third-party widgets, imperative DOM)
 - Running code on mount that genuinely has no hook equivalent

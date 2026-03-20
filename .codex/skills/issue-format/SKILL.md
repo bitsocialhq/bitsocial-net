@@ -8,6 +8,7 @@ description: Formats GitHub issue titles and descriptions for tracking problems 
 ## Template (copy this structure exactly)
 
 Raw markdown:
+
 ```
 > **GitHub issue:**
 > - **Title:** `Short issue title here`
@@ -26,16 +27,19 @@ Raw markdown:
 ## Wrong vs Right
 
 ❌ WRONG — missing backticks around title:
+
 ```
 > - **Title:** Mod queue should use /modqueue instead of /queue
 ```
 
 ❌ WRONG — backticks around individual words instead of whole title:
+
 ```
 > - **Title:** Mod queue should use `/modqueue` instead of `/queue`
 ```
 
 ✅ CORRECT — entire title in one backtick pair, no backticks inside:
+
 ```
 > - **Title:** `Mod queue should use /modqueue instead of /queue`
 ```
@@ -43,6 +47,7 @@ Raw markdown:
 ## Self-check
 
 Before outputting, verify:
+
 - [ ] Lines start with `>`
 - [ ] Title is wrapped in exactly one backtick pair: `` `like this` ``
 - [ ] No backticks inside the title text

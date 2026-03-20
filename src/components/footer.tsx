@@ -16,7 +16,10 @@ export default function Footer() {
   const { t } = useTranslation();
 
   return (
-    <footer className="footer-glass py-14 px-6 mt-12">
+    <footer
+      className="footer-glass pt-14 px-6 mt-12"
+      style={{ paddingBottom: "calc(3.5rem + env(safe-area-inset-bottom, 0px))" }}
+    >
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10 mb-10">
           {/* Branding */}

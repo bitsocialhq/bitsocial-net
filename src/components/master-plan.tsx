@@ -52,8 +52,15 @@ export default function MasterPlan() {
 
         <div className="relative">
           <div className="relative">
-            {/* Timeline line - visible on both mobile and desktop */}
-            <div className="absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-gradient-to-b from-blue-core via-blue-glow to-blue-core" />
+            {/* Timeline line - animates in after phase cards */}
+            <motion.div
+              initial={{ scaleY: 0, opacity: 0 }}
+              whileInView={{ scaleY: 1, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.5, duration: 1.5, ease: [0.4, 0, 0.2, 1] }}
+              style={{ transformOrigin: "top" }}
+              className="absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-gradient-to-b from-blue-core via-blue-glow to-blue-core"
+            />
 
             <div className="space-y-16 md:space-y-20">
               {phases.map((item, index) => (

@@ -98,11 +98,13 @@ export default function Topbar() {
   return (
     <>
       <motion.nav
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.5 }}
+        initial={{ y: -100, borderRadius: 9999 }}
+        animate={{ y: 0, borderRadius: isMenuExpanded ? pillRadius : 9999 }}
+        transition={{
+          y: { duration: 0.5 },
+          borderRadius: { duration: 0.3, ease: [0.4, 0, 0.2, 1] },
+        }}
         className="fixed top-3 left-4 right-4 z-50 mx-auto max-w-7xl topbar-frosted"
-        style={{ borderRadius: isMenuExpanded ? pillRadius : 9999 }}
       >
         <div ref={barRef} className="px-5 md:px-7 py-2 flex items-center justify-between relative">
           <Link to="/" className="flex items-center gap-1 group transition-colors">

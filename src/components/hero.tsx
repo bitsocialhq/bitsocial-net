@@ -177,7 +177,7 @@ export default function Hero() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: -20 }}
         transition={{ delay: 0.5, duration: 0.6 }}
-        className="flex flex-col sm:flex-row gap-4 relative z-0"
+        className="flex flex-col sm:flex-row gap-4 relative z-40"
       >
         <Link
           to="/docs"

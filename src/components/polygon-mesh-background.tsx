@@ -130,6 +130,8 @@ function initMesh(
   let w = container.clientWidth;
   let h = container.clientHeight;
   const dpr = Math.min(window.devicePixelRatio, 1.5);
+  const isTouchDevice = "ontouchstart" in window || navigator.maxTouchPoints > 0;
+  const FRAME_BUDGET = isTouchDevice ? 50 : 33;
 
   function setCanvasSize() {
     canvas.width = w * dpr;
@@ -148,6 +150,9 @@ function initMesh(
   let prevY = -9999;
   let smoothedSpeed = 0;
   let time = 0;
+  let visible = true;
+  let scrollInjectedSpeed = 0;
+  let lastScrollY = window.scrollY;
 
   function onMove(e: MouseEvent) {
     const r = canvas.getBoundingClientRect();
@@ -170,18 +175,34 @@ function initMesh(
     prevY = -9999;
   }
 
+  function onScroll() {
+    const dy = Math.abs(window.scrollY - lastScrollY);
+    lastScrollY = window.scrollY;
+    scrollInjectedSpeed = Math.min(1, dy / 12);
+  }
+
   window.addEventListener("mousemove", onMove, { passive: true });
   document.addEventListener("mouseleave", onPointerLeave);
   window.addEventListener("touchmove", onTouchMove, { passive: true });
   window.addEventListener("touchstart", onTouchMove, { passive: true });
   window.addEventListener("touchend", onPointerLeave, { passive: true });
+  window.addEventListener("scroll", onScroll, { passive: true });
+
+  const io = new IntersectionObserver(
+    ([entry]) => {
+      visible = entry.isIntersecting;
+    },
+    { threshold: 0 },
+  );
+  io.observe(container);
 
   let af: number;
   let lt = 0;
 
   function frame(now: number) {
     af = requestAnimationFrame(frame);
-    if (now - lt < 33) return;
+    if (!visible) return;
+    if (now - lt < FRAME_BUDGET) return;
     const dt = (now - lt) / 1000;
     lt = now;
     time += dt;
@@ -189,7 +210,6 @@ function initMesh(
     const pts = mesh.points;
     const edges = mesh.edges;
 
-    // --- Cursor speed (like devin's u_moveRatio) ---
     let frameSpeed = 0;
     if (curX > -9000 && prevX > -9000) {
       const dx = curX - prevX;
@@ -201,13 +221,14 @@ function initMesh(
 
     const rawSpeed =
       frameSpeed <= MIN_SPEED ? 0 : Math.min(1, (frameSpeed - MIN_SPEED) / (MAX_SPEED - MIN_SPEED));
-    const speedTarget = rawSpeed * rawSpeed;
+    const speedFromPointer = rawSpeed * rawSpeed;
+    const speedTarget = Math.max(speedFromPointer, scrollInjectedSpeed);
+    scrollInjectedSpeed *= 0.85;
     smoothedSpeed += (speedTarget - smoothedSpeed) * (speedTarget > smoothedSpeed ? 0.25 : 0.035);
 
     // ========== RENDER ==========
     ctx.clearRect(0, 0, w, h);
 
-    // --- Base mesh edges (with Y-fade) ---
     ctx.strokeStyle = `rgba(${edgeRGB},${edgeAlpha})`;
     ctx.lineWidth = EDGE_BASE_WIDTH;
     ctx.beginPath();
@@ -232,7 +253,6 @@ function initMesh(
       }
     }
 
-    // --- Glow edges (blue): global angle sweep when moving, no cursor-local paint ---
     for (const e of edges) {
       const spatialPhase = fract(e.mx * SWEEP_SPATIAL_X + e.my * SWEEP_SPATIAL_Y);
       const blendedPhase =
@@ -255,7 +275,6 @@ function initMesh(
       ctx.stroke();
     }
 
-    // --- Vertex dots (Y-fade) ---
     for (let i = 0; i < pts.length; i++) {
       const fade = fadeAtY(pts[i].y);
       if (fade < 0.01) continue;
@@ -290,6 +309,8 @@ function initMesh(
     window.removeEventListener("touchmove", onTouchMove);
     window.removeEventListener("touchstart", onTouchMove);
     window.removeEventListener("touchend", onPointerLeave);
+    window.removeEventListener("scroll", onScroll);
+    io.disconnect();
     ro.disconnect();
   };
 }

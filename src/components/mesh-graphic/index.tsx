@@ -8,12 +8,30 @@ interface Node {
   basePosition: THREE.Vector3;
 }
 
+type MeshThemeRefs = {
+  pointsMat: THREE.ShaderMaterial;
+  linesMat: THREE.ShaderMaterial;
+};
+
 export default function MeshGraphic() {
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [isMobile, setIsMobile] = useState(false);
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
   const { resolvedTheme } = useTheme();
+  const themeRefs = useRef<MeshThemeRefs | null>(null);
+
+  useEffect(() => {
+    if (!themeRefs.current) return;
+    const isDark =
+      resolvedTheme === "dark" ||
+      (!resolvedTheme && window.matchMedia("(prefers-color-scheme: dark)").matches);
+    const color = new THREE.Color(isDark ? 0xffffff : 0x4b5563);
+    themeRefs.current.pointsMat.uniforms.color.value.copy(color);
+    themeRefs.current.pointsMat.uniforms.alphaMultiplier.value = isDark ? 0.35 : 0.2;
+    themeRefs.current.linesMat.uniforms.color.value.copy(color);
+    themeRefs.current.linesMat.uniforms.alphaMultiplier.value = isDark ? 0.9 : 0.7;
+  }, [resolvedTheme]);
 
   useEffect(() => {
     const checkMobile = () => {
@@ -256,6 +274,8 @@ export default function MeshGraphic() {
     const lines = new THREE.LineSegments(linesGeometry, linesMaterial);
     scene.add(lines);
 
+    themeRefs.current = { pointsMat: pointsMaterial, linesMat: linesMaterial };
+
     // Animation
     let animationId: number;
     let time = 0;
@@ -353,8 +373,8 @@ export default function MeshGraphic() {
 
     window.addEventListener("resize", handleResize);
 
-    // Cleanup
     return () => {
+      themeRefs.current = null;
       cancelAnimationFrame(animationId);
       window.removeEventListener("resize", handleResize);
 
@@ -364,7 +384,8 @@ export default function MeshGraphic() {
       linesMaterial.dispose();
       renderer.dispose();
     };
-  }, [isMobile, resolvedTheme, dimensions.width, dimensions.height]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- theme changes handled by separate effect
+  }, [isMobile, dimensions.width, dimensions.height]);
 
   return (
     <div

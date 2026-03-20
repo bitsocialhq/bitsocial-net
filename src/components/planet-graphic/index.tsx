@@ -92,6 +92,69 @@ function createMetallicRing(
   return geometry;
 }
 
+function resolveIsDark(theme: string | undefined): boolean {
+  return (
+    theme === "dark" ||
+    (!theme &&
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches)
+  );
+}
+
+function applyPlanetTheme(
+  refs: NonNullable<ReturnType<typeof usePlanetThemeRefs>["current"]>,
+  isDark: boolean,
+) {
+  const s = refs;
+  s.sphereMat.uniforms.topColor.value.set(isDark ? 0x2a4a80 : 0x1e4fd0);
+  s.sphereMat.uniforms.bottomColor.value.set(isDark ? 0x0f1f30 : 0x0a2440);
+  s.sphereMat.uniforms.glowColor.value.set(isDark ? 0x3a5a90 : 0x2d6ae0);
+  s.sphereMat.uniforms.fresnelIntensity.value = isDark ? 0.2 : 0.3;
+
+  const ringColor = isDark ? 0xa8aeb8 : 0xc0c0c0;
+  for (const mat of [s.ringMat, s.ring2Mat]) {
+    mat.color.set(ringColor);
+    mat.metalness = isDark ? 0.9 : 0.95;
+    mat.roughness = isDark ? 0.18 : 0.14;
+    mat.envMapIntensity = isDark ? 0.7 : 0.9;
+    mat.clearcoat = isDark ? 0.5 : 0.6;
+    mat.clearcoatRoughness = isDark ? 0.1 : 0.06;
+    mat.needsUpdate = true;
+  }
+
+  s.edgeLightL.intensity = isDark ? 0.65 : 0.75;
+  s.edgeLightR.intensity = isDark ? 0.65 : 0.75;
+  s.topLight.color.set(isDark ? 0x5a6a80 : 0x4a90d9);
+  s.topLight.intensity = isDark ? 0.5 : 0.7;
+
+  const ctx = s.envCanvas.getContext("2d");
+  if (ctx) {
+    const g = ctx.createLinearGradient(0, 0, 0, 64);
+    g.addColorStop(0, isDark ? "#6a7a8c" : "#778899");
+    g.addColorStop(0.4, isDark ? "#9aabbc" : "#ffffff");
+    g.addColorStop(0.6, isDark ? "#9aabbc" : "#ffffff");
+    g.addColorStop(1, isDark ? "#2c3d52" : "#334455");
+    ctx.fillStyle = g;
+    ctx.fillRect(0, 0, 64, 64);
+    s.envTex.needsUpdate = true;
+  }
+}
+
+type PlanetThemeRefs = {
+  sphereMat: THREE.ShaderMaterial;
+  ringMat: THREE.MeshPhysicalMaterial;
+  ring2Mat: THREE.MeshPhysicalMaterial;
+  edgeLightL: THREE.DirectionalLight;
+  edgeLightR: THREE.DirectionalLight;
+  topLight: THREE.DirectionalLight;
+  envTex: THREE.CanvasTexture;
+  envCanvas: HTMLCanvasElement;
+};
+
+function usePlanetThemeRefs() {
+  return useRef<PlanetThemeRefs | null>(null);
+}
+
 export default function PlanetGraphic() {
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -101,6 +164,13 @@ export default function PlanetGraphic() {
     return window.innerWidth < 768 || hardwareConcurrency < 4;
   });
   const { resolvedTheme } = useTheme();
+  const themeRefs = usePlanetThemeRefs();
+
+  // Update Three.js materials in-place when theme changes (no scene rebuild)
+  useEffect(() => {
+    if (!themeRefs.current) return;
+    applyPlanetTheme(themeRefs.current, resolveIsDark(resolvedTheme));
+  }, [resolvedTheme, themeRefs]);
 
   useEffect(() => {
     if (!canvasRef.current || !containerRef.current) return;
@@ -110,18 +180,14 @@ export default function PlanetGraphic() {
     const resizeDebounceMs = 140;
     const getIsMobile = (width: number) => width < 768 || (navigator.hardwareConcurrency || 4) < 4;
 
-    // Check if dark mode
-    const isDark =
-      resolvedTheme === "dark" ||
-      (!resolvedTheme && window.matchMedia("(prefers-color-scheme: dark)").matches);
+    const isDark = resolveIsDark(resolvedTheme);
 
     // Scene setup
     const scene = new THREE.Scene();
-    // Adjust FOV and camera position for mobile to show more of the scene
     const initialIsMobile = getIsMobile(container.clientWidth);
     setIsMobile((prev) => (prev === initialIsMobile ? prev : initialIsMobile));
-    const fov = initialIsMobile ? 65 : 45; // Wider FOV on mobile for more visibility
-    const cameraZ = initialIsMobile ? 20 : 17; // Further back on mobile to zoom out
+    const fov = initialIsMobile ? 65 : 45;
+    const cameraZ = initialIsMobile ? 20 : 17;
     const camera = new THREE.PerspectiveCamera(
       fov,
       container.clientWidth / container.clientHeight,
@@ -131,7 +197,6 @@ export default function PlanetGraphic() {
     camera.position.set(0, 1, cameraZ);
     camera.lookAt(0, -2, 0);
 
-    // Renderer
     const renderer = new THREE.WebGLRenderer({
       canvas,
       alpha: true,
@@ -140,65 +205,48 @@ export default function PlanetGraphic() {
     });
     renderer.setSize(container.clientWidth, container.clientHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    renderer.setClearColor(0x000000, 0); // Transparent background but objects are opaque
+    renderer.setClearColor(0x000000, 0);
 
-    // Lights for metallic reflections
     const ambientLight = new THREE.AmbientLight(0xffffff, 0.2);
     scene.add(ambientLight);
 
-    // Key light (main light from top-right)
     const keyLight = new THREE.DirectionalLight(0xffffff, 1.0);
     keyLight.position.set(5, 8, 10);
     scene.add(keyLight);
 
-    // Fill light (softer, from left)
     const fillLight = new THREE.DirectionalLight(0x8899aa, 0.5);
     fillLight.position.set(-8, 2, 5);
     scene.add(fillLight);
 
-    // Rim light (from behind for edge highlights)
     const rimLight = new THREE.DirectionalLight(0xffffff, 0.4);
     rimLight.position.set(0, -5, -10);
     scene.add(rimLight);
 
-    // Side lights to create chrome-like edge highlights on rings
     const edgeLightColor = 0xf5f7ff;
-    const edgeLightIntensity = isDark ? 0.65 : 0.75;
-    const edgeLightLeft = new THREE.DirectionalLight(edgeLightColor, edgeLightIntensity);
+    const edgeLightLeft = new THREE.DirectionalLight(edgeLightColor, isDark ? 0.65 : 0.75);
     edgeLightLeft.position.set(-12, 0, 6);
     scene.add(edgeLightLeft);
 
-    const edgeLightRight = new THREE.DirectionalLight(edgeLightColor, edgeLightIntensity);
+    const edgeLightRight = new THREE.DirectionalLight(edgeLightColor, isDark ? 0.65 : 0.75);
     edgeLightRight.position.set(12, 1, 6);
     scene.add(edgeLightRight);
 
-    // Top light for sphere gradient - muted in dark mode
-    const topLightColor = isDark ? 0x5a6a80 : 0x4a90d9;
-    const topLightIntensity = isDark ? 0.5 : 0.7;
-    const topLight = new THREE.DirectionalLight(topLightColor, topLightIntensity);
+    const topLight = new THREE.DirectionalLight(isDark ? 0x5a6a80 : 0x4a90d9, isDark ? 0.5 : 0.7);
     topLight.position.set(0, 15, 5);
     scene.add(topLight);
 
-    // Large planet sphere - BIGGER
     const sphereRadius = 7;
-    const sphereY = -5; // Position lower so it's partially cut off at bottom
+    const sphereY = -5;
     const sphereGeometry = new THREE.SphereGeometry(sphereRadius, 128, 128);
-
-    // Custom shader for gradient effect (bright blue on top, darker on bottom)
-    // Muted colors in dark mode
-    const sphereTopColor = isDark ? 0x2a4a80 : 0x1e4fd0;
-    const sphereBottomColor = isDark ? 0x0f1f30 : 0x0a2440;
-    const sphereGlowColor = isDark ? 0x3a5a90 : 0x2d6ae0;
-    const sphereFresnelIntensity = isDark ? 0.2 : 0.3;
 
     const sphereMaterial = new THREE.ShaderMaterial({
       transparent: false,
       depthWrite: true,
       uniforms: {
-        topColor: { value: new THREE.Color(sphereTopColor) },
-        bottomColor: { value: new THREE.Color(sphereBottomColor) },
-        glowColor: { value: new THREE.Color(sphereGlowColor) },
-        fresnelIntensity: { value: sphereFresnelIntensity },
+        topColor: { value: new THREE.Color(isDark ? 0x2a4a80 : 0x1e4fd0) },
+        bottomColor: { value: new THREE.Color(isDark ? 0x0f1f30 : 0x0a2440) },
+        glowColor: { value: new THREE.Color(isDark ? 0x3a5a90 : 0x2d6ae0) },
+        fresnelIntensity: { value: isDark ? 0.2 : 0.3 },
       },
       vertexShader: `
         varying vec3 vNormal;
@@ -223,13 +271,11 @@ export default function PlanetGraphic() {
         varying vec2 vUv;
         
         void main() {
-          // Gradient from top to bottom
           float gradientFactor = (vPosition.y + 7.0) / 14.0;
           gradientFactor = clamp(gradientFactor, 0.0, 1.0);
           
           vec3 baseColor = mix(bottomColor, topColor, gradientFactor);
           
-          // Fresnel effect for subtle edge glow
           vec3 viewDirection = normalize(cameraPosition - vPosition);
           float fresnel = pow(1.0 - abs(dot(vNormal, viewDirection)), 2.0);
           
@@ -244,37 +290,27 @@ export default function PlanetGraphic() {
     sphere.position.set(0, sphereY, 0);
     scene.add(sphere);
 
-    // Ring parameters - closer to the sphere like the logo
-    const ringRadius = 8.2; // Closer to sphere (sphere is 7 radius)
+    const ringRadius = 8.2;
     const ringTubeWidthMobile = 0.5;
     const ringTubeWidthDesktop = 0.3;
     const getRingTubeWidth = (mobile: boolean) =>
       mobile ? ringTubeWidthMobile : ringTubeWidthDesktop;
-    const tubeHeight = 0.2; // Height (thickness) of the ring
+    const tubeHeight = 0.2;
 
     let ringLayoutIsMobile = initialIsMobile;
     let tubeWidth = getRingTubeWidth(initialIsMobile);
 
-    // Metallic material for rings (silver/chrome look) - keep gray, boost shine
-    const ringColor = isDark ? 0xa8aeb8 : 0xc0c0c0;
-    const ringMetalness = isDark ? 0.9 : 0.95;
-    const ringRoughness = isDark ? 0.18 : 0.14;
-    const ringEnvMapIntensity = isDark ? 0.7 : 0.9;
-    const ringClearcoat = isDark ? 0.5 : 0.6;
-    const ringClearcoatRoughness = isDark ? 0.1 : 0.06;
-
     const ringMaterial = new THREE.MeshPhysicalMaterial({
-      color: ringColor,
-      metalness: ringMetalness,
-      roughness: ringRoughness,
-      envMapIntensity: ringEnvMapIntensity,
-      clearcoat: ringClearcoat,
-      clearcoatRoughness: ringClearcoatRoughness,
+      color: isDark ? 0xa8aeb8 : 0xc0c0c0,
+      metalness: isDark ? 0.9 : 0.95,
+      roughness: isDark ? 0.18 : 0.14,
+      envMapIntensity: isDark ? 0.7 : 0.9,
+      clearcoat: isDark ? 0.5 : 0.6,
+      clearcoatRoughness: isDark ? 0.1 : 0.06,
       depthWrite: true,
       side: THREE.DoubleSide,
     });
 
-    // Create an environment map for reflections
     const envMapSize = 64;
     const envMapCanvas = document.createElement("canvas");
     envMapCanvas.width = envMapSize;
@@ -284,16 +320,11 @@ export default function PlanetGraphic() {
       console.error("Failed to get 2D context from canvas for environment map generation");
       return;
     }
-    // Environment map gradient - muted in dark mode
-    const envGradientTop = isDark ? "#6a7a8c" : "#778899";
-    const envGradientMid = isDark ? "#9aabbc" : "#ffffff";
-    const envGradientBottom = isDark ? "#2c3d52" : "#334455";
-
     const gradient = envCtx.createLinearGradient(0, 0, 0, envMapSize);
-    gradient.addColorStop(0, envGradientTop);
-    gradient.addColorStop(0.4, envGradientMid);
-    gradient.addColorStop(0.6, envGradientMid);
-    gradient.addColorStop(1, envGradientBottom);
+    gradient.addColorStop(0, isDark ? "#6a7a8c" : "#778899");
+    gradient.addColorStop(0.4, isDark ? "#9aabbc" : "#ffffff");
+    gradient.addColorStop(0.6, isDark ? "#9aabbc" : "#ffffff");
+    gradient.addColorStop(1, isDark ? "#2c3d52" : "#334455");
     envCtx.fillStyle = gradient;
     envCtx.fillRect(0, 0, envMapSize, envMapSize);
     const envTexture = new THREE.CanvasTexture(envMapCanvas);
@@ -341,7 +372,19 @@ export default function PlanetGraphic() {
 
     let ring2Geometry = createMetallicRing(ringRadius, tubeWidth, tubeHeight, 128);
     const ring2Material = ringMaterial.clone();
+    ring2Material.envMap = envTexture;
     const ring2 = new THREE.Mesh(ring2Geometry, ring2Material);
+
+    themeRefs.current = {
+      sphereMat: sphereMaterial,
+      ringMat: ringMaterial,
+      ring2Mat: ring2Material,
+      edgeLightL: edgeLightLeft,
+      edgeLightR: edgeLightRight,
+      topLight,
+      envTex: envTexture,
+      envCanvas: envMapCanvas,
+    };
     ring2.rotation.set(ring2RotX, ring2RotY, ring2RotZ);
     ring2.position.set(ring2PosX, sphereY + ring2PosY, ring2PosZ);
     scene.add(ring2);
@@ -466,8 +509,8 @@ export default function PlanetGraphic() {
     resizeObserver.observe(container);
     window.addEventListener("resize", scheduleResize, { passive: true });
 
-    // Cleanup
     return () => {
+      themeRefs.current = null;
       cancelAnimationFrame(animationId);
       if (resizeTimeoutId) {
         clearTimeout(resizeTimeoutId);
@@ -489,7 +532,8 @@ export default function PlanetGraphic() {
 
       renderer.dispose();
     };
-  }, [resolvedTheme]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- theme changes handled by separate effect
+  }, []);
 
   return (
     <div

@@ -30,43 +30,31 @@ export default function HamburgerButton({ isOpen, onClick }: HamburgerButtonProp
     >
       <div className="relative h-5 w-5 flex items-center justify-center">
         <motion.span
-          className="absolute h-0.5 w-5 bg-muted-foreground rounded-full"
+          className="absolute h-0.5 w-5 bg-muted-foreground rounded-full will-change-transform"
           initial={{ rotate: 0, y: -6 }}
           animate={{
             rotate: isOpen ? 45 : 0,
             y: isOpen ? 0 : -6,
           }}
-          transition={{
-            type: "spring",
-            stiffness: 300,
-            damping: 20,
-          }}
+          transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
         />
         <motion.span
-          className="absolute h-0.5 w-5 bg-muted-foreground rounded-full"
+          className="absolute h-0.5 w-5 bg-muted-foreground rounded-full will-change-transform"
           initial={{ opacity: 1, scale: 1 }}
           animate={{
             opacity: isOpen ? 0 : 1,
             scale: isOpen ? 0 : 1,
           }}
-          transition={{
-            type: "spring",
-            stiffness: 300,
-            damping: 20,
-          }}
+          transition={{ duration: 0.25, ease: [0.4, 0, 0.2, 1] }}
         />
         <motion.span
-          className="absolute h-0.5 w-5 bg-muted-foreground rounded-full"
+          className="absolute h-0.5 w-5 bg-muted-foreground rounded-full will-change-transform"
           initial={{ rotate: 0, y: 6 }}
           animate={{
             rotate: isOpen ? -45 : 0,
             y: isOpen ? 0 : 6,
           }}
-          transition={{
-            type: "spring",
-            stiffness: 300,
-            damping: 20,
-          }}
+          transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
         />
       </div>
     </Button>

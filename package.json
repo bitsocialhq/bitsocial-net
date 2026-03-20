@@ -7,7 +7,7 @@
   "author": "Bitsocial Forge",
   "type": "module",
   "scripts": {
-    "dev": "portless bitsocial vite",
+    "start": "portless bitsocial vite",
     "build": "tsgo --noEmit --project tsconfig.json && vite build",
     "lint": "oxlint --config oxlint.json --react-plugin",
     "lint:fix": "oxlint --config oxlint.json --fix --react-plugin",

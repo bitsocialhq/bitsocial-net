@@ -103,7 +103,7 @@ export default function Hero() {
   const graphicsMode = useGraphicsMode();
   const showGraphics = graphicsMode === "full";
   const highlightedIndex = useTaglineIntro();
-  const activeLanguage = i18n.resolvedLanguage ?? i18n.language ?? i18n.languages[0] ?? "";
+  const activeLanguage = i18n.resolvedLanguage ?? i18n.language ?? i18n.languages?.[0] ?? "";
   const isEnglishTagline = activeLanguage.toLowerCase().startsWith("en");
 
   const staticFallback = (

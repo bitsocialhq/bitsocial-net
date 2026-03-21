@@ -13,15 +13,23 @@ type MeshThemeRefs = {
   linesMat: THREE.ShaderMaterial;
 };
 
+const MOBILE_BREAKPOINT = 768;
+const LOW_END_CONCURRENCY = 4;
+const CONNECTION_SEARCH_PADDING = 0.75;
+
+function getIsMobileLayout(width: number) {
+  const hardwareConcurrency =
+    typeof navigator === "undefined" ? LOW_END_CONCURRENCY : navigator.hardwareConcurrency || 4;
+  return width < MOBILE_BREAKPOINT || hardwareConcurrency < LOW_END_CONCURRENCY;
+}
+
 export default function MeshGraphic() {
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [isMobile, setIsMobile] = useState(() => {
     if (typeof window === "undefined") return false;
-    const hardwareConcurrency = navigator.hardwareConcurrency || 4;
-    return window.innerWidth < 768 || hardwareConcurrency < 4;
+    return getIsMobileLayout(window.innerWidth);
   });
-  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
   const { resolvedTheme } = useTheme();
   const themeRefs = useRef<MeshThemeRefs | null>(null);
 
@@ -38,49 +46,16 @@ export default function MeshGraphic() {
   }, [resolvedTheme]);
 
   useEffect(() => {
-    const checkMobile = () => {
-      const width = window.innerWidth;
-      const hardwareConcurrency = navigator.hardwareConcurrency || 4;
-      setIsMobile(width < 768 || hardwareConcurrency < 4);
-    };
-
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
-  }, []);
-
-  // Debounced resize handler to trigger scene rebuild
-  useEffect(() => {
-    let timeoutId: ReturnType<typeof setTimeout>;
-
-    const updateDimensions = () => {
-      if (!containerRef.current) return;
-      setDimensions({
-        width: containerRef.current.clientWidth,
-        height: containerRef.current.clientHeight,
-      });
-    };
-
-    const handleResize = () => {
-      clearTimeout(timeoutId);
-      timeoutId = setTimeout(updateDimensions, 250);
-    };
-
-    // Set initial dimensions
-    updateDimensions();
-
-    window.addEventListener("resize", handleResize);
-    return () => {
-      clearTimeout(timeoutId);
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
-  useEffect(() => {
     if (!canvasRef.current || !containerRef.current) return;
 
     const canvas = canvasRef.current;
     const container = containerRef.current;
+    const sceneIsMobile = getIsMobileLayout(container.clientWidth || window.innerWidth);
+
+    if (sceneIsMobile !== isMobile) {
+      setIsMobile(sceneIsMobile);
+      return;
+    }
 
     // Scene setup
     const scene = new THREE.Scene();
@@ -102,7 +77,7 @@ export default function MeshGraphic() {
       alpha: true,
       antialias: !isMobile,
     });
-    renderer.setSize(container.clientWidth, container.clientHeight);
+    renderer.setSize(container.clientWidth, container.clientHeight, false);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
     // Mesh color - adapts to theme
@@ -128,6 +103,8 @@ export default function MeshGraphic() {
     const nodeCount = isMobile ? 80 : 200;
     const connectionDistance = isMobile ? 6 : 5; // Slightly larger on mobile to maintain connectivity with fewer nodes
     const connectionDistanceSq = connectionDistance * connectionDistance;
+    const candidateConnectionDistance = connectionDistance + CONNECTION_SEARCH_PADDING;
+    const candidateConnectionDistanceSq = candidateConnectionDistance * candidateConnectionDistance;
     const nodeSize = isMobile ? 0.03 : 0.05;
 
     // Create nodes evenly distributed across entire U-shape area
@@ -192,6 +169,7 @@ export default function MeshGraphic() {
     }
 
     const pointPositionAttribute = new THREE.BufferAttribute(pointPositions, 3);
+    pointPositionAttribute.setUsage(THREE.DynamicDrawUsage);
     pointsGeometry.setAttribute("position", pointPositionAttribute);
 
     // Custom shader for hollow circle nodes with center dot
@@ -242,16 +220,35 @@ export default function MeshGraphic() {
     const points = new THREE.Points(pointsGeometry, pointsMaterial);
     scene.add(points);
 
+    const candidatePairs: number[] = [];
+    for (let i = 0; i < nodeCount; i++) {
+      const nodeA = nodes[i].basePosition;
+      for (let j = i + 1; j < nodeCount; j++) {
+        const nodeB = nodes[j].basePosition;
+        const dx = nodeA.x - nodeB.x;
+        const dy = nodeA.y - nodeB.y;
+        const dz = nodeA.z - nodeB.z;
+        const distSq = dx * dx + dy * dy + dz * dz;
+
+        if (distSq < candidateConnectionDistanceSq) {
+          candidatePairs.push(i, j);
+        }
+      }
+    }
+
     // Create lines geometry for connections
-    const maxConnections = nodeCount * 6; // Max lines
+    const maxConnections = candidatePairs.length / 2;
     const linePositions = new Float32Array(maxConnections * 6); // 2 points per line, 3 coords each
     const lineAlphas = new Float32Array(maxConnections * 2);
 
     const linesGeometry = new THREE.BufferGeometry();
     const linePositionAttribute = new THREE.BufferAttribute(linePositions, 3);
     const lineAlphaAttribute = new THREE.BufferAttribute(lineAlphas, 1);
+    linePositionAttribute.setUsage(THREE.DynamicDrawUsage);
+    lineAlphaAttribute.setUsage(THREE.DynamicDrawUsage);
     linesGeometry.setAttribute("position", linePositionAttribute);
     linesGeometry.setAttribute("alpha", lineAlphaAttribute);
+    linesGeometry.setDrawRange(0, 0);
 
     // Custom shader for fading lines
     const linesMaterial = new THREE.ShaderMaterial({
@@ -296,49 +293,34 @@ export default function MeshGraphic() {
       const positions = linesGeometry.attributes.position.array as Float32Array;
       const alphas = linesGeometry.attributes.alpha.array as Float32Array;
 
-      for (let i = 0; i < nodeCount; i++) {
-        const nodeA = nodes[i];
-        for (let j = i + 1; j < nodeCount; j++) {
-          const nodeB = nodes[j];
-          const dx = nodeA.position.x - nodeB.position.x;
-          const dy = nodeA.position.y - nodeB.position.y;
-          const dz = nodeA.position.z - nodeB.position.z;
-          const distSq = dx * dx + dy * dy + dz * dz;
+      for (let pairIndex = 0; pairIndex < candidatePairs.length; pairIndex += 2) {
+        const nodeA = nodes[candidatePairs[pairIndex]];
+        const nodeB = nodes[candidatePairs[pairIndex + 1]];
+        const dx = nodeA.position.x - nodeB.position.x;
+        const dy = nodeA.position.y - nodeB.position.y;
+        const dz = nodeA.position.z - nodeB.position.z;
+        const distSq = dx * dx + dy * dy + dz * dz;
 
-          if (distSq < connectionDistanceSq && lineIndex < maxConnections) {
-            const idx = lineIndex * 6;
-            const alphaIdx = lineIndex * 2;
+        if (distSq >= connectionDistanceSq) continue;
 
-            positions[idx] = nodeA.position.x;
-            positions[idx + 1] = nodeA.position.y;
-            positions[idx + 2] = nodeA.position.z;
-            positions[idx + 3] = nodeB.position.x;
-            positions[idx + 4] = nodeB.position.y;
-            positions[idx + 5] = nodeB.position.z;
+        const idx = lineIndex * 6;
+        const alphaIdx = lineIndex * 2;
 
-            const alpha = 1 - Math.sqrt(distSq) / connectionDistance;
-            alphas[alphaIdx] = alpha;
-            alphas[alphaIdx + 1] = alpha;
+        positions[idx] = nodeA.position.x;
+        positions[idx + 1] = nodeA.position.y;
+        positions[idx + 2] = nodeA.position.z;
+        positions[idx + 3] = nodeB.position.x;
+        positions[idx + 4] = nodeB.position.y;
+        positions[idx + 5] = nodeB.position.z;
 
-            lineIndex++;
-          }
-        }
+        const alpha = 1 - Math.sqrt(distSq) / connectionDistance;
+        alphas[alphaIdx] = alpha;
+        alphas[alphaIdx + 1] = alpha;
+
+        lineIndex++;
       }
 
-      // Clear remaining lines
-      for (let i = lineIndex; i < maxConnections; i++) {
-        const idx = i * 6;
-        const alphaIdx = i * 2;
-        positions[idx] = 0;
-        positions[idx + 1] = 0;
-        positions[idx + 2] = 0;
-        positions[idx + 3] = 0;
-        positions[idx + 4] = 0;
-        positions[idx + 5] = 0;
-        alphas[alphaIdx] = 0;
-        alphas[alphaIdx + 1] = 0;
-      }
-
+      linesGeometry.setDrawRange(0, lineIndex * 2);
       linesGeometry.attributes.position.needsUpdate = true;
       linesGeometry.attributes.alpha.needsUpdate = true;
     };
@@ -399,26 +381,45 @@ export default function MeshGraphic() {
 
     animate();
 
-    // Handle resize
+    let resizeTimeoutId: ReturnType<typeof setTimeout> | null = null;
     const handleResize = () => {
       if (!container) return;
       const width = container.clientWidth;
       const height = container.clientHeight;
+      const nextIsMobile = getIsMobileLayout(width);
+
+      if (nextIsMobile !== isMobile) {
+        setIsMobile(nextIsMobile);
+        return;
+      }
 
       camera.aspect = width / height;
       camera.updateProjectionMatrix();
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-      renderer.setSize(width, height);
+      renderer.setSize(width, height, false);
     };
 
-    window.addEventListener("resize", handleResize);
+    const scheduleResize = () => {
+      if (resizeTimeoutId) {
+        clearTimeout(resizeTimeoutId);
+      }
+      resizeTimeoutId = setTimeout(handleResize, 250);
+    };
+
+    const resizeObserver = new ResizeObserver(scheduleResize);
+    resizeObserver.observe(container);
+    window.addEventListener("resize", scheduleResize, { passive: true });
 
     return () => {
       themeRefs.current = null;
       cancelAnimationFrame(animationId);
       document.removeEventListener("visibilitychange", handleVisibilityChange);
       intersectionObserver.disconnect();
-      window.removeEventListener("resize", handleResize);
+      if (resizeTimeoutId) {
+        clearTimeout(resizeTimeoutId);
+      }
+      resizeObserver.disconnect();
+      window.removeEventListener("resize", scheduleResize);
 
       pointsGeometry.dispose();
       pointsMaterial.dispose();
@@ -427,7 +428,7 @@ export default function MeshGraphic() {
       renderer.dispose();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps -- theme changes handled by separate effect
-  }, [isMobile, dimensions.width, dimensions.height]);
+  }, [isMobile]);
 
   return (
     <div

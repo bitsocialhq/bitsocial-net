@@ -1,4 +1,4 @@
-import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
+import { m, AnimatePresence, useReducedMotion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { triggerFeatureGlow, triggerTaglineGlow } from "@/lib/utils";
@@ -155,7 +155,7 @@ export default function Features() {
   return (
     <section className="py-24 px-6 md:-mt-32 md:pt-32">
       <div className="max-w-7xl mx-auto">
-        <motion.h2
+        <m.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -163,7 +163,7 @@ export default function Features() {
           className="text-4xl md:text-5xl font-display font-normal text-center mb-16 text-muted-foreground"
         >
           Core Features
-        </motion.h2>
+        </m.h2>
 
         <div>
           {features.map((feature, index) => {
@@ -176,7 +176,7 @@ export default function Features() {
                 id={feature.id}
                 className={`scroll-mt-24 ${index < features.length - 1 ? "mb-12 md:mb-0" : ""}`}
               >
-                <motion.div
+                <m.div
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -212,12 +212,12 @@ export default function Features() {
                       {isExpanded ? "Show Less" : "Learn More"}
                     </button>
                   </div>
-                </motion.div>
+                </m.div>
 
                 {/* Expanded Content */}
                 <AnimatePresence>
                   {isExpanded && (
-                    <motion.div
+                    <m.div
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
@@ -231,7 +231,7 @@ export default function Features() {
                           </p>
                         </div>
                       </div>
-                    </motion.div>
+                    </m.div>
                   )}
                 </AnimatePresence>
 
@@ -245,7 +245,7 @@ export default function Features() {
                       className="h-full w-full rtl:-scale-x-100"
                       fill="none"
                     >
-                      <motion.path
+                      <m.path
                         className="feature-connector-path"
                         d={featureConnectorPathD(isEven)}
                         strokeWidth={2}

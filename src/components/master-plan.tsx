@@ -1,4 +1,4 @@
-import { motion, AnimatePresence, useInView } from "framer-motion";
+import { m, AnimatePresence, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 
 const phases = [
@@ -45,7 +45,7 @@ export default function MasterPlan() {
   return (
     <section className="py-24 px-6">
       <div className="max-w-7xl mx-auto">
-        <motion.h2
+        <m.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -53,12 +53,12 @@ export default function MasterPlan() {
           className="text-4xl md:text-5xl font-display font-normal text-center mb-20 text-muted-foreground"
         >
           Master Plan
-        </motion.h2>
+        </m.h2>
 
         <div ref={timelineRef} className="relative w-full">
           <div className="relative w-full">
             {/* One centered timeline element so the solid and dashed tail stay perfectly aligned and animate together. */}
-            <motion.div
+            <m.div
               initial={{ scaleY: 0, opacity: 0 }}
               animate={showTimeline ? { scaleY: 1, opacity: 1 } : undefined}
               transition={{ delay: 0.5, duration: 1.5, ease: [0.4, 0, 0.2, 1] }}
@@ -90,11 +90,11 @@ export default function MasterPlan() {
                   strokeDasharray="2 4"
                 />
               </svg>
-            </motion.div>
+            </m.div>
 
             <div className="space-y-16 md:space-y-20">
               {phases.map((item, index) => (
-                <motion.div
+                <m.div
                   key={item.phase}
                   initial={{ opacity: 0, x: index % 2 === 0 ? -40 : 40 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -128,7 +128,7 @@ export default function MasterPlan() {
 
                   {/* Spacer for alternating layout */}
                   <div className="hidden md:block flex-1" />
-                </motion.div>
+                </m.div>
               ))}
             </div>
 
@@ -138,7 +138,7 @@ export default function MasterPlan() {
 
           {/* End logo — fades in when the vertical line finishes drawing (matches timeline delay + duration). */}
           <div className="flex justify-center mt-2">
-            <motion.button
+            <m.button
               initial={{ opacity: 0, scale: 0.85 }}
               animate={showTimeline ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.85 }}
               transition={{
@@ -155,7 +155,7 @@ export default function MasterPlan() {
                 alt="Logo"
                 className="w-8 h-8 transition-all duration-300 hover:drop-shadow-[0_0_12px_rgba(37,99,235,0.8)]"
               />
-            </motion.button>
+            </m.button>
           </div>
         </div>
       </div>
@@ -163,14 +163,14 @@ export default function MasterPlan() {
       {/* GIF overlay */}
       <AnimatePresence>
         {showGif && (
-          <motion.div
+          <m.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm"
             onClick={() => setShowGif(false)}
           >
-            <motion.img
+            <m.img
               src="https://media1.tenor.com/m/zI1Evz0Qc24AAAAd/spongebob-squarepants-nickelodeon.gif"
               alt="Spongebob"
               className="max-w-[90vw] max-h-[90vh] cursor-pointer"
@@ -182,7 +182,7 @@ export default function MasterPlan() {
               animate={{ scale: 1 }}
               transition={{ duration: 0.3 }}
             />
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
     </section>

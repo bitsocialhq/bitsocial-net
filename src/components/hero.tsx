@@ -8,7 +8,7 @@ import {
   useRef,
   useState,
 } from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Trans, useTranslation } from "react-i18next";
 import { useTheme } from "next-themes";
@@ -149,7 +149,7 @@ export default function Hero() {
 
   return (
     <section className="min-h-[100svh] md:min-h-screen flex flex-col items-center justify-start pt-28 md:pt-40 px-6 relative overflow-x-hidden overflow-y-visible">
-      <motion.div
+      <m.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: -20 }}
         transition={{ delay: 0.3, duration: 0.6 }}
@@ -209,9 +209,9 @@ export default function Hero() {
             />
           </HighlightIndexCtx.Provider>
         </p>
-      </motion.div>
+      </m.div>
 
-      <motion.div
+      <m.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: -20 }}
         transition={{ delay: 0.5, duration: 0.6 }}
@@ -229,13 +229,13 @@ export default function Hero() {
         >
           {t("hero.exploreApps")}
         </Link>
-      </motion.div>
+      </m.div>
 
       {/* Planet and Mesh graphics */}
       {showGraphics ? (
         <div className="mt-4 md:mt-6 relative -mx-6 w-[calc(100%+3rem)] pointer-events-none overscroll-none touch-pan-y">
           {/* P2P Mesh Network - behind the planet */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.8, duration: 1.2 }}
@@ -244,10 +244,10 @@ export default function Hero() {
             <Suspense fallback={staticFallback}>
               <MeshGraphic />
             </Suspense>
-          </motion.div>
+          </m.div>
 
           {/* Planet animation with parallax scroll */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.7, duration: 0.6 }}
@@ -256,16 +256,16 @@ export default function Hero() {
             <Suspense fallback={staticFallback}>
               <PlanetGraphic />
             </Suspense>
-          </motion.div>
+          </m.div>
         </div>
       ) : (
-        <motion.div
+        <m.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.7, duration: 0.8 }}
         >
           {staticFallback}
-        </motion.div>
+        </m.div>
       )}
 
       {/* Bottom fade gradient - seamless transition to next section */}

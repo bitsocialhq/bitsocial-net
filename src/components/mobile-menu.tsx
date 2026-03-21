@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -10,7 +10,7 @@ export default function MobileMenu({ isOpen, children, onExitComplete }: MobileM
   return (
     <AnimatePresence onExitComplete={onExitComplete}>
       {isOpen && (
-        <motion.div
+        <m.div
           initial={{ opacity: 0, height: 0 }}
           animate={{ opacity: 1, height: "auto" }}
           exit={{ opacity: 0, height: 0 }}
@@ -20,7 +20,7 @@ export default function MobileMenu({ isOpen, children, onExitComplete }: MobileM
           }}
           className="overflow-hidden md:hidden"
         >
-          <motion.nav
+          <m.nav
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
@@ -31,8 +31,8 @@ export default function MobileMenu({ isOpen, children, onExitComplete }: MobileM
             className="max-w-7xl mx-auto px-4 py-6 flex flex-col gap-4"
           >
             {children}
-          </motion.nav>
-        </motion.div>
+          </m.nav>
+        </m.div>
       )}
     </AnimatePresence>
   );

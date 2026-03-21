@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { useRef } from "react";
 import { Button } from "@/components/ui/button";
 
@@ -29,7 +29,7 @@ export default function HamburgerButton({ isOpen, onClick }: HamburgerButtonProp
       aria-expanded={isOpen}
     >
       <div className="relative h-5 w-5 flex items-center justify-center">
-        <motion.span
+        <m.span
           className="absolute h-0.5 w-5 bg-muted-foreground rounded-full will-change-transform"
           initial={{ rotate: 0, y: -6 }}
           animate={{
@@ -38,7 +38,7 @@ export default function HamburgerButton({ isOpen, onClick }: HamburgerButtonProp
           }}
           transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
         />
-        <motion.span
+        <m.span
           className="absolute h-0.5 w-5 bg-muted-foreground rounded-full will-change-transform"
           initial={{ opacity: 1, scale: 1 }}
           animate={{
@@ -47,7 +47,7 @@ export default function HamburgerButton({ isOpen, onClick }: HamburgerButtonProp
           }}
           transition={{ duration: 0.25, ease: [0.4, 0, 0.2, 1] }}
         />
-        <motion.span
+        <m.span
           className="absolute h-0.5 w-5 bg-muted-foreground rounded-full will-change-transform"
           initial={{ rotate: 0, y: 6 }}
           animate={{

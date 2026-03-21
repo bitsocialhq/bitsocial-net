@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { cn } from "@/lib/utils";
 import { ThemeToggle } from "./theme-toggle";
@@ -96,7 +96,7 @@ export default function Topbar() {
   };
 
   return (
-    <motion.nav
+    <m.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{
@@ -194,6 +194,6 @@ export default function Topbar() {
           </div>
         </MobileMenu>
       </div>
-    </motion.nav>
+    </m.nav>
   );
 }

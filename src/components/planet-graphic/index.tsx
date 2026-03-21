@@ -203,7 +203,7 @@ export default function PlanetGraphic() {
       antialias: !initialIsMobile,
       premultipliedAlpha: false,
     });
-    renderer.setSize(container.clientWidth, container.clientHeight);
+    renderer.setSize(container.clientWidth, container.clientHeight, false);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.setClearColor(0x000000, 0);
 
@@ -510,7 +510,7 @@ export default function PlanetGraphic() {
       camera.position.set(0, 1, nextCameraZ);
       camera.updateProjectionMatrix();
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-      renderer.setSize(width, height);
+      renderer.setSize(width, height, false);
 
       // Ring cross-section matches mobile vs desktop layout; rebuild only when crossing breakpoint.
       if (isMobileNow !== ringLayoutIsMobile) {

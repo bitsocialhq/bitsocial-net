@@ -78,10 +78,16 @@ export function startVite(host, port) {
     }
   };
 
-  process.on("SIGINT", () => forwardSignal("SIGINT"));
-  process.on("SIGTERM", () => forwardSignal("SIGTERM"));
+  const onSigint = () => forwardSignal("SIGINT");
+  const onSigterm = () => forwardSignal("SIGTERM");
+
+  process.on("SIGINT", onSigint);
+  process.on("SIGTERM", onSigterm);
 
   child.on("exit", (code, signal) => {
+    process.off("SIGINT", onSigint);
+    process.off("SIGTERM", onSigterm);
+
     if (signal) {
       process.kill(process.pid, signal);
       return;

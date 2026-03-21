@@ -123,8 +123,8 @@ function waitForBoot(device) {
   }
 }
 
-function openUrl(port) {
-  const result = runXcrun(["simctl", "openurl", "booted", `http://localhost:${port}`]);
+function openUrl(simulator, port) {
+  const result = runXcrun(["simctl", "openurl", simulator.udid, `http://localhost:${port}`]);
 
   if (result.status !== 0) {
     fail(
@@ -161,7 +161,7 @@ const child = startVite(host, port);
 
 try {
   await waitForPort(host, port);
-  openUrl(port);
+  openUrl(simulator, port);
 } catch (error) {
   child.kill("SIGTERM");
   fail(error instanceof Error ? error.message : String(error));

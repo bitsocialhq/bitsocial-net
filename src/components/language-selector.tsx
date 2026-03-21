@@ -44,25 +44,37 @@ const languages = [
   { code: "zh", name: "中文" },
 ];
 
+type LanguageEntry = (typeof languages)[number];
+
+const LANGUAGE_BY_CODE = new Map<string, LanguageEntry>(
+  languages.map((language) => [language.code, language]),
+);
+const DEFAULT_LANGUAGE = LANGUAGE_BY_CODE.get("en")!;
+
+function getLanguageEntry(code: string): LanguageEntry {
+  return LANGUAGE_BY_CODE.get(code) ?? DEFAULT_LANGUAGE;
+}
+
 export default function LanguageSelector({ mobile }: { mobile?: boolean }) {
   const { i18n, t } = useTranslation();
   const [open, setOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [activeIndex, setActiveIndex] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
+  const focusSearchAfterOpenTimerRef = useRef<number | null>(null);
   const optionRefs = useRef<Array<HTMLButtonElement | null>>([]);
 
-  const currentLanguage = languages.find((lang) => lang.code === i18n.language) || languages[6]; // Default to English
+  const currentLanguage = getLanguageEntry(i18n.language);
 
-  const filteredLanguages = useMemo(
-    () =>
-      languages.filter(
-        (lang) =>
-          lang.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          lang.code.toLowerCase().includes(searchQuery.toLowerCase()),
-      ),
-    [searchQuery],
-  );
+  const filteredLanguages = useMemo(() => {
+    const query = searchQuery.toLowerCase();
+    if (query === "") {
+      return languages;
+    }
+    return languages.filter(
+      (lang) => lang.name.toLowerCase().includes(query) || lang.code.toLowerCase().includes(query),
+    );
+  }, [searchQuery]);
   const effectiveActiveIndex =
     filteredLanguages.length === 0 ? -1 : Math.min(activeIndex, filteredLanguages.length - 1);
   const activeLanguage = effectiveActiveIndex >= 0 ? filteredLanguages[effectiveActiveIndex] : null;
@@ -75,14 +87,12 @@ export default function LanguageSelector({ mobile }: { mobile?: boolean }) {
   };
 
   useEffect(() => {
-    if (!open || mobile) return;
-
-    const focusTimer = window.setTimeout(() => {
-      inputRef.current?.focus();
-    }, 0);
-
-    return () => window.clearTimeout(focusTimer);
-  }, [open, mobile]);
+    return () => {
+      if (focusSearchAfterOpenTimerRef.current !== null) {
+        window.clearTimeout(focusSearchAfterOpenTimerRef.current);
+      }
+    };
+  }, []);
 
   useEffect(() => {
     if (!open || effectiveActiveIndex < 0) return;
@@ -90,6 +100,11 @@ export default function LanguageSelector({ mobile }: { mobile?: boolean }) {
   }, [effectiveActiveIndex, open]);
 
   const handleOpenChange = (nextOpen: boolean) => {
+    if (focusSearchAfterOpenTimerRef.current !== null) {
+      window.clearTimeout(focusSearchAfterOpenTimerRef.current);
+      focusSearchAfterOpenTimerRef.current = null;
+    }
+
     setOpen(nextOpen);
 
     if (nextOpen) {
@@ -97,6 +112,12 @@ export default function LanguageSelector({ mobile }: { mobile?: boolean }) {
         (language) => language.code === i18n.language,
       );
       setActiveIndex(selectedIndex >= 0 ? selectedIndex : 0);
+      if (!mobile) {
+        focusSearchAfterOpenTimerRef.current = window.setTimeout(() => {
+          focusSearchAfterOpenTimerRef.current = null;
+          inputRef.current?.focus();
+        }, 0);
+      }
       return;
     }
 
@@ -203,11 +224,11 @@ export default function LanguageSelector({ mobile }: { mobile?: boolean }) {
                 </button>
               ))}
             </div>
-            {filteredLanguages.length === 0 && (
+            {filteredLanguages.length === 0 ? (
               <div className="py-8 text-center text-sm text-muted-foreground">
                 No languages found
               </div>
-            )}
+            ) : null}
           </div>
         </div>
       </SheetContent>

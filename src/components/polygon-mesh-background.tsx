@@ -24,6 +24,10 @@ const DOT_RADIUS = 1.2;
 const BLUE_R = 37;
 const BLUE_G = 99;
 const BLUE_B = 235;
+/** Same hue as `BLUE_*`, lifted for contrast on near-black backgrounds (dark mode mesh + glow). */
+const BLUE_ON_DARK_R = 59;
+const BLUE_ON_DARK_G = 130;
+const BLUE_ON_DARK_B = 246;
 
 const MIN_SPEED = 2;
 const MAX_SPEED = 60;
@@ -122,10 +126,13 @@ function initMesh(
   ctx: CanvasRenderingContext2D,
   isDark: boolean,
 ): () => void {
-  const edgeAlpha = isDark ? 0.072 : 0.085;
-  const dotAlpha = isDark ? 0.078 : 0.1;
-  const edgeRGB = isDark ? "255,255,255" : "100,116,139";
-  const dotRGB = isDark ? "255,255,255" : "100,116,139";
+  const edgeAlpha = isDark ? 0.1 : 0.085;
+  const dotAlpha = isDark ? 0.108 : 0.1;
+  const edgeRGB = isDark ? `${BLUE_ON_DARK_R},${BLUE_ON_DARK_G},${BLUE_ON_DARK_B}` : "100,116,139";
+  const dotRGB = isDark ? `${BLUE_ON_DARK_R},${BLUE_ON_DARK_G},${BLUE_ON_DARK_B}` : "100,116,139";
+  const glowR = isDark ? BLUE_ON_DARK_R : BLUE_R;
+  const glowG = isDark ? BLUE_ON_DARK_G : BLUE_G;
+  const glowB = isDark ? BLUE_ON_DARK_B : BLUE_B;
 
   let w = container.clientWidth;
   let h = container.clientHeight;
@@ -266,8 +273,8 @@ function initMesh(
       const fade = fadeAtY(e.my);
       if (fade < 0.01) continue;
 
-      const alpha = Math.min(totalGlow * 0.55, 0.6) * fade;
-      ctx.strokeStyle = `rgba(${BLUE_R},${BLUE_G},${BLUE_B},${alpha})`;
+      const alpha = Math.min(totalGlow * 0.55, 0.6) * fade * (isDark ? 1.12 : 1);
+      ctx.strokeStyle = `rgba(${glowR},${glowG},${glowB},${alpha})`;
       ctx.lineWidth = EDGE_GLOW_WIDTH;
       ctx.beginPath();
       ctx.moveTo(pts[e.a].x, pts[e.a].y);

@@ -137,6 +137,7 @@ export default function Footer() {
               href="https://bitsocialforge.com"
               target="_blank"
               rel="noopener noreferrer"
+              dir="ltr"
               className="hover:text-foreground transition-colors"
             >
               &copy; {new Date().getFullYear()} Bitsocial Forge, Inc.

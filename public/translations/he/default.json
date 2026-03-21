@@ -2,7 +2,15 @@
   "hero": {
     "tagline": "<openSource>Bitsocial היא רשת בקוד פתוח</openSource> <p2p>peer-to-peer</p2p> <socialApps>לאפליקציות חברתיות</socialApps>, <noServers>בלי שרתים מרכזיים</noServers>, <noBans>בלי חסימות גלובליות ממרכז אחד</noBans>, <crypto>שבה משתמשים וקהילות הם רכוש קריפטוגרפי.</crypto>",
     "readDocs": "קרא תיעוד",
-    "exploreApps": "חקור אפליקציות"
+    "exploreApps": "חקור אפליקציות",
+    "taglineSegments": {
+      "openSource": "Bitsocial היא רשת בקוד פתוח",
+      "p2p": "peer-to-peer",
+      "socialApps": "לאפליקציות חברתיות",
+      "noServers": "בלי שרתים מרכזיים",
+      "noBans": "בלי חסימות גלובליות ממרכז אחד",
+      "crypto": "שבה משתמשים וקהילות הם רכוש קריפטוגרפי."
+    }
   },
   "nav": {
     "apps": "אפליקציות",

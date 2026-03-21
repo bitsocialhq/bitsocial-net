@@ -2,7 +2,15 @@
   "hero": {
     "tagline": "<openSource>Bitsocial شبكة مفتوحة المصدر</openSource> <p2p>peer-to-peer</p2p> <socialApps>مخصصة لتطبيقات التواصل الاجتماعي</socialApps>، <noServers>من دون خوادم مركزية</noServers>، <noBans>ولا رقابة مركزية يمكنها حظر الجميع</noBans>، <crypto>حيث يكون المستخدمون والمجتمعات ملكية تشفيرية.</crypto>",
     "readDocs": "قراءة الوثائق",
-    "exploreApps": "استكشف التطبيقات"
+    "exploreApps": "استكشف التطبيقات",
+    "taglineSegments": {
+      "openSource": "Bitsocial شبكة مفتوحة المصدر",
+      "p2p": "peer-to-peer",
+      "socialApps": "مخصصة لتطبيقات التواصل الاجتماعي",
+      "noServers": "من دون خوادم مركزية",
+      "noBans": "ولا رقابة مركزية يمكنها حظر الجميع",
+      "crypto": "حيث يكون المستخدمون والمجتمعات ملكية تشفيرية."
+    }
   },
   "nav": {
     "apps": "التطبيقات",

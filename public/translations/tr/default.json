@@ -2,7 +2,15 @@
   "hero": {
     "tagline": "<openSource>Bitsocial, açık kaynaklı bir</openSource> <p2p>peer-to-peer ağdır</p2p> <socialApps>sosyal uygulamalar için</socialApps>; <noServers>merkezi sunucuları yoktur</noServers>, <noBans>herkesi susturacak küresel yasaklar da yoktur</noBans>; <crypto>kullanıcılar ve topluluklar kriptografik mülkiyettir.</crypto>",
     "readDocs": "Dokümantasyonu Oku",
-    "exploreApps": "Uygulamaları Keşfet"
+    "exploreApps": "Uygulamaları Keşfet",
+    "taglineSegments": {
+      "openSource": "Bitsocial, açık kaynaklı bir",
+      "p2p": "peer-to-peer ağdır",
+      "socialApps": "sosyal uygulamalar için",
+      "noServers": "merkezi sunucuları yoktur",
+      "noBans": "herkesi susturacak küresel yasaklar da yoktur",
+      "crypto": "kullanıcılar ve topluluklar kriptografik mülkiyettir."
+    }
   },
   "nav": {
     "apps": "Uygulamalar",

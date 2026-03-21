@@ -1,10 +1,18 @@
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { triggerFeatureGlow, triggerTaglineGlow } from "@/lib/utils";
 
+type FeatureId =
+  | "open-source"
+  | "peer-to-peer"
+  | "social-apps"
+  | "no-servers"
+  | "no-global-bans"
+  | "cryptographic-property";
+
 interface Feature {
-  id: string;
-  title: string;
+  id: FeatureId;
   description: string;
   expandedContent: string;
 }
@@ -15,7 +23,6 @@ const CONNECTOR_R = 10;
 const features: Feature[] = [
   {
     id: "open-source",
-    title: "Bitsocial is an open-source...",
     description:
       "Bitsocial is open source under GPLv2 license: the code is public, can be modified, and outside contributions are welcome.",
     expandedContent:
@@ -23,7 +30,6 @@ const features: Feature[] = [
   },
   {
     id: "peer-to-peer",
-    title: "...peer-to-peer network...",
     description:
       "Bitsocial finally brings true decentralization to social media: it's not federated, and it's not on a blockchain either; rather, it is pure P2P, similarly to torrents, getting faster as more users join and seed the network.",
     expandedContent:
@@ -31,7 +37,6 @@ const features: Feature[] = [
   },
   {
     id: "social-apps",
-    title: "...for social apps,...",
     description:
       'Anyone can build a Bitsocial app (also known as a "client" for the Bitsocial protocol), with any interface of their choice.',
     expandedContent:
@@ -39,7 +44,6 @@ const features: Feature[] = [
   },
   {
     id: "no-servers",
-    title: "...with no servers,...",
     description:
       'Bitsocial is serverless, so it\'s impossible for the network to "go down". No government can shut it down, either, and nobody owns the network as a whole.',
     expandedContent:
@@ -47,7 +51,6 @@ const features: Feature[] = [
   },
   {
     id: "no-global-bans",
-    title: "...no global bans,...",
     description:
       'Bitsocial itself is adminless; it is the true "digital public square" of the internet. Users are admins and moderators of their own communities and profiles, and nobody can ban them from the whole network.',
     expandedContent:
@@ -55,13 +58,29 @@ const features: Feature[] = [
   },
   {
     id: "cryptographic-property",
-    title: "...where users and communities are cryptographic property.",
     description:
       "Bitsocial users own their own identities (e.g. profiles, communities they create) as private keys, just like how crypto users own their own coins with seed phrases.",
     expandedContent:
       "Finally, the web has cryptographically unseizable communities for the first time ever. Just like in the real world you may have your own private property, on Bitsocial you can have your own community as your property, with your own rules. A Bitsocial community and profile therefore act as if they're their own websites, even using their own domains as addresses, which other Bitsocial users subscribe to and connect to P2P. Even so—unlike traditional websites that can get taken down at any time by the domain registrar, DNS, SSL certificate, etc.—Bitsocial identities are pure P2P nodes, which are censorship-resistant, similarly to Bitcoin nodes and BitTorrent seeders.",
   },
 ];
+
+function featureTitleFromTaglineSegments(t: (key: string) => string, id: FeatureId): string {
+  switch (id) {
+    case "open-source":
+      return t("hero.taglineSegments.openSource");
+    case "peer-to-peer":
+      return t("hero.taglineSegments.p2p");
+    case "social-apps":
+      return t("hero.taglineSegments.socialApps");
+    case "no-servers":
+      return t("hero.taglineSegments.noServers");
+    case "no-global-bans":
+      return t("hero.taglineSegments.noBans");
+    case "cryptographic-property":
+      return t("hero.taglineSegments.crypto");
+  }
+}
 
 function featureConnectorPathD(isEven: boolean): string {
   const r = CONNECTOR_R;
@@ -79,6 +98,7 @@ function featureConnectorPathD(isEven: boolean): string {
 }
 
 export default function Features() {
+  const { t } = useTranslation();
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const prefersReducedMotion = useReducedMotion();
 
@@ -165,7 +185,7 @@ export default function Features() {
                           onClick={() => handleTitleClick(feature.id)}
                           className="interactive-feature-link w-full text-start text-xl md:text-2xl font-display font-normal italic text-muted-foreground focus-visible:outline-none"
                         >
-                          {feature.title}
+                          {featureTitleFromTaglineSegments(t, feature.id)}
                         </button>
                       </h3>
                       <p className="text-muted-foreground text-sm md:text-base leading-relaxed">

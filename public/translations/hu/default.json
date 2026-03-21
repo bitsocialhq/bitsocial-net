@@ -2,7 +2,15 @@
   "hero": {
     "tagline": "<openSource>A Bitsocial nyílt forráskódú</openSource> <p2p>peer-to-peer hálózat</p2p> <socialApps>közösségi alkalmazásokhoz</socialApps>, <noServers>központi szerverek nélkül</noServers>, <noBans>globális kitiltások nélkül</noBans>, <crypto>ahol a felhasználók és közösségek kriptográfiai tulajdon.</crypto>",
     "readDocs": "Dokumentáció Olvasása",
-    "exploreApps": "Alkalmazások Felfedezése"
+    "exploreApps": "Alkalmazások Felfedezése",
+    "taglineSegments": {
+      "openSource": "A Bitsocial nyílt forráskódú",
+      "p2p": "peer-to-peer hálózat",
+      "socialApps": "közösségi alkalmazásokhoz",
+      "noServers": "központi szerverek nélkül",
+      "noBans": "globális kitiltások nélkül",
+      "crypto": "ahol a felhasználók és közösségek kriptográfiai tulajdon."
+    }
   },
   "nav": {
     "apps": "Alkalmazások",

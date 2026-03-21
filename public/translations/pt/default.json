@@ -2,7 +2,15 @@
   "hero": {
     "tagline": "<openSource>O Bitsocial é uma rede open source</openSource> <p2p>peer-to-peer</p2p> <socialApps>para apps sociais</socialApps>, <noServers>sem servidores centrais</noServers>, <noBans>sem banimentos globais</noBans>, <crypto>onde utilizadores e comunidades são propriedade criptográfica.</crypto>",
     "readDocs": "Ler Documentação",
-    "exploreApps": "Explorar Aplicativos"
+    "exploreApps": "Explorar Aplicativos",
+    "taglineSegments": {
+      "openSource": "O Bitsocial é uma rede open source",
+      "p2p": "peer-to-peer",
+      "socialApps": "para apps sociais",
+      "noServers": "sem servidores centrais",
+      "noBans": "sem banimentos globais",
+      "crypto": "onde utilizadores e comunidades são propriedade criptográfica."
+    }
   },
   "nav": {
     "apps": "Aplicativos",

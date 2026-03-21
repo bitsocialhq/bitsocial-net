@@ -2,7 +2,15 @@
   "hero": {
     "tagline": "<openSource>Bitsocial একটি ওপেন সোর্স</openSource> <p2p>peer-to-peer নেটওয়ার্ক</p2p> <socialApps>সোশ্যাল অ্যাপের জন্য</socialApps>, <noServers>কোনো সেন্ট্রাল সার্ভার ছাড়াই</noServers>, <noBans>বিশ্বব্যাপী নিষেধাজ্ঞা নেই</noBans>, <crypto>যেখানে ব্যবহারকারী ও কমিউনিটি হলো ক্রিপ্টোগ্রাফিক সম্পত্তি।</crypto>",
     "readDocs": "ডকুমেন্টেশন পড়ুন",
-    "exploreApps": "অ্যাপস অন্বেষণ করুন"
+    "exploreApps": "অ্যাপস অন্বেষণ করুন",
+    "taglineSegments": {
+      "openSource": "Bitsocial একটি ওপেন সোর্স",
+      "p2p": "peer-to-peer নেটওয়ার্ক",
+      "socialApps": "সোশ্যাল অ্যাপের জন্য",
+      "noServers": "কোনো সেন্ট্রাল সার্ভার ছাড়াই",
+      "noBans": "বিশ্বব্যাপী নিষেধাজ্ঞা নেই",
+      "crypto": "যেখানে ব্যবহারকারী ও কমিউনিটি হলো ক্রিপ্টোগ্রাফিক সম্পত্তি।"
+    }
   },
   "nav": {
     "apps": "অ্যাপস",

@@ -2,7 +2,15 @@
   "hero": {
     "tagline": "<openSource>Bitsocial 是一个开源</openSource> <p2p>peer-to-peer网络</p2p> <socialApps>面向社交应用</socialApps>，<noServers>没有中心化服务器</noServers>，<noBans>也没有自上而下的全网封禁</noBans>，<crypto>用户与社区是加密资产。</crypto>",
     "readDocs": "阅读文档",
-    "exploreApps": "探索应用"
+    "exploreApps": "探索应用",
+    "taglineSegments": {
+      "openSource": "Bitsocial 是一个开源",
+      "p2p": "peer-to-peer网络",
+      "socialApps": "面向社交应用",
+      "noServers": "没有中心化服务器",
+      "noBans": "也没有自上而下的全网封禁",
+      "crypto": "用户与社区是加密资产。"
+    }
   },
   "nav": {
     "apps": "应用",

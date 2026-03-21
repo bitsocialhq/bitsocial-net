@@ -2,7 +2,15 @@
   "hero": {
     "tagline": "<openSource>Bitsocial je open-source</openSource> <p2p>peer-to-peer síť</p2p> <socialApps>pro sociální aplikace</socialApps>, <noServers>bez centrálních serverů</noServers>, <noBans>bez globálních zákazů</noBans>, <crypto>kde uživatelé a komunity jsou kryptografický majetek.</crypto>",
     "readDocs": "Číst Dokumentaci",
-    "exploreApps": "Prozkoumat Aplikace"
+    "exploreApps": "Prozkoumat Aplikace",
+    "taglineSegments": {
+      "openSource": "Bitsocial je open-source",
+      "p2p": "peer-to-peer síť",
+      "socialApps": "pro sociální aplikace",
+      "noServers": "bez centrálních serverů",
+      "noBans": "bez globálních zákazů",
+      "crypto": "kde uživatelé a komunity jsou kryptografický majetek."
+    }
   },
   "nav": {
     "apps": "Aplikace",

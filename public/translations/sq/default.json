@@ -2,7 +2,15 @@
   "hero": {
     "tagline": "<openSource>Bitsocial është një rrjet me burim të hapur</openSource> <p2p>peer-to-peer</p2p> <socialApps>për aplikacione sociale</socialApps>, <noServers>pa serverë qendrorë</noServers>, <noBans>pa ndalime globale nga një qendër</noBans>, <crypto>ku përdoruesit dhe komunitetet janë pronë kriptografike.</crypto>",
     "readDocs": "Lexo Dokumentacionin",
-    "exploreApps": "Eksploro Aplikacionet"
+    "exploreApps": "Eksploro Aplikacionet",
+    "taglineSegments": {
+      "openSource": "Bitsocial është një rrjet me burim të hapur",
+      "p2p": "peer-to-peer",
+      "socialApps": "për aplikacione sociale",
+      "noServers": "pa serverë qendrorë",
+      "noBans": "pa ndalime globale nga një qendër",
+      "crypto": "ku përdoruesit dhe komunitetet janë pronë kriptografike."
+    }
   },
   "nav": {
     "apps": "Aplikacionet",

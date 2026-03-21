@@ -1,6 +1,6 @@
 {
   "hero": {
-    "tagline": "<openSource>Bitsocial este o rețea open source</openSource> <p2p>peer-to-peer</p2p> <socialApps>pentru aplicații sociale</socialApps>, <noServers>fără servere</noServers>, <noBans>fără interdicții globale</noBans>, <crypto>unde utilizatorii și comunitățile sunt proprietate criptografică.</crypto>",
+    "tagline": "<openSource>Bitsocial este o rețea open source</openSource> <p2p>peer-to-peer</p2p> <socialApps>pentru aplicații sociale</socialApps>, <noServers>fără servere centrale</noServers>, <noBans>fără interdicții globale</noBans>, <crypto>în care utilizatorii și comunitățile sunt proprietate criptografică.</crypto>",
     "readDocs": "Citește Documentația",
     "exploreApps": "Explorează Aplicațiile"
   },

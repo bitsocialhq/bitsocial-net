@@ -1,6 +1,6 @@
 {
   "hero": {
-    "tagline": "<openSource>Bitsocial เป็นเครือข่ายโอเพนซอร์ส</openSource> <p2p>แบบ peer-to-peer</p2p> <socialApps>สำหรับแอปโซเชียล</socialApps> <noServers>ไม่มีเซิร์ฟเวอร์</noServers> <noBans>ไม่มีการแบนทั่วโลก</noBans> <crypto>ที่ซึ่งผู้ใช้และชุมชนเป็นทรัพย์สินเข้ารหัส</crypto>",
+    "tagline": "<openSource>Bitsocial เป็นโอเพนซอร์ส</openSource> <p2p>peer-to-peer เครือข่าย</p2p> <socialApps>สำหรับแอปโซเชียล</socialApps>, <noServers>ไม่มีเซิร์ฟเวอร์กลาง</noServers>, <noBans>ไม่มีการแบนทั้งระบบจากศูนย์กลาง</noBans>, <crypto>โดยที่ผู้ใช้และชุมชนเป็นทรัพย์สินเข้ารหัสลับ</crypto>",
     "readDocs": "อ่านเอกสาร",
     "exploreApps": "สำรวจแอป"
   },

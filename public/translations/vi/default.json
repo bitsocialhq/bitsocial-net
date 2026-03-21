@@ -1,6 +1,6 @@
 {
   "hero": {
-    "tagline": "<openSource>Bitsocial là một mạng mã nguồn mở</openSource> <p2p>ngang hàng</p2p> <socialApps>cho các ứng dụng xã hội</socialApps>, <noServers>không có máy chủ</noServers>, <noBans>không có lệnh cấm toàn cầu</noBans>, <crypto>nơi người dùng và cộng đồng là tài sản mã hóa.</crypto>",
+    "tagline": "<openSource>Bitsocial là mạng mã nguồn mở</openSource> <p2p>peer-to-peer</p2p> <socialApps>dành cho ứng dụng xã hội</socialApps>, <noServers>không có máy chủ trung tâm</noServers>, <noBans>không có lệnh cấm toàn cầu từ một trung tâm</noBans>, <crypto>nơi người dùng và cộng đồng là tài sản mã hóa.</crypto>",
     "readDocs": "Đọc Tài liệu",
     "exploreApps": "Khám phá Ứng dụng"
   },

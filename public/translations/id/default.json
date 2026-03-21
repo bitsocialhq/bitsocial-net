@@ -1,6 +1,6 @@
 {
   "hero": {
-    "tagline": "<openSource>Bitsocial adalah jaringan sumber terbuka</openSource> <p2p>peer-to-peer</p2p> <socialApps>untuk aplikasi sosial</socialApps>, <noServers>tanpa server</noServers>, <noBans>tanpa larangan global</noBans>, <crypto>di mana pengguna dan komunitas adalah properti kriptografis.</crypto>",
+    "tagline": "<openSource>Bitsocial adalah jaringan sumber terbuka</openSource> <p2p>peer-to-peer</p2p> <socialApps>untuk aplikasi sosial</socialApps>, <noServers>tanpa server terpusat</noServers>, <noBans>tanpa larangan global dari satu pihak</noBans>, <crypto>di mana pengguna dan komunitas adalah properti kriptografis.</crypto>",
     "readDocs": "Baca Dokumentasi",
     "exploreApps": "Jelajahi Aplikasi"
   },

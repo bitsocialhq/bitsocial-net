@@ -163,7 +163,7 @@ export default function Features() {
                         <button
                           type="button"
                           onClick={() => handleTitleClick(feature.id)}
-                          className="interactive-feature-link w-full text-left text-xl md:text-2xl font-display font-normal italic text-muted-foreground focus-visible:outline-none"
+                          className="interactive-feature-link w-full text-start text-xl md:text-2xl font-display font-normal italic text-muted-foreground focus-visible:outline-none"
                         >
                           {feature.title}
                         </button>
@@ -211,7 +211,11 @@ export default function Features() {
                     className="hidden md:block pointer-events-none select-none h-16 w-full shrink-0"
                     aria-hidden="true"
                   >
-                    <svg viewBox="0 0 1000 64" className="h-full w-full" fill="none">
+                    <svg
+                      viewBox="0 0 1000 64"
+                      className="h-full w-full rtl:-scale-x-100"
+                      fill="none"
+                    >
                       <motion.path
                         className="feature-connector-path"
                         d={featureConnectorPathD(isEven)}

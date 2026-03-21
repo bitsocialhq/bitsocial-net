@@ -1,6 +1,6 @@
 {
   "hero": {
-    "tagline": "<openSource>Bitsocial on avoimen lähdekoodin</openSource> <p2p>vertaisverkko</p2p> <socialApps>sosiaalisia sovelluksia varten</socialApps>, <noServers>ilman palvelimia</noServers>, <noBans>ilman maailmanlaajuisia estoja</noBans>, <crypto>jossa käyttäjät ja yhteisöt ovat kryptografista omaisuutta.</crypto>",
+    "tagline": "<openSource>Bitsocial on avoimen lähdekoodin</openSource> <p2p>peer-to-peer-verkko</p2p> <socialApps>sosiaalisille sovelluksille</socialApps>, <noServers>ilman keskitettyjä palvelimia</noServers>, <noBans>ilman maailmanlaajuisia porttikieltoja</noBans>, <crypto>jossa käyttäjät ja yhteisöt ovat kryptografista omaisuutta.</crypto>",
     "readDocs": "Lue Dokumentaatio",
     "exploreApps": "Tutki Sovelluksia"
   },

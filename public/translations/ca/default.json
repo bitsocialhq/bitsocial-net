@@ -1,0 +1,30 @@
+{
+  "hero": {
+    "tagline": "<openSource>Bitsocial és de codi obert:</openSource> <p2p>una xarxa peer-to-peer</p2p> <socialApps>per a aplicacions socials</socialApps>, <noServers>sense servidors centrals</noServers>, <noBans>sense vetos globals</noBans>, <crypto>on usuaris i comunitats són propietat criptogràfica.</crypto>",
+    "readDocs": "Llegir la documentació",
+    "exploreApps": "Explorar aplicacions"
+  },
+  "nav": {
+    "apps": "Aplicacions",
+    "docs": "Documentació",
+    "status": "Estat",
+    "language": "Idioma",
+    "theme": "Tema"
+  },
+  "footer": {
+    "tagline": "Xarxa P2P de codi obert per a aplicacions socials",
+    "bottomTagline": "Descentralitza totes les xarxes socials",
+    "product": "Producte",
+    "apps": "Aplicacions",
+    "docs": "Documentació",
+    "status": "Estat",
+    "resources": "Recursos",
+    "blog": "Blog",
+    "about": "Quant a",
+    "community": "Comunitat",
+    "github": "GitHub",
+    "twitter": "Twitter",
+    "telegram": "Telegram",
+    "license": "Llicència"
+  }
+}

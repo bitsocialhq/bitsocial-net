@@ -11,7 +11,7 @@ This skill orchestrates translation of i18next keys by spawning **translator** s
 
 1. The user provides one or more translation keys (and optionally English values).
 2. This skill tells the parent agent to spawn one `translator` subagent per key.
-3. Each subagent independently translates its key into all 35 languages and applies the result using `scripts/update-translations.js`.
+3. Each subagent independently translates its key into all 36 languages and applies the result using `scripts/update-translations.js`.
 
 ## Workflow
 
@@ -38,7 +38,7 @@ For **each key**, spawn a `translator` subagent (using the Task tool with `subag
 Example prompt for a subagent:
 
 ```
-You are the translator subagent. Translate the following i18next key into all 35 supported languages and apply it using the project's translation script.
+You are the translator subagent. Translate the following i18next key into all 36 supported languages and apply it using the project's translation script.
 
 Key: upload_failed
 English value: "Upload failed"
@@ -98,4 +98,4 @@ node scripts/update-translations.js --audit --write
 
 ## Supported Languages
 
-ar, bn, cs, da, de, el, en, es, fa, fi, fil, fr, he, hi, hu, id, it, ja, ko, mr, nl, no, pl, pt, ro, ru, sq, sv, te, th, tr, uk, ur, vi, zh
+ar, bn, ca, cs, da, de, el, en, es, fa, fi, fil, fr, he, hi, hu, id, it, ja, ko, mr, nl, no, pl, pt, ro, ru, sq, sv, te, th, tr, uk, ur, vi, zh

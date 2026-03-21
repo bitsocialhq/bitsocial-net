@@ -6,6 +6,7 @@ import HttpBackend from "i18next-http-backend";
 const supportedLngs = [
   "ar",
   "bn",
+  "ca",
   "cs",
   "da",
   "de",

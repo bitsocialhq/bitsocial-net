@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
 const languages = [
   { code: "ar", name: "العربية", dir: "rtl" },
   { code: "bn", name: "বাংলা" },
+  { code: "ca", name: "Català" },
   { code: "cs", name: "Čeština" },
   { code: "da", name: "Dansk" },
   { code: "de", name: "Deutsch" },

@@ -1,4 +1,13 @@
-import { createContext, lazy, Suspense, useContext, useEffect, useState } from "react";
+import {
+  createContext,
+  lazy,
+  Suspense,
+  useCallback,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Trans, useTranslation } from "react-i18next";
@@ -15,19 +24,16 @@ const TAGLINE_LINK_COUNT = 6;
 const INTRO_START_DELAY = 1800;
 const INTRO_STEP_MS = 1000;
 
-function handleTaglineClick(hash: string) {
-  window.history.replaceState(null, "", `#${hash}`);
-  triggerFeatureGlow(hash);
-}
-
 function TaglineLink({
   hash,
   index,
   children,
+  onNavigateToFeature,
 }: {
   hash: string;
   index?: number;
   children?: React.ReactNode;
+  onNavigateToFeature: (hash: string) => void;
 }) {
   const highlightedIndex = useContext(HighlightIndexCtx);
   const isIntroActive = typeof index === "number" && highlightedIndex === index;
@@ -37,11 +43,11 @@ function TaglineLink({
       data-tagline-link={hash}
       role="button"
       tabIndex={0}
-      onClick={() => handleTaglineClick(hash)}
+      onClick={() => onNavigateToFeature(hash)}
       onKeyDown={(e) => {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
-          handleTaglineClick(hash);
+          onNavigateToFeature(hash);
         }
       }}
       className={cn(
@@ -84,8 +90,18 @@ function HeroFallbackImage() {
 
 function useTaglineIntro() {
   const [index, setIndex] = useState(-1);
+  const timersRef = useRef<ReturnType<typeof setTimeout>[]>([]);
+
+  const resetIntro = useCallback(() => {
+    timersRef.current.forEach(clearTimeout);
+    timersRef.current = [];
+    setIndex(-1);
+  }, []);
+
   useEffect(() => {
     const timers: ReturnType<typeof setTimeout>[] = [];
+    timersRef.current = timers;
+
     const start = setTimeout(() => {
       for (let i = 0; i < TAGLINE_LINK_COUNT; i++) {
         timers.push(setTimeout(() => setIndex(i), i * INTRO_STEP_MS));
@@ -93,16 +109,30 @@ function useTaglineIntro() {
       timers.push(setTimeout(() => setIndex(-1), TAGLINE_LINK_COUNT * INTRO_STEP_MS));
     }, INTRO_START_DELAY);
     timers.push(start);
-    return () => timers.forEach(clearTimeout);
+
+    return () => {
+      timers.forEach(clearTimeout);
+      timersRef.current = [];
+    };
   }, []);
-  return index;
+
+  return { highlightedIndex: index, resetIntro };
 }
 
 export default function Hero() {
   const { t } = useTranslation();
   const graphicsMode = useGraphicsMode();
   const showGraphics = graphicsMode === "full";
-  const highlightedIndex = useTaglineIntro();
+  const { highlightedIndex, resetIntro } = useTaglineIntro();
+
+  const navigateToFeatureFromTagline = useCallback(
+    (hash: string) => {
+      resetIntro();
+      window.history.replaceState(null, "", `#${hash}`);
+      triggerFeatureGlow(hash);
+    },
+    [resetIntro],
+  );
 
   const staticFallback = (
     <div className="absolute bottom-8 md:bottom-12 left-0 right-0 w-full h-[60vh] md:h-[48vh] pointer-events-none overflow-visible md:overflow-hidden overscroll-none">
@@ -133,12 +163,48 @@ export default function Hero() {
             <Trans
               i18nKey="hero.tagline"
               components={{
-                openSource: <TaglineLink hash="open-source" index={0} />,
-                p2p: <TaglineLink hash="peer-to-peer" index={1} />,
-                socialApps: <TaglineLink hash="social-apps" index={2} />,
-                noServers: <TaglineLink hash="no-servers" index={3} />,
-                noBans: <TaglineLink hash="no-global-bans" index={4} />,
-                crypto: <TaglineLink hash="cryptographic-property" index={5} />,
+                openSource: (
+                  <TaglineLink
+                    hash="open-source"
+                    index={0}
+                    onNavigateToFeature={navigateToFeatureFromTagline}
+                  />
+                ),
+                p2p: (
+                  <TaglineLink
+                    hash="peer-to-peer"
+                    index={1}
+                    onNavigateToFeature={navigateToFeatureFromTagline}
+                  />
+                ),
+                socialApps: (
+                  <TaglineLink
+                    hash="social-apps"
+                    index={2}
+                    onNavigateToFeature={navigateToFeatureFromTagline}
+                  />
+                ),
+                noServers: (
+                  <TaglineLink
+                    hash="no-servers"
+                    index={3}
+                    onNavigateToFeature={navigateToFeatureFromTagline}
+                  />
+                ),
+                noBans: (
+                  <TaglineLink
+                    hash="no-global-bans"
+                    index={4}
+                    onNavigateToFeature={navigateToFeatureFromTagline}
+                  />
+                ),
+                crypto: (
+                  <TaglineLink
+                    hash="cryptographic-property"
+                    index={5}
+                    onNavigateToFeature={navigateToFeatureFromTagline}
+                  />
+                ),
               }}
             />
           </HighlightIndexCtx.Provider>

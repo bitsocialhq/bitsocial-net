@@ -56,11 +56,33 @@ function applyTemporaryTextHighlight(
   highlightTimeouts.set(element, timeoutId);
 }
 
+/** Stops in-flight card glow animations and tagline link highlights so a new target can take over. */
+function clearInteractiveFeatureHighlights() {
+  document.querySelectorAll(".highlight-glow").forEach((node) => {
+    if (!(node instanceof HTMLElement)) return;
+    const tid = highlightTimeouts.get(node);
+    if (tid != null) clearTimeout(tid);
+    highlightTimeouts.delete(node);
+    node.classList.remove("highlight-glow");
+  });
+
+  document.querySelectorAll("[data-tagline-link]").forEach((node) => {
+    if (!(node instanceof HTMLElement)) return;
+    const tid = highlightTimeouts.get(node);
+    if (tid != null) clearTimeout(tid);
+    highlightTimeouts.delete(node);
+    node.style.color = "";
+    node.style.filter = "";
+  });
+}
+
 /**
  * Triggers a glow effect on the feature card corresponding to the hash.
  * Scrolls to the element and adds a temporary glow that eases in and out smoothly.
  */
 export function triggerFeatureGlow(hash: string) {
+  clearInteractiveFeatureHighlights();
+
   const element = document.getElementById(hash);
   if (element) {
     element.scrollIntoView({ behavior: getScrollBehavior(), block: "center" });
@@ -73,6 +95,8 @@ export function triggerFeatureGlow(hash: string) {
 }
 
 export function triggerTaglineGlow(hash: string) {
+  clearInteractiveFeatureHighlights();
+
   const tagline = document.getElementById(HERO_TAGLINE_ID);
   const link = document.querySelector<HTMLElement>(`[data-tagline-link="${hash}"]`);
   tagline?.scrollIntoView({ behavior: getScrollBehavior(), block: "center" });

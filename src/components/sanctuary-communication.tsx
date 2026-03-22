@@ -163,7 +163,9 @@ const MobileComparisonCarousel = memo(function MobileComparisonCarousel() {
                 ? approach.id === "bitsocial"
                   ? "bg-blue-core text-white shadow-[0_0_12px_rgba(37,99,235,0.4)]"
                   : "glass-card text-foreground"
-                : "text-muted-foreground/60 hover:text-muted-foreground"
+                : approach.id === "bitsocial"
+                  ? "border-blue-core/30 bg-blue-core/10 text-blue-glow hover:bg-blue-core/15 hover:border-blue-glow"
+                  : "text-muted-foreground/60 hover:text-muted-foreground"
             }`}
           >
             {approach.label}

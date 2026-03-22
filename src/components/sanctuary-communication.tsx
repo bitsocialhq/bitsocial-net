@@ -1,6 +1,6 @@
 import { m } from "framer-motion";
 import { Check, X } from "lucide-react";
-import { useState, useRef, useCallback } from "react";
+import { memo, useCallback, useRef, useState } from "react";
 
 type ApproachId = "federated" | "blockchain" | "bitsocial";
 
@@ -53,7 +53,12 @@ const rows: { label: string; values: Record<ApproachId, string> }[] = [
   },
 ];
 
-function ComparisonCard({
+const DEFAULT_APPROACH_INDEX = Math.max(
+  0,
+  approaches.findIndex(({ id }) => id === "bitsocial"),
+);
+
+const ComparisonCardContent = memo(function ComparisonCardContent({
   approach,
   isBitsocial,
 }: {
@@ -61,11 +66,7 @@ function ComparisonCard({
   isBitsocial: boolean;
 }) {
   return (
-    <div
-      className={`glass-card p-5 md:p-7 h-full ${
-        isBitsocial ? "border !border-blue-glow shadow-[0_0_20px_rgba(37,99,235,0.35)]" : ""
-      }`}
-    >
+    <>
       <div className="mb-4 pb-3 border-b border-[var(--glass-border-subtle)]">
         <h3 className="text-base md:text-lg font-display font-semibold">{approach.label}</h3>
         <p className="text-xs text-muted-foreground/60">{approach.subtitle}</p>
@@ -93,33 +94,146 @@ function ComparisonCard({
           </div>
         ))}
       </div>
+    </>
+  );
+});
+
+const ComparisonCard = memo(function ComparisonCard({
+  approach,
+  isBitsocial,
+}: {
+  approach: (typeof approaches)[number];
+  isBitsocial: boolean;
+}) {
+  return (
+    <div
+      className={`glass-card p-5 md:p-7 h-full ${
+        isBitsocial ? "border !border-blue-glow shadow-[0_0_20px_rgba(37,99,235,0.35)]" : ""
+      }`}
+    >
+      <ComparisonCardContent approach={approach} isBitsocial={isBitsocial} />
     </div>
   );
-}
+});
+
+const MobileComparisonCarousel = memo(function MobileComparisonCarousel() {
+  const [activeIndex, setActiveIndex] = useState(DEFAULT_APPROACH_INDEX);
+  const touchStartX = useRef(0);
+  const activeApproach = approaches[activeIndex];
+
+  const setPage = useCallback((nextIndex: number) => {
+    setActiveIndex((currentIndex) => (currentIndex === nextIndex ? currentIndex : nextIndex));
+  }, []);
+
+  const handleSwipe = useCallback((startX: number, endX: number) => {
+    const diff = startX - endX;
+    const threshold = 50;
+    const isRtl = document.documentElement.dir === "rtl";
+    const effectiveDiff = isRtl ? -diff : diff;
+
+    setActiveIndex((currentIndex) => {
+      if (effectiveDiff > threshold && currentIndex < approaches.length - 1) {
+        return currentIndex + 1;
+      }
+      if (effectiveDiff < -threshold && currentIndex > 0) {
+        return currentIndex - 1;
+      }
+      return currentIndex;
+    });
+  }, []);
+
+  return (
+    <m.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6, delay: 0.3 }}
+      className="md:hidden"
+    >
+      <div className="flex gap-1.5 justify-center mb-5" role="tablist">
+        {approaches.map((approach, index) => (
+          <button
+            key={approach.id}
+            role="tab"
+            aria-selected={activeIndex === index}
+            aria-controls={`panel-${approach.id}`}
+            onClick={() => setPage(index)}
+            className={`px-4 py-2 rounded-full border border-transparent text-xs font-display font-medium transition-colors duration-200 motion-reduce:transition-none ${
+              activeIndex === index
+                ? approach.id === "bitsocial"
+                  ? "bg-blue-core text-white shadow-[0_0_12px_rgba(37,99,235,0.4)]"
+                  : "glass-card text-foreground"
+                : "text-muted-foreground/60 hover:text-muted-foreground"
+            }`}
+          >
+            {approach.label}
+          </button>
+        ))}
+      </div>
+
+      <div
+        className="overflow-hidden"
+        onTouchStart={(e) => {
+          touchStartX.current = e.touches[0].clientX;
+        }}
+        onTouchEnd={(e) => {
+          handleSwipe(touchStartX.current, e.changedTouches[0].clientX);
+        }}
+      >
+        <div
+          className={`glass-card p-5 border md:p-7 ${
+            activeApproach.id === "bitsocial"
+              ? "!border-blue-glow shadow-[0_0_20px_rgba(37,99,235,0.35)]"
+              : "border-[var(--glass-border-subtle)]"
+          }`}
+        >
+          <div className="grid">
+            {approaches.map((approach, index) => {
+              const isActive = activeIndex === index;
+
+              return (
+                <div
+                  key={approach.id}
+                  id={`panel-${approach.id}`}
+                  role="tabpanel"
+                  aria-hidden={!isActive}
+                  className={`col-start-1 row-start-1 transition-[opacity,transform] duration-200 motion-reduce:transition-none ${
+                    isActive
+                      ? "visible opacity-100 translate-y-0"
+                      : "invisible opacity-0 pointer-events-none translate-y-1"
+                  }`}
+                >
+                  <ComparisonCardContent
+                    approach={approach}
+                    isBitsocial={approach.id === "bitsocial"}
+                  />
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+
+      <div className="flex justify-center gap-1.5 mt-4" aria-hidden>
+        {approaches.map((approach, index) => (
+          <button
+            key={approach.id}
+            tabIndex={-1}
+            aria-label={approach.label}
+            onClick={() => setPage(index)}
+            className={`h-1.5 rounded-full transition-[width,background-color] duration-200 motion-reduce:transition-none ${
+              index === activeIndex
+                ? "w-6 bg-blue-glow"
+                : "w-1.5 bg-muted-foreground/20 hover:bg-muted-foreground/40"
+            }`}
+          />
+        ))}
+      </div>
+    </m.div>
+  );
+});
 
 export default function SanctuaryCommunication() {
-  const [activeTab, setActiveTab] = useState<ApproachId>("bitsocial");
-  const touchStartX = useRef(0);
-
-  const activeIndex = approaches.findIndex((a) => a.id === activeTab);
-
-  const handleSwipe = useCallback(
-    (startX: number, endX: number) => {
-      const diff = startX - endX;
-      const threshold = 50;
-      const idx = approaches.findIndex((a) => a.id === activeTab);
-      const isRtl = document.documentElement.dir === "rtl";
-      const effectiveDiff = isRtl ? -diff : diff;
-
-      if (effectiveDiff > threshold && idx < approaches.length - 1) {
-        setActiveTab(approaches[idx + 1].id);
-      } else if (effectiveDiff < -threshold && idx > 0) {
-        setActiveTab(approaches[idx - 1].id);
-      }
-    },
-    [activeTab],
-  );
-
   return (
     <section id="sanctuary-communication" className="py-24 px-6">
       <div className="max-w-7xl mx-auto">
@@ -158,77 +272,7 @@ export default function SanctuaryCommunication() {
           gets.
         </m.p>
 
-        {/* ---- Mobile: tabbed carousel ---- */}
-        <m.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="md:hidden"
-        >
-          {/* Tab pills */}
-          <div className="flex gap-1.5 justify-center mb-5" role="tablist">
-            {approaches.map((a) => (
-              <button
-                key={a.id}
-                role="tab"
-                aria-selected={activeTab === a.id}
-                aria-controls={`panel-${a.id}`}
-                onClick={() => setActiveTab(a.id)}
-                className={`px-4 py-2 rounded-full text-xs font-display font-medium transition-all duration-300 ${
-                  activeTab === a.id
-                    ? a.id === "bitsocial"
-                      ? "bg-blue-core text-white shadow-[0_0_12px_rgba(37,99,235,0.4)]"
-                      : "glass-card text-foreground"
-                    : "text-muted-foreground/60 hover:text-muted-foreground"
-                }`}
-              >
-                {a.label}
-              </button>
-            ))}
-          </div>
-
-          {/* Swipeable card area */}
-          <div
-            className="overflow-hidden"
-            onTouchStart={(e) => {
-              touchStartX.current = e.touches[0].clientX;
-            }}
-            onTouchEnd={(e) => {
-              handleSwipe(touchStartX.current, e.changedTouches[0].clientX);
-            }}
-          >
-            <div
-              className="flex transition-transform duration-300 ease-out motion-reduce:transition-none"
-              style={{
-                transform: `translateX(-${activeIndex * 100}%)`,
-              }}
-            >
-              {approaches.map((a) => (
-                <div key={a.id} id={`panel-${a.id}`} role="tabpanel" className="min-w-full px-0.5">
-                  <ComparisonCard approach={a} isBitsocial={a.id === "bitsocial"} />
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Dot indicators */}
-          <div className="flex justify-center gap-1.5 mt-4" aria-hidden>
-            {approaches.map((a, i) => (
-              <button
-                key={a.id}
-                tabIndex={-1}
-                aria-label={a.label}
-                onClick={() => setActiveTab(a.id)}
-                className={`h-1.5 rounded-full transition-all duration-300 ${
-                  i === activeIndex
-                    ? "w-6 bg-blue-glow"
-                    : "w-1.5 bg-muted-foreground/20 hover:bg-muted-foreground/40"
-                }`}
-              />
-            ))}
-          </div>
-        </m.div>
+        <MobileComparisonCarousel />
 
         {/* ---- Desktop: three-column grid ---- */}
         <div className="hidden md:grid md:grid-cols-3 gap-5">

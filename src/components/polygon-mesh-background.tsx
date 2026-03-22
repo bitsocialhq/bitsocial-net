@@ -1,4 +1,4 @@
-import { useRef, useEffect } from "react";
+import { memo, useEffect, useRef } from "react";
 import { useTheme } from "next-themes";
 
 interface Point {
@@ -404,7 +404,7 @@ function initMesh(
   };
 }
 
-export default function PolygonMeshBackground() {
+const PolygonMeshBackground = memo(function PolygonMeshBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const { resolvedTheme } = useTheme();
@@ -432,4 +432,6 @@ export default function PolygonMeshBackground() {
       <canvas ref={canvasRef} className="block w-full h-full" />
     </div>
   );
-}
+});
+
+export default PolygonMeshBackground;

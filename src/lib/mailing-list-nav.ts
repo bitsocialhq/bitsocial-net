@@ -1,13 +1,12 @@
 import type { NavigateFunction } from "react-router-dom";
+import { triggerFeatureGlow } from "@/lib/utils";
 
 export const MAILING_LIST_SECTION_ID = "mailing-list";
 export const MAILING_LIST_HASH = "#mailing-list";
 
+/** Scrolls to the mailing list and applies the same temporary border glow as core feature cards. */
 export function scrollToMailingListSection() {
-  const el = document.getElementById(MAILING_LIST_SECTION_ID);
-  if (!el) return;
-  const behavior = document.documentElement.dataset.reducedMotion === "true" ? "auto" : "smooth";
-  el.scrollIntoView({ behavior, block: "start" });
+  triggerFeatureGlow(MAILING_LIST_SECTION_ID);
 }
 
 /**

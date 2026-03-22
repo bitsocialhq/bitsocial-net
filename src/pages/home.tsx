@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import Topbar from "../components/topbar";
 import Hero from "../components/hero";
 import Features from "../components/features";
+import SanctuaryCommunication from "../components/sanctuary-communication";
 import MasterPlan from "../components/master-plan";
 import MailingList from "../components/mailing-list";
 import Footer from "../components/footer";
@@ -32,6 +33,7 @@ export default function Home() {
       <div className="relative">
         <PolygonMeshBackground />
         <Features />
+        <SanctuaryCommunication />
         <MasterPlan />
         <MailingList />
         <Footer />

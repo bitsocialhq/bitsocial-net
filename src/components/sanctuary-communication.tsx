@@ -279,8 +279,8 @@ export default function SanctuaryCommunication() {
           {approaches.map((a, i) => (
             <m.div
               key={a.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ y: 20 }}
+              whileInView={{ y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3 + i * 0.1, duration: 0.5 }}
             >

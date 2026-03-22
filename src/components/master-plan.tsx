@@ -34,6 +34,11 @@ const phases = [
   },
 ];
 
+const easterEgg = {
+  alt: "SpongeBob",
+  gifSrc: "/spongebob-easter-egg.gif",
+};
+
 export default function MasterPlan() {
   const [showGif, setShowGif] = useState(false);
   const timelineRef = useRef<HTMLDivElement | null>(null);
@@ -171,8 +176,8 @@ export default function MasterPlan() {
             onClick={() => setShowGif(false)}
           >
             <m.img
-              src="https://media1.tenor.com/m/zI1Evz0Qc24AAAAd/spongebob-squarepants-nickelodeon.gif"
-              alt="Spongebob"
+              src={easterEgg.gifSrc}
+              alt={easterEgg.alt}
               className="max-w-[90vw] max-h-[90vh] cursor-pointer"
               onClick={(e) => {
                 e.stopPropagation();

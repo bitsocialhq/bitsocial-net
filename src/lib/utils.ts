@@ -62,10 +62,11 @@ export function triggerFeatureGlow(hash: string) {
 
   const element = document.getElementById(hash);
   if (element) {
-    element.scrollIntoView({ behavior: getScrollBehavior(), block: "center" });
-
     const card = element.querySelector(".glass-card");
-    if (card && card instanceof HTMLElement) {
+    const scrollTarget = card instanceof HTMLElement ? card : element;
+    scrollTarget.scrollIntoView({ behavior: getScrollBehavior(), block: "center" });
+
+    if (card instanceof HTMLElement) {
       applyTemporaryHighlight(card, "highlight-glow");
     }
   }

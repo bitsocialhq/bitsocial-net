@@ -1,6 +1,7 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Github, Send } from "lucide-react";
+import { goHomeScrollTop } from "@/lib/home-nav";
 import { goToMailingListSection } from "@/lib/mailing-list-nav";
 
 const linkClassName = "text-muted-foreground hover:text-foreground transition-colors text-sm";
@@ -23,6 +24,12 @@ export default function Footer() {
     goToMailingListSection(location.pathname, location.hash, navigate);
   };
 
+  const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    e.preventDefault();
+    goHomeScrollTop(location.pathname, navigate);
+  };
+
   return (
     <footer
       className="footer-glass px-6 pt-6 mt-8 md:pt-14 md:mt-12"
@@ -32,7 +39,7 @@ export default function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10 mb-10">
           {/* Branding */}
           <div className="col-span-2 md:col-span-1">
-            <Link to="/" className="flex items-center gap-1.5 mb-4 group">
+            <Link to="/" onClick={handleLogoClick} className="flex items-center gap-1.5 mb-4 group">
               <img src="/logo-small.png" alt="Bitsocial" className="h-6 w-6" />
               <span className="text-lg font-display text-muted-foreground group-hover:text-foreground transition-colors">
                 Bitsocial

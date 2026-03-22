@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { m } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { cn } from "@/lib/utils";
+import { goHomeScrollTop } from "@/lib/home-nav";
 import { goToMailingListSection } from "@/lib/mailing-list-nav";
 import { ThemeToggle } from "./theme-toggle";
 import HamburgerButton from "./hamburger-button";
@@ -103,6 +104,13 @@ export default function Topbar() {
     goToMailingListSection(location.pathname, location.hash, navigate, handleNavClick);
   };
 
+  const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    e.preventDefault();
+    handleNavClick();
+    goHomeScrollTop(location.pathname, navigate);
+  };
+
   return (
     <m.nav
       initial={{ y: -100 }}
@@ -120,7 +128,11 @@ export default function Topbar() {
         )}
       >
         <div className="px-5 md:px-7 py-2 flex items-center justify-between relative">
-          <Link to="/" className="flex items-center gap-1 group transition-colors">
+          <Link
+            to="/"
+            onClick={handleLogoClick}
+            className="flex items-center gap-1 group transition-colors"
+          >
             <img
               src="/logo-small.png"
               alt="Bitsocial"

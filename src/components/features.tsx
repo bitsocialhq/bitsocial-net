@@ -177,8 +177,8 @@ export default function Features() {
                 className={`scroll-mt-24 ${index < features.length - 1 ? "mb-12 md:mb-0" : ""}`}
               >
                 <m.div
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  initial={{ y: 30 }}
+                  whileInView={{ y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1, duration: 0.5 }}
                   className={`flex flex-col ${
@@ -218,9 +218,9 @@ export default function Features() {
                 <AnimatePresence>
                   {isExpanded && (
                     <m.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
+                      initial={{ height: 0 }}
+                      animate={{ height: "auto" }}
+                      exit={{ height: 0 }}
                       transition={{ duration: 0.4, ease: "easeOut" }}
                       className="overflow-hidden"
                     >

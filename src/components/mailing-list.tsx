@@ -30,8 +30,8 @@ export default function MailingList() {
     <section id="mailing-list" className="py-20 md:py-28 px-6 scroll-mt-24">
       <div className="max-w-2xl mx-auto">
         <m.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ y: 24 }}
+          whileInView={{ y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
           className="glass-card p-8 md:p-12 text-center"

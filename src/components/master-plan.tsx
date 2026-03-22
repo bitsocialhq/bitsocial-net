@@ -101,8 +101,8 @@ export default function MasterPlan() {
               {phases.map((item, index) => (
                 <m.div
                   key={item.phase}
-                  initial={{ opacity: 0, x: index % 2 === 0 ? -40 : 40 }}
-                  whileInView={{ opacity: 1, x: 0 }}
+                  initial={{ x: index % 2 === 0 ? -40 : 40 }}
+                  whileInView={{ x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.08, duration: 0.5 }}
                   className={`flex flex-col md:flex-row items-center gap-8 ${

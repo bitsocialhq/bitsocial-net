@@ -21,6 +21,10 @@
     "sourceCode": "Source code",
     "newsletter": "Newsletter"
   },
+  "languageSelector": {
+    "title": "Select Language",
+    "searchPlaceholder": "Search languages..."
+  },
   "mailingList": {
     "title": "Stay in the Loop",
     "description": "Get notified about protocol milestones, new Bitsocial apps, and ecosystem updates. Low frequency, high signal.",

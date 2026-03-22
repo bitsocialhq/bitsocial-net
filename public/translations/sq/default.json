@@ -47,5 +47,9 @@
     "subscribing": "Po abonoheni…",
     "success": "Je në listë!",
     "privacy": "Pa spam, asnjëherë. Çregjistrohu kur të duash."
+  },
+  "languageSelector": {
+    "title": "Zgjidh gjuhën",
+    "searchPlaceholder": "Kërko gjuhë..."
   }
 }

@@ -47,5 +47,9 @@
     "subscribing": "Feliratkozás folyamatban…",
     "success": "Rajta vagy a listán!",
     "privacy": "Soha nem küldünk kéretlen leveleket. Bármikor leiratkozhatsz."
+  },
+  "languageSelector": {
+    "title": "Nyelv kiválasztása",
+    "searchPlaceholder": "Nyelvek keresése..."
   }
 }

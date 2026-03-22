@@ -47,5 +47,9 @@
     "subscribing": "Iscrizione in corso…",
     "success": "Sei nella lista!",
     "privacy": "Niente spam, mai. Annulla l'iscrizione in qualsiasi momento."
+  },
+  "languageSelector": {
+    "title": "Seleziona lingua",
+    "searchPlaceholder": "Cerca lingue..."
   }
 }

@@ -47,5 +47,9 @@
     "subscribing": "Se abonează…",
     "success": "Ești pe listă!",
     "privacy": "Fără spam, niciodată. Te poți dezabona oricând."
+  },
+  "languageSelector": {
+    "title": "Selectează limba",
+    "searchPlaceholder": "Caută limbi..."
   }
 }

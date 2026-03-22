@@ -47,5 +47,9 @@
     "subscribing": "Abonnerer…",
     "success": "Du er på listen!",
     "privacy": "Ingen spam, nogensinde. Du kan afmelde dig når som helst."
+  },
+  "languageSelector": {
+    "title": "Vælg sprog",
+    "searchPlaceholder": "Søg efter sprog..."
   }
 }

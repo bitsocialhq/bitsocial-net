@@ -47,5 +47,9 @@
     "subscribing": "Probíhá přihlašování…",
     "success": "Jste na seznamu!",
     "privacy": "Žádný spam, nikdy. Odhlásit se můžete kdykoli."
+  },
+  "languageSelector": {
+    "title": "Vyberte jazyk",
+    "searchPlaceholder": "Hledat jazyky..."
   }
 }

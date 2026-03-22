@@ -47,5 +47,9 @@
     "subscribing": "Prenumererar…",
     "success": "Du finns på listan!",
     "privacy": "Ingen skräppost, någonsin. Avsluta prenumerationen när som helst."
+  },
+  "languageSelector": {
+    "title": "Välj språk",
+    "searchPlaceholder": "Sök språk..."
   }
 }

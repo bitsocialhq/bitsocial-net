@@ -47,5 +47,9 @@
     "subscribing": "Sedang berlangganan…",
     "success": "Kamu sudah masuk daftar!",
     "privacy": "Tak ada spam, selamanya. Berhenti berlangganan kapan saja."
+  },
+  "languageSelector": {
+    "title": "Pilih bahasa",
+    "searchPlaceholder": "Cari bahasa..."
   }
 }

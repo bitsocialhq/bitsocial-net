@@ -47,5 +47,9 @@
     "subscribing": "Tilataan…",
     "success": "Olet listalla!",
     "privacy": "Ei koskaan roskapostia. Voit perua tilauksen milloin tahansa."
+  },
+  "languageSelector": {
+    "title": "Valitse kieli",
+    "searchPlaceholder": "Etsi kieliä..."
   }
 }

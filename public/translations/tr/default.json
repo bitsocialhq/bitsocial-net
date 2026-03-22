@@ -47,5 +47,9 @@
     "subscribing": "Abone olunuyor…",
     "success": "Listedesiniz!",
     "privacy": "Asla spam yok. İstediğiniz zaman abonelikten çıkabilirsiniz."
+  },
+  "languageSelector": {
+    "title": "Dil seçin",
+    "searchPlaceholder": "Dil ara..."
   }
 }

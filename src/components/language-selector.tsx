@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { Globe, Check, Search } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
@@ -61,8 +61,10 @@ export default function LanguageSelector({ mobile }: { mobile?: boolean }) {
   const [searchQuery, setSearchQuery] = useState("");
   const [activeIndex, setActiveIndex] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
+  const listScrollRef = useRef<HTMLDivElement>(null);
   const focusSearchAfterOpenTimerRef = useRef<number | null>(null);
   const optionRefs = useRef<Array<HTMLButtonElement | null>>([]);
+  const [showListBottomFade, setShowListBottomFade] = useState(false);
 
   const currentLanguage = getLanguageEntry(i18n.language);
 
@@ -79,12 +81,15 @@ export default function LanguageSelector({ mobile }: { mobile?: boolean }) {
     filteredLanguages.length === 0 ? -1 : Math.min(activeIndex, filteredLanguages.length - 1);
   const activeLanguage = effectiveActiveIndex >= 0 ? filteredLanguages[effectiveActiveIndex] : null;
 
-  const handleLanguageChange = (code: string) => {
-    i18n.changeLanguage(code);
-    setOpen(false);
-    setSearchQuery("");
-    setActiveIndex(0);
-  };
+  const handleLanguageChange = useCallback(
+    (code: string) => {
+      i18n.changeLanguage(code);
+      setOpen(false);
+      setSearchQuery("");
+      setActiveIndex(0);
+    },
+    [i18n],
+  );
 
   useEffect(() => {
     return () => {
@@ -93,6 +98,33 @@ export default function LanguageSelector({ mobile }: { mobile?: boolean }) {
       }
     };
   }, []);
+
+  const updateListOverflow = useCallback(() => {
+    const el = listScrollRef.current;
+    if (!el) {
+      setShowListBottomFade(false);
+      return;
+    }
+    setShowListBottomFade(el.scrollHeight > el.clientHeight + 1);
+  }, []);
+
+  useLayoutEffect(() => {
+    if (!open) {
+      setShowListBottomFade(false);
+      return;
+    }
+    updateListOverflow();
+  }, [open, filteredLanguages, searchQuery, updateListOverflow]);
+
+  useLayoutEffect(() => {
+    const el = listScrollRef.current;
+    if (!el || !open) return;
+    const ro = new ResizeObserver(() => {
+      updateListOverflow();
+    });
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, [open, updateListOverflow]);
 
   useEffect(() => {
     if (!open || effectiveActiveIndex < 0) return;
@@ -112,12 +144,6 @@ export default function LanguageSelector({ mobile }: { mobile?: boolean }) {
         (language) => language.code === i18n.language,
       );
       setActiveIndex(selectedIndex >= 0 ? selectedIndex : 0);
-      if (!mobile) {
-        focusSearchAfterOpenTimerRef.current = window.setTimeout(() => {
-          focusSearchAfterOpenTimerRef.current = null;
-          inputRef.current?.focus();
-        }, 0);
-      }
       return;
     }
 
@@ -125,30 +151,47 @@ export default function LanguageSelector({ mobile }: { mobile?: boolean }) {
     setActiveIndex(0);
   };
 
-  const handleSearchKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (filteredLanguages.length === 0) return;
-
-    if (event.key === "ArrowDown") {
-      event.preventDefault();
-      setActiveIndex((current) => (current >= filteredLanguages.length - 1 ? 0 : current + 1));
-      return;
+  const focusSearchInputAfterOpen = useCallback(() => {
+    if (mobile) return;
+    if (focusSearchAfterOpenTimerRef.current !== null) {
+      window.clearTimeout(focusSearchAfterOpenTimerRef.current);
     }
+    focusSearchAfterOpenTimerRef.current = window.setTimeout(() => {
+      focusSearchAfterOpenTimerRef.current = null;
+      inputRef.current?.focus();
+    }, 0);
+  }, [mobile]);
 
-    if (event.key === "ArrowUp") {
-      event.preventDefault();
-      setActiveIndex((current) => (current <= 0 ? filteredLanguages.length - 1 : current - 1));
-      return;
-    }
+  const handleSheetKeyDownCapture = useCallback(
+    (event: React.KeyboardEvent) => {
+      if (!open || filteredLanguages.length === 0) return;
 
-    if (event.key === "Enter") {
-      const nextLanguage = filteredLanguages.length === 1 ? filteredLanguages[0] : activeLanguage;
+      const target = event.target as Node | null;
+      const isSearchInput = target === inputRef.current;
 
-      if (!nextLanguage) return;
+      if (event.key === "ArrowDown" || event.key === "ArrowUp") {
+        event.preventDefault();
+        const direction = event.key === "ArrowDown" ? 1 : -1;
+        const len = filteredLanguages.length;
+        setActiveIndex((current) => {
+          const at = Math.min(Math.max(0, current), len - 1);
+          if (direction === 1) {
+            return at >= len - 1 ? 0 : at + 1;
+          }
+          return at <= 0 ? len - 1 : at - 1;
+        });
+        return;
+      }
 
-      event.preventDefault();
-      handleLanguageChange(nextLanguage.code);
-    }
-  };
+      if (event.key === "Enter" && isSearchInput) {
+        const nextLanguage = filteredLanguages.length === 1 ? filteredLanguages[0] : activeLanguage;
+        if (!nextLanguage) return;
+        event.preventDefault();
+        handleLanguageChange(nextLanguage.code);
+      }
+    },
+    [open, filteredLanguages, activeLanguage, handleLanguageChange],
+  );
 
   return (
     <Sheet open={open} onOpenChange={handleOpenChange}>
@@ -171,18 +214,29 @@ export default function LanguageSelector({ mobile }: { mobile?: boolean }) {
           </Button>
         )}
       </SheetTrigger>
-      <SheetContent side="right" className="w-full sm:max-w-md [&>button]:rounded-full">
-        <SheetHeader>
-          <SheetTitle className="font-display text-foreground/80">Select Language</SheetTitle>
+      <SheetContent
+        side="right"
+        className="flex h-full min-h-0 flex-col w-full sm:max-w-md [&>button]:rounded-full"
+        onOpenAutoFocus={(event) => {
+          event.preventDefault();
+          focusSearchInputAfterOpen();
+        }}
+        onKeyDownCapture={handleSheetKeyDownCapture}
+      >
+        <SheetHeader className="shrink-0">
+          <SheetTitle className="font-display text-foreground/80">
+            {t("languageSelector.title")}
+          </SheetTitle>
         </SheetHeader>
-        <div className="mt-6 space-y-4">
-          <div className="relative">
+        <div className="mt-6 flex min-h-0 flex-1 flex-col gap-5">
+          {/* z-index + no overflow clip on this row so focus box-shadow isn’t cut off by a parent */}
+          <div className="relative z-[100] isolate shrink-0">
             <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
             <input
               ref={inputRef}
               type="text"
-              placeholder="Search languages..."
-              aria-label="Search languages"
+              placeholder={t("languageSelector.searchPlaceholder")}
+              aria-label={t("languageSelector.searchPlaceholder")}
               autoComplete="off"
               spellCheck={false}
               value={searchQuery}
@@ -190,12 +244,17 @@ export default function LanguageSelector({ mobile }: { mobile?: boolean }) {
                 setSearchQuery(e.target.value);
                 setActiveIndex(0);
               }}
-              onKeyDown={handleSearchKeyDown}
-              className="w-full rounded-full bg-foreground/[0.04] border border-foreground/[0.08] px-10 py-2.5 text-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring transition-colors"
+              className="w-full rounded-full bg-foreground/[0.04] border border-foreground/[0.08] px-10 py-2.5 text-sm placeholder:text-muted-foreground"
             />
           </div>
-          <div className="relative">
-            <div className="max-h-[calc(100vh-200px)] overflow-y-auto pb-14">
+          <div className="relative flex min-h-0 flex-1 flex-col overflow-hidden">
+            <div
+              ref={listScrollRef}
+              className={cn(
+                "min-h-0 flex-1 overflow-y-auto px-5 pt-3",
+                showListBottomFade && "pb-14",
+              )}
+            >
               <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
                 {filteredLanguages.map((language, index) => (
                   <button
@@ -238,11 +297,12 @@ export default function LanguageSelector({ mobile }: { mobile?: boolean }) {
                 </div>
               ) : null}
             </div>
-            {/* Bottom fade matches `.sheet-glass` end stops in index.css */}
-            <div
-              aria-hidden
-              className="pointer-events-none absolute inset-x-0 bottom-0 h-14 bg-gradient-to-t from-[rgb(242_244_249/0.97)] to-transparent dark:from-[rgb(14_14_20/0.97)]"
-            />
+            {showListBottomFade ? (
+              <div
+                aria-hidden
+                className="pointer-events-none absolute inset-x-0 bottom-0 h-14 bg-gradient-to-t from-[rgb(242_244_249/0.97)] to-transparent dark:from-[hsl(var(--sheet-surface)/0.97)]"
+              />
+            ) : null}
           </div>
         </div>
       </SheetContent>

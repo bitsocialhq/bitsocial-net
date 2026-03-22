@@ -47,5 +47,9 @@
     "subscribing": "購読中…",
     "success": "リストに登録されました！",
     "privacy": "スパムは一切ありません。いつでも配信停止できます。"
+  },
+  "languageSelector": {
+    "title": "言語を選択",
+    "searchPlaceholder": "言語を検索..."
   }
 }

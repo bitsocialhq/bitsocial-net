@@ -47,5 +47,9 @@
     "subscribing": "구독 중…",
     "success": "목록에 추가되셨습니다!",
     "privacy": "스팸은 절대 없습니다. 언제든지 구독을 취소할 수 있어요."
+  },
+  "languageSelector": {
+    "title": "언어 선택",
+    "searchPlaceholder": "언어 검색..."
   }
 }

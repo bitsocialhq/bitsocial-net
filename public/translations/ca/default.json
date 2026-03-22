@@ -47,5 +47,9 @@
     "subscribing": "S'està subscrivint…",
     "success": "Ja ets a la llista!",
     "privacy": "Mai spam. Pots donar-te de baixa quan vulguis."
+  },
+  "languageSelector": {
+    "title": "Selecciona l'idioma",
+    "searchPlaceholder": "Cerca idiomes..."
   }
 }

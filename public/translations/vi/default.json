@@ -47,5 +47,9 @@
     "subscribing": "Đang đăng ký…",
     "success": "Bạn đã có trong danh sách!",
     "privacy": "Không bao giờ có spam. Bạn có thể hủy đăng ký bất cứ lúc nào."
+  },
+  "languageSelector": {
+    "title": "Chọn ngôn ngữ",
+    "searchPlaceholder": "Tìm kiếm ngôn ngữ..."
   }
 }

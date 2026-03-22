@@ -47,5 +47,9 @@
     "subscribing": "Nagsu-subscribe…",
     "success": "Nasa listahan ka na!",
     "privacy": "Walang spam, kailanman. Maaari kang mag-unsubscribe anumang oras."
+  },
+  "languageSelector": {
+    "title": "Pumili ng wika",
+    "searchPlaceholder": "Maghanap ng mga wika..."
   }
 }

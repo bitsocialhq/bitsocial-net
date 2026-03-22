@@ -47,5 +47,9 @@
     "subscribing": "सदस्यता घेतली जात आहे…",
     "success": "तुम्ही यादीत आहात!",
     "privacy": "कधीही स्पॅम नाही. कधीही सदस्यता रद्द करा."
+  },
+  "languageSelector": {
+    "title": "भाषा निवडा",
+    "searchPlaceholder": "भाषा शोधा..."
   }
 }

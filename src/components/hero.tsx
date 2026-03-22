@@ -5,6 +5,7 @@ import {
   useCallback,
   useContext,
   useEffect,
+  useLayoutEffect,
   useRef,
   useState,
 } from "react";
@@ -12,6 +13,11 @@ import { m } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Trans, useTranslation } from "react-i18next";
 import { useTheme } from "next-themes";
+import {
+  registerHeroMountForIntroSync,
+  resetHeroMountForIntroSync,
+  TAGLINE_INTRO_START_MS,
+} from "@/lib/hero-intro-timing";
 import { useGraphicsMode } from "@/lib/graphics-mode";
 import { cn, triggerFeatureGlow } from "@/lib/utils";
 
@@ -21,7 +27,7 @@ const MeshGraphic = lazy(() => import("./mesh-graphic"));
 const HighlightIndexCtx = createContext(-1);
 
 const TAGLINE_LINK_COUNT = 6;
-const INTRO_START_DELAY = 1800;
+const INTRO_START_DELAY = TAGLINE_INTRO_START_MS;
 const INTRO_STEP_MS = 1000;
 
 function TaglineLink({
@@ -124,6 +130,11 @@ export default function Hero() {
   const graphicsMode = useGraphicsMode();
   const showGraphics = graphicsMode === "full";
   const { highlightedIndex, resetIntro } = useTaglineIntro();
+
+  useLayoutEffect(() => {
+    registerHeroMountForIntroSync();
+    return () => resetHeroMountForIntroSync();
+  }, []);
 
   const navigateToFeatureFromTagline = useCallback(
     (hash: string) => {

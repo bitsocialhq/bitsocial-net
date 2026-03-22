@@ -2,6 +2,7 @@ import { useRef, useState, useEffect } from "react";
 import * as THREE from "three";
 import { gsap } from "gsap";
 import { useTheme } from "next-themes";
+import { getPlanetRingRotationDelaySeconds } from "@/lib/hero-intro-timing";
 
 // Create a 3D ring with rectangular cross-section (like the logo)
 function createMetallicRing(
@@ -390,7 +391,7 @@ export default function PlanetGraphic() {
     scene.add(ring2);
 
     const ringRotationDuration = 7;
-    const ringRotationDelay = 3;
+    const ringRotationDelay = getPlanetRingRotationDelaySeconds();
     const ringRotationPause = 5;
     const ringRotationEase = "sine.inOut";
     const ringRotationAmount = Math.PI * 2;

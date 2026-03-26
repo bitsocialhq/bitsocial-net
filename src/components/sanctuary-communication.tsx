@@ -13,50 +13,54 @@ import {
 type ApproachId = "federated" | "blockchain" | "bitsocial";
 
 const approaches: { id: ApproachId; label: string; subtitle: string }[] = [
-  { id: "federated", label: "Federated", subtitle: "Bluesky, Mastodon, Lemmy, Nostr" },
-  { id: "blockchain", label: "Blockchain", subtitle: "DeSo, Lens, Farcaster, Minds, Steemit" },
-  { id: "bitsocial", label: "Bitsocial", subtitle: "The only peer-to-peer social network" },
+  { id: "federated", label: "Federated", subtitle: "Bluesky, Mastodon, Lemmy" },
+  { id: "blockchain", label: "Chain / Hub", subtitle: "Farcaster, Lens, DeSo, Steemit" },
+  {
+    id: "bitsocial",
+    label: "Bitsocial",
+    subtitle: "Pure P2P with arbitrary anti-spam challenges",
+  },
 ];
 
 const rows: { label: string; values: Record<ApproachId, string> }[] = [
   {
-    label: "Node requirements",
+    label: "Self-hosting cost",
     values: {
       federated: "Server + domain + SSL",
-      blockchain: "Datacenter hardware",
-      bitsocial: "Very low (e.g., Raspberry Pi)",
+      blockchain: "Expensive node, hub, or RPC",
+      bitsocial: "Extremely cheap, runs on Raspberry Pi",
     },
   },
   {
-    label: "Data hosting",
+    label: "Who keeps it online",
     values: {
-      federated: "Instance operator's server",
-      blockchain: "Entire chain on every node",
-      bitsocial: "Community/profile owners, via full nodes",
+      federated: "Service / instance operator",
+      blockchain: "Chain, hub, or RPC infrastructure",
+      bitsocial: "Community owners + helper seeders",
     },
   },
   {
-    label: "Scalability",
+    label: "Scaling model",
     values: {
-      federated: "Bottleneck per instance",
-      blockchain: "Chain grows, costs rise",
-      bitsocial: "More users = faster",
+      federated: "Bigger instances, higher bills",
+      blockchain: "More state, heavier infra",
+      bitsocial: "More peers, more bandwidth",
     },
   },
   {
-    label: "Resilience",
+    label: "Custom anti-spam logic",
     values: {
-      federated: "DDoS, SSL revoked, domain seized",
-      blockchain: "Validator censorship",
-      bitsocial: "No single point of failure",
+      federated: "Not built into the protocol",
+      blockchain: "Tied to chains, hubs, or fees",
+      bitsocial: "Built in: challenge can be anything",
     },
   },
   {
-    label: "Getting started",
+    label: "Takedown choke points",
     values: {
-      federated: "Sign up on someone's instance",
-      blockchain: "Buy tokens, create wallet",
-      bitsocial: "Open a Bitsocial app",
+      federated: "Host, registrar, SSL, DDoS provider",
+      blockchain: "Validators, hubs, RPCs",
+      bitsocial: "No single choke point",
     },
   },
 ];
@@ -453,8 +457,8 @@ export default function SanctuaryCommunication() {
           className="text-base md:text-lg text-center text-muted-foreground max-w-2xl mx-auto mb-16 text-balance leading-relaxed"
         >
           No servers to rent. No domains to buy. No chains to sync. A Bitsocial node runs on a
-          Raspberry Pi — and like BitTorrent, the more people join, the faster and more resilient it
-          gets.
+          Raspberry Pi. And each community can enforce its own anti-spam challenge: captchas,
+          reputation, SMS, payments, tokens, IP checks, or anything else that can be coded.
         </m.p>
 
         <MobileComparisonCarousel />

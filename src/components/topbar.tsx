@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { m } from "framer-motion";
 import { useTranslation } from "react-i18next";
@@ -9,6 +9,11 @@ import { ThemeToggle } from "./theme-toggle";
 import HamburgerButton from "./hamburger-button";
 import LanguageSelector from "./language-selector";
 import MobileMenu from "./mobile-menu";
+
+const navLinkClassName =
+  "text-muted-foreground hover:text-foreground transition-colors relative group text-lg md:text-base font-display leading-none py-2 px-2 block";
+// Trigger the compact nav before the desktop layout looks cramped.
+const compactNavigationTriggerBufferPx = 24;
 
 function NavLink({
   to,
@@ -25,9 +30,7 @@ function NavLink({
   className?: string;
   noUnderline?: boolean;
 }) {
-  const baseClassName =
-    "text-muted-foreground hover:text-foreground transition-colors relative group text-lg md:text-base font-display leading-none py-2 px-2 block";
-  const className = extraClassName ? `${baseClassName} ${extraClassName}` : baseClassName;
+  const className = extraClassName ? `${navLinkClassName} ${extraClassName}` : navLinkClassName;
   const content = (
     <>
       {children}
@@ -66,24 +69,143 @@ function NavLink({
   );
 }
 
+function TopbarLinks({
+  appsLabel,
+  docsLabel,
+  statusLabel,
+  sourceCodeLabel,
+  newsletterLabel,
+  onNavClick,
+  onNewsletterClick,
+}: {
+  appsLabel: string;
+  docsLabel: string;
+  statusLabel: string;
+  sourceCodeLabel: string;
+  newsletterLabel: string;
+  onNavClick: () => void;
+  onNewsletterClick: (e: React.MouseEvent<HTMLAnchorElement>) => void;
+}) {
+  return (
+    <div className="flex items-center gap-5">
+      <NavLink to="/apps" onClick={onNavClick} noUnderline>
+        {appsLabel}
+      </NavLink>
+      <NavLink to="/docs" onClick={onNavClick} noUnderline>
+        {docsLabel}
+      </NavLink>
+      <NavLink to="/status" onClick={onNavClick} noUnderline>
+        {statusLabel}
+      </NavLink>
+      <NavLink
+        href="https://github.com/bitsocialnet"
+        onClick={onNavClick}
+        noUnderline
+        className="capitalize"
+      >
+        {sourceCodeLabel}
+      </NavLink>
+      <a href="/#mailing-list" className={navLinkClassName} onClick={onNewsletterClick}>
+        {newsletterLabel}
+      </a>
+    </div>
+  );
+}
+
+function DesktopNavigation({
+  appsLabel,
+  docsLabel,
+  statusLabel,
+  sourceCodeLabel,
+  newsletterLabel,
+  onNavClick,
+  onNewsletterClick,
+}: {
+  appsLabel: string;
+  docsLabel: string;
+  statusLabel: string;
+  sourceCodeLabel: string;
+  newsletterLabel: string;
+  onNavClick: () => void;
+  onNewsletterClick: (e: React.MouseEvent<HTMLAnchorElement>) => void;
+}) {
+  return (
+    <div className="flex items-center">
+      <TopbarLinks
+        appsLabel={appsLabel}
+        docsLabel={docsLabel}
+        statusLabel={statusLabel}
+        sourceCodeLabel={sourceCodeLabel}
+        newsletterLabel={newsletterLabel}
+        onNavClick={onNavClick}
+        onNewsletterClick={onNewsletterClick}
+      />
+      <div className="h-4 w-px bg-border mx-4" />
+      <div className="flex items-center gap-2">
+        <LanguageSelector />
+        <ThemeToggle />
+      </div>
+    </div>
+  );
+}
+
 export default function Topbar() {
   const { t } = useTranslation();
   const location = useLocation();
   const navigate = useNavigate();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMenuExpanded, setIsMenuExpanded] = useState(false);
+  const [usesCompactNavigation, setUsesCompactNavigation] = useState(
+    () => typeof window !== "undefined" && window.innerWidth < 768,
+  );
+  const topbarContentRef = useRef<HTMLDivElement>(null);
+  const logoRef = useRef<HTMLAnchorElement>(null);
+  const desktopNavMeasureRef = useRef<HTMLDivElement>(null);
+
+  const updateNavigationMode = useCallback(() => {
+    const availableWidth = topbarContentRef.current?.getBoundingClientRect().width ?? 0;
+    const logoWidth = logoRef.current?.getBoundingClientRect().width ?? 0;
+    const desktopNavWidth = desktopNavMeasureRef.current?.getBoundingClientRect().width ?? 0;
+
+    if (!availableWidth || !logoWidth || !desktopNavWidth) {
+      return;
+    }
+
+    const nextUsesCompactNavigation =
+      logoWidth + desktopNavWidth + compactNavigationTriggerBufferPx > availableWidth;
+    setUsesCompactNavigation((current) =>
+      current === nextUsesCompactNavigation ? current : nextUsesCompactNavigation,
+    );
+  }, []);
+
+  useLayoutEffect(() => {
+    updateNavigationMode();
+
+    const resizeObserver = new ResizeObserver(() => {
+      updateNavigationMode();
+    });
+
+    if (topbarContentRef.current) {
+      resizeObserver.observe(topbarContentRef.current);
+    }
+
+    if (logoRef.current) {
+      resizeObserver.observe(logoRef.current);
+    }
+
+    if (desktopNavMeasureRef.current) {
+      resizeObserver.observe(desktopNavMeasureRef.current);
+    }
+
+    return () => resizeObserver.disconnect();
+  }, [updateNavigationMode]);
 
   useEffect(() => {
-    const mql = window.matchMedia("(min-width: 768px)");
-    const handler = () => {
-      if (mql.matches) {
-        setIsMobileMenuOpen(false);
-        setIsMenuExpanded(false);
-      }
-    };
-    mql.addEventListener("change", handler);
-    return () => mql.removeEventListener("change", handler);
-  }, []);
+    if (!usesCompactNavigation) {
+      setIsMobileMenuOpen(false);
+      setIsMenuExpanded(false);
+    }
+  }, [usesCompactNavigation]);
 
   const handleNavClick = () => {
     setIsMobileMenuOpen(false);
@@ -111,6 +233,12 @@ export default function Topbar() {
     goHomeScrollTop(location.pathname, navigate);
   };
 
+  const appsLabel = t("nav.apps");
+  const docsLabel = t("nav.docs");
+  const statusLabel = t("nav.status");
+  const sourceCodeLabel = t("nav.sourceCode");
+  const newsletterLabel = t("nav.newsletter");
+
   return (
     <m.nav
       initial={{ y: -100 }}
@@ -127,78 +255,68 @@ export default function Topbar() {
           isMenuExpanded ? "rounded-[2rem]" : "rounded-full",
         )}
       >
-        <div className="px-5 md:px-7 py-2 flex items-center justify-between relative">
-          <Link
-            to="/"
-            onClick={handleLogoClick}
-            className="flex items-center gap-1 group transition-colors"
+        <div className="relative px-5 md:px-7 py-2">
+          <div
+            ref={desktopNavMeasureRef}
+            aria-hidden="true"
+            className="pointer-events-none invisible absolute left-0 top-0 whitespace-nowrap"
           >
-            <img
-              src="/logo-small.png"
-              alt="Bitsocial"
-              className="h-8 w-8 transition-[filter] group-hover:brightness-110"
+            <DesktopNavigation
+              appsLabel={appsLabel}
+              docsLabel={docsLabel}
+              statusLabel={statusLabel}
+              sourceCodeLabel={sourceCodeLabel}
+              newsletterLabel={newsletterLabel}
+              onNavClick={handleNavClick}
+              onNewsletterClick={handleNewsletterClick}
             />
-            <span className="text-xl font-display font-regular text-muted-foreground group-hover:text-foreground transition-colors">
-              Bitsocial
-            </span>
-          </Link>
-
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center">
-            {/* Nav links */}
-            <div className="flex items-center gap-5">
-              <NavLink to="/apps" onClick={handleNavClick} noUnderline>
-                {t("nav.apps")}
-              </NavLink>
-              <NavLink to="/docs" onClick={handleNavClick} noUnderline>
-                {t("nav.docs")}
-              </NavLink>
-              <NavLink to="/status" onClick={handleNavClick} noUnderline>
-                {t("nav.status")}
-              </NavLink>
-              <NavLink
-                href="https://github.com/bitsocialnet"
-                onClick={handleNavClick}
-                noUnderline
-                className="capitalize"
-              >
-                {t("nav.sourceCode")}
-              </NavLink>
-              <a
-                href="/#mailing-list"
-                className="text-muted-foreground hover:text-foreground transition-colors relative group text-lg md:text-base font-display leading-none py-2 px-2 block"
-                onClick={handleNewsletterClick}
-              >
-                {t("nav.newsletter")}
-              </a>
-            </div>
-
-            {/* Divider */}
-            <div className="h-4 w-px bg-border mx-4" />
-
-            {/* Utility controls */}
-            <div className="flex items-center gap-2">
-              <LanguageSelector />
-              <ThemeToggle />
-            </div>
           </div>
 
-          {/* Mobile Navigation */}
-          <div className="md:hidden">
-            <HamburgerButton isOpen={isMobileMenuOpen} onClick={handleMenuToggle} />
+          <div ref={topbarContentRef} className="flex items-center justify-between">
+            <Link
+              ref={logoRef}
+              to="/"
+              onClick={handleLogoClick}
+              className="flex items-center gap-1 group transition-colors"
+            >
+              <img
+                src="/logo-small.png"
+                alt="Bitsocial"
+                className="h-8 w-8 transition-[filter] group-hover:brightness-110"
+              />
+              <span className="text-xl font-display font-regular text-muted-foreground group-hover:text-foreground transition-colors">
+                Bitsocial
+              </span>
+            </Link>
+
+            {usesCompactNavigation ? (
+              <HamburgerButton isOpen={isMobileMenuOpen} onClick={handleMenuToggle} />
+            ) : (
+              <DesktopNavigation
+                appsLabel={appsLabel}
+                docsLabel={docsLabel}
+                statusLabel={statusLabel}
+                sourceCodeLabel={sourceCodeLabel}
+                newsletterLabel={newsletterLabel}
+                onNavClick={handleNavClick}
+                onNewsletterClick={handleNewsletterClick}
+              />
+            )}
           </div>
         </div>
-        <MobileMenu isOpen={isMobileMenuOpen} onExitComplete={() => setIsMenuExpanded(false)}>
-          {/* Nav links */}
+        <MobileMenu
+          isOpen={usesCompactNavigation && isMobileMenuOpen}
+          onExitComplete={() => setIsMenuExpanded(false)}
+        >
           <div className="flex flex-col gap-1">
             <NavLink to="/apps" onClick={handleNavClick} noUnderline>
-              {t("nav.apps")}
+              {appsLabel}
             </NavLink>
             <NavLink to="/docs" onClick={handleNavClick} noUnderline>
-              {t("nav.docs")}
+              {docsLabel}
             </NavLink>
             <NavLink to="/status" onClick={handleNavClick} noUnderline>
-              {t("nav.status")}
+              {statusLabel}
             </NavLink>
             <NavLink
               href="https://github.com/bitsocialnet"
@@ -206,18 +324,13 @@ export default function Topbar() {
               noUnderline
               className="capitalize"
             >
-              {t("nav.sourceCode")}
+              {sourceCodeLabel}
             </NavLink>
-            <a
-              href="/#mailing-list"
-              className="text-muted-foreground hover:text-foreground transition-colors relative group text-lg md:text-base font-display leading-none py-2 px-2 block"
-              onClick={handleNewsletterClick}
-            >
-              {t("nav.newsletter")}
+            <a href="/#mailing-list" className={navLinkClassName} onClick={handleNewsletterClick}>
+              {newsletterLabel}
             </a>
           </div>
 
-          {/* Controls */}
           <div className="border-t border-border/30 pt-4 mt-2 flex flex-row gap-2">
             <div className="flex-1">
               <LanguageSelector mobile />

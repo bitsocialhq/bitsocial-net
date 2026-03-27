@@ -18,7 +18,7 @@ export default function MobileMenu({ isOpen, children, onExitComplete }: MobileM
             duration: 0.28,
             ease: [0.4, 0, 0.2, 1],
           }}
-          className="overflow-hidden md:hidden"
+          className="overflow-hidden"
         >
           <m.nav
             initial={{ opacity: 0, y: -10 }}

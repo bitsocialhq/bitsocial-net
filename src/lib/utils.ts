@@ -9,7 +9,7 @@ const highlightTimeouts = new WeakMap<Element, ReturnType<typeof setTimeout>>();
 const TEMPORARY_HIGHLIGHT_DURATION_MS = 5000;
 const HERO_TAGLINE_SELECTOR = "[data-hero-tagline]";
 
-function getScrollBehavior(): ScrollBehavior {
+export function getScrollBehavior(): ScrollBehavior {
   return document.documentElement.dataset.reducedMotion === "true" ? "auto" : "smooth";
 }
 

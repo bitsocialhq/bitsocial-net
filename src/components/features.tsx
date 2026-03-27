@@ -1,7 +1,8 @@
-import { m, AnimatePresence, useReducedMotion } from "framer-motion";
-import { useState, useEffect } from "react";
+import { m, useReducedMotion } from "framer-motion";
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { triggerFeatureGlow, triggerTaglineGlow } from "@/lib/utils";
+import { getScrollBehavior, triggerFeatureGlow, triggerTaglineGlow } from "@/lib/utils";
 
 type FeatureId =
   | "open-source"
@@ -14,7 +15,9 @@ type FeatureId =
 interface Feature {
   id: FeatureId;
   description: string;
-  expandedContent: string;
+  ctaLabel: string;
+  ctaHref: string;
+  external?: boolean;
 }
 
 /** Circle quarter fillet via cubic Bézier (avoids elliptical-arc sweep ambiguity in SVG). */
@@ -24,46 +27,58 @@ const features: Feature[] = [
   {
     id: "open-source",
     description:
-      "Bitsocial is open source under GPLv2 license: the code is public, can be modified, and outside contributions are welcome.",
-    expandedContent:
-      "Please contribute! Bitsocial needs as many developers as possible to help it grow and succeed. You can find our team's code on https://github.com/bitsocialnet, pull requests are welcome. You are also free to fork our code and create your own Bitsocial app as well. You are very much encouraged to experiment with the code to create your own custom Bitsocial app; the more apps there are, the more opportunities the userbase has to grow, exponentially. Every Bitsocial app should be designed to be compatible with each other, so the overall Bitsocial userbase can be shared across clients, and thus new clients have a higher chance of success.",
+      "Bitsocial is GPLv2 open source: the protocol and clients are public, forkable, and open to outside contributions. Anyone can inspect the code, ship improvements, or build a compatible app without asking permission from a company.",
+    ctaLabel: "Browse source code",
+    ctaHref: "https://github.com/bitsocialnet",
+    external: true,
   },
   {
     id: "peer-to-peer",
     description:
-      "Bitsocial finally brings true decentralization to social media: it's not federated, and it's not on a blockchain either; rather, it is pure P2P, similarly to torrents, getting faster as more users join and seed the network.",
-    expandedContent:
-      "Unlike federated social media, Bitsocial can achieve absolute freedom of speech: Bitsocial is pure peer-to-peer—users can always connect to a community directly by knowing its address, and each user has full ownership of their own data, so no instance/relay exists with the power of censoring users or communities.\n\nUnlike blockchain-based social media, Bitsocial is infinitely scalable: users can be full nodes on about 2GB of RAM by simply browsing with the desktop app (uses IPFS), automatically seeding all communities from which they download content. All content is text-only (including links for media).",
+      "Bitsocial is neither federated nor on-chain. Each community is a peer-to-peer swarm, closer to BitTorrent than a hosted website: users seed what they read, nodes can run on cheap hardware, and each community can enforce its own anti-spam challenge instead of depending on a global platform policy.",
+    ctaLabel: "It's sanctuary communication",
+    ctaHref: "#sanctuary-communication",
   },
   {
     id: "social-apps",
     description:
-      'Anyone can build a Bitsocial app (also known as a "client" for the Bitsocial protocol), with any interface of their choice.',
-    expandedContent:
-      "Bitsocial is a free protocol, nobody decides how many clients there may be. Build your own, share it, see it grow a userbase. The entire Bitsocial userbase is shared across clients, each client should be designed to be compatible with each other. The more clients there are, the more opportunities the userbase has to grow, exponentially.",
+      "Anyone can build a Bitsocial app with its own interface, discovery model, or defaults. Apps compete on product quality instead of locking users into a private database, because compatible clients can share the same communities, identities, and network.",
+    ctaLabel: "Explore apps",
+    ctaHref: "/apps",
   },
   {
     id: "no-servers",
     description:
-      'Bitsocial is serverless, so it\'s impossible for the network to "go down". No government can shut it down, either, and nobody owns the network as a whole.',
-    expandedContent:
-      'Users own their own communities, they run them with bitsocial nodes, so each community acts as its own "server" (P2P node). Crucially, Bitsocial nodes don\'t need a domain to function, no SSL, and they run on very low resources (e.g., a node runs on a raspberry pi, powering thousands of bitsocial communities at a time).',
+      "Bitsocial does not require every community to rent a datacenter box, buy a domain, or manage SSL just to stay online. A community node can run from home on consumer hardware, and there is no single company-run backend that can take the whole network down.",
+    ctaLabel: "Check network status",
+    ctaHref: "/status",
   },
   {
     id: "no-global-bans",
     description:
-      'Bitsocial itself is adminless; it is the true "digital public square" of the internet. Users are admins and moderators of their own communities and profiles, and nobody can ban them from the whole network.',
-    expandedContent:
-      'Nobody owns Bitsocial, therefore nobody can ban users from Bitsocial as a whole, as there are no "global admins" running the network. Bitsocial app developers may choose to blacklist certain users addresses and/or community addresses from their app, but nobody can ban them from the network as a whole, and anyone can create their own Bitsocial app as well. Interestingly, Twitter/"X" praised itself as the "digital town square" where people can speak freely, and yet a corporation (X Corp.) owns this so-called "public square"—a corporation whose admins can ban anyone at will. Bitsocial isn\'t controlled by any corporation, thus it is the true public square of the internet.',
+      "Moderation still exists, but it stays local. Community owners set rules for their own spaces and apps can choose what they index or show, yet there is no protocol-level super-admin who can erase a profile or seize a community from the network itself.",
+    ctaLabel: "Read moderation notes",
+    ctaHref: "/docs#local-moderation",
   },
   {
     id: "cryptographic-property",
     description:
-      "Bitsocial users own their own identities (e.g. profiles, communities they create) as private keys, just like how crypto users own their own coins with seed phrases.",
-    expandedContent:
-      "Finally, the web has cryptographically unseizable communities for the first time ever. Just like in the real world you may have your own private property, on Bitsocial you can have your own community as your property, with your own rules. A Bitsocial community and profile therefore act as if they're their own websites, even using their own domains as addresses, which other Bitsocial users subscribe to and connect to P2P. Even so—unlike traditional websites that can get taken down at any time by the domain registrar, DNS, SSL certificate, etc.—Bitsocial identities are pure P2P nodes, which are censorship-resistant, similarly to Bitcoin nodes and BitTorrent seeders.",
+      "Profiles and communities are controlled by private keys, not by revocable platform accounts. You can delegate hosting without giving away ownership, so your identity and community behave more like wallet-controlled property than a username rented from a company.",
+    ctaLabel: "Read ownership notes",
+    ctaHref: "/docs#identity-and-ownership",
   },
 ];
+
+const featureCtaClassName =
+  "px-8 py-3 rounded-full glass-card text-muted-foreground hover:text-foreground font-display font-semibold hover:border-blue-glow ring-glow transition-all duration-300 w-full md:w-auto text-center";
+const mobileFeatureCtaClassName =
+  "inline-flex items-center justify-center rounded-full glass-card px-5 py-2 text-sm text-center text-muted-foreground transition-all duration-300 hover:border-blue-glow hover:text-foreground ring-glow font-display font-semibold";
+
+interface FeatureCtaProps {
+  className: string;
+  feature: Feature;
+  onSanctuaryClick: (event: React.MouseEvent<HTMLAnchorElement>) => void;
+}
 
 /** Matches original feature-card framing: excerpt from the hero line with ellipses and commas. */
 function featureTitleFromTaglineSegments(t: (key: string) => string, id: FeatureId): string {
@@ -106,9 +121,32 @@ function featureConnectorPathD(isEven: boolean): string {
   return `M ${xR},0 L ${xR},${yTop} C ${xR},${yTop + k} ${xR - r + k},${yMid} ${xR - r},${yMid} L ${xL + r},${yMid} C ${xL + r - k},${yMid} ${xL},${yBot - k} ${xL},${yBot} L ${xL},64`;
 }
 
+function FeatureCta({ className, feature, onSanctuaryClick }: FeatureCtaProps) {
+  if (feature.external) {
+    return (
+      <a href={feature.ctaHref} target="_blank" rel="noreferrer" className={className}>
+        {feature.ctaLabel}
+      </a>
+    );
+  }
+
+  if (feature.ctaHref.startsWith("#")) {
+    return (
+      <a href={feature.ctaHref} onClick={onSanctuaryClick} className={className}>
+        {feature.ctaLabel}
+      </a>
+    );
+  }
+
+  return (
+    <Link to={feature.ctaHref} className={className}>
+      {feature.ctaLabel}
+    </Link>
+  );
+}
+
 export default function Features() {
   const { t } = useTranslation();
-  const [expandedId, setExpandedId] = useState<string | null>(null);
   const prefersReducedMotion = useReducedMotion();
 
   useEffect(() => {
@@ -141,15 +179,30 @@ export default function Features() {
     };
   }, []);
 
-  const toggleExpand = (id: string, event: React.MouseEvent<HTMLButtonElement>) => {
-    setExpandedId(expandedId === id ? null : id);
-    // Remove focus after click to ensure hover state works properly
-    event.currentTarget.blur();
-  };
-
   const handleTitleClick = (id: string) => {
     window.history.replaceState(null, "", `${window.location.pathname}${window.location.search}`);
     triggerTaglineGlow(id);
+  };
+
+  const handleSanctuaryClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+    const sanctuarySection = document.getElementById("sanctuary-communication");
+    if (!sanctuarySection) return;
+    const sanctuaryLabel =
+      sanctuarySection.querySelector<HTMLElement>("[data-sanctuary-label]") ?? sanctuarySection;
+    const topbar = document.querySelector<HTMLElement>("nav");
+    const topbarBottom = topbar?.getBoundingClientRect().bottom ?? 0;
+    const targetOffset = topbarBottom + 30;
+    const scrollTarget = sanctuaryLabel;
+    const rect = scrollTarget.getBoundingClientRect();
+    const targetTop = rect.top + window.scrollY - targetOffset;
+    const scrollBehavior = getScrollBehavior();
+    window.history.pushState(
+      null,
+      "",
+      `${window.location.pathname}${window.location.search}#sanctuary-communication`,
+    );
+    window.scrollTo({ top: Math.max(0, targetTop), behavior: scrollBehavior });
   };
 
   return (
@@ -167,14 +220,13 @@ export default function Features() {
 
         <div>
           {features.map((feature, index) => {
-            const isExpanded = expandedId === feature.id;
             const isEven = index % 2 === 0;
 
             return (
               <div
                 key={feature.id}
                 id={feature.id}
-                className={`scroll-mt-24 ${index < features.length - 1 ? "mb-12 md:mb-0" : ""}`}
+                className={`scroll-mt-24 ${index < features.length - 1 ? "mb-0" : ""}`}
               >
                 <m.div
                   initial={{ y: 30 }}
@@ -187,7 +239,7 @@ export default function Features() {
                 >
                   {/* Card Content */}
                   <div className="flex-1 w-full md:w-1/2">
-                    <div className="glass-card p-6 md:p-8">
+                    <div className="glass-card flex h-full flex-col p-6 md:p-8">
                       <h3 className="mb-4">
                         <button
                           type="button"
@@ -200,50 +252,63 @@ export default function Features() {
                       <p className="text-muted-foreground text-sm md:text-base leading-relaxed">
                         {feature.description}
                       </p>
+                      <div className="mt-4 flex justify-end rtl:justify-start md:hidden -mb-2 -mr-2 rtl:-ml-2 rtl:mr-0">
+                        <FeatureCta
+                          feature={feature}
+                          className={mobileFeatureCtaClassName}
+                          onSanctuaryClick={handleSanctuaryClick}
+                        />
+                      </div>
                     </div>
                   </div>
 
-                  {/* Learn More Button */}
-                  <div className="flex-1 w-full md:w-1/2 flex items-center justify-center">
-                    <button
-                      onClick={(e) => toggleExpand(feature.id, e)}
-                      className="px-8 py-3 rounded-full glass-card text-muted-foreground hover:text-foreground font-display font-semibold hover:border-blue-glow ring-glow transition-all duration-300 w-full md:w-auto"
-                    >
-                      {isExpanded ? "Show Less" : "Learn More"}
-                    </button>
+                  {/* Feature CTA */}
+                  <div className="hidden md:flex flex-1 w-full md:w-1/2 items-center justify-center">
+                    <FeatureCta
+                      feature={feature}
+                      className={featureCtaClassName}
+                      onSanctuaryClick={handleSanctuaryClick}
+                    />
                   </div>
                 </m.div>
 
-                {/* Expanded Content */}
-                <AnimatePresence>
-                  {isExpanded && (
-                    <m.div
-                      initial={{ height: 0 }}
-                      animate={{ height: "auto" }}
-                      exit={{ height: 0 }}
-                      transition={{ duration: 0.4, ease: "easeOut" }}
-                      className="overflow-hidden"
-                    >
-                      <div className="mt-2 md:mt-8">
-                        <div className="glass-card p-6 md:p-8">
-                          <p className="text-muted-foreground text-sm md:text-base leading-relaxed">
-                            {feature.expandedContent}
-                          </p>
-                        </div>
-                      </div>
-                    </m.div>
-                  )}
-                </AnimatePresence>
-
                 {index < features.length - 1 && (
-                  <div
-                    className="hidden md:block pointer-events-none select-none h-16 w-full shrink-0"
-                    aria-hidden="true"
-                  >
+                  <>
+                    <div
+                      className="hidden md:block pointer-events-none select-none h-16 w-full shrink-0"
+                      aria-hidden="true"
+                    >
+                      <svg
+                        viewBox="0 0 1000 64"
+                        className="h-full w-full rtl:-scale-x-100"
+                        fill="none"
+                      >
+                        <m.path
+                          className="feature-connector-path"
+                          d={featureConnectorPathD(isEven)}
+                          strokeWidth={2}
+                          strokeLinecap="square"
+                          strokeLinejoin="round"
+                          vectorEffect="non-scaling-stroke"
+                          {...(prefersReducedMotion
+                            ? {}
+                            : {
+                                initial: { pathLength: 0 },
+                                whileInView: { pathLength: 1 },
+                                viewport: { once: true },
+                                transition: {
+                                  duration: 1,
+                                  ease: "easeInOut",
+                                },
+                              })}
+                        />
+                      </svg>
+                    </div>
                     <svg
                       viewBox="0 0 1000 64"
-                      className="h-full w-full rtl:-scale-x-100"
+                      className="pointer-events-none -mt-px block h-12 w-full shrink-0 select-none md:hidden rtl:-scale-x-100"
                       fill="none"
+                      aria-hidden="true"
                     >
                       <m.path
                         className="feature-connector-path"
@@ -265,7 +330,7 @@ export default function Features() {
                             })}
                       />
                     </svg>
-                  </div>
+                  </>
                 )}
               </div>
             );

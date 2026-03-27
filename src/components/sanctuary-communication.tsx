@@ -411,10 +411,11 @@ const MobileComparisonCarousel = memo(function MobileComparisonCarousel() {
 
 export default function SanctuaryCommunication() {
   return (
-    <section id="sanctuary-communication" className="py-24 px-6">
+    <section id="sanctuary-communication" className="scroll-mt-24 py-24 px-6">
       <div className="max-w-7xl mx-auto">
         {/* Section label — reads last (smallest, muted) per visual hierarchy principle */}
         <m.a
+          data-sanctuary-label
           href="https://x.com/VitalikButerin/status/2030781981706051769#:~:text=Some%20%22sanctuary%20technology%22%20is%20sanctuary%20money.%20Other%20times%2C%20it%27s%20sanctuary%20communication.%20But%20we%20need%20sanctuary%20tools%20for%20collective%20voice%20too."
           target="_blank"
           rel="noopener noreferrer"

@@ -87,6 +87,10 @@
     border-radius: 0.25rem;
     box-shadow: var(--focus-app-ring);
   }
+  /* Match `.glass-card` corners (1.5rem); base `a:focus-visible` would otherwise shrink radius to 0.25rem. */
+  a.glass-card:focus-visible {
+    border-radius: 1.5rem;
+  }
   /* Mobile-specific: suppress focus rings for touch but preserve for keyboard */
   @media (hover: none) and (pointer: coarse) {
     button,

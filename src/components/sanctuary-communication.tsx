@@ -396,7 +396,7 @@ const MobileComparisonCarousel = memo(function MobileComparisonCarousel() {
           ref={carouselRef}
           onScroll={handleScroll}
           onPointerDownCapture={handlePointerDownCapture}
-          className="overflow-x-auto overscroll-x-contain touch-pan-x snap-x snap-mandatory py-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          className="overflow-x-auto overscroll-x-contain snap-x snap-mandatory py-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
           style={{ WebkitOverflowScrolling: "touch" }}
         >
           <div className="flex items-stretch gap-3">

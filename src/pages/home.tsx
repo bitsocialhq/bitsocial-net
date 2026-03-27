@@ -32,11 +32,23 @@ export default function Home() {
       <Hero />
       <div className="relative">
         <PolygonMeshBackground />
-        <Features />
-        <SanctuaryCommunication />
-        <MasterPlan />
-        <MailingList />
-        <Footer />
+        <div className="absolute inset-x-0 top-0 h-32 md:h-48 pointer-events-none z-[1]">
+          <div className="absolute inset-x-6 md:inset-x-16 -top-10 md:-top-14 h-24 md:h-32 rounded-[999px] bg-background/85 blur-3xl" />
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(to bottom, hsl(var(--background)) 0%, hsl(var(--background) / 0.9) 24%, hsl(var(--background) / 0.52) 58%, hsl(var(--background) / 0.14) 82%, transparent 100%)",
+            }}
+          />
+        </div>
+        <div className="relative z-10">
+          <Features />
+          <SanctuaryCommunication />
+          <MasterPlan />
+          <MailingList />
+          <Footer />
+        </div>
       </div>
     </div>
   );

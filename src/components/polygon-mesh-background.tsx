@@ -388,7 +388,16 @@ const PolygonMeshBackground = memo(function PolygonMeshBackground() {
 
   return (
     <div ref={rootRef} className="absolute inset-0 pointer-events-none" aria-hidden="true">
-      <div ref={viewportRef} className="fixed inset-0 overflow-hidden">
+      <div
+        ref={viewportRef}
+        className="fixed inset-0 overflow-hidden"
+        style={{
+          maskImage:
+            "linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.45) 4rem, black 9rem)",
+          WebkitMaskImage:
+            "linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.45) 4rem, black 9rem)",
+        }}
+      >
         <canvas ref={canvasRef} className="block w-full h-full" />
       </div>
     </div>

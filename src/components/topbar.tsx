@@ -207,6 +207,17 @@ export default function Topbar() {
     }
   }, [usesCompactNavigation]);
 
+  useEffect(() => {
+    if (!usesCompactNavigation || !isMobileMenuOpen) return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setIsMobileMenuOpen(false);
+      }
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [usesCompactNavigation, isMobileMenuOpen]);
+
   const handleNavClick = () => {
     setIsMobileMenuOpen(false);
   };
@@ -240,60 +251,31 @@ export default function Topbar() {
   const newsletterLabel = t("nav.newsletter");
 
   return (
-    <m.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{
-        duration: 0.5,
-        ease: [0.4, 0, 0.2, 1],
-      }}
-      className="fixed top-3 left-4 right-4 z-50 mx-auto max-w-7xl"
-    >
-      <div
-        className={cn(
-          "relative overflow-hidden topbar-frosted",
-          isMenuExpanded ? "rounded-[2rem]" : "rounded-full",
-        )}
+    <>
+      {usesCompactNavigation && isMobileMenuOpen && (
+        <div className="fixed inset-0 z-40 bg-black/25" aria-hidden onClick={handleNavClick} />
+      )}
+      <m.nav
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{
+          duration: 0.5,
+          ease: [0.4, 0, 0.2, 1],
+        }}
+        className="fixed top-3 left-4 right-4 z-50 mx-auto max-w-7xl"
       >
-        <div className="relative px-5 md:px-7 py-2">
-          <div
-            ref={desktopNavMeasureRef}
-            aria-hidden="true"
-            className="pointer-events-none invisible absolute left-0 top-0 whitespace-nowrap"
-          >
-            <DesktopNavigation
-              appsLabel={appsLabel}
-              docsLabel={docsLabel}
-              statusLabel={statusLabel}
-              sourceCodeLabel={sourceCodeLabel}
-              newsletterLabel={newsletterLabel}
-              onNavClick={handleNavClick}
-              onNewsletterClick={handleNewsletterClick}
-            />
-          </div>
-
-          <div ref={topbarContentRef} className="flex items-center justify-between">
-            <Link
-              ref={logoRef}
-              to="/"
-              onClick={handleLogoClick}
-              className="flex items-center gap-1 group transition-colors"
+        <div
+          className={cn(
+            "relative overflow-hidden topbar-frosted",
+            isMenuExpanded ? "rounded-[2rem]" : "rounded-full",
+          )}
+        >
+          <div className="relative px-5 md:px-7 py-2">
+            <div
+              ref={desktopNavMeasureRef}
+              aria-hidden="true"
+              className="pointer-events-none invisible absolute left-0 top-0 whitespace-nowrap"
             >
-              <img
-                src="/logo.png"
-                width={32}
-                height={32}
-                alt="Bitsocial"
-                className="h-8 w-8 transition-[filter] group-hover:brightness-110"
-              />
-              <span className="text-xl font-display font-regular text-muted-foreground group-hover:text-foreground transition-colors">
-                Bitsocial
-              </span>
-            </Link>
-
-            {usesCompactNavigation ? (
-              <HamburgerButton isOpen={isMobileMenuOpen} onClick={handleMenuToggle} />
-            ) : (
               <DesktopNavigation
                 appsLabel={appsLabel}
                 docsLabel={docsLabel}
@@ -303,46 +285,80 @@ export default function Topbar() {
                 onNavClick={handleNavClick}
                 onNewsletterClick={handleNewsletterClick}
               />
-            )}
-          </div>
-        </div>
-        <MobileMenu
-          isOpen={usesCompactNavigation && isMobileMenuOpen}
-          onExitComplete={() => setIsMenuExpanded(false)}
-        >
-          <div className="flex flex-col gap-1">
-            <NavLink to="/apps" onClick={handleNavClick} noUnderline>
-              {appsLabel}
-            </NavLink>
-            <NavLink to="/docs" onClick={handleNavClick} noUnderline>
-              {docsLabel}
-            </NavLink>
-            <NavLink to="/status" onClick={handleNavClick} noUnderline>
-              {statusLabel}
-            </NavLink>
-            <NavLink
-              href="https://github.com/bitsocialnet"
-              onClick={handleNavClick}
-              noUnderline
-              className="capitalize"
-            >
-              {sourceCodeLabel}
-            </NavLink>
-            <a href="/#mailing-list" className={navLinkClassName} onClick={handleNewsletterClick}>
-              {newsletterLabel}
-            </a>
-          </div>
+            </div>
 
-          <div className="border-t border-border/30 pt-4 mt-2 flex flex-row gap-2">
-            <div className="flex-1">
-              <LanguageSelector mobile />
-            </div>
-            <div className="flex-1">
-              <ThemeToggle mobile />
+            <div ref={topbarContentRef} className="flex items-center justify-between">
+              <Link
+                ref={logoRef}
+                to="/"
+                onClick={handleLogoClick}
+                className="flex items-center gap-1 group transition-colors"
+              >
+                <img
+                  src="/logo.png"
+                  width={32}
+                  height={32}
+                  alt="Bitsocial"
+                  className="h-8 w-8 transition-[filter] group-hover:brightness-110"
+                />
+                <span className="text-xl font-display font-regular text-muted-foreground group-hover:text-foreground transition-colors">
+                  Bitsocial
+                </span>
+              </Link>
+
+              {usesCompactNavigation ? (
+                <HamburgerButton isOpen={isMobileMenuOpen} onClick={handleMenuToggle} />
+              ) : (
+                <DesktopNavigation
+                  appsLabel={appsLabel}
+                  docsLabel={docsLabel}
+                  statusLabel={statusLabel}
+                  sourceCodeLabel={sourceCodeLabel}
+                  newsletterLabel={newsletterLabel}
+                  onNavClick={handleNavClick}
+                  onNewsletterClick={handleNewsletterClick}
+                />
+              )}
             </div>
           </div>
-        </MobileMenu>
-      </div>
-    </m.nav>
+          <MobileMenu
+            isOpen={usesCompactNavigation && isMobileMenuOpen}
+            onExitComplete={() => setIsMenuExpanded(false)}
+          >
+            <div className="flex flex-col gap-1">
+              <NavLink to="/apps" onClick={handleNavClick} noUnderline>
+                {appsLabel}
+              </NavLink>
+              <NavLink to="/docs" onClick={handleNavClick} noUnderline>
+                {docsLabel}
+              </NavLink>
+              <NavLink to="/status" onClick={handleNavClick} noUnderline>
+                {statusLabel}
+              </NavLink>
+              <NavLink
+                href="https://github.com/bitsocialnet"
+                onClick={handleNavClick}
+                noUnderline
+                className="capitalize"
+              >
+                {sourceCodeLabel}
+              </NavLink>
+              <a href="/#mailing-list" className={navLinkClassName} onClick={handleNewsletterClick}>
+                {newsletterLabel}
+              </a>
+            </div>
+
+            <div className="border-t border-border/30 pt-4 mt-2 flex flex-row gap-2">
+              <div className="flex-1">
+                <LanguageSelector mobile />
+              </div>
+              <div className="flex-1">
+                <ThemeToggle mobile />
+              </div>
+            </div>
+          </MobileMenu>
+        </div>
+      </m.nav>
+    </>
   );
 }

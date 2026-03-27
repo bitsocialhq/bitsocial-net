@@ -1,4 +1,4 @@
-import { memo, useEffect, useRef } from "react";
+import { memo, useEffect, useRef, useState } from "react";
 import { useTheme } from "next-themes";
 import { useGraphicsMode } from "@/lib/graphics-mode";
 
@@ -364,27 +364,75 @@ function initMesh(
   };
 }
 
+function supportsDynamicMesh() {
+  if (typeof window === "undefined") return false;
+
+  return (
+    typeof window.requestAnimationFrame === "function" &&
+    typeof ResizeObserver !== "undefined" &&
+    typeof IntersectionObserver !== "undefined"
+  );
+}
+
+function StaticPolygonMeshBackground() {
+  const { resolvedTheme } = useTheme();
+  const isDark =
+    resolvedTheme === "dark" ||
+    (!resolvedTheme &&
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches);
+
+  const fallbackSrc = isDark
+    ? "/polygon-mesh-fallback-dark.png"
+    : "/polygon-mesh-fallback-light.png";
+
+  return (
+    <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+      <img
+        src={fallbackSrc}
+        alt=""
+        aria-hidden="true"
+        className="block h-full w-full object-cover object-top"
+        loading="eager"
+        decoding="async"
+      />
+    </div>
+  );
+}
+
 const PolygonMeshBackground = memo(function PolygonMeshBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const rootRef = useRef<HTMLDivElement>(null);
   const viewportRef = useRef<HTMLDivElement>(null);
   const { resolvedTheme } = useTheme();
   const graphicsMode = useGraphicsMode();
+  const [didCanvasInitFail, setDidCanvasInitFail] = useState(false);
+  const shouldUseStaticFallback =
+    graphicsMode !== "full" || didCanvasInitFail || !supportsDynamicMesh();
 
   useEffect(() => {
+    if (shouldUseStaticFallback) return;
+
     const canvas = canvasRef.current;
     const root = rootRef.current;
     const viewport = viewportRef.current;
     if (!canvas || !root || !viewport) return;
     const ctx = canvas.getContext("2d");
-    if (!ctx) return;
+    if (!ctx) {
+      setDidCanvasInitFail(true);
+      return;
+    }
 
     const isDark =
       resolvedTheme === "dark" ||
       (!resolvedTheme && window.matchMedia("(prefers-color-scheme: dark)").matches);
 
     return initMesh(canvas, root, viewport, ctx, isDark, graphicsMode === "full");
-  }, [graphicsMode, resolvedTheme]);
+  }, [graphicsMode, resolvedTheme, shouldUseStaticFallback]);
+
+  if (shouldUseStaticFallback) {
+    return <StaticPolygonMeshBackground />;
+  }
 
   return (
     <div ref={rootRef} className="absolute inset-0 pointer-events-none" aria-hidden="true">

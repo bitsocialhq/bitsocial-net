@@ -196,6 +196,7 @@ const MobileComparisonCarousel = memo(function MobileComparisonCarousel({
   defaultApproachIndex: number;
 }) {
   const [activeIndex, setActiveIndex] = useState(defaultApproachIndex);
+  const [highlightedIndex, setHighlightedIndex] = useState(defaultApproachIndex);
   const [pendingIndex, setPendingIndex] = useState<number | null>(null);
   const carouselRef = useRef<HTMLDivElement | null>(null);
   const scrollSettleTimeoutRef = useRef<number | null>(null);
@@ -230,6 +231,33 @@ const MobileComparisonCarousel = memo(function MobileComparisonCarousel({
   const clampIndex = useCallback(
     (nextIndex: number) => Math.max(0, Math.min(approaches.length - 1, nextIndex)),
     [approaches.length],
+  );
+
+  const getClosestIndex = useCallback(
+    (scrollLeft: number) => {
+      const carousel = carouselRef.current;
+      if (!carousel || carousel.clientWidth === 0) {
+        return 0;
+      }
+
+      const panelOffsets = getPanels().map((panel) =>
+        Math.max(0, panel.offsetLeft - (carousel.clientWidth - panel.offsetWidth) / 2),
+      );
+      if (panelOffsets.length === 0) {
+        return 0;
+      }
+
+      return clampIndex(
+        panelOffsets.reduce((closestIndex, panelOffset, index) => {
+          const closestOffset = panelOffsets[closestIndex] ?? Number.POSITIVE_INFINITY;
+
+          return Math.abs(panelOffset - scrollLeft) < Math.abs(closestOffset - scrollLeft)
+            ? index
+            : closestIndex;
+        }, 0),
+      );
+    },
+    [clampIndex, getPanels],
   );
 
   const scrollToIndex = useCallback(
@@ -277,6 +305,9 @@ const MobileComparisonCarousel = memo(function MobileComparisonCarousel({
       const targetScrollLeft = getPanelScrollLeft(boundedIndex);
 
       if (Math.abs(targetScrollLeft - carousel.scrollLeft) < 1) {
+        setHighlightedIndex((currentIndex) =>
+          currentIndex === boundedIndex ? currentIndex : boundedIndex,
+        );
         setActiveIndex((currentIndex) =>
           currentIndex === boundedIndex ? currentIndex : boundedIndex,
         );
@@ -302,6 +333,9 @@ const MobileComparisonCarousel = memo(function MobileComparisonCarousel({
           carousel.style.scrollSnapType = "";
           scrollTweenRef.current = null;
           setPendingIndex(null);
+          setHighlightedIndex((currentIndex) =>
+            currentIndex === boundedIndex ? currentIndex : boundedIndex,
+          );
           setActiveIndex((currentIndex) =>
             currentIndex === boundedIndex ? currentIndex : boundedIndex,
           );
@@ -317,6 +351,9 @@ const MobileComparisonCarousel = memo(function MobileComparisonCarousel({
 
       if (behavior === "auto" || prefersReducedMotion) {
         setPendingIndex(null);
+        setHighlightedIndex((currentIndex) =>
+          currentIndex === boundedIndex ? currentIndex : boundedIndex,
+        );
         setActiveIndex((currentIndex) =>
           currentIndex === boundedIndex ? currentIndex : boundedIndex,
         );
@@ -346,33 +383,31 @@ const MobileComparisonCarousel = memo(function MobileComparisonCarousel({
       return;
     }
 
-    const panelOffsets = getPanels().map((panel) =>
-      Math.max(0, panel.offsetLeft - (carousel.clientWidth - panel.offsetWidth) / 2),
-    );
-    if (panelOffsets.length === 0) {
-      return;
-    }
-
-    const nextIndex = clampIndex(
-      panelOffsets.reduce((closestIndex, panelOffset, index) => {
-        const closestOffset = panelOffsets[closestIndex] ?? Number.POSITIVE_INFINITY;
-
-        return Math.abs(panelOffset - carousel.scrollLeft) <
-          Math.abs(closestOffset - carousel.scrollLeft)
-          ? index
-          : closestIndex;
-      }, 0),
-    );
+    const nextIndex = getClosestIndex(carousel.scrollLeft);
 
     startTransition(() => {
       setPendingIndex(null);
+      setHighlightedIndex((currentIndex) =>
+        currentIndex === nextIndex ? currentIndex : nextIndex,
+      );
       setActiveIndex((currentIndex) => (currentIndex === nextIndex ? currentIndex : nextIndex));
     });
-  }, [clampIndex, getPanels]);
+  }, [getClosestIndex]);
 
   const handleScroll = useCallback(() => {
     if (scrollTweenRef.current) {
       return;
+    }
+
+    const carousel = carouselRef.current;
+    if (carousel) {
+      const nextIndex = getClosestIndex(carousel.scrollLeft);
+
+      startTransition(() => {
+        setHighlightedIndex((currentIndex) =>
+          currentIndex === nextIndex ? currentIndex : nextIndex,
+        );
+      });
     }
 
     clearScrollSettleTimeout();
@@ -380,7 +415,7 @@ const MobileComparisonCarousel = memo(function MobileComparisonCarousel({
       syncActiveIndex,
       MOBILE_SCROLL_SETTLE_DELAY_MS,
     );
-  }, [clearScrollSettleTimeout, syncActiveIndex]);
+  }, [clearScrollSettleTimeout, getClosestIndex, syncActiveIndex]);
 
   const handlePointerDownCapture = useCallback(() => {
     setPendingIndex(null);
@@ -429,12 +464,12 @@ const MobileComparisonCarousel = memo(function MobileComparisonCarousel({
           <button
             key={approach.id}
             role="tab"
-            aria-selected={activeIndex === index}
+            aria-selected={highlightedIndex === index}
             aria-controls={`panel-${approach.id}`}
             id={`tab-${approach.id}`}
             onClick={() => setPage(index)}
             className={`px-4 py-2 rounded-full border border-transparent text-xs font-display font-medium transition-colors duration-200 motion-reduce:transition-none ${
-              (pendingIndex ?? activeIndex) === index
+              (pendingIndex ?? highlightedIndex) === index
                 ? approach.id === "bitsocial"
                   ? "bg-blue-core text-white shadow-[0_0_12px_rgba(37,99,235,0.4)]"
                   : "glass-card text-foreground"
@@ -493,7 +528,7 @@ const MobileComparisonCarousel = memo(function MobileComparisonCarousel({
             aria-label={approach.label}
             onClick={() => setPage(index)}
             className={`h-1.5 rounded-full transition-[width,background-color] duration-200 motion-reduce:transition-none ${
-              index === activeIndex
+              index === highlightedIndex
                 ? "w-6 bg-blue-glow"
                 : "w-1.5 bg-muted-foreground/20 hover:bg-muted-foreground/40"
             }`}

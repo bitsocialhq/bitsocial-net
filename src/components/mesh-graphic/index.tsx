@@ -1,6 +1,7 @@
 import { useRef, useEffect, useState } from "react";
 import * as THREE from "three";
 import { useTheme } from "next-themes";
+import { getHeroGraphicViewportProgress } from "@/lib/hero-graphic-layout";
 
 interface Node {
   position: THREE.Vector3;
@@ -16,19 +17,14 @@ type MeshThemeRefs = {
 const MOBILE_BREAKPOINT = 768;
 const LOW_END_CONCURRENCY = 4;
 const CONNECTION_SEARCH_PADDING = 0.75;
-const MESH_NODE_MIN_VIEWPORT_WIDTH = 768;
-const MESH_NODE_MAX_VIEWPORT_WIDTH = 1920;
 const MESH_NODE_MIN_SIZE = 0.028;
 const MESH_NODE_MAX_SIZE = 0.05;
+const RESIZE_DEBOUNCE_MS = 140;
 
 function getIsMobileLayout(width: number) {
   const hardwareConcurrency =
     typeof navigator === "undefined" ? LOW_END_CONCURRENCY : navigator.hardwareConcurrency || 4;
   return width < MOBILE_BREAKPOINT || hardwareConcurrency < LOW_END_CONCURRENCY;
-}
-
-function clamp(value: number, min: number, max: number) {
-  return Math.min(Math.max(value, min), max);
 }
 
 function lerp(start: number, end: number, progress: number) {
@@ -38,14 +34,93 @@ function lerp(start: number, end: number, progress: number) {
 function getMeshNodeSize(width: number, isMobileLayout: boolean) {
   if (isMobileLayout) return 0.03;
 
-  const progress = clamp(
-    (width - MESH_NODE_MIN_VIEWPORT_WIDTH) /
-      (MESH_NODE_MAX_VIEWPORT_WIDTH - MESH_NODE_MIN_VIEWPORT_WIDTH),
-    0,
-    1,
-  );
+  const progress = getHeroGraphicViewportProgress(width);
 
-  return lerp(MESH_NODE_MAX_SIZE, MESH_NODE_MIN_SIZE, progress);
+  return lerp(MESH_NODE_MIN_SIZE, MESH_NODE_MAX_SIZE, progress);
+}
+
+/**
+ * gl_PointSize is in device pixels. Keep ~1x displays slightly larger so lower-density external
+ * monitors do not end up with nodes that feel too fine, while Retina remains unchanged.
+ */
+function meshPointPixelScale(dpr: number) {
+  const t = Math.min(dpr, 2) / 2;
+  return 0.5 + 0.5 * t;
+}
+
+function seededUnitInterval(seed: number) {
+  const value = Math.sin(seed * 12.9898) * 43758.5453123;
+  return value - Math.floor(value);
+}
+
+function seededSignedUnit(seed: number) {
+  return seededUnitInterval(seed) * 2 - 1;
+}
+
+function getVisibleMeshWidth(width: number, height: number) {
+  const visibleHeight = 2 * Math.tan((50 * Math.PI) / 360) * 30;
+  return visibleHeight * (width / height);
+}
+
+function layoutMeshNodes(nodes: Node[], width: number, height: number, isMobileLayout: boolean) {
+  const visibleWidth = getVisibleMeshWidth(width, height);
+  const uWidth = visibleWidth + 8;
+  const uDepth = 8;
+  const bottomY = -10;
+  const topY = isMobileLayout ? 15 : 10;
+  const gridCols = Math.ceil(Math.sqrt(nodes.length * (uWidth / (topY - bottomY))));
+  const gridRows = Math.ceil(nodes.length / gridCols);
+  const cellWidth = uWidth / Math.max(gridCols, 1);
+  const cellHeight = (topY - bottomY) / Math.max(gridRows, 1);
+
+  for (let i = 0; i < nodes.length; i++) {
+    const col = i % gridCols;
+    const row = Math.floor(i / gridCols);
+    const baseX = -uWidth / 2 + (col / Math.max(gridCols - 1, 1)) * uWidth;
+    const baseY = bottomY + (row / Math.max(gridRows - 1, 1)) * (topY - bottomY);
+    const jitterX = seededSignedUnit(i * 4 + 0.11) * cellWidth * 0.4;
+    const jitterY = seededSignedUnit(i * 4 + 1.23) * cellHeight * 0.4;
+
+    const x = baseX + jitterX;
+    const y = baseY + jitterY;
+    let z = -3 + seededSignedUnit(i * 4 + 2.37) * (uDepth / 2);
+
+    if (y < bottomY + 2) {
+      z = -5 + seededSignedUnit(i * 4 + 3.41) * 2;
+    }
+
+    nodes[i].basePosition.set(x, y, z);
+    nodes[i].position.copy(nodes[i].basePosition);
+  }
+}
+
+function syncPointPositions(pointPositions: Float32Array, nodes: Node[]) {
+  for (let i = 0; i < nodes.length; i++) {
+    pointPositions[i * 3] = nodes[i].position.x;
+    pointPositions[i * 3 + 1] = nodes[i].position.y;
+    pointPositions[i * 3 + 2] = nodes[i].position.z;
+  }
+}
+
+function buildCandidatePairs(nodes: Node[], candidateConnectionDistanceSq: number) {
+  const candidatePairs: number[] = [];
+
+  for (let i = 0; i < nodes.length; i++) {
+    const nodeA = nodes[i].basePosition;
+    for (let j = i + 1; j < nodes.length; j++) {
+      const nodeB = nodes[j].basePosition;
+      const dx = nodeA.x - nodeB.x;
+      const dy = nodeA.y - nodeB.y;
+      const dz = nodeA.z - nodeB.z;
+      const distSq = dx * dx + dy * dy + dz * dz;
+
+      if (distSq < candidateConnectionDistanceSq) {
+        candidatePairs.push(i, j);
+      }
+    }
+  }
+
+  return candidatePairs;
 }
 
 function getViewportResizeKey(container: HTMLDivElement) {
@@ -143,85 +218,32 @@ export default function MeshGraphic({ onInitError }: { onInitError?: () => void 
     const nodeAlphaMultiplier = isDark ? 0.35 : 0.2;
     const lineAlphaMultiplier = isDark ? 0.9 : 0.7; // Increased for better contrast
 
-    // Calculate visible frustum dimensions at z=0 (where nodes are placed)
-    const fov = 50;
-    const cameraZ = 30;
-    const visibleHeight = 2 * Math.tan((fov * Math.PI) / 360) * cameraZ;
-    const aspectRatio = container.clientWidth / container.clientHeight;
-    const visibleWidth = visibleHeight * aspectRatio;
-
     // Node parameters - smaller and fewer on mobile
     const nodeCount = isMobile ? 80 : 200;
     const connectionDistance = isMobile ? 6 : 5; // Slightly larger on mobile to maintain connectivity with fewer nodes
     const connectionDistanceSq = connectionDistance * connectionDistance;
     const candidateConnectionDistance = connectionDistance + CONNECTION_SEARCH_PADDING;
     const candidateConnectionDistanceSq = candidateConnectionDistance * candidateConnectionDistance;
-    const nodeSize = getMeshNodeSize(container.clientWidth, isMobile);
+    const nodeSize =
+      getMeshNodeSize(container.clientWidth, isMobile) *
+      meshPointPixelScale(window.devicePixelRatio);
 
-    // Create nodes evenly distributed across entire U-shape area
-    const nodes: Node[] = [];
-
-    // U-shape parameters - dynamically extend to screen edges
-    const uWidth = visibleWidth + 8; // Extend past visible edges
-    const uDepth = 8; // Depth variation for parallax
-    const bottomY = -10; // Bottom of the U (behind planet)
-    const topY = isMobile ? 15 : 10; // Extended upward for more height on mobile
-
-    // Distribute nodes uniformly across entire space using grid-like distribution with jitter
-    const gridCols = Math.ceil(Math.sqrt(nodeCount * (uWidth / (topY - bottomY))));
-    const gridRows = Math.ceil(nodeCount / gridCols);
-
-    for (let i = 0; i < nodeCount; i++) {
-      let x: number, y: number, z: number;
-
-      // Use grid-based distribution for even spacing
-      const col = i % gridCols;
-      const row = Math.floor(i / gridCols);
-
-      // Base grid position
-      const baseX = -uWidth / 2 + (col / (gridCols - 1 || 1)) * uWidth;
-      const baseY = bottomY + (row / (gridRows - 1 || 1)) * (topY - bottomY);
-
-      // Add jitter to avoid perfect grid
-      const jitterX = (Math.random() - 0.5) * (uWidth / gridCols) * 0.8;
-      const jitterY = (Math.random() - 0.5) * ((topY - bottomY) / gridRows) * 0.8;
-
-      x = baseX + jitterX;
-      y = baseY + jitterY;
-
-      // Add some depth variation
-      z = -3 + (Math.random() - 0.5) * uDepth;
-
-      // For nodes near bottom, push them back further (behind planet)
-      if (y < bottomY + 2) {
-        z = -5 + (Math.random() - 0.5) * 4;
-      }
-
-      const position = new THREE.Vector3(x, y, z);
-      nodes.push({
-        position: position.clone(),
-        velocity: new THREE.Vector3(
-          (Math.random() - 0.5) * 0.01,
-          (Math.random() - 0.5) * 0.01,
-          (Math.random() - 0.5) * 0.01,
-        ),
-        basePosition: position.clone(),
-      });
-    }
+    const nodes: Node[] = Array.from({ length: nodeCount }, () => ({
+      position: new THREE.Vector3(),
+      velocity: new THREE.Vector3(),
+      basePosition: new THREE.Vector3(),
+    }));
+    layoutMeshNodes(nodes, container.clientWidth, container.clientHeight, isMobile);
 
     // Create point geometry for nodes
     const pointsGeometry = new THREE.BufferGeometry();
     const pointPositions = new Float32Array(nodeCount * 3);
-
-    for (let i = 0; i < nodeCount; i++) {
-      pointPositions[i * 3] = nodes[i].position.x;
-      pointPositions[i * 3 + 1] = nodes[i].position.y;
-      pointPositions[i * 3 + 2] = nodes[i].position.z;
-    }
+    syncPointPositions(pointPositions, nodes);
 
     const pointPositionAttribute = new THREE.BufferAttribute(pointPositions, 3);
     pointPositionAttribute.setUsage(THREE.DynamicDrawUsage);
     pointsGeometry.setAttribute("position", pointPositionAttribute);
+    const pointPosArray = pointPositionAttribute.array as Float32Array;
 
     // Custom shader for hollow circle nodes with center dot
     const pointsMaterial = new THREE.ShaderMaterial({
@@ -271,24 +293,10 @@ export default function MeshGraphic({ onInitError }: { onInitError?: () => void 
     const points = new THREE.Points(pointsGeometry, pointsMaterial);
     scene.add(points);
 
-    const candidatePairs: number[] = [];
-    for (let i = 0; i < nodeCount; i++) {
-      const nodeA = nodes[i].basePosition;
-      for (let j = i + 1; j < nodeCount; j++) {
-        const nodeB = nodes[j].basePosition;
-        const dx = nodeA.x - nodeB.x;
-        const dy = nodeA.y - nodeB.y;
-        const dz = nodeA.z - nodeB.z;
-        const distSq = dx * dx + dy * dy + dz * dz;
-
-        if (distSq < candidateConnectionDistanceSq) {
-          candidatePairs.push(i, j);
-        }
-      }
-    }
+    let candidatePairs = buildCandidatePairs(nodes, candidateConnectionDistanceSq);
 
     // Create lines geometry for connections
-    const maxConnections = candidatePairs.length / 2;
+    const maxConnections = (nodeCount * (nodeCount - 1)) / 2;
     const linePositions = new Float32Array(maxConnections * 6); // 2 points per line, 3 coords each
     const lineAlphas = new Float32Array(maxConnections * 2);
 
@@ -395,7 +403,6 @@ export default function MeshGraphic({ onInitError }: { onInitError?: () => void 
 
       // Update node positions with subtle floating motion
       const positionAttr = pointsGeometry.attributes.position;
-      const pointPosArray = positionAttr.array as Float32Array;
 
       for (let i = 0; i < nodeCount; i++) {
         const node = nodes[i];
@@ -457,28 +464,40 @@ export default function MeshGraphic({ onInitError }: { onInitError?: () => void 
       if (!container) return;
       const width = container.clientWidth;
       const height = container.clientHeight;
+      if (!width || !height) return;
+
       lastResizeKey = getViewportResizeKey(container);
       const nextIsMobile = getIsMobileLayout(width);
 
-      if (nextIsMobile !== isMobile) {
-        setIsMobile(nextIsMobile);
-        return;
-      }
+      // Match planet-graphic: always sync WebGL size/camera on resize. Breakpoint changes also
+      // remount this effect via isMobile; early-returning here left lastResizeKey updated without
+      // resizing the renderer, so the canvas could stay stale until the next viewport change.
+      setIsMobile((prev) => (prev === nextIsMobile ? prev : nextIsMobile));
 
-      const nextNodeSize = getMeshNodeSize(width, nextIsMobile);
+      const nextNodeSize =
+        getMeshNodeSize(width, nextIsMobile) * meshPointPixelScale(window.devicePixelRatio);
+      const nextCameraYOffset = nextIsMobile ? 4 : 0;
       camera.aspect = width / height;
+      camera.position.set(0, nextCameraYOffset, 30);
+      camera.lookAt(0, nextCameraYOffset, 0);
       camera.updateProjectionMatrix();
       const maxDprResize = nextIsMobile ? 1.5 : 2;
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, maxDprResize));
       renderer.setSize(width, height, false);
       pointsMaterial.uniforms.size.value = nextNodeSize * 100;
+      layoutMeshNodes(nodes, width, height, nextIsMobile);
+      syncPointPositions(pointPosArray, nodes);
+      pointsGeometry.attributes.position.needsUpdate = true;
+      candidatePairs = buildCandidatePairs(nodes, candidateConnectionDistanceSq);
+      updateConnections();
+      renderer.render(scene, camera);
     };
 
     const scheduleResize = () => {
       if (resizeTimeoutId) {
         clearTimeout(resizeTimeoutId);
       }
-      resizeTimeoutId = setTimeout(handleResize, 250);
+      resizeTimeoutId = setTimeout(handleResize, RESIZE_DEBOUNCE_MS);
     };
 
     const scheduleResizeIfViewportChanged = () => {

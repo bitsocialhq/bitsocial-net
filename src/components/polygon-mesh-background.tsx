@@ -36,6 +36,16 @@ const SWEEP_SPATIAL_X = 0.0068;
 const SWEEP_SPATIAL_Y = 0.0051;
 const SWEEP_PHASE_HASH_MIX = 0.38;
 
+/**
+ * Dot and edge stroke scale for ~1x displays (CSS px read larger physically than on Retina).
+ * Grid density stays at SPACING; only stroke/dot radii use this. Blends toward the previous
+ * aggressive 0.5× so 1× screens sit between “too large” (1×) and “too small” (0.5×), ~0.75× at DPR 1.
+ */
+function meshStrokeScaleFromDpr(dpr: number): number {
+  const t = Math.min(dpr, 2) / 2;
+  return 0.5 + 0.5 * t;
+}
+
 function fract(x: number): number {
   return x - Math.floor(x);
 }
@@ -126,7 +136,8 @@ function initMesh(
   let w = viewport.clientWidth;
   let h = viewport.clientHeight;
   const isTouchDevice = "ontouchstart" in window || navigator.maxTouchPoints > 0;
-  const dpr = Math.min(window.devicePixelRatio, 1.5);
+  let dpr = Math.min(window.devicePixelRatio, 1.5);
+  let strokeScale = meshStrokeScaleFromDpr(window.devicePixelRatio);
   const frameBudget = isTouchDevice ? 50 : 33;
 
   function setCanvasSize() {
@@ -174,7 +185,7 @@ function initMesh(
     ctx.clearRect(0, 0, w, h);
 
     ctx.strokeStyle = `rgba(${edgeRGB},${edgeAlpha})`;
-    ctx.lineWidth = EDGE_BASE_WIDTH;
+    ctx.lineWidth = EDGE_BASE_WIDTH * strokeScale;
     ctx.beginPath();
     for (const edge of edges) {
       ctx.moveTo(pts[edge.a].x, pts[edge.a].y);
@@ -195,7 +206,7 @@ function initMesh(
 
         const alpha = Math.min(totalGlow * 0.55, 0.6) * (isDark ? 1.12 : 1);
         ctx.strokeStyle = `rgba(${glowR},${glowG},${glowB},${alpha})`;
-        ctx.lineWidth = EDGE_GLOW_WIDTH;
+        ctx.lineWidth = EDGE_GLOW_WIDTH * strokeScale;
         ctx.beginPath();
         ctx.moveTo(pts[edge.a].x, pts[edge.a].y);
         ctx.lineTo(pts[edge.b].x, pts[edge.b].y);
@@ -203,10 +214,11 @@ function initMesh(
       }
     }
 
+    const dotR = DOT_RADIUS * strokeScale;
     ctx.fillStyle = `rgba(${dotRGB},${dotAlpha})`;
     for (const point of pts) {
       ctx.beginPath();
-      ctx.arc(point.x, point.y, DOT_RADIUS, 0, Math.PI * 2);
+      ctx.arc(point.x, point.y, dotR, 0, Math.PI * 2);
       ctx.fill();
     }
   }
@@ -246,6 +258,8 @@ function initMesh(
       w = viewport.clientWidth;
       h = viewport.clientHeight;
       if (w > 0 && h > 0) {
+        dpr = Math.min(window.devicePixelRatio, 1.5);
+        strokeScale = meshStrokeScaleFromDpr(window.devicePixelRatio);
         setCanvasSize();
         mesh = generateMesh(w, h);
         updateViewportRect();

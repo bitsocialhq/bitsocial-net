@@ -3,11 +3,10 @@ import * as THREE from "three";
 import { gsap } from "gsap";
 import { useTheme } from "next-themes";
 import { getPlanetRingRotationDelaySeconds } from "@/lib/hero-intro-timing";
+import { getHeroGraphicViewportProgress } from "@/lib/hero-graphic-layout";
 
 const MOBILE_BREAKPOINT = 768;
 const LOW_END_CONCURRENCY = 4;
-const PLANET_MIN_VIEWPORT_WIDTH = 390;
-const PLANET_MAX_VIEWPORT_WIDTH = 1440;
 const PLANET_MIN_FOV = 62;
 const PLANET_MAX_FOV = 45;
 const PLANET_MIN_CAMERA_Z = 21.5;
@@ -165,10 +164,6 @@ function usePlanetThemeRefs() {
   return useRef<PlanetThemeRefs | null>(null);
 }
 
-function clamp(value: number, min: number, max: number) {
-  return Math.min(Math.max(value, min), max);
-}
-
 function lerp(start: number, end: number, progress: number) {
   return start + (end - start) * progress;
 }
@@ -180,11 +175,7 @@ function getIsMobileLayout(width: number) {
 }
 
 function getPlanetCameraLayout(width: number) {
-  const progress = clamp(
-    (width - PLANET_MIN_VIEWPORT_WIDTH) / (PLANET_MAX_VIEWPORT_WIDTH - PLANET_MIN_VIEWPORT_WIDTH),
-    0,
-    1,
-  );
+  const progress = getHeroGraphicViewportProgress(width);
 
   return {
     fov: lerp(PLANET_MIN_FOV, PLANET_MAX_FOV, progress),

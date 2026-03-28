@@ -1,6 +1,6 @@
 ---
 name: translator
-model: composer-2
+model: gpt-5.4-mini
 description: Translates a single i18next key into all 36 supported languages, creates a dictionary file, and runs the update script. Use proactively when the parent agent needs to translate one translation key.
 ---
 

@@ -1,4 +1,4 @@
-model = "gpt-5.3-codex-spark"
+model = "gpt-5.4-mini"
 model_reasoning_effort = "medium"
 developer_instructions = """
 Translate exactly one i18next key at a time into every supported language.

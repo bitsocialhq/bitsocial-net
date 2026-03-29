@@ -167,5 +167,9 @@
         "description": "With multiple public RPCs competing with each other to provide profile nodes and optional feed algorithms, and with Bitsocial Network enabling content monetization without banks seizing funds, Bitsocial apps will be able to rival all kinds of social media, including Facebook, Instagram, TikTok, X, and YouTube."
       }
     }
+  },
+  "home": {
+    "devOnlyRouteNotice": "{{path}} is still under construction and is only available during development. You have been redirected to the front page.",
+    "dismissDevOnlyRouteNotice": "Dismiss notice"
   }
 }

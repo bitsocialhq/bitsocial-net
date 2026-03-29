@@ -167,5 +167,9 @@
         "description": "עם כמה RPC ציבוריים שמתחרים זה בזה על אספקת צמתי פרופיל ואלגוריתמי פיד אופציונליים, ועם Bitsocial Network שמאפשרת מוניטיזציה של תוכן בלי שבנקים ישעבדו את הכספים, אפליקציות Bitsocial יוכלו להתחרות בכל סוגי הרשתות החברתיות, כולל Facebook, Instagram, TikTok, X ו-YouTube."
       }
     }
+  },
+  "home": {
+    "devOnlyRouteNotice": "{{path}} עדיין בבנייה וזמין רק במהלך הפיתוח. הופנית לדף הבית.",
+    "dismissDevOnlyRouteNotice": "סגירת ההודעה"
   }
 }

@@ -1,11 +1,19 @@
-import { useLayoutEffect, useRef } from "react";
-import { BrowserRouter as Router, Routes, Route, useLocation, useNavigate } from "react-router-dom";
+import { useLayoutEffect, useRef, type ReactNode } from "react";
+import {
+  BrowserRouter as Router,
+  Navigate,
+  Route,
+  Routes,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
 import Home from "@/pages/home";
 import Docs from "@/pages/docs";
 import Apps from "@/pages/apps";
 import About from "@/pages/about";
 import Blog from "@/pages/blog";
 import Status from "@/pages/status";
+import { isRouteAccessible } from "@/lib/dev-only-routes";
 import { normalizeInitialHomeScrollPosition } from "@/lib/initial-scroll";
 
 function InitialHomeScrollGuard() {
@@ -27,17 +35,62 @@ function InitialHomeScrollGuard() {
   return null;
 }
 
+function DevelopmentOnlyRoute({ children }: { children: ReactNode }) {
+  const location = useLocation();
+
+  if (isRouteAccessible(location.pathname)) {
+    return <>{children}</>;
+  }
+
+  return <Navigate to="/" replace state={{ unavailablePath: location.pathname }} />;
+}
+
 function App() {
   return (
     <Router>
       <InitialHomeScrollGuard />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/docs" element={<Docs />} />
-        <Route path="/apps" element={<Apps />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/blog" element={<Blog />} />
-        <Route path="/status" element={<Status />} />
+        <Route
+          path="/docs"
+          element={
+            <DevelopmentOnlyRoute>
+              <Docs />
+            </DevelopmentOnlyRoute>
+          }
+        />
+        <Route
+          path="/apps"
+          element={
+            <DevelopmentOnlyRoute>
+              <Apps />
+            </DevelopmentOnlyRoute>
+          }
+        />
+        <Route
+          path="/about"
+          element={
+            <DevelopmentOnlyRoute>
+              <About />
+            </DevelopmentOnlyRoute>
+          }
+        />
+        <Route
+          path="/blog"
+          element={
+            <DevelopmentOnlyRoute>
+              <Blog />
+            </DevelopmentOnlyRoute>
+          }
+        />
+        <Route
+          path="/status"
+          element={
+            <DevelopmentOnlyRoute>
+              <Status />
+            </DevelopmentOnlyRoute>
+          }
+        />
       </Routes>
     </Router>
   );

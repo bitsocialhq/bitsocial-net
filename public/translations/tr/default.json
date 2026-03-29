@@ -167,5 +167,9 @@
         "description": "Birbiriyle yarışan birden çok herkese açık RPC, profil düğümleri ve isteğe bağlı akış algoritmaları sunarken, Bitsocial Network de bankalar fonlara el koymadan içerik para kazanımını mümkün kılarken, Bitsocial uygulamaları Facebook, Instagram, TikTok, X ve YouTube dahil her tür sosyal medya ile yarışabilecek."
       }
     }
+  },
+  "home": {
+    "dismissDevOnlyRouteNotice": "Bildirimi kapat",
+    "devOnlyRouteNotice": "{{path}} hala yapım aşamasında ve yalnızca geliştirme sırasında kullanılabilir. Ana sayfaya yönlendirildiniz."
   }
 }

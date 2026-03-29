@@ -167,5 +167,9 @@
         "description": "Với nhiều RPC công khai cạnh tranh để cung cấp node hồ sơ và các thuật toán nguồn cấp tùy chọn, cùng Bitsocial Network cho phép kiếm tiền từ nội dung mà không để ngân hàng tịch thu tiền, các ứng dụng Bitsocial sẽ có thể cạnh tranh với mọi loại mạng xã hội, bao gồm Facebook, Instagram, TikTok, X và YouTube."
       }
     }
+  },
+  "home": {
+    "dismissDevOnlyRouteNotice": "Đóng thông báo",
+    "devOnlyRouteNotice": "{{path}} vẫn đang trong quá trình xây dựng và chỉ có sẵn trong quá trình phát triển. Bạn đã được chuyển hướng về trang chủ."
   }
 }

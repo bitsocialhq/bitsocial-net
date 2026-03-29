@@ -167,5 +167,9 @@
         "description": "Profile nodes మరియు optional feed algorithmsను అందించడానికి అనేక public RPCలు పరస్పరం పోటీ పడతాయి, మరియు Bitsocial Network banks funds seize చేయకుండా content monetizationను సాధ్యం చేస్తుంది; దాంతో Bitsocial apps Facebook, Instagram, TikTok, X, మరియు YouTube సహా అన్ని రకాల social mediaతో పోటీ పడగలవు."
       }
     }
+  },
+  "home": {
+    "dismissDevOnlyRouteNotice": "నోటీసును మూసివేయి",
+    "devOnlyRouteNotice": "{{path}} ఇంకా నిర్మాణంలో ఉంది మరియు అభివృద్ధి సమయంలో మాత్రమే అందుబాటులో ఉంటుంది. మిమ్మల్ని ప్రధాన పేజీకి మళ్లించారు."
   }
 }

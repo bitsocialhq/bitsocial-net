@@ -167,5 +167,9 @@
         "description": "Kun useat julkiset RPC:t kilpailevat tarjotakseen profiilisolmuja ja valinnaisia feed-algoritmeja, ja Bitsocial Network mahdollistaa sisällön kaupallistamisen ilman, että pankit takavarikoivat varoja, Bitsocial-sovellukset voivat kilpailla kaikenlaisen sosiaalisen median kanssa, mukaan lukien Facebook, Instagram, TikTok, X ja YouTube."
       }
     }
+  },
+  "home": {
+    "devOnlyRouteNotice": "{{path}} on vielä rakenteilla ja on käytettävissä vain kehityksen aikana. Sinut on ohjattu etusivulle.",
+    "dismissDevOnlyRouteNotice": "Sulje ilmoitus"
   }
 }

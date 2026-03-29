@@ -167,5 +167,9 @@
         "description": "Met meerdere openbare RPC's die met elkaar concurreren om profielnodes en optionele feed-algoritmen te leveren, en met Bitsocial Network dat contentmonetisatie mogelijk maakt zonder dat banken fondsen kunnen in beslag nemen, kunnen Bitsocial-apps concurreren met allerlei soorten sociale media, waaronder Facebook, Instagram, TikTok, X en YouTube."
       }
     }
+  },
+  "home": {
+    "devOnlyRouteNotice": "{{path}} is nog in aanbouw en is alleen beschikbaar tijdens ontwikkeling. Je bent doorgestuurd naar de startpagina.",
+    "dismissDevOnlyRouteNotice": "Melding sluiten"
   }
 }

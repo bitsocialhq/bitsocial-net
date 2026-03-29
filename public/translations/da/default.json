@@ -167,5 +167,9 @@
         "description": "Med flere offentlige RPC'er, der konkurrerer med hinanden om at levere profilnoder og valgfrie feed-algoritmer, og med Bitsocial Network, der muliggør indtægtsgenerering af indhold uden at banker beslaglægger midler, vil Bitsocial-apps kunne konkurrere med alle typer sociale medier, herunder Facebook, Instagram, TikTok, X og YouTube."
       }
     }
+  },
+  "home": {
+    "devOnlyRouteNotice": "{{path}} er stadig under konstruktion og er kun tilgængelig under udvikling. Du er blevet sendt videre til forsiden.",
+    "dismissDevOnlyRouteNotice": "Luk besked"
   }
 }

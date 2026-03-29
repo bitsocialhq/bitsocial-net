@@ -167,5 +167,9 @@
         "description": "Dengan beberapa RPC publik yang bersaing satu sama lain untuk menyediakan node profil dan algoritma feed opsional, serta Bitsocial Network yang memungkinkan monetisasi konten tanpa bank menyita dana, aplikasi Bitsocial akan mampu menyaingi semua jenis media sosial, termasuk Facebook, Instagram, TikTok, X, dan YouTube."
       }
     }
+  },
+  "home": {
+    "devOnlyRouteNotice": "{{path}} masih dalam pengembangan dan hanya tersedia selama development. Anda telah dialihkan ke halaman utama.",
+    "dismissDevOnlyRouteNotice": "Tutup pemberitahuan"
   }
 }

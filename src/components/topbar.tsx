@@ -2,6 +2,7 @@ import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { m } from "framer-motion";
 import { useTranslation } from "react-i18next";
+import { isRouteAccessible } from "@/lib/dev-only-routes";
 import { cn } from "@/lib/utils";
 import { goHomeScrollTop } from "@/lib/home-nav";
 import { goToMailingListSection } from "@/lib/mailing-list-nav";
@@ -70,33 +71,25 @@ function NavLink({
 }
 
 function TopbarLinks({
-  appsLabel,
-  docsLabel,
-  statusLabel,
   sourceCodeLabel,
   newsletterLabel,
   onNavClick,
   onNewsletterClick,
+  routeLinks,
 }: {
-  appsLabel: string;
-  docsLabel: string;
-  statusLabel: string;
   sourceCodeLabel: string;
   newsletterLabel: string;
   onNavClick: () => void;
   onNewsletterClick: (e: React.MouseEvent<HTMLAnchorElement>) => void;
+  routeLinks: Array<{ label: string; to: string }>;
 }) {
   return (
     <div className="flex items-center gap-5">
-      <NavLink to="/apps" onClick={onNavClick} noUnderline>
-        {appsLabel}
-      </NavLink>
-      <NavLink to="/docs" onClick={onNavClick} noUnderline>
-        {docsLabel}
-      </NavLink>
-      <NavLink to="/status" onClick={onNavClick} noUnderline>
-        {statusLabel}
-      </NavLink>
+      {routeLinks.map((link) => (
+        <NavLink key={link.to} to={link.to} onClick={onNavClick} noUnderline>
+          {link.label}
+        </NavLink>
+      ))}
       <NavLink
         href="https://github.com/bitsocialnet"
         onClick={onNavClick}
@@ -113,34 +106,28 @@ function TopbarLinks({
 }
 
 function DesktopNavigation({
-  appsLabel,
-  docsLabel,
-  statusLabel,
   sourceCodeLabel,
   newsletterLabel,
   onNavClick,
   onNewsletterClick,
+  routeLinks,
 }: {
-  appsLabel: string;
-  docsLabel: string;
-  statusLabel: string;
   sourceCodeLabel: string;
   newsletterLabel: string;
   onNavClick: () => void;
   onNewsletterClick: (e: React.MouseEvent<HTMLAnchorElement>) => void;
+  routeLinks: Array<{ label: string; to: string }>;
 }) {
   return (
     <div className="flex items-center">
       <TopbarLinks
-        appsLabel={appsLabel}
-        docsLabel={docsLabel}
-        statusLabel={statusLabel}
         sourceCodeLabel={sourceCodeLabel}
         newsletterLabel={newsletterLabel}
         onNavClick={onNavClick}
         onNewsletterClick={onNewsletterClick}
+        routeLinks={routeLinks}
       />
-      <div className="h-4 w-px bg-border mx-4" />
+      {routeLinks.length > 0 ? <div className="h-4 w-px bg-border mx-4" /> : null}
       <div className="flex items-center gap-2">
         <LanguageSelector />
         <ThemeToggle />
@@ -249,6 +236,11 @@ export default function Topbar() {
   const statusLabel = t("nav.status");
   const sourceCodeLabel = t("nav.sourceCode");
   const newsletterLabel = t("nav.newsletter");
+  const routeLinks = [
+    { label: appsLabel, to: "/apps" },
+    { label: docsLabel, to: "/docs" },
+    { label: statusLabel, to: "/status" },
+  ].filter((link) => isRouteAccessible(link.to));
 
   return (
     <>
@@ -274,13 +266,11 @@ export default function Topbar() {
               className="pointer-events-none invisible absolute left-0 top-0 whitespace-nowrap"
             >
               <DesktopNavigation
-                appsLabel={appsLabel}
-                docsLabel={docsLabel}
-                statusLabel={statusLabel}
                 sourceCodeLabel={sourceCodeLabel}
                 newsletterLabel={newsletterLabel}
                 onNavClick={handleNavClick}
                 onNewsletterClick={handleNewsletterClick}
+                routeLinks={routeLinks}
               />
             </div>
 
@@ -307,13 +297,11 @@ export default function Topbar() {
                 <HamburgerButton isOpen={isMobileMenuOpen} onClick={handleMenuToggle} />
               ) : (
                 <DesktopNavigation
-                  appsLabel={appsLabel}
-                  docsLabel={docsLabel}
-                  statusLabel={statusLabel}
                   sourceCodeLabel={sourceCodeLabel}
                   newsletterLabel={newsletterLabel}
                   onNavClick={handleNavClick}
                   onNewsletterClick={handleNewsletterClick}
+                  routeLinks={routeLinks}
                 />
               )}
             </div>
@@ -323,15 +311,11 @@ export default function Topbar() {
             onExitComplete={() => setIsMenuExpanded(false)}
           >
             <div className="flex flex-col gap-1">
-              <NavLink to="/apps" onClick={handleNavClick} noUnderline>
-                {appsLabel}
-              </NavLink>
-              <NavLink to="/docs" onClick={handleNavClick} noUnderline>
-                {docsLabel}
-              </NavLink>
-              <NavLink to="/status" onClick={handleNavClick} noUnderline>
-                {statusLabel}
-              </NavLink>
+              {routeLinks.map((link) => (
+                <NavLink key={link.to} to={link.to} onClick={handleNavClick} noUnderline>
+                  {link.label}
+                </NavLink>
+              ))}
               <NavLink
                 href="https://github.com/bitsocialnet"
                 onClick={handleNavClick}

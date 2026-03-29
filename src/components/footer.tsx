@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { Github, Send } from "lucide-react";
 import { useState } from "react";
 import EasterEggOverlay from "@/components/easter-egg-overlay";
+import { isRouteAccessible } from "@/lib/dev-only-routes";
 import { goHomeScrollTop } from "@/lib/home-nav";
 import { goToMailingListSection } from "@/lib/mailing-list-nav";
 
@@ -21,6 +22,15 @@ export default function Footer() {
   const location = useLocation();
   const navigate = useNavigate();
   const [showDominoEffect, setShowDominoEffect] = useState(false);
+  const productLinks = [
+    { label: t("footer.apps"), to: "/apps" },
+    { label: t("footer.docs"), to: "/docs" },
+    { label: t("footer.status"), to: "/status" },
+  ].filter((link) => isRouteAccessible(link.to));
+  const resourceLinks = [
+    { label: t("footer.blog"), to: "/blog" },
+    { label: t("footer.about"), to: "/about" },
+  ].filter((link) => isRouteAccessible(link.to));
 
   const handleNewsletterClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
@@ -54,28 +64,22 @@ export default function Footer() {
           </div>
 
           {/* Product */}
-          <div>
-            <h4 className="text-xs font-display font-semibold uppercase tracking-widest text-foreground/70 mb-5">
-              {t("footer.product")}
-            </h4>
-            <ul className="space-y-2.5">
-              <li>
-                <Link to="/apps" className={linkClassName}>
-                  {t("footer.apps")}
-                </Link>
-              </li>
-              <li>
-                <Link to="/docs" className={linkClassName}>
-                  {t("footer.docs")}
-                </Link>
-              </li>
-              <li>
-                <Link to="/status" className={linkClassName}>
-                  {t("footer.status")}
-                </Link>
-              </li>
-            </ul>
-          </div>
+          {productLinks.length > 0 ? (
+            <div>
+              <h4 className="text-xs font-display font-semibold uppercase tracking-widest text-foreground/70 mb-5">
+                {t("footer.product")}
+              </h4>
+              <ul className="space-y-2.5">
+                {productLinks.map((link) => (
+                  <li key={link.to}>
+                    <Link to={link.to} className={linkClassName}>
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : null}
 
           {/* Resources */}
           <div>
@@ -83,16 +87,13 @@ export default function Footer() {
               {t("footer.resources")}
             </h4>
             <ul className="space-y-2.5">
-              <li>
-                <Link to="/blog" className={linkClassName}>
-                  {t("footer.blog")}
-                </Link>
-              </li>
-              <li>
-                <Link to="/about" className={linkClassName}>
-                  {t("footer.about")}
-                </Link>
-              </li>
+              {resourceLinks.map((link) => (
+                <li key={link.to}>
+                  <Link to={link.to} className={linkClassName}>
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
               <li>
                 <a href="/#mailing-list" className={linkClassName} onClick={handleNewsletterClick}>
                   {t("footer.newsletter")}

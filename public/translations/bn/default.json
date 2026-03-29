@@ -167,5 +167,9 @@
         "description": "Profile node এবং ঐচ্ছিক feed algorithm সরবরাহের জন্য একাধিক public RPC একে অপরের সঙ্গে প্রতিযোগিতা করবে, আর Bitsocial Network bank-কে তহবিল জব্দ না করেই content monetization সক্ষম করবে; ফলে Bitsocial app-গুলো Facebook, Instagram, TikTok, X, এবং YouTube-সহ সব ধরনের social media-র সঙ্গে প্রতিদ্বন্দ্বিতা করতে পারবে।"
       }
     }
+  },
+  "home": {
+    "devOnlyRouteNotice": "{{path}} এখনও নির্মাণাধীন এবং কেবল উন্নয়নের সময়ই উপলভ্য। আপনাকে মূল পাতায় ফেরত পাঠানো হয়েছে।",
+    "dismissDevOnlyRouteNotice": "বিজ্ঞপ্তি বন্ধ করুন"
   }
 }

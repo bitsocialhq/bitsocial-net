@@ -167,5 +167,9 @@
         "description": "Több nyilvános RPC egymással versenyezve profilcsomópontokat és opcionális feedalgoritmusokat biztosít, és a Bitsocial Network lehetővé teszi a tartalommonetizálást anélkül, hogy a bankok lefoglalnák a pénzeszközöket, így a Bitsocial alkalmazások mindenféle közösségi médiával felvehetik a versenyt, beleértve a Facebookot, az Instagramot, a TikTokot, az X-et és a YouTube-ot."
       }
     }
+  },
+  "home": {
+    "devOnlyRouteNotice": "A(z) {{path}} még fejlesztés alatt áll, és csak fejlesztés közben érhető el. Át lettél irányítva a főoldalra.",
+    "dismissDevOnlyRouteNotice": "Értesítés bezárása"
   }
 }

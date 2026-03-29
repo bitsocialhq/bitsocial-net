@@ -167,5 +167,9 @@
         "description": "Amb diversos RPC públics competint entre ells per oferir nodes de perfil i algorismes de feed opcionals, i amb Bitsocial Network permetent la monetització de contingut sense que els bancs puguin confiscar els fons, les aplicacions Bitsocial podran rivalitzar amb tota mena de xarxes socials, incloent Facebook, Instagram, TikTok, X i YouTube."
       }
     }
+  },
+  "home": {
+    "devOnlyRouteNotice": "{{path}} encara està en construcció i només està disponible durant el desenvolupament. T'hem redirigit a la pàgina principal.",
+    "dismissDevOnlyRouteNotice": "Descarta l'avís"
   }
 }

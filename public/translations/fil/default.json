@@ -167,5 +167,9 @@
         "description": "Sa maraming pampublikong RPC na naglalaban-laban para magbigay ng profile node at opsyonal na feed algorithm, at sa Bitsocial Network na nagbibigay-daan sa monetization ng content nang hindi nakukumpiska ng mga bangko ang pondo, makakayang makipagsabayan ng mga Bitsocial app sa lahat ng uri ng social media, kabilang ang Facebook, Instagram, TikTok, X, at YouTube."
       }
     }
+  },
+  "home": {
+    "devOnlyRouteNotice": "Ang {{path}} ay kasalukuyang ginagawa pa at available lamang habang nasa development. Na-redirect ka sa front page.",
+    "dismissDevOnlyRouteNotice": "Isara ang paunawa"
   }
 }

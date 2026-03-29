@@ -169,7 +169,7 @@
     }
   },
   "home": {
-    "devOnlyRouteNotice": "{{path}} هنوز در حال ساخت است و فقط در زمان توسعه در دسترس است. شما به صفحه اصلی هدایت شدید.",
+    "devOnlyRouteNotice": "{{path}} هنوز در حال ساخت است. شما به صفحه اصلی هدایت شدید.",
     "dismissDevOnlyRouteNotice": "بستن اعلان"
   }
 }

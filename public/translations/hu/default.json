@@ -169,7 +169,7 @@
     }
   },
   "home": {
-    "devOnlyRouteNotice": "A(z) {{path}} még fejlesztés alatt áll, és csak fejlesztés közben érhető el. Át lettél irányítva a főoldalra.",
+    "devOnlyRouteNotice": "A(z) {{path}} még fejlesztés alatt áll. Át lettél irányítva a főoldalra.",
     "dismissDevOnlyRouteNotice": "Értesítés bezárása"
   }
 }

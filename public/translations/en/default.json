@@ -169,7 +169,7 @@
     }
   },
   "home": {
-    "devOnlyRouteNotice": "{{path}} is still under construction and is only available during development. You have been redirected to the front page.",
+    "devOnlyRouteNotice": "{{path}} is still under construction. You have been redirected to the front page.",
     "dismissDevOnlyRouteNotice": "Dismiss notice"
   }
 }

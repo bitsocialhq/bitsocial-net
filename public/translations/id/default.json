@@ -169,7 +169,7 @@
     }
   },
   "home": {
-    "devOnlyRouteNotice": "{{path}} masih dalam pengembangan dan hanya tersedia selama development. Anda telah dialihkan ke halaman utama.",
+    "devOnlyRouteNotice": "{{path}} masih dalam pengembangan. Anda telah dialihkan ke halaman utama.",
     "dismissDevOnlyRouteNotice": "Tutup pemberitahuan"
   }
 }

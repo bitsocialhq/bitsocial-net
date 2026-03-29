@@ -169,7 +169,7 @@
     }
   },
   "home": {
-    "devOnlyRouteNotice": "Ang {{path}} ay kasalukuyang ginagawa pa at available lamang habang nasa development. Na-redirect ka sa front page.",
+    "devOnlyRouteNotice": "Ang {{path}} ay kasalukuyang ginagawa pa. Na-redirect ka sa front page.",
     "dismissDevOnlyRouteNotice": "Isara ang paunawa"
   }
 }

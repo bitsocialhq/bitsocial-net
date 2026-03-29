@@ -169,7 +169,7 @@
     }
   },
   "home": {
-    "devOnlyRouteNotice": "{{path}} je stále ve výstavbě a je dostupná pouze během vývoje. Byli jste přesměrováni na úvodní stránku.",
+    "devOnlyRouteNotice": "{{path}} je stále ve výstavbě. Byli jste přesměrováni na úvodní stránku.",
     "dismissDevOnlyRouteNotice": "Zavřít upozornění"
   }
 }

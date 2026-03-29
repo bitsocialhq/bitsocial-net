@@ -170,6 +170,6 @@
   },
   "home": {
     "dismissDevOnlyRouteNotice": "Stäng meddelandet",
-    "devOnlyRouteNotice": "{{path}} är fortfarande under uppbyggnad och är endast tillgänglig under utveckling. Du har omdirigerats till startsidan."
+    "devOnlyRouteNotice": "{{path}} är fortfarande under uppbyggnad. Du har omdirigerats till startsidan."
   }
 }

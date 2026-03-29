@@ -169,7 +169,7 @@
     }
   },
   "home": {
-    "devOnlyRouteNotice": "{{path}} はまだ工事中で、開発中のみ利用できます。トップページにリダイレクトされました。",
+    "devOnlyRouteNotice": "{{path}} はまだ工事中です。トップページにリダイレクトされました。",
     "dismissDevOnlyRouteNotice": "通知を閉じる"
   }
 }

@@ -169,7 +169,7 @@
     }
   },
   "home": {
-    "devOnlyRouteNotice": "{{path}} este încă în construcție și este disponibil doar în timpul dezvoltării. Ai fost redirecționat către pagina principală.",
+    "devOnlyRouteNotice": "{{path}} este încă în construcție. Ai fost redirecționat către pagina principală.",
     "dismissDevOnlyRouteNotice": "Închide notificarea"
   }
 }

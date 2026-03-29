@@ -169,7 +169,7 @@
     }
   },
   "home": {
-    "devOnlyRouteNotice": "{{path}} er fortsatt under bygging og er bare tilgjengelig under utvikling. Du har blitt sendt til forsiden.",
+    "devOnlyRouteNotice": "{{path}} er fortsatt under bygging. Du har blitt sendt til forsiden.",
     "dismissDevOnlyRouteNotice": "Lukk varsel"
   }
 }

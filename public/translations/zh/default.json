@@ -170,6 +170,6 @@
   },
   "home": {
     "dismissDevOnlyRouteNotice": "关闭通知",
-    "devOnlyRouteNotice": "{{path}} 仍在建设中，仅在开发期间可用。你已被重定向到首页。"
+    "devOnlyRouteNotice": "{{path}} 仍在建设中。你已被重定向到首页。"
   }
 }

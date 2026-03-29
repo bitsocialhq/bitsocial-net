@@ -170,6 +170,6 @@
   },
   "home": {
     "dismissDevOnlyRouteNotice": "Mbyll njoftimin",
-    "devOnlyRouteNotice": "{{path}} është ende në ndërtim dhe është e disponueshme vetëm gjatë zhvillimit. Jeni ridrejtuar te faqja kryesore."
+    "devOnlyRouteNotice": "{{path}} është ende në ndërtim. Jeni ridrejtuar te faqja kryesore."
   }
 }

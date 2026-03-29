@@ -169,7 +169,7 @@
     }
   },
   "home": {
-    "devOnlyRouteNotice": "{{path}} on vielä rakenteilla ja on käytettävissä vain kehityksen aikana. Sinut on ohjattu etusivulle.",
+    "devOnlyRouteNotice": "{{path}} on vielä rakenteilla. Sinut on ohjattu etusivulle.",
     "dismissDevOnlyRouteNotice": "Sulje ilmoitus"
   }
 }

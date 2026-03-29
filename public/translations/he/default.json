@@ -169,7 +169,7 @@
     }
   },
   "home": {
-    "devOnlyRouteNotice": "{{path}} עדיין בבנייה וזמין רק במהלך הפיתוח. הופנית לדף הבית.",
+    "devOnlyRouteNotice": "{{path}} עדיין בבנייה. הופנית לדף הבית.",
     "dismissDevOnlyRouteNotice": "סגירת ההודעה"
   }
 }

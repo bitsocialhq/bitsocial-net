@@ -170,6 +170,6 @@
   },
   "home": {
     "dismissDevOnlyRouteNotice": "Đóng thông báo",
-    "devOnlyRouteNotice": "{{path}} vẫn đang trong quá trình xây dựng và chỉ có sẵn trong quá trình phát triển. Bạn đã được chuyển hướng về trang chủ."
+    "devOnlyRouteNotice": "{{path}} vẫn đang trong quá trình xây dựng. Bạn đã được chuyển hướng về trang chủ."
   }
 }

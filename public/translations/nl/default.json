@@ -169,7 +169,7 @@
     }
   },
   "home": {
-    "devOnlyRouteNotice": "{{path}} is nog in aanbouw en is alleen beschikbaar tijdens ontwikkeling. Je bent doorgestuurd naar de startpagina.",
+    "devOnlyRouteNotice": "{{path}} is nog in aanbouw. Je bent doorgestuurd naar de startpagina.",
     "dismissDevOnlyRouteNotice": "Melding sluiten"
   }
 }

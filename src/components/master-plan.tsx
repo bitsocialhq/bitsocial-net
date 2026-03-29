@@ -202,9 +202,11 @@ export default function MasterPlan() {
               whileHover={{ scale: 1.1 }}
             >
               <img
-                src="/logo-small.png"
+                src="/logo.png"
+                width={40}
+                height={40}
                 alt={logoAlt}
-                className="w-8 h-8 transition-all duration-300 hover:drop-shadow-[0_0_12px_rgba(37,99,235,0.8)]"
+                className="h-10 w-10 transition-all duration-300 hover:drop-shadow-[0_0_12px_rgba(37,99,235,0.8)]"
               />
             </m.button>
           </div>

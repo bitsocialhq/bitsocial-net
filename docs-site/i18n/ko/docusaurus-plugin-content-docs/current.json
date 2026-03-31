@@ -1,0 +1,54 @@
+{
+  "version.label": {
+    "message": "다음",
+    "description": "The label for version current"
+  },
+  "sidebar.docsSidebar.category.Protocol notes": {
+    "message": "프로토콜 참고 사항",
+    "description": "The label for category 'Protocol notes' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.Master plan": {
+    "message": "기본 계획",
+    "description": "The label for category 'Master plan' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.Apps": {
+    "message": "앱",
+    "description": "The label for category 'Apps' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.Developer tools": {
+    "message": "개발자 도구",
+    "description": "The label for category 'Developer tools' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.Anti-spam challenges": {
+    "message": "스팸 방지 문제",
+    "description": "The label for category 'Anti-spam challenges' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.Infrastructure": {
+    "message": "하부 구조",
+    "description": "The label for category 'Infrastructure' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.Contributor playbooks": {
+    "message": "기여자 플레이북",
+    "description": "The label for category 'Contributor playbooks' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.Contributor playbooks.link.generated-index.title": {
+    "message": "기여자 플레이북",
+    "description": "The generated-index page title for category 'Contributor playbooks' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.Contributor playbooks.link.generated-index.description": {
+    "message": "Repo 워크플로 문서가 공개 문서 UI 내에 표시됩니다.",
+    "description": "The generated-index page description for category 'Contributor playbooks' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.Templates": {
+    "message": "템플릿",
+    "description": "The label for category 'Templates' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.Templates.link.generated-index.title": {
+    "message": "템플릿",
+    "description": "The generated-index page title for category 'Templates' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.Templates.link.generated-index.description": {
+    "message": "장기 실행 워크플로에서 사용되는 참조 템플릿입니다.",
+    "description": "The generated-index page description for category 'Templates' in sidebar 'docsSidebar'"
+  }
+}

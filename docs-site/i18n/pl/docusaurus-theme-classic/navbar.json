@@ -1,0 +1,26 @@
+{
+  "title": {
+    "message": "Bitspołeczne",
+    "description": "The title in the navbar"
+  },
+  "logo.alt": {
+    "message": "Logo Bitsocial",
+    "description": "The alt text of navbar logo"
+  },
+  "item.label.Overview": {
+    "message": "Przegląd",
+    "description": "Navbar item with label Overview"
+  },
+  "item.label.Search": {
+    "message": "Szukaj",
+    "description": "Navbar item with label Search"
+  },
+  "item.label.Contributor": {
+    "message": "Współpracownik",
+    "description": "Navbar item with label Contributor"
+  },
+  "item.label.GitHub": {
+    "message": "GitHub",
+    "description": "Navbar item with label GitHub"
+  }
+}

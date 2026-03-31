@@ -1,13 +1,9 @@
 import clsx from "clsx";
+import { translate } from "@docusaurus/Translate";
 import useBaseUrl from "@docusaurus/useBaseUrl";
-import { useEffect, useRef, useState } from "react";
+import { useMemo, useRef } from "react";
+import { usePagefindUi } from "../lib/usePagefindUi";
 import styles from "./PagefindSearch.module.css";
-
-declare global {
-  interface Window {
-    PagefindUI?: new (options: Record<string, unknown>) => unknown;
-  }
-}
 
 interface PagefindSearchProps {
   className?: string;
@@ -17,129 +13,86 @@ interface PagefindSearchProps {
 
 export default function PagefindSearch({
   className,
-  description = "Full-text search across the live docs. The index appears after the docs build runs.",
-  heading = "Search the docs",
+  description = translate({
+    id: "docs.pagefindSearch.description",
+    message: "Full-text search across the live docs. The index appears after the docs build runs.",
+    description: "Default description shown above the full-page docs search widget.",
+  }),
+  heading = translate({
+    id: "docs.pagefindSearch.heading",
+    message: "Search the docs",
+    description: "Heading shown above the full-page docs search widget.",
+  }),
 }: PagefindSearchProps) {
   const bundlePath = useBaseUrl("pagefind/");
   const scriptUrl = useBaseUrl("pagefind/pagefind-ui.js");
   const styleUrl = useBaseUrl("pagefind/pagefind-ui.css");
   const containerRef = useRef<HTMLDivElement>(null);
-  const [isClient, setIsClient] = useState(false);
-  const [status, setStatus] = useState<"loading" | "ready" | "error">("loading");
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
-
-  useEffect(() => {
-    if (!isClient) {
-      return;
-    }
-
-    let cancelled = false;
-
-    const ensureStyles = () => {
-      if (document.querySelector(`link[href="${styleUrl}"]`)) {
-        return;
-      }
-
-      const link = document.createElement("link");
-      link.rel = "stylesheet";
-      link.href = styleUrl;
-      document.head.appendChild(link);
-    };
-
-    const mountSearch = () => {
-      if (cancelled || !containerRef.current || !window.PagefindUI) {
-        return;
-      }
-
-      containerRef.current.replaceChildren();
-      new window.PagefindUI({
-        element: containerRef.current,
-        bundlePath,
-        showImages: false,
-        showSubResults: true,
-        resetStyles: false,
-        translations: {
-          placeholder: "Search Bitsocial docs",
-          zero_results: "No matching docs yet.",
-          load_more: "Load more",
-        },
-      });
-      setStatus("ready");
-    };
-
-    const fail = () => {
-      if (cancelled) {
-        return;
-      }
-
-      setStatus("error");
-    };
-
-    ensureStyles();
-
-    if (window.PagefindUI) {
-      mountSearch();
-      return () => {
-        cancelled = true;
-      };
-    }
-
-    const existingScript = document.querySelector<HTMLScriptElement>(`script[src="${scriptUrl}"]`);
-
-    if (existingScript) {
-      existingScript.addEventListener("load", mountSearch);
-      existingScript.addEventListener("error", fail);
-      return () => {
-        cancelled = true;
-        existingScript.removeEventListener("load", mountSearch);
-        existingScript.removeEventListener("error", fail);
-      };
-    }
-
-    let script: HTMLScriptElement | null = null;
-
-    void fetch(scriptUrl, { method: "HEAD" })
-      .then((response) => {
-        const contentType = response.headers.get("content-type") ?? "";
-        if (!response.ok || contentType.includes("text/html")) {
-          fail();
-          return;
-        }
-
-        script = document.createElement("script");
-        script.src = scriptUrl;
-        script.async = true;
-        script.onload = mountSearch;
-        script.onerror = fail;
-        document.body.appendChild(script);
-      })
-      .catch(fail);
-
-    return () => {
-      cancelled = true;
-      script?.removeEventListener("load", mountSearch);
-      script?.removeEventListener("error", fail);
-    };
-  }, [bundlePath, isClient, scriptUrl, styleUrl]);
+  const uiOptions = useMemo(
+    () => ({
+      showImages: false,
+      showSubResults: true,
+      translations: {
+        placeholder: translate({
+          id: "docs.pagefindSearch.placeholder",
+          message: "Search Bitsocial docs",
+          description: "Placeholder inside the full-page Pagefind docs search input.",
+        }),
+        zero_results: translate({
+          id: "docs.pagefindSearch.zeroResults",
+          message: "No matching docs yet.",
+          description: "Message shown when the full-page Pagefind docs search has no matches.",
+        }),
+        load_more: translate({
+          id: "docs.pagefindSearch.loadMore",
+          message: "Load more",
+          description: "Button label to load more Pagefind search results on the full search page.",
+        }),
+      },
+    }),
+    [],
+  );
+  const { isClient, status } = usePagefindUi({
+    bundlePath,
+    scriptUrl,
+    styleUrl,
+    containerRef,
+    uiOptions,
+  });
 
   return (
     <section className={clsx(styles.searchShell, className)}>
       <div className={styles.header}>
-        <p className="docs-kicker">Pagefind</p>
+        <p className="docs-kicker">
+          {translate({
+            id: "docs.pagefindSearch.kicker",
+            message: "Pagefind",
+            description: "Kicker label shown above the full-page docs search block.",
+          })}
+        </p>
         <h2>{heading}</h2>
         <p>{description}</p>
       </div>
       <div className={styles.surface}>
         {isClient ? <div ref={containerRef} /> : null}
         {!isClient || status === "loading" ? (
-          <p className={styles.status}>Loading search UI…</p>
+          <p className={styles.status}>
+            {translate({
+              id: "docs.pagefindSearch.loading",
+              message: "Loading search UI…",
+              description: "Status shown while the full-page Pagefind UI is booting.",
+            })}
+          </p>
         ) : null}
         {status === "error" ? (
           <p className={styles.status}>
-            Search is unavailable in this dev session until the static docs build completes.
+            {translate({
+              id: "docs.pagefindSearch.error",
+              message:
+                "Search is unavailable in this dev session until the static docs build completes.",
+              description:
+                "Status shown on the full-page search screen when Pagefind assets are unavailable in a dev session.",
+            })}
           </p>
         ) : null}
       </div>

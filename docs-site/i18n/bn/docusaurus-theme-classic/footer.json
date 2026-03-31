@@ -1,0 +1,70 @@
+{
+  "link.title.Protocol": {
+    "message": "প্রোটোকল",
+    "description": "The title of the footer links column with title=Protocol in the footer"
+  },
+  "link.title.Roadmap": {
+    "message": "রোডম্যাপ",
+    "description": "The title of the footer links column with title=Roadmap in the footer"
+  },
+  "link.title.Apps & Tools": {
+    "message": "অ্যাপস ও টুলস",
+    "description": "The title of the footer links column with title=Apps & Tools in the footer"
+  },
+  "link.title.Project": {
+    "message": "প্রকল্প",
+    "description": "The title of the footer links column with title=Project in the footer"
+  },
+  "link.item.label.Custom challenges": {
+    "message": "কাস্টম চ্যালেঞ্জ",
+    "description": "The label of footer link with label=Custom challenges linking to /custom-challenges/"
+  },
+  "link.item.label.Local moderation": {
+    "message": "স্থানীয় সংযম",
+    "description": "The label of footer link with label=Local moderation linking to /local-moderation/"
+  },
+  "link.item.label.Identity and ownership": {
+    "message": "পরিচয় এবং মালিকানা",
+    "description": "The label of footer link with label=Identity and ownership linking to /identity-and-ownership/"
+  },
+  "link.item.label.Permissionless public RPC": {
+    "message": "অনুমতিহীন পাবলিক RPC",
+    "description": "The label of footer link with label=Permissionless public RPC linking to /permissionless-public-rpc/"
+  },
+  "link.item.label.Bitsocial Network": {
+    "message": "বিটসোশ্যাল নেটওয়ার্ক",
+    "description": "The label of footer link with label=Bitsocial Network linking to /bitsocial-network/"
+  },
+  "link.item.label.Decentralize all social media": {
+    "message": "সমস্ত সোশ্যাল মিডিয়াকে বিকেন্দ্রীকরণ করুন",
+    "description": "The label of footer link with label=Decentralize all social media linking to /decentralize-all-social-media/"
+  },
+  "link.item.label.5chan": {
+    "message": "5chan",
+    "description": "The label of footer link with label=5chan linking to /apps/5chan/"
+  },
+  "link.item.label.Seedit": {
+    "message": "সিডিট",
+    "description": "The label of footer link with label=Seedit linking to /apps/seedit/"
+  },
+  "link.item.label.React Hooks": {
+    "message": "হুক প্রতিক্রিয়া",
+    "description": "The label of footer link with label=React Hooks linking to /developer-tools/react-hooks/"
+  },
+  "link.item.label.CLI": {
+    "message": "সিএলআই",
+    "description": "The label of footer link with label=CLI linking to /developer-tools/cli/"
+  },
+  "link.item.label.Main site": {
+    "message": "প্রধান সাইট",
+    "description": "The label of footer link with label=Main site linking to https://bitsocial.net"
+  },
+  "link.item.label.GitHub": {
+    "message": "গিটহাব",
+    "description": "The label of footer link with label=GitHub linking to https://github.com/bitsocialnet/bitsocial-web"
+  },
+  "copyright": {
+    "message": "সমস্ত সোশ্যাল মিডিয়াকে বিকেন্দ্রীকরণ করুন · © 2026 Bitsocial Forge, Inc.",
+    "description": "The footer copyright"
+  }
+}

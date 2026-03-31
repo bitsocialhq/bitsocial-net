@@ -1,0 +1,54 @@
+{
+  "version.label": {
+    "message": "التالي",
+    "description": "The label for version current"
+  },
+  "sidebar.docsSidebar.category.Protocol notes": {
+    "message": "ملاحظات البروتوكول",
+    "description": "The label for category 'Protocol notes' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.Master plan": {
+    "message": "الخطة الرئيسية",
+    "description": "The label for category 'Master plan' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.Apps": {
+    "message": "تطبيقات",
+    "description": "The label for category 'Apps' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.Developer tools": {
+    "message": "أدوات المطور",
+    "description": "The label for category 'Developer tools' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.Anti-spam challenges": {
+    "message": "تحديات مكافحة البريد العشوائي",
+    "description": "The label for category 'Anti-spam challenges' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.Infrastructure": {
+    "message": "بنية تحتية",
+    "description": "The label for category 'Infrastructure' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.Contributor playbooks": {
+    "message": "كتب اللعب للمساهمين",
+    "description": "The label for category 'Contributor playbooks' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.Contributor playbooks.link.generated-index.title": {
+    "message": "كتب اللعب للمساهمين",
+    "description": "The generated-index page title for category 'Contributor playbooks' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.Contributor playbooks.link.generated-index.description": {
+    "message": "ظهرت مستندات سير عمل الريبو داخل واجهة مستخدم المستندات العامة.",
+    "description": "The generated-index page description for category 'Contributor playbooks' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.Templates": {
+    "message": "قوالب",
+    "description": "The label for category 'Templates' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.Templates.link.generated-index.title": {
+    "message": "قوالب",
+    "description": "The generated-index page title for category 'Templates' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.Templates.link.generated-index.description": {
+    "message": "القوالب المرجعية المستخدمة في سير العمل طويل الأمد.",
+    "description": "The generated-index page description for category 'Templates' in sidebar 'docsSidebar'"
+  }
+}

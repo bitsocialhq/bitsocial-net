@@ -1,0 +1,54 @@
+{
+  "version.label": {
+    "message": "Seuraavaksi",
+    "description": "The label for version current"
+  },
+  "sidebar.docsSidebar.category.Protocol notes": {
+    "message": "Pöytäkirjan huomautukset",
+    "description": "The label for category 'Protocol notes' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.Master plan": {
+    "message": "Yleiskaava",
+    "description": "The label for category 'Master plan' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.Apps": {
+    "message": "Sovellukset",
+    "description": "The label for category 'Apps' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.Developer tools": {
+    "message": "Kehittäjän työkalut",
+    "description": "The label for category 'Developer tools' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.Anti-spam challenges": {
+    "message": "Roskapostin torjuntahaasteet",
+    "description": "The label for category 'Anti-spam challenges' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.Infrastructure": {
+    "message": "Infrastruktuuri",
+    "description": "The label for category 'Infrastructure' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.Contributor playbooks": {
+    "message": "Avustajien pelikirjat",
+    "description": "The label for category 'Contributor playbooks' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.Contributor playbooks.link.generated-index.title": {
+    "message": "Avustajien pelikirjat",
+    "description": "The generated-index page title for category 'Contributor playbooks' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.Contributor playbooks.link.generated-index.description": {
+    "message": "Repo-työnkulkuasiakirjat ilmestyivät julkisten asiakirjojen käyttöliittymään.",
+    "description": "The generated-index page description for category 'Contributor playbooks' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.Templates": {
+    "message": "Mallit",
+    "description": "The label for category 'Templates' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.Templates.link.generated-index.title": {
+    "message": "Mallit",
+    "description": "The generated-index page title for category 'Templates' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.Templates.link.generated-index.description": {
+    "message": "Pitkään jatkuneen työnkulun käyttämät viitemallit.",
+    "description": "The generated-index page description for category 'Templates' in sidebar 'docsSidebar'"
+  }
+}

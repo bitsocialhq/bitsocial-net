@@ -1,0 +1,54 @@
+{
+  "version.label": {
+    "message": "Volgende",
+    "description": "The label for version current"
+  },
+  "sidebar.docsSidebar.category.Protocol notes": {
+    "message": "Protocolnotities",
+    "description": "The label for category 'Protocol notes' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.Master plan": {
+    "message": "Masterplan",
+    "description": "The label for category 'Master plan' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.Apps": {
+    "message": "Apps",
+    "description": "The label for category 'Apps' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.Developer tools": {
+    "message": "Ontwikkelaarstools",
+    "description": "The label for category 'Developer tools' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.Anti-spam challenges": {
+    "message": "Antispam-uitdagingen",
+    "description": "The label for category 'Anti-spam challenges' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.Infrastructure": {
+    "message": "Infrastructuur",
+    "description": "The label for category 'Infrastructure' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.Contributor playbooks": {
+    "message": "Draaiboeken voor bijdragers",
+    "description": "The label for category 'Contributor playbooks' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.Contributor playbooks.link.generated-index.title": {
+    "message": "Draaiboeken voor bijdragers",
+    "description": "The generated-index page title for category 'Contributor playbooks' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.Contributor playbooks.link.generated-index.description": {
+    "message": "Repository-workflowdocumenten verschenen in de gebruikersinterface van openbare documenten.",
+    "description": "The generated-index page description for category 'Contributor playbooks' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.Templates": {
+    "message": "Sjablonen",
+    "description": "The label for category 'Templates' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.Templates.link.generated-index.title": {
+    "message": "Sjablonen",
+    "description": "The generated-index page title for category 'Templates' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.Templates.link.generated-index.description": {
+    "message": "Referentiesjablonen die worden gebruikt door de langlopende workflow.",
+    "description": "The generated-index page description for category 'Templates' in sidebar 'docsSidebar'"
+  }
+}

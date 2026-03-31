@@ -2,10 +2,29 @@ import path from "node:path";
 import { themes as prismThemes } from "prism-react-renderer";
 import type { Config } from "@docusaurus/types";
 import type * as Preset from "@docusaurus/preset-classic";
+import {
+  DEFAULT_LANGUAGE_CODE,
+  SUPPORTED_LANGUAGES,
+  SUPPORTED_LANGUAGE_CODES,
+} from "../src/lib/locales";
 
 const repoRoot = path.resolve(__dirname, "..");
 const docsRoot = path.join(repoRoot, "docs");
 const repoEditUrl = "https://github.com/bitsocialnet/bitsocial-web/tree/master";
+
+/** Docs live under /docs/; logo + title must link to the main site root, not useBaseUrl("/"). */
+const mainSiteOrigin = "https://bitsocial.net";
+const localeConfigs = Object.fromEntries(
+  SUPPORTED_LANGUAGES.map((language) => [
+    language.code,
+    {
+      label: language.label,
+      htmlLang: language.code,
+      direction: language.dir === "rtl" ? ("rtl" as const) : ("ltr" as const),
+      translate: language.code === DEFAULT_LANGUAGE_CODE,
+    },
+  ]),
+);
 
 const config: Config = {
   title: "Bitsocial Docs",
@@ -14,7 +33,7 @@ const config: Config = {
   future: {
     v4: true,
   },
-  url: "https://bitsocial.net",
+  url: mainSiteOrigin,
   baseUrl: "/docs/",
   onBrokenLinks: "throw",
   trailingSlash: true,
@@ -25,7 +44,8 @@ const config: Config = {
   },
   i18n: {
     defaultLocale: "en",
-    locales: ["en"],
+    locales: [...SUPPORTED_LANGUAGE_CODES],
+    localeConfigs,
   },
   stylesheets: [
     {
@@ -64,7 +84,7 @@ const config: Config = {
       logo: {
         alt: "Bitsocial logo",
         src: "img/logo.png",
-        href: "/",
+        href: `${mainSiteOrigin}/`,
       },
       items: [
         {
@@ -76,16 +96,15 @@ const config: Config = {
         { to: "/search/", label: "Search", position: "left" },
         { to: "/agent-playbooks/", label: "Contributor", position: "left" },
         {
-          href: "https://bitsocial.net",
-          label: "Main site",
+          type: "localeDropdown",
           position: "right",
-          className: "navbar__link--no-external-icon",
         },
         {
           href: "https://github.com/bitsocialnet",
           label: "GitHub",
           position: "right",
-          className: "navbar__link--no-external-icon",
+          className: "header-github-link navbar__link--no-external-icon",
+          "aria-label": "GitHub organization",
         },
       ],
     },

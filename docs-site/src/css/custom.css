@@ -134,6 +134,14 @@ a:hover {
   min-height: 3.25rem;
 }
 
+.navbar__items {
+  align-items: center;
+}
+
+.navbar__items--right {
+  gap: 0.25rem;
+}
+
 /* Logo: match frontpage gap-1 (0.25rem) exactly */
 .navbar__brand {
   display: flex;
@@ -153,7 +161,7 @@ a:hover {
 
 .navbar__title {
   font-size: 1rem;
-  font-weight: 400;
+  font-weight: 600;
 }
 
 .navbar__logo img {
@@ -168,10 +176,59 @@ a:hover {
   font-weight: 450;
 }
 
+.navbar__items--right .dropdown > .navbar__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  min-height: 2rem;
+  padding: 0.45rem 0.7rem;
+  border-radius: 0.5rem;
+}
+
+.navbar__items--right .dropdown > .navbar__link:hover,
+.navbar__items--right .dropdown > .navbar__link[aria-expanded="true"] {
+  background: var(--ifm-menu-color-background-hover);
+}
+
+.navbar__items--right .dropdown__menu {
+  max-height: min(70vh, 24rem);
+  overflow-y: auto;
+  min-width: 14rem;
+}
+
 /* (8) Hide external link icons from navbar and footer */
 .navbar__link--no-external-icon svg,
 .navbar__link--no-external-icon [class*="iconExternalLink"] {
   display: none !important;
+}
+
+.header-github-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border-radius: 0.5rem;
+  color: var(--bitsocial-muted);
+  font-size: 0;
+  line-height: 0;
+}
+
+.header-github-link:hover {
+  color: var(--ifm-heading-color);
+  background: var(--ifm-menu-color-background-hover);
+}
+
+.header-github-link::before {
+  content: "";
+  width: 1rem;
+  height: 1rem;
+  background: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 98 96'%3E%3Cpath fill='black' d='M49 0C21.9 0 0 21.9 0 49c0 21.7 14.1 40.1 33.7 46.6 2.5.5 3.4-1.1 3.4-2.4 0-1.2 0-5.3-.1-9.7-13.7 3-16.6-5.8-16.6-5.8-2.3-5.7-5.5-7.2-5.5-7.2-4.5-3.1.3-3 .3-3 5 .4 7.6 5.1 7.6 5.1 4.4 7.6 11.6 5.4 14.4 4.1.5-3.2 1.7-5.4 3.1-6.6-10.9-1.2-22.4-5.4-22.4-24.3 0-5.4 1.9-9.8 5.1-13.3-.5-1.2-2.2-6.2.5-12.8 0 0 4.2-1.4 13.6 5.1 3.9-1.1 8.1-1.6 12.3-1.6 4.2 0 8.4.5 12.3 1.6 9.4-6.5 13.6-5.1 13.6-5.1 2.7 6.6 1 11.6.5 12.8 3.2 3.5 5.1 7.9 5.1 13.3 0 18.9-11.5 23.1-22.5 24.3 1.8 1.5 3.3 4.5 3.3 9.2 0 6.6-.1 11.9-.1 13.5 0 1.3.9 2.9 3.4 2.4C83.9 89.1 98 70.7 98 49 98 21.9 76.1 0 49 0Z'/%3E%3C/svg%3E")
+    center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 98 96'%3E%3Cpath fill='black' d='M49 0C21.9 0 0 21.9 0 49c0 21.7 14.1 40.1 33.7 46.6 2.5.5 3.4-1.1 3.4-2.4 0-1.2 0-5.3-.1-9.7-13.7 3-16.6-5.8-16.6-5.8-2.3-5.7-5.5-7.2-5.5-7.2-4.5-3.1.3-3 .3-3 5 .4 7.6 5.1 7.6 5.1 4.4 7.6 11.6 5.4 14.4 4.1.5-3.2 1.7-5.4 3.1-6.6-10.9-1.2-22.4-5.4-22.4-24.3 0-5.4 1.9-9.8 5.1-13.3-.5-1.2-2.2-6.2.5-12.8 0 0 4.2-1.4 13.6 5.1 3.9-1.1 8.1-1.6 12.3-1.6 4.2 0 8.4.5 12.3 1.6 9.4-6.5 13.6-5.1 13.6-5.1 2.7 6.6 1 11.6.5 12.8 3.2 3.5 5.1 7.9 5.1 13.3 0 18.9-11.5 23.1-22.5 24.3 1.8 1.5 3.3 4.5 3.3 9.2 0 6.6-.1 11.9-.1 13.5 0 1.3.9 2.9 3.4 2.4C83.9 89.1 98 70.7 98 49 98 21.9 76.1 0 49 0Z'/%3E%3C/svg%3E")
+    center / contain no-repeat;
 }
 
 a[class*="footer__link-item"] svg,
@@ -245,6 +302,18 @@ a[class*="footer__link-item"] [class*="iconExternalLink"] {
 
 .navbar-sidebar .menu__link {
   font-size: 0.9rem;
+}
+
+.navbar-sidebar .header-github-link {
+  width: auto;
+  height: auto;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.navbar-sidebar .header-github-link::before {
+  display: none;
 }
 
 /* (2) Color mode toggle — cleaner styling */

@@ -1,0 +1,54 @@
+{
+  "version.label": {
+    "message": "পরবর্তী",
+    "description": "The label for version current"
+  },
+  "sidebar.docsSidebar.category.Protocol notes": {
+    "message": "প্রোটোকল নোট",
+    "description": "The label for category 'Protocol notes' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.Master plan": {
+    "message": "মাস্টার প্ল্যান",
+    "description": "The label for category 'Master plan' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.Apps": {
+    "message": "অ্যাপস",
+    "description": "The label for category 'Apps' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.Developer tools": {
+    "message": "বিকাশকারী সরঞ্জাম",
+    "description": "The label for category 'Developer tools' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.Anti-spam challenges": {
+    "message": "স্প্যাম-বিরোধী চ্যালেঞ্জ",
+    "description": "The label for category 'Anti-spam challenges' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.Infrastructure": {
+    "message": "অবকাঠামো",
+    "description": "The label for category 'Infrastructure' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.Contributor playbooks": {
+    "message": "অবদানকারী প্লেবুক",
+    "description": "The label for category 'Contributor playbooks' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.Contributor playbooks.link.generated-index.title": {
+    "message": "অবদানকারী প্লেবুক",
+    "description": "The generated-index page title for category 'Contributor playbooks' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.Contributor playbooks.link.generated-index.description": {
+    "message": "Repo ওয়ার্কফ্লো ডকুমেন্টগুলি পাবলিক ডক্স UI-এর ভিতরে দেখা গেছে।",
+    "description": "The generated-index page description for category 'Contributor playbooks' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.Templates": {
+    "message": "টেমপ্লেট",
+    "description": "The label for category 'Templates' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.Templates.link.generated-index.title": {
+    "message": "টেমপ্লেট",
+    "description": "The generated-index page title for category 'Templates' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.category.Templates.link.generated-index.description": {
+    "message": "দীর্ঘ-চলমান কর্মপ্রবাহ দ্বারা ব্যবহৃত রেফারেন্স টেমপ্লেট।",
+    "description": "The generated-index page description for category 'Templates' in sidebar 'docsSidebar'"
+  }
+}

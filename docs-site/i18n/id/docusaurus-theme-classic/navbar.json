@@ -1,0 +1,26 @@
+{
+  "title": {
+    "message": "sedikit sosial",
+    "description": "The title in the navbar"
+  },
+  "logo.alt": {
+    "message": "Logo bitsosial",
+    "description": "The alt text of navbar logo"
+  },
+  "item.label.Overview": {
+    "message": "Ringkasan",
+    "description": "Navbar item with label Overview"
+  },
+  "item.label.Search": {
+    "message": "Mencari",
+    "description": "Navbar item with label Search"
+  },
+  "item.label.Contributor": {
+    "message": "Penyumbang",
+    "description": "Navbar item with label Contributor"
+  },
+  "item.label.GitHub": {
+    "message": "GitHub",
+    "description": "Navbar item with label GitHub"
+  }
+}

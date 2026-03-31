@@ -1,0 +1,26 @@
+{
+  "title": {
+    "message": "비트소셜",
+    "description": "The title in the navbar"
+  },
+  "logo.alt": {
+    "message": "비트소셜 로고",
+    "description": "The alt text of navbar logo"
+  },
+  "item.label.Overview": {
+    "message": "개요",
+    "description": "Navbar item with label Overview"
+  },
+  "item.label.Search": {
+    "message": "찾다",
+    "description": "Navbar item with label Search"
+  },
+  "item.label.Contributor": {
+    "message": "기부자",
+    "description": "Navbar item with label Contributor"
+  },
+  "item.label.GitHub": {
+    "message": "GitHub",
+    "description": "Navbar item with label GitHub"
+  }
+}

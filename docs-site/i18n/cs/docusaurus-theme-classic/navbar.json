@@ -1,0 +1,26 @@
+{
+  "title": {
+    "message": "Bitsociální",
+    "description": "The title in the navbar"
+  },
+  "logo.alt": {
+    "message": "Bitsocial logo",
+    "description": "The alt text of navbar logo"
+  },
+  "item.label.Overview": {
+    "message": "Přehled",
+    "description": "Navbar item with label Overview"
+  },
+  "item.label.Search": {
+    "message": "Vyhledávání",
+    "description": "Navbar item with label Search"
+  },
+  "item.label.Contributor": {
+    "message": "Přispěvatel",
+    "description": "Navbar item with label Contributor"
+  },
+  "item.label.GitHub": {
+    "message": "GitHub",
+    "description": "Navbar item with label GitHub"
+  }
+}

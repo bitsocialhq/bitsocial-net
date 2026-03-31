@@ -1,0 +1,26 @@
+{
+  "title": {
+    "message": "Bitsocial",
+    "description": "The title in the navbar"
+  },
+  "logo.alt": {
+    "message": "Λογότυπο Bitsocial",
+    "description": "The alt text of navbar logo"
+  },
+  "item.label.Overview": {
+    "message": "Επισκόπηση",
+    "description": "Navbar item with label Overview"
+  },
+  "item.label.Search": {
+    "message": "Ερευνα",
+    "description": "Navbar item with label Search"
+  },
+  "item.label.Contributor": {
+    "message": "Συνεισφέρων",
+    "description": "Navbar item with label Contributor"
+  },
+  "item.label.GitHub": {
+    "message": "GitHub",
+    "description": "Navbar item with label GitHub"
+  }
+}

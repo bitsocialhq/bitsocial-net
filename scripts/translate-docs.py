@@ -1,0 +1,565 @@
+#!/usr/bin/env python3
+
+from __future__ import annotations
+
+import argparse
+import json
+import re
+import sys
+import time
+from pathlib import Path
+from typing import Any
+
+from deep_translator import MyMemoryTranslator
+
+REPO_ROOT = Path(__file__).resolve().parents[1]
+DOCS_ROOT = REPO_ROOT / "docs"
+DOCS_I18N_ROOT = REPO_ROOT / "docs-site" / "i18n"
+
+LOCALE_TARGETS = {
+    "ar": "ar-SA",
+    "bn": "bn-IN",
+    "ca": "ca-ES",
+    "cs": "cs-CZ",
+    "da": "da-DK",
+    "de": "de-DE",
+    "el": "el-GR",
+    "en": "en-GB",
+    "es": "es-ES",
+    "fa": "fa-IR",
+    "fi": "fi-FI",
+    "fil": "fil-PH",
+    "fr": "fr-FR",
+    "he": "he-IL",
+    "hi": "hi-IN",
+    "hu": "hu-HU",
+    "id": "id-ID",
+    "it": "it-IT",
+    "ja": "ja-JP",
+    "ko": "ko-KR",
+    "mr": "mr-IN",
+    "nl": "nl-NL",
+    "no": "nb-NO",
+    "pl": "pl-PL",
+    "pt": "pt-PT",
+    "ro": "ro-RO",
+    "ru": "ru-RU",
+    "sq": "sq-AL",
+    "sv": "sv-SE",
+    "te": "te-IN",
+    "th": "th-TH",
+    "tr": "tr-TR",
+    "uk": "uk-UA",
+    "ur": "ur-PK",
+    "vi": "vi-VN",
+    "zh": "zh-CN",
+}
+
+TRANSLATABLE_FRONTMATTER_KEYS = {"title", "description", "sidebar_label"}
+JSON_SKIP_KEYS = {"slug", "type", "id", "task", "status", "last_updated"}
+PLACEHOLDER_PREFIX = "ZXQPLACEHOLDER"
+BATCH_SIZE = 20
+BATCH_DELAY_SECONDS = 1.1
+MAX_REQUEST_CHARS = 420
+
+translator_cache: dict[str, MyMemoryTranslator] = {}
+text_cache: dict[tuple[str, str], str] = {}
+
+
+def log(message: str) -> None:
+    print(message, flush=True)
+
+
+def get_translator(locale: str) -> MyMemoryTranslator:
+    if locale not in translator_cache:
+        translator_cache[locale] = MyMemoryTranslator(source=LOCALE_TARGETS["en"], target=LOCALE_TARGETS[locale])
+    return translator_cache[locale]
+
+
+def should_translate_text(text: str) -> bool:
+    return bool(re.search(r"[A-Za-z]", text))
+
+
+def chunked(values: list[str], size: int) -> list[list[str]]:
+    return [values[index : index + size] for index in range(0, len(values), size)]
+
+
+def chunked_by_request_size(values: list[str], max_chars: int) -> list[list[str]]:
+    chunks: list[list[str]] = []
+    current_chunk: list[str] = []
+    current_length = 0
+
+    for value in values:
+        value_length = len(value)
+        if value_length > max_chars:
+            if current_chunk:
+                chunks.append(current_chunk)
+                current_chunk = []
+                current_length = 0
+            chunks.append([value])
+            continue
+
+        separator_length = len(f"\n{PLACEHOLDER_PREFIX}SEPZXQ\n") if current_chunk else 0
+        if current_chunk and current_length + separator_length + value_length > max_chars:
+            chunks.append(current_chunk)
+            current_chunk = [value]
+            current_length = value_length
+            continue
+
+        current_chunk.append(value)
+        current_length += separator_length + value_length
+
+    if current_chunk:
+        chunks.append(current_chunk)
+
+    return chunks
+
+
+def translate_text_batch(texts: list[str], locale: str) -> list[str]:
+    if locale == "en":
+        return texts
+
+    translated_texts = list(texts)
+    uncached_texts: list[str] = []
+
+    for text in texts:
+        if not text or not should_translate_text(text):
+            continue
+
+        cache_key = (locale, text)
+        if cache_key in text_cache or text in uncached_texts:
+            continue
+        uncached_texts.append(text)
+
+    if uncached_texts:
+        translator = get_translator(locale)
+        sized_batches: list[list[str]] = []
+        for count_batch in chunked(uncached_texts, BATCH_SIZE):
+            sized_batches.extend(chunked_by_request_size(count_batch, MAX_REQUEST_CHARS))
+
+        for batch_index, batch in enumerate(sized_batches):
+            separator = f"\n{PLACEHOLDER_PREFIX}SEP{batch_index}ZXQ\n"
+            translated_batch: list[str]
+            for attempt in range(3):
+                try:
+                    translated_joined = translator.translate(separator.join(batch))
+                    translated_batch = translated_joined.split(separator)
+                    if len(translated_batch) != len(batch):
+                        raise ValueError(
+                            f"Unexpected translated batch split for {locale}: {len(translated_batch)} != {len(batch)}"
+                        )
+                    break
+                except Exception:
+                    if attempt == 2:
+                        raise
+                    time.sleep(1 + attempt)
+
+            for source_text, translated_text in zip(batch, translated_batch):
+                text_cache[(locale, source_text)] = translated_text
+
+            time.sleep(BATCH_DELAY_SECONDS)
+
+    for index, text in enumerate(texts):
+        translated_texts[index] = text_cache.get((locale, text), text)
+
+    return translated_texts
+
+
+def protect_patterns(text: str, pattern: str, placeholders: dict[str, str]) -> str:
+    def replace(match: re.Match[str]) -> str:
+        token = f"{PLACEHOLDER_PREFIX}{len(placeholders)}ZXQ"
+        placeholders[token] = match.group(0)
+        return token
+
+    return re.sub(pattern, replace, text)
+
+
+def restore_placeholders(text: str, placeholders: dict[str, str]) -> str:
+    for token, value in placeholders.items():
+        text = text.replace(token, value)
+    return text
+
+
+def decode_js_string(value: str) -> str:
+    return json.loads(f'"{value}"')
+
+
+def prepare_inline_text(text: str, locale: str) -> tuple[str, dict[str, str]]:
+    if locale == "en" or not should_translate_text(text):
+        return text, {}
+
+    link_pattern = re.compile(r"(!?\[)([^\]]+)(\]\()([^)]+)(\))")
+
+    def replace_link(match: re.Match[str]) -> str:
+        open_bracket, label, middle, url, close_bracket = match.groups()
+        translated_label = translate_inline_text(label, locale)
+        return f"{open_bracket}{translated_label}{middle}{url}{close_bracket}"
+
+    text = re.sub(link_pattern, replace_link, text)
+
+    placeholders: dict[str, str] = {}
+    text = protect_patterns(text, r"`[^`]+`", placeholders)
+    text = protect_patterns(text, r"<[^>]+>", placeholders)
+    text = protect_patterns(text, r"https?://\S+", placeholders)
+    return text, placeholders
+
+
+def translate_inline_text_batch(texts: list[str], locale: str) -> list[str]:
+    prepared_texts: list[str] = []
+    placeholder_sets: list[dict[str, str]] = []
+
+    for text in texts:
+        prepared_text, placeholders = prepare_inline_text(text, locale)
+        prepared_texts.append(prepared_text)
+        placeholder_sets.append(placeholders)
+
+    translated_texts = translate_text_batch(prepared_texts, locale)
+    return [
+        restore_placeholders(translated_text, placeholders)
+        for translated_text, placeholders in zip(translated_texts, placeholder_sets)
+    ]
+
+
+def translate_inline_text(text: str, locale: str) -> str:
+    return translate_inline_text_batch([text], locale)[0]
+
+
+def split_markdown_translation_unit(line: str) -> tuple[str, str] | None:
+    if not line.strip():
+        return None
+
+    stripped = line.lstrip()
+    indent = line[: len(line) - len(stripped)]
+
+    if stripped.startswith(("import ", "export ")):
+        return None
+
+    if stripped.startswith("<") and stripped.endswith(">"):
+        return None
+
+    if re.fullmatch(r"[-=]{3,}", stripped):
+        return None
+
+    for pattern in (
+        r"^(#{1,6}\s+)(.*)$",
+        r"^(\s*[-*+]\s+\[[ xX]\]\s+)(.*)$",
+        r"^(\s*[-*+]\s+)(.*)$",
+        r"^(\s*\d+\.\s+)(.*)$",
+        r"^((?:>\s*)+)(.*)$",
+    ):
+        match = re.match(pattern, line)
+        if match:
+            prefix, content = match.groups()
+            return prefix, content
+
+    return indent, stripped
+
+
+def translate_markdown_line(line: str, locale: str) -> str:
+    if not line.strip():
+        return line
+
+    stripped = line.lstrip()
+    indent = line[: len(line) - len(stripped)]
+
+    if stripped.startswith(("import ", "export ")):
+        return line
+
+    if stripped.startswith("<") and stripped.endswith(">"):
+        if "description=" in stripped:
+            return re.sub(
+                r'description="([^"]+)"',
+                lambda match: f'description="{translate_inline_text(match.group(1), locale)}"',
+                line,
+            )
+        return line
+
+    if re.fullmatch(r"[-=]{3,}", stripped):
+        return line
+
+    for pattern in (
+        r"^(#{1,6}\s+)(.*)$",
+        r"^(\s*[-*+]\s+\[[ xX]\]\s+)(.*)$",
+        r"^(\s*[-*+]\s+)(.*)$",
+        r"^(\s*\d+\.\s+)(.*)$",
+        r"^((?:>\s*)+)(.*)$",
+    ):
+        match = re.match(pattern, line)
+        if match:
+            prefix, content = match.groups()
+            return f"{prefix}{translate_inline_text(content, locale)}"
+
+    return f"{indent}{translate_inline_text(stripped, locale)}"
+
+
+def is_plain_paragraph_line(line: str) -> bool:
+    stripped = line.strip()
+    if not stripped:
+        return False
+    if "|" in stripped:
+        return False
+    if stripped.startswith(("import ", "export ", "<")):
+        return False
+    if re.match(r"^\s*(```|~~~)", line):
+        return False
+    if re.fullmatch(r"[-=]{3,}", stripped):
+        return False
+    if re.match(r"^(#{1,6}\s+)", stripped):
+        return False
+    if re.match(r"^\s*[-*+]\s+", line):
+        return False
+    if re.match(r"^\s*\d+\.\s+", line):
+        return False
+    if stripped.startswith("|"):
+        return False
+    if re.match(r"^>\s*", stripped):
+        return False
+    return True
+
+
+def translate_frontmatter(lines: list[str], locale: str) -> list[str]:
+    translated_lines = list(lines)
+    translatable_entries: list[tuple[int, str, str]] = []
+
+    for index, line in enumerate(lines):
+        match = re.match(r"^([A-Za-z_]+):(.*)$", line)
+        if not match:
+            continue
+
+        key, raw_value = match.groups()
+        value = raw_value.strip()
+        if key not in TRANSLATABLE_FRONTMATTER_KEYS or not value:
+            continue
+
+        quote = ""
+        if value[0] in {"'", '"'} and value[-1] == value[0]:
+            quote = value[0]
+            value = value[1:-1]
+
+        translatable_entries.append((index, quote, value))
+
+    translated_values = translate_inline_text_batch(
+        [value for _, _, value in translatable_entries], locale
+    )
+
+    for (index, quote, _), translated_value in zip(translatable_entries, translated_values):
+        key = lines[index].split(":", 1)[0]
+        translated_lines[index] = f"{key}: {quote}{translated_value}{quote}"
+
+    return translated_lines
+
+
+def translate_markdown_file(source_path: Path, target_path: Path, locale: str) -> None:
+    content = source_path.read_text()
+    lines = content.splitlines()
+    output: list[str] = []
+    queued_texts: list[str] = []
+    queued_indices: list[int] = []
+    index = 0
+    in_code_block = False
+
+    if lines[:1] == ["---"]:
+        try:
+            end = lines.index("---", 1)
+        except ValueError:
+            end = -1
+        if end > 0:
+            output.append("---")
+            output.extend(translate_frontmatter(lines[1:end], locale))
+            output.append("---")
+            index = end + 1
+
+    while index < len(lines):
+        line = lines[index]
+        if re.match(r"^\s*(```|~~~)", line):
+            in_code_block = not in_code_block
+            output.append(line)
+        elif in_code_block:
+            output.append(line)
+        elif is_plain_paragraph_line(line):
+            paragraph_lines = [line.strip()]
+            index += 1
+            while index < len(lines) and is_plain_paragraph_line(lines[index]):
+                paragraph_lines.append(lines[index].strip())
+                index += 1
+            paragraph = " ".join(paragraph_lines)
+            queued_indices.append(len(output))
+            output.append("")
+            queued_texts.append(paragraph)
+            continue
+        else:
+            translation_unit = split_markdown_translation_unit(line)
+            if translation_unit is None:
+                output.append(translate_markdown_line(line, locale))
+            else:
+                prefix, text = translation_unit
+                queued_indices.append(len(output))
+                output.append(prefix)
+                queued_texts.append(text)
+        index += 1
+
+    translated_texts = translate_inline_text_batch(queued_texts, locale)
+    for output_index, translated_text in zip(queued_indices, translated_texts):
+        output[output_index] = f"{output[output_index]}{translated_text}"
+
+    target_path.parent.mkdir(parents=True, exist_ok=True)
+    target_path.write_text("\n".join(output) + ("\n" if content.endswith("\n") else ""))
+
+
+def translate_json_messages(source_data: Any, target_data: Any, locale: str) -> Any:
+    pending_messages: list[tuple[dict[str, Any], str]] = []
+
+    def walk(source: Any, target: Any) -> Any:
+        if isinstance(source, dict):
+            if "message" in source and isinstance(source["message"], str):
+                translated = dict(target or {})
+                current_message = translated.get("message", source["message"])
+                if current_message == source["message"]:
+                    pending_messages.append((translated, source["message"]))
+                return translated
+
+            result = dict(target or {})
+            for key, value in source.items():
+                result[key] = walk(value, result.get(key))
+            return result
+
+        if isinstance(source, list):
+            return [
+                walk(
+                    item,
+                    target[index] if isinstance(target, list) and index < len(target) else None,
+                )
+                for index, item in enumerate(source)
+            ]
+
+        return source
+
+    translated_root = walk(source_data, target_data)
+    translated_messages = translate_inline_text_batch(
+        [message for _, message in pending_messages], locale
+    )
+    for (target_dict, _), translated_message in zip(pending_messages, translated_messages):
+        target_dict["message"] = translated_message
+
+    return translated_root
+
+
+def translate_category_json(value: Any, locale: str, key: str | None = None) -> Any:
+    if isinstance(value, dict):
+        return {child_key: translate_category_json(child_value, locale, child_key) for child_key, child_value in value.items()}
+    if isinstance(value, list):
+        return [translate_category_json(item, locale, key) for item in value]
+    if isinstance(value, str) and key not in JSON_SKIP_KEYS:
+        return translate_inline_text(value, locale)
+    return value
+
+
+def extract_docs_home_messages() -> dict[str, dict[str, str]]:
+    docs_home_path = REPO_ROOT / "docs-site" / "src" / "components" / "DocsHome.tsx"
+    content = docs_home_path.read_text()
+    pattern = re.compile(
+        r'tr\(\s*"([^"]+)"\s*,\s*"((?:[^"\\]|\\.)*)"\s*,\s*"((?:[^"\\]|\\.)*)"\s*\)',
+        re.S,
+    )
+    messages: dict[str, dict[str, str]] = {}
+
+    for match in pattern.finditer(content):
+        message_id, message, description = match.groups()
+        messages[message_id] = {
+            "message": decode_js_string(message),
+            "description": decode_js_string(description),
+        }
+
+    return messages
+
+
+def ensure_custom_code_messages(locales: list[str]) -> None:
+    docs_home_messages = extract_docs_home_messages()
+    source_code_path = DOCS_I18N_ROOT / "en" / "code.json"
+    source_code = json.loads(source_code_path.read_text())
+
+    for message_id, value in docs_home_messages.items():
+        source_code.setdefault(message_id, value)
+
+    source_code_path.write_text(json.dumps(source_code, ensure_ascii=False, indent=2) + "\n")
+
+    for locale in locales:
+        if locale == "en":
+            continue
+
+        target_code_path = DOCS_I18N_ROOT / locale / "code.json"
+        target_code = json.loads(target_code_path.read_text())
+        for message_id, value in docs_home_messages.items():
+            target_code.setdefault(message_id, value)
+        target_code_path.write_text(json.dumps(target_code, ensure_ascii=False, indent=2) + "\n")
+
+
+def copy_and_translate_docs(locale: str) -> None:
+    target_root = DOCS_I18N_ROOT / locale / "docusaurus-plugin-content-docs" / "current"
+    log(f"Translating markdown docs for {locale} into {target_root}")
+
+    for source_path in sorted(DOCS_ROOT.rglob("*")):
+        if source_path.is_dir():
+            continue
+
+        relative_path = source_path.relative_to(DOCS_ROOT)
+        target_path = target_root / relative_path
+
+        if source_path.suffix in {".md", ".mdx"}:
+            translate_markdown_file(source_path, target_path, locale)
+        elif source_path.name == "_category_.json":
+            data = json.loads(source_path.read_text())
+            translated = translate_category_json(data, locale)
+            target_path.parent.mkdir(parents=True, exist_ok=True)
+            target_path.write_text(json.dumps(translated, ensure_ascii=False, indent=2) + "\n")
+
+
+def translate_locale_json(locale: str) -> None:
+    source_root = DOCS_I18N_ROOT / "en"
+    target_root = DOCS_I18N_ROOT / locale
+    log(f"Translating Docusaurus locale JSON for {locale} in {target_root}")
+
+    for source_path in sorted(source_root.rglob("*.json")):
+        if source_path.name == "_category_.json":
+            continue
+
+        relative_path = source_path.relative_to(source_root)
+        target_path = target_root / relative_path
+        if not target_path.exists():
+            continue
+
+        source_data = json.loads(source_path.read_text())
+        target_data = json.loads(target_path.read_text())
+        translated = translate_json_messages(source_data, target_data, locale)
+        target_path.write_text(json.dumps(translated, ensure_ascii=False, indent=2) + "\n")
+
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description="Translate Docusaurus docs markdown and locale JSON.")
+    parser.add_argument(
+        "--locales",
+        nargs="+",
+        default=[locale for locale in LOCALE_TARGETS if locale != "en"],
+        help="Locales to translate.",
+    )
+    return parser.parse_args()
+
+
+def main() -> int:
+    args = parse_args()
+    ensure_custom_code_messages(args.locales)
+
+    for locale in args.locales:
+        if locale not in LOCALE_TARGETS:
+            raise SystemExit(f"Unsupported locale: {locale}")
+        if locale == "en":
+            continue
+
+        translate_locale_json(locale)
+        copy_and_translate_docs(locale)
+
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

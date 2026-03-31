@@ -3,57 +3,21 @@ import { Globe, Check, Search } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
-import { DEFAULT_LANGUAGE_CODE, normalizeLanguageCode } from "@/lib/locales";
+import {
+  DEFAULT_LANGUAGE_CODE,
+  getSupportedLanguage,
+  normalizeLanguageCode,
+  SUPPORTED_LANGUAGES,
+  type SupportedLanguage,
+} from "@/lib/locales";
 import { cn } from "@/lib/utils";
 
-const languages = [
-  { code: "ar", name: "العربية", dir: "rtl" },
-  { code: "bn", name: "বাংলা" },
-  { code: "ca", name: "Català" },
-  { code: "cs", name: "Čeština" },
-  { code: "da", name: "Dansk" },
-  { code: "de", name: "Deutsch" },
-  { code: "el", name: "Ελληνικά" },
-  { code: "en", name: "English" },
-  { code: "es", name: "Español" },
-  { code: "fa", name: "فارسی", dir: "rtl" },
-  { code: "fi", name: "Suomi" },
-  { code: "fil", name: "Filipino" },
-  { code: "fr", name: "Français" },
-  { code: "he", name: "עברית", dir: "rtl" },
-  { code: "hi", name: "हिन्दी" },
-  { code: "hu", name: "Magyar" },
-  { code: "id", name: "Bahasa Indonesia" },
-  { code: "it", name: "Italiano" },
-  { code: "ja", name: "日本語" },
-  { code: "ko", name: "한국어" },
-  { code: "mr", name: "मराठी" },
-  { code: "nl", name: "Nederlands" },
-  { code: "no", name: "Norsk" },
-  { code: "pl", name: "Polski" },
-  { code: "pt", name: "Português" },
-  { code: "ro", name: "Română" },
-  { code: "ru", name: "Русский" },
-  { code: "sq", name: "Shqip" },
-  { code: "sv", name: "Svenska" },
-  { code: "te", name: "తెలుగు" },
-  { code: "th", name: "ไทย" },
-  { code: "tr", name: "Türkçe" },
-  { code: "uk", name: "Українська" },
-  { code: "ur", name: "اردو", dir: "rtl" },
-  { code: "vi", name: "Tiếng Việt" },
-  { code: "zh", name: "中文" },
-];
+type LanguageEntry = SupportedLanguage;
 
-type LanguageEntry = (typeof languages)[number];
-
-const LANGUAGE_BY_CODE = new Map<string, LanguageEntry>(
-  languages.map((language) => [language.code, language]),
-);
-const DEFAULT_LANGUAGE = LANGUAGE_BY_CODE.get(DEFAULT_LANGUAGE_CODE)!;
+const DEFAULT_LANGUAGE = getSupportedLanguage(DEFAULT_LANGUAGE_CODE);
 
 function getLanguageEntry(code: string | null | undefined): LanguageEntry {
-  return LANGUAGE_BY_CODE.get(normalizeLanguageCode(code)) ?? DEFAULT_LANGUAGE;
+  return getSupportedLanguage(normalizeLanguageCode(code)) ?? DEFAULT_LANGUAGE;
 }
 
 export default function LanguageSelector({ mobile }: { mobile?: boolean }) {
@@ -73,10 +37,10 @@ export default function LanguageSelector({ mobile }: { mobile?: boolean }) {
   const filteredLanguages = useMemo(() => {
     const query = searchQuery.toLowerCase();
     if (query === "") {
-      return languages;
+      return SUPPORTED_LANGUAGES;
     }
-    return languages.filter(
-      (lang) => lang.name.toLowerCase().includes(query) || lang.code.toLowerCase().includes(query),
+    return SUPPORTED_LANGUAGES.filter(
+      (lang) => lang.label.toLowerCase().includes(query) || lang.code.toLowerCase().includes(query),
     );
   }, [searchQuery]);
   const effectiveActiveIndex =
@@ -214,7 +178,7 @@ export default function LanguageSelector({ mobile }: { mobile?: boolean }) {
             className="h-9 gap-2 px-3 text-sm text-muted-foreground hover:bg-border/70 hover:text-foreground focus-visible:bg-border/70 font-display"
           >
             <Globe className="h-4 w-4" />
-            <span className="hidden sm:inline">{currentLanguage.name}</span>
+            <span className="hidden sm:inline">{currentLanguage.label}</span>
           </Button>
         )}
       </SheetTrigger>
@@ -287,7 +251,7 @@ export default function LanguageSelector({ mobile }: { mobile?: boolean }) {
                           : "text-muted-foreground",
                       )}
                     >
-                      {language.name}
+                      {language.label}
                     </span>
                     {currentLanguageCode === language.code && (
                       <Check className="h-4 w-4 text-blue-glow" />

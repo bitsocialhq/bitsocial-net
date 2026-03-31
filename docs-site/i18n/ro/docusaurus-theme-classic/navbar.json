@@ -1,0 +1,26 @@
+{
+  "title": {
+    "message": "Bitsocial",
+    "description": "The title in the navbar"
+  },
+  "logo.alt": {
+    "message": "Sigla Bitsocial",
+    "description": "The alt text of navbar logo"
+  },
+  "item.label.Overview": {
+    "message": "Prezentare generală",
+    "description": "Navbar item with label Overview"
+  },
+  "item.label.Search": {
+    "message": "Căutare",
+    "description": "Navbar item with label Search"
+  },
+  "item.label.Contributor": {
+    "message": "Colaborator",
+    "description": "Navbar item with label Contributor"
+  },
+  "item.label.GitHub": {
+    "message": "GitHub",
+    "description": "Navbar item with label GitHub"
+  }
+}

@@ -4,6 +4,8 @@ import LanguageDetector from "i18next-browser-languagedetector";
 import HttpBackend from "i18next-http-backend";
 import {
   DEFAULT_LANGUAGE_CODE,
+  LANGUAGE_QUERY_PARAM,
+  LANGUAGE_STORAGE_KEY,
   SUPPORTED_LANGUAGE_CODES,
   isRtlLanguage,
   normalizeLanguageCode,
@@ -86,7 +88,8 @@ void i18n
     detection: {
       order: ["querystring", "localStorage", REGION_AWARE_NAVIGATOR_DETECTOR_NAME],
       caches: ["localStorage"],
-      lookupQuerystring: "lang",
+      lookupLocalStorage: LANGUAGE_STORAGE_KEY,
+      lookupQuerystring: LANGUAGE_QUERY_PARAM,
       convertDetectedLanguage: normalizeLanguageCode,
     },
   })

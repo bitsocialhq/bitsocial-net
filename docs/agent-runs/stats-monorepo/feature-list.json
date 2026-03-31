@@ -47,15 +47,20 @@
     {
       "id": "F004",
       "priority": 4,
-      "status": "pending",
+      "status": "completed",
       "description": "Deploy the about/docs/stats stack to the VPS using host Caddy plus a new Docker Compose stack for Grafana, Prometheus, and the monitor.",
       "verification": [
-        "ssh root@91.234.199.189 docker compose ls",
-        "ssh root@91.234.199.189 curl -I http://127.0.0.1:<grafana-port>",
-        "ssh root@91.234.199.189 curl -I http://127.0.0.1:<prometheus-port>"
+        "ssh root@91.234.199.189 docker compose -f /srv/bitsocial-web/current/stats/deploy/compose.yaml up -d --build",
+        "ssh root@91.234.199.189 curl -fsS http://127.0.0.1:3300/api/search",
+        "ssh root@91.234.199.189 curl -fsS http://127.0.0.1:3301/",
+        "ssh root@91.234.199.189 curl -fsS http://127.0.0.1:9091/api/v1/targets",
+        "ssh root@91.234.199.189 curl -I -H 'Host: bitsocial.net' http://127.0.0.1/",
+        "ssh root@91.234.199.189 curl -I -H 'Host: bitsocial.net' http://127.0.0.1/docs/",
+        "ssh root@91.234.199.189 curl -I -H 'Host: bitsocial.net' http://127.0.0.1/stats/",
+        "ssh root@91.234.199.189 curl -I -H 'Host: bitsocial.net' http://127.0.0.1/stats/5chan"
       ],
       "files": ["stats/deploy", "stats/deploy/Caddyfile", "stats/deploy/compose.yaml"],
-      "notes": "Current VPS already runs Caddy and listmonk. Do not disturb newsletter.bitsocial.net."
+      "notes": "Current VPS already runs Caddy and listmonk. Do not disturb newsletter.bitsocial.net. Compose services bind to loopback only and are exposed through host Caddy."
     },
     {
       "id": "F005",

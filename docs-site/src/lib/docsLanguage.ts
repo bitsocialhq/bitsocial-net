@@ -4,6 +4,7 @@ import {
   LANGUAGE_QUERY_PARAM,
   LANGUAGE_STORAGE_KEY,
   resolveAutomaticLanguage,
+  resolveSupportedLanguageCode,
   SUPPORTED_LANGUAGES,
   type SupportedLanguage,
   type SupportedLanguageCode,
@@ -11,6 +12,8 @@ import {
 
 export { SUPPORTED_LANGUAGES, type SupportedLanguage, type SupportedLanguageCode };
 export { LANGUAGE_QUERY_PARAM };
+
+const DOCS_BASE_PATH = "/docs";
 
 function canUseDom() {
   return typeof window !== "undefined";
@@ -71,11 +74,15 @@ function writeStoredLanguage(language: SupportedLanguageCode) {
   }
 }
 
+export function getQueryLanguage(search: string): SupportedLanguageCode | null {
+  const queryLanguage = new URLSearchParams(search).get(LANGUAGE_QUERY_PARAM);
+  return resolveSupportedLanguageCode(queryLanguage);
+}
+
 export function resolveDocsLanguage(search: string): SupportedLanguageCode {
-  const searchParams = new URLSearchParams(search);
-  const queryLanguage = searchParams.get(LANGUAGE_QUERY_PARAM);
+  const queryLanguage = getQueryLanguage(search);
   if (queryLanguage) {
-    return getSupportedLanguage(queryLanguage).code;
+    return queryLanguage;
   }
 
   const storedLanguage = readStoredLanguage();
@@ -91,14 +98,17 @@ export function resolveDocsLanguage(search: string): SupportedLanguageCode {
   return resolveAutomaticLanguage(localeCandidates, primaryRegionLocale);
 }
 
-export function persistDocsLanguageFromSearch(search: string) {
-  const searchParams = new URLSearchParams(search);
-  const queryLanguage = searchParams.get(LANGUAGE_QUERY_PARAM);
-  if (!queryLanguage) {
+export function persistDocsLanguage(language: string | null | undefined) {
+  const supportedLanguage = resolveSupportedLanguageCode(language);
+  if (!supportedLanguage) {
     return;
   }
 
-  writeStoredLanguage(getSupportedLanguage(queryLanguage).code);
+  writeStoredLanguage(supportedLanguage);
+}
+
+export function persistDocsLanguageFromSearch(search: string) {
+  persistDocsLanguage(getQueryLanguage(search));
 }
 
 export function getSupportedLanguageEntry(language: string | null | undefined): SupportedLanguage {
@@ -115,4 +125,54 @@ export function stripLanguageQueryParam(search: string): string {
   const nextSearch = searchParams.toString();
 
   return nextSearch ? `?${nextSearch}` : "";
+}
+
+export function isDocsNotFoundPath(pathname: string): boolean {
+  return /^\/docs(?:\/[a-z]{2,3})?\/404(?:\.html|\/)?$/.test(pathname);
+}
+
+export function getDocsBasePath(pathname: string): string {
+  if (pathname === DOCS_BASE_PATH || pathname === `${DOCS_BASE_PATH}/`) {
+    return `${DOCS_BASE_PATH}/`;
+  }
+
+  if (!pathname.startsWith(`${DOCS_BASE_PATH}/`)) {
+    return pathname;
+  }
+
+  const hasTrailingSlash = pathname.endsWith("/");
+  const segments = pathname.replace(/^\/+|\/+$/g, "").split("/");
+  const maybeLocale = segments[1];
+  const restSegments =
+    maybeLocale && resolveSupportedLanguageCode(maybeLocale)
+      ? segments.slice(2)
+      : segments.slice(1);
+  const rebuiltPath = `/${["docs", ...restSegments].join("/")}`;
+
+  if (rebuiltPath === DOCS_BASE_PATH) {
+    return `${DOCS_BASE_PATH}/`;
+  }
+
+  return hasTrailingSlash ? `${rebuiltPath}/` : rebuiltPath;
+}
+
+export function getLocalizedDocsPath(pathname: string, language: SupportedLanguageCode): string {
+  const docsBasePath = getDocsBasePath(pathname);
+
+  if (isDocsNotFoundPath(pathname)) {
+    return language === DEFAULT_LANGUAGE_CODE
+      ? `${DOCS_BASE_PATH}/`
+      : `${DOCS_BASE_PATH}/${language}/`;
+  }
+
+  if (!docsBasePath.startsWith(DOCS_BASE_PATH)) {
+    return docsBasePath;
+  }
+
+  if (language === DEFAULT_LANGUAGE_CODE) {
+    return docsBasePath;
+  }
+
+  const pathSuffix = docsBasePath.slice(DOCS_BASE_PATH.length);
+  return `${DOCS_BASE_PATH}/${language}${pathSuffix.startsWith("/") ? "" : "/"}${pathSuffix}`;
 }

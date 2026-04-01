@@ -338,8 +338,13 @@ export default function Topbar() {
               </a>
             </div>
 
-            <div className="border-t border-border/30 pt-4 mt-2">
-              <LanguageSelector mobile />
+            <div className="mt-2 flex flex-row gap-2 border-t border-border/30 pt-4">
+              <div className="flex-1">
+                <LanguageSelector mobile />
+              </div>
+              <div className="flex-1">
+                <ThemeToggle mobile />
+              </div>
             </div>
           </MobileMenu>
         </div>

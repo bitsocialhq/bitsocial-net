@@ -1,54 +1,54 @@
 {
   "version.label": {
-    "message": "Next",
+    "message": "Tiếp theo",
     "description": "The label for version current"
   },
   "sidebar.docsSidebar.category.Protocol notes": {
-    "message": "Protocol notes",
+    "message": "Ghi chú giao thức",
     "description": "The label for category 'Protocol notes' in sidebar 'docsSidebar'"
   },
   "sidebar.docsSidebar.category.Master plan": {
-    "message": "Master plan",
+    "message": "Kế hoạch tổng thể",
     "description": "The label for category 'Master plan' in sidebar 'docsSidebar'"
   },
   "sidebar.docsSidebar.category.Apps": {
-    "message": "Apps",
+    "message": "Ứng dụng",
     "description": "The label for category 'Apps' in sidebar 'docsSidebar'"
   },
   "sidebar.docsSidebar.category.Developer tools": {
-    "message": "Developer tools",
+    "message": "Công cụ dành cho nhà phát triển",
     "description": "The label for category 'Developer tools' in sidebar 'docsSidebar'"
   },
   "sidebar.docsSidebar.category.Anti-spam challenges": {
-    "message": "Anti-spam challenges",
+    "message": "Những thách thức chống thư rác",
     "description": "The label for category 'Anti-spam challenges' in sidebar 'docsSidebar'"
   },
   "sidebar.docsSidebar.category.Infrastructure": {
-    "message": "Infrastructure",
+    "message": "Cơ sở hạ tầng",
     "description": "The label for category 'Infrastructure' in sidebar 'docsSidebar'"
   },
   "sidebar.docsSidebar.category.Contributor playbooks": {
-    "message": "Contributor playbooks",
+    "message": "Sách hướng dẫn dành cho cộng tác viên",
     "description": "The label for category 'Contributor playbooks' in sidebar 'docsSidebar'"
   },
   "sidebar.docsSidebar.category.Contributor playbooks.link.generated-index.title": {
-    "message": "Contributor playbooks",
+    "message": "Sách hướng dẫn dành cho cộng tác viên",
     "description": "The generated-index page title for category 'Contributor playbooks' in sidebar 'docsSidebar'"
   },
   "sidebar.docsSidebar.category.Contributor playbooks.link.generated-index.description": {
-    "message": "Repo workflow documents surfaced inside the public docs UI.",
+    "message": "Tài liệu quy trình làm việc lại xuất hiện bên trong giao diện người dùng tài liệu công khai.",
     "description": "The generated-index page description for category 'Contributor playbooks' in sidebar 'docsSidebar'"
   },
   "sidebar.docsSidebar.category.Templates": {
-    "message": "Templates",
+    "message": "Mẫu",
     "description": "The label for category 'Templates' in sidebar 'docsSidebar'"
   },
   "sidebar.docsSidebar.category.Templates.link.generated-index.title": {
-    "message": "Templates",
+    "message": "Mẫu",
     "description": "The generated-index page title for category 'Templates' in sidebar 'docsSidebar'"
   },
   "sidebar.docsSidebar.category.Templates.link.generated-index.description": {
-    "message": "Reference templates used by the long-running workflow.",
+    "message": "Các mẫu tham chiếu được sử dụng bởi quy trình làm việc dài hạn.",
     "description": "The generated-index page description for category 'Templates' in sidebar 'docsSidebar'"
   }
 }

@@ -4,19 +4,19 @@
     "description": "The title in the navbar"
   },
   "logo.alt": {
-    "message": "Bitsocial logo",
+    "message": "Bitsocial 徽标",
     "description": "The alt text of navbar logo"
   },
   "item.label.Overview": {
-    "message": "Overview",
+    "message": "概述",
     "description": "Navbar item with label Overview"
   },
   "item.label.Search": {
-    "message": "Search",
+    "message": "搜索",
     "description": "Navbar item with label Search"
   },
   "item.label.Contributor": {
-    "message": "Contributor",
+    "message": "贡献者",
     "description": "Navbar item with label Contributor"
   },
   "item.label.GitHub": {

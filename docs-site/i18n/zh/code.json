@@ -1,22 +1,22 @@
 {
   "docs.pagefindSearch.description": {
-    "message": "Full-text search across the live docs. The index appears after the docs build runs.",
+    "message": "对实时文档进行全文搜索。索引将在文档构建运行后出现。",
     "description": "Default description shown above the full-page docs search widget."
   },
   "docs.pagefindSearch.heading": {
-    "message": "Search the docs",
+    "message": "搜索文档",
     "description": "Heading shown above the full-page docs search widget."
   },
   "docs.pagefindSearch.placeholder": {
-    "message": "Search Bitsocial docs",
+    "message": "搜索 Bitsocial 文档",
     "description": "Placeholder inside the full-page Pagefind docs search input."
   },
   "docs.pagefindSearch.zeroResults": {
-    "message": "No matching docs yet.",
+    "message": "尚无匹配的文档。",
     "description": "Message shown when the full-page Pagefind docs search has no matches."
   },
   "docs.pagefindSearch.loadMore": {
-    "message": "Load more",
+    "message": "加载更多",
     "description": "Button label to load more Pagefind search results on the full search page."
   },
   "docs.pagefindSearch.kicker": {
@@ -24,31 +24,31 @@
     "description": "Kicker label shown above the full-page docs search block."
   },
   "docs.pagefindSearch.loading": {
-    "message": "Loading search UI…",
+    "message": "正在加载搜索 UI...",
     "description": "Status shown while the full-page Pagefind UI is booting."
   },
   "docs.pagefindSearch.error": {
-    "message": "Search is unavailable in this dev session until the static docs build completes.",
+    "message": "在静态文档构建完成之前，搜索在此开发会话中不可用。",
     "description": "Status shown on the full-page search screen when Pagefind assets are unavailable in a dev session."
   },
   "docs.navbarSearch.placeholder": {
-    "message": "Search docs",
+    "message": "搜索文档",
     "description": "Placeholder shown inside the navbar docs search input."
   },
   "docs.navbarSearch.zeroResults": {
-    "message": "No matching docs yet.",
+    "message": "尚无匹配的文档。",
     "description": "Message shown when the navbar docs search has no matches."
   },
   "docs.navbarSearch.loadMore": {
-    "message": "More results",
+    "message": "更多结果",
     "description": "Button label to load more results in the navbar docs search drawer."
   },
   "docs.navbarSearch.linkAriaLabel": {
-    "message": "Search docs",
+    "message": "搜索文档",
     "description": "ARIA label for the fallback navbar docs search link."
   },
   "docs.navbarSearch.linkLabel": {
-    "message": "Search docs",
+    "message": "搜索文档",
     "description": "Label for the fallback navbar docs search link."
   },
   "theme.docs.sidebar.closeSidebarButtonAriaLabel": {
@@ -100,7 +100,7 @@
     "description": "The label of the link targeting the tag list page"
   },
   "theme.colorToggle.ariaLabel.mode.system": {
-    "message": "system mode",
+    "message": "系统模式",
     "description": "The name for the system color mode"
   },
   "theme.colorToggle.ariaLabel.mode.light": {
@@ -235,7 +235,7 @@
     "description": "The ARIA label to collapse the sidebar category"
   },
   "theme.IconExternalLink.ariaLabel": {
-    "message": "(opens in new tab)",
+    "message": "（在新选项卡中打开）",
     "description": "The ARIA label for the external link icon"
   },
   "theme.NavBar.navAriaLabel": {
@@ -311,11 +311,11 @@
     "description": "The ARIA label for hamburger menu button of mobile navigation"
   },
   "theme.navbar.mobileDropdown.collapseButton.expandAriaLabel": {
-    "message": "Expand the dropdown",
+    "message": "展开下拉列表",
     "description": "The ARIA label of the button to expand the mobile dropdown navbar item"
   },
   "theme.navbar.mobileDropdown.collapseButton.collapseAriaLabel": {
-    "message": "Collapse the dropdown",
+    "message": "折叠下拉列表",
     "description": "The ARIA label of the button to collapse the mobile dropdown navbar item"
   },
   "theme.docs.sidebar.expandButtonTitle": {
@@ -379,23 +379,23 @@
     "description": "The title of the tag list page"
   },
   "docs.home.roadmap.card.phase2.eyebrow": {
-    "message": "Phase 2",
+    "message": "第二阶段",
     "description": "Roadmap card eyebrow."
   },
   "docs.home.roadmap.card.phase4.eyebrow": {
-    "message": "Phase 4",
+    "message": "第四阶段",
     "description": "Roadmap card eyebrow."
   },
   "docs.home.roadmap.card.phase5.eyebrow": {
-    "message": "Phase 5",
+    "message": "第五阶段",
     "description": "Roadmap card eyebrow."
   },
   "docs.home.apps.card.5chan.eyebrow": {
-    "message": "Imageboard",
+    "message": "图片板",
     "description": "Apps card eyebrow for 5chan."
   },
   "docs.home.apps.card.seedit.eyebrow": {
-    "message": "Forum",
+    "message": "论坛",
     "description": "Apps card eyebrow for Seedit."
   }
 }

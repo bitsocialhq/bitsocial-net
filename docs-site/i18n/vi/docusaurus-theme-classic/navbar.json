@@ -1,22 +1,22 @@
 {
   "title": {
-    "message": "Bitsocial",
+    "message": "Bitxã hội",
     "description": "The title in the navbar"
   },
   "logo.alt": {
-    "message": "Bitsocial logo",
+    "message": "Biểu tượng bitsocial",
     "description": "The alt text of navbar logo"
   },
   "item.label.Overview": {
-    "message": "Overview",
+    "message": "Tổng quan",
     "description": "Navbar item with label Overview"
   },
   "item.label.Search": {
-    "message": "Search",
+    "message": "Tìm kiếm",
     "description": "Navbar item with label Search"
   },
   "item.label.Contributor": {
-    "message": "Contributor",
+    "message": "Người đóng góp",
     "description": "Navbar item with label Contributor"
   },
   "item.label.GitHub": {

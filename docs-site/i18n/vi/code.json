@@ -1,54 +1,54 @@
 {
   "docs.pagefindSearch.description": {
-    "message": "Full-text search across the live docs. The index appears after the docs build runs.",
+    "message": "Tìm kiếm toàn văn trên các tài liệu trực tiếp. Chỉ mục xuất hiện sau khi quá trình tạo tài liệu chạy.",
     "description": "Default description shown above the full-page docs search widget."
   },
   "docs.pagefindSearch.heading": {
-    "message": "Search the docs",
+    "message": "Tìm kiếm tài liệu",
     "description": "Heading shown above the full-page docs search widget."
   },
   "docs.pagefindSearch.placeholder": {
-    "message": "Search Bitsocial docs",
+    "message": "Tìm kiếm tài liệu Bitsocial",
     "description": "Placeholder inside the full-page Pagefind docs search input."
   },
   "docs.pagefindSearch.zeroResults": {
-    "message": "No matching docs yet.",
+    "message": "Chưa có tài liệu phù hợp.",
     "description": "Message shown when the full-page Pagefind docs search has no matches."
   },
   "docs.pagefindSearch.loadMore": {
-    "message": "Load more",
+    "message": "Tải thêm",
     "description": "Button label to load more Pagefind search results on the full search page."
   },
   "docs.pagefindSearch.kicker": {
-    "message": "Pagefind",
+    "message": "tìm trang",
     "description": "Kicker label shown above the full-page docs search block."
   },
   "docs.pagefindSearch.loading": {
-    "message": "Loading search UI…",
+    "message": "Đang tải giao diện người dùng tìm kiếm…",
     "description": "Status shown while the full-page Pagefind UI is booting."
   },
   "docs.pagefindSearch.error": {
-    "message": "Search is unavailable in this dev session until the static docs build completes.",
+    "message": "Tìm kiếm không khả dụng trong phiên nhà phát triển này cho đến khi quá trình tạo tài liệu tĩnh hoàn tất.",
     "description": "Status shown on the full-page search screen when Pagefind assets are unavailable in a dev session."
   },
   "docs.navbarSearch.placeholder": {
-    "message": "Search docs",
+    "message": "Tìm kiếm tài liệu",
     "description": "Placeholder shown inside the navbar docs search input."
   },
   "docs.navbarSearch.zeroResults": {
-    "message": "No matching docs yet.",
+    "message": "Chưa có tài liệu phù hợp.",
     "description": "Message shown when the navbar docs search has no matches."
   },
   "docs.navbarSearch.loadMore": {
-    "message": "More results",
+    "message": "Kết quả khác",
     "description": "Button label to load more results in the navbar docs search drawer."
   },
   "docs.navbarSearch.linkAriaLabel": {
-    "message": "Search docs",
+    "message": "Tìm kiếm tài liệu",
     "description": "ARIA label for the fallback navbar docs search link."
   },
   "docs.navbarSearch.linkLabel": {
-    "message": "Search docs",
+    "message": "Tìm kiếm tài liệu",
     "description": "Label for the fallback navbar docs search link."
   },
   "theme.docs.sidebar.closeSidebarButtonAriaLabel": {
@@ -100,7 +100,7 @@
     "description": "The label of the link targeting the tag list page"
   },
   "theme.colorToggle.ariaLabel.mode.system": {
-    "message": "system mode",
+    "message": "chế độ hệ thống",
     "description": "The name for the system color mode"
   },
   "theme.colorToggle.ariaLabel.mode.light": {
@@ -235,7 +235,7 @@
     "description": "The ARIA label to collapse the sidebar category"
   },
   "theme.IconExternalLink.ariaLabel": {
-    "message": "(opens in new tab)",
+    "message": "(mở trong tab mới)",
     "description": "The ARIA label for the external link icon"
   },
   "theme.NavBar.navAriaLabel": {
@@ -311,11 +311,11 @@
     "description": "The ARIA label for hamburger menu button of mobile navigation"
   },
   "theme.navbar.mobileDropdown.collapseButton.expandAriaLabel": {
-    "message": "Expand the dropdown",
+    "message": "Mở rộng danh sách thả xuống",
     "description": "The ARIA label of the button to expand the mobile dropdown navbar item"
   },
   "theme.navbar.mobileDropdown.collapseButton.collapseAriaLabel": {
-    "message": "Collapse the dropdown",
+    "message": "Thu gọn danh sách thả xuống",
     "description": "The ARIA label of the button to collapse the mobile dropdown navbar item"
   },
   "theme.docs.sidebar.expandButtonTitle": {
@@ -379,23 +379,23 @@
     "description": "The title of the tag list page"
   },
   "docs.home.roadmap.card.phase2.eyebrow": {
-    "message": "Phase 2",
+    "message": "Giai đoạn 2",
     "description": "Roadmap card eyebrow."
   },
   "docs.home.roadmap.card.phase4.eyebrow": {
-    "message": "Phase 4",
+    "message": "Giai đoạn 4",
     "description": "Roadmap card eyebrow."
   },
   "docs.home.roadmap.card.phase5.eyebrow": {
-    "message": "Phase 5",
+    "message": "Giai đoạn 5",
     "description": "Roadmap card eyebrow."
   },
   "docs.home.apps.card.5chan.eyebrow": {
-    "message": "Imageboard",
+    "message": "Diễn đàn hình ảnh",
     "description": "Apps card eyebrow for 5chan."
   },
   "docs.home.apps.card.seedit.eyebrow": {
-    "message": "Forum",
+    "message": "Diễn đàn",
     "description": "Apps card eyebrow for Seedit."
   }
 }

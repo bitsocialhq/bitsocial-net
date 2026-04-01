@@ -1,26 +1,26 @@
 {
   "title": {
-    "message": "Bitsocial",
+    "message": "بٹسوشل",
     "description": "The title in the navbar"
   },
   "logo.alt": {
-    "message": "Bitsocial logo",
+    "message": "بٹسوشل لوگو",
     "description": "The alt text of navbar logo"
   },
   "item.label.Overview": {
-    "message": "Overview",
+    "message": "جائزہ",
     "description": "Navbar item with label Overview"
   },
   "item.label.Search": {
-    "message": "Search",
+    "message": "تلاش کریں۔",
     "description": "Navbar item with label Search"
   },
   "item.label.Contributor": {
-    "message": "Contributor",
+    "message": "تعاون کرنے والا",
     "description": "Navbar item with label Contributor"
   },
   "item.label.GitHub": {
-    "message": "GitHub",
+    "message": "گٹ ہب",
     "description": "Navbar item with label GitHub"
   }
 }

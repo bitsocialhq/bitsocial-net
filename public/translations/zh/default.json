@@ -135,7 +135,7 @@
     "quoteAttribution": "— Esteban Abaroa，Bitsocial 创始人"
   },
   "masterPlan": {
-    "title": "总体规划",
+    "title": "行动号召",
     "logoAlt": "标志",
     "easterEggAlt": "SpongeBob",
     "epilogue": "社交媒体终于找到了平衡：一个完全去中心化、没有任何人拥有的点对点网络；Bitsocial。",
@@ -144,7 +144,11 @@
         "phase": "阶段 1",
         "status": "进行中",
         "title": "图片论坛去中心化",
-        "description": "图片论坛是最容易去中心化的社交媒体形式：匿名发帖、默认版块少、没有个人资料图谱。这就是我们推出首个 Bitsocial 应用 5chan 的原因。5chan 证明了 Bitsocial 可以取代中心化图片论坛，同时将全局管理员从这套机制中移除。"
+        "description": "图片论坛是最容易去中心化的社交媒体形式：匿名发帖、默认版块少、没有个人资料图谱。这就是我们推出首个 Bitsocial 应用 5chan 的原因。5chan 证明了 Bitsocial 可以取代中心化图片论坛，同时将全局管理员从这套机制中移除。",
+        "callout": {
+          "description": "5chan 只是第一个验证点，不是终点。我们想要多个拥有不同文化、界面和默认设置的 imageboard 客户端：altchan 风格的板块、移动优先的实验、小众社区，以及能解决 5chan 永远解决不了的需求的分支。",
+          "ctaLabel": "打造你自己的"
+        }
       },
       "phase2": {
         "phase": "阶段 2",
@@ -169,10 +173,12 @@
     },
     "cta": {
       "learnMore": "了解更多",
-      "try5chan": "试用 5chan",
+      "try5chan": "试试 5chan",
       "readTechnicalSpec": "阅读拟议的技术规范",
       "trySeedit": "试用 Seedit（实验版）"
-    }
+    },
+    "subtitle": "Bitsocial 的胜利在于尽可能吸引更多建设者。运行你自己的不可阻挡的社区，开发你自己的去中心化社交应用，甚至在 Bitsocial 之上启动你自己的业务。每一位建设者都会让潮水上涨。",
+    "sectionLabel": "总体规划"
   },
   "home": {
     "dismissDevOnlyRouteNotice": "关闭通知",

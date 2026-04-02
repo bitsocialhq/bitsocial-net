@@ -135,7 +135,7 @@
     "quoteAttribution": "— Esteban Abaroa, Bitsocials grundare"
   },
   "masterPlan": {
-    "title": "Huvudplan",
+    "title": "Uppmaning till handling",
     "logoAlt": "Logotyp",
     "easterEggAlt": "SpongeBob",
     "epilogue": "Sociala medier hittar äntligen sin jämvikt: ett fullt decentraliserat peer-to-peer-nätverk som ingen äger; Bitsocial.",
@@ -144,7 +144,11 @@
         "phase": "Fas 1",
         "status": "Pågående",
         "title": "Decentralisera imageboards",
-        "description": "Imageboards är den enklaste formen av sociala medier att decentralisera: anonymt inläggande, få standardboard och ingen profilgraf. Det är därför vi lanserar 5chan, den första Bitsocial-appen. 5chan visar att Bitsocial kan ersätta centraliserade imageboards samtidigt som globala administratörer tas bort ur ekvationen."
+        "description": "Imageboards är den enklaste formen av sociala medier att decentralisera: anonymt inläggande, få standardboard och ingen profilgraf. Det är därför vi lanserar 5chan, den första Bitsocial-appen. 5chan visar att Bitsocial kan ersätta centraliserade imageboards samtidigt som globala administratörer tas bort ur ekvationen.",
+        "callout": {
+          "description": "5chan är den första bevispunkten, inte mållinjen. Vi vill ha flera imageboard-klienter med olika kulturer, gränssnitt och standardinställningar: altchan-liknande boards, mobile-first-experiment, nischade communityn och forks som löser behov som 5chan aldrig kommer att göra.",
+          "ctaLabel": "Bygg din egen"
+        }
       },
       "phase2": {
         "phase": "Fas 2",
@@ -172,7 +176,9 @@
       "try5chan": "Prova 5chan",
       "readTechnicalSpec": "Läs den föreslagna tekniska specifikationen",
       "trySeedit": "Testa Seedit (experimentell)"
-    }
+    },
+    "subtitle": "Bitsocial vinner genom att attrahera så många byggare som möjligt. Driv din egen ostoppbara community, utveckla din egen decentraliserade sociala app, eller lansera till och med ditt eget företag ovanpå Bitsocial. Tidvattnet stiger med varje byggare.",
+    "sectionLabel": "Huvudplan"
   },
   "home": {
     "dismissDevOnlyRouteNotice": "Stäng meddelandet",

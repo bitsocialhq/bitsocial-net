@@ -10,8 +10,11 @@ const EASTER_EGG_GIF = "/spongebob-easter-egg.gif";
 type PhaseItem = {
   ctaHref: string;
   ctaLabel: string;
+  extraDescription?: string;
   phase: string;
   status?: string;
+  secondaryCtaHref?: string;
+  secondaryCtaLabel?: string;
   title: string;
   description: string;
 };
@@ -30,8 +33,11 @@ export default function MasterPlan() {
       {
         ctaHref: "https://5chan.app",
         ctaLabel: t("masterPlan.cta.try5chan"),
+        extraDescription: t("masterPlan.phases.phase1.callout.description"),
         phase: t("masterPlan.phases.phase1.phase"),
         status: t("masterPlan.phases.phase1.status"),
+        secondaryCtaHref: DOCS_LINKS.buildImageboardClient,
+        secondaryCtaLabel: t("masterPlan.phases.phase1.callout.ctaLabel"),
         title: t("masterPlan.phases.phase1.title"),
         description: t("masterPlan.phases.phase1.description"),
       },
@@ -67,6 +73,7 @@ export default function MasterPlan() {
     [t],
   );
 
+  const masterPlanSubtitle = t("masterPlan.subtitle");
   const masterPlanEpilogue = t("masterPlan.epilogue");
   const easterEggAlt = t("masterPlan.easterEggAlt");
   const logoAlt = t("masterPlan.logoAlt");
@@ -74,15 +81,33 @@ export default function MasterPlan() {
   return (
     <section className="py-24 px-6">
       <div className="max-w-7xl mx-auto">
-        <m.h2
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-4xl md:text-5xl font-display font-normal text-center mb-20 text-muted-foreground text-balance"
+          className="block text-xs md:text-sm font-display tracking-[0.2em] uppercase text-center mb-6 text-muted-foreground/50"
+        >
+          {t("masterPlan.sectionLabel")}
+        </m.div>
+        <m.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="text-4xl md:text-6xl lg:text-7xl font-display font-semibold text-center mb-6 text-balance leading-[1.1] text-muted-foreground"
         >
           {t("masterPlan.title")}
         </m.h2>
+        <m.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="text-base md:text-lg text-center text-muted-foreground max-w-2xl mx-auto mb-16 text-balance leading-relaxed"
+        >
+          {masterPlanSubtitle}
+        </m.p>
 
         <div ref={timelineRef} className="relative w-full">
           <div className="relative w-full">
@@ -124,12 +149,17 @@ export default function MasterPlan() {
             <div className="space-y-16 md:space-y-20">
               {phases.map((item, index) => {
                 const isPhase5 = index === phases.length - 1;
+                const hasCombinedPhaseOneCtas = Boolean(
+                  item.extraDescription && item.secondaryCtaHref && item.secondaryCtaLabel,
+                );
                 const phaseCardBody = (
-                  <>
+                  <div className="flex h-full flex-col">
                     <div className="text-xs text-blue-glow/80 font-display font-medium uppercase tracking-widest mb-3">
                       {item.phase}
                       {item.status ? (
-                        <span className="ml-2 text-amber-400/90">— {item.status}</span>
+                        <span className="ml-2 text-blue-glow [text-shadow:0_0_12px_rgba(37,99,235,0.8),0_0_24px_rgba(37,99,235,0.4)]">
+                          — {item.status}
+                        </span>
                       ) : null}
                     </div>
                     <h3 className="text-xl md:text-2xl font-display font-semibold mb-3 text-foreground/85">
@@ -138,15 +168,42 @@ export default function MasterPlan() {
                     <p className="text-muted-foreground text-sm leading-relaxed">
                       {item.description}
                     </p>
-                    <div className="mt-5 flex justify-end -mb-3 -mr-3 rtl:-ml-3 rtl:mr-0 md:-mb-4 md:-mr-4 md:rtl:-ml-4">
-                      <CardInlineCta
-                        href={item.ctaHref}
-                        className={`${prominentCtaClassName} w-auto max-w-full !rounded-3xl !py-2 text-sm`}
-                      >
-                        {item.ctaLabel}
-                      </CardInlineCta>
-                    </div>
-                  </>
+                    {hasCombinedPhaseOneCtas ? (
+                      <>
+                        <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+                          {item.extraDescription}
+                        </p>
+                        <div className="mt-auto flex justify-end pt-5 -mb-3 -mr-3 rtl:-ml-3 rtl:mr-0 md:-mb-4 md:-mr-4 md:rtl:-ml-4">
+                          <div className="flex flex-nowrap items-center justify-end gap-2 text-sm md:gap-4">
+                            <CardInlineCta
+                              href={item.ctaHref}
+                              className={`${prominentCtaClassName} w-auto max-w-full shrink-0 whitespace-nowrap !rounded-3xl !px-4 !py-2 text-sm md:!px-8`}
+                            >
+                              {item.ctaLabel}
+                            </CardInlineCta>
+                            <span className="shrink-0 text-sm text-muted-foreground/70 italic">
+                              - or -
+                            </span>
+                            <CardInlineCta
+                              href={item.secondaryCtaHref!}
+                              className={`${prominentCtaClassName} w-auto max-w-full shrink-0 whitespace-nowrap !rounded-3xl !px-4 !py-2 text-sm md:!px-8`}
+                            >
+                              {item.secondaryCtaLabel}
+                            </CardInlineCta>
+                          </div>
+                        </div>
+                      </>
+                    ) : (
+                      <div className="mt-auto flex justify-end pt-5 -mb-3 -mr-3 rtl:-ml-3 rtl:mr-0 md:-mb-4 md:-mr-4 md:rtl:-ml-4">
+                        <CardInlineCta
+                          href={item.ctaHref}
+                          className={`${prominentCtaClassName} w-auto max-w-full !rounded-3xl !py-2 text-sm`}
+                        >
+                          {item.ctaLabel}
+                        </CardInlineCta>
+                      </div>
+                    )}
+                  </div>
                 );
                 return (
                   <m.div
@@ -168,33 +225,26 @@ export default function MasterPlan() {
                       </div>
                     </div>
 
-                    {/* Content card(s) — Phase 5 stacks a second frosted card below with 10px gap */}
                     <div
                       className={
                         isPhase5
-                          ? "flex flex-1 flex-col gap-[10px] max-w-lg min-w-0"
-                          : "flex-1 glass-card p-7 md:p-8 max-w-lg"
+                          ? "flex flex-1 min-w-0 max-w-lg flex-col gap-[10px]"
+                          : "flex-1 max-w-lg"
                       }
                     >
                       {isPhase5 ? (
                         <>
                           <div className="glass-card p-7 md:p-8">{phaseCardBody}</div>
-                          <m.div
-                            initial={{ opacity: 0, y: 8 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.06, duration: 0.45 }}
-                            className="glass-card p-7 md:p-8"
-                          >
+                          <div className="glass-card p-7 md:p-8">
                             <p className="text-muted-foreground text-sm leading-relaxed">
                               <strong className="font-semibold text-foreground/90">
                                 {masterPlanEpilogue}
                               </strong>
                             </p>
-                          </m.div>
+                          </div>
                         </>
                       ) : (
-                        phaseCardBody
+                        <div className="glass-card p-7 md:p-8">{phaseCardBody}</div>
                       )}
                     </div>
 

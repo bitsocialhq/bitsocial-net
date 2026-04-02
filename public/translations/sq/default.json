@@ -135,7 +135,7 @@
     "quoteAttribution": "— Esteban Abaroa, themeluesi i Bitsocial"
   },
   "masterPlan": {
-    "title": "Plani Kryesor",
+    "title": "Thirrje për veprim",
     "logoAlt": "Logo",
     "easterEggAlt": "SpongeBob",
     "epilogue": "Rrjetet sociale më në fund gjejnë ekuilibrin e tyre: një rrjet plotësisht të decentralizuar, peer-to-peer, që nuk e zotëron askush; Bitsocial.",
@@ -144,7 +144,11 @@
         "phase": "Faza 1",
         "status": "Në vazhdim",
         "title": "Decentralizo imageboard-et",
-        "description": "Imageboard-et janë forma më e thjeshtë e mediave sociale për t'u decentralizuar: postime anonime, pak board-e parazgjedhje dhe pa graf profilit. Kjo është arsyeja pse po lançojmë 5chan, aplikacionin e parë të Bitsocial. 5chan provon se Bitsocial mund të zëvendësojë imageboard-et e centralizuara duke hequr administratorët globalë nga ekuacioni."
+        "description": "Imageboard-et janë forma më e thjeshtë e mediave sociale për t'u decentralizuar: postime anonime, pak board-e parazgjedhje dhe pa graf profilit. Kjo është arsyeja pse po lançojmë 5chan, aplikacionin e parë të Bitsocial. 5chan provon se Bitsocial mund të zëvendësojë imageboard-et e centralizuara duke hequr administratorët globalë nga ekuacioni.",
+        "callout": {
+          "description": "5chan është pika e parë e provës, jo vija e finishit. Ne duam disa klientë imageboard me kultura, ndërfaqe dhe parazgjedhje të ndryshme: borde në stil altchan, eksperimente mobile-first, komunitete niche dhe fork-e që zgjidhin nevoja që 5chan nuk do t'i zgjidhë kurrë.",
+          "ctaLabel": "Ndërto tënden"
+        }
       },
       "phase2": {
         "phase": "Faza 2",
@@ -172,7 +176,9 @@
       "try5chan": "Provo 5chan",
       "readTechnicalSpec": "Lexo specifikimin teknik të propozuar",
       "trySeedit": "Provo Seedit (eksperimental)"
-    }
+    },
+    "subtitle": "Bitsocial fiton duke tërhequr sa më shumë ndërtues të jetë e mundur. Drejto komunitetin tënd të pandalshëm, zhvillo aplikacionin tënd social të decentralizuar, ose madje nis biznesin tënd mbi Bitsocial. Baticë ngrihet me çdo ndërtues.",
+    "sectionLabel": "Plani Kryesor"
   },
   "home": {
     "dismissDevOnlyRouteNotice": "Mbyll njoftimin",

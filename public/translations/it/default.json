@@ -135,7 +135,7 @@
     "quoteAttribution": "— Esteban Abaroa, fondatore di Bitsocial"
   },
   "masterPlan": {
-    "title": "Piano maestro",
+    "title": "Invito all'azione",
     "logoAlt": "Logo",
     "easterEggAlt": "SpongeBob",
     "epilogue": "I social media trovano finalmente il loro equilibrio: una rete peer-to-peer completamente decentralizzata che non appartiene a nessuno; Bitsocial.",
@@ -144,7 +144,11 @@
         "phase": "Fase 1",
         "status": "In corso",
         "title": "Decentralizzare gli imageboard",
-        "description": "Gli imageboard sono la forma più semplice di social media da decentralizzare: pubblicazioni anonime, pochi board predefiniti e nessun grafo dei profili. Per questo stiamo lanciando 5chan, la prima app Bitsocial. 5chan dimostra che Bitsocial può sostituire gli imageboard centralizzati togliendo di mezzo gli admin globali."
+        "description": "Gli imageboard sono la forma più semplice di social media da decentralizzare: pubblicazioni anonime, pochi board predefiniti e nessun grafo dei profili. Per questo stiamo lanciando 5chan, la prima app Bitsocial. 5chan dimostra che Bitsocial può sostituire gli imageboard centralizzati togliendo di mezzo gli admin globali.",
+        "callout": {
+          "description": "5chan è il primo punto di prova, non il traguardo. Vogliamo più client imageboard con culture, interfacce e impostazioni predefinite diverse: board in stile altchan, esperimenti mobile-first, comunità di nicchia e fork che risolvano bisogni che 5chan non risolverà mai.",
+          "ctaLabel": "Crea il tuo"
+        }
       },
       "phase2": {
         "phase": "Fase 2",
@@ -172,7 +176,9 @@
       "try5chan": "Prova 5chan",
       "readTechnicalSpec": "Leggi la specifica tecnica proposta",
       "trySeedit": "Prova Seedit (sperimentale)"
-    }
+    },
+    "subtitle": "Bitsocial vince attirando quanti più builder possibile. Gestisci la tua comunità inarrestabile, sviluppa la tua app social decentralizzata oppure lancia persino la tua attività su Bitsocial. La marea sale con ogni builder.",
+    "sectionLabel": "Piano maestro"
   },
   "home": {
     "devOnlyRouteNotice": "{{path}} è ancora in costruzione. Sei stato reindirizzato alla pagina principale.",

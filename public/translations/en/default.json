@@ -135,7 +135,7 @@
     "quoteAttribution": "— Esteban Abaroa, Bitsocial founder"
   },
   "masterPlan": {
-    "title": "Master Plan",
+    "title": "A Call to Action",
     "logoAlt": "Logo",
     "easterEggAlt": "SpongeBob",
     "epilogue": "Social media finally finds its equilibrium: a fully decentralized, peer-to-peer network that nobody owns; Bitsocial.",
@@ -144,7 +144,11 @@
         "phase": "Phase 1",
         "status": "Ongoing",
         "title": "Decentralize imageboards",
-        "description": "Imageboards are the simplest form of social media to decentralize: anonymous posting, few default boards, and no profile graph. This is why we're launching 5chan, the first Bitsocial app. 5chan proves Bitsocial can replace centralized imageboards while removing global admins from the equation."
+        "description": "Imageboards are the simplest form of social media to decentralize: anonymous posting, few default boards, and no profile graph. This is why we're launching 5chan, the first Bitsocial app. 5chan proves Bitsocial can replace centralized imageboards while removing global admins from the equation.",
+        "callout": {
+          "description": "5chan is the first proof point, not the finish line. We want multiple imageboard clients with different cultures, interfaces, and defaults: altchan-style boards, mobile-first experiments, niche communities, and forks that solve needs 5chan never will.",
+          "ctaLabel": "Build your own"
+        }
       },
       "phase2": {
         "phase": "Phase 2",
@@ -169,10 +173,12 @@
     },
     "cta": {
       "learnMore": "Learn More",
-      "try5chan": "Try Out 5chan",
+      "try5chan": "Try 5chan",
       "readTechnicalSpec": "Read Proposed Technical Spec",
       "trySeedit": "Try Out Seedit (Experimental)"
-    }
+    },
+    "subtitle": "Bitsocial wins by attracting as many builders as possible. Run your own unstoppable community, develop your own decentralized social app, or even launch your own business on top of Bitsocial. The tide rises with every builder.",
+    "sectionLabel": "Master Plan"
   },
   "home": {
     "devOnlyRouteNotice": "{{path}} is still under construction. You have been redirected to the front page.",

@@ -135,7 +135,7 @@
     "quoteAttribution": "— Esteban Abaroa, założyciel Bitsocial"
   },
   "masterPlan": {
-    "title": "Plan główny",
+    "title": "Wezwanie do działania",
     "logoAlt": "Logo",
     "easterEggAlt": "SpongeBob",
     "epilogue": "Media społecznościowe wreszcie znajdują równowagę: w pełni zdecentralizowana sieć peer-to-peer należąca do nikogo; Bitsocial.",
@@ -144,7 +144,11 @@
         "phase": "Faza 1",
         "status": "W toku",
         "title": "Zdecentralizować imageboardy",
-        "description": "Imageboardy to najprostsza forma mediów społecznościowych do decentralizacji: anonimowe posty, kilka domyślnych boardów i brak grafu profili. Dlatego uruchamiamy 5chan, pierwszą aplikację Bitsocial. 5chan pokazuje, że Bitsocial może zastąpić scentralizowane imageboardy, usuwając z równania globalnych administratorów."
+        "description": "Imageboardy to najprostsza forma mediów społecznościowych do decentralizacji: anonimowe posty, kilka domyślnych boardów i brak grafu profili. Dlatego uruchamiamy 5chan, pierwszą aplikację Bitsocial. 5chan pokazuje, że Bitsocial może zastąpić scentralizowane imageboardy, usuwając z równania globalnych administratorów.",
+        "callout": {
+          "description": "5chan to pierwszy dowód, a nie linia mety. Chcemy wielu klientów imageboardów o różnych kulturach, interfejsach i domyślnych ustawieniach: tablic w stylu altchan, eksperymentów mobile-first, niszowych społeczności i forków, które rozwiążą potrzeby, których 5chan nigdy nie rozwiąże.",
+          "ctaLabel": "Zbuduj własny"
+        }
       },
       "phase2": {
         "phase": "Faza 2",
@@ -172,7 +176,9 @@
       "try5chan": "Wypróbuj 5chan",
       "readTechnicalSpec": "Przeczytaj proponowaną specyfikację techniczną",
       "trySeedit": "Wypróbuj Seedit (eksperymentalne)"
-    }
+    },
+    "subtitle": "Bitsocial wygrywa, przyciągając jak najwięcej twórców. Prowadź własną niepowstrzymaną społeczność, rozwijaj własną zdecentralizowaną aplikację społecznościową, a nawet uruchom własny biznes na Bitsocial. Fala rośnie z każdym twórcą.",
+    "sectionLabel": "Plan główny"
   },
   "home": {
     "devOnlyRouteNotice": "{{path}} jest nadal w budowie. Zostałeś przekierowany na stronę główną.",

@@ -135,7 +135,7 @@
     "quoteAttribution": "— Esteban Abaroa, a Bitsocial alapítója"
   },
   "masterPlan": {
-    "title": "Mesterterv",
+    "title": "Felhívás cselekvésre",
     "logoAlt": "Logó",
     "easterEggAlt": "SpongeBob",
     "epilogue": "A közösségi média végre megtalálja az egyensúlyát: egy teljesen decentralizált, peer-to-peer hálózat, amely senki tulajdona; a Bitsocial.",
@@ -144,7 +144,11 @@
         "phase": "1. fázis",
         "status": "Folyamatban",
         "title": "Az imageboardok decentralizálása",
-        "description": "Az imageboardok a közösségi média legegyszerűbb formái, amelyeket decentralizálni lehet: anonim posztolás, kevés alapértelmezett tábla és nincs profilgráf. Ezért indítjuk el az 5chant, az első Bitsocial alkalmazást. Az 5chan megmutatja, hogy a Bitsocial képes kiváltani a központosított imageboardokat úgy, hogy a globális adminokat kiveszi az egyenletből."
+        "description": "Az imageboardok a közösségi média legegyszerűbb formái, amelyeket decentralizálni lehet: anonim posztolás, kevés alapértelmezett tábla és nincs profilgráf. Ezért indítjuk el az 5chant, az első Bitsocial alkalmazást. Az 5chan megmutatja, hogy a Bitsocial képes kiváltani a központosított imageboardokat úgy, hogy a globális adminokat kiveszi az egyenletből.",
+        "callout": {
+          "description": "Az 5chan az első bizonyíték, nem a célvonal. Több imageboard-klienst akarunk különböző kultúrákkal, felületekkel és alapbeállításokkal: altchan-stílusú táblákat, mobile-first kísérleteket, rétegközösségeket és olyan forkokat, amelyek olyan igényeket oldanak meg, amelyeket az 5chan soha nem fog.",
+          "ctaLabel": "Építsd meg a sajátodat"
+        }
       },
       "phase2": {
         "phase": "2. fázis",
@@ -169,10 +173,12 @@
     },
     "cta": {
       "learnMore": "További információ",
-      "try5chan": "Próbáld ki a 5chan-t",
+      "try5chan": "Próbáld ki a 5chant",
       "readTechnicalSpec": "Olvasd el a javasolt műszaki specifikációt",
       "trySeedit": "Próbáld ki a Seeditet (kísérleti)"
-    }
+    },
+    "subtitle": "A Bitsocial úgy győz, hogy a lehető legtöbb építőt vonzza be. Indítsd el a saját megállíthatatlan közösségedet, fejleszd a saját decentralizált közösségi appodat, vagy akár indítsd el a saját vállalkozásodat a Bitsocialra építve. Minden építővel emelkedik az áradás.",
+    "sectionLabel": "Mesterterv"
   },
   "home": {
     "devOnlyRouteNotice": "A(z) {{path}} még fejlesztés alatt áll. Át lettél irányítva a főoldalra.",

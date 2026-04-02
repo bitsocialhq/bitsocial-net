@@ -135,7 +135,7 @@
     "quoteAttribution": "— Esteban Abaroa, fundador do Bitsocial"
   },
   "masterPlan": {
-    "title": "Plano mestre",
+    "title": "Chamada à ação",
     "logoAlt": "Logotipo",
     "easterEggAlt": "SpongeBob",
     "epilogue": "As mídias sociais finalmente encontram seu equilíbrio: uma rede peer-to-peer totalmente descentralizada que não pertence a ninguém; Bitsocial.",
@@ -144,7 +144,11 @@
         "phase": "Fase 1",
         "status": "Em andamento",
         "title": "Descentralizar imageboards",
-        "description": "Imageboards são a forma mais simples de mídia social para descentralizar: postagens anônimas, poucos boards padrão e nenhum grafo de perfis. É por isso que estamos lançando 5chan, o primeiro app Bitsocial. O 5chan prova que o Bitsocial pode substituir os imageboards centralizados ao tirar os administradores globais da equação."
+        "description": "Imageboards são a forma mais simples de mídia social para descentralizar: postagens anônimas, poucos boards padrão e nenhum grafo de perfis. É por isso que estamos lançando 5chan, o primeiro app Bitsocial. O 5chan prova que o Bitsocial pode substituir os imageboards centralizados ao tirar os administradores globais da equação.",
+        "callout": {
+          "description": "O 5chan é o primeiro ponto de prova, não a linha de chegada. Queremos vários clientes de imageboard com culturas, interfaces e padrões diferentes: boards no estilo altchan, experimentos mobile-first, comunidades de nicho e forks que resolvam necessidades que o 5chan nunca vai resolver.",
+          "ctaLabel": "Crie o seu próprio"
+        }
       },
       "phase2": {
         "phase": "Fase 2",
@@ -172,7 +176,9 @@
       "try5chan": "Experimente o 5chan",
       "readTechnicalSpec": "Leia a especificação técnica proposta",
       "trySeedit": "Experimente o Seedit (experimental)"
-    }
+    },
+    "subtitle": "O Bitsocial vence ao atrair o maior número possível de builders. Administre a sua própria comunidade imparável, desenvolva a sua própria app social descentralizada ou até lance o seu próprio negócio em cima do Bitsocial. A maré sobe com cada builder.",
+    "sectionLabel": "Plano mestre"
   },
   "home": {
     "devOnlyRouteNotice": "{{path}} ainda está em construção. Você foi redirecionado para a página inicial.",

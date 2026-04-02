@@ -135,7 +135,7 @@
     "quoteAttribution": "— Esteban Abaroa, Bitsocial-Gründer"
   },
   "masterPlan": {
-    "title": "Masterplan",
+    "title": "Handlungsaufforderung",
     "logoAlt": "Logo",
     "easterEggAlt": "SpongeBob",
     "epilogue": "So findet soziale Medien endlich ihr Gleichgewicht: ein vollständig dezentralisiertes Peer-to-Peer-Netzwerk, das niemand besitzt; Bitsocial.",
@@ -144,7 +144,11 @@
         "phase": "Phase 1",
         "status": "Läuft",
         "title": "Imageboards dezentralisieren",
-        "description": "Imageboards sind die einfachste Form sozialer Medien, die sich dezentralisieren lässt: anonyme Beiträge, wenige Standard-Boards und kein Profilgraph. Deshalb bringen wir 5chan an den Start, die erste Bitsocial-App. 5chan zeigt, dass Bitsocial zentralisierte Imageboards ersetzen kann, während globale Admins aus der Gleichung verschwinden."
+        "description": "Imageboards sind die einfachste Form sozialer Medien, die sich dezentralisieren lässt: anonyme Beiträge, wenige Standard-Boards und kein Profilgraph. Deshalb bringen wir 5chan an den Start, die erste Bitsocial-App. 5chan zeigt, dass Bitsocial zentralisierte Imageboards ersetzen kann, während globale Admins aus der Gleichung verschwinden.",
+        "callout": {
+          "description": "5chan ist der erste Beleg, nicht die Ziellinie. Wir wollen mehrere Imageboard-Clients mit unterschiedlichen Kulturen, Oberflächen und Standardwerten: Boards im Altchan-Stil, Mobile-first-Experimente, Nischen-Communities und Forks, die Bedürfnisse lösen, die 5chan nie lösen wird.",
+          "ctaLabel": "Erstelle deine eigene"
+        }
       },
       "phase2": {
         "phase": "Phase 2",
@@ -172,7 +176,9 @@
       "try5chan": "Probier 5chan aus",
       "readTechnicalSpec": "Vorgeschlagene technische Spezifikation lesen",
       "trySeedit": "Seedit ausprobieren (experimentell)"
-    }
+    },
+    "subtitle": "Bitsocial gewinnt, indem es so viele Builder wie möglich anzieht. Betreibe deine eigene unaufhaltsame Community, entwickle deine eigene dezentrale Social-App oder starte sogar dein eigenes Geschäft auf Bitsocial. Mit jedem Builder steigt die Flut.",
+    "sectionLabel": "Masterplan"
   },
   "home": {
     "devOnlyRouteNotice": "{{path}} befindet sich noch im Aufbau. Du wurdest zur Startseite weitergeleitet.",

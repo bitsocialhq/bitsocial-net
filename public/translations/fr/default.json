@@ -135,7 +135,7 @@
     "quoteAttribution": "— Esteban Abaroa, fondateur de Bitsocial"
   },
   "masterPlan": {
-    "title": "Plan directeur",
+    "title": "Appel à l'action",
     "logoAlt": "Logo",
     "easterEggAlt": "SpongeBob",
     "epilogue": "Les réseaux sociaux trouvent enfin leur équilibre : un réseau pair-à-pair entièrement décentralisé qui n’appartient à personne ; Bitsocial.",
@@ -144,7 +144,11 @@
         "phase": "Phase 1",
         "status": "En cours",
         "title": "Décentraliser les imageboards",
-        "description": "Les imageboards sont la forme de réseau social la plus simple à décentraliser : publications anonymes, quelques boards par défaut et aucun graphe de profils. C’est pourquoi nous lançons 5chan, la première application Bitsocial. 5chan prouve que Bitsocial peut remplacer les imageboards centralisés tout en supprimant les administrateurs globaux de l’équation."
+        "description": "Les imageboards sont la forme de réseau social la plus simple à décentraliser : publications anonymes, quelques boards par défaut et aucun graphe de profils. C’est pourquoi nous lançons 5chan, la première application Bitsocial. 5chan prouve que Bitsocial peut remplacer les imageboards centralisés tout en supprimant les administrateurs globaux de l’équation.",
+        "callout": {
+          "description": "5chan est le premier point de validation, pas la ligne d’arrivée. Nous voulons plusieurs clients d'imageboard avec des cultures, des interfaces et des réglages par défaut différents : des boards à la manière d’altchan, des expérimentations mobile-first, des communautés de niche et des forks qui répondent à des besoins que 5chan ne résoudra jamais.",
+          "ctaLabel": "Créez le vôtre"
+        }
       },
       "phase2": {
         "phase": "Phase 2",
@@ -172,7 +176,9 @@
       "try5chan": "Essayez 5chan",
       "readTechnicalSpec": "Lire la spécification technique proposée",
       "trySeedit": "Essayez Seedit (expérimental)"
-    }
+    },
+    "subtitle": "Bitsocial l’emporte en attirant autant de bâtisseurs que possible. Lancez votre propre communauté inarrêtable, développez votre propre application sociale décentralisée, ou même créez votre propre entreprise sur Bitsocial. La marée monte avec chaque bâtisseur.",
+    "sectionLabel": "Plan directeur"
   },
   "home": {
     "devOnlyRouteNotice": "{{path}} est encore en construction. Vous avez été redirigé vers la page d'accueil.",

@@ -135,7 +135,7 @@
     "quoteAttribution": "— Esteban Abaroa، Bitsocial founder"
   },
   "masterPlan": {
-    "title": "Master Plan",
+    "title": "اقدام کی دعوت",
     "logoAlt": "Logo",
     "easterEggAlt": "SpongeBob",
     "epilogue": "سوشل میڈیا آخرکار اپنا توازن پا لیتا ہے: ایک مکمل decentralized، peer-to-peer network جس کا مالک کوئی نہیں؛ Bitsocial۔",
@@ -144,7 +144,11 @@
         "phase": "مرحلہ 1",
         "status": "جاری",
         "title": "Imageboards کو decentralize کریں",
-        "description": "Imageboards سوشل میڈیا کی سب سے سادہ شکل ہیں جنہیں decentralize کیا جا سکتا ہے: anonymous posting، چند default boards، اور کوئی profile graph نہیں۔ اسی لیے ہم 5chan لانچ کر رہے ہیں، Bitsocial کی پہلی app۔ 5chan ثابت کرتا ہے کہ Bitsocial مرکزی imageboards کی جگہ لے سکتا ہے اور global admins کو equation سے باہر کر سکتا ہے."
+        "description": "Imageboards سوشل میڈیا کی سب سے سادہ شکل ہیں جنہیں decentralize کیا جا سکتا ہے: anonymous posting، چند default boards، اور کوئی profile graph نہیں۔ اسی لیے ہم 5chan لانچ کر رہے ہیں، Bitsocial کی پہلی app۔ 5chan ثابت کرتا ہے کہ Bitsocial مرکزی imageboards کی جگہ لے سکتا ہے اور global admins کو equation سے باہر کر سکتا ہے.",
+        "callout": {
+          "description": "5chan پہلا ثبوتی مرحلہ ہے، منزل نہیں۔ ہم مختلف ثقافتوں، انٹرفیسز، اور ڈیفالٹس کے ساتھ کئی imageboard کلائنٹس چاہتے ہیں: altchan طرز کے بورڈز، mobile-first تجربات، نِش کمیونٹیز، اور ایسے forks جو ان ضرورتوں کو حل کریں جنہیں 5chan کبھی حل نہیں کرے گا۔",
+          "ctaLabel": "اپنا خود کا بنائیں"
+        }
       },
       "phase2": {
         "phase": "مرحلہ 2",
@@ -172,7 +176,9 @@
       "try5chan": "5chan آزمائیں",
       "readTechnicalSpec": "تجویز کردہ تکنیکی تفصیلات پڑھیں",
       "trySeedit": "Seedit آزمائیں (تجرباتی)"
-    }
+    },
+    "subtitle": "Bitsocial زیادہ سے زیادہ بلڈرز کو متوجہ کرکے جیتتا ہے۔ اپنی خود کی ناقابلِ شکست کمیونٹی چلائیں، اپنی خود کی غیر مرکزی سوشل ایپ بنائیں، یا حتیٰ کہ Bitsocial کے اوپر اپنا کاروبار شروع کریں۔ ہر بلڈر کے ساتھ جزر و مد بلند ہوتا ہے۔",
+    "sectionLabel": "Master Plan"
   },
   "home": {
     "dismissDevOnlyRouteNotice": "اطلاع بند کریں",

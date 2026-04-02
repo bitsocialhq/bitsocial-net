@@ -1,0 +1,28 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "routes": [
+    {
+      "src": "^/stats/?$",
+      "dest": "http://91.234.199.189:8080/stats"
+    },
+    {
+      "src": "^/stats/(.*)$",
+      "dest": "http://91.234.199.189:8080/stats/$1"
+    },
+    {
+      "src": "^/docs/?$",
+      "dest": "/api/docs"
+    },
+    {
+      "src": "^/docs/(.*)$",
+      "dest": "/api/docs?path=$1"
+    },
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ]
+}

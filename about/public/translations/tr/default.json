@@ -137,7 +137,7 @@
     "quoteAttribution": "— Esteban Abaroa, Bitsocial kurucusu"
   },
   "masterPlan": {
-    "title": "Ana Plan",
+    "title": "Eylem çağrısı",
     "logoAlt": "Logo",
     "easterEggAlt": "SpongeBob",
     "epilogue": "Sosyal medya nihayet dengesini buluyor: kimsenin sahip olmadığı, tam merkezsiz, eşler arası bir ağ; Bitsocial.",
@@ -146,7 +146,11 @@
         "phase": "Aşama 1",
         "status": "Sürüyor",
         "title": "Imageboard'ları merkezsizleştir",
-        "description": "Imageboard'lar merkezsizleştirilmesi en basit sosyal medya biçimidir: anonim gönderi, az sayıda varsayılan pano ve profil grafiği yok. Bu yüzden ilk Bitsocial uygulaması olan 5chan'i başlatıyoruz. 5chan, Bitsocial'ın küresel yöneticileri denklemden çıkarırken merkezi imageboard'ların yerini alabileceğini kanıtlıyor."
+        "description": "Imageboard'lar merkezsizleştirilmesi en basit sosyal medya biçimidir: anonim gönderi, az sayıda varsayılan pano ve profil grafiği yok. Bu yüzden ilk Bitsocial uygulaması olan 5chan'i başlatıyoruz. 5chan, Bitsocial'ın küresel yöneticileri denklemden çıkarırken merkezi imageboard'ların yerini alabileceğini kanıtlıyor.",
+        "callout": {
+          "description": "5chan ilk kanıt noktasıdır, bitiş çizgisi değil. Farklı kültürlere, arayüzlere ve varsayılanlara sahip birden fazla imageboard istemcisi istiyoruz: altchan tarzı panolar, mobile-first deneyler, niş topluluklar ve 5chan’in asla çözemeyeceği ihtiyaçları çözen fork’lar.",
+          "ctaLabel": "Kendininkini oluştur"
+        }
       },
       "phase2": {
         "phase": "Aşama 2",
@@ -171,10 +175,12 @@
     },
     "cta": {
       "learnMore": "Daha fazla bilgi",
-      "try5chan": "5chan’ı deneyin",
+      "try5chan": "5chan'ı deneyin",
       "readTechnicalSpec": "Önerilen teknik spesifikasyonu oku",
       "trySeedit": "Seedit’i deneyin (deneysel)"
-    }
+    },
+    "subtitle": "Bitsocial, mümkün olduğunca çok yapımcıyı çekerek kazanır. Kendi durdurulamaz topluluğunu yönet, kendi merkeziyetsiz sosyal uygulamanı geliştir ya da hatta Bitsocial üzerinde kendi işini başlat. Her yapımcıyla birlikte gelgit yükselir.",
+    "sectionLabel": "Ana Plan"
   },
   "home": {
     "dismissDevOnlyRouteNotice": "Bildirimi kapat",

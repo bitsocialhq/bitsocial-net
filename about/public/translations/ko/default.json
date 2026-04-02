@@ -137,7 +137,7 @@
     "quoteAttribution": "— Esteban Abaroa, Bitsocial 창립자"
   },
   "masterPlan": {
-    "title": "마스터 플랜",
+    "title": "행동 유도",
     "logoAlt": "로고",
     "easterEggAlt": "SpongeBob",
     "epilogue": "소셜 미디어는 마침내 균형점을 찾습니다. 누구의 소유도 아닌 완전히 분산화된 peer-to-peer 네트워크, Bitsocial.",
@@ -146,7 +146,11 @@
         "phase": "페이즈 1",
         "status": "진행 중",
         "title": "이미지보드 탈중앙화",
-        "description": "이미지보드는 탈중앙화하기 가장 단순한 소셜 미디어 형식입니다. 익명 게시, 적은 기본 게시판, 프로필 그래프가 없기 때문입니다. 그래서 우리는 첫 번째 Bitsocial 앱인 5chan을 출시합니다. 5chan은 전역 관리자를 배제하면서도 Bitsocial이 중앙집중형 이미지보드를 대체할 수 있음을 증명합니다."
+        "description": "이미지보드는 탈중앙화하기 가장 단순한 소셜 미디어 형식입니다. 익명 게시, 적은 기본 게시판, 프로필 그래프가 없기 때문입니다. 그래서 우리는 첫 번째 Bitsocial 앱인 5chan을 출시합니다. 5chan은 전역 관리자를 배제하면서도 Bitsocial이 중앙집중형 이미지보드를 대체할 수 있음을 증명합니다.",
+        "callout": {
+          "description": "5chan은 첫 번째 증명 지점일 뿐, 최종 목표가 아닙니다. 우리는 서로 다른 문화, 인터페이스, 기본값을 가진 여러 imageboard 클라이언트를 원합니다: altchan 스타일의 보드, 모바일 우선 실험, 틈새 커뮤니티, 그리고 5chan이 결코 해결하지 못할 필요를 해결하는 포크들입니다.",
+          "ctaLabel": "나만의 것을 만들어 보세요"
+        }
       },
       "phase2": {
         "phase": "페이즈 2",
@@ -174,7 +178,9 @@
       "try5chan": "5chan 사용해 보기",
       "readTechnicalSpec": "제안된 기술 사양 읽기",
       "trySeedit": "Seedit 사용해 보기(실험판)"
-    }
+    },
+    "subtitle": "Bitsocial은 가능한 많은 빌더를 끌어모아 승리합니다. 여러분만의 멈출 수 없는 커뮤니티를 운영하고, 여러분만의 분산형 소셜 앱을 개발하거나, Bitsocial 위에서 여러분만의 비즈니스를 시작해 보세요. 빌더가 늘어날수록 물결은 더 높아집니다.",
+    "sectionLabel": "마스터 플랜"
   },
   "home": {
     "devOnlyRouteNotice": "{{path}}는 아직 제작 중입니다. 홈페이지로 이동되었습니다.",

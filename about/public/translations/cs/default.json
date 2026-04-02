@@ -137,7 +137,7 @@
     "quoteAttribution": "— Esteban Abaroa, zakladatel Bitsocial"
   },
   "masterPlan": {
-    "title": "Hlavní plán",
+    "title": "Výzva k akci",
     "logoAlt": "Logo",
     "easterEggAlt": "SpongeBob",
     "epilogue": "Sociální média konečně najdou svou rovnováhu: plně decentralizovaná peer-to-peer síť, kterou nikdo nevlastní; Bitsocial.",
@@ -146,7 +146,11 @@
         "phase": "Fáze 1",
         "status": "Probíhá",
         "title": "Decentralizovat imageboardy",
-        "description": "Imageboardy jsou nejjednodušší formou sociálních médií k decentralizaci: anonymní příspěvky, jen několik výchozích nástěnek a žádný profilový graf. Proto spouštíme 5chan, první Bitsocial aplikaci. 5chan dokazuje, že Bitsocial může nahradit centralizované imageboardy a zároveň odstranit globální administrátory ze hry."
+        "description": "Imageboardy jsou nejjednodušší formou sociálních médií k decentralizaci: anonymní příspěvky, jen několik výchozích nástěnek a žádný profilový graf. Proto spouštíme 5chan, první Bitsocial aplikaci. 5chan dokazuje, že Bitsocial může nahradit centralizované imageboardy a zároveň odstranit globální administrátory ze hry.",
+        "callout": {
+          "description": "5chan je první důkaz, ne cílová páska. Chceme více klientů pro imageboard s různými kulturami, rozhraními a výchozími nastaveními: nástěnky ve stylu altchan, experimenty zaměřené nejdřív na mobil, úzce zaměřené komunity a forků, které vyřeší potřeby, jež 5chan nikdy nevyřeší.",
+          "ctaLabel": "Vytvořte si vlastní"
+        }
       },
       "phase2": {
         "phase": "Fáze 2",
@@ -174,7 +178,9 @@
       "try5chan": "Vyzkoušejte 5chan",
       "readTechnicalSpec": "Přečtěte si navrhovanou technickou specifikaci",
       "trySeedit": "Vyzkoušejte Seedit (experimentální)"
-    }
+    },
+    "subtitle": "Bitsocial vyhrává tím, že přitahuje co nejvíce tvůrců. Veďte vlastní nezastavitelnou komunitu, vyvíjejte vlastní decentralizovanou sociální aplikaci nebo dokonce spusťte vlastní podnikání na Bitsocialu. S každým tvůrcem roste příliv.",
+    "sectionLabel": "Hlavní plán"
   },
   "home": {
     "devOnlyRouteNotice": "{{path}} je stále ve výstavbě. Byli jste přesměrováni na úvodní stránku.",

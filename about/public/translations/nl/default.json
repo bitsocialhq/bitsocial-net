@@ -137,7 +137,7 @@
     "quoteAttribution": "— Esteban Abaroa, Bitsocial-oprichter"
   },
   "masterPlan": {
-    "title": "Masterplan",
+    "title": "Oproep tot actie",
     "logoAlt": "Logo",
     "easterEggAlt": "SpongeBob",
     "epilogue": "Sociale media vinden eindelijk hun evenwicht: een volledig gedecentraliseerd peer-to-peer-netwerk dat niemand bezit; Bitsocial.",
@@ -146,7 +146,11 @@
         "phase": "Fase 1",
         "status": "Lopend",
         "title": "Imageboards decentraliseren",
-        "description": "Imageboards zijn de eenvoudigste vorm van sociale media om te decentraliseren: anonieme posts, weinig standaardboards en geen profielgrafiek. Daarom lanceren we 5chan, de eerste Bitsocial-app. 5chan bewijst dat Bitsocial gecentraliseerde imageboards kan vervangen terwijl globale beheerders uit de vergelijking verdwijnen."
+        "description": "Imageboards zijn de eenvoudigste vorm van sociale media om te decentraliseren: anonieme posts, weinig standaardboards en geen profielgrafiek. Daarom lanceren we 5chan, de eerste Bitsocial-app. 5chan bewijst dat Bitsocial gecentraliseerde imageboards kan vervangen terwijl globale beheerders uit de vergelijking verdwijnen.",
+        "callout": {
+          "description": "5chan is het eerste bewijs, niet de finish. We willen meerdere imageboard-clients met verschillende culturen, interfaces en standaardinstellingen: altchan-achtige boards, mobile-first experimenten, nichegemeenschappen en forks die behoeften oplossen die 5chan nooit zal oplossen.",
+          "ctaLabel": "Bouw je eigen"
+        }
       },
       "phase2": {
         "phase": "Fase 2",
@@ -174,7 +178,9 @@
       "try5chan": "Probeer 5chan",
       "readTechnicalSpec": "Lees de voorgestelde technische specificatie",
       "trySeedit": "Probeer Seedit (experimenteel)"
-    }
+    },
+    "subtitle": "Bitsocial wint door zoveel mogelijk bouwers aan te trekken. Run je eigen onstuitbare community, ontwikkel je eigen gedecentraliseerde sociale app, of start zelfs je eigen bedrijf bovenop Bitsocial. Het tij keert met elke bouwer.",
+    "sectionLabel": "Masterplan"
   },
   "home": {
     "devOnlyRouteNotice": "{{path}} is nog in aanbouw. Je bent doorgestuurd naar de startpagina.",

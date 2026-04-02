@@ -27,7 +27,11 @@ const sidebars: SidebarsConfig = {
     {
       type: "category",
       label: "Developer tools",
-      items: ["developer-tools/react-hooks", "developer-tools/cli"],
+      items: [
+        "developer-tools/build-an-imageboard-client",
+        "developer-tools/react-hooks",
+        "developer-tools/cli",
+      ],
     },
     {
       type: "category",

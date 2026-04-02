@@ -137,7 +137,7 @@
     "quoteAttribution": "— Esteban Abaroa, Bitsocial founder"
   },
   "masterPlan": {
-    "title": "Master Plan",
+    "title": "कृतीचे आवाहन",
     "logoAlt": "Logo",
     "easterEggAlt": "SpongeBob",
     "epilogue": "Social media शेवटी आपला समतोल शोधते: पूर्णपणे decentralized, peer-to-peer network ज्याचा मालक कोणीही नाही; Bitsocial.",
@@ -146,7 +146,11 @@
         "phase": "टप्पा १",
         "status": "चालू",
         "title": "Imageboards decentralize करा",
-        "description": "Imageboards हे decentralized करायला social media चे सर्वात सोपे रूप आहे: anonymous posting, थोडी default boards, आणि profile graph नाही. म्हणूनच आम्ही 5chan सुरू करत आहोत, Bitsocial चे पहिले app. 5chan दाखवते की Bitsocial केंद्रीकृत imageboards ची जागा घेऊ शकते आणि global admins ला समीकरणातून काढून टाकू शकते."
+        "description": "Imageboards हे decentralized करायला social media चे सर्वात सोपे रूप आहे: anonymous posting, थोडी default boards, आणि profile graph नाही. म्हणूनच आम्ही 5chan सुरू करत आहोत, Bitsocial चे पहिले app. 5chan दाखवते की Bitsocial केंद्रीकृत imageboards ची जागा घेऊ शकते आणि global admins ला समीकरणातून काढून टाकू शकते.",
+        "callout": {
+          "description": "5chan हा पहिला पुरावा आहे, अंतिम टप्पा नाही. वेगवेगळ्या संस्कृती, इंटरफेस, आणि डीफॉल्ट्स असलेले अनेक imageboard clients आम्हाला हवे आहेत: altchan-शैलीची boards, mobile-first प्रयोग, niche समुदाय, आणि असे forks जे 5chan कधीच सोडवू शकणार नाहीत अशा गरजा सोडवतील.",
+          "ctaLabel": "तुमचं स्वतःचं तयार करा"
+        }
       },
       "phase2": {
         "phase": "टप्पा २",
@@ -174,7 +178,9 @@
       "try5chan": "5chan वापरून पाहा",
       "readTechnicalSpec": "प्रस्तावित तांत्रिक तपशील वाचा",
       "trySeedit": "Seedit वापरून पहा (प्रायोगिक)"
-    }
+    },
+    "subtitle": "Bitsocial शक्य तितके जास्त बिल्डर्स आकर्षित करून जिंकते. तुमचा स्वतःचा न थांबणारा समुदाय चालवा, तुमचे स्वतःचे विकेंद्रित सोशल अॅप विकसित करा, किंवा Bitsocialच्या वर तुमचा स्वतःचा व्यवसायही सुरू करा. प्रत्येक बिल्डरसह भरती चढत जाते.",
+    "sectionLabel": "Master Plan"
   },
   "home": {
     "devOnlyRouteNotice": "{{path}} अजूनही बांधकामाधीन आहे. तुम्हाला मुख्य पानावर पाठवले आहे.",

@@ -137,7 +137,7 @@
     "quoteAttribution": "— Esteban Abaroa, pendiri Bitsocial"
   },
   "masterPlan": {
-    "title": "Rencana Utama",
+    "title": "Ajakan bertindak",
     "logoAlt": "Logo",
     "easterEggAlt": "SpongeBob",
     "epilogue": "Akhirnya media sosial menemukan keseimbangannya: jaringan peer-to-peer yang sepenuhnya terdesentralisasi dan tidak dimiliki siapa pun; Bitsocial.",
@@ -146,7 +146,11 @@
         "phase": "Tahap 1",
         "status": "Berjalan",
         "title": "Mendesentralisasi imageboard",
-        "description": "Imageboard adalah bentuk media sosial yang paling sederhana untuk didesentralisasi: posting anonim, sedikit papan default, dan tanpa grafik profil. Itulah sebabnya kami meluncurkan 5chan, aplikasi Bitsocial pertama. 5chan membuktikan Bitsocial bisa menggantikan imageboard terpusat sambil menghapus admin global dari persamaan."
+        "description": "Imageboard adalah bentuk media sosial yang paling sederhana untuk didesentralisasi: posting anonim, sedikit papan default, dan tanpa grafik profil. Itulah sebabnya kami meluncurkan 5chan, aplikasi Bitsocial pertama. 5chan membuktikan Bitsocial bisa menggantikan imageboard terpusat sambil menghapus admin global dari persamaan.",
+        "callout": {
+          "description": "5chan adalah bukti awal, bukan garis akhir. Kami ingin banyak klien imageboard dengan budaya, antarmuka, dan default yang berbeda: papan bergaya altchan, eksperimen mobile-first, komunitas niche, dan fork yang memecahkan kebutuhan yang takkan pernah diselesaikan 5chan.",
+          "ctaLabel": "Buat milikmu sendiri"
+        }
       },
       "phase2": {
         "phase": "Tahap 2",
@@ -174,7 +178,9 @@
       "try5chan": "Coba 5chan",
       "readTechnicalSpec": "Baca spesifikasi teknis yang diusulkan",
       "trySeedit": "Coba Seedit (eksperimental)"
-    }
+    },
+    "subtitle": "Bitsocial menang dengan menarik sebanyak mungkin builder. Jalankan komunitas Anda sendiri yang tak terbendung, kembangkan aplikasi sosial terdesentralisasi Anda sendiri, atau bahkan luncurkan bisnis Anda sendiri di atas Bitsocial. Pasang naik terus bertambah dengan setiap builder.",
+    "sectionLabel": "Rencana Utama"
   },
   "home": {
     "devOnlyRouteNotice": "{{path}} masih dalam pengembangan. Anda telah dialihkan ke halaman utama.",

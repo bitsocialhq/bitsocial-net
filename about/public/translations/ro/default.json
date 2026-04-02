@@ -137,7 +137,7 @@
     "quoteAttribution": "— Esteban Abaroa, fondator Bitsocial"
   },
   "masterPlan": {
-    "title": "Planul principal",
+    "title": "Apel la acțiune",
     "logoAlt": "Logo",
     "easterEggAlt": "SpongeBob",
     "epilogue": "Social media își găsește în sfârșit echilibrul: o rețea complet descentralizată, peer-to-peer, care nu aparține nimănui; Bitsocial.",
@@ -146,7 +146,11 @@
         "phase": "Faza 1",
         "status": "În desfășurare",
         "title": "Decentralizarea imageboard-urilor",
-        "description": "Imageboard-urile sunt cea mai simplă formă de social media de decentralizat: postări anonime, puține board-uri implicite și fără grafic de profil. De aceea lansăm 5chan, prima aplicație Bitsocial. 5chan demonstrează că Bitsocial poate înlocui imageboard-urile centralizate eliminând administratorii globali din ecuație."
+        "description": "Imageboard-urile sunt cea mai simplă formă de social media de decentralizat: postări anonime, puține board-uri implicite și fără grafic de profil. De aceea lansăm 5chan, prima aplicație Bitsocial. 5chan demonstrează că Bitsocial poate înlocui imageboard-urile centralizate eliminând administratorii globali din ecuație.",
+        "callout": {
+          "description": "5chan este primul punct de validare, nu linia de sosire. Vrem mai mulți clienți de imageboard cu culturi, interfețe și valori implicite diferite: forumuri în stil altchan, experimente mobile-first, comunități de nișă și fork-uri care rezolvă nevoi pe care 5chan nu le va rezolva niciodată.",
+          "ctaLabel": "Construiește-l pe al tău"
+        }
       },
       "phase2": {
         "phase": "Faza 2",
@@ -174,7 +178,9 @@
       "try5chan": "Încearcă 5chan",
       "readTechnicalSpec": "Citește specificația tehnică propusă",
       "trySeedit": "Încearcă Seedit (experimental)"
-    }
+    },
+    "subtitle": "Bitsocial câștigă atrăgând cât mai mulți builderi posibil. Rulează propria ta comunitate de neoprit, dezvoltă propria ta aplicație socială descentralizată sau chiar lansează-ți propria afacere deasupra Bitsocial. Valul crește cu fiecare builder.",
+    "sectionLabel": "Planul principal"
   },
   "home": {
     "devOnlyRouteNotice": "{{path}} este încă în construcție. Ai fost redirecționat către pagina principală.",

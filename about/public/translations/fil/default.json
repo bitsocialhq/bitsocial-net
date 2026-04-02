@@ -137,7 +137,7 @@
     "quoteAttribution": "— Esteban Abaroa, tagapagtatag ng Bitsocial"
   },
   "masterPlan": {
-    "title": "Pangunahing Plano",
+    "title": "Panawagan sa pagkilos",
     "logoAlt": "Logo",
     "easterEggAlt": "SpongeBob",
     "epilogue": "Sa wakas, natagpuan ng social media ang balanse nito: isang ganap na desentralisado, peer-to-peer na network na walang may-ari; Bitsocial.",
@@ -146,7 +146,11 @@
         "phase": "Yugto 1",
         "status": "Kasalukuyan",
         "title": "I-desentralisa ang mga imageboard",
-        "description": "Ang mga imageboard ang pinakasimpleng anyo ng social media na i-desentralisa: anonymous na pagpo-post, kaunting default na board, at walang profile graph. Ito ang dahilan kung bakit inilulunsad namin ang 5chan, ang unang Bitsocial app. Pinapatunayan ng 5chan na kayang palitan ng Bitsocial ang sentralisadong mga imageboard habang inaalis ang mga global admin sa usapan."
+        "description": "Ang mga imageboard ang pinakasimpleng anyo ng social media na i-desentralisa: anonymous na pagpo-post, kaunting default na board, at walang profile graph. Ito ang dahilan kung bakit inilulunsad namin ang 5chan, ang unang Bitsocial app. Pinapatunayan ng 5chan na kayang palitan ng Bitsocial ang sentralisadong mga imageboard habang inaalis ang mga global admin sa usapan.",
+        "callout": {
+          "description": "Ang 5chan ang unang patunay, hindi ang finish line. Gusto namin ng maraming imageboard client na may magkakaibang kultura, interface, at default: mga board na parang altchan, mga eksperimento na mobile-first, mga niche na komunidad, at mga fork na lumulutas sa mga pangangailangang hinding-hindi malulutas ng 5chan.",
+          "ctaLabel": "Bumuo ng sarili mo"
+        }
       },
       "phase2": {
         "phase": "Yugto 2",
@@ -174,7 +178,9 @@
       "try5chan": "Subukan ang 5chan",
       "readTechnicalSpec": "Basahin ang Iminungkahing Teknikal na Espesipikasyon",
       "trySeedit": "Subukan ang Seedit (eksperimental)"
-    }
+    },
+    "subtitle": "Nanalo ang Bitsocial sa pamamagitan ng pag-akit ng pinakamaraming builders hangga't maaari. Patakbuhin ang sarili mong hindi matitinag na komunidad, bumuo ng sarili mong decentralized social app, o kaya'y maglunsad ng sarili mong negosyo sa ibabaw ng Bitsocial. Umaangat ang alon sa bawat builder.",
+    "sectionLabel": "Pangunahing Plano"
   },
   "home": {
     "devOnlyRouteNotice": "Ang {{path}} ay kasalukuyang ginagawa pa. Na-redirect ka sa front page.",

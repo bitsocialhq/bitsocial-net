@@ -137,7 +137,7 @@
     "quoteAttribution": "— Esteban Abaroa, Bitsocialin perustaja"
   },
   "masterPlan": {
-    "title": "Pääsuunnitelma",
+    "title": "Toimintakehotus",
     "logoAlt": "Logo",
     "easterEggAlt": "SpongeBob",
     "epilogue": "Sosiaalinen media löytää vihdoin tasapainonsa: täysin hajautettu, peer-to-peer-verkko, jota kukaan ei omista; Bitsocial.",
@@ -146,7 +146,11 @@
         "phase": "Vaihe 1",
         "status": "Käynnissä",
         "title": "Hajauta imageboardit",
-        "description": "Imageboardit ovat yksinkertaisin sosiaalisen median muoto hajauttaa: anonyymit julkaisut, vain muutama oletustaulu ja ei profiiligrafiaa. Siksi lanseeraamme 5chanin, ensimmäisen Bitsocial-sovelluksen. 5chan todistaa, että Bitsocial voi korvata keskitetyt imageboardit poistamalla globaalit ylläpitäjät yhtälöstä."
+        "description": "Imageboardit ovat yksinkertaisin sosiaalisen median muoto hajauttaa: anonyymit julkaisut, vain muutama oletustaulu ja ei profiiligrafiaa. Siksi lanseeraamme 5chanin, ensimmäisen Bitsocial-sovelluksen. 5chan todistaa, että Bitsocial voi korvata keskitetyt imageboardit poistamalla globaalit ylläpitäjät yhtälöstä.",
+        "callout": {
+          "description": "5chan on ensimmäinen todistepiste, ei maaliviiva. Haluamme useita imageboard-asiakkaita, joilla on erilaiset kulttuurit, käyttöliittymät ja oletukset: altchan-tyylisiä boardeja, mobile-first-kokeiluja, niche-yhteisöjä ja forkkeja, jotka ratkaisevat tarpeita, joita 5chan ei koskaan ratkaise.",
+          "ctaLabel": "Rakenna omasi"
+        }
       },
       "phase2": {
         "phase": "Vaihe 2",
@@ -174,7 +178,9 @@
       "try5chan": "Kokeile 5chania",
       "readTechnicalSpec": "Lue ehdotettu tekninen spesifikaatio",
       "trySeedit": "Kokeile Seeditiä (kokeellinen)"
-    }
+    },
+    "subtitle": "Bitsocial voittaa houkuttelemalla mahdollisimman paljon rakentajia. Pyöritä omaa pysäyttämätöntä yhteisöäsi, kehitä oma hajautettu sosiaalinen sovelluksesi tai jopa käynnistä oma liiketoimintasi Bitsocialin päälle. Nousuvesi kohoaa jokaisen rakentajan myötä.",
+    "sectionLabel": "Pääsuunnitelma"
   },
   "home": {
     "devOnlyRouteNotice": "{{path}} on vielä rakenteilla. Sinut on ohjattu etusivulle.",

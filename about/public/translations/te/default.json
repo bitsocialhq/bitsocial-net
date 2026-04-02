@@ -137,7 +137,7 @@
     "quoteAttribution": "— Esteban Abaroa, Bitsocial founder"
   },
   "masterPlan": {
-    "title": "Master Plan",
+    "title": "చర్యకు పిలుపు",
     "logoAlt": "Logo",
     "easterEggAlt": "SpongeBob",
     "epilogue": "సామాజిక మాధ్యమం చివరికి తన సమతౌల్యాన్ని కనుగొంటుంది: పూర్తిగా decentralized, peer-to-peer network, దాని యజమాని ఎవరూ కాదు; Bitsocial.",
@@ -146,7 +146,11 @@
         "phase": "దశ 1",
         "status": "కొనసాగుతోంది",
         "title": "Imageboardsను decentralize చేయండి",
-        "description": "Imageboards అనేవి decentralize చేయడానికి అత్యంత సులభమైన social media రూపం: anonymous posting, తక్కువ default boards, మరియు profile graph లేదు. అందుకే మేము 5chanను ప్రారంభిస్తున్నాం, Bitsocial యొక్క మొదటి app. 5chan Bitsocial centralized imageboardsను భర్తీ చేయగలదని, అలాగే global adminsను సమీకరణం నుంచి తొలగించగలదని నిరూపిస్తుంది."
+        "description": "Imageboards అనేవి decentralize చేయడానికి అత్యంత సులభమైన social media రూపం: anonymous posting, తక్కువ default boards, మరియు profile graph లేదు. అందుకే మేము 5chanను ప్రారంభిస్తున్నాం, Bitsocial యొక్క మొదటి app. 5chan Bitsocial centralized imageboardsను భర్తీ చేయగలదని, అలాగే global adminsను సమీకరణం నుంచి తొలగించగలదని నిరూపిస్తుంది.",
+        "callout": {
+          "description": "5chan అనేది మొదటి ప్రూఫ్ పాయింట్, ఫినిష్ లైన్ కాదు. మేము విభిన్న సంస్కృతులు, ఇంటర్‌ఫేస్‌లు, మరియు డిఫాల్ట్‌లతో అనేక imageboard క్లయింట్లను కోరుకుంటున్నాం: altchan-శైలి బోర్డులు, mobile-first ప్రయోగాలు, niche కమ్యూనిటీలు, మరియు 5chan ఎప్పుడూ పరిష్కరించని అవసరాలను పరిష్కరించే forks.",
+          "ctaLabel": "మీదైనదాన్ని నిర్మించండి"
+        }
       },
       "phase2": {
         "phase": "దశ 2",
@@ -171,10 +175,12 @@
     },
     "cta": {
       "learnMore": "మరింత తెలుసుకోండి",
-      "try5chan": "5chanని ప్రయత్నించండి",
+      "try5chan": "5chanను ప్రయత్నించండి",
       "readTechnicalSpec": "ప్రతిపాదిత సాంకేతిక స్పెసిఫికేషన్‌ను చదవండి",
       "trySeedit": "Seedit ను ప్రయత్నించండి (ప్రయోగాత్మక)"
-    }
+    },
+    "subtitle": "Bitsocial సాధ్యమైనంత ఎక్కువ మంది బిల్డర్లను ఆకర్షించడం ద్వారా గెలుస్తుంది. మీ స్వంత ఆగని కమ్యూనిటీనీ నడపండి, మీ స్వంత వికేంద్రీకృత సామాజిక యాప్‌ను అభివృద్ధి చేయండి, లేదా Bitsocial మీదే మీ స్వంత వ్యాపారాన్ని కూడా ప్రారంభించండి. ప్రతి బిల్డర్‌తో సముద్రపు అల పెరుగుతుంది.",
+    "sectionLabel": "Master Plan"
   },
   "home": {
     "dismissDevOnlyRouteNotice": "నోటీసును మూసివేయి",

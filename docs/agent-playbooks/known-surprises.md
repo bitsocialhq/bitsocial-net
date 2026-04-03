@@ -78,6 +78,16 @@ If uncertain, ask the developer before adding an entry.
 - **Mitigation:** Keep docs startup behind `yarn start:docs`, which now uses Portless plus `scripts/start-docs.mjs` to honor an injected free port or fall back to the next available port when run directly.
 - **Status:** confirmed
 
+### Fixed docs Portless hostname was hard-coded
+
+- **Date:** 2026-04-03
+- **Observed by:** Codex
+- **Context:** Running `yarn start` in a secondary Bitsocial Web worktree while another worktree was already serving docs through Portless
+- **What was surprising:** `start:docs` still registered the literal `docs.bitsocial.localhost` hostname, so `yarn start` could fail even though the about app already knew how to avoid Portless route collisions for its own hostname.
+- **Impact:** Parallel worktrees could not reliably use the root dev command because the docs process exited first and `concurrently` then killed the rest of the session.
+- **Mitigation:** Keep docs startup behind `scripts/start-docs.mjs`, which now derives the same branch-scoped Portless hostname as the about app and injects that shared public URL into the `/docs` dev proxy target.
+- **Status:** confirmed
+
 ### `docs-site/` leftovers can hide missing docs source after the refactor
 
 - **Date:** 2026-04-01

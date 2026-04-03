@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
-import { spawn } from "node:child_process";
+import { spawn, spawnSync } from "node:child_process";
+import { existsSync } from "node:fs";
 import net from "node:net";
 import path from "node:path";
 import process from "node:process";
@@ -11,6 +12,68 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 export const repoRoot = path.resolve(__dirname, "..");
 export const isWindows = process.platform === "win32";
 const yarnBin = isWindows ? "yarn.cmd" : "yarn";
+const binDir = path.join(repoRoot, "node_modules", ".bin");
+const executableSuffix = isWindows ? ".cmd" : "";
+export const portlessBin = path.join(binDir, `portless${executableSuffix}`);
+const canonicalBranches = new Set(["main", "master"]);
+
+function sanitizeLabel(value) {
+  return value
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "")
+    .replace(/-{2,}/g, "-");
+}
+
+function getCurrentBranch() {
+  const result = spawnSync("git", ["branch", "--show-current"], {
+    cwd: repoRoot,
+    encoding: "utf8",
+  });
+
+  if (result.status !== 0) {
+    return null;
+  }
+
+  return result.stdout.trim() || null;
+}
+
+function listPortlessRoutes() {
+  if (!existsSync(portlessBin)) {
+    return "";
+  }
+
+  const result = spawnSync(portlessBin, ["list"], {
+    cwd: repoRoot,
+    encoding: "utf8",
+    env: process.env,
+  });
+
+  if (result.status !== 0) {
+    return "";
+  }
+
+  return result.stdout;
+}
+
+export function getPortlessPublicUrl(appName) {
+  return `http://${appName}.localhost:1355`;
+}
+
+export function getPortlessAppName(baseName) {
+  const branch = getCurrentBranch();
+  const scopedLabel = sanitizeLabel(branch || path.basename(repoRoot) || "current");
+
+  if (branch && !canonicalBranches.has(branch)) {
+    return `${scopedLabel}.${baseName}`;
+  }
+
+  if (listPortlessRoutes().includes(getPortlessPublicUrl(baseName))) {
+    return `${scopedLabel}.${baseName}`;
+  }
+
+  return baseName;
+}
 
 function checkPort(port) {
   return new Promise((resolve) => {

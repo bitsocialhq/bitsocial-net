@@ -7,9 +7,9 @@ import { DOCS_LINKS } from "@/lib/docs-links";
 
 const EASTER_EGG_GIF = "/spongebob-easter-egg.gif";
 const phaseOneCtaRowClassName =
-  "flex w-full min-w-0 flex-col items-stretch gap-2 md:flex-row md:items-center md:justify-end md:gap-4";
+  "grid w-full min-w-0 grid-cols-1 items-stretch gap-2 md:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] md:items-center md:gap-3";
 const phaseOneCtaButtonClassName =
-  "w-full max-w-full whitespace-normal text-center leading-snug !rounded-3xl !px-4 !py-2 text-sm md:w-auto md:whitespace-nowrap md:leading-none md:!px-8";
+  "w-full min-w-0 max-w-full whitespace-normal text-center leading-snug !rounded-3xl !px-4 !py-2 text-sm md:!px-5";
 const phaseOneCtaSeparatorClassName =
   "text-center text-sm text-muted-foreground/70 italic md:shrink-0";
 
@@ -29,23 +29,21 @@ function ResponsivePhaseOneCtas({
   separatorLabel,
 }: ResponsivePhaseOneCtasProps) {
   return (
-    <div className="w-full min-w-0 overflow-hidden">
-      <div className="flex w-full justify-end">
-        <div className={phaseOneCtaRowClassName}>
-          <CardInlineCta
-            href={primaryHref}
-            className={`${prominentCtaClassName} ${phaseOneCtaButtonClassName}`}
-          >
-            {primaryLabel}
-          </CardInlineCta>
-          <span className={phaseOneCtaSeparatorClassName}>{separatorLabel}</span>
-          <CardInlineCta
-            href={secondaryHref}
-            className={`${prominentCtaClassName} ${phaseOneCtaButtonClassName}`}
-          >
-            {secondaryLabel}
-          </CardInlineCta>
-        </div>
+    <div className="w-full min-w-0">
+      <div className={phaseOneCtaRowClassName}>
+        <CardInlineCta
+          href={primaryHref}
+          className={`${prominentCtaClassName} ${phaseOneCtaButtonClassName}`}
+        >
+          {primaryLabel}
+        </CardInlineCta>
+        <span className={phaseOneCtaSeparatorClassName}>{separatorLabel}</span>
+        <CardInlineCta
+          href={secondaryHref}
+          className={`${prominentCtaClassName} ${phaseOneCtaButtonClassName}`}
+        >
+          {secondaryLabel}
+        </CardInlineCta>
       </div>
     </div>
   );

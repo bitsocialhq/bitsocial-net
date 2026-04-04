@@ -4,10 +4,6 @@ description: A serverless, decentralized imageboard built on the Bitsocial proto
 sidebar_position: 1
 ---
 
-:::warning[Legacy naming]
-This project's codebase still uses the legacy "plebbit" naming from before the Bitsocial rebrand. Package names, API references, and some internal terminology will be updated in a future release. The functionality described here is current — only the naming is outdated.
-:::
-
 # 5chan
 
 5chan is a serverless, adminless, and fully decentralized imageboard that runs on the Bitsocial protocol. It follows the familiar imageboard directory structure while introducing decentralized ownership — anyone can create a board, and multiple boards can compete for the same directory slot through a voting mechanism.
@@ -34,7 +30,7 @@ Directory slot assignments (which board appears at which path) are currently man
 
 ## Internals
 
-Under the hood, 5chan uses the plebbit-js API layer for its protocol interactions. As noted in the warning above, these internal references still carry legacy naming that predates the Bitsocial rebrand.
+Under the hood, 5chan uses the shared Bitsocial protocol client layer for its network interactions.
 
 ## Links
 

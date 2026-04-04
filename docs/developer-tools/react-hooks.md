@@ -6,16 +6,12 @@ sidebar_position: 1
 
 # React Hooks
 
-:::warning Legacy Naming
-This package currently uses legacy naming conventions inherited from its upstream fork. References to "plebbit" in code, APIs, and configuration will be migrated to "bitsocial" in a future release. Functionality is unaffected.
-:::
-
 The `bitsocial-react-hooks` package provides a familiar React hooks API for interacting with the Bitsocial protocol. It handles fetching feeds, comments, and author profiles, managing accounts, publishing content, and subscribing to communities -- all without relying on a central server.
 
 This library is the primary interface used by [5chan](/apps/5chan/) and other Bitsocial client applications.
 
 :::note
-`bitsocial-react-hooks` is a temporary fork of `plebbit/plebbit-react-hooks` maintained for AI-aided development. It is consumed directly from GitHub rather than published to npm.
+`bitsocial-react-hooks` is currently consumed directly from GitHub rather than published to npm.
 :::
 
 ## Installation
@@ -52,9 +48,9 @@ Fetch and interact with individual comments and threads.
 
 Retrieve community metadata and settings.
 
-- `useSubplebbit(subplebbitAddress?)` -- fetches a community by address
-- `useSubplebbits(subplebbitAddresses?)` -- fetches multiple communities
-- `useSubplebbitStats(subplebbitAddress?)` -- returns subscriber and post counts
+- Single-community lookup hook -- fetches a community by address
+- Multi-community lookup hook -- fetches multiple communities
+- Community stats hook -- returns subscriber and post counts
 
 ### Authors
 
@@ -85,7 +81,7 @@ Publish content and perform write operations.
 Monitor connection state and interact with a remote Bitsocial daemon.
 
 - `useClientsStates(options?)` -- returns the connection state of IPFS/pubsub clients
-- `usePlebbitRpcSettings()` -- returns current RPC daemon configuration
+- RPC settings hook -- returns current RPC daemon configuration
 
 ## Development
 

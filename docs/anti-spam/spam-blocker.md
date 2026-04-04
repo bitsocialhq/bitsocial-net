@@ -6,10 +6,6 @@ sidebar_position: 1
 
 # Spam Blocker
 
-:::warning Legacy Naming
-This package was originally published under the `@plebbit` scope. It has been renamed to `@bitsocial/spam-blocker-server` and `@bitsocial/spam-blocker-challenge`. References to the old names may still appear in older documentation or codebases.
-:::
-
 Spam Blocker is a centralized spam detection service that evaluates incoming publications and assigns risk scores. It consists of two packages:
 
 - **`@bitsocial/spam-blocker-server`** -- the HTTP server that hosts the evaluation and challenge APIs.

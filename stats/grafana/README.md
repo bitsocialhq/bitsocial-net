@@ -4,20 +4,19 @@ This directory contains the Grafana dashboards and provisioning files for `bitso
 
 ### Sources
 
-- `upstream/plebbit-status.json` is the exported public dashboard from `plebbit.online`
-- `upstream/plebbit-uptime-monitor.json` is the exported internal dashboard used as a reference while porting sections
+The `upstream/` directory stores the exported public and internal reference dashboards used while porting the stats experience to Bitsocial.
 
 ### Regenerating dashboards
 
-The checked-in Bitsocial dashboards are generated from the upstream public dashboard plus the official 5chan directory snapshot:
+The checked-in Bitsocial dashboards are generated from the upstream reference dashboard plus the official 5chan directory snapshot:
 
 ```bash
 yarn build:stats-dashboards
 ```
 
-That generation step keeps the panel layout close to `plebbit.online` while:
+That generation step keeps the panel layout close to the upstream reference dashboards while:
 
-- switching public wording from `Plebbit` / `Subplebbit` to Bitsocial / Community terminology
+- switching public wording to Bitsocial / Community terminology
 - rewriting Prometheus queries to the `bitsocial_stats_*` metric namespace
 - pruning the old legacy community set down to the official 5chan default communities
 - hiding the NFT section for the first Bitsocial rollout

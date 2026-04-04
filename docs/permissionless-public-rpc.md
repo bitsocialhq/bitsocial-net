@@ -5,9 +5,8 @@ description: Proposed design for a public Bitsocial RPC service with isolated us
 
 # Permissionless Public RPC
 
-The original public RPC proposal lived as a GitHub issue written in old plebbit terminology. This
-page rewrites that idea in Bitsocial language and frames it as a product-level proposal instead of
-a wall of implementation detail.
+This page frames public RPC as a product-level Bitsocial proposal instead of a wall of
+implementation detail.
 
 ## Plain-language goal
 
@@ -64,8 +63,8 @@ user creation, ownership transfer, and audit review belong in a separate operato
 User-facing documentation should use Bitsocial terms such as **community** and **profile**.
 
 At the wire level, the first rollout can still preserve the current JSON-RPC transport and payload
-shape where that is useful for compatibility. In other words: the docs no longer need to talk like
-old plebbit docs, even if the transition period keeps some legacy method names or request shapes
+shape where that is useful for compatibility. In other words: the docs can stay Bitsocial-native
+even if the transition period keeps some compatibility-oriented method names or request shapes
 behind the scenes.
 
 ## Proposed permission bundle
@@ -190,9 +189,9 @@ If auth creation is cheap, public services may need a challenge layer before iss
 One possible route is to reuse the community challenge model itself so credential issuance inherits
 the same anti-abuse philosophy as the rest of the network.
 
-### Legacy naming
+### Migration details
 
-Some early implementations may still expose legacy method names internally for compatibility. That
+Some early implementations may still expose compatibility-oriented method names internally. That
 should be treated as a migration detail, not as the permanent public vocabulary of Bitsocial docs.
 
 ## Summary

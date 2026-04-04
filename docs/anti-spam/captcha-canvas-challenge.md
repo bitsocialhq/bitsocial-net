@@ -6,11 +6,7 @@ sidebar_position: 2
 
 # Captcha Canvas Challenge
 
-:::warning Legacy Naming
-This package was originally published under the `@plebbit` scope. It has been renamed to `@bitsocial/captcha-canvas-challenge`. References to the old name may still appear in older documentation or codebases.
-:::
-
-Captcha Canvas Challenge is a standalone image captcha generator originally extracted from `plebbit-js`. It renders randomized text onto an HTML canvas and returns the resulting image, which communities can present to authors as a spam challenge.
+Captcha Canvas Challenge is a standalone image captcha generator. It renders randomized text onto an HTML canvas and returns the resulting image, which communities can present to authors as a spam challenge.
 
 **Source code:** [github.com/bitsocialnet/captcha-canvas-challenge](https://github.com/bitsocialnet/captcha-canvas-challenge)
 
@@ -18,7 +14,6 @@ Captcha Canvas Challenge is a standalone image captcha generator originally extr
 
 - **Node.js** >= 22
 - **ESM-only** -- this package does not ship CommonJS builds.
-- **Runtime peer dependency:** `@plebbit/plebbit-js` (migrating to `@pkc/pkc-js`)
 
 ## Installation
 

@@ -605,20 +605,17 @@ export default function SanctuaryCommunication() {
           ))}
         </div>
 
-        {/* Founder attribution — links to whitepaper discussion */}
-        <m.a
-          href="https://github.com/plebbit/whitepaper/discussions/2#:~:text=your%20community%20literally,solve%20that%20problem."
-          target="_blank"
-          rel="noopener noreferrer"
+        {/* Founder attribution */}
+        <m.blockquote
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="block text-center text-xs md:text-sm text-muted-foreground/40 mt-14 italic max-w-lg mx-auto rounded-md hover:text-muted-foreground/55 transition-[color,box-shadow] duration-300"
+          className="block text-center text-xs md:text-sm text-muted-foreground/40 mt-14 italic max-w-lg mx-auto"
         >
           &ldquo;{t("sanctuary.quote")}&rdquo;
           <span className="not-italic block mt-1">{t("sanctuary.quoteAttribution")}</span>
-        </m.a>
+        </m.blockquote>
       </div>
     </section>
   );

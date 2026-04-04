@@ -36,7 +36,7 @@
       "id": "F003",
       "priority": 3,
       "status": "completed",
-      "description": "Provision Grafana dashboards that mirror plebbit.online visually and structurally while using Bitsocial/community terminology.",
+      "description": "Provision Grafana dashboards that mirror the legacy public reference dashboards visually and structurally while using Bitsocial/community terminology.",
       "verification": [
         "open local Grafana and inspect summary dashboard",
         "open local Grafana and inspect /stats/5chan dashboard"

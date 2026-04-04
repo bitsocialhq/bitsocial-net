@@ -154,9 +154,13 @@ export default function Topbar() {
   const [usesCompactNavigation, setUsesCompactNavigation] = useState(
     () => typeof window !== "undefined" && window.innerWidth < 768,
   );
+  const menuContainerRef = useRef<HTMLElement>(null);
   const topbarContentRef = useRef<HTMLDivElement>(null);
   const logoRef = useRef<HTMLAnchorElement>(null);
   const desktopNavMeasureRef = useRef<HTMLDivElement>(null);
+  const closeMobileMenu = useCallback(() => {
+    setIsMobileMenuOpen(false);
+  }, []);
 
   const updateNavigationMode = useCallback(() => {
     const availableWidth = topbarContentRef.current?.getBoundingClientRect().width ?? 0;
@@ -207,15 +211,29 @@ export default function Topbar() {
     if (!usesCompactNavigation || !isMobileMenuOpen) return;
     const onKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
-        setIsMobileMenuOpen(false);
+        closeMobileMenu();
       }
     };
+
+    const onPointerDown = (e: PointerEvent) => {
+      if (menuContainerRef.current?.contains(e.target as Node)) {
+        return;
+      }
+
+      e.preventDefault();
+      closeMobileMenu();
+    };
+
     window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
-  }, [usesCompactNavigation, isMobileMenuOpen]);
+    window.addEventListener("pointerdown", onPointerDown, true);
+    return () => {
+      window.removeEventListener("keydown", onKeyDown);
+      window.removeEventListener("pointerdown", onPointerDown, true);
+    };
+  }, [closeMobileMenu, usesCompactNavigation, isMobileMenuOpen]);
 
   const handleNavClick = () => {
-    setIsMobileMenuOpen(false);
+    closeMobileMenu();
   };
 
   const handleMenuToggle = () => {
@@ -254,6 +272,7 @@ export default function Topbar() {
   return (
     <>
       <m.nav
+        ref={menuContainerRef}
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{

@@ -10,7 +10,7 @@ import PolygonMeshBackground from "@/components/polygon-mesh-background";
 import SanctuaryCommunication from "@/components/sanctuary-communication";
 import Topbar from "@/components/topbar";
 import Features from "@/components/features";
-import { MAILING_LIST_HASH, scrollToMailingListSection } from "@/lib/mailing-list-nav";
+import { MAILING_LIST_HASH, scheduleMailingListHashScroll } from "@/lib/mailing-list-nav";
 
 function getUnavailablePath(state: unknown) {
   if (!state || typeof state !== "object" || !("unavailablePath" in state)) {
@@ -29,17 +29,10 @@ export default function Home() {
     getUnavailablePath(location.state),
   );
 
-  // Hash scroll after route paint: layout effect + rAF so #mailing-list target exists (SPA + deep links).
+  // Hash scroll after route paint, with late correction passes for tall sections above the target.
   useLayoutEffect(() => {
     if (location.hash !== MAILING_LIST_HASH) return;
-    let cancelled = false;
-    const id = requestAnimationFrame(() => {
-      if (!cancelled) scrollToMailingListSection();
-    });
-    return () => {
-      cancelled = true;
-      cancelAnimationFrame(id);
-    };
+    return scheduleMailingListHashScroll();
   }, [location.pathname, location.hash]);
 
   useEffect(() => {

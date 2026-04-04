@@ -123,6 +123,9 @@ const MOBILE_CARD_FOCUS_TRANSITION = {
   mass: 0.9,
 };
 const MOBILE_SCROLL_SETTLE_DELAY_MS = 96;
+const MOBILE_TAB_SCROLL_BASE_DURATION_S = 0.2;
+const MOBILE_TAB_SCROLL_MAX_DURATION_S = 0.44;
+const MOBILE_TAB_SCROLL_DISTANCE_FACTOR = 2600;
 
 const ComparisonCardContent = memo(function ComparisonCardContent({
   approach,
@@ -315,7 +318,10 @@ const MobileComparisonCarousel = memo(function MobileComparisonCarousel({
       }
 
       const distance = Math.abs(targetScrollLeft - carousel.scrollLeft);
-      const duration = Math.min(0.8, Math.max(0.56, 0.46 + distance / 1600));
+      const duration = Math.min(
+        MOBILE_TAB_SCROLL_MAX_DURATION_S,
+        MOBILE_TAB_SCROLL_BASE_DURATION_S + distance / MOBILE_TAB_SCROLL_DISTANCE_FACTOR,
+      );
 
       setPendingIndex((currentIndex) =>
         currentIndex === boundedIndex ? currentIndex : boundedIndex,

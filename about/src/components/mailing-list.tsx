@@ -55,11 +55,11 @@ export default function MailingList() {
             <Mail className="h-5 w-5 text-blue-glow" aria-hidden="true" />
           </div>
 
-          <h2 className="text-2xl md:text-3xl font-display font-normal text-muted-foreground mb-3 text-balance">
+          <h2 className="text-2xl md:text-3xl font-display font-normal mb-3 text-balance text-muted-foreground dark:text-foreground/85">
             {t("mailingList.title")}
           </h2>
 
-          <p className="text-muted-foreground/70 text-sm md:text-base mb-8 max-w-md mx-auto leading-relaxed">
+          <p className="text-sm md:text-base mb-8 max-w-md mx-auto leading-relaxed text-muted-foreground">
             {t("mailingList.description")}
           </p>
 
@@ -137,14 +137,14 @@ export default function MailingList() {
               aria-live="polite"
               className={cn(
                 "mt-4 text-sm font-display",
-                formState === "error" ? "text-destructive" : "text-muted-foreground/60",
+                formState === "error" ? "text-destructive" : "text-muted-foreground",
               )}
             >
               {statusMessage}
             </p>
           ) : null}
 
-          <p className="text-muted-foreground/40 text-xs mt-5 font-display">
+          <p className="text-xs mt-5 font-display text-muted-foreground">
             {t("mailingList.privacy")}
           </p>
         </m.div>

@@ -107,3 +107,13 @@ If uncertain, ask the developer before adding an entry.
 - **Impact:** Agents can delete the old folder as “junk” and accidentally lose the only local copy of docs translations, or keep editing scripts that still point at the dead `docs-site/` path.
 - **Mitigation:** Treat `docs/` as the only canonical docs project. Before deleting any local `docs-site/` leftovers, restore tracked source like `docs/i18n/` and update scripts and hooks to stop referencing `docs-site`.
 - **Status:** confirmed
+
+### Multilocale docs preview can spike RAM during verification
+
+- **Date:** 2026-04-01
+- **Observed by:** Codex
+- **Context:** Fixing docs i18n, locale routing, and Pagefind behavior with `yarn start:docs` plus Playwright
+- **What was surprising:** The default docs preview mode now does a full multilocale docs build plus Pagefind indexing before serving, and keeping that process alive alongside multiple Playwright or Chrome sessions can consume much more RAM than a normal Vite or single-locale Docusaurus dev loop.
+- **Impact:** The machine can become memory-constrained, browser sessions can crash, and interrupted runs can leave stale docs servers or headless browsers behind that keep consuming memory.
+- **Mitigation:** For docs work that does not need locale-route or Pagefind verification, prefer `DOCS_START_MODE=live yarn start:docs`. Only use the default multilocale preview when you need to validate translated routes or Pagefind. Keep a single Playwright session, close old browser sessions before opening new ones, and stop the docs server after verification if you no longer need it.
+- **Status:** confirmed

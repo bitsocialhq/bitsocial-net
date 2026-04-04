@@ -9,6 +9,8 @@ const fallbackPort = Number(process.env.DOCS_PORT || 3001);
 const requestedPort = Number(process.env.PORT || fallbackPort);
 const host = process.env.HOST || "127.0.0.1";
 const usingPortless = Boolean(process.env.PORTLESS_URL);
+const docsStartMode = process.env.DOCS_START_MODE === "live" ? "live" : "multilocale";
+let activeChild = null;
 
 function fail(message) {
   console.error(message);
@@ -21,6 +23,44 @@ if (!Number.isInteger(requestedPort) || requestedPort <= 0) {
 
 const port = usingPortless ? requestedPort : await resolvePort(requestedPort);
 
+function spawnChild(args) {
+  return spawn(yarnBin, args, {
+    cwd: repoRoot,
+    env: {
+      ...process.env,
+      HOST: host,
+      PORT: String(port),
+    },
+    stdio: "inherit",
+  });
+}
+
+function runStep(args) {
+  console.log(`Running: ${yarnBin} ${args.join(" ")}`);
+
+  return new Promise((resolve, reject) => {
+    const child = spawnChild(args);
+    activeChild = child;
+
+    child.on("exit", (code, signal) => {
+      if (activeChild === child) {
+        activeChild = null;
+      }
+
+      if (signal) {
+        reject(new Error(`Command exited with signal ${signal}: ${yarnBin} ${args.join(" ")}`));
+        return;
+      }
+
+      if ((code ?? 0) !== 0) {
+        reject(new Error(`Command exited with code ${code ?? 0}: ${yarnBin} ${args.join(" ")}`));
+        return;
+      }
+
+      resolve();
+    });
+  });
+}
 console.log("");
 console.log(`Starting docs preview from ${repoRoot}`);
 if (usingPortless) {
@@ -30,21 +70,43 @@ console.log(`Host URL: http://${host}:${port}`);
 if (!usingPortless && port !== requestedPort) {
   console.log(`Preferred port ${requestedPort} is busy, so this run will use ${port}.`);
 }
+if (docsStartMode === "live") {
+  console.log("Using Docusaurus live dev server (single-locale preview).");
+} else {
+  console.log(
+    "Using built multi-locale preview so localized docs routes and Pagefind resolve locally. Set DOCS_START_MODE=live for faster single-locale HMR.",
+  );
+}
 console.log("");
 
-const child = spawn(yarnBin, ["--cwd", "docs", "start", "--host", host, "--port", String(port)], {
-  cwd: repoRoot,
-  env: {
-    ...process.env,
-    HOST: host,
-    PORT: String(port),
-  },
-  stdio: "inherit",
-});
+if (docsStartMode === "multilocale") {
+  await runStep(["docs:build"]);
+}
+
+const childArgs =
+  docsStartMode === "live"
+    ? ["--cwd", "docs", "start", "--host", host, "--port", String(port)]
+    : [
+        "--cwd",
+        "docs",
+        "serve",
+        "--dir",
+        "../dist/docs",
+        "--no-open",
+        "--host",
+        host,
+        "--port",
+        String(port),
+      ];
+
+console.log(`Running: ${yarnBin} ${childArgs.join(" ")}`);
+
+const child = spawnChild(childArgs);
+activeChild = child;
 
 const forwardSignal = (signal) => {
-  if (!child.killed) {
-    child.kill(signal);
+  if (activeChild && !activeChild.killed) {
+    activeChild.kill(signal);
   }
 };
 

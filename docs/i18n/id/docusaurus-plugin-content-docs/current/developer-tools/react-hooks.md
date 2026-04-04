@@ -1,21 +1,17 @@
 ---
-title: React Hooks
+title: Bereaksi Kait
 description: Pustaka React hooks untuk membangun aplikasi sosial terdesentralisasi pada protokol Bitsocial.
 sidebar_position: 1
 ---
 
-# React Hooks
+# Bereaksi Kait
 
-:::warning Penamaan Warisan
-Paket ini saat ini menggunakan konvensi penamaan lama yang diwarisi dari fork hulunya. Referensi ke "plebbit" dalam kode, API, dan konfigurasi akan dimigrasikan ke "bitsocial" pada rilis mendatang. Fungsionalitas tidak terpengaruh.
-:::
-
-Paket `bitsocial-react-hooks` menyediakan React hooks API yang familier untuk berinteraksi dengan protokol Bitsocial. Ini menangani pengambilan feed, komentar, dan profil penulis, mengelola akun, menerbitkan konten, dan berlangganan komunitas -- semuanya tanpa bergantung pada server pusat.
+Paket `bitsocial-react-hooks` menyediakan API React hooks yang familier untuk berinteraksi dengan protokol Bitsocial. Ini menangani pengambilan feed, komentar, dan profil penulis, mengelola akun, menerbitkan konten, dan berlangganan komunitas -- semuanya tanpa bergantung pada server pusat.
 
 Pustaka ini adalah antarmuka utama yang digunakan oleh [5chan](/apps/5chan/) dan aplikasi klien Bitsocial lainnya.
 
 :::note
-`bitsocial-react-hooks` adalah cabang sementara dari `plebbit/plebbit-react-hooks` yang dikelola untuk pengembangan dengan bantuan AI. Itu dikonsumsi langsung dari GitHub daripada dipublikasikan ke npm.
+`bitsocial-react-hooks` saat ini digunakan langsung dari GitHub daripada dipublikasikan ke npm.
 :::
 
 ## Instalasi
@@ -30,7 +26,7 @@ Ganti `<commit-hash>` dengan komit yang ingin Anda targetkan.
 
 ## Ikhtisar API
 
-Pengait disusun ke dalam kategori fungsional. Di bawah ini adalah ringkasan hook yang paling umum digunakan di setiap kategori. Untuk tanda tangan lengkap, parameter, dan tipe kembalian, lihat [referensi API lengkap di GitHub](https://github.com/bitsocialnet/bitsocial-react-hooks).
+Pengait disusun ke dalam kategori fungsional. Di bawah ini adalah ringkasan hook yang paling umum digunakan di setiap kategori. Untuk tanda tangan lengkap, parameter, dan tipe pengembalian, lihat [referensi API lengkap di GitHub](https://github.com/bitsocialnet/bitsocial-react-hooks).
 
 ### Akun
 
@@ -52,9 +48,9 @@ Ambil dan berinteraksi dengan komentar dan rangkaian pesan individual.
 
 Ambil metadata dan pengaturan komunitas.
 
-- `useSubplebbit(subplebbitAddress?)` -- mengambil komunitas berdasarkan alamat
-- `useSubplebbits(subplebbitAddresses?)` -- mengambil banyak komunitas
-- `useSubplebbitStats(subplebbitAddress?)` -- mengembalikan jumlah pelanggan dan kiriman
+- Kait pencarian komunitas tunggal -- mengambil komunitas berdasarkan alamat
+- Kait pencarian multi-komunitas -- mengambil banyak komunitas
+- Kait statistik komunitas -- mengembalikan jumlah pelanggan dan kiriman
 
 ### Penulis
 
@@ -62,7 +58,7 @@ Cari profil penulis dan metadata.
 
 - `useAuthor(authorAddress?)` -- mengambil profil penulis
 - `useAuthorComments(options?)` -- mengembalikan komentar dari penulis tertentu
-- `useResolvedAuthorAddress(authorAddress?)` -- menyelesaikan alamat yang dapat dibaca manusia (misalnya, ENS) ke alamat protokolnya
+- `useResolvedAuthorAddress(authorAddress?)` -- menyelesaikan alamat yang dapat dibaca manusia (mis., ENS) ke alamat protokolnya
 
 ### Umpan
 
@@ -76,7 +72,7 @@ Berlangganan dan memberi nomor halaman pada feed konten.
 
 Publikasikan konten dan lakukan operasi tulis.
 
-- `usePublishComment(options?)` -- publikasikan komentar atau balasan baru
+- `usePublishComment(options?)` -- mempublikasikan komentar atau balasan baru
 - `usePublishVote(options?)` -- memberikan suara positif atau suara negatif
 - `useSubscribe(options?)` -- berlangganan atau berhenti berlangganan dari komunitas
 
@@ -85,9 +81,9 @@ Publikasikan konten dan lakukan operasi tulis.
 Pantau status koneksi dan berinteraksi dengan daemon Bitsocial jarak jauh.
 
 - `useClientsStates(options?)` -- mengembalikan status koneksi klien IPFS/pubsub
-- `usePlebbitRpcSettings()` -- mengembalikan konfigurasi daemon RPC saat ini
+- Kait pengaturan RPC -- mengembalikan konfigurasi daemon RPC saat ini
 
-## Perkembangan
+## Pembangunan
 
 Untuk mengerjakan perpustakaan hooks secara lokal:
 
@@ -104,5 +100,5 @@ Lihat repositori README untuk perintah pengujian dan pembangunan.
 
 ## Tautan
 
-- **GitHub:** [referensi API lengkap di GitHub](https://github.com/bitsocialnet/bitsocial-react-hooks)
+- **GitHub:** [bitsocialnet/bitsocial-react-hook](https://github.com/bitsocialnet/bitsocial-react-hooks)
 - **Lisensi:** Khusus GPL-2.0

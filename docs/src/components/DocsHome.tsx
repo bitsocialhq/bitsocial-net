@@ -74,7 +74,7 @@ const roadmapCards = [
     ),
     body: tr(
       "docs.home.roadmap.card.phase2.body",
-      "A rewritten proposal for multi-user Bitsocial RPC infrastructure using Bitsocial language instead of old plebbit vocabulary.",
+      "A proposal for multi-user Bitsocial RPC infrastructure with isolated users, scoped permissions, and durable ownership.",
       "Roadmap card description for permissionless public RPC.",
     ),
   },

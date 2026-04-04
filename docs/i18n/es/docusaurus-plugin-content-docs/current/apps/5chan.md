@@ -4,21 +4,17 @@ description: Un tablero de imágenes descentralizado y sin servidor construido s
 sidebar_position: 1
 ---
 
-:::warning[Nombres heredados]
-El código base de este proyecto todavía utiliza el nombre heredado "plebbit" anterior al cambio de marca de Bitsocial. Los nombres de los paquetes, las referencias de API y parte de la terminología interna se actualizarán en una versión futura. La funcionalidad que se describe aquí está actualizada; sólo el nombre está desactualizado.
-:::
-
 # 5chan
 
 5chan es un tablero de imágenes sin servidor, sin administrador y totalmente descentralizado que se ejecuta en el protocolo Bitsocial. Sigue la estructura familiar del directorio del tablero de imágenes al tiempo que introduce la propiedad descentralizada: cualquiera puede crear un tablero y varios tableros pueden competir por el mismo espacio en el directorio a través de un mecanismo de votación.
 
 ## Descargas
 
-| Plataforma | Enlace                               |
-| ---------- | ------------------------------------ |
-| Web        | [5chan.app](https://5chan.app)       |
-| Escritorio | Disponible para Mac, Windows y Linux |
-| Móvil      | Disponible para Android              |
+| Plataforma | Enlace                                |
+| ---------- | ------------------------------------- |
+| Web        | [5chan.aplicación](https://5chan.app) |
+| Escritorio | Disponible para Mac, Windows y Linux  |
+| Móvil      | Disponible para Android               |
 
 ## como funcionan los tableros
 
@@ -34,7 +30,7 @@ Las asignaciones de ranuras de directorio (qué placa aparece en qué ruta) se a
 
 ## Internos
 
-En el fondo, 5chan utiliza la capa API plebbit-js para sus interacciones de protocolo. Como se señaló en la advertencia anterior, estas referencias internas aún llevan nombres heredados anteriores al cambio de marca de Bitsocial.
+En el fondo, 5chan utiliza la capa de cliente del protocolo Bitsocial compartido para sus interacciones de red.
 
 ## Enlaces
 

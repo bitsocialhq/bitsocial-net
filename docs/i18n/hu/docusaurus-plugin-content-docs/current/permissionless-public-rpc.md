@@ -5,11 +5,11 @@ description: Javasolt terv egy nyilvános Bitsocial RPC szolgáltatáshoz elszig
 
 # Engedély nélküli nyilvános RPC
 
-Az eredeti nyilvános RPC-javaslat egy GitHub-kiadásként élt, régi plebbit terminológiával írva. Ez az oldal átírja az ötletet Bitsocial nyelven, és termékszintű javaslatként keretezi, nem pedig a megvalósítási részletek falaként.
+Ez az oldal a nyilvános RPC-t termékszintű Bitsocial-javaslatként keretezi a megvalósítási részletek fala helyett.
 
 ## Egyszerű nyelvű cél
 
-A Bitsocial Forge egy nyilvános RPC szolgáltatást futtathat, amely lehetővé teszi sok felhasználó számára, hogy távolról kezelje saját Bitsocial közösségeit anélkül, hogy az üzemeltetőt e közösségek letéteményesévé tenné.
+A Bitsocial Forge egy nyilvános RPC szolgáltatást futtathat, amely lehetővé teszi sok felhasználó számára, hogy távolról kezelje saját Bitsocial közösségeit anélkül, hogy az üzemeltetőt a közösségek letéteményesévé tenné.
 
 A szolgáltatásnak praktikussá kell tennie a mobil és könnyű ügyfeleket, miközben meg kell őriznie három korlátot:
 
@@ -56,7 +56,7 @@ Magának a nyilvános RPC-nek a felhasználó felé irányuló RPC-viselkedésre
 
 A felhasználói dokumentációnak olyan Bitsocial kifejezéseket kell használnia, mint a **közösség** és **profil**.
 
-A vezetékek szintjén az első bevezetés továbbra is megőrzi a jelenlegi JSON-RPC szállítási és hasznos teher alakját, ahol ez hasznos a kompatibilitás szempontjából. Más szóval: a dokumentumoknak többé nem kell úgy beszélniük, mint a régi plebbit dokumentumoknak, még akkor sem, ha az átmeneti időszak néhány örökölt metódusnevet vagy kérési formát a színfalak mögött tart.
+A vezetékek szintjén az első bevezetés továbbra is megőrizheti a jelenlegi JSON-RPC szállítási és hasznos teher alakját, ahol ez hasznos a kompatibilitás szempontjából. Más szóval: a dokumentumok akkor is maradhatnak Bitsocial-natívak, ha az átmeneti időszak a színfalak mögött tart néhány kompatibilitás-orientált metódusnevet vagy kérési alakzatot.
 
 ## Javasolt engedélycsomag
 
@@ -132,7 +132,7 @@ Az egyik szélső eset sokat számít: ha egy felhasználó feliratkozik egy oly
 
 Az adminisztrációs API unalmas és egyértelmű maradhat:
 
-- listázza a felhasználókat
+- felhasználók listája
 - vizsgáljon meg egy felhasználót
 - felhasználókat hozhat létre vagy frissíthet
 - törölje a felhasználókat
@@ -173,10 +173,10 @@ Az operátor API hitelesítésének teljesen el kell különülnie a végfelhasz
 
 Ha a hitelesítés létrehozása olcsó, előfordulhat, hogy a közszolgáltatásoknak kihívási rétegre van szükségük a hitelesítési adatok kiadása előtt. Az egyik lehetséges út magának a közösségi kihívási modellnek az újrafelhasználása, így a hitelesítő adatok kiadása ugyanazt a visszaélés-ellenes filozófiát örökli, mint a hálózat többi része.
 
-### Örökségi névadás
+### A migráció részletei
 
-Egyes korai megvalósítások a kompatibilitás érdekében belsőleg is felfedhetik a régi metódusneveket. Ezt migrációs részletként kell kezelni, nem pedig a Bitsocial dokumentumok állandó nyilvános szókészleteként.
+Egyes korai megvalósítások belsőleg továbbra is felfedhetik a kompatibilitás-orientált metódusneveket. Ezt migrációs részletként kell kezelni, nem pedig a Bitsocial dokumentumok állandó nyilvános szókészleteként.
 
 ## Összegzés
 
-This proposal is really about one thing: making public RPC infrastructure useful without making it custodial. Egy jó nyilvános Bitsocial RPC-nek opcionális segítségnek kell lennie a közösségek működtetésében, nem pedig egy új központi platformnak, amely a hátsó ajtón keresztül visszaszerzi a tulajdonjogot.
+Ez a javaslat valójában egy dologról szól: a nyilvános RPC-infrastruktúra hasznossá tétele anélkül, hogy őrizetbe vételre kerülne. Egy jó nyilvános Bitsocial RPC-nek opcionális segítségnek kell lennie a közösségek működtetésében, nem pedig egy új központi platformnak, amely a hátsó ajtón keresztül visszaszerzi a tulajdonjogot.

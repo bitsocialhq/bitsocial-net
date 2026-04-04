@@ -6,13 +6,9 @@ sidebar_position: 2
 
 # CLI
 
-:::warning Nomenclatura heredada
-Este paquete actualmente utiliza convenciones de nomenclatura heredadas de su dependencia ascendente. Las referencias a "plebbit" en comandos, resultados y configuración se migrarán a "bitsocial" en una versión futura. La funcionalidad no se ve afectada.
-:::
-
 `bitsocial-cli` es una herramienta de línea de comandos para interactuar con el backend del protocolo Bitsocial. Le permite ejecutar un demonio P2P local, crear y configurar comunidades y publicar contenido, todo desde la terminal.
 
-Está construido sobre `plebbit-js` y lo utilizan [5chan](/apps/5chan/) y [Seedit](/apps/seedit/) para la creación de comunidades y la gestión de nodos.
+Está construido sobre la capa de cliente del protocolo Bitsocial compartido y lo utilizan [5chan](/apps/5chan/) y [Seeditar](/apps/seedit/) para la creación de comunidades y la gestión de nodos.
 
 ## Instalación
 
@@ -36,22 +32,22 @@ bitsocial-cli daemon
 
 En el primer lanzamiento, el demonio genera enlaces a **WebUI**, una interfaz gráfica basada en navegador para administrar su nodo, comunidades y configuraciones. Esto es útil si prefiere una GUI a los comandos de terminal.
 
-## Comandos clave
+## Acciones clave
 
-| Comando             | Descripción                                                               |
-| ------------------- | ------------------------------------------------------------------------- |
-| `daemon`            | Iniciar el nodo P2P de Bitsocial                                          |
-| `create subplebbit` | Crear una nueva comunidad                                                 |
-| `subplebbit edit`   | Actualizar la configuración de la comunidad (título, descripción, reglas) |
-| `subplebbit list`   | Listar comunidades alojadas en este nodo                                  |
-| `subplebbit start`  | Comience a servir a una comunidad específica                              |
-| `subplebbit stop`   | Dejar de servir a una comunidad específica                                |
+| Acción                     | Descripción                                                               |
+| -------------------------- | ------------------------------------------------------------------------- |
+| Iniciar el demonio         | Lanzar el nodo P2P de Bitsocial                                           |
+| Crear una comunidad        | Crear una nueva comunidad                                                 |
+| Editar una comunidad       | Actualizar la configuración de la comunidad (título, descripción, reglas) |
+| Listar comunidades locales | Listar comunidades alojadas en este nodo                                  |
+| Iniciar una comunidad      | Comience a servir a una comunidad específica                              |
+| Detener una comunidad      | Dejar de servir a una comunidad específica                                |
 
-Ejecute cualquier comando con `--help` para ver las opciones e indicadores disponibles:
+Ejecute la CLI con `--help` para ver los nombres de comandos actuales y los indicadores expuestos por su versión instalada:
 
 ```bash
+bitsocial-cli --help
 bitsocial-cli daemon --help
-bitsocial-cli create subplebbit --help
 ```
 
 ## Flujo de trabajo típico
@@ -59,20 +55,14 @@ bitsocial-cli create subplebbit --help
 Un flujo de configuración común para albergar una nueva comunidad:
 
 ```bash
-# 1. Inicie el demonio
+# 1. Start the daemon
 bitsocial-cli daemon
 
-# 2. En otra terminal, crea una comunidad.
-bitsocial-cli create subplebbit
-
-# 3. Configurar la comunidad
-bitsocial-cli subplebbit edit <address> --title "My Community" --description "A decentralized forum"
-
-# 4. Empieza a servirlo
-bitsocial-cli subplebbit start <address>
+# 2. In another terminal, inspect the available community-management commands
+bitsocial-cli --help
 ```
 
-La comunidad ahora está activa en la red Bitsocial y es accesible desde cualquier cliente compatible.
+A partir de ahí, utilice los comandos de administración de comunidades de la versión instalada para crear, configurar y comenzar a brindar servicios a una comunidad. Una vez iniciada, la comunidad está activa en la red Bitsocial y es accesible desde clientes compatibles.
 
 ## Enlaces
 

@@ -1,21 +1,17 @@
 ---
-title: React Hooks
+title: Réagir aux crochets
 description: Bibliothèque de hooks React pour créer des applications sociales décentralisées sur le protocole Bitsocial.
 sidebar_position: 1
 ---
 
-# React Hooks
-
-:::warning Dénomination héritée
-Ce package utilise actuellement des conventions de dénomination héritées de son fork en amont. Les références à « plebbit » dans le code, les API et la configuration seront migrées vers « bitsocial » dans une prochaine version. La fonctionnalité n’est pas affectée.
-:::
+# Réagir aux crochets
 
 Le package `bitsocial-react-hooks` fournit une API de hooks React familière pour interagir avec le protocole Bitsocial. Il gère la récupération des flux, des commentaires et des profils d'auteur, la gestion des comptes, la publication de contenu et l'abonnement à des communautés, le tout sans dépendre d'un serveur central.
 
 Cette bibliothèque est l'interface principale utilisée par [5chan](/apps/5chan/) et d'autres applications client Bitsocial.
 
 :::note
-`bitsocial-react-hooks` est un fork temporaire de `plebbit/plebbit-react-hooks` maintenu pour le développement assisté par l'IA. Il est consommé directement depuis GitHub plutôt que publié sur npm.
+`bitsocial-react-hooks` est actuellement consommé directement depuis GitHub plutôt que publié sur npm.
 :::
 
 ## Mise en place
@@ -52,9 +48,9 @@ Récupérez et interagissez avec les commentaires et les fils de discussion indi
 
 Récupérez les métadonnées et les paramètres de la communauté.
 
-- `useSubplebbit(subplebbitAddress?)` -- récupère une communauté par adresse
-- `useSubplebbits(subplebbitAddresses?)` -- récupère plusieurs communautés
-- `useSubplebbitStats(subplebbitAddress?)` -- renvoie le nombre d'abonnés et de publications
+- Hook de recherche pour une seule communauté : récupère une communauté par adresse
+- Hook de recherche multicommunautaire : récupère plusieurs communautés
+- Crochet de statistiques de la communauté : renvoie le nombre d'abonnés et de publications
 
 ### Auteurs
 
@@ -72,7 +68,7 @@ Abonnez-vous et pagination des flux de contenu.
 - `useBufferedFeeds(feedOptions?)` -- pré-tamponne plusieurs flux pour un rendu plus rapide
 - `useAuthorFeed(authorAddress?)` -- renvoie un flux de publications d'un auteur spécifique
 
-### Actes
+### Actions
 
 Publiez du contenu et effectuez des opérations d’écriture.
 
@@ -85,7 +81,7 @@ Publiez du contenu et effectuez des opérations d’écriture.
 Surveillez l’état de la connexion et interagissez avec un démon Bitsocial distant.
 
 - `useClientsStates(options?)` -- renvoie l'état de connexion des clients IPFS/pubsub
-- `usePlebbitRpcSettings()` -- renvoie la configuration actuelle du démon RPC
+- Hook de paramètres RPC – renvoie la configuration actuelle du démon RPC
 
 ## Développement
 
@@ -104,5 +100,5 @@ Reportez-vous au README du référentiel pour les commandes de test et de géné
 
 ## Liens
 
-- **GitHub :** [référence complète de l'API sur GitHub](https://github.com/bitsocialnet/bitsocial-react-hooks)
+- **GitHub :** [bitsocialnet/bitsocial-react-hooks](https://github.com/bitsocialnet/bitsocial-react-hooks)
 - **Licence :** GPL-2.0 uniquement

@@ -1,16 +1,12 @@
 ---
-title: EVM Contract Call Challenge
+title: Desafío de llamada de contrato EVM
 description: Desafío antispam que verifica las condiciones en cadena llamando a un contrato inteligente EVM.
 sidebar_position: 4
 ---
 
-# EVM Contract Call Challenge
+# Desafío de llamada de contrato EVM
 
-:::warning Nomenclatura heredada
-Este paquete se publicó originalmente bajo el alcance `@plebbit`. Se le ha cambiado el nombre a `@bitsocial/evm-contract-challenge`. Es posible que aún aparezcan referencias al nombre anterior en documentación o bases de código más antiguas.
-:::
-
-EVM Contract Call Challenge es un mecanismo antispam que verifica las condiciones en la cadena antes de permitir una publicación. Originalmente extraído de `plebbit-js` como un paquete independiente, permite a los propietarios de comunidades exigir a los autores que cumplan con criterios definidos por contratos inteligentes (por ejemplo, mantener un saldo mínimo de tokens) para poder publicar.
+EVM Contract Call Challenge es un mecanismo antispam que verifica las condiciones en la cadena antes de permitir una publicación. Permite a los propietarios de comunidades exigir a los autores que cumplan con criterios definidos por contratos inteligentes (por ejemplo, mantener un saldo mínimo de tokens) para poder publicar.
 
 **Código fuente:** [github.com/bitsocialnet/evm-contract-call](https://github.com/bitsocialnet/evm-contract-call)
 
@@ -18,7 +14,6 @@ EVM Contract Call Challenge es un mecanismo antispam que verifica las condicione
 
 - **Nodo.js** >= 22
 - **Solo ESM**: este paquete no incluye compilaciones de CommonJS.
-- **Dependencia del par en tiempo de ejecución:** `@plebbit/plebbit-js` (migrando a `@pkc/pkc-js`)
 
 ## Instalación
 
@@ -56,4 +51,4 @@ El desafío de llamada de contrato EVM es ideal para:
 - **Acceso controlado por NFT** donde se requiere la propiedad de un NFT específico.
 - **Espacios de gobernanza DAO** donde la participación se limita a los poseedores de tokens de gobernanza.
 
-Para las comunidades que no dependen de la identidad en cadena, considere [Spam Blocker](./spam-blocker.md) o [Voucher Challenge](./voucher-challenge.md) en su lugar.
+Para las comunidades que no dependen de la identidad en cadena, considere [Bloqueador de spam](./spam-blocker.md) o [Desafío de vales](./voucher-challenge.md) en su lugar.

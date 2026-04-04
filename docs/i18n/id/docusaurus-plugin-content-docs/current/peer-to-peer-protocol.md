@@ -63,14 +63,14 @@ Jaringan pubsub terbuka rentan terhadap banjir spam. Bitsocial memecahkan masala
 
 Sistem tantangannya fleksibel: setiap operator komunitas mengonfigurasi kebijakannya sendiri. Pilihannya meliputi:
 
-| Jenis tantangan | Cara kerjanya |
-| ----------------- | ------------------------------------------------- |
-| **Captcha** | Teka-teki visual atau interaktif disajikan dalam aplikasi |
-| **Pembatasan tarif** | Batasi postingan per rentang waktu per identitas |
-| **Gerbang Token** | Memerlukan bukti saldo token tertentu |
-| **Pembayaran** | Memerlukan pembayaran kecil per posting |
+| Jenis tantangan           | Cara kerjanya                                                         |
+| ------------------------- | --------------------------------------------------------------------- |
+| **Captcha**               | Teka-teki visual atau interaktif disajikan dalam aplikasi             |
+| **Pembatasan tarif**      | Batasi postingan per rentang waktu per identitas                      |
+| **Gerbang Token**         | Memerlukan bukti saldo token tertentu                                 |
+| **Pembayaran**            | Memerlukan pembayaran kecil per posting                               |
 | **Daftar yang diizinkan** | Hanya identitas yang telah disetujui sebelumnya yang dapat memposting |
-| **Kode khusus** | Kebijakan apa pun yang dapat diungkapkan dalam kode |
+| **Kode khusus**           | Kebijakan apa pun yang dapat diungkapkan dalam kode                   |
 
 Rekan yang menyampaikan terlalu banyak upaya tantangan yang gagal akan diblokir dari topik pubsub, sehingga mencegah serangan penolakan layanan pada lapisan jaringan.
 
@@ -101,11 +101,11 @@ sequenceDiagram
 
 1. Pengguna membuka aplikasi dan melihat antarmuka sosial.
 2. Klien bergabung dengan jaringan peer-to-peer dan membuat kueri DHT untuk setiap komunitas pengguna
-berikut. Kueri masing-masing membutuhkan waktu beberapa detik tetapi dijalankan secara bersamaan.
+   berikut. Kueri masing-masing membutuhkan waktu beberapa detik tetapi dijalankan secara bersamaan.
 3. Setiap kueri mengembalikan penunjuk konten dan metadata terbaru komunitas (judul, deskripsi,
-daftar moderator, konfigurasi tantangan).
+   daftar moderator, konfigurasi tantangan).
 4. Klien mengambil konten posting sebenarnya menggunakan pointer tersebut, lalu merender semuanya dalam a
-antarmuka sosial yang familiar.
+   antarmuka sosial yang familiar.
 
 ---
 
@@ -154,7 +154,7 @@ sequenceDiagram
 7. Klien mengirimkan postingan beserta jawaban tantangan melalui pubsub.
 8. Node operator komunitas memvalidasi jawabannya. Jika benar, postingan diterima.
 9. Node menyiarkan hasilnya melalui pubsub sehingga rekan jaringan mengetahui cara meneruskannya
-pesan dari pengguna ini.
+   pesan dari pengguna ini.
 10. Node memperbarui konten komunitas di alamat kunci publiknya.
 11. Dalam beberapa menit, setiap pembaca komunitas menerima pembaruan.
 
@@ -191,10 +191,10 @@ graph TB
     PK --> TR
 ```
 
-| Lapisan | Peran |
-| ------------ | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| **Aplikasi** | Antarmuka pengguna. Ada banyak aplikasi yang bisa dibuat, masing-masing memiliki desainnya sendiri, dan semuanya berbagi komunitas dan identitas yang sama.                       |
-| **Protokol** | Menentukan cara komunitas ditangani, cara postingan dipublikasikan, dan cara mencegah spam.                                                |
+| Lapisan      | Peran                                                                                                                                                       |
+| ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Aplikasi** | Antarmuka pengguna. Ada banyak aplikasi yang bisa dibuat, masing-masing memiliki desainnya sendiri, dan semuanya berbagi komunitas dan identitas yang sama. |
+| **Protokol** | Menentukan cara komunitas ditangani, cara postingan dipublikasikan, dan cara mencegah spam.                                                                 |
 | **Jaringan** | Infrastruktur peer-to-peer yang mendasari: DHT untuk penemuan, gosipsub untuk pengiriman pesan secara real-time, dan transfer konten untuk pertukaran data. |
 
 ---
@@ -243,7 +243,7 @@ Imbalannya adalah Bitsocial tidak menjamin ketersediaan konten lama secara perma
 Jaringan gabungan (seperti email atau platform berbasis ActivityPub) meningkatkan sentralisasi tetapi masih memiliki keterbatasan struktural:
 
 - **Ketergantungan server** — setiap komunitas memerlukan server dengan domain, TLS, dan berkelanjutan
-pemeliharaan
+  pemeliharaan
 - **Kepercayaan Admin** — admin server memiliki kontrol penuh atas akun pengguna dan konten
 - **Fragmentasi** — berpindah antar server sering kali berarti kehilangan pengikut, riwayat, atau identitas
 - **Biaya** — seseorang harus membayar untuk hosting, yang menciptakan tekanan terhadap konsolidasi

@@ -32,13 +32,13 @@ Ha az 5chan nem egyezik a kívánt közösséggel vagy felülettel, hozzon létr
    - [Bitsocial React horgok](../react-hooks/)
    - [Bitsocial CLI](../cli/)
 2. Döntse el, hogy valójában milyen imageboardot készít.
-Először válassza ki a tábla szerkezetét, az identitásfeltevéseket, a moderációs modellt, a felfedezési folyamatot és a vizuális nyelvet.
+   Először válassza ki a tábla szerkezetét, az identitásfeltevéseket, a moderációs modellt, a felfedezési folyamatot és a vizuális nyelvet.
 3. Válassza ki a projektnek megfelelő megvalósítási utat.
-Fork 5chan, ha gyorsan szeretne mozogni egy ismerős imageboard alappal. Kezdje újra, ha a felhasználói felületnek vagy az interakciós modellnek gyökeresen eltérőnek kell lennie.
+   Fork 5chan, ha gyorsan szeretne mozogni egy ismerős imageboard alappal. Kezdje újra, ha a felhasználói felületnek vagy az interakciós modellnek gyökeresen eltérőnek kell lennie.
 4. Szállítson egy keskeny első verziót.
-Egyetlen ügyfél, aki jól szolgál egy valódi közösséget, értékesebb, mint egy homályos klón, amelynek célja, hogy mindenki elégedett legyen.
+   Egyetlen ügyfél, aki jól szolgál egy valódi közösséget, értékesebb, mint egy homályos klón, amelynek célja, hogy mindenki elégedett legyen.
 5. Tegye közzé az eredményt, és hagyja, hogy a közösségek teszteljék.
-A Bitsocial javul, amikor a külső építők véleményes ügyfeleket szállítanak, akik versenyeznek a termékminőségben, ahelyett, hogy egy hivatalos alkalmazásra várnának, hogy mindent megtegyen.
+   A Bitsocial javul, amikor a külső építők véleményes ügyfeleket szállítanak, akik versenyeznek a termékminőségben, ahelyett, hogy egy hivatalos alkalmazásra várnának, hogy mindent megtegyen.
 
 ## Tervezési elv
 

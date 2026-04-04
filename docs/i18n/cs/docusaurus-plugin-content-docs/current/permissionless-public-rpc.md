@@ -5,7 +5,7 @@ description: Navrhovaný design pro veřejnou službu Bitsocial RPC s izolovaný
 
 # Veřejné RPC bez povolení
 
-Původní veřejný návrh RPC žil jako záležitost GitHubu napsaná starou plebbitovou terminologií. Tato stránka přepisuje tuto myšlenku do jazyka Bitsocial a zarámuje ji jako návrh na úrovni produktu namísto stěny detailů implementace.
+Tato stránka rámuje veřejné RPC jako návrh Bitsocial na úrovni produktu namísto stěny detailů implementace.
 
 ## Cíl v prostém jazyce
 
@@ -19,13 +19,13 @@ Služba by měla učinit mobilní a nenáročné klienty praktickými při zacho
 
 ## Jaký problém to řeší
 
-Nejjednodušší model RPC je dnes obvykle vše nebo nic: jeden auth klíč, jedna autoritní doména, plný přístup. To funguje pro jednoho operátora, ale ne pro veřejnou službu pro více uživatelů.
+Dnes je nejjednodušším modelem RPC obvykle vše nebo nic: jeden auth klíč, jedna autoritní doména, plný přístup. To funguje pro jednoho operátora, ale ne pro veřejnou službu pro více uživatelů.
 
 Veřejné RPC bez oprávnění potřebuje silnější model:
 
 - jedna služba může hostit mnoho uživatelů
 - každý uživatel má své vlastní komunity a limity
-- zásady definované operátorem mohou zabránit zneužití
+- operátorem definované zásady mohou zabránit zneužití
 - uživatel se může později odstěhovat nebo se sám hostit
 
 ## Základní model
@@ -56,7 +56,7 @@ Samotné veřejné RPC by mělo zůstat zaměřeno na chování RPC vůči uživ
 
 Dokumentace pro uživatele by měla používat výrazy Bitsocial, jako jsou **komunita** a **profil**.
 
-Na úrovni drátu může první zavedení stále zachovat aktuální tvar přenosu a užitečného zatížení JSON-RPC, pokud je to užitečné pro kompatibilitu. Jinými slovy: dokumenty už nemusejí mluvit jako staré plebbitské dokumenty, i když přechodné období zachovává některé starší názvy metod nebo tvary požadavků v zákulisí.
+Na úrovni drátu může první zavedení stále zachovat aktuální tvar přenosu a užitečného zatížení JSON-RPC, pokud je to užitečné pro kompatibilitu. Jinými slovy: dokumenty mohou zůstat bitsociální, i když přechodné období zachovává některé názvy metod orientované na kompatibilitu nebo tvary požadavků v zákulisí.
 
 ## Navrhovaný balíček oprávnění
 
@@ -116,7 +116,7 @@ client connects with auth credential
 -> client proceeds with the subset of actions it is allowed to use
 ```
 
-Povědomí o povolení by mělo zůstat nepovinné. Klient, který ignoruje upozornění, se může i nadále chovat správně tím, že ze serveru zpracuje standardní selhání autorizace.
+Povědomí o povolení by mělo zůstat nepovinné. Klient, který ignoruje upozornění, se může stále chovat správně tím, že ze serveru zpracuje standardní selhání autorizace.
 
 ## Vymáhání vlastnictví
 
@@ -165,7 +165,7 @@ Ověřování pro toto rozhraní API operátora by mělo být zcela oddělené o
 
 - odeslat administrační panel
 - testovat kontroly zneužití
-- zpřísnit omezování rychlosti a kvóty úložiště
+- zpřísnit omezení rychlosti a kvóty úložiště
 
 ## Otevřené otázky
 
@@ -173,10 +173,10 @@ Ověřování pro toto rozhraní API operátora by mělo být zcela oddělené o
 
 Pokud je vytvoření ověření levné, mohou veřejné služby vyžadovat před vydáním pověření vrstvu výzvy. Jednou z možných cest je opětovné použití samotného modelu komunitní výzvy, takže vydávání pověření zdědí stejnou filozofii proti zneužívání jako zbytek sítě.
 
-### Starší pojmenování
+### Detaily migrace
 
-Některé rané implementace mohou stále odhalovat starší názvy metod interně kvůli kompatibilitě. S tím by se mělo zacházet jako s detailem migrace, nikoli jako s trvalým veřejným slovníkem dokumentů Bitsocial.
+Některé rané implementace mohou stále odhalovat názvy metod orientovaných na kompatibilitu interně. S tím by se mělo zacházet jako s detailem migrace, nikoli jako s trvalým veřejným slovníkem dokumentů Bitsocial.
 
 ## Shrnutí
 
-Tento návrh je ve skutečnosti o jedné věci: učinit veřejnou infrastrukturu RPC užitečnou, aniž by byla střežená. Dobrý veřejný Bitsocial RPC by se měl cítit jako volitelná pomoc pro provozující komunity, ne jako nová centrální platforma, která zpětně získává vlastnictví zadními vrátky.
+This proposal is really about one thing: making public RPC infrastructure useful without making it custodial. Dobrý veřejný Bitsocial RPC by se měl cítit jako volitelná pomoc pro provozující komunity, ne jako nová centrální platforma, která zpětně získává vlastnictví zadními vrátky.

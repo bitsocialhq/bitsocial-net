@@ -149,7 +149,8 @@
         "description": "Imageboard là dạng mạng xã hội đơn giản nhất để phi tập trung hóa: đăng ẩn danh, ít bảng mặc định, và không có đồ thị hồ sơ. Đó là lý do chúng tôi ra mắt 5chan, ứng dụng Bitsocial đầu tiên. 5chan chứng minh Bitsocial có thể thay thế imageboard tập trung trong khi loại bỏ quản trị viên toàn cục khỏi phương trình.",
         "callout": {
           "description": "5chan là điểm chứng minh đầu tiên, không phải vạch đích. Chúng tôi muốn có nhiều client imageboard với văn hóa, giao diện và mặc định khác nhau: các bảng kiểu altchan, thử nghiệm ưu tiên di động, cộng đồng ngách, và những fork giải quyết các nhu cầu mà 5chan sẽ không bao giờ làm được.",
-          "ctaLabel": "Tạo phiên bản của riêng bạn"
+          "ctaLabel": "Tạo phiên bản của riêng bạn",
+          "separator": "- hoặc -"
         }
       },
       "phase2": {
@@ -185,5 +186,25 @@
   "home": {
     "dismissDevOnlyRouteNotice": "Đóng thông báo",
     "devOnlyRouteNotice": "{{path}} vẫn đang trong quá trình xây dựng. Bạn đã được chuyển hướng về trang chủ."
+  },
+  "apps": {
+    "allProjects": "All Projects",
+    "allProjectsDescription": "The full Bitsocial ecosystem, from user-facing clients to protocol tools.",
+    "linksSectionDescription": "Launch the app, grab a build, or use a mirror without leaving the directory.",
+    "searchPlaceholder": "Search apps, tools, or tags",
+    "clearSearch": "Clear search",
+    "clearFilters": "Clear filters",
+    "noMatches": "No projects match these filters",
+    "noMatchesDescription": "Try a different search, platform, or category combination.",
+    "viewDetails": "Details",
+    "readyToUse": "Ready to use",
+    "webLinks": "Open on the web",
+    "mobileDownloads": "Mobile downloads",
+    "desktopDownloads": "Desktop downloads",
+    "extraDownloads": "Extra builds",
+    "subtitle": "Open the clients, tools, and modules already live on Bitsocial. Search fast, filter by platform, and jump straight into the links that matter.",
+    "experimental": "Experimental",
+    "sectionLabel": "Danh mục ứng dụng",
+    "directoryLabel": "Danh mục"
   }
 }

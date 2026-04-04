@@ -32,13 +32,13 @@ Si 5chan no coincideix amb la comunitat o la interfície que voleu, creeu un cli
    - [Ganxos Bitsocial React](../react-hooks/)
    - [CLI de bitsocial](../cli/)
 2. Decidiu quin tipus de tauler d'imatge esteu construint realment.
-Trieu primer l'estructura del tauler, els supòsits d'identitat, el model de moderació, el flux de descobriment i el llenguatge visual.
+   Trieu primer l'estructura del tauler, els supòsits d'identitat, el model de moderació, el flux de descobriment i el llenguatge visual.
 3. Trieu la ruta d'implementació que s'adapti al projecte.
-Fork 5chan si voleu moureu ràpidament amb una base de tauler d'imatges coneguda. Comenceu de nou si la interfície d'usuari o el model d'interacció han de ser radicalment diferents.
+   Fork 5chan si voleu moureu ràpidament amb una base de tauler d'imatges coneguda. Comenceu de nou si la interfície d'usuari o el model d'interacció han de ser radicalment diferents.
 4. Envieu una primera versió estreta.
-Un client que serveix bé a una comunitat real és més valuós que un clon vague destinat a satisfer tothom.
+   Un client que serveix bé a una comunitat real és més valuós que un clon vague destinat a satisfer tothom.
 5. Publiqueu el resultat i deixeu que les comunitats el provi.
-Bitsocial millora quan els constructors externs envien clients amb opinions que competeixen per la qualitat del producte en lloc d'esperar que una aplicació oficial ho faci tot.
+   Bitsocial millora quan els constructors externs envien clients amb opinions que competeixen per la qualitat del producte en lloc d'esperar que una aplicació oficial ho faci tot.
 
 ## Principi de disseny
 

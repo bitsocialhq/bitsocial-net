@@ -4,10 +4,6 @@ description: Et serverløst, desentralisert bildebrett bygget på Bitsocial-prot
 sidebar_position: 1
 ---
 
-:::warning[Eldre navngivning]
-Dette prosjektets kodebase bruker fortsatt den gamle "plebbit"-navningen fra før Bitsocial-ommerket. Pakkenavn, API-referanser og noe intern terminologi vil bli oppdatert i en fremtidig utgivelse. Funksjonen som er beskrevet her er aktuell - bare navngivningen er utdatert.
-:::
-
 # 5chan
 
 5chan er et serverløst, adminløst og fullstendig desentralisert bildebord som kjører på Bitsocial-protokollen. Den følger den kjente imageboard-katalogstrukturen samtidig som den introduserer desentralisert eierskap - hvem som helst kan opprette et styre, og flere styrene kan konkurrere om samme katalogspor gjennom en stemmemekanisme.
@@ -22,11 +18,11 @@ Dette prosjektets kodebase bruker fortsatt den gamle "plebbit"-navningen fra fø
 
 ## Hvordan styrene fungerer
 
-5chan organiserer innhold i tavler ved hjelp av et klassisk katalogoppsett (f.eks. `/b/`, `/g/`). I motsetning til tradisjonelle bildetavler hvor en sentral administrator kontrollerer hvert brett, lar 5chan enhver bruker lage og fullt ut eie sitt eget brett. Når flere brett målretter mot samme katalogplass, konkurrerer de om den posisjonen gjennom å stemme.
+5chan organiserer innhold i tavler ved hjelp av en klassisk katalogoppsett (f.eks. `/b/`, `/g/`). I motsetning til tradisjonelle bildetavler hvor en sentral administrator kontrollerer hvert brett, lar 5chan enhver bruker lage og fullt ut eie sitt eget brett. Når flere brett målretter mot samme katalogplass, konkurrerer de om den posisjonen gjennom å stemme.
 
 ### Å lage et brett
 
-For å opprette et nytt brett, må du kjøre `bitsocial-cli` som en node-til-node-node. Dette sikrer at styret ditt er vert på en desentralisert måte uten å stole på noen sentral server.
+For å opprette et nytt styre, må du kjøre `bitsocial-cli` som en node-til-node-node. Dette sikrer at styret ditt er vert på en desentralisert måte uten å stole på noen sentral server.
 
 ### Katalogoppdrag
 
@@ -34,7 +30,7 @@ Katalogsportilordninger (hvilket bord vises på hvilken bane) administreres for 
 
 ## Internaler
 
-Under panseret bruker 5chan plebbit-js API-laget for sine protokollinteraksjoner. Som nevnt i advarselen ovenfor, har disse interne referansene fortsatt eldre navn som går før Bitsocial-rebranden.
+Under panseret bruker 5chan det delte Bitsocial-protokollklientlaget for sine nettverksinteraksjoner.
 
 ## Lenker
 

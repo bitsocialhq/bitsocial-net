@@ -149,7 +149,8 @@
         "description": "Imageboardy to najprostsza forma mediów społecznościowych do decentralizacji: anonimowe posty, kilka domyślnych boardów i brak grafu profili. Dlatego uruchamiamy 5chan, pierwszą aplikację Bitsocial. 5chan pokazuje, że Bitsocial może zastąpić scentralizowane imageboardy, usuwając z równania globalnych administratorów.",
         "callout": {
           "description": "5chan to pierwszy dowód, a nie linia mety. Chcemy wielu klientów imageboardów o różnych kulturach, interfejsach i domyślnych ustawieniach: tablic w stylu altchan, eksperymentów mobile-first, niszowych społeczności i forków, które rozwiążą potrzeby, których 5chan nigdy nie rozwiąże.",
-          "ctaLabel": "Zbuduj własny"
+          "ctaLabel": "Zbuduj własny",
+          "separator": "- lub -"
         }
       },
       "phase2": {
@@ -185,5 +186,25 @@
   "home": {
     "devOnlyRouteNotice": "{{path}} jest nadal w budowie. Zostałeś przekierowany na stronę główną.",
     "dismissDevOnlyRouteNotice": "Zamknij powiadomienie"
+  },
+  "apps": {
+    "allProjects": "All Projects",
+    "allProjectsDescription": "The full Bitsocial ecosystem, from user-facing clients to protocol tools.",
+    "linksSectionDescription": "Launch the app, grab a build, or use a mirror without leaving the directory.",
+    "searchPlaceholder": "Search apps, tools, or tags",
+    "clearSearch": "Clear search",
+    "clearFilters": "Clear filters",
+    "noMatches": "No projects match these filters",
+    "noMatchesDescription": "Try a different search, platform, or category combination.",
+    "viewDetails": "Details",
+    "readyToUse": "Ready to use",
+    "webLinks": "Open on the web",
+    "mobileDownloads": "Mobile downloads",
+    "desktopDownloads": "Desktop downloads",
+    "extraDownloads": "Extra builds",
+    "subtitle": "Open the clients, tools, and modules already live on Bitsocial. Search fast, filter by platform, and jump straight into the links that matter.",
+    "experimental": "Experimental",
+    "sectionLabel": "Katalog aplikacji",
+    "directoryLabel": "Katalog"
   }
 }

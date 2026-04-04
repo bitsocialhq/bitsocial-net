@@ -63,14 +63,14 @@ Een open pubsub-netwerk is kwetsbaar voor spamoverstromingen. Bitsocial lost dit
 
 Het challenge-systeem is flexibel: elke gemeenschapsoperator configureert zijn eigen beleid. Opties zijn onder meer:
 
-| Uitdagingstype | Hoe het werkt |
-| ----------------- | ------------------------------------------------- |
-| **Captcha** | Visuele of interactieve puzzel gepresenteerd in de app |
-| **Snelheidslimiet** | Beperk berichten per tijdvenster per identiteit |
-| **Tokenpoort** | Bewijs van saldo van een specifiek token vereisen |
-| **Betaling** | Vereisen een kleine betaling per post |
-| **Toelatingslijst** | Alleen vooraf goedgekeurde identiteiten kunnen |
-| **Aangepaste code** | Elk beleid dat in code kan worden uitgedrukt |
+| Uitdagingstype      | Hoe het werkt                                          |
+| ------------------- | ------------------------------------------------------ |
+| **Captcha**         | Visuele of interactieve puzzel gepresenteerd in de app |
+| **Snelheidslimiet** | Beperk berichten per tijdvenster per identiteit        |
+| **Tokenpoort**      | Bewijs van saldo van een specifiek token vereisen      |
+| **Betaling**        | Vereisen een kleine betaling per post                  |
+| **Toelatingslijst** | Alleen vooraf goedgekeurde identiteiten kunnen         |
+| **Aangepaste code** | Elk beleid dat in code kan worden uitgedrukt           |
 
 Peers die te veel mislukte uitdagingspogingen doorgeven, worden geblokkeerd voor het pubsub-onderwerp, waardoor denial-of-service-aanvallen op de netwerklaag worden voorkomen.
 
@@ -101,11 +101,11 @@ sequenceDiagram
 
 1. De gebruiker opent de app en ziet een sociale interface.
 2. De client sluit zich aan bij het peer-to-peer-netwerk en maakt een DHT-query voor elke community van de gebruiker
-volgt. Query's duren elk een paar seconden, maar worden gelijktijdig uitgevoerd.
+   volgt. Query's duren elk een paar seconden, maar worden gelijktijdig uitgevoerd.
 3. Elke zoekopdracht retourneert de nieuwste inhoudsaanwijzers en metagegevens van de community (titel, beschrijving,
-moderatorlijst, uitdagingsconfiguratie).
+   moderatorlijst, uitdagingsconfiguratie).
 4. De client haalt de daadwerkelijke berichtinhoud op met behulp van deze verwijzingen en geeft alles vervolgens weer in een
-vertrouwde sociale interface.
+   vertrouwde sociale interface.
 
 ---
 
@@ -154,7 +154,7 @@ sequenceDiagram
 7. De klant verzendt het bericht samen met het uitdagingsantwoord via pubsub.
 8. Het knooppunt van de communityoperator valideert het antwoord. Indien correct, wordt de post geaccepteerd.
 9. Het knooppunt zendt het resultaat uit via pubsub, zodat netwerkgenoten weten dat ze moeten doorgaan met doorgeven
-berichten van deze gebruiker.
+   berichten van deze gebruiker.
 10. Het knooppunt werkt de inhoud van de community bij op het adres met de publieke sleutel.
 11. Binnen een paar minuten ontvangt elke lezer van de community de update.
 
@@ -191,11 +191,11 @@ graph TB
     PK --> TR
 ```
 
-| Laag | Rol |
-| ------------ | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| **App** | Gebruikersinterface. Er kunnen meerdere apps bestaan, elk met een eigen ontwerp, die allemaal dezelfde gemeenschappen en identiteiten delen.                       |
-| **Protocol** | Definieert hoe communities worden aangesproken, hoe berichten worden gepubliceerd en hoe spam wordt voorkomen.                                                |
-| **Netwerk** | De onderliggende peer-to-peer-infrastructuur: DHT voor ontdekking, gossipsub voor realtime berichtenuitwisseling en inhoudsoverdracht voor gegevensuitwisseling. |
+| Laag         | Rol                                                                                                                                                              |
+| ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **App**      | Gebruikersinterface. Er kunnen meerdere apps bestaan, elk met een eigen ontwerp, die allemaal dezelfde gemeenschappen en identiteiten delen.                     |
+| **Protocol** | Definieert hoe communities worden aangesproken, hoe berichten worden gepubliceerd en hoe spam wordt voorkomen.                                                   |
+| **Netwerk**  | De onderliggende peer-to-peer-infrastructuur: DHT voor ontdekking, gossipsub voor realtime berichtenuitwisseling en inhoudsoverdracht voor gegevensuitwisseling. |
 
 ---
 
@@ -243,7 +243,7 @@ De afweging is dat Bitsocial geen permanente beschikbaarheid van oude inhoud gar
 Federatieve netwerken (zoals e-mail of op ActivityPub gebaseerde platforms) verbeteren de centralisatie, maar hebben nog steeds structurele beperkingen:
 
 - **Serverafhankelijkheid** — elke community heeft een server nodig met een domein, TLS en doorlopend
-onderhoud
+  onderhoud
 - **Admin trust** — de serverbeheerder heeft volledige controle over gebruikersaccounts en inhoud
 - **Fragmentatie** — het verplaatsen tussen servers betekent vaak het verlies van volgers, geschiedenis of identiteit
 - **Kosten** — iemand moet betalen voor hosting, wat druk creëert in de richting van consolidatie

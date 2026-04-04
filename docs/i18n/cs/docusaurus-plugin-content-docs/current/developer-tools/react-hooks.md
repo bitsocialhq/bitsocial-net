@@ -1,21 +1,17 @@
 ---
-title: React Hooks
+title: Reagovat Hooks
 description: Knihovna háčků React pro vytváření decentralizovaných sociálních aplikací na protokolu Bitsocial.
 sidebar_position: 1
 ---
 
-# React Hooks
-
-:::warning Legacy Pojmenování
-Tento balíček v současné době používá starší konvence pojmenování zděděné z jeho upstream rozvětvení. Odkazy na „plebbit“ v kódu, rozhraní API a konfiguraci budou v budoucí verzi migrovány na „bitsocial“. Funkčnost není ovlivněna.
-:::
+# Reagovat Hooks
 
 Balíček `bitsocial-react-hooks` poskytuje známé rozhraní React hooks API pro interakci s protokolem Bitsocial. Zvládá načítání zdrojů, komentářů a profilů autorů, správu účtů, publikování obsahu a přihlašování do komunit – to vše bez spoléhání na centrální server.
 
-Tato knihovna je primární rozhraní používané [5chan](/apps/5chan/) a dalšími klientskými aplikacemi Bitsocial.
+Tato knihovna je primárním rozhraním používaným [5kanál](/apps/5chan/) a dalšími klientskými aplikacemi Bitsocial.
 
 :::note
-`bitsocial-react-hooks` je dočasný fork `plebbit/plebbit-react-hooks` udržovaný pro vývoj podporovaný AI. Spotřebovává se přímo z GitHubu a nepublikuje se do npm.
+`bitsocial-react-hooks` je v současnosti spotřebováván přímo z GitHubu, nikoli publikován do npm.
 :::
 
 ## Instalace
@@ -30,7 +26,7 @@ Nahraďte `<commit-hash>` odevzdáním, na které chcete cílit.
 
 ## Přehled API
 
-Háčky jsou uspořádány do funkčních kategorií. Níže je uveden souhrn nejčastěji používaných háčků v každé kategorii. Úplné podpisy, parametry a návratové typy viz [úplná reference API na GitHubu](https://github.com/bitsocialnet/bitsocial-react-hooks).
+Háčky jsou uspořádány do funkčních kategorií. Níže je uveden souhrn nejčastěji používaných háčků v každé kategorii. Úplné podpisy, parametry a návratové typy naleznete v [úplná referenční API na GitHubu](https://github.com/bitsocialnet/bitsocial-react-hooks).
 
 ### Účty
 
@@ -52,42 +48,42 @@ Stahujte jednotlivé komentáře a vlákna a pracujte s nimi.
 
 Načtěte metadata a nastavení komunity.
 
-- `useSubplebbit(subplebbitAddress?)` -- načte komunitu podle adresy
-- `useSubplebbits(subplebbitAddresses?)` -- načte více komunit
-- `useSubplebbitStats(subplebbitAddress?)` -- vrátí počet odběratelů a příspěvků
+- Vyhledávací hák jedné komunity -- načte komunitu podle adresy
+- Háček pro vyhledávání více komunit -- načte více komunit
+- Háček na statistiky komunity -- vrací počty odběratelů a příspěvků
 
 ### Autoři
 
 Vyhledejte profily a metadata autorů.
 
 - `useAuthor(authorAddress?)` -- načte profil autora
-- `useAuthorComments(options?)` -- vrací komentáře konkrétního autora
-- `useResolvedAuthorAddress(authorAddress?)` -- převede lidsky čitelnou adresu (např. ENS) na její protokolovou adresu
+- `useAuthorComments(options?)` -- vrátí komentáře od konkrétního autora
+- `useResolvedAuthorAddress(authorAddress?)` – převádí lidsky čitelnou adresu (např. ENS) na adresu protokolu
 
 ### Zdroje
 
 Přihlaste se k odběru a stránkujte zdroje obsahu.
 
-- `useFeed(options?)` -- vrátí stránkovaný zdroj příspěvků z jedné nebo více komunit
+- `useFeed(options?)` – vrátí stránkovaný zdroj příspěvků z jedné nebo více komunit
 - `useBufferedFeeds(feedOptions?)` -- přednakládá do vyrovnávací paměti více kanálů pro rychlejší vykreslování
 - `useAuthorFeed(authorAddress?)` -- vrátí zdroj příspěvků od konkrétního autora
 
 ### Akce
 
-Publikovat obsah a provádět operace zápisu.
+Publikujte obsah a provádějte operace zápisu.
 
-- `usePublishComment(options?)` -- zveřejnit nový komentář nebo odpovědět
-- `usePublishVote(options?)` -- odevzdat hlas pro nebo proti
-- `useSubscribe(options?)` -- přihlásit se k odběru komunity nebo se odhlásit
+- `usePublishComment(options?)` -- publikujte nový komentář nebo odpověď
+- `usePublishVote(options?)` -- hlasujte pro nebo proti
+- `useSubscribe(options?)` -- přihlášení nebo odhlášení z komunity
 
-### Stavy a RPC
+### státy a RPC
 
 Monitorujte stav připojení a komunikujte se vzdáleným Bitsocial démonem.
 
 - `useClientsStates(options?)` -- vrací stav připojení klientů IPFS/pubsub
-- `usePlebbitRpcSettings()` -- vrátí aktuální konfiguraci démona RPC
+- RPC settings hook -- vrátí aktuální konfiguraci RPC démona
 
-## Rozvoj
+## Vývoj
 
 Chcete-li lokálně pracovat na knihovně háčků:
 

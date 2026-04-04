@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef, type ReactNode } from "react";
+import { Suspense, lazy, useLayoutEffect, useRef, type ReactNode } from "react";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import {
@@ -10,11 +10,18 @@ import {
   useNavigate,
 } from "react-router-dom";
 import Home from "@/pages/home";
-import Apps from "@/pages/apps";
 import About from "@/pages/about";
 import Blog from "@/pages/blog";
+import SeoHead from "@/components/seo-head";
 import { isRouteAccessible } from "@/lib/dev-only-routes";
 import { normalizeInitialHomeScrollPosition } from "@/lib/initial-scroll";
+
+const Apps = lazy(() => import("@/pages/apps"));
+const AppDetail = lazy(() => import("@/pages/app-detail"));
+
+function RouteLoadingFallback() {
+  return <div className="min-h-screen bg-background" aria-hidden />;
+}
 
 function InitialHomeScrollGuard() {
   const location = useLocation();
@@ -48,15 +55,24 @@ function DevelopmentOnlyRoute({ children }: { children: ReactNode }) {
 function App() {
   return (
     <Router>
+      <SeoHead />
       <InitialHomeScrollGuard />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route
           path="/apps"
           element={
-            <DevelopmentOnlyRoute>
+            <Suspense fallback={<RouteLoadingFallback />}>
               <Apps />
-            </DevelopmentOnlyRoute>
+            </Suspense>
+          }
+        />
+        <Route
+          path="/apps/:slug"
+          element={
+            <Suspense fallback={<RouteLoadingFallback />}>
+              <AppDetail />
+            </Suspense>
           }
         />
         <Route

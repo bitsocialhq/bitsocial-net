@@ -427,7 +427,7 @@
     "description": "Small eyebrow label shown above the docs language selector title."
   },
   "docs.languageSelector.closeButton": {
-    "message": "Menutup",
+    "message": "Tutup",
     "description": "Accessible label for the docs language selector close button."
   }
 }

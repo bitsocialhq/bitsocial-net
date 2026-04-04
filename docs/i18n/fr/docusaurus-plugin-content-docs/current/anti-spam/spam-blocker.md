@@ -1,14 +1,10 @@
 ---
-title: Spam Blocker
+title: Bloqueur de spam
 description: Service centralisé de détection du spam avec évaluation des risques, défis OAuth et seuils de niveau configurables.
 sidebar_position: 1
 ---
 
-# Spam Blocker
-
-:::warning Dénomination héritée
-Ce package a été initialement publié sous la portée `@plebbit`. Il a été renommé `@bitsocial/spam-blocker-server` et `@bitsocial/spam-blocker-challenge`. Les références aux anciens noms peuvent encore apparaître dans d’anciennes documentations ou bases de code.
-:::
+# Bloqueur de spam
 
 Spam Blocker est un service centralisé de détection de spam qui évalue les publications entrantes et attribue des scores de risque. Il se compose de deux forfaits :
 

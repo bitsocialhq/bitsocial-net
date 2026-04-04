@@ -6,11 +6,7 @@ sidebar_position: 4
 
 # EVM Contract Call Challenge
 
-:::warning Ældre navngivning
-Denne pakke blev oprindeligt udgivet under `@plebbit`-omfanget. Det er blevet omdøbt til `@bitsocial/evm-contract-challenge`. Referencer til det gamle navn kan stadig forekomme i ældre dokumentation eller kodebaser.
-:::
-
-EVM Contract Call Challenge er en anti-spam-mekanisme, der verificerer on-chain-forhold, før en udgivelse tillades. Oprindeligt udvundet fra `plebbit-js` som en selvstændig pakke, lader det fællesskabsejere kræve, at forfattere opfylder smart-kontrakt-definerede kriterier - for eksempel at have en minimum token-saldo - for at kunne poste.
+EVM Contract Call Challenge er en anti-spam-mekanisme, der verificerer on-chain-forhold, før en udgivelse tillades. Det giver fællesskabsejere mulighed for at kræve, at forfattere opfylder smart-kontrakt-definerede kriterier - for eksempel at have en minimum token-saldo - for at kunne poste.
 
 **Kildekode:** [github.com/bitsocialnet/evm-contract-call](https://github.com/bitsocialnet/evm-contract-call)
 
@@ -18,7 +14,6 @@ EVM Contract Call Challenge er en anti-spam-mekanisme, der verificerer on-chain-
 
 - **Node.js** >= 22
 - **Kun ESM** -- denne pakke sender ikke CommonJS builds.
-- **Runtime peer-afhængighed:** `@plebbit/plebbit-js` (migrerer til `@pkc/pkc-js`)
 
 ## Installation
 
@@ -46,7 +41,7 @@ En fællesskabsejer, der ønsker at begrænse opslag til forfattere, der har mer
 - `condition`: `"> 1000"`
 - `error`: `"You must hold more than 1,000 tokens to post in this community."`
 
-Når en forfatter forsøger at publicere, kalder udfordringen `balanceOf` med forfatterens adresse og tjekker, om den returnerede værdi opfylder betingelsen. Hvis det gør det, fortsætter udgivelsen; ellers returneres den konfigurerede fejlmeddelelse.
+Når en forfatter forsøger at publicere, kalder udfordringen `balanceOf` med forfatterens adresse og tjekker, om den returnerede værdi opfylder betingelsen. Hvis den gør det, fortsætter udgivelsen; ellers returneres den konfigurerede fejlmeddelelse.
 
 ## Hvornår skal man bruge det
 
@@ -56,4 +51,4 @@ EVM Contract Call Challenge er ideel til:
 - **NFT-gated adgang** hvor ejerskab af en specifik NFT er påkrævet.
 - **DAO-styringsrum**, hvor deltagelse er begrænset til indehavere af governance-tokens.
 
-For fællesskaber, der ikke er afhængige af on-chain-identitet, skal du overveje [Spam Blocker](./spam-blocker.md) eller [Voucher Challenge](./voucher-challenge.md) i stedet.
+For fællesskaber, der ikke er afhængige af on-chain-identitet, skal du overveje [Spam-blokering](./spam-blocker.md) eller [Kupon udfordring](./voucher-challenge.md) i stedet.

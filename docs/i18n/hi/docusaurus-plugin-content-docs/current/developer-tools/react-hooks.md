@@ -1,21 +1,17 @@
 ---
-title: React Hooks
+title: प्रतिक्रिया हुक
 description: बिटसोशल प्रोटोकॉल पर विकेंद्रीकृत सामाजिक अनुप्रयोगों के निर्माण के लिए रिएक्ट हुक लाइब्रेरी।
 sidebar_position: 1
 ---
 
-# React Hooks
-
-:::warning विरासत नामकरण
-यह पैकेज वर्तमान में अपने अपस्ट्रीम फोर्क से विरासत में मिली विरासत नामकरण परंपराओं का उपयोग करता है। कोड, एपीआई और कॉन्फ़िगरेशन में "प्लेबिट" के संदर्भों को भविष्य के रिलीज में "बिटसोशल" में स्थानांतरित कर दिया जाएगा। कार्यक्षमता अप्रभावित है.
-:::
+# प्रतिक्रिया हुक
 
 `bitsocial-react-hooks` पैकेज बिटसोशल प्रोटोकॉल के साथ इंटरैक्ट करने के लिए एक परिचित रिएक्ट हुक एपीआई प्रदान करता है। यह फ़ीड, टिप्पणियाँ और लेखक प्रोफाइल लाने, खातों का प्रबंधन करने, सामग्री प्रकाशित करने और समुदायों की सदस्यता लेने का काम संभालता है - यह सब केंद्रीय सर्वर पर निर्भर हुए बिना।
 
-यह लाइब्रेरी [5chan](/apps/5chan/) और अन्य बिटसोशल क्लाइंट अनुप्रयोगों द्वारा उपयोग किया जाने वाला प्राथमिक इंटरफ़ेस है।
+यह लाइब्रेरी [5चान](/एप्स/5चान/) और अन्य बिटसोशल क्लाइंट अनुप्रयोगों द्वारा उपयोग किया जाने वाला प्राथमिक इंटरफ़ेस है।
 
 :::note
-`bitsocial-react-hooks` एआई-सहायता प्राप्त विकास के लिए बनाए रखा गया `plebbit/plebbit-react-hooks` का एक अस्थायी कांटा है। इसे npm पर प्रकाशित करने के बजाय सीधे GitHub से उपभोग किया जाता है।
+`bitsocial-react-hooks` को वर्तमान में npm पर प्रकाशित करने के बजाय सीधे GitHub से उपभोग किया जाता है।
 :::
 
 ## इंस्टालेशन
@@ -30,7 +26,7 @@ yarn add https://github.com/bitsocialnet/bitsocial-react-hooks.git#<commit-hash>
 
 ## एपीआई अवलोकन
 
-हुकों को कार्यात्मक श्रेणियों में व्यवस्थित किया गया है। नीचे प्रत्येक श्रेणी में सबसे अधिक उपयोग किए जाने वाले हुक का सारांश दिया गया है। संपूर्ण हस्ताक्षर, पैरामीटर और रिटर्न प्रकार के लिए, [GitHub पर पूर्ण API संदर्भ](https://github.com/bitsocialnet/bitsocial-react-hooks) देखें।
+हुकों को कार्यात्मक श्रेणियों में व्यवस्थित किया गया है। नीचे प्रत्येक श्रेणी में सबसे अधिक उपयोग किए जाने वाले हुक का सारांश दिया गया है। संपूर्ण हस्ताक्षर, पैरामीटर और रिटर्न प्रकार के लिए, [GitHub पर पूर्ण API संदर्भ](https://github.com/bitsocialnet/bitsocial-react-hooks).) देखें
 
 ### हिसाब किताब
 
@@ -44,7 +40,7 @@ yarn add https://github.com/bitsocialnet/bitsocial-react-hooks.git#<commit-hash>
 
 व्यक्तिगत टिप्पणियाँ और थ्रेड प्राप्त करें और उनके साथ इंटरैक्ट करें।
 
-- `useComment(commentCid?)` -- अपनी सीआईडी ​​द्वारा एक टिप्पणी प्राप्त करता है
+- `useComment(commentCid?)`--अपनी CID द्वारा एक टिप्पणी प्राप्त करता है
 - `useComments(commentCids?)` -- बैच में अनेक टिप्पणियाँ लाता है
 - `useEditedComment(comment?)` -- किसी टिप्पणी का नवीनतम संपादित संस्करण लौटाता है
 
@@ -52,9 +48,9 @@ yarn add https://github.com/bitsocialnet/bitsocial-react-hooks.git#<commit-hash>
 
 समुदाय मेटाडेटा और सेटिंग्स पुनर्प्राप्त करें।
 
-- `useSubplebbit(subplebbitAddress?)` -- पते के आधार पर एक समुदाय लाता है
-- `useSubplebbits(subplebbitAddresses?)` -- अनेक समुदायों को लाता है
-- `useSubplebbitStats(subplebbitAddress?)` -- सब्सक्राइबर और पोस्ट संख्या लौटाता है
+- एकल-समुदाय लुकअप हुक - पते के आधार पर एक समुदाय लाता है
+- मल्टी-कम्युनिटी लुकअप हुक - कई समुदायों को लाता है
+- सामुदायिक आँकड़े हुक - ग्राहक और पोस्ट की संख्या लौटाता है
 
 ### लेखक
 
@@ -62,7 +58,7 @@ yarn add https://github.com/bitsocialnet/bitsocial-react-hooks.git#<commit-hash>
 
 - `useAuthor(authorAddress?)` -- एक लेखक प्रोफ़ाइल लाता है
 - `useAuthorComments(options?)` -- किसी विशिष्ट लेखक की टिप्पणियाँ लौटाता है
-- `useResolvedAuthorAddress(authorAddress?)` -- एक मानव-पठनीय पते (उदाहरण के लिए, ईएनएस) को उसके प्रोटोकॉल पते पर हल करता है
+- `useResolvedAuthorAddress(authorAddress?)` - एक मानव-पठनीय पते (उदाहरण के लिए, ईएनएस) को उसके प्रोटोकॉल पते पर हल करता है
 
 ### फ़ीड
 
@@ -70,7 +66,7 @@ yarn add https://github.com/bitsocialnet/bitsocial-react-hooks.git#<commit-hash>
 
 - `useFeed(options?)` -- एक या अधिक समुदायों से पोस्ट की पृष्ठांकित फ़ीड लौटाता है
 - `useBufferedFeeds(feedOptions?)` -- तेज रेंडरिंग के लिए एकाधिक फ़ीड को प्री-बफ़र करता है
-- `useAuthorFeed(authorAddress?)` -- किसी विशिष्ट लेखक द्वारा पोस्ट की फ़ीड लौटाता है
+- `useAuthorFeed(authorAddress?)` -- एक विशिष्ट लेखक द्वारा पोस्ट की फ़ीड लौटाता है
 
 ### कार्रवाई
 
@@ -84,8 +80,8 @@ yarn add https://github.com/bitsocialnet/bitsocial-react-hooks.git#<commit-hash>
 
 कनेक्शन स्थिति की निगरानी करें और दूरस्थ बिटसोशल डेमॉन के साथ बातचीत करें।
 
-- `useClientsStates(options?)` -- आईपीएफएस/पबसब क्लाइंट की कनेक्शन स्थिति लौटाता है
-- `usePlebbitRpcSettings()` -- वर्तमान आरपीसी डेमॉन कॉन्फ़िगरेशन लौटाता है
+- `useClientsStates(options?)` -- IPFS/pubsub क्लाइंट की कनेक्शन स्थिति लौटाता है
+- आरपीसी सेटिंग्स हुक - वर्तमान आरपीसी डेमॉन कॉन्फ़िगरेशन लौटाता है
 
 ## विकास
 
@@ -104,5 +100,5 @@ yarn install
 
 ## लिंक
 
-- **गिटहब:** [bitsocialnet/bitsocial-react-hooks](https://github.com/bitsocialnet/bitsocial-react-hooks)
+- **गिटहब:** [बिटसोशलनेट/बिटसोशल-रिएक्शन-हुक](https://github.com/bitsocialnet/bitsocial-react-hooks)
 - **लाइसेंस:** केवल जीपीएल-2.0

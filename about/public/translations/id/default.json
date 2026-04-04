@@ -149,7 +149,8 @@
         "description": "Imageboard adalah bentuk media sosial yang paling sederhana untuk didesentralisasi: posting anonim, sedikit papan default, dan tanpa grafik profil. Itulah sebabnya kami meluncurkan 5chan, aplikasi Bitsocial pertama. 5chan membuktikan Bitsocial bisa menggantikan imageboard terpusat sambil menghapus admin global dari persamaan.",
         "callout": {
           "description": "5chan adalah bukti awal, bukan garis akhir. Kami ingin banyak klien imageboard dengan budaya, antarmuka, dan default yang berbeda: papan bergaya altchan, eksperimen mobile-first, komunitas niche, dan fork yang memecahkan kebutuhan yang takkan pernah diselesaikan 5chan.",
-          "ctaLabel": "Buat milikmu sendiri"
+          "ctaLabel": "Buat milikmu sendiri",
+          "separator": "- atau -"
         }
       },
       "phase2": {
@@ -185,5 +186,25 @@
   "home": {
     "devOnlyRouteNotice": "{{path}} masih dalam pengembangan. Anda telah dialihkan ke halaman utama.",
     "dismissDevOnlyRouteNotice": "Tutup pemberitahuan"
+  },
+  "apps": {
+    "allProjects": "All Projects",
+    "allProjectsDescription": "The full Bitsocial ecosystem, from user-facing clients to protocol tools.",
+    "linksSectionDescription": "Launch the app, grab a build, or use a mirror without leaving the directory.",
+    "searchPlaceholder": "Search apps, tools, or tags",
+    "clearSearch": "Clear search",
+    "clearFilters": "Clear filters",
+    "noMatches": "No projects match these filters",
+    "noMatchesDescription": "Try a different search, platform, or category combination.",
+    "viewDetails": "Details",
+    "readyToUse": "Ready to use",
+    "webLinks": "Open on the web",
+    "mobileDownloads": "Mobile downloads",
+    "desktopDownloads": "Desktop downloads",
+    "extraDownloads": "Extra builds",
+    "subtitle": "Open the clients, tools, and modules already live on Bitsocial. Search fast, filter by platform, and jump straight into the links that matter.",
+    "experimental": "Experimental",
+    "sectionLabel": "Direktori aplikasi",
+    "directoryLabel": "Direktori"
   }
 }

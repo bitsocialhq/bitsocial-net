@@ -63,14 +63,14 @@ Otevřená síť pubsub je zranitelná vůči záplavám spamu. Bitsocial to ře
 
 Systém výzev je flexibilní: každý provozovatel komunity si konfiguruje vlastní politiku. Možnosti zahrnují:
 
-| Typ výzvy | Jak to funguje |
-| ----------------- | ------------------------------------------------- |
-| **Captcha** | Vizuální nebo interaktivní puzzle prezentované v aplikaci |
-| **Omezení sazby** | Omezit příspěvky za časové okno na identitu |
-| **Token gate** | Vyžadovat doklad o zůstatku konkrétního tokenu |
-| **Platba** | Vyžadovat malou platbu za příspěvek |
-| **Seznam povolených** | Pouze předem schválené identity mohou zveřejňovat |
-| **Vlastní kód** | Jakákoli politika vyjádřitelná v kódu |
+| Typ výzvy             | Jak to funguje                                            |
+| --------------------- | --------------------------------------------------------- |
+| **Captcha**           | Vizuální nebo interaktivní puzzle prezentované v aplikaci |
+| **Omezení sazby**     | Omezit příspěvky za časové okno na identitu               |
+| **Token gate**        | Vyžadovat doklad o zůstatku konkrétního tokenu            |
+| **Platba**            | Vyžadovat malou platbu za příspěvek                       |
+| **Seznam povolených** | Pouze předem schválené identity mohou zveřejňovat         |
+| **Vlastní kód**       | Jakákoli politika vyjádřitelná v kódu                     |
 
 Protějšky, které předávají příliš mnoho neúspěšných pokusů o výzvu, jsou v tématu pubsub zablokovány, což zabraňuje útokům typu denial-of-service na síťovou vrstvu.
 
@@ -101,11 +101,11 @@ sequenceDiagram
 
 1. Uživatel otevře aplikaci a uvidí sociální rozhraní.
 2. Klient se připojí k síti peer-to-peer a vytvoří dotaz DHT pro každou komunitu uživatele
-následuje. Každý dotaz trvá několik sekund, ale probíhá souběžně.
+   následuje. Každý dotaz trvá několik sekund, ale probíhá souběžně.
 3. Každý dotaz vrací nejnovější ukazatele obsahu komunity a metadata (název, popis,
-seznam moderátorů, konfigurace výzvy).
+   seznam moderátorů, konfigurace výzvy).
 4. Klient načte skutečný obsah příspěvku pomocí těchto ukazatelů a poté vykreslí vše v a
-známé sociální rozhraní.
+   známé sociální rozhraní.
 
 ---
 
@@ -154,7 +154,7 @@ sequenceDiagram
 7. Klient odešle příspěvek spolu s odpovědí na výzvu přes pubsub.
 8. Uzel komunitního operátora ověří odpověď. Pokud je správná, příspěvek je přijat.
 9. Uzel vysílá výsledek přes pubsub, takže síťoví kolegové vědí, že mají pokračovat v přenosu
-zprávy od tohoto uživatele.
+   zprávy od tohoto uživatele.
 10. Uzel aktualizuje obsah komunity na své adrese veřejného klíče.
 11. Během několika minut obdrží každý čtenář komunity aktualizaci.
 
@@ -191,11 +191,11 @@ graph TB
     PK --> TR
 ```
 
-| Vrstva | Role |
-| ------------ | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| **Aplikace** | Uživatelské rozhraní. Může existovat více aplikací, z nichž každá má svůj vlastní design, všechny sdílejí stejné komunity a identity.                       |
-| **Protokol** | Definuje, jak jsou komunity oslovovány, jak jsou publikovány příspěvky a jak je zabráněno spamu.                                                |
-| **Síť** | Základní infrastruktura peer-to-peer: DHT pro zjišťování, gossipsub pro zasílání zpráv v reálném čase a přenos obsahu pro výměnu dat. |
+| Vrstva       | Role                                                                                                                                  |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------- |
+| **Aplikace** | Uživatelské rozhraní. Může existovat více aplikací, z nichž každá má svůj vlastní design, všechny sdílejí stejné komunity a identity. |
+| **Protokol** | Definuje, jak jsou komunity oslovovány, jak jsou publikovány příspěvky a jak je zabráněno spamu.                                      |
+| **Síť**      | Základní infrastruktura peer-to-peer: DHT pro zjišťování, gossipsub pro zasílání zpráv v reálném čase a přenos obsahu pro výměnu dat. |
 
 ---
 
@@ -243,7 +243,7 @@ Kompromisem je, že Bitsocial nezaručuje trvalou dostupnost starého obsahu. Al
 Federované sítě (jako e-mail nebo platformy založené na ActivityPub) vylepšují centralizaci, ale stále mají strukturální omezení:
 
 - **Závislost na serveru** – každá komunita potřebuje server s doménou, TLS a průběžné
-údržba
+  údržba
 - **Důvěra správce** – správce serveru má plnou kontrolu nad uživatelskými účty a obsahem
 - **Fragmentace** – přesun mezi servery často znamená ztrátu sledujících, historii nebo identitu
 - **Cena** — někdo musí platit za hosting, což vytváří tlak na konsolidaci

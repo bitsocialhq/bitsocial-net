@@ -1,24 +1,19 @@
 ---
-title: EVM Contract Call Challenge
-description: Sfida anti-spam che verifica le condizioni on-chain chiamando uno smart contract EVM.
+title: Sfida per chiamate di contratti EVM
+description: Sfida anti-spam che verifica le condizioni on-chain richiamando uno smart contract EVM.
 sidebar_position: 4
 ---
 
-# EVM Contract Call Challenge
+# Sfida per chiamate di contratti EVM
 
-:::warning Denominazione legacy
-Questo pacchetto è stato originariamente pubblicato nell'ambito `@plebbit`. È stato rinominato in `@bitsocial/evm-contract-challenge`. I riferimenti al vecchio nome potrebbero ancora apparire nella documentazione o nelle basi di codice precedenti.
-:::
-
-EVM Contract Call Challenge è un meccanismo anti-spam che verifica le condizioni on-chain prima di consentire una pubblicazione. Originariamente estratto da `plebbit-js` come pacchetto autonomo, consente ai proprietari della comunità di richiedere agli autori di soddisfare criteri definiti dallo smart contract, ad esempio il mantenimento di un saldo minimo di token, per poter pubblicare.
+EVM Contract Call Challenge è un meccanismo anti-spam che verifica le condizioni on-chain prima di consentire una pubblicazione. Consente ai proprietari della comunità di richiedere agli autori di soddisfare i criteri definiti dallo smart contract, ad esempio il mantenimento di un saldo minimo di token, per poter pubblicare.
 
 **Codice sorgente:** [github.com/bitsocialnet/evm-contract-call](https://github.com/bitsocialnet/evm-contract-call)
 
 ## Requisiti
 
 - **Node.js** >= 22
-- **Solo ESM** -- questo pacchetto non fornisce build CommonJS.
-- **Dipendenza peer runtime:** `@plebbit/plebbit-js` (migrazione a `@pkc/pkc-js`)
+- **Solo ESM**: questo pacchetto non include build CommonJS.
 
 ## Installazione
 
@@ -28,32 +23,32 @@ npm install @bitsocial/evm-contract-challenge
 
 ## Opzioni di configurazione
 
-| Opzione       | Tipo       | Descrizione                                                                           |
-| ------------- | ---------- | ------------------------------------------------------------------------------------- |
-| `chainTicker` | `string`   | The chain to query (e.g., `eth`, `matic`, `avax`).                                    |
-| `address`     | `string`   | The smart contract address to call.                                                   |
-| `abi`         | `string`   | The ABI fragment for the function being called.                                       |
-| `condition`   | `string`   | A comparison expression evaluated against the contract return value (e.g., `> 1000`). |
-| `error`       | . `string` | . Il messaggio di errore mostrato agli autori che non soddisfano la condizione        |
+| Opzione            | Digitare           | Descrizione                                                                                              |
+| ------------------ | ------------------ | -------------------------------------------------------------------------------------------------------- |
+| ZXQPLACEholder0ZXQ | ZXQPLACEholder1ZXQ | La catena da interrogare (ad esempio, ZXQPLACEholder2ZXQ, ZXQPLACEholder3ZXQ, ZXQPLACEholder4ZXQ).       |
+| ZXQPLACEholder0ZXQ | ZXQPLACEholder1ZXQ | L'indirizzo del contratto intelligente da chiamare.                                                      |
+| ZXQPLACEholder0ZXQ | ZXQPLACEholder1ZXQ | Il frammento ABI per la funzione chiamata.                                                               |
+| ZXQPLACEholder0ZXQ | ZXQPLACEholder1ZXQ | Un'espressione di confronto valutata rispetto al valore restituito dal contratto (ad esempio, `> 1000`). |
+| ZXQPLACEholder0ZXQ | ZXQPLACEholder1ZXQ | Il messaggio di errore mostrato agli autori che non soddisfano la condizione.                            |
 
 ## Esempio
 
-Un proprietario di comunità che desidera limitare la pubblicazione agli autori che possiedono più di 1.000 token ERC-20 configurerebbe la sfida con:
+Un proprietario di comunità che desidera limitare la pubblicazione agli autori che detengono più di 1.000 token ERC-20 particolari configurerebbe la sfida con:
 
-- `chainTicker`: `"eth"`
+- ZXQPLACEholder0ZXQ: ZXQPLACEholder1ZXQ
 - `address`: l'indirizzo del contratto del token
-- `abi`: l'ABI per `balanceOf(address)`
-- `condition`: `"> 1000"`
-- `error`: `"You must hold more than 1,000 tokens to post in this community."`
+- ZXQPLACEholder0ZXQ: l'ABI per ZXQPLACEholder1ZXQ
+- ZXQPLACEholder0ZXQ: ZXQPLACEholder1ZXQ
+- ZXQPLACEholder0ZXQ: ZXQPLACEholder1ZXQ
 
-Quando un autore tenta di pubblicare, la sfida chiama `balanceOf` con l'indirizzo dell'autore e controlla se il valore restituito soddisfa la condizione If it in caso contrario, viene restituito il messaggio di errore configurato.
+Quando un autore tenta di pubblicare, la sfida chiama `balanceOf` con l'indirizzo dell'autore e controlla se il valore restituito soddisfa la condizione. In tal caso la pubblicazione procede; in caso contrario viene restituito il messaggio di errore configurato.
 
-## Quando utilizzarlo
+## Quando usarlo
 
-EVM Contract Call Challenge è ideale per:
+EVM Contract Call Challenge è l'ideale per:
 
-- **Comunità protette da token** che limitano la pubblicazione ai titolari di token.
+- **Comunità controllate da token** che limitano la pubblicazione ai possessori di token.
 - **Accesso controllato da NFT** dove è richiesta la proprietà di un NFT specifico.
-- **Spazi di governance DAO** in cui la partecipazione è limitata al token di governance. titolari.
+- **Spazi di governance DAO** in cui la partecipazione è limitata ai titolari di token di governance.
 
-Per le comunità che non si affidano all'identità on-chain, considerare invece [Spam Blocker](./spam-blocker.md) o [Voucher Challenge](./voucher-challenge.md).
+Per le comunità che non fanno affidamento sull'identità sulla catena, considera invece [Spam Blocker](./spam-blocker.md) o [Voucher Challenge](./voucher-challenge.md).

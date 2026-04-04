@@ -1,16 +1,12 @@
 ---
-title: Captcha Canvas Challenge
+title: Défi de toile Captcha
 description: Générateur de captcha autonome basé sur des images avec caractères, dimensions et couleurs configurables.
 sidebar_position: 2
 ---
 
-# Captcha Canvas Challenge
+# Défi de toile Captcha
 
-:::warning Dénomination héritée
-Ce package a été initialement publié sous la portée `@plebbit`. Il a été renommé `@bitsocial/captcha-canvas-challenge`. Les références à l’ancien nom peuvent encore apparaître dans d’anciennes documentations ou bases de code.
-:::
-
-Captcha Canvas Challenge est un générateur de captcha d'image autonome extrait à l'origine de `plebbit-js`. Il restitue le texte aléatoire sur un canevas HTML et renvoie l'image résultante, que les communautés peuvent présenter aux auteurs comme un défi de spam.
+Captcha Canvas Challenge est un générateur de captcha d'image autonome. Il restitue le texte aléatoire sur un canevas HTML et renvoie l'image résultante, que les communautés peuvent présenter aux auteurs comme un défi de spam.
 
 **Code source :** [github.com/bitsocialnet/captcha-canvas-challenge](https://github.com/bitsocialnet/captcha-canvas-challenge)
 
@@ -18,7 +14,6 @@ Captcha Canvas Challenge est un générateur de captcha d'image autonome extrait
 
 - **Node.js** >= 22
 - **ESM uniquement** : ce package ne fournit pas de versions CommonJS.
-- **Dépendance des homologues d'exécution :** `@plebbit/plebbit-js` (migration vers `@pkc/pkc-js`)
 
 ## Mise en place
 
@@ -41,4 +36,4 @@ npm install @bitsocial/captcha-canvas-challenge
 2. La chaîne est rendue sur une toile avec un bruit visuel pour résister à l'OCR.
 3. L'image résultante (et la réponse attendue) sont renvoyées afin que l'application appelante puisse présenter le défi et vérifier ultérieurement la réponse.
 
-Étant donné que le package est un pur générateur d’images, il ne gère pas seul la mise en réseau ou la gestion de sessions. Il est destiné à être intégré dans un flux de défi plus large -- par exemple, comme l'un des types de défi pris en charge par [Spam Blocker](./spam-blocker.md).
+Étant donné que le package est un pur générateur d’images, il ne gère pas seul la mise en réseau ou la gestion de sessions. Il est destiné à être intégré dans un flux de défi plus large -- par exemple, comme l'un des types de défi pris en charge par [Bloqueur de spam](./spam-blocker.md).

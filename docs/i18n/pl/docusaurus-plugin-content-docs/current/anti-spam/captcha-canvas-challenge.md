@@ -1,16 +1,12 @@
 ---
-title: Captcha Canvas Challenge
+title: Wyzwanie na płótnie Captcha
 description: Samodzielny generator captcha oparty na obrazach z konfigurowalnymi znakami, wymiarami i kolorami.
 sidebar_position: 2
 ---
 
-# Captcha Canvas Challenge
+# Wyzwanie na płótnie Captcha
 
-:::warning Starsze nazewnictwo
-Ten pakiet został pierwotnie opublikowany w zakresie `@plebbit`. Jego nazwa została zmieniona na `@bitsocial/captcha-canvas-challenge`. Odniesienia do starej nazwy mogą nadal pojawiać się w starszej dokumentacji lub bazach kodów.
-:::
-
-Captcha Canvas Challenge to samodzielny generator captcha obrazu, pierwotnie wyodrębniony z `plebbit-js`. Renderuje losowy tekst na kanwie HTML i zwraca powstały obraz, który społeczności mogą przedstawić autorom jako wyzwanie spamowe.
+Captcha Canvas Challenge to samodzielny generator captcha obrazu. Renderuje losowy tekst na kanwie HTML i zwraca powstały obraz, który społeczności mogą przedstawić autorom jako wyzwanie spamowe.
 
 **Kod źródłowy:** [github.com/bitsocialnet/captcha-canvas-challenge](https://github.com/bitsocialnet/captcha-canvas-challenge)
 
@@ -18,7 +14,6 @@ Captcha Canvas Challenge to samodzielny generator captcha obrazu, pierwotnie wyo
 
 - **Node.js** >= 22
 - **Tylko ESM** — ten pakiet nie zawiera kompilacji CommonJS.
-- **Zależność równorzędna w czasie wykonywania:** `@plebbit/plebbit-js` (migracja do `@pkc/pkc-js`)
 
 ## Instalacja
 
@@ -41,4 +36,4 @@ npm install @bitsocial/captcha-canvas-challenge
 2. Ciąg jest renderowany na płótnie z szumem wizualnym odpornym na OCR.
 3. Wynikowy obraz (i oczekiwana odpowiedź) są zwracane, aby aplikacja wywołująca mogła przedstawić wyzwanie i później zweryfikować odpowiedź.
 
-Ponieważ pakiet jest czystym generatorem obrazów, nie obsługuje samodzielnie zarządzania siecią ani sesjami. Ma zostać zintegrowany z większym cyklem wyzwań — na przykład jako jeden z typów wyzwań obsługiwanych przez [Spam Blocker](./spam-blocker.md).
+Because the package is a pure image generator, it does not handle networking or session management on its own. It is intended to be integrated into a larger challenge flow -- for example, as one of the challenge types supported by [Spam Blocker](./spam-blocker.md).

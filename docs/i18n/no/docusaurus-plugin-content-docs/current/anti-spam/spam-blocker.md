@@ -1,14 +1,10 @@
 ---
-title: Spam Blocker
+title: Spamblokkering
 description: Sentralisert spam-deteksjonstjeneste med risikoscoring, OAuth-utfordringer og konfigurerbare nivåterskler.
 sidebar_position: 1
 ---
 
-# Spam Blocker
-
-:::warning Legacy navngivning
-Denne pakken ble opprinnelig publisert under `@plebbit`-omfanget. Den har fått nytt navn til `@bitsocial/spam-blocker-server` og `@bitsocial/spam-blocker-challenge`. Referanser til de gamle navnene kan fortsatt forekomme i eldre dokumentasjon eller kodebaser.
-:::
+# Spamblokkering
 
 Spam Blocker er en sentralisert spam-deteksjonstjeneste som evaluerer innkommende publikasjoner og tildeler risikopoeng. Den består av to pakker:
 
@@ -19,7 +15,7 @@ Spam Blocker er en sentralisert spam-deteksjonstjeneste som evaluerer innkommend
 
 ## Hvordan risikoscoring fungerer
 
-Hver publikasjon som sendes til `/evaluate`-endepunktet får en numerisk risikoscore. Poengsummen er en vektet kombinasjon av flere signaler:
+Hver publikasjon som sendes til `/evaluate`-endepunktet mottar en numerisk risikoscore. Poengsummen er en vektet kombinasjon av flere signaler:
 
 | Signal            | Beskrivelse                                                                                                                |
 | ----------------- | -------------------------------------------------------------------------------------------------------------------------- |
@@ -35,7 +31,7 @@ Hver publikasjon som sendes til `/evaluate`-endepunktet får en numerisk risikos
 Risikopoengsummen tilordnes ett av fire konfigurerbare nivåer som bestemmer hva som skjer videre:
 
 1. **Auto-accept** -- poengsummen er lav nok til at publikasjonen godkjennes uten noen utfordring.
-2. **OAuth-tilstrekkelig** -- forfatteren må fullføre en OAuth-verifisering for å fortsette.
+2. **OAuth-tilstrekkelig** – forfatteren må fullføre en OAuth-verifisering for å fortsette.
 3. **OAuth-pluss-mer** -- OAuth alene er ikke nok; ytterligere bekreftelse (f.eks. CAPTCHA) kreves.
 4. **Auto-avvis** -- poengsummen er for høy; publikasjonen avvises direkte.
 
@@ -47,7 +43,7 @@ Når en publikasjon faller inn i et nivå som krever bekreftelse, begynner utfor
 
 1. Forfatteren blir først bedt om å autentisere via **OAuth** (GitHub, Google, Twitter og andre støttede leverandører).
 2. Hvis OAuth alene er utilstrekkelig (nivå 3), presenteres en **CAPTCHA-reserve** drevet av Cloudflare Turnstile.
-3. OAuth-identiteten brukes utelukkende til verifisering -- den deles **aldri** med fellesskapet eller andre brukere.
+3. OAuth-identiteten brukes utelukkende for bekreftelse -- den deles **aldri** med fellesskapet eller andre brukere.
 
 ## API-endepunkter
 
@@ -71,7 +67,7 @@ Satsgrenser brukes dynamisk basert på forfatterens alder og omdømme. Forfatter
 
 Serveren kjører en bakgrunnsindekserer som kontinuerlig gjennomsøker nettverket for å bygge og vedlikeholde forfatterens omdømmedata. Disse dataene føres direkte inn i risikoscoringspipelinen, slik at systemet kan gjenkjenne gjentatte deltakere i god tro på tvers av lokalsamfunn.
 
-## Privatliv
+## Personvern
 
 Spam Blocker er designet med personvern i tankene:
 

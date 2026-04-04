@@ -63,14 +63,14 @@ Una xarxa de pubsub oberta és vulnerable a les inundacions de correu brossa. Bi
 
 El sistema de reptes és flexible: cada operador comunitari configura la seva pròpia política. Les opcions inclouen:
 
-| Tipus de repte | Com funciona |
-| ----------------- | ------------------------------------------------- |
-| **Captcha** | Puzle visual o interactiu presentat a l'aplicació |
+| Tipus de repte           | Com funciona                                             |
+| ------------------------ | -------------------------------------------------------- |
+| **Captcha**              | Puzle visual o interactiu presentat a l'aplicació        |
 | **Limitació de tarifes** | Limitar publicacions per finestra de temps per identitat |
-| **Porta de fitxes** | Requereix la prova del saldo d'un testimoni específic |
-| **Pagament** | Requereix un petit pagament per missatge |
-| **Llista permesa** | Només les identitats aprovades prèviament poden publicar |
-| **Codi personalitzat** | Qualsevol política expressable en codi |
+| **Porta de fitxes**      | Requereix la prova del saldo d'un testimoni específic    |
+| **Pagament**             | Requereix un petit pagament per missatge                 |
+| **Llista permesa**       | Només les identitats aprovades prèviament poden publicar |
+| **Codi personalitzat**   | Qualsevol política expressable en codi                   |
 
 Els companys que transmeten massa intents de desafiament fallits es bloquegen del tema pubsub, la qual cosa evita els atacs de denegació de servei a la capa de xarxa.
 
@@ -101,11 +101,11 @@ sequenceDiagram
 
 1. L'usuari obre l'aplicació i veu una interfície social.
 2. El client s'uneix a la xarxa peer-to-peer i fa una consulta DHT per a cada comunitat de l'usuari
-segueix. Les consultes triguen uns quants segons cadascuna, però s'executen simultàniament.
+   segueix. Les consultes triguen uns quants segons cadascuna, però s'executen simultàniament.
 3. Cada consulta retorna els darrers punters de contingut i metadades de la comunitat (títol, descripció,
-llista de moderadors, configuració de reptes).
+   llista de moderadors, configuració de reptes).
 4. El client obté el contingut real de la publicació utilitzant aquests punters i, a continuació, representa tot en a
-interfície social familiar.
+   interfície social familiar.
 
 ---
 
@@ -154,7 +154,7 @@ sequenceDiagram
 7. El client envia la publicació juntament amb la resposta del repte a través de pubsub.
 8. El node de l'operador de la comunitat valida la resposta. Si és correcte, s'accepta la publicació.
 9. El node transmet el resultat a pubsub perquè els companys de la xarxa sàpiguen continuar transmetent
-missatges d'aquest usuari.
+   missatges d'aquest usuari.
 10. El node actualitza el contingut de la comunitat a la seva adreça de clau pública.
 11. En pocs minuts, tots els lectors de la comunitat reben l'actualització.
 
@@ -191,11 +191,11 @@ graph TB
     PK --> TR
 ```
 
-| Capa | Rol |
-| ------------ | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| **Aplicació** | Interfície d'usuari. Poden existir diverses aplicacions, cadascuna amb el seu propi disseny, totes compartint les mateixes comunitats i identitats.                       |
-| **Protocol** | Defineix com s'aborden les comunitats, com es publiquen les publicacions i com es prevé el correu brossa.                                                |
-| **Xarxa** | La infraestructura peer-to-peer subjacent: DHT per al descobriment, gossipsub per a missatgeria en temps real i transferència de contingut per a l'intercanvi de dades. |
+| Capa          | Rol                                                                                                                                                                     |
+| ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Aplicació** | Interfície d'usuari. Poden existir diverses aplicacions, cadascuna amb el seu propi disseny, totes compartint les mateixes comunitats i identitats.                     |
+| **Protocol**  | Defineix com s'aborden les comunitats, com es publiquen les publicacions i com es prevé el correu brossa.                                                               |
+| **Xarxa**     | La infraestructura peer-to-peer subjacent: DHT per al descobriment, gossipsub per a missatgeria en temps real i transferència de contingut per a l'intercanvi de dades. |
 
 ---
 
@@ -243,7 +243,7 @@ La compensació és que Bitsocial no garanteix la disponibilitat permanent del c
 Les xarxes federades (com el correu electrònic o les plataformes basades en ActivityPub) milloren la centralització, però encara tenen limitacions estructurals:
 
 - **Dependència del servidor**: cada comunitat necessita un servidor amb un domini, TLS i en curs
-manteniment
+  manteniment
 - **Confiança de l'administrador**: l'administrador del servidor té control total sobre els comptes d'usuari i el contingut
 - **Fragmentació**: moure's entre servidors sovint significa perdre seguidors, historial o identitat
 - **Cost**: algú ha de pagar per l'allotjament, la qual cosa crea pressió cap a la consolidació

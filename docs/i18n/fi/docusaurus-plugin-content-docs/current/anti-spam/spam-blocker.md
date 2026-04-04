@@ -1,14 +1,10 @@
 ---
-title: Spam Blocker
+title: Roskapostin esto
 description: Keskitetty roskapostin tunnistuspalvelu, jossa on riskipisteet, OAuth-haasteet ja määritettävissä olevat tason kynnykset.
 sidebar_position: 1
 ---
 
-# Spam Blocker
-
-:::warning Legacy nimeäminen
-Tämä paketti julkaistiin alun perin `@plebbit`-alueella. Se on nimetty uudelleen `@bitsocial/spam-blocker-server` ja `@bitsocial/spam-blocker-challenge`. Viittauksia vanhoihin nimiin saattaa edelleen esiintyä vanhemmissa dokumentaatioissa tai koodikantoissa.
-:::
+# Roskapostin esto
 
 Roskapostin esto on keskitetty roskapostin tunnistuspalvelu, joka arvioi saapuvat julkaisut ja antaa riskipisteitä. Se koostuu kahdesta paketista:
 
@@ -67,7 +63,7 @@ Palauttaa upotettavan HTML-sivun, joka hahmontaa sopivan haastekäyttöliittymä
 
 Hintarajoituksia sovelletaan dynaamisesti tekijän iän ja maineen perusteella. Uudemmat tai heikomman maineet kirjoittajat kohtaavat tiukemmat rajat, kun taas vakiintuneet kirjoittajat nauttivat anteliaammista kynnyksistä. Tämä estää roskapostitulvia rankaisematta luotettavia osallistujia.
 
-## Taustaverkko-indeksoija
+## Tausta verkko-indeksoija
 
 Palvelin käyttää tausta-indeksoijaa, joka indeksoi jatkuvasti verkkoa luodakseen ja ylläpitääkseen tekijän mainetietoja. Nämä tiedot syötetään suoraan riskien pisteytysputkiin, jolloin järjestelmä voi tunnistaa toistuvia hyvässä uskossa toimivia osallistujia yhteisöissä.
 

@@ -149,7 +149,8 @@
         "description": "Imageboard-et janë forma më e thjeshtë e mediave sociale për t'u decentralizuar: postime anonime, pak board-e parazgjedhje dhe pa graf profilit. Kjo është arsyeja pse po lançojmë 5chan, aplikacionin e parë të Bitsocial. 5chan provon se Bitsocial mund të zëvendësojë imageboard-et e centralizuara duke hequr administratorët globalë nga ekuacioni.",
         "callout": {
           "description": "5chan është pika e parë e provës, jo vija e finishit. Ne duam disa klientë imageboard me kultura, ndërfaqe dhe parazgjedhje të ndryshme: borde në stil altchan, eksperimente mobile-first, komunitete niche dhe fork-e që zgjidhin nevoja që 5chan nuk do t'i zgjidhë kurrë.",
-          "ctaLabel": "Ndërto tënden"
+          "ctaLabel": "Ndërto tënden",
+          "separator": "- ose -"
         }
       },
       "phase2": {
@@ -185,5 +186,25 @@
   "home": {
     "dismissDevOnlyRouteNotice": "Mbyll njoftimin",
     "devOnlyRouteNotice": "{{path}} është ende në ndërtim. Jeni ridrejtuar te faqja kryesore."
+  },
+  "apps": {
+    "allProjects": "All Projects",
+    "allProjectsDescription": "The full Bitsocial ecosystem, from user-facing clients to protocol tools.",
+    "linksSectionDescription": "Launch the app, grab a build, or use a mirror without leaving the directory.",
+    "searchPlaceholder": "Search apps, tools, or tags",
+    "clearSearch": "Clear search",
+    "clearFilters": "Clear filters",
+    "noMatches": "No projects match these filters",
+    "noMatchesDescription": "Try a different search, platform, or category combination.",
+    "viewDetails": "Details",
+    "readyToUse": "Ready to use",
+    "webLinks": "Open on the web",
+    "mobileDownloads": "Mobile downloads",
+    "desktopDownloads": "Desktop downloads",
+    "extraDownloads": "Extra builds",
+    "subtitle": "Open the clients, tools, and modules already live on Bitsocial. Search fast, filter by platform, and jump straight into the links that matter.",
+    "experimental": "Experimental",
+    "sectionLabel": "Katalogu i aplikacioneve",
+    "directoryLabel": "Katalog"
   }
 }

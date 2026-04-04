@@ -32,13 +32,13 @@ Nëse 5chan nuk përputhet me komunitetin ose ndërfaqen që dëshironi, ndërto
    - [Grepa Bitsocial React](../react-hooks/)
    - [CLI bitsociale](../cli/)
 2. Vendosni se çfarë lloj tabele imazhi po ndërtoni në të vërtetë.
-Zgjidhni strukturën e tabelës, supozimet e identitetit, modelin e moderuar, rrjedhën e zbulimit dhe gjuhën vizuale.
+   Zgjidhni strukturën e tabelës, supozimet e identitetit, modelin e moderuar, rrjedhën e zbulimit dhe gjuhën vizuale.
 3. Zgjidhni rrugën e zbatimit që i përshtatet projektit.
-Fork 5chan nëse doni të lëvizni shpejt me një bazë të njohur të imazhit. Filloni nga e para nëse UI ose modeli i ndërveprimit duhet të jetë rrënjësisht i ndryshëm.
+   Fork 5chan nëse doni të lëvizni shpejt me një bazë të njohur të imazhit. Filloni nga e para nëse UI ose modeli i ndërveprimit duhet të jetë rrënjësisht i ndryshëm.
 4. Dërgoni një version të parë të ngushtë.
-Një klient që i shërben mirë një komuniteti të vërtetë është më i vlefshëm se një klon i paqartë që synon të kënaqë të gjithë.
+   Një klient që i shërben mirë një komuniteti të vërtetë është më i vlefshëm se një klon i paqartë që synon të kënaqë të gjithë.
 5. Publikoni rezultatin dhe lërini komunitetet ta testojnë atë.
-Bitsocial përmirësohet kur ndërtuesit e jashtëm dërgojnë klientë të mendimit që konkurrojnë për cilësinë e produktit në vend që të presin që një aplikacion zyrtar të bëjë gjithçka.
+   Bitsocial përmirësohet kur ndërtuesit e jashtëm dërgojnë klientë të mendimit që konkurrojnë për cilësinë e produktit në vend që të presin që një aplikacion zyrtar të bëjë gjithçka.
 
 ## Parimi i projektimit
 

@@ -149,7 +149,8 @@
         "description": "تُعد لوحات الصور أبسط أشكال وسائل التواصل الاجتماعي من حيث اللامركزية: نشر مجهول، عدد قليل من اللوحات الافتراضية، ولا توجد شبكة ملفات شخصية. لهذا نطلق 5chan، أول تطبيق Bitsocial. يثبت 5chan أن Bitsocial يمكنه أن يحل محل لوحات الصور المركزية مع إقصاء المشرفين العالميين من المعادلة.",
         "callout": {
           "description": "5chan هو أول دليل على الفكرة، وليس خط النهاية. نريد عدة عملاء للوحة صور بثقافات وواجهات وافتراضات مختلفة: لوحات على نمط altchan، وتجارب موجهة للهاتف أولًا، ومجتمعات متخصصة، وتفرعات تحل احتياجات لن يحلها 5chan أبدًا.",
-          "ctaLabel": "أنشئ نسختك الخاصة"
+          "ctaLabel": "أنشئ نسختك الخاصة",
+          "separator": "- أو -"
         }
       },
       "phase2": {
@@ -185,5 +186,25 @@
   "home": {
     "devOnlyRouteNotice": "{{path}} لا يزال قيد الإنشاء. تم توجيهك إلى الصفحة الرئيسية.",
     "dismissDevOnlyRouteNotice": "إخفاء الإشعار"
+  },
+  "apps": {
+    "allProjects": "All Projects",
+    "allProjectsDescription": "The full Bitsocial ecosystem, from user-facing clients to protocol tools.",
+    "linksSectionDescription": "Launch the app, grab a build, or use a mirror without leaving the directory.",
+    "searchPlaceholder": "Search apps, tools, or tags",
+    "clearSearch": "Clear search",
+    "clearFilters": "Clear filters",
+    "noMatches": "No projects match these filters",
+    "noMatchesDescription": "Try a different search, platform, or category combination.",
+    "viewDetails": "Details",
+    "readyToUse": "Ready to use",
+    "webLinks": "Open on the web",
+    "mobileDownloads": "Mobile downloads",
+    "desktopDownloads": "Desktop downloads",
+    "extraDownloads": "Extra builds",
+    "subtitle": "Open the clients, tools, and modules already live on Bitsocial. Search fast, filter by platform, and jump straight into the links that matter.",
+    "experimental": "Experimental",
+    "sectionLabel": "دليل التطبيقات",
+    "directoryLabel": "الدليل"
   }
 }

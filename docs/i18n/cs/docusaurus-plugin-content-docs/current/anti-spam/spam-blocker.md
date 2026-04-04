@@ -1,16 +1,12 @@
 ---
-title: Spam Blocker
+title: Blokátor spamu
 description: Centralizovaná služba detekce spamu s hodnocením rizik, výzvami OAuth a konfigurovatelnými prahovými hodnotami úrovní.
 sidebar_position: 1
 ---
 
-# Spam Blocker
+# Blokátor spamu
 
-:::warning Legacy Pojmenování
-Tento balíček byl původně publikován v rozsahu `@plebbit`. Byl přejmenován na `@bitsocial/spam-blocker-server` a `@bitsocial/spam-blocker-challenge`. Odkazy na stará jména se mohou stále objevovat ve starší dokumentaci nebo kódových základnách.
-:::
-
-Spam Blocker je centralizovaná služba pro detekci spamu, která vyhodnocuje příchozí publikace a přiřazuje skóre rizik. Skládá se ze dvou balíčků:
+Spam Blocker je centralizovaná služba detekce spamu, která vyhodnocuje příchozí publikace a přiřazuje skóre rizik. Skládá se ze dvou balíčků:
 
 - **`@bitsocial/spam-blocker-server`** -- HTTP server, který hostí rozhraní API pro hodnocení a výzvy.
 - **`@bitsocial/spam-blocker-challenge`** – odlehčený klientský balíček, který komunity integrují a posílají publikace k vyhodnocení.
@@ -23,12 +19,12 @@ Každá publikace odeslaná do koncového bodu `/evaluate` obdrží číselné s
 
 | Signál           | Popis                                                                                                                                         |
 | ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
-| Account age      | Novější účty dostávají vyšší skóre rizika.                                                                                                    |
+| Stáří účtu       | Novější účty dostávají vyšší skóre rizika.                                                                                                    |
 | Karma            | Nahromaděná komunitní karma snižuje riziko.                                                                                                   |
 | Pověst autora    | Údaje o pověsti shromážděné indexátorem sítě na pozadí.                                                                                       |
 | Obsahová analýza | Heuristika na úrovni textu (hustota odkazů, známé vzorce spamu atd.).                                                                         |
 | Rychlost         | Rychle po sobě jdoucí příspěvky od stejného autora zvyšují riziko.                                                                            |
-| IP inteligence   | Geolokace na úrovni země a vyhledávání zdrojů hrozeb. Ukládají se pouze kódy zemí – nezpracované adresy IP nejsou nikdy sdíleny s komunitami. |
+| IP inteligence   | Geolokace na úrovni země a vyhledávání zdrojů hrozeb. Ukládají se pouze kódy zemí – nezpracované IP adresy nejsou nikdy sdíleny s komunitami. |
 
 ## Hranice úrovně
 
@@ -75,9 +71,9 @@ Server spouští indexátor na pozadí, který nepřetržitě prochází síť, 
 
 Spam Blocker je navržen s ohledem na soukromí:
 
-- Identity OAuth se používají pouze pro ověření výzvy a **nikdy se nesdělují** komunitám.
+- Identity OAuth se používají pouze pro ověření výzvy a nejsou **nikdy sdělovány** komunitám.
 - IP adresy jsou přeloženy na **pouze kódy zemí**; nezpracované IP adresy nejsou uloženy ani sdíleny.
 
 ## databáze
 
-Server používá **SQLite** (prostřednictvím `better-sqlite3`) pro místní perzistenci dat reputace, stavu relace a konfigurace.
+Server používá **SQLite** (prostřednictvím `better-sqlite3`) pro místní zachování dat reputace, stavu relace a konfigurace.

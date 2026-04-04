@@ -20,7 +20,7 @@ Faza 1 nie obejmuje jednej oficjalnej aplikacji obejmującej całą kategorię. 
 
 Jeśli chcesz najkrótszej drogi do wysyłki, najpierw przekaż darowiznę bezpośrednio na 5chan:
 
-- Przeglądaj aplikację na żywo pod adresem [5chan.aplikacja](https://5chan.app)
+- Przeglądaj aplikację na żywo na [5chan.app](https://5chan.app)
 - Przejrzyj źródło na [github.com/bitsocialnet/5chan](https://github.com/bitsocialnet/5chan)
 - Dołącz do czatu konstruktora na [t.me/fivechandev](https://t.me/fivechandev)
 
@@ -29,16 +29,16 @@ Jeśli chcesz najkrótszej drogi do wysyłki, najpierw przekaż darowiznę bezpo
 Jeśli 5chan nie pasuje do żądanej społeczności lub interfejsu, zamiast tego zbuduj osobnego klienta. Kompatybilni klienci Bitsocial mogą współużytkować tę samą sieć bez konieczności podejmowania tych samych decyzji dotyczących produktu.
 
 1. Poznaj narzędzia związane z protokołami:
-   - [Haki Bitsocial Reakcja](../react-hooks/)
-   - [Bitsocialowy interfejs wiersza polecenia](../cli/)
+   - [Haki Bitsocial React](../react-hooks/)
+   - [Bitsocial CLI](../cli/)
 2. Zdecyduj, jaki rodzaj tablicy graficznej faktycznie budujesz.
-Najpierw wybierz strukturę tablicy, założenia dotyczące tożsamości, model moderacji, przepływ odkryć i język wizualny.
+   Najpierw wybierz strukturę tablicy, założenia dotyczące tożsamości, model moderacji, przepływ odkryć i język wizualny.
 3. Wybierz ścieżkę wdrożenia pasującą do projektu.
-Fork 5chan, jeśli chcesz szybko poruszać się dzięki znanej bazie obrazów. Zacznij od nowa, jeśli interfejs użytkownika lub model interakcji musi się radykalnie różnić.
+   Fork 5chan, jeśli chcesz szybko poruszać się dzięki znanej bazie obrazów. Zacznij od nowa, jeśli interfejs użytkownika lub model interakcji musi się radykalnie różnić.
 4. Wyślij wąską pierwszą wersję.
-Jeden klient, który dobrze służy jednej prawdziwej społeczności, jest cenniejszy niż niejasny klon, który ma zadowolić wszystkich.
+   Jeden klient, który dobrze służy jednej prawdziwej społeczności, jest cenniejszy niż niejasny klon, który ma zadowolić wszystkich.
 5. Opublikuj wynik i pozwól społeczności go przetestować.
-Bitsocial poprawia się, gdy zewnętrzni twórcy dostarczają upartych klientów, którzy konkurują z jakością produktu, zamiast czekać, aż jedna oficjalna aplikacja zrobi wszystko.
+   Bitsocial poprawia się, gdy zewnętrzni twórcy dostarczają upartych klientów, którzy konkurują z jakością produktu, zamiast czekać, aż jedna oficjalna aplikacja zrobi wszystko.
 
 ## Zasada projektowania
 

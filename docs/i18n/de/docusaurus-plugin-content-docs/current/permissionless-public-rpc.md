@@ -5,7 +5,7 @@ description: Vorgeschlagener Entwurf für einen öffentlichen Bitsocial-RPC-Dien
 
 # Erlaubnisloser öffentlicher RPC
 
-Der ursprüngliche öffentliche RPC-Vorschlag war ein GitHub-Problem, das in der alten Plebbit-Terminologie geschrieben war. Diese Seite schreibt diese Idee in Bitsocial-Sprache um und formuliert sie als Vorschlag auf Produktebene statt als Wand aus Implementierungsdetails.
+Diese Seite stellt öffentlichen RPC als einen Bitsocial-Vorschlag auf Produktebene dar und nicht als eine Wand von Implementierungsdetails.
 
 ## Klares Ziel
 
@@ -56,7 +56,7 @@ Der öffentliche RPC selbst sollte sich weiterhin auf das benutzerorientierte RP
 
 Benutzerbezogene Dokumentationen sollten Bitsocial-Begriffe wie **Community** und **Profil** verwenden.
 
-Auf der Drahtebene kann beim ersten Rollout immer noch die aktuelle JSON-RPC-Transport- und Nutzlastform beibehalten werden, sofern dies aus Kompatibilitätsgründen nützlich ist. Mit anderen Worten: Die Dokumente müssen nicht mehr wie alte Plebbit-Dokumente sprechen, auch wenn in der Übergangszeit einige alte Methodennamen oder Anforderungsformen im Verborgenen bleiben.
+Auf der Drahtebene kann beim ersten Rollout immer noch die aktuelle JSON-RPC-Transport- und Nutzlastform beibehalten werden, sofern dies aus Kompatibilitätsgründen nützlich ist. Mit anderen Worten: Die Dokumente können Bitsocial-nativ bleiben, auch wenn während der Übergangszeit einige kompatible Methodennamen oder Anforderungsformen im Hintergrund bleiben.
 
 ## Vorgeschlagenes Berechtigungspaket
 
@@ -152,8 +152,8 @@ Die Authentifizierung für diese Operator-API sollte vollständig getrennt von d
 ### Phase 2
 
 - Berechtigungspakete implementieren
-- enforce them at the RPC method layer
-- return permissions metadata on connect
+- Erzwingen Sie sie auf der RPC-Methodenebene
+- Berechtigungsmetadaten beim Herstellen einer Verbindung zurückgeben
 
 ### Phase 3
 
@@ -173,9 +173,9 @@ Die Authentifizierung für diese Operator-API sollte vollständig getrennt von d
 
 Wenn die Erstellung von Authentifizierungen kostengünstig ist, benötigen öffentliche Dienste möglicherweise eine Challenge-Schicht, bevor sie Anmeldeinformationen ausstellen. Ein möglicher Weg besteht darin, das Community-Challenge-Modell selbst wiederzuverwenden, sodass die Ausstellung von Anmeldeinformationen dieselbe Anti-Missbrauchs-Philosophie übernimmt wie der Rest des Netzwerks.
 
-### Legacy-Benennung
+### Migrationsdetails
 
-Einige frühe Implementierungen stellen möglicherweise aus Kompatibilitätsgründen weiterhin alte Methodennamen intern zur Verfügung. Das sollte als Migrationsdetail behandelt werden, nicht als permanentes öffentliches Vokabular der Bitsocial-Dokumente.
+Einige frühe Implementierungen stellen möglicherweise noch intern kompatibilitätsorientierte Methodennamen bereit. Das sollte als Migrationsdetail behandelt werden, nicht als permanentes öffentliches Vokabular der Bitsocial-Dokumente.
 
 ## Zusammenfassung
 

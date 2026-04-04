@@ -6,11 +6,7 @@ sidebar_position: 4
 
 # EVM Contract Call Challenge
 
-:::warning Legacy navngivning
-Denne pakken ble opprinnelig publisert under `@plebbit`-omfanget. Den har fått nytt navn til `@bitsocial/evm-contract-challenge`. Referanser til det gamle navnet kan fortsatt forekomme i eldre dokumentasjon eller kodebaser.
-:::
-
-EVM Contract Call Challenge er en anti-spam-mekanisme som verifiserer kjedeforhold før en publisering tillates. Opprinnelig hentet fra `plebbit-js` som en frittstående pakke, lar den fellesskapseiere kreve at forfattere oppfyller smartkontrakt-definerte kriterier – for eksempel å ha en minimum token-saldo – for å kunne poste.
+EVM Contract Call Challenge er en anti-spam-mekanisme som verifiserer kjedeforhold før en publisering tillates. Det lar fellesskapseiere kreve at forfattere oppfyller smartkontrakt-definerte kriterier – for eksempel å ha en minimum token-saldo – for å kunne legge ut.
 
 **Kildekode:** [github.com/bitsocialnet/evm-contract-call](https://github.com/bitsocialnet/evm-contract-call)
 
@@ -18,7 +14,6 @@ EVM Contract Call Challenge er en anti-spam-mekanisme som verifiserer kjedeforho
 
 - **Node.js** >= 22
 - **Kun ESM** -- denne pakken sender ikke CommonJS-bygg.
-- **Runtime peer-avhengighet:** `@plebbit/plebbit-js` (migrerer til `@pkc/pkc-js`)
 
 ## Installasjon
 
@@ -41,7 +36,7 @@ npm install @bitsocial/evm-contract-challenge
 En fellesskapseier som ønsker å begrense innlegg til forfattere som har mer enn 1000 av et bestemt ERC-20-token, vil konfigurere utfordringen med:
 
 - `chainTicker`: `"eth"`
-- `address`: tokenkontraktsadressen
+- `address`: token-kontraktadressen
 - `abi`: ABI for `balanceOf(address)`
 - `condition`: `"> 1000"`
 - `error`: `"You must hold more than 1,000 tokens to post in this community."`
@@ -56,4 +51,4 @@ EVM Contract Call Challenge er ideell for:
 - **NFT-gated tilgang** der eierskap av en spesifikk NFT kreves.
 - **DAO-styringsrom** der deltakelse er begrenset til innehavere av styringstokener.
 
-For fellesskap som ikke er avhengig av kjedeidentitet, bør du vurdere [Spam Blocker](./spam-blocker.md) eller [Voucher Challenge](./voucher-challenge.md) i stedet.
+For fellesskap som ikke er avhengig av kjedeidentitet, bør du vurdere [Spamblokkering](./spam-blocker.md) eller [Voucher Challenge](./voucher-challenge.md) i stedet.

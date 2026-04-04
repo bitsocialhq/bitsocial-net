@@ -63,14 +63,14 @@ Una rete pubsub aperta è vulnerabile alle inondazioni di spam. Bitsocial risolv
 
 Il sistema di sfida è flessibile: ogni operatore comunitario configura la propria policy. Le opzioni includono:
 
-| Tipo di sfida | Come funziona |
-| ----------------- | ------------------------------------------------- |
-| **Captcha** | Puzzle visivo o interattivo presentato nell'app |
-| **Limitazione della velocità** | Limita i post per finestra temporale per identità |
-| **Porta gettoni** | Richiedere prova del saldo di un gettone specifico |
-| **Pagamento** | Richiedi un piccolo pagamento per post |
-| **Lista consentita** | Solo le identità pre-approvate possono pubblicare |
-| **Codice personalizzato** | Qualsiasi politica esprimibile nel codice |
+| Tipo di sfida                  | Come funziona                                      |
+| ------------------------------ | -------------------------------------------------- |
+| **Captcha**                    | Puzzle visivo o interattivo presentato nell'app    |
+| **Limitazione della velocità** | Limita i post per finestra temporale per identità  |
+| **Porta gettoni**              | Richiedere prova del saldo di un gettone specifico |
+| **Pagamento**                  | Richiedi un piccolo pagamento per post             |
+| **Lista consentita**           | Solo le identità pre-approvate possono pubblicare  |
+| **Codice personalizzato**      | Qualsiasi politica esprimibile nel codice          |
 
 I peer che inoltrano troppi tentativi di sfida falliti vengono bloccati dall'argomento pubsub, il che impedisce attacchi di negazione del servizio a livello di rete.
 
@@ -101,11 +101,11 @@ sequenceDiagram
 
 1. L'utente apre l'app e vede un'interfaccia social.
 2. Il client si unisce alla rete peer-to-peer ed effettua una query DHT per ciascuna comunità dell'utente
-segue. Le query richiedono alcuni secondi ciascuna ma vengono eseguite contemporaneamente.
+   segue. Le query richiedono alcuni secondi ciascuna ma vengono eseguite contemporaneamente.
 3. Ogni query restituisce i puntatori e i metadati dei contenuti più recenti della comunità (titolo, descrizione,
-elenco dei moderatori, configurazione della sfida).
+   elenco dei moderatori, configurazione della sfida).
 4. Il client recupera il contenuto effettivo del post utilizzando tali puntatori, quindi esegue il rendering di tutto in a
-interfaccia sociale familiare.
+   interfaccia sociale familiare.
 
 ---
 
@@ -154,7 +154,7 @@ sequenceDiagram
 7. Il cliente invia il post insieme alla risposta alla sfida tramite pubsub.
 8. Il nodo dell'operatore della comunità convalida la risposta. Se corretto, il post è accettato.
 9. Il nodo trasmette il risultato su pubsub in modo che i peer della rete sappiano che devono continuare l'inoltro
-messaggi da questo utente.
+   messaggi da questo utente.
 10. Il nodo aggiorna il contenuto della comunità al suo indirizzo a chiave pubblica.
 11. Nel giro di pochi minuti, ogni lettore della community riceve l'aggiornamento.
 
@@ -191,11 +191,11 @@ graph TB
     PK --> TR
 ```
 
-| Strato | Ruolo |
-| ------------ | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| **App** | Interfaccia utente. Possono esistere più app, ciascuna con il proprio design, e tutte condividono le stesse comunità e identità.                       |
-| **Protocollo** | Definisce come vengono indirizzate le comunità, come vengono pubblicati i post e come viene impedito lo spam.                                                |
-| **Rete** | L'infrastruttura peer-to-peer sottostante: DHT per la scoperta, gossipsub per la messaggistica in tempo reale e trasferimento di contenuti per lo scambio di dati. |
+| Strato         | Ruolo                                                                                                                                                              |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **App**        | Interfaccia utente. Possono esistere più app, ciascuna con il proprio design, e tutte condividono le stesse comunità e identità.                                   |
+| **Protocollo** | Definisce come vengono indirizzate le comunità, come vengono pubblicati i post e come viene impedito lo spam.                                                      |
+| **Rete**       | L'infrastruttura peer-to-peer sottostante: DHT per la scoperta, gossipsub per la messaggistica in tempo reale e trasferimento di contenuti per lo scambio di dati. |
 
 ---
 
@@ -243,7 +243,7 @@ Il compromesso è che Bitsocial non garantisce la disponibilità permanente dei 
 Le reti federate (come le piattaforme di posta elettronica o basate su ActivityPub) migliorano la centralizzazione ma presentano ancora limitazioni strutturali:
 
 - **Dipendenza dal server**: ogni comunità necessita di un server con un dominio, TLS e in corso
-manutenzione
+  manutenzione
 - **Fiducia dell'amministratore**: l'amministratore del server ha il pieno controllo sugli account utente e sui contenuti
 - **Frammentazione**: spostarsi tra server spesso significa perdere follower, cronologia o identità
 - **Costo**: qualcuno deve pagare per l'hosting, il che crea pressione verso il consolidamento

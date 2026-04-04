@@ -6,14 +6,10 @@ sidebar_position: 1
 
 # Spam Blocker
 
-:::warning Legacy névadás
-Ezt a csomagot eredetileg a `@plebbit` hatókörben tették közzé. A neve `@bitsocial/spam-blocker-server` és `@bitsocial/spam-blocker-challenge` lett. A régi nevekre való hivatkozások továbbra is megjelenhetnek a régebbi dokumentációkban vagy kódbázisokban.
-:::
-
 A Spam Blocker egy központosított spamészlelő szolgáltatás, amely kiértékeli a beérkező kiadványokat, és kockázati pontszámokat rendel hozzá. Két csomagból áll:
 
 - **`@bitsocial/spam-blocker-server`** – a kiértékelő és kihívást jelentő API-kat kiszolgáló HTTP-kiszolgáló.
-- **`@bitsocial/spam-blocker-challenge`** – egy könnyű klienscsomag, amelyet a közösségek integrálva küldhetnek ki értékelésre.
+- **`@bitsocial/spam-blocker-challenge`** – egy könnyű klienscsomag, amelyet a közösségek integrálva küldhetnek kiértékelésre.
 
 **Forráskód:** [github.com/bitsocialnet/spam-blocker](https://github.com/bitsocialnet/spam-blocker)
 
@@ -21,21 +17,21 @@ A Spam Blocker egy központosított spamészlelő szolgáltatás, amely kiérté
 
 Minden, a `/evaluate` végponthoz benyújtott kiadvány numerikus kockázati pontszámot kap. A pontszám több jel súlyozott kombinációja:
 
-| Jel              | Leírás                                                                                                                                                                           |
-| ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Számla kora      | Az újabb fiókok magasabb kockázati pontszámot kapnak.                                                                                                                            |
-| Karma            | A felhalmozott közösségi karma csökkenti a kockázatot.                                                                                                                           |
-| A szerző hírneve | A háttérhálózati indexelő által gyűjtött hírnévadatok.                                                                                                                           |
-| Tartalomelemzés  | Szövegszintű heurisztika (linksűrűség, ismert spam-minták stb.).                                                                                                                 |
-| Sebesség         | Ugyanattól a szerzőtől származó gyors, egymást követő bejegyzések növelik a kockázatot.                                                                                          |
-| IP intelligencia | Országszintű földrajzi helymeghatározás és fenyegetés-hírcsatorna keresések. A rendszer csak az országkódokat tárolja – a nyers IP-címeket soha nem osztják meg a közösségekkel. |
+| Jel              | Leírás                                                                                                                                                                 |
+| ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Számla kora      | Az újabb fiókok magasabb kockázati pontszámot kapnak.                                                                                                                  |
+| Karma            | A felhalmozott közösségi karma csökkenti a kockázatot.                                                                                                                 |
+| A szerző hírneve | A háttérhálózati indexelő által gyűjtött hírnévadatok.                                                                                                                 |
+| Tartalomelemzés  | Szövegszintű heurisztika (linksűrűség, ismert spam-minták stb.).                                                                                                       |
+| Sebesség         | Az ugyanattól a szerzőtől származó gyors, egymást követő bejegyzések növelik a kockázatot.                                                                             |
+| IP intelligencia | Országszintű földrajzi helymeghatározás és fenyegetés-hírcsatorna keresések. Csak az országkódokat tároljuk – a nyers IP-címeket soha nem osztjuk meg a közösségekkel. |
 
 ## Szintküszöbök
 
 A kockázati pontszám a négy konfigurálható szint egyikére vonatkozik, amelyek meghatározzák, hogy mi történik ezután:
 
 1. **Automatikus elfogadás** -- a pontszám elég alacsony ahhoz, hogy a kiadványt minden kihívás nélkül jóváhagyják.
-2. **OAuth-megfelelő** – a folytatáshoz a szerzőnek OAuth-ellenőrzést kell végeznie.
+2. **OAuth-megfelelő** -- a szerzőnek OAuth-ellenőrzést kell végeznie a folytatáshoz.
 3. **OAuth-plus-more** -- Az OAuth önmagában nem elegendő; további ellenőrzés (pl. CAPTCHA) szükséges.
 4. **Automatikus elutasítás** -- a pontszám túl magas; a kiadványt végleg elutasítják.
 
@@ -43,7 +39,7 @@ Az összes küszöbérték közösségenként konfigurálható.
 
 ## Challenge Flow
 
-Amikor egy kiadvány olyan szintre esik, amely ellenőrzést igényel, a kihívás folyamata megkezdődik:
+Amikor egy kiadvány olyan szintre kerül, amely ellenőrzést igényel, a kihívás folyamata megkezdődik:
 
 1. A szerzőt először az **OAuth** (GitHub, Google, Twitter és más támogatott szolgáltatók) keresztül kell hitelesíteni.
 2. Ha az OAuth önmagában nem elegendő (3. szint), megjelenik egy **CAPTCHA tartalék**, amelyet a Cloudflare Turnstile hajt.
@@ -65,7 +61,7 @@ Egy beágyazható HTML-oldalt ad vissza, amely az adott munkamenethez megfelelő
 
 ## Rate Limiting
 
-A díjkorlátokat dinamikusan alkalmazzák a szerző életkora és hírneve alapján. Az újabb vagy gyengébb hírnévvel rendelkező szerzők szigorúbb korlátokkal szembesülnek, míg a bevett szerzők bőkezűbb küszöböt élveznek. Ez megakadályozza a kéretlen levelek özönét anélkül, hogy a megbízható résztvevőket büntetné.
+A díjkorlátokat dinamikusan alkalmazzák a szerző életkora és hírneve alapján. Az újabb vagy gyengébb hírnévvel rendelkező szerzők szigorúbb korlátokkal szembesülnek, míg a bevett szerzők bőkezűbb küszöböt élveznek. Ez megakadályozza a kéretlen levelek özönét anélkül, hogy a megbízható résztvevőket megbüntetné.
 
 ## Háttér hálózati indexelő
 
@@ -80,4 +76,4 @@ A Spam Blocker az adatvédelmet szem előtt tartva készült:
 
 ## Adatbázis
 
-A kiszolgáló az **SQLite-ot** használja (a `better-sqlite3`-n keresztül) a hírnévadatok, a munkamenet állapota és a konfiguráció helyi megőrzésére.
+A kiszolgáló az **SQLite-ot** használja (a `better-sqlite3`-n keresztül) a hírnévadatok, a munkamenet állapotának és a konfigurációnak a helyi fennmaradásához.

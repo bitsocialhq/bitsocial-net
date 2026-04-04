@@ -32,13 +32,13 @@ Dacă 5chan nu se potrivește cu comunitatea sau interfața dorită, creați un 
    - [Cârlige Bitsocial React](../react-hooks/)
    - [CLI Bitsocial](../cli/)
 2. Decideți ce fel de panou imagine construiți de fapt.
-Alegeți mai întâi structura forumului, ipotezele de identitate, modelul de moderare, fluxul de descoperire și limbajul vizual.
+   Alegeți mai întâi structura forumului, ipotezele de identitate, modelul de moderare, fluxul de descoperire și limbajul vizual.
 3. Alegeți calea de implementare care se potrivește proiectului.
-Furk 5chan dacă doriți să vă mișcați rapid cu o bază de imagine familiară. Începeți din nou dacă interfața de utilizare sau modelul de interacțiune trebuie să fie radical diferit.
+   Furk 5chan dacă doriți să vă mișcați rapid cu o bază de imagine familiară. Începeți din nou dacă interfața de utilizare sau modelul de interacțiune trebuie să fie radical diferit.
 4. Trimiteți o primă versiune îngustă.
-Un client care servește bine o comunitate reală este mai valoros decât o clonă vagă menită să satisfacă toată lumea.
+   Un client care servește bine o comunitate reală este mai valoros decât o clonă vagă menită să satisfacă toată lumea.
 5. Publicați rezultatul și lăsați comunitățile să-l testeze.
-Bitsocial se îmbunătățește atunci când constructorii externi trimit clienți cu opinii care concurează la calitatea produsului, în loc să aștepte ca o aplicație oficială să facă totul.
+   Bitsocial se îmbunătățește atunci când constructorii externi trimit clienți cu opinii care concurează la calitatea produsului, în loc să aștepte ca o aplicație oficială să facă totul.
 
 ## Principiul de proiectare
 

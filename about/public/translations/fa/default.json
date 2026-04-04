@@ -149,7 +149,8 @@
         "description": "imageboardها ساده‌ترین شکل رسانه اجتماعی برای غیرمتمرکز کردن هستند: انتشار ناشناس، چند board پیش‌فرض محدود، و نبود نمودار پروفایل. به همین دلیل داریم 5chan را، که اولین برنامه Bitsocial است، راه‌اندازی می‌کنیم. 5chan نشان می‌دهد Bitsocial می‌تواند جای imageboardهای متمرکز را بگیرد و هم‌زمان مدیران جهانی را از معادله حذف کند.",
         "callout": {
           "description": "5chan اولین نشانهٔ اثبات است، نه خط پایان. ما چندین کلاینت imageboard با فرهنگ‌ها، رابط‌ها و تنظیمات پیش‌فرض متفاوت می‌خواهیم: بردهای سبک altchan، آزمایش‌های mobile-first، جوامع نیچ، و فورک‌هایی که نیازهایی را حل کنند که 5chan هرگز حل نخواهد کرد.",
-          "ctaLabel": "نسخهٔ خودتان را بسازید"
+          "ctaLabel": "نسخهٔ خودتان را بسازید",
+          "separator": "- یا -"
         }
       },
       "phase2": {
@@ -185,5 +186,25 @@
   "home": {
     "devOnlyRouteNotice": "{{path}} هنوز در حال ساخت است. شما به صفحه اصلی هدایت شدید.",
     "dismissDevOnlyRouteNotice": "بستن اعلان"
+  },
+  "apps": {
+    "allProjects": "All Projects",
+    "allProjectsDescription": "The full Bitsocial ecosystem, from user-facing clients to protocol tools.",
+    "linksSectionDescription": "Launch the app, grab a build, or use a mirror without leaving the directory.",
+    "searchPlaceholder": "Search apps, tools, or tags",
+    "clearSearch": "Clear search",
+    "clearFilters": "Clear filters",
+    "noMatches": "No projects match these filters",
+    "noMatchesDescription": "Try a different search, platform, or category combination.",
+    "viewDetails": "Details",
+    "readyToUse": "Ready to use",
+    "webLinks": "Open on the web",
+    "mobileDownloads": "Mobile downloads",
+    "desktopDownloads": "Desktop downloads",
+    "extraDownloads": "Extra builds",
+    "subtitle": "Open the clients, tools, and modules already live on Bitsocial. Search fast, filter by platform, and jump straight into the links that matter.",
+    "experimental": "Experimental",
+    "sectionLabel": "فهرست برنامه‌ها",
+    "directoryLabel": "فهرست"
   }
 }

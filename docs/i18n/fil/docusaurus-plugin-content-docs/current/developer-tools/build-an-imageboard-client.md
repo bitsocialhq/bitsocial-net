@@ -32,13 +32,13 @@ Kung hindi tumugma ang 5chan sa komunidad o interface na gusto mo, bumuo na lang
    - [Bitsocial React hooks](../react-hooks/)
    - [Bitsocial CLI](../cli/)
 2. Magpasya kung anong uri ng imageboard ang aktwal mong itinatayo.
-Piliin muna ang istraktura ng board, mga pagpapalagay ng pagkakakilanlan, modelo ng moderation, daloy ng pagtuklas, at visual na wika.
+   Piliin muna ang istraktura ng board, mga pagpapalagay ng pagkakakilanlan, modelo ng moderation, daloy ng pagtuklas, at visual na wika.
 3. Piliin ang landas ng pagpapatupad na akma sa proyekto.
-Fork 5chan kung gusto mong gumalaw ng mabilis gamit ang isang pamilyar na base ng imageboard. Magsimula nang bago kung ang UI o modelo ng pakikipag-ugnayan ay kailangang maging lubhang naiiba.
+   Fork 5chan kung gusto mong gumalaw ng mabilis gamit ang isang pamilyar na base ng imageboard. Magsimula nang bago kung ang UI o modelo ng pakikipag-ugnayan ay kailangang maging lubhang naiiba.
 4. Magpadala ng makitid na unang bersyon.
-Ang isang kliyente na mahusay na nagsisilbi sa isang tunay na komunidad ay mas mahalaga kaysa sa isang hindi malinaw na clone na nilalayong bigyang-kasiyahan ang lahat.
+   Ang isang kliyente na mahusay na nagsisilbi sa isang tunay na komunidad ay mas mahalaga kaysa sa isang hindi malinaw na clone na nilalayong bigyang-kasiyahan ang lahat.
 5. I-publish ang resulta at hayaan ang mga komunidad na subukan ito.
-Nagpapabuti ang Bitsocial kapag ang mga tagabuo sa labas ay nagpapadala ng mga kliyenteng may opinyon na nakikipagkumpitensya sa kalidad ng produkto sa halip na maghintay para sa isang opisyal na app na gawin ang lahat.
+   Nagpapabuti ang Bitsocial kapag ang mga tagabuo sa labas ay nagpapadala ng mga kliyenteng may opinyon na nakikipagkumpitensya sa kalidad ng produkto sa halip na maghintay para sa isang opisyal na app na gawin ang lahat.
 
 ## Prinsipyo ng disenyo
 

@@ -6,16 +6,12 @@ sidebar_position: 1
 
 # React Hooks
 
-:::warning Ældre navngivning
-Denne pakke bruger i øjeblikket ældre navngivningskonventioner, der er arvet fra dens opstrøms fork. Referencer til "plebbit" i kode, API'er og konfiguration vil blive migreret til "bitsocial" i en fremtidig udgivelse. Funktionaliteten er upåvirket.
-:::
-
 `bitsocial-react-hooks`-pakken giver en velkendt React hooks API til at interagere med Bitsocial-protokollen. Det håndterer at hente feeds, kommentarer og forfatterprofiler, administrere konti, udgive indhold og abonnere på fællesskaber – alt sammen uden at være afhængig af en central server.
 
-Dette bibliotek er den primære grænseflade, der bruges af [5chan](/apps/5chan/) og andre Bitsocial-klientapplikationer.
+Dette bibliotek er den primære grænseflade, der bruges af [5 chan](/apps/5chan/) og andre Bitsocial-klientapplikationer.
 
 :::note
-`bitsocial-react-hooks` er en midlertidig fork af `plebbit/plebbit-react-hooks`, der vedligeholdes til AI-støttet udvikling. Det forbruges direkte fra GitHub i stedet for at blive offentliggjort til npm.
+`bitsocial-react-hooks` forbruges i øjeblikket direkte fra GitHub i stedet for publiceret til npm.
 :::
 
 ## Installation
@@ -37,14 +33,14 @@ Krogene er organiseret i funktionelle kategorier. Nedenfor er en oversigt over d
 Administrer lokale brugerkonti, identitet og indstillinger.
 
 - `useAccount(accountName?)` -- returnerer det aktive (eller navngivne) kontoobjekt
-- `useAccounts()` -- returnerer alle lokalt gemte konti
+- `useAccounts()` -- returnerer alle lokalt lagrede konti
 - `useAccountComments(options?)` -- returnerer kommentarer udgivet af den aktive konto
 
 ### Kommentarer
 
 Hent og interager med individuelle kommentarer og tråde.
 
-- `useComment(commentCid?)` -- henter en enkelt kommentar ved dens CID
+- `useComment(commentCid?)` -- henter en enkelt kommentar ved sit CID
 - `useComments(commentCids?)` -- henter flere kommentarer i batch
 - `useEditedComment(comment?)` -- returnerer den senest redigerede version af en kommentar
 
@@ -52,9 +48,9 @@ Hent og interager med individuelle kommentarer og tråde.
 
 Hent metadata og indstillinger for fællesskabet.
 
-- `useSubplebbit(subplebbitAddress?)` -- henter et fællesskab efter adresse
-- `useSubplebbits(subplebbitAddresses?)` -- henter flere fællesskaber
-- `useSubplebbitStats(subplebbitAddress?)` -- returnerer antallet af abonnenter og indlæg
+- Single-community lookup hook – henter et fællesskab efter adresse
+- Opslagskrog for flere fællesskaber -- henter flere fællesskaber
+- Community statistik hook - returnerer abonnenter og indlæg
 
 ### Forfattere
 
@@ -62,14 +58,14 @@ Slå forfatterprofiler og metadata op.
 
 - `useAuthor(authorAddress?)` -- henter en forfatterprofil
 - `useAuthorComments(options?)` -- returnerer kommentarer fra en bestemt forfatter
-- `useResolvedAuthorAddress(authorAddress?)` -- løser en menneskelæselig adresse (f.eks. ENS) til dens protokoladresse
+- `useResolvedAuthorAddress(authorAddress?)` -- løser en menneskelig læsbar adresse (f.eks. ENS) til dens protokoladresse
 
 ### Feeds
 
 Abonner på og sideindsæt indholdsfeeds.
 
 - `useFeed(options?)` -- returnerer et pagineret feed med indlæg fra et eller flere fællesskaber
-- `useBufferedFeeds(feedOptions?)` -- forudbuffer flere feeds for hurtigere gengivelse
+- `useBufferedFeeds(feedOptions?)` -- præ-bufferer flere feeds for hurtigere gengivelse
 - `useAuthorFeed(authorAddress?)` -- returnerer et feed med indlæg fra en bestemt forfatter
 
 ### Handlinger
@@ -77,7 +73,7 @@ Abonner på og sideindsæt indholdsfeeds.
 Udgiv indhold og udfør skrivehandlinger.
 
 - `usePublishComment(options?)` -- udgiv en ny kommentar eller svar
-- `usePublishVote(options?)` -- afgiv en stemme op eller ned
+- `usePublishVote(options?)` -- afgiv en op- eller nedstemme
 - `useSubscribe(options?)` -- tilmeld eller afmeld et fællesskab
 
 ### stater og RPC
@@ -85,7 +81,7 @@ Udgiv indhold og udfør skrivehandlinger.
 Overvåg forbindelsestilstand og interager med en ekstern Bitsocial-dæmon.
 
 - `useClientsStates(options?)` -- returnerer forbindelsestilstanden for IPFS/pubsub-klienter
-- `usePlebbitRpcSettings()` -- returnerer den aktuelle RPC-dæmon-konfiguration
+- RPC-indstillingshook -- returnerer den aktuelle RPC-dæmonkonfiguration
 
 ## Udvikling
 

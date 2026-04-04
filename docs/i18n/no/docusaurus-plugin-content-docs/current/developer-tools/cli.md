@@ -6,13 +6,9 @@ sidebar_position: 2
 
 # CLI
 
-:::warning Legacy navngivning
-Denne pakken bruker for tiden eldre navnekonvensjoner som er arvet fra oppstrømsavhengigheten. Referanser til "plebbit" i kommandoer, utdata og konfigurasjon vil bli migrert til "bitsocial" i en fremtidig utgivelse. Funksjonaliteten er upåvirket.
-:::
-
 `bitsocial-cli` er et kommandolinjeverktøy for å samhandle med Bitsocial-protokollens backend. Den lar deg kjøre en lokal P2P-demon, opprette og konfigurere fellesskap og publisere innhold - alt fra terminalen.
 
-Den er bygget på toppen av `plebbit-js` og brukes av [5chan](/apps/5chan/) og [Seedit](/apps/seedit/) for opprettelse av fellesskap og nodeadministrasjon.
+Den er bygget på toppen av det delte Bitsocial-protokollklientlaget og brukes av [5chan](/apps/5chan/) og [Seedit](/apps/seedit/) for opprettelse av fellesskap og nodeadministrasjon.
 
 ## Installasjon
 
@@ -36,22 +32,22 @@ bitsocial-cli daemon
 
 Ved første lansering sender demonen ut koblinger til **WebUI**, et nettleserbasert grafisk grensesnitt for å administrere noden, fellesskapene og innstillingene dine. Dette er nyttig hvis du foretrekker en GUI fremfor terminalkommandoer.
 
-## Tastekommandoer
+## Nøkkelhandlinger
 
-| Kommando            | Beskrivelse                                                     |
-| ------------------- | --------------------------------------------------------------- |
-| `daemon`            | Start Bitsocial P2P-noden                                       |
-| `create subplebbit` | Opprett et nytt fellesskap                                      |
-| `subplebbit edit`   | Oppdater fellesskapsinnstillinger (tittel, beskrivelse, regler) |
-| `subplebbit list`   | Liste fellesskap som er vert for denne noden                    |
-| `subplebbit start`  | Begynn å betjene et bestemt fellesskap                          |
-| `subplebbit stop`   | Slutt å tjene et bestemt fellesskap                             |
+| Handling              | Beskrivelse                                                     |
+| --------------------- | --------------------------------------------------------------- |
+| Start demonen         | Start Bitsocial P2P-noden                                       |
+| Opprett et fellesskap | Opprett et nytt fellesskap                                      |
+| Rediger et fellesskap | Oppdater fellesskapsinnstillinger (tittel, beskrivelse, regler) |
+| Liste lokalsamfunn    | Liste fellesskap som er vert for denne noden                    |
+| Start et fellesskap   | Begynn å betjene et bestemt fellesskap                          |
+| Stopp et fellesskap   | Slutt å tjene et bestemt fellesskap                             |
 
-Kjør en hvilken som helst kommando med `--help` for å se tilgjengelige alternativer og flagg:
+Kjør CLI med `--help` for å se gjeldende kommandonavn og flagg eksponert av den installerte versjonen:
 
 ```bash
+bitsocial-cli --help
 bitsocial-cli daemon --help
-bitsocial-cli create subplebbit --help
 ```
 
 ## Typisk arbeidsflyt
@@ -59,20 +55,14 @@ bitsocial-cli create subplebbit --help
 En vanlig oppsettflyt for å være vert for et nytt fellesskap:
 
 ```bash
-# 1. Start demonen
+# 1. Start the daemon
 bitsocial-cli daemon
 
-# 2. Opprett et fellesskap i en annen terminal
-bitsocial-cli create subplebbit
-
-# 3. Konfigurer fellesskapet
-bitsocial-cli subplebbit edit <address> --title "My Community" --description "A decentralized forum"
-
-# 4. Begynn å servere den
-bitsocial-cli subplebbit start <address>
+# 2. In another terminal, inspect the available community-management commands
+bitsocial-cli --help
 ```
 
-Fellesskapet er nå live på Bitsocial-nettverket og tilgjengelig fra enhver kompatibel klient.
+Derfra bruker du den installerte utgivelsens kommandoer for fellesskapsadministrasjon for å opprette, konfigurere og begynne å betjene et fellesskap. Når det er startet, er fellesskapet live på Bitsocial-nettverket og tilgjengelig fra kompatible klienter.
 
 ## Lenker
 

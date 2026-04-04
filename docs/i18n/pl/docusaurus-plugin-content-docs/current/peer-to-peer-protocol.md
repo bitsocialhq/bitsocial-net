@@ -63,14 +63,14 @@ Otwarta sieć pubsub jest podatna na zalew spamu. Bitsocial rozwiązuje ten prob
 
 System wyzwań jest elastyczny: każdy operator społecznościowy konfiguruje własną politykę. Opcje obejmują:
 
-| Rodzaj wyzwania | Jak to działa |
-| ----------------- | ------------------------------------------------- |
-| **Captcha** | Wizualna lub interaktywna łamigłówka prezentowana w aplikacji |
-| **Ograniczenie szybkości** | Limit postów na okno czasowe na tożsamość |
-| **Żetonowa brama** | Wymagaj dowodu salda określonego tokena |
-| **Płatność** | Wymagaj niewielkiej płatności za post |
-| **Lista dozwolonych** | Tylko wstępnie zatwierdzone tożsamości mogą publikować |
-| **Kod niestandardowy** | Dowolna polityka wyrażona w kodzie |
+| Rodzaj wyzwania            | Jak to działa                                                 |
+| -------------------------- | ------------------------------------------------------------- |
+| **Captcha**                | Wizualna lub interaktywna łamigłówka prezentowana w aplikacji |
+| **Ograniczenie szybkości** | Limit postów na okno czasowe na tożsamość                     |
+| **Żetonowa brama**         | Wymagaj dowodu salda określonego tokena                       |
+| **Płatność**               | Wymagaj niewielkiej płatności za post                         |
+| **Lista dozwolonych**      | Tylko wstępnie zatwierdzone tożsamości mogą publikować        |
+| **Kod niestandardowy**     | Dowolna polityka wyrażona w kodzie                            |
 
 Elementy równorzędne, które przekazują zbyt wiele nieudanych prób wyzwania, są blokowane w temacie pubsub, co zapobiega atakom typu „odmowa usługi” w warstwie sieciowej.
 
@@ -101,11 +101,11 @@ sequenceDiagram
 
 1. Użytkownik otwiera aplikację i widzi interfejs społecznościowy.
 2. Klient przyłącza się do sieci peer-to-peer i wysyła zapytanie DHT do każdej społeczności będącej użytkownikiem
-następuje. Zapytania trwają kilka sekund, ale są uruchamiane jednocześnie.
+   następuje. Zapytania trwają kilka sekund, ale są uruchamiane jednocześnie.
 3. Każde zapytanie zwraca najnowsze wskaźniki zawartości społeczności i metadane (tytuł, opis,
-lista moderatorów, konfiguracja wyzwania).
+   lista moderatorów, konfiguracja wyzwania).
 4. Klient pobiera rzeczywistą treść postu za pomocą tych wskaźników, a następnie renderuje wszystko w pliku a
-znany interfejs społecznościowy.
+   znany interfejs społecznościowy.
 
 ---
 
@@ -154,7 +154,7 @@ sequenceDiagram
 7. Klient przesyła post wraz z odpowiedzią na wyzwanie za pośrednictwem pubsub.
 8. Węzeł operatora społeczności sprawdza odpowiedź. Jeżeli jest poprawny, post zostaje zaakceptowany.
 9. Węzeł rozgłasza wynik poprzez pubsub, aby uczestnicy sieci wiedzieli, że mogą kontynuować przekazywanie
-wiadomości od tego użytkownika.
+   wiadomości od tego użytkownika.
 10. Węzeł aktualizuje zawartość społeczności pod adresem klucza publicznego.
 11. W ciągu kilku minut każdy czytelnik społeczności otrzyma aktualizację.
 
@@ -191,11 +191,11 @@ graph TB
     PK --> TR
 ```
 
-| Warstwa | Rola |
-| ------------ | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| **Aplikacja** | Interfejs użytkownika. Może istnieć wiele aplikacji, każda z własnym projektem, wszystkie współdzielące te same społeczności i tożsamości.                       |
-| **Protokół** | Określa sposób zwracania się do społeczności, sposobu publikowania postów i zapobiegania spamowi.                                                |
-| **Sieć** | Podstawowa infrastruktura peer-to-peer: DHT do wykrywania, plotki do przesyłania wiadomości w czasie rzeczywistym i przesyłanie treści do wymiany danych. |
+| Warstwa       | Rola                                                                                                                                                      |
+| ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Aplikacja** | Interfejs użytkownika. Może istnieć wiele aplikacji, każda z własnym projektem, wszystkie współdzielące te same społeczności i tożsamości.                |
+| **Protokół**  | Określa sposób zwracania się do społeczności, sposobu publikowania postów i zapobiegania spamowi.                                                         |
+| **Sieć**      | Podstawowa infrastruktura peer-to-peer: DHT do wykrywania, plotki do przesyłania wiadomości w czasie rzeczywistym i przesyłanie treści do wymiany danych. |
 
 ---
 
@@ -243,7 +243,7 @@ Kompromis polega na tym, że Bitsocial nie gwarantuje stałej dostępności star
 Sieci stowarzyszone (takie jak platformy e-mail lub platformy oparte na ActivityPub) poprawiają się pod względem centralizacji, ale nadal mają ograniczenia strukturalne:
 
 - **Zależność od serwera** — każda społeczność potrzebuje serwera z domeną, TLS i działającym
-konserwacja
+  konserwacja
 - **Zaufanie administratora** — administrator serwera ma pełną kontrolę nad kontami użytkowników i treścią
 - **Fragmentacja** — przemieszczanie się między serwerami często oznacza utratę obserwujących, historii lub tożsamości
 - **Koszt** — ktoś musi zapłacić za hosting, co stwarza presję na konsolidację

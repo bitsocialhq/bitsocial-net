@@ -6,11 +6,7 @@ sidebar_position: 4
 
 # EVM Contract Call Challenge
 
-:::warning Legacy na Pangalan
-Ang package na ito ay orihinal na na-publish sa ilalim ng saklaw ng `@plebbit`. Ito ay pinalitan ng pangalan sa `@bitsocial/evm-contract-challenge`. Ang mga sanggunian sa lumang pangalan ay maaari pa ring lumabas sa mas lumang dokumentasyon o codebase.
-:::
-
-Ang EVM Contract Call Challenge ay isang anti-spam na mekanismo na nagbe-verify ng on-chain na mga kondisyon bago payagan ang isang publikasyon. Orihinal na kinuha mula sa `plebbit-js` bilang isang standalone na package, hinahayaan nito ang mga may-ari ng komunidad na hilingin sa mga may-akda na matugunan ang pamantayang tinukoy ng matalinong kontrata -- halimbawa, may hawak na minimum na balanse ng token -- upang makapag-post.
+Ang EVM Contract Call Challenge ay isang anti-spam na mekanismo na nagbe-verify ng on-chain na mga kondisyon bago payagan ang isang publikasyon. Hinahayaan nito ang mga may-ari ng komunidad na hilingin sa mga may-akda na matugunan ang pamantayang tinukoy ng matalinong kontrata -- halimbawa, may hawak na minimum na balanse ng token -- upang makapag-post.
 
 **Source code:** [github.com/bitsocialnet/evm-contract-call](https://github.com/bitsocialnet/evm-contract-call)
 
@@ -18,7 +14,6 @@ Ang EVM Contract Call Challenge ay isang anti-spam na mekanismo na nagbe-verify 
 
 - **Node.js** >= 22
 - **ESM-only** -- hindi nagpapadala ang package na ito ng mga CommonJS build.
-- **Runtime peer dependency:** `@plebbit/plebbit-js` (lumilipat sa `@pkc/pkc-js`)
 
 ## Pag-install
 
@@ -56,4 +51,4 @@ Ang EVM Contract Call Challenge ay mainam para sa:
 - **NFT-gated access** kung saan kinakailangan ang pagmamay-ari ng isang partikular na NFT.
 - **Mga puwang sa pamamahala ng DAO** kung saan ang paglahok ay limitado sa mga may hawak ng token ng pamamahala.
 
-Para sa mga komunidad na hindi umaasa sa on-chain na pagkakakilanlan, isaalang-alang ang [Spam Blocker](./spam-blocker.md) o [Voucher Challenge](./voucher-challenge.md) sa halip.
+Para sa mga komunidad na hindi umaasa sa on-chain na pagkakakilanlan, isaalang-alang ang [Spam Blocker](./spam-blocker.md) o [Hamon ng Voucher](./voucher-challenge.md) sa halip.

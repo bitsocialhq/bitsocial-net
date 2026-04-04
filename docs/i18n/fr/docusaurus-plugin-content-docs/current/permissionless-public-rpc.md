@@ -5,7 +5,7 @@ description: Conception proposée pour un service public Bitsocial RPC avec des 
 
 # RPC public sans autorisation
 
-La proposition publique initiale du RPC était un problème GitHub écrit dans l'ancienne terminologie plebbit. Cette page réécrit cette idée dans le langage Bitsocial et la présente comme une proposition au niveau du produit plutôt que comme un mur de détails de mise en œuvre.
+Cette page présente le RPC public comme une proposition Bitsocial au niveau du produit au lieu d'un mur de détails de mise en œuvre.
 
 ## Objectif en langage simple
 
@@ -56,7 +56,7 @@ Le RPC public lui-même doit rester concentré sur le comportement du RPC face �
 
 La documentation destinée aux utilisateurs doit utiliser des termes Bitsocial tels que **communauté** et **profil**.
 
-Au niveau filaire, le premier déploiement peut toujours conserver la forme actuelle du transport et de la charge utile JSON-RPC lorsque cela est utile pour la compatibilité. En d’autres termes : les documents n’ont plus besoin de parler comme les anciens documents plebbit, même si la période de transition conserve certains noms de méthodes ou formes de requêtes hérités en coulisses.
+Au niveau filaire, le premier déploiement peut toujours préserver la forme actuelle du transport et de la charge utile JSON-RPC lorsque cela est utile pour la compatibilité. En d’autres termes : la documentation peut rester native de Bitsocial même si la période de transition conserve en coulisses certains noms de méthodes ou formes de requêtes orientés vers la compatibilité.
 
 ## Ensemble d'autorisations proposé
 
@@ -173,10 +173,10 @@ L'authentification pour cette API d'opérateur doit être complètement distinct
 
 Si la création d'authentification est bon marché, les services publics peuvent avoir besoin d'une couche de vérification avant de délivrer des informations d'identification. Une voie possible consiste à réutiliser le modèle de défi communautaire lui-même afin que la délivrance des informations d'identification hérite de la même philosophie anti-abus que le reste du réseau.
 
-### Dénomination héritée
+### Détails de la migration
 
-Certaines premières implémentations peuvent encore exposer les noms de méthodes héritées en interne pour des raisons de compatibilité. Cela doit être traité comme un détail de migration, et non comme le vocabulaire public permanent des documents Bitsocial.
+Certaines premières implémentations peuvent encore exposer en interne des noms de méthodes orientés compatibilité. Cela doit être traité comme un détail de migration, et non comme le vocabulaire public permanent des documents Bitsocial.
 
 ## Résumé
 
-Cette proposition vise en réalité une seule chose : rendre l’infrastructure RPC publique utile sans la rendre dépositaire. Un bon RPC Bitsocial public devrait ressembler à une assistance facultative pour gérer les communautés, et non à une nouvelle plate-forme centrale qui récupère la propriété par la porte dérobée.
+Cette proposition vise en réalité une seule chose : rendre l'infrastructure RPC publique utile sans la rendre dépositaire. Un bon RPC Bitsocial public devrait ressembler à une assistance facultative pour gérer les communautés, et non à une nouvelle plate-forme centrale qui récupère la propriété par la porte dérobée.

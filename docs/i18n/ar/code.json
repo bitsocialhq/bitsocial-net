@@ -408,7 +408,7 @@
     "message": "اختر اللغة"
   },
   "docs.languageSelector.searchPlaceholder": {
-    "message": "لغات البحث"
+    "message": "ابحث عن اللغات"
   },
   "docs.languageSelector.emptyState": {
     "message": "لا توجد لغات تطابق بحثك."
@@ -420,6 +420,6 @@
     "message": "التعريب"
   },
   "docs.languageSelector.closeButton": {
-    "message": "يغلق"
+    "message": "إغلاق"
   }
 }

@@ -32,13 +32,13 @@ Pokud 5chan neodpovídá požadované komunitě nebo rozhraní, vytvořte místo
    - [Bitsocial React háčky](../react-hooks/)
    - [Bitsocial CLI](../cli/)
 2. Rozhodněte se, jaký druh imageboardu vlastně stavíte.
-Nejprve vyberte strukturu desky, předpoklady identity, model moderování, tok objevů a vizuální jazyk.
+   Nejprve vyberte strukturu desky, předpoklady identity, model moderování, tok objevů a vizuální jazyk.
 3. Vyberte cestu implementace, která odpovídá projektu.
-Fork 5chan, pokud se chcete rychle pohybovat se známou imageboardovou základnou. Začněte znovu, pokud se má uživatelské rozhraní nebo model interakce radikálně lišit.
+   Fork 5chan, pokud se chcete rychle pohybovat se známou imageboardovou základnou. Začněte znovu, pokud se má uživatelské rozhraní nebo model interakce radikálně lišit.
 4. Odešlete úzkou první verzi.
-Jeden klient, který dobře slouží jedné skutečné komunitě, je cennější než vágní klon, který má uspokojit všechny.
+   Jeden klient, který dobře slouží jedné skutečné komunitě, je cennější než vágní klon, který má uspokojit všechny.
 5. Zveřejněte výsledek a nechte komunity otestovat.
-Bitsocial se zlepšuje, když externí stavitelé posílají své klienty, kteří soutěží o kvalitu produktů, místo aby čekali, až jedna oficiální aplikace udělá vše.
+   Bitsocial se zlepšuje, když externí stavitelé posílají své klienty, kteří soutěží o kvalitu produktů, místo aby čekali, až jedna oficiální aplikace udělá vše.
 
 ## Princip designu
 

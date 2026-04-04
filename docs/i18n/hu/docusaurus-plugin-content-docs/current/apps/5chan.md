@@ -4,13 +4,9 @@ description: Szerver nélküli, decentralizált képtábla, amely a Bitsocial pr
 sidebar_position: 1
 ---
 
-:::warning[Korábbi elnevezések]
-Ennek a projektnek a kódbázisa továbbra is a Bitsocial rebrand előtti örökölt „plebbit” elnevezést használja. A csomagnevek, az API-hivatkozások és néhány belső terminológia egy jövőbeli kiadásban frissül. Az itt leírt funkciók aktuálisak – csak az elnevezés elavult.
-:::
-
 # 5chan
 
-Az 5chan egy szerver nélküli, adminisztrátor nélküli és teljesen decentralizált képtábla, amely a Bitsocial protokollon fut. Követi az ismert imageboard könyvtárszerkezetet, miközben bevezeti a decentralizált tulajdonjogot – bárki létrehozhat egy táblát, és több tábla is versenyezhet ugyanarra a címtárhelyre egy szavazási mechanizmuson keresztül.
+Az 5chan egy szerver nélküli, adminisztrátor nélküli és teljesen decentralizált képtábla, amely a Bitsocial protokollon fut. Követi az ismert imageboard könyvtárstruktúrát, miközben bevezeti a decentralizált tulajdonjogot – bárki létrehozhat egy táblát, és több tábla is versenyezhet ugyanarra a címtárhelyre egy szavazási mechanizmuson keresztül.
 
 ## Letöltések
 
@@ -30,11 +26,11 @@ Az 5chan a tartalmat táblákba rendezi klasszikus könyvtárelrendezéssel (pl.
 
 ### Címtár-hozzárendelések
 
-A címtárrés-hozzárendelések (melyik kártya melyik elérési útvonalon jelenik meg) jelenleg a GitHub lekérései által kezelve a `5chan-directories.json` fájlba. Ez egy ideiglenes folyamat – a jövőbeli kiadások támogatni fogják az alkalmazáson belüli fórumon belüli létrehozást és a pub-alapú szavazást a címtár-hozzárendelések automatikus kezeléséhez.
+A címtárhely-hozzárendelések (melyik kártya melyik elérési útvonalon jelenik meg) jelenleg a GitHub lekérései által kezelve a `5chan-directories.json` fájlba. Ez egy ideiglenes folyamat – a jövőbeli kiadások támogatni fogják az alkalmazáson belüli fórumon belüli létrehozást és a pub-alapú szavazást a címtár-hozzárendelések automatikus kezeléséhez.
 
 ## Belsők
 
-A motorháztető alatt az 5chan a plebbit-js API réteget használja protokoll-interakcióihoz. Amint a fenti figyelmeztetésben megjegyeztük, ezek a belső hivatkozások még mindig olyan örökölt elnevezéseket tartalmaznak, amelyek a Bitsocial márkaváltás előttiek.
+A motorháztető alatt az 5chan a megosztott Bitsocial protokoll kliens réteget használja a hálózati interakciókhoz.
 
 ## Linkek
 

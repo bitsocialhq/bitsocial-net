@@ -6,11 +6,7 @@ sidebar_position: 4
 
 # EVM Contract Call Challenge
 
-:::warning Legacy-Benennung
-Dieses Paket wurde ursprünglich unter dem Geltungsbereich `@plebbit` veröffentlicht. Es wurde in `@bitsocial/evm-contract-challenge` umbenannt. Verweise auf den alten Namen erscheinen möglicherweise noch in älterer Dokumentation oder Codebasis.
-:::
-
-EVM Contract Call Challenge ist ein Anti-Spam-Mechanismus, der die Bedingungen in der Kette überprüft, bevor eine Veröffentlichung zugelassen wird. Ursprünglich als eigenständiges Paket aus `plebbit-js` extrahiert, ermöglicht es Community-Eigentümern, von Autoren zu verlangen, dass sie Smart-Contract-definierte Kriterien erfüllen – zum Beispiel das Halten eines Mindest-Token-Guthabens –, um Beiträge zu veröffentlichen.
+EVM Contract Call Challenge ist ein Anti-Spam-Mechanismus, der die Bedingungen in der Kette überprüft, bevor eine Veröffentlichung zugelassen wird. Damit können Community-Eigentümer von Autoren verlangen, dass sie Kriterien erfüllen, die durch Smart-Contracts definiert werden – zum Beispiel das Halten eines Mindest-Token-Guthabens –, um Beiträge zu veröffentlichen.
 
 **Quellcode:** [github.com/bitsocialnet/evm-contract-call](https://github.com/bitsocialnet/evm-contract-call)
 
@@ -18,7 +14,6 @@ EVM Contract Call Challenge ist ein Anti-Spam-Mechanismus, der die Bedingungen i
 
 - **Node.js** >= 22
 - **Nur ESM** – dieses Paket liefert keine CommonJS-Builds.
-- **Laufzeit-Peer-Abhängigkeit:** `@plebbit/plebbit-js` (Migration nach `@pkc/pkc-js`)
 
 ## Installation
 
@@ -31,7 +26,7 @@ npm install @bitsocial/evm-contract-challenge
 | Option        | Geben Sie | ein Beschreibung                                                                                |
 | ------------- | --------- | ----------------------------------------------------------------------------------------------- |
 | `chainTicker` | `string`  | Die abzufragende Kette (z. B. `eth`, `matic`, `avax`).                                          |
-| `address`     | `string`  | Die anzurufende Smart-Contract-Adresse.                                                         |
+| `address`     | `string`  | Die aufzurufende Smart-Contract-Adresse.                                                        |
 | `abi`         | `string`  | Das ABI-Fragment für die aufgerufene Funktion.                                                  |
 | `condition`   | `string`  | Ein Vergleichsausdruck, der anhand des Vertragsrückgabewerts ausgewertet wird (z. B. `> 1000`). |
 | `error`       | `string`  | Die Fehlermeldung wird Autoren angezeigt, die die Bedingung nicht erfüllen.                     |
@@ -48,7 +43,7 @@ Ein Community-Eigentümer, der das Posten auf Autoren beschränken möchte, die 
 
 Wenn ein Autor versucht zu veröffentlichen, ruft die Challenge `balanceOf` mit der Adresse des Autors auf und prüft, ob der zurückgegebene Wert die Bedingung erfüllt. Ist dies der Fall, wird die Veröffentlichung fortgesetzt. andernfalls wird die konfigurierte Fehlermeldung zurückgegeben.
 
-## Wann sollte man es verwenden?
+## Wann man es verwendet
 
 Die EVM Contract Call Challenge ist ideal für:
 
@@ -56,4 +51,4 @@ Die EVM Contract Call Challenge ist ideal für:
 - **NFT-geschützter Zugriff**, bei dem der Besitz eines bestimmten NFT erforderlich ist.
 - **DAO-Governance-Bereiche**, an denen die Teilnahme auf Governance-Token-Inhaber beschränkt ist.
 
-Für Communities, die nicht auf On-Chain-Identität angewiesen sind, sollten Sie stattdessen [Spam Blocker](./spam-blocker.md) oder [Voucher Challenge](./voucher-challenge.md) in Betracht ziehen.
+Für Communities, die nicht auf On-Chain-Identität angewiesen sind, sollten Sie stattdessen [Spam-Blocker](./spam-blocker.md) oder [Gutschein-Challenge](./voucher-challenge.md) in Betracht ziehen.

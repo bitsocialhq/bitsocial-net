@@ -77,3 +77,43 @@ Si no está seguro, consulte al desarrollador antes de agregar una entrada.
 - **Impacto:** `yarn start` podría finalizar el proceso web inmediatamente después de su inicio, interrumpiendo el trabajo local no relacionado debido a una colisión de puerto de documentos.
 - **Mitigación:** Mantenga el inicio de documentos detrás de `yarn start:docs`, que ahora usa Portless más `scripts/start-docs.mjs` para respetar un puerto libre inyectado o recurrir al siguiente puerto disponible cuando se ejecuta directamente.
 - **Estado:** confirmado
+
+### Documentos fijos El nombre de host sin puerto estaba codificado
+
+- **Fecha:** 2026-04-03
+- **Observado por:** Códice
+- **Contexto:** Ejecutar `yarn start` en un árbol de trabajo web secundario de Bitsocial mientras otro árbol de trabajo ya estaba entregando documentos a través de Portless.
+- **Lo sorprendente:** `start:docs` aún registraba el nombre de host literal `docs.bitsocial.localhost`, por lo que `yarn start` podría fallar a pesar de que la aplicación about ya sabía cómo evitar colisiones de rutas sin puerto para su propio nombre de host.
+- **Impacto:** Los árboles de trabajo paralelos no podían usar de manera confiable el comando root dev porque el proceso de documentos salió primero y `concurrently` luego cerró el resto de la sesión.
+- **Mitigación:** Mantener el inicio de documentos detrás de `scripts/start-docs.mjs`, que ahora deriva el mismo nombre de host Portless con alcance de rama que la aplicación acerca de e inyecta esa URL pública compartida en el destino del proxy de desarrollo `/docs`.
+- **Estado:** confirmado
+
+### Los shells de Worktree pueden perder la versión de Nodo anclada del repositorio
+
+- **Fecha:** 2026-04-03
+- **Observado por:** Códice
+- **Contexto:** Ejecutar `yarn start` en árboles de trabajo de Git como `.claude/worktrees/*` o checkouts de árboles de trabajo hermanos
+- **Lo que fue sorprendente:** Algunos shells de árbol de trabajo resolvieron `node` y `yarn node` en el nodo Homebrew `25.2.1` a pesar de que el repositorio fija `22.12.0` en `.nvmrc`, por lo que `yarn start` podría ejecutar silenciosamente los lanzadores de desarrollo en el tiempo de ejecución incorrecto.
+- **Impacto:** El comportamiento del servidor de desarrollo puede variar entre el proceso de pago principal y los árboles de trabajo, lo que dificulta la reproducción de errores y viola la cadena de herramientas esperada del Nodo 22 del repositorio.
+- **Mitigación:** Mantenga los lanzadores de desarrollo detrás de `scripts/start-dev.mjs` y `scripts/start-docs.mjs`, que ahora se vuelven a ejecutar en el binario del nodo `.nvmrc` cuando el shell actual tiene la versión incorrecta. La configuración de Shell aún debería preferir `nvm use`.
+- **Estado:** confirmado
+
+### Los restos de `docs-site/` pueden ocultar la fuente de documentos que faltan después de la refactorización
+
+- **Fecha:** 2026-04-01
+- **Observado por:** Códice
+- **Contexto:** Limpieza de monorepo posterior a la fusión después de mover el proyecto Docusaurus de `docs-site/` a `docs/`
+- **Lo sorprendente:** La antigua carpeta `docs-site/` puede permanecer en el disco con archivos obsoletos pero importantes como `i18n/`, incluso después de que el repositorio rastreado se haya movido a `docs/`. Eso hace que la refactorización parezca duplicada localmente y puede ocultar el hecho de que las traducciones de los documentos rastreados en realidad no se movieron a `docs/`.
+- **Impacto:** Los agentes pueden eliminar la carpeta antigua como “basura” y perder accidentalmente la única copia local de las traducciones de documentos, o seguir editando scripts que aún apuntan a la ruta inactiva `docs-site/`.
+- **Mitigación:** Trate a `docs/` como el único proyecto de documentos canónicos. Antes de eliminar cualquier resto local de `docs-site/`, restaure la fuente rastreada como `docs/i18n/` y actualice los scripts y enlaces para dejar de hacer referencia a `docs-site`.
+- **Estado:** confirmado
+
+### La vista previa de documentos multilocal puede aumentar la RAM durante la verificación
+
+- **Fecha:** 2026-04-01
+- **Observado por:** Códice
+- **Contexto:** Corrección de documentos i18n, enrutamiento local y comportamiento de Pagefind con `yarn start:docs` plus Playwright
+- **Lo que fue sorprendente:** El modo de vista previa de documentos predeterminado ahora realiza una compilación completa de documentos multilocales más la indexación de Pagefind antes de publicarlos, y mantener vivo ese proceso junto con múltiples sesiones de Playwright o Chrome puede consumir mucha más RAM que un bucle de desarrollo normal de Vite o Docusaurus de una sola configuración regional.
+- **Impacto:** La máquina puede sufrir limitaciones de memoria, las sesiones del navegador pueden fallar y las ejecuciones interrumpidas pueden dejar servidores de documentos obsoletos o navegadores sin cabeza que siguen consumiendo memoria.
+- **Mitigación:** Para trabajos de documentos que no necesitan ruta local o verificación de Pagefind, prefiera `DOCS_START_MODE=live yarn start:docs`. Utilice la vista previa multilocal predeterminada solo cuando necesite validar rutas traducidas o Pagefind. Mantenga una única sesión de Playwright, cierre las sesiones antiguas del navegador antes de abrir otras nuevas y detenga el servidor de documentos después de la verificación si ya no lo necesita.
+- **Estado:** confirmado

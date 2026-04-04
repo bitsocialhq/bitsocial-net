@@ -149,7 +149,8 @@
         "description": "Τα imageboards είναι η πιο απλή μορφή κοινωνικών μέσων για να αποκεντρωθούν: ανώνυμες αναρτήσεις, λίγα προεπιλεγμένα boards και κανένα γράφημα προφίλ. Γι' αυτό λανσάρουμε το 5chan, την πρώτη εφαρμογή Bitsocial. Το 5chan αποδεικνύει ότι το Bitsocial μπορεί να αντικαταστήσει τα κεντρικοποιημένα imageboards αφαιρώντας τους παγκόσμιους διαχειριστές από την εξίσωση.",
         "callout": {
           "description": "Το 5chan είναι το πρώτο σημείο απόδειξης, όχι ο τελικός στόχος. Θέλουμε πολλούς imageboard clients με διαφορετικές κουλτούρες, διεπαφές και προεπιλογές: πίνακες τύπου altchan, πειραματισμούς με προτεραιότητα στο mobile, εξειδικευμένες κοινότητες και forks που λύνουν ανάγκες που το 5chan δεν θα λύσει ποτέ.",
-          "ctaLabel": "Δημιούργησε το δικό σου"
+          "ctaLabel": "Δημιούργησε το δικό σου",
+          "separator": "- ή -"
         }
       },
       "phase2": {
@@ -185,5 +186,25 @@
   "home": {
     "devOnlyRouteNotice": "Το {{path}} είναι ακόμα υπό κατασκευή. Έχετε ανακατευθυνθεί στην αρχική σελίδα.",
     "dismissDevOnlyRouteNotice": "Κλείσιμο ειδοποίησης"
+  },
+  "apps": {
+    "allProjects": "All Projects",
+    "allProjectsDescription": "The full Bitsocial ecosystem, from user-facing clients to protocol tools.",
+    "linksSectionDescription": "Launch the app, grab a build, or use a mirror without leaving the directory.",
+    "searchPlaceholder": "Search apps, tools, or tags",
+    "clearSearch": "Clear search",
+    "clearFilters": "Clear filters",
+    "noMatches": "No projects match these filters",
+    "noMatchesDescription": "Try a different search, platform, or category combination.",
+    "viewDetails": "Details",
+    "readyToUse": "Ready to use",
+    "webLinks": "Open on the web",
+    "mobileDownloads": "Mobile downloads",
+    "desktopDownloads": "Desktop downloads",
+    "extraDownloads": "Extra builds",
+    "subtitle": "Open the clients, tools, and modules already live on Bitsocial. Search fast, filter by platform, and jump straight into the links that matter.",
+    "experimental": "Experimental",
+    "sectionLabel": "Κατάλογος εφαρμογών",
+    "directoryLabel": "Κατάλογος"
   }
 }

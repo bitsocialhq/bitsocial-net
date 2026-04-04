@@ -32,13 +32,13 @@ Hvis 5chan ikke matcher det fællesskab eller den grænseflade, du ønsker, skal
    - [Bitsocial React kroge](../react-hooks/)
    - [Bitsocial CLI](../cli/)
 2. Bestem, hvilken slags imageboard du rent faktisk bygger.
-Vælg bestyrelsens struktur, identitetsantagelser, modereringsmodel, opdagelsesflow og visuelt sprog først.
+   Vælg bestyrelsens struktur, identitetsantagelser, modereringsmodel, opdagelsesflow og visuelt sprog først.
 3. Vælg den implementeringsvej, der passer til projektet.
-Fork 5chan, hvis du vil bevæge dig hurtigt med en velkendt imageboard-base. Start på en frisk, hvis brugergrænsefladen eller interaktionsmodellen skal være radikalt anderledes.
+   Fork 5chan, hvis du vil bevæge dig hurtigt med en velkendt imageboard-base. Start på en frisk, hvis brugergrænsefladen eller interaktionsmodellen skal være radikalt anderledes.
 4. Send en smal første version.
-En klient, der tjener et rigtigt samfund godt, er mere værdifuld end en vag klon beregnet til at tilfredsstille alle.
+   En klient, der tjener et rigtigt samfund godt, er mere værdifuld end en vag klon beregnet til at tilfredsstille alle.
 5. Publicer resultatet, og lad fællesskaber teste det.
-Bitsocial forbedres, når eksterne bygherrer sender meningsfulde kunder, der konkurrerer på produktkvalitet i stedet for at vente på, at én officiel app gør alt.
+   Bitsocial forbedres, når eksterne bygherrer sender meningsfulde kunder, der konkurrerer på produktkvalitet i stedet for at vente på, at én officiel app gør alt.
 
 ## Designprincip
 

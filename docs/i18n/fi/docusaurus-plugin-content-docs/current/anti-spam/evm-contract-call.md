@@ -6,11 +6,7 @@ sidebar_position: 4
 
 # EVM Contract Call Challenge
 
-:::warning Legacy nimeäminen
-Tämä paketti julkaistiin alun perin `@plebbit`-alueella. Se on nimetty uudelleen nimellä `@bitsocial/evm-contract-challenge`. Viittauksia vanhaan nimeen saattaa silti esiintyä vanhemmissa dokumentaatioissa tai koodikantoissa.
-:::
-
-EVM Contract Call Challenge on roskapostin estomekanismi, joka tarkistaa ketjun olosuhteet ennen julkaisun sallimista. Alun perin `plebbit-js`:sta erillisenä pakettina purettu se antaa yhteisön omistajille mahdollisuuden vaatia kirjoittajia täyttämään älykkäissä sopimuksissa määritellyt kriteerit – esimerkiksi vähintään token-saldo – voidakseen julkaista.
+EVM Contract Call Challenge on roskapostin estomekanismi, joka tarkistaa ketjun olosuhteet ennen julkaisun sallimista. Sen avulla yhteisön omistajat voivat vaatia kirjoittajia täyttämään älykkäissä sopimuksissa määritellyt kriteerit – esimerkiksi vähintään vähimmäissaldo – voidakseen julkaista.
 
 **Lähdekoodi:** [github.com/bitsocialnet/evm-contract-call](https://github.com/bitsocialnet/evm-contract-call)
 
@@ -18,7 +14,6 @@ EVM Contract Call Challenge on roskapostin estomekanismi, joka tarkistaa ketjun 
 
 - **Node.js** >= 22
 - **Vain ESM** – tämä paketti ei toimita CommonJS-koontiversioita.
-- **Suorituksenaikainen vertaisriippuvuus:** `@plebbit/plebbit-js` (siirretään malliin `@pkc/pkc-js`)
 
 ## Asennus
 
@@ -38,7 +33,7 @@ npm install @bitsocial/evm-contract-challenge
 
 ## Esimerkki
 
-Yhteisön omistaja, joka haluaa rajoittaa lähettämisen kirjoittajiin, joilla on enemmän kuin 1 000 tietystä ERC-20-tunnusta, määrittää haasteen seuraavasti:
+Yhteisön omistaja, joka haluaa rajoittaa lähettämisen kirjoittajiin, joilla on enemmän kuin 1 000 tiettyä ERC-20-tunnusta, määrittää haasteen seuraavasti:
 
 - `chainTicker`: `"eth"`
 - `address`: Token-sopimuksen osoite
@@ -48,7 +43,7 @@ Yhteisön omistaja, joka haluaa rajoittaa lähettämisen kirjoittajiin, joilla o
 
 Kun tekijä yrittää julkaista, haaste kutsuu `balanceOf` kirjoittajan osoitteen kanssa ja tarkistaa, täyttääkö palautettu arvo ehdon. Jos näin tapahtuu, julkaisu jatkuu; muussa tapauksessa palautetaan määritetty virhesanoma.
 
-## Milloin käyttää sitä
+## Milloin sitä käytetään
 
 EVM Contract Call Challenge on ihanteellinen:
 
@@ -56,4 +51,4 @@ EVM Contract Call Challenge on ihanteellinen:
 - **NFT-porteilla varustettu pääsy**, jossa vaaditaan tietyn NFT:n omistus.
 - **DAO-hallintatilat**, joihin osallistuminen on rajoitettu hallintotunnuksen haltijoihin.
 
-Jos yhteisö ei ole riippuvainen ketjun identiteetistä, harkitse sen sijaan [Spam Blocker](./spam-blocker.md) tai [Voucher Challenge](./voucher-challenge.md).
+Jos yhteisöt eivät ole riippuvaisia ketjun identiteetistä, harkitse sen sijaan [Roskapostin esto](./spam-blocker.md) tai [Lahjakorttihaaste](./voucher-challenge.md).

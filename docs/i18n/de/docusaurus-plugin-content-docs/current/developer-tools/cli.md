@@ -6,13 +6,9 @@ sidebar_position: 2
 
 # CLI
 
-:::warning Legacy-Benennung
-Dieses Paket verwendet derzeit alte Namenskonventionen, die von seiner Upstream-Abhängigkeit übernommen wurden. Verweise auf „plebbit“ in Befehlen, Ausgabe und Konfiguration werden in einer zukünftigen Version auf „bitsocial“ migriert. Die Funktionalität bleibt davon unberührt.
-:::
+`bitsocial-cli` ist ein Befehlszeilentool für die Interaktion mit dem Bitsocial-Protokoll-Backend. Sie können damit einen lokalen P2P-Daemon ausführen, Communities erstellen und konfigurieren sowie Inhalte veröffentlichen – alles vom Terminal aus.
 
-Das `bitsocial-cli` ist ein Befehlszeilentool für die Interaktion mit dem Bitsocial-Protokoll-Backend. Sie können damit einen lokalen P2P-Daemon ausführen, Communities erstellen und konfigurieren und Inhalte veröffentlichen – alles vom Terminal aus.
-
-Es baut auf `plebbit-js` auf und wird von [5chan](/apps/5chan/) und [Seedit](/apps/seedit/) für die Community-Erstellung und Knotenverwaltung verwendet.
+Es basiert auf der gemeinsamen Bitsocial-Protokoll-Client-Schicht und wird von [5chan](/apps/5chan/) und [Seedit](/apps/seedit/) für die Community-Erstellung und Knotenverwaltung verwendet.
 
 ## Installation
 
@@ -20,7 +16,7 @@ Vorgefertigte Binärdateien sind für Windows, macOS und Linux verfügbar. Laden
 
 **[Von GitHub Releases herunterladen](https://github.com/bitsocialnet/bitsocial-cli/releases)**
 
-Erstellen Sie nach dem Herunterladen die binäre ausführbare Datei (macOS/Linux):
+Machen Sie nach dem Herunterladen die Binärdatei ausführbar (macOS/Linux):
 
 ```bash
 chmod +x bitsocial-cli
@@ -36,43 +32,37 @@ bitsocial-cli daemon
 
 Beim ersten Start gibt der Daemon Links zur **WebUI** aus, einer browserbasierten grafischen Oberfläche zur Verwaltung Ihres Knotens, Ihrer Communities und Einstellungen. Dies ist nützlich, wenn Sie eine GUI gegenüber Terminalbefehlen bevorzugen.
 
-## Tastenbefehle
+## Schlüsselaktionen
 
-| Befehl              | Beschreibung                                                        |
-| ------------------- | ------------------------------------------------------------------- |
-| `daemon`            | Starten Sie den Bitsocial P2P-Knoten                                |
-| `create subplebbit` | Erstellen Sie eine neue Community                                   |
-| `subplebbit edit`   | Community-Einstellungen aktualisieren (Titel, Beschreibung, Regeln) |
-| `subplebbit list`   | Auf diesem Knoten gehostete Communities auflisten                   |
-| `subplebbit start`  | Beginnen Sie, einer bestimmten Community zu dienen                  |
-| `subplebbit stop`   | Hören Sie auf, einer bestimmten Gemeinschaft zu dienen              |
+| Aktion                        | Beschreibung                                                        |
+| ----------------------------- | ------------------------------------------------------------------- |
+| Starten Sie den Daemon        | Starten Sie den Bitsocial P2P-Knoten                                |
+| Erstellen Sie eine Community  | Erstellen Sie eine neue Community                                   |
+| Bearbeiten Sie eine Community | Community-Einstellungen aktualisieren (Titel, Beschreibung, Regeln) |
+| Lokale Gemeinden auflisten    | Auf diesem Knoten gehostete Communities auflisten                   |
+| Eine Community gründen        | Beginnen Sie, einer bestimmten Community zu dienen                  |
+| Stoppen Sie eine Community    | Hören Sie auf, einer bestimmten Community zu dienen                 |
 
-Führen Sie einen beliebigen Befehl mit `--help` aus, um verfügbare Optionen und Flags anzuzeigen:
+Führen Sie die CLI mit `--help` aus, um die aktuellen Befehlsnamen und Flags anzuzeigen, die von Ihrer installierten Version verfügbar gemacht werden:
 
 ```bash
+bitsocial-cli --help
 bitsocial-cli daemon --help
-bitsocial-cli create subplebbit --help
 ```
 
 ## Typischer Arbeitsablauf
 
-Ein üblicher Setup-Ablauf zum Hosten einer neuen Community:
+Ein üblicher Einrichtungsablauf zum Hosten einer neuen Community:
 
 ```bash
 # 1. Start the daemon
 bitsocial-cli daemon
 
-# 2. In another terminal, create a community
-bitsocial-cli create subplebbit
-
-# 3. Configure the community
-bitsocial-cli subplebbit edit <address> --title "My Community" --description "A decentralized forum"
-
-# 4. Start serving it
-bitsocial-cli subplebbit start <address>
+# 2. In another terminal, inspect the available community-management commands
+bitsocial-cli --help
 ```
 
-Die Community ist jetzt live im Bitsocial-Netzwerk und von jedem kompatiblen Client aus zugänglich.
+Von dort aus verwenden Sie die Community-Verwaltungsbefehle der installierten Version, um eine Community zu erstellen, zu konfigurieren und mit der Bereitstellung zu beginnen. Nach dem Start ist die Community live im Bitsocial-Netzwerk und über kompatible Clients zugänglich.
 
 ## Links
 

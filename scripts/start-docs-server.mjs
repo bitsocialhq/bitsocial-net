@@ -61,7 +61,6 @@ function runStep(args) {
     });
   });
 }
-
 console.log("");
 console.log(`Starting docs preview from ${repoRoot}`);
 if (usingPortless) {

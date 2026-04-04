@@ -58,7 +58,13 @@ function smoothstep(edge0: number, edge1: number, x: number): number {
   return t * t * (3 - 2 * t);
 }
 
-function generateMesh(width: number, height: number) {
+function meshNoise(x: number, y: number, seed: number, salt: number): number {
+  return fract(
+    Math.sin((x + salt * 17.13) * 127.1 + (y - salt * 11.73) * 311.7 + seed * 0.101) * 43758.5453,
+  );
+}
+
+function generateMesh(width: number, height: number, seed: number) {
   const cols = Math.ceil(width / SPACING) + 2;
   const rows = Math.ceil(height / SPACING) + 2;
   const jitter = SPACING * JITTER_FACTOR;
@@ -67,9 +73,11 @@ function generateMesh(width: number, height: number) {
   const points: Point[] = [];
   for (let row = -1; row <= rows; row++) {
     for (let col = -1; col <= cols; col++) {
+      const xNoise = meshNoise(col, row, seed, 1);
+      const yNoise = meshNoise(col, row, seed, 2);
       points.push({
-        x: col * SPACING + (Math.random() - 0.5) * jitter,
-        y: row * SPACING + (Math.random() - 0.5) * jitter,
+        x: col * SPACING + (xNoise - 0.5) * jitter,
+        y: row * SPACING + (yNoise - 0.5) * jitter,
       });
     }
   }
@@ -84,7 +92,7 @@ function generateMesh(width: number, height: number) {
       const bl = idx(r + 1, c);
       const br = idx(r + 1, c + 1);
       const pairs: [number, number][] =
-        Math.random() > 0.5
+        meshNoise(c, r, seed, 3) > 0.5
           ? [
               [tl, tr],
               [tr, br],
@@ -109,13 +117,18 @@ function generateMesh(width: number, height: number) {
     }
   }
 
-  const edges: EdgeData[] = rawEdges.map(([a, b], i) => ({
-    a,
-    b,
-    mx: (points[a].x + points[b].x) / 2,
-    my: (points[a].y + points[b].y) / 2,
-    hash: fract(Math.sin(i * 127.1 + 311.7) * 43758.5453),
-  }));
+  const edges: EdgeData[] = rawEdges.map(([a, b]) => {
+    const mx = (points[a].x + points[b].x) / 2;
+    const my = (points[a].y + points[b].y) / 2;
+
+    return {
+      a,
+      b,
+      mx,
+      my,
+      hash: meshNoise(mx / SPACING, my / SPACING, seed, 4),
+    };
+  });
 
   return { points, edges };
 }
@@ -127,6 +140,7 @@ function initMesh(
   ctx: CanvasRenderingContext2D,
   isDark: boolean,
   shouldAnimate: boolean,
+  seed: number,
 ): () => void {
   const edgeAlpha = shouldAnimate ? (isDark ? 0.1 : 0.085) : isDark ? 0.22 : 0.155;
   const dotAlpha = shouldAnimate ? (isDark ? 0.108 : 0.1) : isDark ? 0.24 : 0.18;
@@ -177,7 +191,7 @@ function initMesh(
 
   setCanvasSize();
 
-  let mesh = generateMesh(w, h);
+  let mesh = generateMesh(w, h, seed);
   let viewportRect = viewport.getBoundingClientRect();
 
   let curX = -9999;
@@ -288,7 +302,7 @@ function initMesh(
         dpr = Math.min(window.devicePixelRatio, 1.5);
         strokeScale = meshStrokeScaleFromDpr(window.devicePixelRatio);
         setCanvasSize();
-        mesh = generateMesh(w, h);
+        mesh = generateMesh(w, h, seed);
         updateViewportRect();
         syncViewportClip();
         drawFrame();
@@ -450,11 +464,18 @@ const PolygonMeshBackground = memo(function PolygonMeshBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const rootRef = useRef<HTMLDivElement>(null);
   const viewportRef = useRef<HTMLDivElement>(null);
+  const meshSeedRef = useRef<number | null>(null);
   const { resolvedTheme } = useTheme();
   const graphicsMode = useGraphicsMode();
   const [didCanvasInitFail, setDidCanvasInitFail] = useState(false);
   const shouldAnimate = graphicsMode === "full";
   const shouldUseStaticFallback = didCanvasInitFail || !supportsDynamicMesh();
+
+  if (meshSeedRef.current == null) {
+    // Keep one seed per mounted background so viewport-height changes do not reshuffle the mesh.
+    meshSeedRef.current = Math.random() * 1_000_000;
+  }
+  const meshSeed = meshSeedRef.current!;
 
   useEffect(() => {
     if (shouldUseStaticFallback) return;
@@ -473,8 +494,8 @@ const PolygonMeshBackground = memo(function PolygonMeshBackground() {
       resolvedTheme === "dark" ||
       (!resolvedTheme && window.matchMedia("(prefers-color-scheme: dark)").matches);
 
-    return initMesh(canvas, root, viewport, ctx, isDark, shouldAnimate);
-  }, [resolvedTheme, shouldAnimate, shouldUseStaticFallback]);
+    return initMesh(canvas, root, viewport, ctx, isDark, shouldAnimate, meshSeed);
+  }, [meshSeed, resolvedTheme, shouldAnimate, shouldUseStaticFallback]);
 
   if (shouldUseStaticFallback) {
     return <StaticPolygonMeshBackground />;

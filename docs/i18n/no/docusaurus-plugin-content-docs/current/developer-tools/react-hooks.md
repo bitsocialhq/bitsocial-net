@@ -6,16 +6,12 @@ sidebar_position: 1
 
 # React Hooks
 
-:::warning Legacy navngivning
-Denne pakken bruker for tiden eldre navnekonvensjoner som er arvet fra oppstrømsgaffelen. Referanser til "plebbit" i kode, APIer og konfigurasjon vil bli migrert til "bitsocial" i en fremtidig utgivelse. Funksjonaliteten er upåvirket.
-:::
-
 `bitsocial-react-hooks`-pakken gir en kjent React hooks API for samhandling med Bitsocial-protokollen. Den håndterer henting av feeder, kommentarer og forfatterprofiler, administrerer kontoer, publiserer innhold og abonnerer på fellesskap – alt uten å stole på en sentral server.
 
 Dette biblioteket er det primære grensesnittet som brukes av [5chan](/apps/5chan/) og andre Bitsocial-klientapplikasjoner.
 
 :::note
-`bitsocial-react-hooks` er en midlertidig gaffel av `plebbit/plebbit-react-hooks` vedlikeholdt for AI-støttet utvikling. Den konsumeres direkte fra GitHub i stedet for publisert til npm.
+`bitsocial-react-hooks` forbrukes for øyeblikket direkte fra GitHub i stedet for publisert til npm.
 :::
 
 ## Installasjon
@@ -52,16 +48,16 @@ Hent og samhandle med individuelle kommentarer og tråder.
 
 Hent fellesskapsmetadata og -innstillinger.
 
-- `useSubplebbit(subplebbitAddress?)` -- henter et fellesskap etter adresse
-- `useSubplebbits(subplebbitAddresses?)` -- henter flere fellesskap
-- `useSubplebbitStats(subplebbitAddress?)` -- returnerer antall abonnenter og innlegg
+- Single-community lookup hook – henter et fellesskap etter adresse
+- Oppslagskrok for flere fellesskap -- henter flere fellesskap
+- Hook for fellesskapsstatistikk – returnerer antall abonnenter og innlegg
 
 ### Forfattere
 
 Slå opp forfatterprofiler og metadata.
 
 - `useAuthor(authorAddress?)` -- henter en forfatterprofil
-- `useAuthorComments(options?)` -- returnerer kommentarer fra en spesifikk forfatter
+- `useAuthorComments(options?)` -- returnerer kommentarer fra en bestemt forfatter
 - `useResolvedAuthorAddress(authorAddress?)` -- løser en menneskelesbar adresse (f.eks. ENS) til dens protokolladresse
 
 ### Innmatinger
@@ -85,7 +81,7 @@ Publiser innhold og utfør skriveoperasjoner.
 Overvåk tilkoblingstilstand og samhandle med en ekstern Bitsocial-demon.
 
 - `useClientsStates(options?)` -- returnerer tilkoblingstilstanden til IPFS/pubsub-klienter
-- `usePlebbitRpcSettings()` -- returnerer gjeldende RPC-demonkonfigurasjon
+- RPC-innstillingshok -- returnerer gjeldende RPC-daemonkonfigurasjon
 
 ## Utvikling
 
@@ -100,9 +96,9 @@ corepack enable
 yarn install
 ```
 
-Se README i depotet for test- og byggekommandoer.
+Se repository README for test- og byggekommandoer.
 
 ## Lenker
 
-- **GitHub:** [full API-referanse på GitHub](https://github.com/bitsocialnet/bitsocial-react-hooks)
+- **GitHub:** [bitsocialnet/bitsocial-react-hooks](https://github.com/bitsocialnet/bitsocial-react-hooks)
 - **Lisens:** GPL-2.0-bare

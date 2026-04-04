@@ -20,7 +20,7 @@ Fase 1 bukan tentang satu aplikasi resmi yang mencakup seluruh kategori. 5chan a
 
 Jika Anda ingin jalur pengiriman terpendek, berkontribusi langsung ke 5chan terlebih dahulu:
 
-- Jelajahi aplikasi langsung di [5chan.aplikasi](https://5chan.app)
+- Jelajahi aplikasi langsung di [5chan.app](https://5chan.app)
 - Tinjau sumbernya di [github.com/bitsocialnet/5chan](https://github.com/bitsocialnet/5chan)
 - Bergabunglah dengan obrolan pembuat di [t.me/fivechandev](https://t.me/fivechandev)
 
@@ -30,15 +30,15 @@ Jika 5chan tidak cocok dengan komunitas atau antarmuka yang Anda inginkan, buatl
 
 1. Pelajari alat yang berhubungan dengan protokol:
    - [Kait Bitsocial React](../react-hooks/)
-   - [CLI Bitsosial](../cli/)
+   - [CLI Bitsocial](../cli/)
 2. Putuskan jenis papan gambar apa yang sebenarnya Anda buat.
-Pilih struktur dewan, asumsi identitas, model moderasi, alur penemuan, dan bahasa visual terlebih dahulu.
+   Pilih struktur dewan, asumsi identitas, model moderasi, alur penemuan, dan bahasa visual terlebih dahulu.
 3. Pilih jalur implementasi yang sesuai dengan proyek.
-Fork 5chan jika Anda ingin bergerak cepat dengan basis imageboard yang familiar. Mulailah dari awal jika UI atau model interaksi perlu diubah secara radikal.
+   Fork 5chan jika Anda ingin bergerak cepat dengan basis imageboard yang familiar. Mulailah dari awal jika UI atau model interaksi perlu diubah secara radikal.
 4. Kirimkan versi pertama yang sempit.
-Satu klien yang melayani satu komunitas nyata dengan baik lebih berharga daripada tiruan samar-samar yang dimaksudkan untuk memuaskan semua orang.
+   Satu klien yang melayani satu komunitas nyata dengan baik lebih berharga daripada tiruan samar-samar yang dimaksudkan untuk memuaskan semua orang.
 5. Publikasikan hasilnya dan biarkan komunitas mengujinya.
-Bitsocial meningkat ketika pembuat luar mengirimkan klien yang memiliki pendapat yang bersaing dalam kualitas produk daripada menunggu satu aplikasi resmi untuk melakukan semuanya.
+   Bitsocial meningkat ketika pembuat luar mengirimkan klien yang memiliki pendapat yang bersaing dalam kualitas produk daripada menunggu satu aplikasi resmi untuk melakukan semuanya.
 
 ## Prinsip desain
 

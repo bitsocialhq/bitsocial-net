@@ -63,14 +63,14 @@ Et åpent pubsub-nettverk er sårbart for spamflommer. Bitsocial løser dette ve
 
 Utfordringssystemet er fleksibelt: hver fellesskapsoperatør konfigurerer sin egen policy. Alternativene inkluderer:
 
-| Utfordringstype | Slik fungerer det |
-| ----------------- | ------------------------------------------------- |
-| **Captcha** | Visuelt eller interaktivt puslespill presentert i appen |
-| **Satsbegrensning** | Begrens innlegg per tidsvindu per identitet |
-| **Token gate** | Krev bevis på balanse for et spesifikt token |
-| **Betaling** | Krev en liten betaling per post |
-| **Tillatelsesliste** | Bare forhåndsgodkjente identiteter kan legge inn |
-| **Egendefinert kode** | Enhver policy som kan uttrykkes i kode |
+| Utfordringstype       | Slik fungerer det                                       |
+| --------------------- | ------------------------------------------------------- |
+| **Captcha**           | Visuelt eller interaktivt puslespill presentert i appen |
+| **Satsbegrensning**   | Begrens innlegg per tidsvindu per identitet             |
+| **Token gate**        | Krev bevis på balanse for et spesifikt token            |
+| **Betaling**          | Krev en liten betaling per post                         |
+| **Tillatelsesliste**  | Bare forhåndsgodkjente identiteter kan legge inn        |
+| **Egendefinert kode** | Enhver policy som kan uttrykkes i kode                  |
 
 Peers som videresender for mange mislykkede utfordringsforsøk, blir blokkert fra pubsub-emnet, noe som forhindrer tjenestenektangrep på nettverkslaget.
 
@@ -101,11 +101,11 @@ sequenceDiagram
 
 1. Brukeren åpner appen og ser et sosialt grensesnitt.
 2. Klienten blir med i peer-to-peer-nettverket og lager en DHT-spørring for hvert fellesskap brukeren
-følger. Spørringene tar noen sekunder hver, men kjøres samtidig.
+   følger. Spørringene tar noen sekunder hver, men kjøres samtidig.
 3. Hvert søk returnerer fellesskapets siste innholdspekere og metadata (tittel, beskrivelse,
-moderatorliste, utfordringskonfigurasjon).
+   moderatorliste, utfordringskonfigurasjon).
 4. Klienten henter det faktiske innleggsinnholdet ved å bruke disse pekerne, og gjengir deretter alt i en
-kjent sosialt grensesnitt.
+   kjent sosialt grensesnitt.
 
 ---
 
@@ -154,7 +154,7 @@ sequenceDiagram
 7. Klienten sender inn innlegget sammen med utfordringssvaret over pubsub.
 8. Fellesskapsoperatørens node validerer svaret. Hvis det er riktig, godtas innlegget.
 9. Noden kringkaster resultatet over pubsub slik at nettverkskolleger vet at de skal fortsette videresendingen
-meldinger fra denne brukeren.
+   meldinger fra denne brukeren.
 10. Noden oppdaterer fellesskapets innhold til dens offentlige nøkkeladresse.
 11. I løpet av noen få minutter mottar hver leser av fellesskapet oppdateringen.
 
@@ -191,11 +191,11 @@ graph TB
     PK --> TR
 ```
 
-| Lag | Rolle |
-| ------------ | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| **App** | Brukergrensesnitt. Flere apper kan eksistere, hver med sitt eget design, som alle deler de samme fellesskapene og identitetene.                       |
-| **Protokoll** | Definerer hvordan fellesskap adresseres, hvordan innlegg publiseres og hvordan spam forhindres.                                                |
-| **Nettverk** | Den underliggende peer-to-peer-infrastrukturen: DHT for oppdagelse, sladder for sanntidsmeldinger og innholdsoverføring for datautveksling. |
+| Lag           | Rolle                                                                                                                                       |
+| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| **App**       | Brukergrensesnitt. Flere apper kan eksistere, hver med sitt eget design, som alle deler de samme fellesskapene og identitetene.             |
+| **Protokoll** | Definerer hvordan fellesskap adresseres, hvordan innlegg publiseres og hvordan spam forhindres.                                             |
+| **Nettverk**  | Den underliggende peer-to-peer-infrastrukturen: DHT for oppdagelse, sladder for sanntidsmeldinger og innholdsoverføring for datautveksling. |
 
 ---
 
@@ -243,7 +243,7 @@ Avveiningen er at Bitsocial ikke garanterer permanent tilgjengelighet av gammelt
 Federerte nettverk (som e-post eller ActivityPub-baserte plattformer) forbedrer sentraliseringen, men har fortsatt strukturelle begrensninger:
 
 - **Tjeneravhengighet** – hvert fellesskap trenger en server med et domene, TLS og pågående
-vedlikehold
+  vedlikehold
 - **Administratortillit** — serveradministratoren har full kontroll over brukerkontoer og innhold
 - **Fragmentering** — flytting mellom servere betyr ofte å miste følgere, historikk eller identitet
 - **Kostnad** — noen må betale for hosting, noe som skaper press mot konsolidering

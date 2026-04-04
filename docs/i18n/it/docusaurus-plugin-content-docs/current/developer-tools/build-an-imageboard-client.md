@@ -29,16 +29,16 @@ Se desideri il percorso più breve per la spedizione, contribuisci prima diretta
 Se 5chan non corrisponde alla community o all'interfaccia desiderata, crea invece un client separato. I client Bitsocial compatibili possono condividere la stessa rete senza condividere le stesse decisioni sul prodotto.
 
 1. Impara gli strumenti di interfacciamento con il protocollo:
-   - [Ganci Bitsocial React](../react-hooks/)
+   - [Hook React Bitsocial](../react-hooks/)
    - [CLI Bitsocial](../cli/)
 2. Decidi che tipo di imageboard stai effettivamente costruendo.
-Scegli prima la struttura del consiglio, i presupposti di identità, il modello di moderazione, il flusso di scoperta e il linguaggio visivo.
+   Scegli prima la struttura del consiglio, i presupposti di identità, il modello di moderazione, il flusso di scoperta e il linguaggio visivo.
 3. Scegli il percorso di implementazione adatto al progetto.
-Fork 5chan se vuoi muoverti velocemente con una base di imageboard familiare. Ricomincia da capo se l'interfaccia utente o il modello di interazione devono essere radicalmente diversi.
+   Fork 5chan se vuoi muoverti velocemente con una base di imageboard familiare. Ricomincia da capo se l'interfaccia utente o il modello di interazione devono essere radicalmente diversi.
 4. Spedisci una prima versione stretta.
-Un cliente che serve bene una vera comunità è più prezioso di un vago clone destinato a soddisfare tutti.
+   Un cliente che serve bene una vera comunità è più prezioso di un vago clone destinato a soddisfare tutti.
 5. Pubblica il risultato e lascia che le comunità lo testino.
-Bitsocial migliora quando i costruttori esterni forniscono clienti supponenti che competono sulla qualità del prodotto invece di aspettare che un'app ufficiale faccia tutto.
+   Bitsocial migliora quando i costruttori esterni forniscono clienti supponenti che competono sulla qualità del prodotto invece di aspettare che un'app ufficiale faccia tutto.
 
 ## Principio di progettazione
 

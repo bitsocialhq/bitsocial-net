@@ -32,13 +32,13 @@ Als 5chan niet past bij de gewenste community of interface, bouw dan een aparte 
    - [Bitsocial React-haken](../react-hooks/)
    - [Bitsociale CLI](../cli/)
 2. Bepaal wat voor soort imageboard je daadwerkelijk gaat bouwen.
-Kies eerst de bestuursstructuur, identiteitsaannames, moderatiemodel, ontdekkingsstroom en beeldtaal.
+   Kies eerst de bestuursstructuur, identiteitsaannames, moderatiemodel, ontdekkingsstroom en beeldtaal.
 3. Kies het implementatietraject dat bij het project past.
-Fork 5chan als je snel wilt bewegen met een vertrouwde imageboard-basis. Begin opnieuw als de gebruikersinterface of het interactiemodel radicaal anders moet zijn.
+   Fork 5chan als je snel wilt bewegen met een vertrouwde imageboard-basis. Begin opnieuw als de gebruikersinterface of het interactiemodel radicaal anders moet zijn.
 4. Verzend een smalle eerste versie.
-Eén klant die één echte gemeenschap goed bedient, is waardevoller dan een vage kloon die bedoeld is om iedereen tevreden te stellen.
+   Eén klant die één echte gemeenschap goed bedient, is waardevoller dan een vage kloon die bedoeld is om iedereen tevreden te stellen.
 5. Publiceer het resultaat en laat communities het testen.
-Bitsocial verbetert wanneer externe bouwers eigenzinnige klanten sturen die concurreren op productkwaliteit in plaats van te wachten tot één officiële app alles doet.
+   Bitsocial verbetert wanneer externe bouwers eigenzinnige klanten sturen die concurreren op productkwaliteit in plaats van te wachten tot één officiële app alles doet.
 
 ## Ontwerpprincipe
 

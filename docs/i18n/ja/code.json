@@ -112,7 +112,7 @@
     "description": "The name for the dark color mode"
   },
   "theme.colorToggle.ariaLabel": {
-    "message": "ダークモードを切り替える(現在は{mode})",
+    "message": "ダークモードとライトモードを切り替える（現在: {mode}）",
     "description": "The ARIA label for the color mode toggle"
   },
   "theme.docs.breadcrumbs.navAriaLabel": {
@@ -411,7 +411,7 @@
     "description": "Title shown in the docs language selector panel."
   },
   "docs.languageSelector.searchPlaceholder": {
-    "message": "検索言語",
+    "message": "言語を検索",
     "description": "Placeholder shown in the docs language selector search input."
   },
   "docs.languageSelector.emptyState": {
@@ -427,7 +427,7 @@
     "description": "Small eyebrow label shown above the docs language selector title."
   },
   "docs.languageSelector.closeButton": {
-    "message": "近い",
+    "message": "閉じる",
     "description": "Accessible label for the docs language selector close button."
   }
 }

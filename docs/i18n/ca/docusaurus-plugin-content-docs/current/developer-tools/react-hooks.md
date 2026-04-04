@@ -1,60 +1,56 @@
 ---
 title: React Hooks
-description: Biblioteca de ganxos de React per crear aplicacions socials descentralitzades al protocol Bitsocial.
+description: React hooks biblioteca per crear aplicacions socials descentralitzades al protocol Bitsocial.
 sidebar_position: 1
 ---
 
 # React Hooks
 
-:::warning Noms heretats
-Aquest paquet actualment utilitza convencions de nomenclatura heretades de la seva bifurcació amunt. Les referències a "plebbit" al codi, a les API i a la configuració es migraran a "bitsocial" en una versió futura. La funcionalitat no es veu afectada.
-:::
+El paquet `bitsocial-react-hooks` proporciona una API React hooks familiar per interactuar amb el protocol Bitsocial. Gestiona l'obtenció de fonts, comentaris i perfils d'autor, la gestió de comptes, la publicació de contingut i la subscripció a comunitats, tot sense dependre d'un servidor central.
 
-El paquet `bitsocial-react-hooks` proporciona una API React hooks familiar per interaccionar amb el protocol Bitsocial. Gestiona l'obtenció de fonts, comentaris i perfils d'autor, la gestió de comptes, la publicació de contingut i la subscripció a comunitats, tot sense dependre d'un servidor central.
-
-Aquesta biblioteca és la interfície principal utilitzada per [5chan](/apps/5chan/) i altres aplicacions de client Bitsocial.
+Aquesta biblioteca és la interfície principal utilitzada per [5canal](/apps/5chan/) i altres aplicacions de client Bitsocial.
 
 :::note
-`bitsocial-react-hooks` és una forquilla temporal d'ajuda per al desenvolupament `plebbit/plebbit-react-hooks` mantingut per a l'AI. Es consumeix directament des de GitHub en comptes de publicar-lo a npm.
+`bitsocial-react-hooks` actualment es consumeix directament des de GitHub en lloc de publicar-se a npm.
 :::
 
 ## Instal·lació
 
-Com que el paquet encara no és a npm, instal·leu-lo directament des de GitHub, fixant-lo a un hash de commit específic:
+Com que el paquet encara no està a npm, instal·leu-lo directament des de GitHub, fixant-lo a un hash de commit específic:
 
 ```bash
 yarn add https://github.com/bitsocialnet/bitsocial-react-hooks.git#<commit-hash>
 ```
 
-Substituïu `<commit-hash>` amb el commit al qual voleu apuntar.
+Substituïu `<commit-hash>` per la confirmació que voleu orientar.
 
 ## Visió general de l'API
 
-Les categories funcionals de hooksep s'organitzen. A continuació es mostra un resum dels ganxos més utilitzats en cada categoria. Per obtenir signatures completes, paràmetres i tipus de retorn, consulteu [referència completa de l'API a GitHub](https://github.com/bitsocialnet/bitsocial-react-hooks).
+Els ganxos s'organitzen en categories funcionals. A continuació es mostra un resum dels ganxos més utilitzats en cada categoria. Per obtenir signatures completes, paràmetres i tipus de retorn, consulteu la [referència completa de l'API a GitHub](https://github.com/bitsocialnet/bitsocial-react-hooks).
 
 ### Comptes
 
-Gestiona els comptes d'usuari locals, la identitat i la configuració.
+Gestioneu els comptes d'usuari locals, la identitat i la configuració.
 
-- `useAccount(accountName?)` -- retorna l'objecte del compte actiu (o amb nom)
-- `useAccounts()` -- torna tots els comptes emmagatzemats localment
-- `useAccountComments(options?)` -- torna els comentaris publicats per l'actiu. compte
+- `useAccount(accountName?)`: retorna l'objecte del compte actiu (o amb nom).
+- `useAccounts()`: retorna tots els comptes emmagatzemats localment
+- `useAccountComments(options?)`: retorna els comentaris publicats pel compte actiu
 
 ### Comentaris
 
-Obtén i interactua amb comentaris i fils individuals.
+Obteniu i interactueu amb comentaris i fils individuals.
 
-- `useComment(commentCid?)` -- obté un únic comentari pel seu CID
-- `useComments(commentCids?)` -- obté diversos comentaris per lots
+- `useComment(commentCid?)`: obté un únic comentari pel seu CID
+- `useComments(commentCids?)`: obté diversos comentaris per lots
 - `useEditedComment(comment?)`: retorna la darrera versió editada d'un comentari
 
 ### Comunitats
 
 Recuperar les metadades i la configuració de la comunitat.
 
-- `useSubplebbit(subplebbitAddress?)` -- obté una comunitat per adreça
-- `useSubplebbits(subplebbitAddresses?)` -- recupera diverses comunitats
-- `useSubplebbitStats(subplebbitAddress?)`: retorna el recompte de subscriptors i publicacions
+- Ganxo de cerca d'una sola comunitat: obté una comunitat per adreça
+- Ganxo de cerca de diverses comunitats: recupera diverses comunitats
+- Ganxo d'estadístiques de la comunitat: retorna el recompte de subscriptors i publicacions
 
 ### Autors
 
@@ -62,7 +58,7 @@ Consulta els perfils i metadades dels autors.
 
 - `useAuthor(authorAddress?)` -- obté un perfil d'autor
 - `useAuthorComments(options?)`: retorna els comentaris d'un autor específic
-- `useResolvedAuthorAddress(authorAddress?)` -- resol una adreça llegible per l'home (per exemple, ENS) a la seva adreça de protocol
+- `useResolvedAuthorAddress(authorAddress?)`: resol una adreça llegible pels humans (per exemple, ENS) a la seva adreça de protocol
 
 ### Feeds
 
@@ -76,22 +72,22 @@ Subscriu-te i pagina els canals de contingut.
 
 Publicar contingut i realitzar operacions d'escriptura.
 
-- `usePublishComment(options?)` -- publica un comentari o una resposta nou
-- `usePublishVote(options?)`: emet un vot a favor o en contra
+- `usePublishComment(options?)`: publica un comentari o una resposta nous
+- `usePublishVote(options?)`: feu un vot a favor o en contra
 - `useSubscribe(options?)`: subscriu-te o cancel·la la subscripció d'una comunitat
 
 ### Estats i RPC
 
 Superviseu l'estat de connexió i interactueu amb un dimoni Bitsocial remot.
 
-- `useClientsStates(options?)` -- retorna l'estat de connexió dels clients IPFS/pubsub
-- `usePlebbitRpcSettings()` -- retorna la configuració actual del dimoni RPC
+- `useClientsStates(options?)`: retorna l'estat de connexió dels clients IPFS/pubsub
+- Ganxo de configuració RPC: retorna la configuració actual del dimoni RPC
 
 ## Desenvolupament
 
-Per treballar a la biblioteca hooks localment:
+Per treballar a la biblioteca de ganxos localment:
 
-**Requisits previs:** Node.js, Yaxrpack enable/
+**Requisits previs:** Node.js, Corepack habilitat, Yarn 4
 
 ```bash
 git clone https://github.com/bitsocialnet/bitsocial-react-hooks.git
@@ -100,7 +96,7 @@ corepack enable
 yarn install
 ```
 
-README del dipòsit per a ordres de prova i compilació.
+Consulteu el repositori README per a les ordres de prova i compilació.
 
 ## Enllaços
 

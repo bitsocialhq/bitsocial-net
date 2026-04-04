@@ -63,14 +63,14 @@ Uma rede pubsub aberta é vulnerável a inundações de spam. A Bitsocial resolv
 
 O sistema de desafio é flexível: cada operador comunitário configura sua própria política. As opções incluem:
 
-| Tipo de desafio | Como funciona |
-| ----------------- | ------------------------------------------------- |
-| **Captcha** | Quebra-cabeça visual ou interativo apresentado no app |
-| **Limite de taxa** | Limitar postagens por janela de tempo por identidade |
-| **Portão de token** | Exigir comprovante de saldo de um token específico |
-| **Pagamento** | Exigir um pequeno pagamento por postagem |
-| **Lista de permissões** | Somente identidades pré-aprovadas podem postar |
-| **Código personalizado** | Qualquer política exprimível em código |
+| Tipo de desafio          | Como funciona                                         |
+| ------------------------ | ----------------------------------------------------- |
+| **Captcha**              | Quebra-cabeça visual ou interativo apresentado no app |
+| **Limite de taxa**       | Limitar postagens por janela de tempo por identidade  |
+| **Portão de token**      | Exigir comprovante de saldo de um token específico    |
+| **Pagamento**            | Exigir um pequeno pagamento por postagem              |
+| **Lista de permissões**  | Somente identidades pré-aprovadas podem postar        |
+| **Código personalizado** | Qualquer política exprimível em código                |
 
 Os peers que retransmitem muitas tentativas de desafio malsucedidas são bloqueados no tópico pubsub, o que evita ataques de negação de serviço na camada de rede.
 
@@ -101,11 +101,11 @@ sequenceDiagram
 
 1. O usuário abre o aplicativo e vê uma interface social.
 2. O cliente se junta à rede peer-to-peer e faz uma consulta DHT para cada comunidade que o usuário
-segue. As consultas demoram alguns segundos cada, mas são executadas simultaneamente.
+   segue. As consultas demoram alguns segundos cada, mas são executadas simultaneamente.
 3. Cada consulta retorna os indicadores e metadados de conteúdo mais recentes da comunidade (título, descrição,
-lista de moderadores, configuração do desafio).
+   lista de moderadores, configuração do desafio).
 4. O cliente busca o conteúdo real da postagem usando esses ponteiros e, em seguida, renderiza tudo em um
-interface social familiar.
+   interface social familiar.
 
 ---
 
@@ -154,7 +154,7 @@ sequenceDiagram
 7. O cliente envia a postagem junto com a resposta do desafio pelo pubsub.
 8. O nó do operador da comunidade valida a resposta. Se estiver correto, a postagem será aceita.
 9. O nó transmite o resultado pelo pubsub para que os pares da rede saibam que devem continuar a retransmissão
-mensagens deste usuário.
+   mensagens deste usuário.
 10. O nó atualiza o conteúdo da comunidade no seu endereço de chave pública.
 11. Em poucos minutos, todos os leitores da comunidade recebem a atualização.
 
@@ -191,11 +191,11 @@ graph TB
     PK --> TR
 ```
 
-| Camada | Função |
-| ------------ | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| **Aplicativo** | Interface do usuário. Podem existir vários aplicativos, cada um com seu próprio design, todos compartilhando as mesmas comunidades e identidades.                       |
-| **Protocolo** | Define como as comunidades são abordadas, como as postagens são publicadas e como o spam é evitado.                                                |
-| **Rede** | A infraestrutura peer-to-peer subjacente: DHT para descoberta, gossipsub para mensagens em tempo real e transferência de conteúdo para troca de dados. |
+| Camada         | Função                                                                                                                                                 |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Aplicativo** | Interface do usuário. Podem existir vários aplicativos, cada um com seu próprio design, todos compartilhando as mesmas comunidades e identidades.      |
+| **Protocolo**  | Define como as comunidades são abordadas, como as postagens são publicadas e como o spam é evitado.                                                    |
+| **Rede**       | A infraestrutura peer-to-peer subjacente: DHT para descoberta, gossipsub para mensagens em tempo real e transferência de conteúdo para troca de dados. |
 
 ---
 
@@ -243,7 +243,7 @@ A desvantagem é que o Bitsocial não garante a disponibilidade permanente de co
 Redes federadas (como e-mail ou plataformas baseadas em ActivityPub) melhoram a centralização, mas ainda têm limitações estruturais:
 
 - **Dependência de servidor** — cada comunidade precisa de um servidor com domínio, TLS e contínuo
-manutenção
+  manutenção
 - **Confiança do administrador** — o administrador do servidor tem controle total sobre as contas e o conteúdo dos usuários
 - **Fragmentação** — mover-se entre servidores geralmente significa perder seguidores, histórico ou identidade
 - **Custo** — alguém tem que pagar pela hospedagem, o que cria pressão para a consolidação

@@ -1,21 +1,17 @@
 ---
-title: React Hooks
+title: Reagoi koukut
 description: React hooks -kirjasto hajautettujen sosiaalisten sovellusten rakentamiseen Bitsocial-protokollalla.
 sidebar_position: 1
 ---
 
-# React Hooks
-
-:::warning Legacy nimeäminen
-Tämä paketti käyttää tällä hetkellä vanhoja nimeämiskäytäntöjä, jotka on peritty sen ylävirran haarasta. Viittaukset "plebbitiin" koodissa, API:issa ja määrityksissä siirretään "bitsocial"-muotoon tulevassa julkaisussa. Toiminnallisuus ei vaikuta.
-:::
+# Reagoi koukut
 
 `bitsocial-react-hooks`-paketti tarjoaa tutun React hooks APIn vuorovaikutukseen Bitsocial-protokollan kanssa. Se hoitaa syötteiden, kommenttien ja kirjoittajaprofiilien noudon, tilien hallinnan, sisällön julkaisemisen ja yhteisöjen tilaamisen – kaikki ilman keskuspalvelinta.
 
 Tämä kirjasto on [5chan](/apps/5chan/) ja muiden Bitsocial-asiakassovellusten ensisijainen käyttöliittymä.
 
 :::note
-`bitsocial-react-hooks` on `plebbit/plebbit-react-hooks`:n väliaikainen haarukka, jota ylläpidetään tekoälyn tukemaa kehitystä varten. Se kulutetaan suoraan GitHubista sen sijaan, että se julkaistaan ​​npm:lle.
+`bitsocial-react-hooks` kulutetaan tällä hetkellä suoraan GitHubista sen sijaan, että se julkaistaan npm:lle.
 :::
 
 ## Asennus
@@ -52,9 +48,9 @@ Hae ja käytä yksittäisiä kommentteja ja viestiketjuja.
 
 Hae yhteisön metatiedot ja asetukset.
 
-- `useSubplebbit(subplebbitAddress?)` -- hakee yhteisön osoitteen perusteella
-- `useSubplebbits(subplebbitAddresses?)` -- hakee useita yhteisöjä
-- `useSubplebbitStats(subplebbitAddress?)` -- palauttaa tilaaja- ja viestimäärät
+- Yhden yhteisön hakukoukku – hakee yhteisön osoitteen perusteella
+- Monen yhteisön hakukoukku – hakee useita yhteisöjä
+- Yhteisön tilastokoukku – palauttaa tilaaja- ja viestimäärät
 
 ### Tekijät
 
@@ -82,10 +78,10 @@ Julkaise sisältöä ja suorita kirjoitustoimintoja.
 
 ### osavaltiot ja RPC
 
-Tarkkaile yhteyden tilaa ja ole vuorovaikutuksessa Bitsocial-etädemonin kanssa.
+Valvo yhteyden tilaa ja ole vuorovaikutuksessa Bitsocial-etädemonin kanssa.
 
 - `useClientsStates(options?)` – palauttaa IPFS-/pubsub-asiakkaiden yhteystilan
-- `usePlebbitRpcSettings()` -- palauttaa nykyisen RPC-daemon-kokoonpanon
+- RPC-asetusten koukku – palauttaa nykyisen RPC-daemon-kokoonpanon
 
 ## Kehitys
 
@@ -104,5 +100,5 @@ Katso testi- ja rakennuskomennot arkistosta README.
 
 ## Linkit
 
-- **GitHub:** [täydellinen API-viittaus GitHubissa](https://github.com/bitsocialnet/bitsocial-react-hooks)
+- **GitHub:** [bitsocialnet/bitsocial-react-hooks](https://github.com/bitsocialnet/bitsocial-react-hooks)
 - **Lisenssi:** Vain GPL-2.0

@@ -6,11 +6,7 @@ sidebar_position: 2
 
 # Captcha Canvas Challenge
 
-:::warning Noms heretats
-Aquest paquet es va publicar originalment sota l'àmbit `@plebbit`. S'ha canviat de nom a `@bitsocial/captcha-canvas-challenge`. Les referències al nom antic encara poden aparèixer a la documentació o bases de codi més antigues.
-:::
-
-Captcha Canvas Challenge és un generador de captcha d'imatges autònom extret originalment de `plebbit-js`. Representa el text aleatori en un llenç HTML i retorna la imatge resultant, que les comunitats poden presentar als autors com un repte de correu brossa.
+Captcha Canvas Challenge és un generador de captcha d'imatges autònom. Representa el text aleatori en un llenç HTML i retorna la imatge resultant, que les comunitats poden presentar als autors com un repte de correu brossa.
 
 **Codi font:** [github.com/bitsocialnet/captcha-canvas-challenge](https://github.com/bitsocialnet/captcha-canvas-challenge)
 
@@ -18,7 +14,6 @@ Captcha Canvas Challenge és un generador de captcha d'imatges autònom extret o
 
 - **Node.js** >= 22
 - **Només per ESM**: aquest paquet no inclou compilacions CommonJS.
-- **Dependència entre iguals en temps d'execució:** `@plebbit/plebbit-js` (migració a `@pkc/pkc-js`)
 
 ## Instal·lació
 
@@ -41,4 +36,4 @@ npm install @bitsocial/captcha-canvas-challenge
 2. La cadena es representa en un llenç amb soroll visual per resistir l'OCR.
 3. La imatge resultant (i la resposta esperada) es retorna perquè l'aplicació de trucada pugui presentar el repte i després verificar la resposta.
 
-Com que el paquet és un generador d'imatges pur, no gestiona la gestió de la xarxa ni la sessió per si sol. Està pensat per integrar-se en un flux de desafiaments més gran; per exemple, com un dels tipus de desafiament admesos per [Spam Blocker](./spam-blocker.md).
+Com que el paquet és un generador d'imatges pur, no gestiona la gestió de la xarxa ni la sessió per si sol. Està pensat per integrar-se en un flux de desafiaments més gran -- per exemple, com un dels tipus de desafiament admesos per [Bloquejador de correu brossa](./spam-blocker.md).

@@ -1,14 +1,10 @@
 ---
-title: Spam Blocker
+title: Bloquejador de correu brossa
 description: Servei centralitzat de detecció de correu brossa amb puntuació de risc, desafiaments OAuth i llindars de nivell configurables.
 sidebar_position: 1
 ---
 
-# Spam Blocker
-
-:::warning Noms heretats
-Aquest paquet es va publicar originalment sota l'àmbit `@plebbit`. S'ha canviat de nom a `@bitsocial/spam-blocker-server` i `@bitsocial/spam-blocker-challenge`. Les referències als noms antics encara poden aparèixer a la documentació o bases de codi més antigues.
-:::
+# Bloquejador de correu brossa
 
 Spam Blocker és un servei centralitzat de detecció de correu brossa que avalua les publicacions entrants i assigna puntuacions de risc. Consta de dos paquets:
 
@@ -25,7 +21,7 @@ Cada publicació enviada al punt final `/evaluate` rep una puntuació de risc nu
 | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Edat del compte      | Els comptes més nous reben puntuacions de risc més altes.                                                                                                             |
 | Karma                | El karma de la comunitat acumulat redueix el risc.                                                                                                                    |
-| Reputació de l'autor | Dades de reputació recopilades per l'indexador de xarxa de fons.                                                                                                      |
+| Reputació d'autor    | Dades de reputació recopilades per l'indexador de xarxa de fons.                                                                                                      |
 | Anàlisi de contingut | Heurístiques a nivell de text (densitat d'enllaços, patrons de correu brossa coneguts, etc.).                                                                         |
 | Velocitat            | Les publicacions successives ràpides del mateix autor augmenten el risc.                                                                                              |
 | Intel·ligència IP    | Geolocalització a nivell de país i cerques d'amenaces. Només s'emmagatzemen els codis de país; les adreces IP sense processar mai es comparteixen amb les comunitats. |
@@ -46,14 +42,14 @@ Tots els valors de llindar es poden configurar per comunitat.
 Quan una publicació entra en un nivell que requereix verificació, comença el flux de reptes:
 
 1. Primer se li demana a l'autor que s'autentiqui mitjançant **OAuth** (GitHub, Google, Twitter i altres proveïdors compatibles).
-2. Si només OAuth és insuficient (nivell 3), es presenta un **CAPTCHA alternativa** alimentat per Cloudflare Turnstile.
+2. Si només OAuth és insuficient (nivell 3), es presenta una **CAPTCHA alternativa** alimentada per Cloudflare Turnstile.
 3. La identitat d'OAuth s'utilitza únicament per a la verificació; **mai es comparteix** amb la comunitat o amb altres usuaris.
 
 ## Punts finals de l'API
 
 ### `POST /evaluate`
 
-Envieu una publicació per a l'avaluació de riscos. Retorna la puntuació de risc calculada i el nivell de desafiament requerit.
+Envieu una publicació per a l'avaluació del risc. Retorna la puntuació de risc calculada i el nivell de desafiament requerit.
 
 ### `POST /challenge/verify`
 
@@ -69,7 +65,7 @@ Els límits de tarifes s'apliquen de manera dinàmica en funció de l'edat i la 
 
 ## Indexador de xarxa de fons
 
-El servidor executa un indexador en segon pla que rastreja contínuament la xarxa per crear i mantenir les dades de reputació de l'autor. Aquestes dades s'alimenten directament a la canalització de puntuació de risc, cosa que permet al sistema reconèixer els participants de bona fe repetits a través de les comunitats.
+El servidor executa un indexador en segon pla que rastreja contínuament la xarxa per crear i mantenir dades de reputació de l'autor. Aquestes dades s'alimenten directament a la canalització de puntuació de risc, permetent al sistema reconèixer els participants de bona fe repetits a través de les comunitats.
 
 ## Privadesa
 

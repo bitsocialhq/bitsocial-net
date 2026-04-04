@@ -1,14 +1,10 @@
 ---
-title: 5chan
+title: 5kan
 description: Bezserwerowa, zdecentralizowana tablica graficzna zbudowana w oparciu o protokół Bitsocial, na której każdy może tworzyć i posiadać tablice.
 sidebar_position: 1
 ---
 
-:::warning[Starsze nazewnictwo]
-Baza kodowa tego projektu nadal korzysta ze starszego nazewnictwa „plebbit” sprzed rebrandingu Bitsocial. Nazwy pakietów, odniesienia do API i część terminologii wewnętrznej zostaną zaktualizowane w przyszłej wersji. Opisana tutaj funkcjonalność jest aktualna — jedynie nazewnictwo jest nieaktualne.
-:::
-
-# 5chan
+# 5kan
 
 5chan to bezserwerowa, pozbawiona administratora i w pełni zdecentralizowana tablica graficzna działająca na protokole Bitsocial. Jest zgodny ze znaną strukturą katalogów imageboard, wprowadzając jednocześnie zdecentralizowaną własność — każdy może utworzyć tablicę, a wiele tablic może konkurować o to samo miejsce w katalogu poprzez mechanizm głosowania.
 
@@ -34,7 +30,7 @@ Przypisaniami miejsc katalogowych (która płyta pojawia się w której ścieżc
 
 ## Elementy wewnętrzne
 
-Pod maską 5chan wykorzystuje warstwę API plebbit-js do interakcji protokołów. Jak zauważono w powyższym ostrzeżeniu, te wewnętrzne odniesienia nadal mają starsze nazwy, sprzed rebrandingu Bitsocial.
+Pod maską 5chan wykorzystuje współdzieloną warstwę klienta protokołu Bitsocial do interakcji sieciowych.
 
 ## Spinki do mankietów
 

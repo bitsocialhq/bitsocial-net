@@ -1,24 +1,19 @@
 ---
-title: Captcha Canvas Challenge
+title: キャプチャ キャンバス チャレンジ
 description: 構成可能な文字、寸法、色を備えたスタンドアロンの画像ベースのキャプチャ ジェネレーター。
 sidebar_position: 2
 ---
 
-# Captcha Canvas Challenge
+# キャプチャ キャンバス チャレンジ
 
-:::warning 従来の命名
-このパッケージは当初、`@plebbit` スコープで公開されました。名前が `@bitsocial/captcha-canvas-challenge` に変更されました。古い名前への参照は、古いドキュメントやコードベースにまだ記載されている場合があります。
-:::
+Captcha Canvas Challenge は、スタンドアロンの画像キャプチャ ジェネレーターです。ランダム化されたテキストを HTML キャンバスにレンダリングし、その結果として得られる画像を返します。コミュニティは、この画像をスパム チャレンジとして作成者に提示できます。
 
-Captcha Canvas Challenge は、もともと `plebbit-js` から抽出されたスタンドアロンの画像キャプチャ ジェネレーターです。ランダム化されたテキストを HTML キャンバスにレンダリングし、結果の画像を返します。コミュニティはスパム チャレンジとして作成者にその画像を提示できます。
-
-**ソース コード:** [github.com/bitsocialnet/captcha-canvas-challenge](https://github.com/bitsocialnet/captcha-canvas-challenge)
+**ソースコード:** [github.com/bitsocialnet/captcha-canvas-challenge](https://github.com/bitsocialnet/captcha-canvas-challenge)
 
 ## 要件
 
 - **Node.js** >= 22
-- **ESM のみ** -- このパッケージには CommonJS ビルドは同梱されません。
-- **ランタイム ピアの依存関係:** `@plebbit/plebbit-js` (`@pkc/pkc-js` への移行)
+- **ESM のみ** -- このパッケージには CommonJS ビルドは含まれません。
 
 ## インストール
 
@@ -37,8 +32,8 @@ npm install @bitsocial/captcha-canvas-challenge
 
 ## 仕組み
 
-1. ジェネレーターは、設定された長さのランダムな文字列を選択します。
-2. 文字列は、OCR に耐えるために視覚的なノイズを含むキャンバス上にレンダリングされます。
+1. ジェネレーターは、構成された長さのランダムな文字列を選択します。
+2. OCR を防ぐために、文字列は視覚的なノイズとともにキャンバス上にレンダリングされます。
 3. 結果の画像 (および期待される応答) が返されるため、呼び出し側アプリケーションはチャレンジを提示し、後で応答を検証できます。
 
-パッケージは純粋なイメージ ジェネレーターであるため、パッケージ上ではネットワークやセッション管理を処理しません。自分のもの。これは、たとえば [Spam Blocker](./spam-blocker.md) でサポートされるチャレンジ タイプの 1 つとして、より大きなチャレンジ フローに統合されることを目的としています。
+このパッケージは純粋なイメージ ジェネレーターであるため、それ自体ではネットワークやセッション管理を処理しません。これは、たとえば [スパムブロッカー](./spam-blocker.md) でサポートされるチャレンジ タイプの 1 つとして、より大きなチャレンジ フローに統合されることを目的としています。

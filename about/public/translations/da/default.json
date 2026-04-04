@@ -149,7 +149,8 @@
         "description": "Imageboards er den enkleste form for sociale medier at decentralisere: anonym posting, få standardboards og ingen profilgraf. Derfor lancerer vi 5chan, den første Bitsocial-app. 5chan viser, at Bitsocial kan erstatte centraliserede imageboards, samtidig med at globale administratorer fjernes fra ligningen.",
         "callout": {
           "description": "5chan er det første bevispunkt, ikke målstregen. Vi vil have flere imageboard-klienter med forskellige kulturer, grænseflader og standardindstillinger: altchan-lignende boards, mobil-først eksperimenter, nichefællesskaber og forks, der løser behov, som 5chan aldrig vil kunne.",
-          "ctaLabel": "Byg din egen"
+          "ctaLabel": "Byg din egen",
+          "separator": "- eller -"
         }
       },
       "phase2": {
@@ -185,5 +186,25 @@
   "home": {
     "devOnlyRouteNotice": "{{path}} er stadig under konstruktion. Du er blevet sendt videre til forsiden.",
     "dismissDevOnlyRouteNotice": "Luk besked"
+  },
+  "apps": {
+    "allProjects": "All Projects",
+    "allProjectsDescription": "The full Bitsocial ecosystem, from user-facing clients to protocol tools.",
+    "linksSectionDescription": "Launch the app, grab a build, or use a mirror without leaving the directory.",
+    "searchPlaceholder": "Search apps, tools, or tags",
+    "clearSearch": "Clear search",
+    "clearFilters": "Clear filters",
+    "noMatches": "No projects match these filters",
+    "noMatchesDescription": "Try a different search, platform, or category combination.",
+    "viewDetails": "Details",
+    "readyToUse": "Ready to use",
+    "webLinks": "Open on the web",
+    "mobileDownloads": "Mobile downloads",
+    "desktopDownloads": "Desktop downloads",
+    "extraDownloads": "Extra builds",
+    "subtitle": "Open the clients, tools, and modules already live on Bitsocial. Search fast, filter by platform, and jump straight into the links that matter.",
+    "experimental": "Experimental",
+    "sectionLabel": "Appkatalog",
+    "directoryLabel": "Katalog"
   }
 }

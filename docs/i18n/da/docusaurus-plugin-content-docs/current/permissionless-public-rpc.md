@@ -5,17 +5,17 @@ description: Foreslået design til en offentlig Bitsocial RPC-tjeneste med isole
 
 # Tilladelsesløs offentlig RPC
 
-Det oprindelige offentlige RPC-forslag levede som et GitHub-udgave skrevet i gammel plebbit-terminologi. Denne side omskriver ideen i Bitsocial-sprog og indrammes som et forslag på produktniveau i stedet for en mur med implementeringsdetaljer.
+Denne side rammer offentlig RPC som et Bitsocial-forslag på produktniveau i stedet for en mur med implementeringsdetaljer.
 
 ## Mål i almindeligt sprog
 
 Bitsocial Forge kan køre en offentlig RPC-tjeneste, der lader mange brugere administrere deres egne Bitsocial-fællesskaber eksternt, uden at gøre operatøren til en administrator af disse fællesskaber.
 
-Tjenesten skal gøre mobile og lette klienter praktiske og samtidig bevare tre begrænsninger:
+Tjenesten skal gøre mobile og lette kunder praktiske og samtidig bevare tre begrænsninger:
 
-1. Brugere forbliver isoleret fra hinanden som standard.
+1. Brugere forbliver som standard isoleret fra hinanden.
 2. Tilladelser forbliver eksplicitte og detaljerede.
-3. Kompatibilitet med den aktuelle RPC-anmodning og svarform kan bevares under udrulning.
+3. Kompatibilitet med den aktuelle RPC-anmodning og svarform kan bevares under udrulningen.
 
 ## Hvilket problem løser det
 
@@ -36,11 +36,11 @@ Hver bruger får en godkendelsesoplysninger plus en tilladelsespakke.
 
 ### Fællesskaber
 
-Fællesskaber oprettet gennem tjenesten tildeles en ejerpost. Ejerskab spores eksplicit, så styringsmetoder kan scopes til den rigtige bruger.
+Fællesskaber oprettet gennem tjenesten tildeles en ejerpost. Ejerskab spores eksplicit, så administrationsmetoder kan scopes til den rigtige bruger.
 
 ### Tilladelser
 
-Tilladelser er kapacitetsbaserede. I stedet for en boolsk værdi for "kan bruge RPC'en", kan serveren styre:
+Tilladelser er kapacitetsbaserede. I stedet for en boolean for "kan bruge RPC'en", kan serveren styre:
 
 - hvor mange fællesskaber en bruger kan oprette
 - hvilke ledelsesmetoder der findes
@@ -56,7 +56,7 @@ Den offentlige RPC bør selv forblive fokuseret på brugervendt RPC-adfærd. Adm
 
 Brugervendt dokumentation bør bruge Bitsocial-udtryk som **fællesskab** og **profil**.
 
-På ledningsniveau kan den første udrulning stadig bevare den nuværende JSON-RPC-transport- og nyttelastform, hvor det er nyttigt for kompatibilitet. Med andre ord: docs behøver ikke længere at tale som gamle plebbit docs, selvom overgangsperioden beholder nogle gamle metodenavne eller anmodningsformer bag kulisserne.
+På ledningsniveau kan den første udrulning stadig bevare den nuværende JSON-RPC-transport- og nyttelastform, hvor det er nyttigt for kompatibilitet. Med andre ord: dokumenterne kan forblive Bitsocial-native, selvom overgangsperioden beholder nogle kompatibilitetsorienterede metodenavne eller anmodningsformer bag kulisserne.
 
 ## Foreslået tilladelsesbundt
 
@@ -139,7 +139,7 @@ Admin API kan forblive kedelig og eksplicit:
 - overdrage fællesskabsejerskab
 - inspicere revisionslogfiler
 
-Godkendelse for denne operatør-API bør være fuldstændig adskilt fra slutbruger-RPC-godkendelse.
+Godkendelse for denne operatør-API skal være fuldstændig adskilt fra slutbruger-RPC-godkendelse.
 
 ## Udrulningsfaser
 
@@ -173,9 +173,9 @@ Godkendelse for denne operatør-API bør være fuldstændig adskilt fra slutbrug
 
 Hvis oprettelse af godkendelse er billig, kan offentlige tjenester have brug for et udfordringslag, før de udsteder legitimationsoplysninger. En mulig vej er at genbruge selve samfundsudfordringsmodellen, så udstedelse af legitimationsoplysninger arver den samme anti-misbrugsfilosofi som resten af ​​netværket.
 
-### Ældre navngivning
+### Migrationsoplysninger
 
-Nogle tidlige implementeringer kan stadig afsløre gamle metodenavne internt for kompatibilitet. Det bør behandles som en migrationsdetalje, ikke som det permanente offentlige ordforråd for Bitsocial docs.
+Nogle tidlige implementeringer kan stadig afsløre kompatibilitetsorienterede metodenavne internt. Det bør behandles som en migrationsdetalje, ikke som det permanente offentlige ordforråd for Bitsocial docs.
 
 ## Resumé
 

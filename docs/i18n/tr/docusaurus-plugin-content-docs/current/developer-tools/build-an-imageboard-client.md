@@ -32,13 +32,13 @@ Teslimata giden en kısa yolu istiyorsanız, önce doğrudan 5chan'a katkıda bu
    - [Bitsosyal React kancaları](../react-hooks/)
    - [Bitsosyal CLI](../cli/)
 2. Gerçekte ne tür bir görüntü panosu oluşturacağınıza karar verin.
-Önce pano yapısını, kimlik varsayımlarını, denetleme modelini, keşif akışını ve görsel dili seçin.
+   Önce pano yapısını, kimlik varsayımlarını, denetleme modelini, keşif akışını ve görsel dili seçin.
 3. Projeye uygun uygulama yolunu seçin.
-Tanıdık bir görüntü panosu tabanıyla hızlı hareket etmek istiyorsanız 5chan'ı çatallayın. Kullanıcı arayüzünün veya etkileşim modelinin kökten farklı olması gerekiyorsa yeni bir başlangıç ​​yapın.
+   Tanıdık bir görüntü panosu tabanıyla hızlı hareket etmek istiyorsanız 5chan'ı çatallayın. Kullanıcı arayüzünün veya etkileşim modelinin kökten farklı olması gerekiyorsa yeni bir başlangıç ​​yapın.
 4. Dar bir ilk versiyon gönderin.
-Gerçek bir topluluğa iyi hizmet eden bir müşteri, herkesi memnun edecek belirsiz bir klondan daha değerlidir.
+   Gerçek bir topluluğa iyi hizmet eden bir müşteri, herkesi memnun edecek belirsiz bir klondan daha değerlidir.
 5. Sonucu yayınlayın ve toplulukların bunu test etmesine izin verin.
-Bitsocial, dışarıdaki inşaatçıların tek bir resmi uygulamanın her şeyi yapmasını beklemek yerine, ürün kalitesi konusunda rekabet eden sabit fikirli müşteriler göndermesiyle gelişir.
+   Bitsocial, dışarıdaki inşaatçıların tek bir resmi uygulamanın her şeyi yapmasını beklemek yerine, ürün kalitesi konusunda rekabet eden sabit fikirli müşteriler göndermesiyle gelişir.
 
 ## Tasarım prensibi
 

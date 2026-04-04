@@ -5,7 +5,7 @@ description: Progettazione proposta per un servizio RPC Bitsocial pubblico con u
 
 # RPC pubblico senza autorizzazione
 
-La proposta RPC pubblica originale viveva come un problema di GitHub scritto nella vecchia terminologia plebbit. Questa pagina riscrive quell'idea nel linguaggio Bitsocial e la inquadra come una proposta a livello di prodotto invece che come un muro di dettagli di implementazione.
+Questa pagina inquadra l'RPC pubblico come una proposta Bitsocial a livello di prodotto anziché come un muro di dettagli di implementazione.
 
 ## Obiettivo in linguaggio semplice
 
@@ -13,22 +13,22 @@ Bitsocial Forge può eseguire un servizio RPC pubblico che consente a molti uten
 
 Il servizio dovrebbe rendere pratici i client mobili e leggeri preservando tre vincoli:
 
-1. Utenti rimangono isolati l'uno dall'altro per impostazione predefinita.
+1. Gli utenti rimangono isolati gli uni dagli altri per impostazione predefinita.
 2. Le autorizzazioni rimangono esplicite e granulari.
-3. La compatibilità con la forma di richiesta e risposta RPC corrente può essere preservata durante l'implementazione.
+3. La compatibilità con la richiesta RPC corrente e la forma della risposta possono essere preservate durante l'implementazione.
 
 ## Quale problema risolve
 
 Oggi, il modello RPC più semplice è solitamente tutto o niente: una chiave di autenticazione, un dominio di autorità, accesso completo. Funziona per un singolo operatore ma non per un servizio pubblico multiutente.
 
-Un RPC pubblico senza autorizzazione necessita di un modello più forte:
+Una RPC pubblica senza autorizzazione necessita di un modello più forte:
 
 - un servizio può ospitare molti utenti
-- ogni utente ha le proprie comunità e limiti
-- le policy definite dall'operatore possono prevenire gli abusi
-- l'utente può comunque allontanarsi o ospitarsi autonomamente in seguito
+- ogni utente ottiene le proprie comunità e limiti
+- le politiche definite dall'operatore possono prevenire gli abusi
+- l'utente può comunque allontanarsi o ospitarsi autonomamente in un secondo momento
 
-## Core modello
+## Modello fondamentale
 
 ### Utenti
 
@@ -40,25 +40,25 @@ Le comunità create tramite il servizio vengono assegnate a un record del propri
 
 ### Autorizzazioni
 
-Le autorizzazioni sono basate sulle capacità. Invece di un valore booleano per "può utilizzare l'RPC", il server può controllare:
+Le autorizzazioni sono basate sulle capacità. Invece di un valore booleano per "può utilizzare RPC", il server può controllare:
 
 - quante comunità può creare un utente
 - quali metodi di gestione sono disponibili
 - quali operazioni di pubblicazione sono consentite
-- quali limiti di velocità si applicano
+- quali limiti tariffari si applicano
 - quali superfici di amministrazione sono visibili
 
-### superficie di amministrazione
+### Superficie amministrativa
 
-L'RPC pubblico stesso dovrebbe rimanere concentrato sul comportamento RPC rivolto agli utenti. Le attività amministrative come la creazione dell'utente, il trasferimento della proprietà e la revisione dell'audit appartengono a un'API e a un dashboard dell'operatore separati.
+Lo stesso RPC pubblico dovrebbe rimanere concentrato sul comportamento RPC rivolto agli utenti. Le attività amministrative come la creazione degli utenti, il trasferimento della proprietà e la revisione degli audit appartengono a un'API e a un dashboard dell'operatore separati.
 
 ## Posizione di compatibilità
 
-La documentazione rivolta all'utente dovrebbe utilizzare termini Bitsocial come **comunità** e **profilo**.
+La documentazione rivolta all'utente deve utilizzare termini Bitsocial come **community** e **profilo**.
 
-A livello di rete, la prima implementazione può comunque preservare l'attuale trasporto JSON-RPC e la forma del carico utile laddove ciò sia utile per la compatibilità. In altre parole: i documenti non hanno più bisogno di parlare come i vecchi documenti Plebbit, anche se il periodo di transizione mantiene alcuni nomi di metodi legacy o forme di richiesta dietro le quinte.
+A livello di rete, la prima implementazione può ancora preservare l'attuale forma di trasporto e payload JSON-RPC laddove ciò sia utile per la compatibilità. In altre parole: i documenti possono rimanere nativi di Bitsocial anche se il periodo di transizione mantiene alcuni nomi di metodi orientati alla compatibilità o forme di richiesta dietro le quinte.
 
-## Bundle di permessi proposto
+## Pacchetto di autorizzazioni proposto
 
 ```ts
 type PermissionBundle = {
@@ -104,7 +104,7 @@ type PermissionBundle = {
 };
 ```
 
-I nomi esatti dei metodi sono illustrativi. La parte importante è la forma della policy: le capacità individuali sono controllate in modo indipendente anziché raggruppate in un token superutente.
+I nomi esatti dei metodi sono illustrativi. La parte importante è la forma della politica: le capacità individuali sono controllate in modo indipendente anziché raggruppate in un unico token superutente.
 
 ## Flusso di connessione
 
@@ -122,61 +122,61 @@ La consapevolezza delle autorizzazioni dovrebbe rimanere facoltativa. Un client 
 
 Quando il servizio crea una comunità, dovrebbe assegnare automaticamente la proprietà all'utente chiamante. Da lì:
 
-- le azioni di avvio, arresto, modifica ed eliminazione della comunità sono limitate al proprietario
-- elenco e risposte di sottoscrizione predefinite per le comunità del chiamante
-- una visibilità più ampia è un'autorizzazione di amministratore esplicita, non un'impostazione predefinita
+- le azioni di avvio, interruzione, modifica ed eliminazione della community hanno come ambito il proprietario
+- le risposte agli elenchi e alle iscrizioni sono predefinite per le comunità del chiamante
+- una visibilità più ampia è un'autorizzazione amministrativa esplicita, non un'impostazione predefinita
 
-Un caso limite è molto importante: se un utente si iscrive a una comunità di cui **non** è proprietario, il server deve esporre solo lo stato pubblico che qualsiasi osservatore esterno dovrebbe vedere. La configurazione riservata al solo proprietario o i dati di runtime interni non dovrebbero mai trapelare attraverso un'API di abbonamento.
+Un caso limite è molto importante: se un utente si iscrive a una comunità di cui **non** è proprietario, il server deve esporre solo lo stato pubblico che qualsiasi osservatore esterno dovrebbe vedere. La configurazione riservata al solo proprietario o i dati di runtime interni non dovrebbero mai fuoriuscire attraverso un'API di sottoscrizione.
 
-## Superficie operatore suggerita
+## Superficie operatore consigliata
 
 L'API di amministrazione può rimanere noiosa ed esplicita:
 
 - elencare gli utenti
-- controllare un utente
-- creare o aggiornare utenti
-- eliminare utenti
-- trasferire la proprietà della comunità
-- controllare il controllo logs
+- ispezionare un utente
+- creare o aggiornare gli utenti
+- eliminare gli utenti
+- trasferire la proprietà comunitaria
+- ispezionare i registri di controllo
 
 L'autenticazione per questa API dell'operatore deve essere completamente separata dall'autenticazione RPC dell'utente finale.
 
-## Fasi di implementazione
+## Fasi di lancio
 
 ### Fase 1
 
 - stabilire la struttura del progetto RPC pubblico
 - aggiungere record utente e monitoraggio della proprietà
-- bilanciare o estendere il server RPC corrente
+- eseguire il fork o estendere il server RPC corrente
 
 ### Fase 2
 
-- implementare pacchetti di autorizzazioni
-- applicarli a livello del metodo RPC
+- implementare pacchetti di permessi
+- applicarli al livello del metodo RPC
 - restituire i metadati delle autorizzazioni alla connessione
 
 ### Fase 3
 
-- aggiungere l'API dell'operatore
+- aggiungi l'API dell'operatore
 - aggiungere la registrazione di controllo
-- aggiungere l'autenticazione dell'amministratore
+- aggiungi l'autenticazione dell'amministratore
 
 ### Fase 4
 
-- fornire il dashboard di amministrazione
+- spedire il dashboard di amministrazione
 - testare i controlli sugli abusi
-- rafforzare i limiti di velocità e le quote di archiviazione
+- restringere i limiti di velocità e le quote di stoccaggio
 
 ## Domande aperte
 
 ### Spam delle credenziali di autenticazione
 
-Se la creazione dell'autenticazione è economica, i servizi pubblici potrebbero aver bisogno di un livello di sfida prima di rilasciare le credenziali. Un percorso possibile è riutilizzare il modello di sfida della comunità stesso in modo che l'emissione di credenziali erediti la stessa filosofia anti-abuso del resto della rete.
+Se la creazione dell’autenticazione è economica, i servizi pubblici potrebbero aver bisogno di un livello di sfida prima di rilasciare le credenziali. Un percorso possibile è riutilizzare il modello di sfida della comunità stesso in modo che l’emissione di credenziali erediti la stessa filosofia antiabuso del resto della rete.
 
-### Nominazione legacy
+### Dettagli sulla migrazione
 
-Alcune prime implementazioni potrebbero ancora esporre internamente i nomi dei metodi legacy per compatibilità. Questo dovrebbe essere trattato come un dettaglio della migrazione, non come il vocabolario pubblico permanente dei documenti Bitsocial.
+Alcune prime implementazioni potrebbero ancora esporre internamente nomi di metodi orientati alla compatibilità. Questo dovrebbe essere trattato come un dettaglio della migrazione, non come il vocabolario pubblico permanente dei documenti Bitsocial.
 
 ## Riepilogo
 
-Questa proposta riguarda in realtà una cosa: rendere utile l'infrastruttura RPC pubblica senza renderla di custodia. Un buon Bitsocial RPC pubblico dovrebbe sembrare un'assistenza opzionale per le comunità in esecuzione, non come una nuova piattaforma centrale che rivendica la proprietà attraverso la porta di servizio.
+This proposal is really about one thing: making public RPC infrastructure useful without making it custodial. A good public Bitsocial RPC should feel like optional assistance for running communities, not like a new central platform that reclaims ownership through the back door.

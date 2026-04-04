@@ -63,14 +63,14 @@ Avoin pubiverkko on alttiina roskapostitulville. Bitsocial ratkaisee tämän vaa
 
 Haastejärjestelmä on joustava: jokainen yhteisön toimija määrittää oman käytäntönsä. Vaihtoehtoja ovat:
 
-| Haastetyyppi | Miten se toimii |
-| ----------------- | ------------------------------------------------- |
-| **Captcha** | Visuaalinen tai interaktiivinen palapeli sovelluksessa |
-| **Korkearajoitus** | Rajoita viestejä aikaikkunaa kohti identiteettiä kohti |
-| **Token Gate** | Vaadi todistus tietyn tunnuksen saldosta |
-| **Maksu** | Vaadi pieni maksu postia kohden |
+| Haastetyyppi             | Miten se toimii                                          |
+| ------------------------ | -------------------------------------------------------- |
+| **Captcha**              | Visuaalinen tai interaktiivinen palapeli sovelluksessa   |
+| **Korkearajoitus**       | Rajoita viestejä aikaikkunaa kohti identiteettiä kohti   |
+| **Token Gate**           | Vaadi todistus tietyn tunnuksen saldosta                 |
+| **Maksu**                | Vaadi pieni maksu postia kohden                          |
 | **Sallittujen luettelo** | Vain ennalta hyväksytyt henkilöllisyydet voivat lähettää |
-| **Muokattu koodi** | Mikä tahansa koodissa |
+| **Muokattu koodi**       | Mikä tahansa koodissa                                    |
 
 Liian monta epäonnistunutta haasteyritystä välittävät vertaiskäyttäjät estetään pubsub-aiheesta, mikä estää palvelunestohyökkäykset verkkokerrokseen.
 
@@ -101,11 +101,11 @@ sequenceDiagram
 
 1. Käyttäjä avaa sovelluksen ja näkee sosiaalisen käyttöliittymän.
 2. Asiakas liittyy peer-to-peer-verkkoon ja tekee DHT-kyselyn jokaiselle käyttäjäyhteisölle
-seuraa. Kyselyt vievät kukin muutaman sekunnin, mutta ne suoritetaan samanaikaisesti.
+   seuraa. Kyselyt vievät kukin muutaman sekunnin, mutta ne suoritetaan samanaikaisesti.
 3. Jokainen kysely palauttaa yhteisön uusimmat sisältöosoittimet ja metatiedot (otsikko, kuvaus,
-moderaattoriluettelo, haastekokoonpano).
+   moderaattoriluettelo, haastekokoonpano).
 4. Asiakas hakee todellisen viestin sisällön näiden osoittimien avulla ja hahmontaa sitten kaiken a
-tuttu sosiaalinen käyttöliittymä.
+   tuttu sosiaalinen käyttöliittymä.
 
 ---
 
@@ -154,7 +154,7 @@ sequenceDiagram
 7. Asiakas lähettää julkaisun haastevastauksen kanssa pubsub-palvelun kautta.
 8. Yhteisön operaattorin solmu vahvistaa vastauksen. Jos oikein, viesti hyväksytään.
 9. Solmu lähettää tuloksen pubsubin kautta, jotta verkon vertaiskäyttäjät tietävät jatkavansa välittämistä
-viestit tältä käyttäjältä.
+   viestit tältä käyttäjältä.
 10. Solmu päivittää yhteisön sisällön julkisen avaimen osoitteeseen.
 11. Muutamassa minuutissa jokainen yhteisön lukija saa päivityksen.
 
@@ -191,11 +191,11 @@ graph TB
     PK --> TR
 ```
 
-| Kerros | Rooli |
-| ------------ | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| **Sovellus** | Käyttöliittymä. Voi olla useita sovelluksia, joista jokaisella on oma muotoilu, ja kaikilla on samat yhteisöt ja identiteetit.                       |
-| **Pöytäkirja** | Määrittää, kuinka yhteisöjä käsitellään, miten viestit julkaistaan ​​ja kuinka roskapostia estetään.                                                |
-| **Verkko** | Taustalla oleva peer-to-peer-infrastruktuuri: DHT etsimiseen, gossipsub reaaliaikaiseen viestiin ja sisällön siirto tiedonvaihtoon. |
+| Kerros         | Rooli                                                                                                                               |
+| -------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| **Sovellus**   | Käyttöliittymä. Voi olla useita sovelluksia, joista jokaisella on oma muotoilu, ja kaikilla on samat yhteisöt ja identiteetit.      |
+| **Pöytäkirja** | Määrittää, kuinka yhteisöjä käsitellään, miten viestit julkaistaan ​​ja kuinka roskapostia estetään.                                |
+| **Verkko**     | Taustalla oleva peer-to-peer-infrastruktuuri: DHT etsimiseen, gossipsub reaaliaikaiseen viestiin ja sisällön siirto tiedonvaihtoon. |
 
 ---
 
@@ -243,7 +243,7 @@ Kompromissi on, että Bitsocial ei takaa vanhan sisällön pysyvää saatavuutta
 Federoidut verkot (kuten sähköposti tai ActivityPub-pohjaiset alustat) parantavat keskittämistä, mutta niillä on silti rakenteellisia rajoituksia:
 
 - **Palvelinriippuvuus** — jokainen yhteisö tarvitsee palvelimen, jossa on verkkotunnus, TLS ja jatkuva
-huolto
+  huolto
 - **Järjestelmänvalvojan luottamus** — palvelimen järjestelmänvalvojalla on täysi määräysvalta käyttäjätileihin ja sisältöön
 - **Fragmentoituminen** — palvelimien välillä siirtyminen tarkoittaa usein seuraajien, historian tai identiteetin menettämistä
 - **Kustannus** — jonkun on maksettava isännöinnistä, mikä luo painetta konsolidointiin

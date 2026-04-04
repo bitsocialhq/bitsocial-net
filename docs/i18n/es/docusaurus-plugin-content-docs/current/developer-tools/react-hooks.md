@@ -1,21 +1,17 @@
 ---
-title: React Hooks
+title: Ganchos de reacción
 description: Biblioteca React Hooks para crear aplicaciones sociales descentralizadas en el protocolo Bitsocial.
 sidebar_position: 1
 ---
 
-# React Hooks
-
-:::warning Nomenclatura heredada
-Este paquete actualmente utiliza convenciones de nomenclatura heredadas de su bifurcación ascendente. Las referencias a "plebbit" en el código, las API y la configuración se migrarán a "bitsocial" en una versión futura. La funcionalidad no se ve afectada.
-:::
+# Ganchos de reacción
 
 El paquete `bitsocial-react-hooks` proporciona una API de ganchos React familiar para interactuar con el protocolo Bitsocial. Se encarga de buscar feeds, comentarios y perfiles de autor, administrar cuentas, publicar contenido y suscribirse a comunidades, todo sin depender de un servidor central.
 
 Esta biblioteca es la interfaz principal utilizada por [5chan](/apps/5chan/) y otras aplicaciones cliente de Bitsocial.
 
 :::note
-`bitsocial-react-hooks` es una bifurcación temporal de `plebbit/plebbit-react-hooks` mantenida para el desarrollo asistido por IA. Se consume directamente desde GitHub en lugar de publicarse en npm.
+Actualmente, `bitsocial-react-hooks` se consume directamente desde GitHub en lugar de publicarse en npm.
 :::
 
 ## Instalación
@@ -36,7 +32,7 @@ Los ganchos están organizados en categorías funcionales. A continuación se mu
 
 Administre cuentas de usuarios locales, identidades y configuraciones.
 
-- `useAccount(accountName?)`: devuelve el objeto de cuenta activo (o con nombre)
+- `useAccount(accountName?)`: devuelve el objeto de cuenta activo (o con nombre).
 - `useAccounts()`: devuelve todas las cuentas almacenadas localmente
 - `useAccountComments(options?)`: devuelve comentarios publicados por la cuenta activa
 
@@ -52,9 +48,9 @@ Obtenga e interactúe con comentarios e hilos individuales.
 
 Recuperar metadatos y configuraciones de la comunidad.
 
-- `useSubplebbit(subplebbitAddress?)`: busca una comunidad por dirección
-- `useSubplebbits(subplebbitAddresses?)`: recupera múltiples comunidades
-- `useSubplebbitStats(subplebbitAddress?)`: devuelve el número de suscriptores y publicaciones.
+- Gancho de búsqueda de una sola comunidad: busca una comunidad por dirección
+- Gancho de búsqueda multicomunidad: busca múltiples comunidades
+- Gancho de estadísticas de la comunidad: devuelve el número de suscriptores y publicaciones.
 
 ### Autores
 
@@ -85,7 +81,7 @@ Publicar contenido y realizar operaciones de escritura.
 Supervise el estado de la conexión e interactúe con un demonio Bitsocial remoto.
 
 - `useClientsStates(options?)`: devuelve el estado de conexión de los clientes IPFS/pubsub
-- `usePlebbitRpcSettings()`: devuelve la configuración actual del demonio RPC
+- Gancho de configuración de RPC: devuelve la configuración actual del demonio RPC
 
 ## Desarrollo
 
@@ -104,5 +100,5 @@ Consulte el archivo README del repositorio para obtener comandos de prueba y com
 
 ## Enlaces
 
-- **GitHub:** [referencia completa de API en GitHub](https://github.com/bitsocialnet/bitsocial-react-hooks)
+- **GitHub:** [bitsocialnet/bitsocial-react-hooks](https://github.com/bitsocialnet/bitsocial-react-hooks)
 - **Licencia:** GPL-2.0 únicamente

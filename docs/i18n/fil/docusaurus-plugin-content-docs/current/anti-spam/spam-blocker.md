@@ -6,14 +6,10 @@ sidebar_position: 1
 
 # Spam Blocker
 
-:::warning Legacy na Pangalan
-Ang package na ito ay orihinal na na-publish sa ilalim ng saklaw ng `@plebbit`. Ito ay pinalitan ng pangalan sa `@bitsocial/spam-blocker-server` at `@bitsocial/spam-blocker-challenge`. Ang mga sanggunian sa mga lumang pangalan ay maaari pa ring lumabas sa mas lumang dokumentasyon o codebase.
-:::
-
 Ang Spam Blocker ay isang sentralisadong serbisyo sa pagtuklas ng spam na sinusuri ang mga papasok na publikasyon at nagtatalaga ng mga marka ng panganib. Binubuo ito ng dalawang pakete:
 
 - **`@bitsocial/spam-blocker-server`** -- ang HTTP server na nagho-host ng pagsusuri at paghamon ng mga API.
-- **`@bitsocial/spam-blocker-challenge`** -- isang magaan na pakete ng kliyente na isinasama ng mga komunidad upang magpadala ng mga publikasyon para sa pagsusuri.
+- **`@bitsocial/spam-blocker-challenge`** -- isang magaan na pakete ng kliyente na pinagsama-sama ng mga komunidad upang magpadala ng mga publikasyon para sa pagsusuri.
 
 **Source code:** [github.com/bitsocialnet/spam-blocker](https://github.com/bitsocialnet/spam-blocker)
 
@@ -24,7 +20,7 @@ Ang bawat publikasyong isinumite sa `/evaluate` endpoint ay nakakatanggap ng num
 | Signal                 | Paglalarawan                                                                                                                                                                           |
 | ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Edad ng account        | Ang mga bagong account ay tumatanggap ng mas mataas na marka ng panganib.                                                                                                              |
-| Karma                  | Ang naipon na karma ng komunidad ay binabawasan ang panganib.                                                                                                                          |
+| Karma                  | Ang naipon na karma ng komunidad ay nagpapababa ng panganib.                                                                                                                           |
 | Reputasyon ng may-akda | Data ng reputasyon na nakalap ng background network indexer.                                                                                                                           |
 | Pagsusuri ng nilalaman | Mga heuristic sa antas ng teksto (densidad ng link, kilalang mga pattern ng spam, atbp.).                                                                                              |
 | Bilis                  | Ang mabilis na sunud-sunod na mga post mula sa parehong may-akda ay nagpapataas ng panganib.                                                                                           |
@@ -32,7 +28,7 @@ Ang bawat publikasyong isinumite sa `/evaluate` endpoint ay nakakatanggap ng num
 
 ## Mga Tier Threshold
 
-Ang marka ng panganib ay nagmamapa sa isa sa apat na maaaring i-configure na mga tier na tumutukoy kung ano ang susunod na mangyayari:
+Ang marka ng panganib ay nagmamapa sa isa sa apat na na-configure na tier na tumutukoy kung ano ang susunod na mangyayari:
 
 1. **Awtomatikong tanggapin** -- sapat na mababa ang marka para maaprubahan ang publikasyon nang walang anumang hamon.
 2. **OAuth-sapat** -- dapat kumpletuhin ng may-akda ang isang pag-verify ng OAuth upang magpatuloy.
@@ -65,11 +61,11 @@ Nagbabalik ng naka-embed na HTML page na nagre-render ng naaangkop na challenge 
 
 ## Paglilimita sa Rate
 
-Ang mga limitasyon sa rate ay dynamic na inilalapat batay sa edad at reputasyon ng may-akda. Ang mga may-akda na mas bago o mas mababa ang reputasyon ay nahaharap sa mas mahigpit na mga limitasyon, habang ang mga naitatag na may-akda ay nagtatamasa ng mas mapagbigay na mga limitasyon. Pinipigilan nito ang pagbaha ng spam nang hindi pinaparusahan ang mga pinagkakatiwalaang kalahok.
+Ang mga limitasyon sa rate ay dynamic na inilalapat batay sa edad at reputasyon ng may-akda. Ang mga may-akda na mas bago o mas mababa ang reputasyon ay nahaharap sa mas mahigpit na mga limitasyon, habang ang mga naitatag na may-akda ay nag-e-enjoy ng mas maraming limitasyon. Pinipigilan nito ang pagbaha ng spam nang hindi pinaparusahan ang mga pinagkakatiwalaang kalahok.
 
 ## Background Network Indexer
 
-Ang server ay nagpapatakbo ng isang background indexer na patuloy na nagko-crawl sa network upang bumuo at mapanatili ang data ng reputasyon ng may-akda. Direktang ipinapasok ang data na ito sa pipeline ng risk scoring, na nagbibigay-daan sa system na makilala ang mga umuulit na kalahok na may mabuting pananampalataya sa mga komunidad.
+Ang server ay nagpapatakbo ng background indexer na patuloy na nagko-crawl sa network upang bumuo at mapanatili ang data ng reputasyon ng may-akda. Direktang dumadaloy ang data na ito sa pipeline ng risk scoring, na nagbibigay-daan sa system na makilala ang mga umuulit na kalahok na may mabuting pananampalataya sa mga komunidad.
 
 ## Pagkapribado
 

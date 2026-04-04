@@ -11,7 +11,7 @@ Vaiheessa 1 ei ole kyse yhdestä virallisesta sovelluksesta, joka kattaisi koko 
 ## Mitä vaihe 1 tarvitsee
 
 - Tutut 4chan-tyyliset asiakkaat valtavirran perehdyttämiseen
-- Altchanin inspiroimia asiakkaita, joilla on erilaisia ​​kulttuureja ja levypaketteja
+- Altchanin inspiroimia asiakkaita, joilla on erilaisia kulttuureja ja levypaketteja
 - Mobiiliasiakkaat tai matalan kaistanleveyden asiakkaat
 - Yhden yhteisön tai markkinaraon asiakkaat, joilla on vahvat mielipide-oletukset
 - Paremmat moderointi-, media-, perehdytys- tai etsintävirrat kuin ensimmäisessä sovelluksessa
@@ -32,13 +32,13 @@ Jos 5chan ei vastaa haluamaasi yhteisöä tai käyttöliittymää, luo sen sijaa
    - [Bitsocial React -koukut](../react-hooks/)
    - [Bitsocial CLI](../cli/)
 2. Päätä, millaista kuvataulua todella rakennat.
-Valitse ensin taulun rakenne, identiteettioletukset, moderointimalli, etsintäkulku ja visuaalinen kieli.
+   Valitse ensin taulun rakenne, identiteettioletukset, moderointimalli, etsintäkulku ja visuaalinen kieli.
 3. Valitse projektiin sopiva toteutuspolku.
-Fork 5chan, jos haluat liikkua nopeasti tutulla kuvataulupohjalla. Aloita alusta, jos käyttöliittymän tai vuorovaikutusmallin on oltava radikaalisti erilainen.
+   Fork 5chan, jos haluat liikkua nopeasti tutulla kuvataulupohjalla. Aloita alusta, jos käyttöliittymän tai vuorovaikutusmallin on oltava radikaalisti erilainen.
 4. Lähetä kapea ensimmäinen versio.
-Yksi asiakas, joka palvelee yhtä todellista yhteisöä hyvin, on arvokkaampi kuin epämääräinen klooni, jonka tarkoitus on tyydyttää kaikkia.
+   Yksi asiakas, joka palvelee yhtä todellista yhteisöä hyvin, on arvokkaampi kuin epämääräinen klooni, jonka tarkoitus on tyydyttää kaikkia.
 5. Julkaise tulos ja anna yhteisöjen testata sitä.
-Bitsocial paranee, kun ulkopuoliset rakentajat lähettävät mielipiteitä sisältäviä asiakkaita, jotka kilpailevat tuotteiden laadusta sen sijaan, että odottaissivat yhden virallisen sovelluksen tekevän kaiken.
+   Bitsocial paranee, kun ulkopuoliset rakentajat lähettävät mielipiteitä sisältäviä asiakkaita, jotka kilpailevat tuotteiden laadusta sen sijaan, että odottaissivat yhden virallisen sovelluksen tekevän kaiken.
 
 ## Suunnitteluperiaate
 

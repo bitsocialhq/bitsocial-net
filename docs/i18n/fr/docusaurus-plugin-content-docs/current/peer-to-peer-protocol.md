@@ -63,14 +63,14 @@ Un réseau pubsub ouvert est vulnérable aux inondations de spam. Bitsocial rés
 
 Le système de challenge est flexible : chaque opérateur communautaire configure sa propre politique. Les options incluent :
 
-| Type de défi | Comment ça marche |
-| ----------------- | ------------------------------------------------- |
-| **Captcha** | Puzzle visuel ou interactif présenté dans l'application |
+| Type de défi           | Comment ça marche                                            |
+| ---------------------- | ------------------------------------------------------------ |
+| **Captcha**            | Puzzle visuel ou interactif présenté dans l'application      |
 | **Limitation de taux** | Limiter les publications par fenêtre horaire et par identité |
-| **Porte de jetons** | Exiger une preuve du solde d'un jeton spécifique |
-| **Paiement** | Exiger un petit paiement par publication |
-| **Liste autorisée** | Seules les identités pré-approuvées peuvent publier |
-| **Code personnalisé** | Toute politique exprimable dans le code |
+| **Porte de jetons**    | Exiger une preuve du solde d'un jeton spécifique             |
+| **Paiement**           | Exiger un petit paiement par publication                     |
+| **Liste autorisée**    | Seules les identités pré-approuvées peuvent publier          |
+| **Code personnalisé**  | Toute politique exprimable dans le code                      |
 
 Les pairs qui relaient trop de tentatives de contestation infructueuses sont bloqués du sujet pubsub, ce qui empêche les attaques par déni de service sur la couche réseau.
 
@@ -101,11 +101,11 @@ sequenceDiagram
 
 1. L'utilisateur ouvre l'application et voit une interface sociale.
 2. Le client rejoint le réseau peer-to-peer et effectue une requête DHT pour chaque communauté de l'utilisateur.
-suit. Les requêtes prennent quelques secondes chacune mais s'exécutent simultanément.
+   suit. Les requêtes prennent quelques secondes chacune mais s'exécutent simultanément.
 3. Chaque requête renvoie les derniers pointeurs de contenu et métadonnées de la communauté (titre, description,
-liste des modérateurs, configuration du défi).
+   liste des modérateurs, configuration du défi).
 4. Le client récupère le contenu réel de la publication à l'aide de ces pointeurs, puis restitue le tout dans un format
-interface sociale familière.
+   interface sociale familière.
 
 ---
 
@@ -154,7 +154,7 @@ sequenceDiagram
 7. Le client soumet le message avec la réponse au défi via pubsub.
 8. Le nœud de l'opérateur communautaire valide la réponse. Si c'est correct, le message est accepté.
 9. Le nœud diffuse le résultat sur pubsub afin que les homologues du réseau sachent qu'il faut continuer à relayer.
-messages de cet utilisateur.
+   messages de cet utilisateur.
 10. Le nœud met à jour le contenu de la communauté à son adresse de clé publique.
 11. En quelques minutes, chaque lecteur de la communauté reçoit la mise à jour.
 
@@ -191,11 +191,11 @@ graph TB
     PK --> TR
 ```
 
-| Couche | Rôle |
-| ------------ | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| **Application** | Interface utilisateur. Plusieurs applications peuvent exister, chacune avec son propre design, partageant toutes les mêmes communautés et identités.                       |
-| **Protocole** | Définit la manière dont les communautés sont adressées, la manière dont les publications sont publiées et la manière dont le spam est évité.                                                |
-| **Réseau** | L'infrastructure peer-to-peer sous-jacente : DHT pour la découverte, gossipsub pour la messagerie en temps réel et transfert de contenu pour l'échange de données. |
+| Couche          | Rôle                                                                                                                                                               |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Application** | Interface utilisateur. Plusieurs applications peuvent exister, chacune avec son propre design, partageant toutes les mêmes communautés et identités.               |
+| **Protocole**   | Définit la manière dont les communautés sont adressées, la manière dont les publications sont publiées et la manière dont le spam est évité.                       |
+| **Réseau**      | L'infrastructure peer-to-peer sous-jacente : DHT pour la découverte, gossipsub pour la messagerie en temps réel et transfert de contenu pour l'échange de données. |
 
 ---
 
@@ -243,7 +243,7 @@ Le compromis est que Bitsocial ne garantit pas la disponibilité permanente des 
 Les réseaux fédérés (comme les plates-formes de messagerie ou basées sur ActivityPub) améliorent la centralisation mais présentent toujours des limites structurelles :
 
 - **Dépendance du serveur** — chaque communauté a besoin d'un serveur avec un domaine, TLS et continu
-entretien
+  entretien
 - **Confiance administrateur** : l'administrateur du serveur a un contrôle total sur les comptes d'utilisateurs et le contenu.
 - **Fragmentation** : passer d'un serveur à l'autre signifie souvent perdre des abonnés, de l'historique ou de l'identité.
 - **Coût** : quelqu'un doit payer pour l'hébergement, ce qui crée une pression en faveur de la consolidation.

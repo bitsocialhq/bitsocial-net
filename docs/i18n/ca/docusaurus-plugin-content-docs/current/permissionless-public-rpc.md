@@ -5,7 +5,7 @@ description: Disseny proposat per a un servei públic de Bitsocial RPC amb usuar
 
 # RPC públic sense permís
 
-La proposta pública original de RPC va viure com un problema de GitHub escrit amb una terminologia antiga de plebbit. Aquesta pàgina reescriu aquesta idea en llenguatge Bitsocial i l'emmarca com una proposta a nivell de producte en lloc d'un mur de detalls d'implementació.
+Aquesta pàgina emmarca RPC públic com una proposta Bitsocial a nivell de producte en lloc d'un mur de detalls d'implementació.
 
 ## Objectiu de llenguatge senzill
 
@@ -36,7 +36,7 @@ Cada usuari obté una credencial d'autenticació més un paquet de permisos.
 
 ### Comunitats
 
-Les comunitats creades mitjançant el servei s'assignen a un registre de propietari. La propietat es fa un seguiment explícit de manera que els mètodes de gestió es puguin ajustar a l'usuari adequat.
+Les comunitats creades mitjançant el servei s'assignen a un registre de propietari. La propietat es fa un seguiment explícit de manera que els mètodes de gestió es poden abastar a l'usuari adequat.
 
 ### Permisos
 
@@ -56,7 +56,7 @@ El propi RPC públic s'hauria de centrar en el comportament dels RPC davant dels
 
 La documentació orientada a l'usuari hauria d'utilitzar termes de Bitsocial com ara **comunitat** i **perfil**.
 
-A nivell de cable, el primer llançament encara pot conservar la forma actual de transport i càrrega útil JSON-RPC quan això sigui útil per a la compatibilitat. En altres paraules: els documents ja no necessiten parlar com els antics documents de plebbit, fins i tot si el període de transició manté alguns noms de mètodes heretats o formes de sol·licitud entre bastidors.
+A nivell de cable, el primer llançament encara pot conservar la forma actual de transport i càrrega útil JSON-RPC quan això sigui útil per a la compatibilitat. En altres paraules: els documents poden romandre natius de Bitsocial, fins i tot si el període de transició manté alguns noms de mètodes orientats a la compatibilitat o formes de sol·licitud entre bastidors.
 
 ## Paquet de permisos proposat
 
@@ -139,7 +139,7 @@ L'API d'administració pot quedar avorrida i explícita:
 - transferir la propietat de la comunitat
 - inspeccionar els registres d'auditoria
 
-L'autenticació per a aquesta API de l'operador hauria de ser completament independent de l'autenticació RPC de l'usuari final.
+L'autenticació d'aquesta API de l'operador hauria de ser completament independent de l'autenticació RPC de l'usuari final.
 
 ## Fases de desplegament
 
@@ -173,9 +173,9 @@ L'autenticació per a aquesta API de l'operador hauria de ser completament indep
 
 Si la creació d'autenticació és barata, els serveis públics poden necessitar una capa de desafiament abans d'emetre credencials. Una possible ruta és reutilitzar el mateix model de desafiament de la comunitat perquè l'emissió de credencials hereti la mateixa filosofia anti-abús que la resta de la xarxa.
 
-### Noms heretats
+### Detalls de la migració
 
-Algunes implementacions primerenques encara poden exposar internament noms de mètodes heretats per a la compatibilitat. Això s'ha de tractar com un detall de migració, no com el vocabulari públic permanent dels documents de Bitsocial.
+Algunes implementacions primerenques encara poden exposar internament noms de mètodes orientats a la compatibilitat. Això s'ha de tractar com un detall de migració, no com el vocabulari públic permanent dels documents de Bitsocial.
 
 ## Resum
 

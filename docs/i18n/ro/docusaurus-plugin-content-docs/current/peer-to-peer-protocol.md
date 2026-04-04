@@ -63,14 +63,14 @@ O rețea pubsub deschisă este vulnerabilă la inundațiile de spam. Bitsocial r
 
 Sistemul de provocare este flexibil: fiecare operator comunitar își configurează propria politică. Opțiunile includ:
 
-| Tip provocare | Cum funcționează |
-| ----------------- | ------------------------------------------------- |
-| **Captcha** | Puzzle vizual sau interactiv prezentat în aplicație |
-| **Limitarea ratei** | Limitați postările pe fereastră de timp pe identitate |
-| **Token gate** | Solicitați dovada soldului unui anumit jeton |
-| **Plata** | Necesită o plată mică per postare |
-| **Lista permisă** | Numai identitățile preaprobate pot posta |
-| **Cod personalizat** | Orice politică exprimabilă în cod |
+| Tip provocare        | Cum funcționează                                      |
+| -------------------- | ----------------------------------------------------- |
+| **Captcha**          | Puzzle vizual sau interactiv prezentat în aplicație   |
+| **Limitarea ratei**  | Limitați postările pe fereastră de timp pe identitate |
+| **Token gate**       | Solicitați dovada soldului unui anumit jeton          |
+| **Plata**            | Necesită o plată mică per postare                     |
+| **Lista permisă**    | Numai identitățile preaprobate pot posta              |
+| **Cod personalizat** | Orice politică exprimabilă în cod                     |
 
 Colegii care transmit prea multe încercări eșuate de provocare sunt blocați din subiectul pubsub, ceea ce previne atacurile de denial-of-service la nivelul rețelei.
 
@@ -101,11 +101,11 @@ sequenceDiagram
 
 1. Utilizatorul deschide aplicația și vede o interfață socială.
 2. Clientul se alătură rețelei peer-to-peer și face o interogare DHT pentru fiecare comunitate de utilizator
-urmează. Interogările durează câteva secunde fiecare, dar rulează simultan.
+   urmează. Interogările durează câteva secunde fiecare, dar rulează simultan.
 3. Fiecare interogare returnează cele mai recente indicatori de conținut și metadate ale comunității (titlu, descriere,
-lista moderatorilor, configurarea provocării).
+   lista moderatorilor, configurarea provocării).
 4. Clientul preia conținutul real al postării folosind acești indicatori, apoi redă totul într-un
-interfață socială familiară.
+   interfață socială familiară.
 
 ---
 
@@ -154,7 +154,7 @@ sequenceDiagram
 7. Clientul trimite postarea împreună cu răspunsul la provocare prin pubsub.
 8. Nodul operatorului comunității validează răspunsul. Dacă este corect, postarea este acceptată.
 9. Nodul difuzează rezultatul prin pubsub, astfel încât colegii din rețea să știe să continue transmiterea
-mesaje de la acest utilizator.
+   mesaje de la acest utilizator.
 10. Nodul actualizează conținutul comunității la adresa sa cu cheie publică.
 11. În câteva minute, fiecare cititor al comunității primește actualizarea.
 
@@ -191,11 +191,11 @@ graph TB
     PK --> TR
 ```
 
-| Strat | Rol |
-| ------------ | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| **Aplicație** | Interfață cu utilizatorul. Pot exista mai multe aplicații, fiecare cu propriul design, toate împărtășind aceleași comunități și identități.                       |
-| **Protocol** | Definește modul în care sunt abordate comunitățile, cum sunt publicate postările și cum este prevenit spamul.                                                |
-| **Rețea** | Infrastructura de bază peer-to-peer: DHT pentru descoperire, gossipsub pentru mesagerie în timp real și transfer de conținut pentru schimbul de date. |
+| Strat         | Rol                                                                                                                                                   |
+| ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Aplicație** | Interfață cu utilizatorul. Pot exista mai multe aplicații, fiecare cu propriul design, toate împărtășind aceleași comunități și identități.           |
+| **Protocol**  | Definește modul în care sunt abordate comunitățile, cum sunt publicate postările și cum este prevenit spamul.                                         |
+| **Rețea**     | Infrastructura de bază peer-to-peer: DHT pentru descoperire, gossipsub pentru mesagerie în timp real și transfer de conținut pentru schimbul de date. |
 
 ---
 
@@ -243,7 +243,7 @@ Compensația este că Bitsocial nu garantează disponibilitatea permanentă a co
 Rețelele federate (cum ar fi e-mailul sau platformele bazate pe ActivityPub) îmbunătățesc centralizarea, dar au încă limitări structurale:
 
 - **Dependență de server** — fiecare comunitate are nevoie de un server cu un domeniu, TLS și în curs de desfășurare
-întreţinere
+  întreţinere
 - **Încredere în administrator** — administratorul serverului are control deplin asupra conturilor de utilizator și a conținutului
 - **Fragmentare** — mutarea între servere înseamnă adesea pierderea adepților, istoricului sau identității
 - **Cost** — cineva trebuie să plătească pentru găzduire, ceea ce creează presiune către consolidare

@@ -63,14 +63,14 @@ Ett öppet pubsub-nätverk är sårbart för spamfloder. Bitsocial löser detta 
 
 Utmaningssystemet är flexibelt: varje community-operatör konfigurerar sin egen policy. Alternativen inkluderar:
 
-| Utmaningstyp | Hur det fungerar |
-| ----------------- | ------------------------------------------------- |
-| **Captcha** | Visuellt eller interaktivt pussel presenterat i appen |
-| **Taxebegränsning** | Begränsa inlägg per tidsfönster per identitet |
-| **Token gate** | Kräv bevis på balans för en specifik token |
-| **Betalning** | Kräv en liten betalning per post |
-| **Tillståndslista** | Endast förgodkända identiteter kan skicka |
-| **Anpassad kod** | Alla policyer som kan uttryckas i kod |
+| Utmaningstyp        | Hur det fungerar                                      |
+| ------------------- | ----------------------------------------------------- |
+| **Captcha**         | Visuellt eller interaktivt pussel presenterat i appen |
+| **Taxebegränsning** | Begränsa inlägg per tidsfönster per identitet         |
+| **Token gate**      | Kräv bevis på balans för en specifik token            |
+| **Betalning**       | Kräv en liten betalning per post                      |
+| **Tillståndslista** | Endast förgodkända identiteter kan skicka             |
+| **Anpassad kod**    | Alla policyer som kan uttryckas i kod                 |
 
 Peers som vidarebefordrar för många misslyckade utmaningsförsök blockeras från pubsub-ämnet, vilket förhindrar denial-of-service-attacker på nätverkslagret.
 
@@ -101,11 +101,11 @@ sequenceDiagram
 
 1. Användaren öppnar appen och ser ett socialt gränssnitt.
 2. Klienten ansluter sig till peer-to-peer-nätverket och gör en DHT-fråga för varje gemenskap användaren
-följer. Frågor tar några sekunder vardera men körs samtidigt.
+   följer. Frågor tar några sekunder vardera men körs samtidigt.
 3. Varje fråga returnerar communityns senaste innehållspekare och metadata (titel, beskrivning,
-moderatorlista, utmaningskonfiguration).
+   moderatorlista, utmaningskonfiguration).
 4. Klienten hämtar det faktiska inläggets innehåll med hjälp av dessa pekare och renderar sedan allt i en
-välbekant socialt gränssnitt.
+   välbekant socialt gränssnitt.
 
 ---
 
@@ -154,7 +154,7 @@ sequenceDiagram
 7. Klienten skickar in inlägget tillsammans med utmaningssvaret över pubsub.
 8. Gemenskapsoperatörens nod validerar svaret. Om det är korrekt accepteras inlägget.
 9. Noden sänder resultatet över pubsub så att nätverkskollegor vet att de ska fortsätta vidarebefordra
-meddelanden från denna användare.
+   meddelanden från denna användare.
 10. Noden uppdaterar communityns innehåll på dess offentliga nyckeladress.
 11. Inom några minuter får varje läsare av communityn uppdateringen.
 
@@ -191,11 +191,11 @@ graph TB
     PK --> TR
 ```
 
-| Lager | Roll |
-| ------------ | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| **App** | Gräns-snittet. Det kan finnas flera appar, var och en med sin egen design, som alla delar samma gemenskaper och identiteter.                       |
-| **Protokoll** | Definierar hur gemenskaper adresseras, hur inlägg publiceras och hur skräppost förhindras.                                                |
-| **Nätverk** | Den underliggande peer-to-peer-infrastrukturen: DHT för upptäckt, gossipsub för meddelanden i realtid och innehållsöverföring för datautbyte. |
+| Lager         | Roll                                                                                                                                          |
+| ------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| **App**       | Gräns-snittet. Det kan finnas flera appar, var och en med sin egen design, som alla delar samma gemenskaper och identiteter.                  |
+| **Protokoll** | Definierar hur gemenskaper adresseras, hur inlägg publiceras och hur skräppost förhindras.                                                    |
+| **Nätverk**   | Den underliggande peer-to-peer-infrastrukturen: DHT för upptäckt, gossipsub för meddelanden i realtid och innehållsöverföring för datautbyte. |
 
 ---
 
@@ -243,7 +243,7 @@ Avvägningen är att Bitsocial inte garanterar permanent tillgänglighet för ga
 Federerade nätverk (som e-post eller ActivityPub-baserade plattformar) förbättrar centraliseringen men har fortfarande strukturella begränsningar:
 
 - **Serverberoende** — varje gemenskap behöver en server med en domän, TLS och pågående
-underhåll
+  underhåll
 - **Administratörsförtroende** — serveradministratören har full kontroll över användarkonton och innehåll
 - **Fragmentering** — att flytta mellan servrar innebär ofta att du förlorar följare, historik eller identitet
 - **Kostnad** — någon måste betala för hosting, vilket skapar press mot konsolidering

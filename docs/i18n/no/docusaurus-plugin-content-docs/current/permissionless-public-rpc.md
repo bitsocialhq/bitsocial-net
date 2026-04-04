@@ -5,7 +5,7 @@ description: Foreslått design for en offentlig Bitsocial RPC-tjeneste med isole
 
 # Tillatelsesløs offentlig RPC
 
-Det opprinnelige offentlige RPC-forslaget levde som en GitHub-utgave skrevet i gammel plebbit-terminologi. Denne siden omskriver ideen på Bitsocial-språket og rammer den inn som et forslag på produktnivå i stedet for en vegg med implementeringsdetaljer.
+Denne siden rammer offentlig RPC som et Bitsocial-forslag på produktnivå i stedet for en vegg med implementeringsdetaljer.
 
 ## Klarspråksmål
 
@@ -56,7 +56,7 @@ Den offentlige RPC-en selv bør holde fokus på brukervendt RPC-atferd. Administ
 
 Brukervendt dokumentasjon bør bruke Bitsocial-termer som **fellesskap** og **profil**.
 
-På ledningsnivå kan den første utrullingen fortsatt bevare den nåværende JSON-RPC-transport- og nyttelastformen der det er nyttig for kompatibilitet. Med andre ord: dokumentene trenger ikke lenger å snakke som gamle plebbit-dokumenter, selv om overgangsperioden beholder noen eldre metodenavn eller forespørselsformer bak kulissene.
+På ledningsnivå kan den første utrullingen fortsatt bevare den nåværende JSON-RPC-transport- og nyttelastformen der det er nyttig for kompatibilitet. Med andre ord: dokumentene kan forbli Bitsocial-native selv om overgangsperioden beholder noen kompatibilitetsorienterte metodenavn eller forespørselsformer bak kulissene.
 
 ## Foreslått tillatelsespakke
 
@@ -173,9 +173,9 @@ Autentisering for denne operatør-API-en bør være helt atskilt fra sluttbruker
 
 Hvis oppretting av autentisering er billig, kan offentlige tjenester trenge et utfordringslag før de utsteder legitimasjon. En mulig vei er å gjenbruke selve samfunnsutfordringsmodellen, slik at utstedelse av legitimasjon arver den samme anti-misbruksfilosofien som resten av nettverket.
 
-### Eldre navngivning
+### Migreringsdetaljer
 
-Noen tidlige implementeringer kan fortsatt avsløre eldre metodenavn internt for kompatibilitet. Det bør behandles som en migrasjonsdetalj, ikke som det permanente offentlige vokabularet til Bitsocial-dokumenter.
+Noen tidlige implementeringer kan fortsatt avsløre kompatibilitetsorienterte metodenavn internt. Det bør behandles som en migrasjonsdetalj, ikke som det permanente offentlige vokabularet til Bitsocial-dokumenter.
 
 ## Sammendrag
 

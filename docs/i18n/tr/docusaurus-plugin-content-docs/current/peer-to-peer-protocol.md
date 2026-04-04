@@ -63,14 +63,14 @@ Açık bir pubsub ağı spam saldırılarına karşı savunmasızdır. Bitsocial
 
 Mücadele sistemi esnektir: her topluluk operatörü kendi politikasını yapılandırır. Seçenekler şunları içerir:
 
-| Mücadele türü | Nasıl çalışır |
-| ----------------- | ------------------------------------------------- |
-| **Captcha** | Uygulamada sunulan görsel veya etkileşimli bulmaca |
-| **Hız sınırlaması** | Kimliğe göre zaman aralığı başına gönderileri sınırlayın |
-| **Jeton kapısı** | Belirli bir tokenin bakiyesinin kanıtını iste |
-| **Ödeme** | Gönderi başına küçük bir ödeme talep edin |
-| **İzin verilenler listesi** | Yalnızca önceden onaylanmış kimlikler yayınlayabilir |
-| **Özel kod** | Kodla ifade edilebilen herhangi bir politika |
+| Mücadele türü               | Nasıl çalışır                                            |
+| --------------------------- | -------------------------------------------------------- |
+| **Captcha**                 | Uygulamada sunulan görsel veya etkileşimli bulmaca       |
+| **Hız sınırlaması**         | Kimliğe göre zaman aralığı başına gönderileri sınırlayın |
+| **Jeton kapısı**            | Belirli bir tokenin bakiyesinin kanıtını iste            |
+| **Ödeme**                   | Gönderi başına küçük bir ödeme talep edin                |
+| **İzin verilenler listesi** | Yalnızca önceden onaylanmış kimlikler yayınlayabilir     |
+| **Özel kod**                | Kodla ifade edilebilen herhangi bir politika             |
 
 Çok fazla başarısız sorgulama girişimi ileten eşlerin pubsub konusuna erişimi engellenir, bu da ağ katmanında hizmet reddi saldırılarını önler.
 
@@ -101,11 +101,11 @@ sequenceDiagram
 
 1. Kullanıcı uygulamayı açar ve bir sosyal arayüz görür.
 2. İstemci eşler arası ağa katılır ve kullanıcı olan her topluluk için bir DHT sorgusu yapar
-takip ediyor. Sorguların her biri birkaç saniye sürer ancak eş zamanlı olarak yürütülür.
+   takip ediyor. Sorguların her biri birkaç saniye sürer ancak eş zamanlı olarak yürütülür.
 3. Her sorgu, topluluğun en son içerik işaretçilerini ve meta verilerini (başlık, açıklama,
-moderatör listesi, sorgulama yapılandırması).
+   moderatör listesi, sorgulama yapılandırması).
 4. İstemci bu işaretçileri kullanarak asıl gönderi içeriğini getirir ve ardından her şeyi bir
-tanıdık sosyal arayüz.
+   tanıdık sosyal arayüz.
 
 ---
 
@@ -154,7 +154,7 @@ sequenceDiagram
 7. Müşteri, gönderiyi pubsub üzerinden meydan okuma yanıtıyla birlikte gönderir.
 8. Topluluk operatörünün düğümü cevabı doğrular. Doğruysa gönderi kabul edilir.
 9. Düğüm, sonucu pubsub üzerinden yayınlar, böylece ağ eşleri aktarmaya devam etmeleri gerektiğini bilir
-bu kullanıcıdan gelen mesajlar.
+   bu kullanıcıdan gelen mesajlar.
 10. Düğüm, topluluğun içeriğini genel anahtar adresinde günceller.
 11. Birkaç dakika içinde topluluğun her okuyucusu güncellemeyi alır.
 
@@ -191,11 +191,11 @@ graph TB
     PK --> TR
 ```
 
-| Katman | Rol |
+| Katman       | Rol                                                                                                                                       |
 | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| **Uygulama** | Kullanıcı arayüzü. Her biri kendi tasarımına sahip, hepsi aynı toplulukları ve kimlikleri paylaşan birden fazla uygulama mevcut olabilir.                       |
-| **Protokol** | Topluluklara nasıl hitap edileceğini, gönderilerin nasıl yayınlanacağını ve spam'in nasıl önleneceğini tanımlar.                                                |
-| **Ağ** | Temel eşler arası altyapı: Keşif için DHT, gerçek zamanlı mesajlaşma için gossipsub ve veri alışverişi için içerik aktarımı. |
+| **Uygulama** | Kullanıcı arayüzü. Her biri kendi tasarımına sahip, hepsi aynı toplulukları ve kimlikleri paylaşan birden fazla uygulama mevcut olabilir. |
+| **Protokol** | Topluluklara nasıl hitap edileceğini, gönderilerin nasıl yayınlanacağını ve spam'in nasıl önleneceğini tanımlar.                          |
+| **Ağ**       | Temel eşler arası altyapı: Keşif için DHT, gerçek zamanlı mesajlaşma için gossipsub ve veri alışverişi için içerik aktarımı.              |
 
 ---
 
@@ -243,7 +243,7 @@ Buradaki değiş tokuş, Bitsocial'ın eski içeriğin kalıcı olarak kullanıl
 Birleşik ağlar (e-posta veya ActivityPub tabanlı platformlar gibi) merkezileştirme açısından iyileşir ancak hâlâ yapısal sınırlamalara sahiptir:
 
 - **Sunucu bağımlılığı** — her topluluğun alan adı, TLS ve devam eden bir sunucuya ihtiyacı vardır
-Bakım
+  Bakım
 - **Yönetici güveni** — Sunucu yöneticisi, kullanıcı hesapları ve içeriği üzerinde tam kontrole sahiptir
 - **Parçalanma** — sunucular arasında geçiş yapmak çoğu zaman takipçileri, geçmişi veya kimliği kaybetmek anlamına gelir
 - **Maliyet** — Birisinin barındırma için ödeme yapması gerekiyor ve bu da birleştirme yönünde baskı yaratıyor

@@ -4,10 +4,6 @@ description: Palvelimeton, Bitsocial-protokollalle rakennettu hajautettu kuvatau
 sidebar_position: 1
 ---
 
-:::warning[Vanha nimeäminen]
-Tämän projektin koodikanta käyttää edelleen vanhaa "plebbit" -nimeämistä ennen Bitsocial-uudelleenbrändiä. Pakettien nimet, API-viitteet ja jotkut sisäiset terminologiat päivitetään tulevassa julkaisussa. Tässä kuvattu toiminto on ajankohtainen – vain nimeäminen on vanhentunutta.
-:::
-
 # 5chan
 
 5chan on palvelimeton, järjestelmänvalvojaton ja täysin hajautettu kuvataulu, joka toimii Bitsocial-protokollalla. Se noudattaa tuttua imageboard-hakemistorakennetta ja ottaa käyttöön hajautetun omistajuuden – kuka tahansa voi luoda taulun, ja useat taulut voivat kilpailla samasta hakemistopaikasta äänestysmekanismin kautta.
@@ -34,7 +30,7 @@ Hakemistopaikkojen määrityksiä (mikä kortti näkyy missä polussa) hallitaan
 
 ## Sisäosat
 
-Konepellin alla 5chan käyttää plebbit-js API-kerrosta protokollavuorovaikutukseensa. Kuten yllä olevassa varoituksessa todettiin, näissä sisäisissä viitteissä on edelleen Bitsocial-uudelleenbrändiä edeltäneitä nimiä.
+Kotelon alla 5chan käyttää jaettua Bitsocial-protokollan asiakaskerrosta verkkovuorovaikutukseensa.
 
 ## Linkit
 

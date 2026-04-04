@@ -5,58 +5,58 @@ description: Voorgesteld ontwerp voor een openbare Bitsocial RPC-service met ge�
 
 # Toestemmingsloze openbare RPC
 
-Het oorspronkelijke openbare RPC-voorstel leefde als een GitHub-probleem, geschreven in oude plebbit-terminologie. Deze pagina herschrijft dat idee in Bitsocial-taal en kadert het als een voorstel op productniveau in plaats van een muur van implementatiedetails.
+Op deze pagina wordt de openbare RPC geframed als een Bitsocial-voorstel op productniveau in plaats van als een muur van implementatiedetails.
 
 ## Doel in duidelijke taal
 
-Bitsocial Forge kan een openbare RPC-service uitvoeren waarmee veel gebruikers hun eigen Bitsocial-gemeenschappen op afstand kunnen beheren, zonder dat de operator een bewaarder van die gemeenschappen wordt.
+Bitsocial Forge kan een openbare RPC-service uitvoeren waarmee veel gebruikers hun eigen Bitsocial-gemeenschappen op afstand kunnen beheren, zonder dat de operator een beheerder van die gemeenschappen wordt.
 
-De service moet mobiele en lichtgewicht clients praktisch maken met behoud van drie beperkingen:
+De dienst moet mobiele en lichtgewicht clients praktisch maken, met behoud van drie beperkingen:
 
 1. Gebruikers blijven standaard van elkaar geïsoleerd.
-2. Rechten blijven expliciet en gedetailleerd.
+2. Machtigingen blijven expliciet en gedetailleerd.
 3. Compatibiliteit met de huidige RPC-aanvraag en -antwoordvorm kan tijdens de implementatie behouden blijven.
 
 ## Welk probleem het oplost
 
-Tegenwoordig is het eenvoudigste RPC-model meestal alles-of-niets: één auth-sleutel, één autoriteitsdomein, volledig toegang. Dat werkt voor een enkele operator, maar niet voor een openbare service voor meerdere gebruikers.
+Tegenwoordig is het eenvoudigste RPC-model meestal alles-of-niets: één auth-sleutel, één autoriteitsdomein, volledige toegang. Dat werkt voor één operator, maar niet voor een openbare dienst voor meerdere gebruikers.
 
 Een toestemmingsloze openbare RPC heeft een sterker model nodig:
 
 - één service kan veel gebruikers hosten
 - elke gebruiker krijgt zijn eigen community's en limieten
-- door de operator gedefinieerd beleid kan misbruik voorkomen
-- de gebruiker kan nog steeds weggaan of zichzelf later hosten
+- Door de operator gedefinieerd beleid kan misbruik voorkomen
+- de gebruiker kan later nog steeds verhuizen of zelf hosten
 
-## Kern model
+## Kernmodel
 
 ### Gebruikers
 
-Elke gebruiker krijgt een auth-referentie plus een machtigingsbundel.
+Elke gebruiker krijgt een verificatiereferentie plus een machtigingsbundel.
 
 ### Gemeenschappen
 
-Communities die via de service zijn gemaakt, worden toegewezen aan een eigenaarrecord. Eigendom wordt expliciet bijgehouden, zodat beheermethoden kunnen worden afgestemd op de juiste gebruiker.
+Community's die via de service zijn gemaakt, worden toegewezen aan een eigenaarrecord. Het eigendom wordt expliciet bijgehouden, zodat de beheermethoden op de juiste gebruiker kunnen worden afgestemd.
 
 ### Machtigingen
 
-Machtigingen zijn gebaseerd op mogelijkheden. In plaats van één booleaanse waarde voor 'kan de RPC gebruiken', kan de server bepalen:
+Machtigingen zijn gebaseerd op mogelijkheden. In plaats van één booleaanse waarde voor ‘kan de RPC gebruiken’, kan de server het volgende beheren:
 
-- hoeveel community's een gebruiker kan maken
-- welke beheermethoden beschikbaar zijn
+- hoeveel communities een gebruiker kan maken
+- welke managementmethoden beschikbaar zijn
 - welke publicatiebewerkingen zijn toegestaan
-- welke tarieflimieten van toepassing zijn
+- welke tarieflimieten gelden
 - welke beheerdersoppervlakken zichtbaar zijn
 
-### Beheerdersoppervlak
+### Beheeroppervlak
 
-De openbare RPC zelf moet gefocust blijven op gebruikersgerichte RPC gedrag. Administratieve taken zoals het aanmaken van gebruikers, eigendomsoverdracht en auditbeoordeling horen thuis in een aparte operator-API en dashboard.
+De publieke RPC zelf moet gefocust blijven op het gebruikersgerichte RPC-gedrag. Administratieve taken zoals het aanmaken van gebruikers, eigendomsoverdracht en auditbeoordeling horen thuis in een aparte operator-API en dashboard.
 
 ## Compatibiliteitshouding
 
-Gebruikersgerichte documentatie zou Bitsocial-termen moeten gebruiken zoals **community** en **profiel**.
+In gebruikersgerichte documentatie moeten Bitsocial-termen worden gebruikt, zoals **community** en **profiel**.
 
-Op draadniveau kan de eerste implementatie nog steeds de huidige JSON-RPC-transport- en payload-vorm behouden waar dat nuttig is voor compatibiliteit. Met andere woorden: de documenten hoeven niet langer te praten als oude plebbit-documenten, zelfs als de overgangsperiode enkele verouderde methodenamen behoudt of achter de schermen om vormen vraagt.
+Op draadniveau kan bij de eerste uitrol nog steeds de huidige JSON-RPC-transport- en payload-vorm behouden blijven, waar dat nuttig is voor de compatibiliteit. Met andere woorden: de documenten kunnen Bitsocial-native blijven, zelfs als de overgangsperiode enkele compatibiliteitsgerichte methodenamen behoudt of achter de schermen om vormen vraagt.
 
 ## Voorgestelde toestemmingsbundel
 
@@ -104,7 +104,7 @@ type PermissionBundle = {
 };
 ```
 
-De exacte methodenamen zijn ter illustratie. Het belangrijkste onderdeel is de vorm van het beleid: individuele mogelijkheden worden onafhankelijk beheerd in plaats van gebundeld in één superuser-token.
+De exacte namen van de methoden zijn illustratief. Het belangrijkste onderdeel is de vorm van het beleid: individuele mogelijkheden worden onafhankelijk beheerd in plaats van gebundeld in één superuser-token.
 
 ## Verbindingsstroom
 
@@ -116,67 +116,67 @@ client connects with auth credential
 -> client proceeds with the subset of actions it is allowed to use
 ```
 
-Bewustzijn van rechten moet optioneel blijven. Een client die de melding negeert, kan zich nog steeds correct gedragen door standaard autorisatiefouten van de server af te handelen.
+Toestemmingsbewustzijn moet optioneel blijven. Een client die de melding negeert, kan zich nog steeds correct gedragen door standaard autorisatiefouten van de server af te handelen.
 
-## Eigendomsafdwinging
+## Handhaving van eigendom
 
-Wanneer de service een community aanmaakt, moet deze automatisch het eigendom toewijzen aan de bellende gebruiker. Vanaf daar:
+Wanneer de service een community creëert, moet deze het eigendom automatisch toewijzen aan de bellende gebruiker. Vanaf daar:
 
-- acties voor het starten, stoppen, bewerken en verwijderen van de community zijn op de eigenaar afgestemd
-- lijst- en abonnementsreacties worden standaard ingesteld op de eigen community's van de beller
+- acties voor het starten, stoppen, bewerken en verwijderen van de community zijn eigendom van de eigenaar
+- lijst- en abonnementsreacties zijn standaard ingesteld op de eigen community's van de beller
 - bredere zichtbaarheid is een expliciete beheerderstoestemming, geen standaard
 
-Eén randgeval doet er veel toe: als een gebruiker zich abonneert op een community waarvan hij **niet** de eigenaar is, mag de server alleen de publieke status weergeven die elke externe waarnemer zou moeten zien. Configuratie die alleen voor de eigenaar is of interne runtimegegevens mogen nooit via een abonnements-API lekken.
+Eén randgeval doet er veel toe: als een gebruiker zich abonneert op een community waarvan hij **niet** de eigenaar is, mag de server alleen de publieke status weergeven die elke externe waarnemer zou moeten zien. Configuratie- of interne runtimegegevens die alleen voor de eigenaar gelden, mogen nooit via een abonnements-API lekken.
 
-## Voorgesteld operatoroppervlak
+## Aanbevolen operatoroppervlak
 
-De beheerders-API kan saai en expliciet blijven:
+De admin-API kan saai en expliciet blijven:
 
-- lijst gebruikers
-- inspecteer één gebruiker
-- maak of update gebruikers
-- verwijder gebruikers
-- draag gemeenschapseigendom over
-- inspecteer audit logs
+- lijst met gebruikers
+- één gebruiker inspecteren
+- gebruikers aanmaken of bijwerken
+- gebruikers verwijderen
+- gemeenschapseigendom overdragen
+- auditlogboeken inspecteren
 
-Authenticatie voor deze operator-API moet volledig gescheiden zijn van RPC-authenticatie voor eindgebruikers.
+Authenticatie voor deze operator-API moet volledig gescheiden zijn van de RPC-authenticatie van de eindgebruiker.
 
 ## Uitrolfasen
 
 ### Fase 1
 
-- de openbare RPC-projectstructuur opzetten
-- gebruikersrecords toevoegen en eigendom bijhouden
-- de huidige RPC-server afsplitsen of uitbreiden
+- het opzetten van de publieke RPC-projectstructuur
+- voeg gebruikersrecords en eigendomsregistratie toe
+- fork of breid de huidige RPC-server uit
 
 ### Fase 2
 
-- machtigingenbundels implementeren
-- ze afdwingen op de RPC-methodelaag
-- metagegevens van machtigingen retourneren connect
+- machtigingsbundels implementeren
+- dwing ze af op de RPC-methodelaag
+- retourneer metagegevens van machtigingen bij verbinding
 
 ### Fase 3
 
 - voeg de operator-API toe
-- voeg auditregistratie toe
-- voeg beheerdersauthenticatie toe
+- auditlogboek toevoegen
+- beheerdersauthenticatie toevoegen
 
 ### Fase 4
 
 - verzend het beheerdersdashboard
-- test misbruikcontroles
-- scherpte snelheidslimieten en opslagquota aan
+- misbruikcontroles testen
+- verscherp de snelheidsbeperkingen en opslagquota
 
 ## Open vragen
 
-### Auth-inloggegevens spam
+### Spam met verificatiegegevens
 
-Als het aanmaken van auth-authenticatie goedkoop is, hebben publieke diensten mogelijk een uitdagingslaag nodig voordat zij inloggegevens kunnen uitgeven. Eén mogelijke route is het hergebruiken van het community-uitdagingsmodel zelf, zodat de uitgifte van referenties dezelfde anti-misbruikfilosofie overneemt als de rest van het netwerk.
+Als het creëren van authenticatie goedkoop is, hebben publieke diensten mogelijk een uitdagingslaag nodig voordat ze inloggegevens uitgeven. Eén mogelijke route is het hergebruiken van het community challenge-model zelf, zodat de uitgifte van legitimatiebewijzen dezelfde anti-misbruikfilosofie overneemt als de rest van het netwerk.
 
-### Oude naamgeving
+### Migratiedetails
 
-Sommige vroege implementaties kunnen nog steeds verouderde methodenamen intern vrijgeven voor compatibiliteit. Dat moet worden behandeld als een migratiedetail, niet als het permanente openbare vocabulaire van Bitsocial-documenten.
+Sommige vroege implementaties kunnen intern nog steeds compatibiliteitsgerichte methodenamen bevatten. Dat moet worden behandeld als een migratiedetail, niet als het permanente openbare vocabulaire van Bitsocial-documenten.
 
 ## Samenvatting
 
-Dit voorstel gaat eigenlijk over één ding: de openbare RPC-infrastructuur bruikbaar maken zonder deze in bewaring te nemen. Een goede openbare Bitsocial RPC zou moeten aanvoelen als optionele hulp voor het runnen van communities, niet als een nieuw centraal platform dat via de achterdeur het eigendom terugwint.
+Dit voorstel gaat eigenlijk maar over één ding: de openbare RPC-infrastructuur nuttig maken zonder deze in bewaring te nemen. Een goede openbare Bitsocial RPC zou moeten aanvoelen als optionele hulp voor het runnen van communities, niet als een nieuw centraal platform dat via de achterdeur het eigendom terugwint.

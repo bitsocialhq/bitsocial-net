@@ -1,16 +1,12 @@
 ---
-title: EVM Contract Call Challenge
-description: Anti-spamová výzva, která ověřuje podmínky v řetězci voláním inteligentní smlouvy EVM.
+title: Výzva na smluvní volání EVM
+description: Antispamová výzva, která ověřuje podmínky v řetězci voláním inteligentní smlouvy EVM.
 sidebar_position: 4
 ---
 
-# EVM Contract Call Challenge
+# Výzva na smluvní volání EVM
 
-:::warning Legacy Pojmenování
-Tento balíček byl původně publikován v rozsahu `@plebbit`. Byl přejmenován na `@bitsocial/evm-contract-challenge`. Odkazy na starý název se mohou stále objevovat ve starší dokumentaci nebo kódových základnách.
-:::
-
-EVM Contract Call Challenge je antispamový mechanismus, který před povolením zveřejnění ověřuje podmínky v řetězci. Původně byl extrahován ze `plebbit-js` jako samostatný balíček a umožňuje vlastníkům komunity vyžadovat, aby autoři splnili kritéria definovaná inteligentní smlouvou – například držení minimálního zůstatku tokenů – aby mohli zveřejňovat příspěvky.
+EVM Contract Call Challenge je antispamový mechanismus, který před povolením zveřejnění ověřuje podmínky v řetězci. Umožňuje vlastníkům komunit vyžadovat, aby autori splnili kritéria definovaná inteligentní smlouvou – například držení minimálního zůstatku tokenů – aby mohli zveřejňovat příspěvky.
 
 **Zdrojový kód:** [github.com/bitsocialnet/evm-contract-call](https://github.com/bitsocialnet/evm-contract-call)
 
@@ -18,7 +14,6 @@ EVM Contract Call Challenge je antispamový mechanismus, který před povolením
 
 - **Node.js** >= 22
 - **Pouze ESM** – tento balíček nedodává sestavení CommonJS.
-- **Závislost na druhém běhovém prostředí:** `@plebbit/plebbit-js` (migrace na `@pkc/pkc-js`)
 
 ## Instalace
 
@@ -56,4 +51,4 @@ EVM Contract Call Challenge je ideální pro:
 - **Přístup s bránou NFT**, kde je vyžadováno vlastnictví konkrétního NFT.
 - **Prostory řízení DAO**, kde je účast omezena na držitele tokenu řízení.
 
-Pro komunity, které se nespoléhají na on-chain identitu, zvažte místo toho [Spam Blocker](./spam-blocker.md) nebo [Voucher Challenge](./voucher-challenge.md).
+Pro komunity, které se nespoléhají na on-chain identitu, zvažte místo toho [Blokátor spamu](./spam-blocker.md) nebo [Voucherová výzva](./voucher-challenge.md).

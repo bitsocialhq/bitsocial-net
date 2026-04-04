@@ -6,31 +6,27 @@ sidebar_position: 1
 
 # React Hooks
 
-:::warning Legacy névadás
-Ez a csomag jelenleg a korábbi elnevezési konvenciókat használja, amelyeket az upstream forkjából örökölt. A kódban, API-kban és konfigurációkban a „plebbit”-re való hivatkozásokat „bitsocial”-ra költöztetjük egy jövőbeli kiadásban. A funkcionalitást ez nem érinti.
-:::
-
 A `bitsocial-react-hooks` csomag egy ismerős React hooks API-t biztosít a Bitsocial protokollal való interakcióhoz. Kezeli a hírfolyamok, megjegyzések és szerzői profilok lekérését, a fiókok kezelését, a tartalom közzétételét és a közösségekre való feliratkozást – mindezt anélkül, hogy központi szerverre támaszkodna.
 
 Ez a könyvtár az [5chan](/apps/5chan/) és más Bitsocial ügyfélalkalmazások által használt elsődleges felület.
 
 :::note
-A `bitsocial-react-hooks` a `plebbit/plebbit-react-hooks` ideiglenes villája, amelyet mesterséges intelligencia által támogatott fejlesztésekhez tartanak fenn. Közvetlenül a GitHubról fogyasztják, nem pedig npm-nek teszik közzé.
+A `bitsocial-react-hooks`-t jelenleg közvetlenül a GitHubról fogyasztják, nem pedig npm-ben teszik közzé.
 :::
 
 ## Telepítés
 
-Mivel a csomag még nincs npm-en, telepítse közvetlenül a GitHubból, rögzítve egy adott véglegesítési hashhez:
+Mivel a csomag még nincs npm-en, telepítse közvetlenül a GitHubról, rögzítve egy adott véglegesítési hashhez:
 
 ```bash
 yarn add https://github.com/bitsocialnet/bitsocial-react-hooks.git#<commit-hash>
 ```
 
-Cserélje le a `<commit-hash>` értéket a megcélozni kívánt véglegesítéssel.
+Cserélje le a `<commit-hash>` értéket a megcélozni kívánt véglegesítésre.
 
 ## API áttekintése
 
-A horgok funkcionális kategóriákba vannak rendezve. Az alábbiakban összefoglaljuk az egyes kategóriákban leggyakrabban használt horgokat. A teljes aláírások, paraméterek és visszatérési típusok megtekintéséhez lásd a [A teljes API-referencia a GitHubon](https://github.com/bitsocialnet/bitsocial-react-hooks).
+A horgok funkcionális kategóriákba vannak rendezve. Az alábbiakban összefoglaljuk az egyes kategóriákban leggyakrabban használt horgokat. A teljes aláírások, paraméterek és visszatérési típusok megtekintéséhez lásd a [teljes API-referencia a GitHubon](https://github.com/bitsocialnet/bitsocial-react-hooks).
 
 ### Fiókok
 
@@ -52,9 +48,9 @@ Egyéni megjegyzések és szálak lekérése és interakciója.
 
 Közösségi metaadatok és beállítások lekérése.
 
-- `useSubplebbit(subplebbitAddress?)` -- cím alapján kéri le a közösséget
-- `useSubplebbits(subplebbitAddresses?)` -- több közösséget tölt le
-- `useSubplebbitStats(subplebbitAddress?)` -- visszaadja az előfizetők és bejegyzések számát
+- Egyközösségi keresési horog -- cím alapján kéri le a közösséget
+- Többközösségi keresési horog -- több közösséget tölt le
+- Közösségi statisztikai horog -- visszaadja a feliratkozók és bejegyzések számát
 
 ### Szerzők
 
@@ -78,14 +74,14 @@ Tartalom közzététele és írási műveletek végrehajtása.
 
 - `usePublishComment(options?)` -- új megjegyzés vagy válasz közzététele
 - `usePublishVote(options?)` -- pozitív vagy negatív szavazat leadása
-- `useSubscribe(options?)` -- feliratkozás vagy leiratkozás egy közösségről
+- `useSubscribe(options?)` -- feliratkozás egy közösségre, vagy leiratkozás egy közösségről
 
-### államok és RPC
+### államok és az RPC
 
 Figyelje a kapcsolat állapotát, és lépjen kapcsolatba egy távoli Bitsocial démonnal.
 
 - `useClientsStates(options?)` -- visszaadja az IPFS/pubsub ügyfelek kapcsolati állapotát
-- `usePlebbitRpcSettings()` -- az aktuális RPC démon konfigurációt adja vissza
+- RPC beállítások hook -- az aktuális RPC démon konfigurációt adja vissza
 
 ## Fejlesztés
 
@@ -104,5 +100,5 @@ Teszt és build parancsokat a README lerakatban talál.
 
 ## Linkek
 
-- **GitHub:** [A teljes API-referencia a GitHubon](https://github.com/bitsocialnet/bitsocial-react-hooks)
+- **GitHub:** [bitsocialnet/bitsocial-react-hooks](https://github.com/bitsocialnet/bitsocial-react-hooks)
 - **Licenc:** Csak GPL-2.0

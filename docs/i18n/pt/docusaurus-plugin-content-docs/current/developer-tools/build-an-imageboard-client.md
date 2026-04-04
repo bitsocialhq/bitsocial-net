@@ -32,13 +32,13 @@ Se o 5chan não corresponder à comunidade ou interface que você deseja, crie u
    - [Ganchos Bitsocial React](../react-hooks/)
    - [CLI Bitsocial](../cli/)
 2. Decida que tipo de imageboard você está realmente construindo.
-Escolha primeiro a estrutura do conselho, as premissas de identidade, o modelo de moderação, o fluxo de descoberta e a linguagem visual.
+   Escolha primeiro a estrutura do conselho, as premissas de identidade, o modelo de moderação, o fluxo de descoberta e a linguagem visual.
 3. Escolha o caminho de implementação adequado ao projeto.
-Fork 5chan se você quiser se mover rapidamente com uma base de imageboard familiar. Comece do zero se a UI ou o modelo de interação precisar ser radicalmente diferente.
+   Fork 5chan se você quiser se mover rapidamente com uma base de imageboard familiar. Comece do zero se a UI ou o modelo de interação precisar ser radicalmente diferente.
 4. Envie uma primeira versão estreita.
-Um cliente que atende bem a uma comunidade real é mais valioso do que um clone vago destinado a satisfazer a todos.
+   Um cliente que atende bem a uma comunidade real é mais valioso do que um clone vago destinado a satisfazer a todos.
 5. Publique o resultado e deixe as comunidades testá-lo.
-O Bitsocial melhora quando construtores externos enviam clientes opinativos que competem na qualidade do produto, em vez de esperar que um aplicativo oficial faça tudo.
+   O Bitsocial melhora quando construtores externos enviam clientes opinativos que competem na qualidade do produto, em vez de esperar que um aplicativo oficial faça tudo.
 
 ## Princípio de design
 

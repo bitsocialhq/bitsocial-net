@@ -4,10 +4,6 @@ description: Isang walang server, desentralisadong imageboard na binuo sa Bitsoc
 sidebar_position: 1
 ---
 
-:::warning[Legacy na pagpapangalan]
-Ginagamit pa rin ng codebase ng proyektong ito ang legacy na "plebbit" na pagpapangalan bago ang Bitsocial rebrand. Ang mga pangalan ng package, mga sanggunian sa API, at ilang panloob na terminolohiya ay ia-update sa isang release sa hinaharap. Ang pag-andar na inilarawan dito ay kasalukuyang — tanging ang pagpapangalan ay hindi napapanahon.
-:::
-
 # 5chan
 
 Ang 5chan ay isang walang server, walang admin, at ganap na desentralisadong imageboard na tumatakbo sa Bitsocial protocol. Sinusunod nito ang pamilyar na istraktura ng direktoryo ng imageboard habang ipinapakilala ang desentralisadong pagmamay-ari — sinuman ay maaaring lumikha ng isang board, at maraming mga board ay maaaring makipagkumpitensya para sa parehong puwang ng direktoryo sa pamamagitan ng isang mekanismo ng pagboto.
@@ -30,11 +26,11 @@ Para gumawa ng bagong board, kailangan mong patakbuhin ang `bitsocial-cli` bilan
 
 ### Mga takdang-aralin sa direktoryo
 
-Ang mga pagtatalaga ng directory slot (kung aling board ang lilitaw sa kung saan ang path) ay kasalukuyang pinamamahalaan sa pamamagitan ng GitHub pull request sa `5chan-directories.json` file. Ito ay isang pansamantalang proseso — susuportahan ng mga release sa hinaharap ang paggawa ng in-app na board at pagboto na nakabatay sa pubsub upang awtomatikong mahawakan ang mga pagtatalaga ng direktoryo.
+Ang mga pagtatalaga ng slot ng direktoryo (kung aling board ang lalabas kung saang path) ay kasalukuyang pinamamahalaan sa pamamagitan ng mga kahilingan sa pull ng GitHub sa `5chan-directories.json` file. Ito ay pansamantalang proseso — susuportahan ng mga release sa hinaharap ang paggawa ng in-app na board at pagboto na nakabatay sa pubsub upang awtomatikong mahawakan ang mga pagtatalaga ng direktoryo.
 
 ## Mga panloob
 
-Sa ilalim ng hood, ginagamit ng 5chan ang plebbit-js API layer para sa mga pakikipag-ugnayan nito sa protocol. Gaya ng binanggit sa babala sa itaas, ang mga panloob na sanggunian na ito ay nagtataglay pa rin ng legacy na pagpapangalan na nauna sa Bitsocial rebrand.
+Sa ilalim ng hood, ginagamit ng 5chan ang nakabahaging Bitsocial protocol client layer para sa mga pakikipag-ugnayan sa network nito.
 
 ## Mga link
 

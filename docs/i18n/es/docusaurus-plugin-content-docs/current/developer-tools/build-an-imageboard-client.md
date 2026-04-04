@@ -32,13 +32,13 @@ Si 5chan no coincide con la comunidad o interfaz que desea, cree un cliente sepa
    - [Ganchos de reacción de Bitsocial](../react-hooks/)
    - [CLI bitsocial](../cli/)
 2. Decide qué tipo de tablero de imágenes estás construyendo realmente.
-Elija primero la estructura del tablero, los supuestos de identidad, el modelo de moderación, el flujo de descubrimiento y el lenguaje visual.
+   Elija primero la estructura del tablero, los supuestos de identidad, el modelo de moderación, el flujo de descubrimiento y el lenguaje visual.
 3. Elija la ruta de implementación que se ajuste al proyecto.
-Bifurca 5chan si quieres moverte rápido con una base de tablero de imágenes familiar. Empiece de nuevo si la interfaz de usuario o el modelo de interacción necesitan ser radicalmente diferentes.
+   Bifurca 5chan si quieres moverte rápido con una base de tablero de imágenes familiar. Empiece de nuevo si la interfaz de usuario o el modelo de interacción necesitan ser radicalmente diferentes.
 4. Envíe una primera versión estrecha.
-Un cliente que sirve bien a una comunidad real es más valioso que un clon vago destinado a satisfacer a todos.
+   Un cliente que sirve bien a una comunidad real es más valioso que un clon vago destinado a satisfacer a todos.
 5. Publica el resultado y deja que las comunidades lo prueben.
-Bitsocial mejora cuando los constructores externos envían clientes obstinados que compiten por la calidad del producto en lugar de esperar a que una aplicación oficial lo haga todo.
+   Bitsocial mejora cuando los constructores externos envían clientes obstinados que compiten por la calidad del producto en lugar de esperar a que una aplicación oficial lo haga todo.
 
 ## Principio de diseño
 

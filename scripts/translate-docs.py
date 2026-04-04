@@ -59,6 +59,8 @@ TRANSLATABLE_FRONTMATTER_KEYS = {"title", "description", "sidebar_label"}
 JSON_SKIP_KEYS = {"slug", "type", "id", "task", "status", "last_updated"}
 PLACEHOLDER_PREFIX = "ZXQPLACEHOLDER"
 BATCH_SEPARATOR = "<zxqsep/>"
+BATCH_START_MARKER = f"{PLACEHOLDER_PREFIX}BATCHSTARTZXQ"
+BATCH_MARKER_OVERHEAD = len(PLACEHOLDER_PREFIX) + len("BATCH999ZXQ\n")
 BATCH_SIZE = 1
 BATCH_DELAY_SECONDS = 0.05
 MAX_REQUEST_CHARS = 3500
@@ -96,7 +98,7 @@ def chunked_by_request_size(values: list[str], max_chars: int) -> list[list[str]
     current_length = 0
 
     for value in values:
-        value_length = len(value)
+        value_length = len(value) + BATCH_MARKER_OVERHEAD
         if value_length > max_chars:
             if current_chunk:
                 chunks.append(current_chunk)
@@ -105,20 +107,55 @@ def chunked_by_request_size(values: list[str], max_chars: int) -> list[list[str]
             chunks.append([value])
             continue
 
-        separator_length = len(BATCH_SEPARATOR) if current_chunk else 0
-        if current_chunk and current_length + separator_length + value_length > max_chars:
+        if current_chunk and current_length + value_length > max_chars:
             chunks.append(current_chunk)
             current_chunk = [value]
             current_length = value_length
             continue
 
         current_chunk.append(value)
-        current_length += separator_length + value_length
+        current_length += value_length
 
     if current_chunk:
         chunks.append(current_chunk)
 
     return chunks
+
+
+def build_marked_batch_payload(batch: list[str]) -> tuple[str, list[str]]:
+    markers = [f"{PLACEHOLDER_PREFIX}BATCH{index}ZXQ" for index in range(len(batch))]
+    payload_parts: list[str] = [BATCH_START_MARKER]
+
+    for marker, text in zip(markers, batch):
+        payload_parts.append(marker)
+        payload_parts.append(text)
+
+    return "\n".join(payload_parts), markers
+
+
+def split_marked_batch_payload(translated_payload: str, markers: list[str]) -> list[str]:
+    translated_batch: list[str] = []
+    cursor = 0
+
+    for index, marker in enumerate(markers):
+        marker_index = translated_payload.find(marker, cursor)
+        if marker_index == -1:
+            raise ValueError(f"Missing translated batch marker for entry {index}")
+
+        content_start = marker_index + len(marker)
+        content_end = len(translated_payload)
+        if index + 1 < len(markers):
+            next_marker = markers[index + 1]
+            next_marker_index = translated_payload.find(next_marker, content_start)
+            if next_marker_index == -1:
+                raise ValueError(f"Missing translated batch marker for entry {index + 1}")
+            content_end = next_marker_index
+
+        segment = translated_payload[content_start:content_end]
+        translated_batch.append(segment.lstrip("\n").rstrip("\n"))
+        cursor = content_end
+
+    return translated_batch
 
 
 def translate_text_batch(texts: list[str], locale: str) -> list[str]:
@@ -144,11 +181,11 @@ def translate_text_batch(texts: list[str], locale: str) -> list[str]:
             sized_batches.extend(chunked_by_request_size(count_batch, MAX_REQUEST_CHARS))
 
         for batch in sized_batches:
-            separator = BATCH_SEPARATOR
             for attempt in range(MAX_RETRIES):
                 try:
-                    translated_joined = translator.translate(separator.join(batch))
-                    translated_batch = translated_joined.split(separator)
+                    payload, markers = build_marked_batch_payload(batch)
+                    translated_joined = translator.translate(payload)
+                    translated_batch = split_marked_batch_payload(translated_joined, markers)
                     if len(translated_batch) != len(batch):
                         raise ValueError(
                             f"Unexpected translated batch split for {locale}: {len(translated_batch)} != {len(batch)}"

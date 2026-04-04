@@ -1,16 +1,12 @@
 ---
-title: Captcha Canvas Challenge
+title: Captcha Canvas-Herausforderung
 description: Eigenständiger bildbasierter Captcha-Generator mit konfigurierbaren Zeichen, Abmessungen und Farben.
 sidebar_position: 2
 ---
 
-# Captcha Canvas Challenge
+# Captcha Canvas-Herausforderung
 
-:::warning Legacy-Benennung
-Dieses Paket wurde ursprünglich unter dem Geltungsbereich `@plebbit` veröffentlicht. Es wurde in `@bitsocial/captcha-canvas-challenge` umbenannt. Verweise auf den alten Namen erscheinen möglicherweise noch in älterer Dokumentation oder Codebasis.
-:::
-
-Captcha Canvas Challenge ist ein eigenständiger Bild-Captcha-Generator, der ursprünglich aus `plebbit-js` extrahiert wurde. Es rendert zufälligen Text auf einer HTML-Leinwand und gibt das resultierende Bild zurück, das Communities den Autoren als Spam-Herausforderung präsentieren können.
+Captcha Canvas Challenge ist ein eigenständiger Bild-Captcha-Generator. Es rendert zufälligen Text auf einer HTML-Leinwand und gibt das resultierende Bild zurück, das Communities den Autoren als Spam-Herausforderung präsentieren können.
 
 **Quellcode:** [github.com/bitsocialnet/captcha-canvas-challenge](https://github.com/bitsocialnet/captcha-canvas-challenge)
 
@@ -18,7 +14,6 @@ Captcha Canvas Challenge ist ein eigenständiger Bild-Captcha-Generator, der urs
 
 - **Node.js** >= 22
 - **Nur ESM** – dieses Paket liefert keine CommonJS-Builds.
-- **Laufzeit-Peer-Abhängigkeit:** `@plebbit/plebbit-js` (Migration nach `@pkc/pkc-js`)
 
 ## Installation
 
@@ -41,4 +36,4 @@ npm install @bitsocial/captcha-canvas-challenge
 2. Die Zeichenfolge wird mit visuellem Rauschen auf eine Leinwand gerendert, um OCR zu verhindern.
 3. Das resultierende Bild (und die erwartete Antwort) werden zurückgegeben, damit die aufrufende Anwendung die Herausforderung präsentieren und später die Antwort überprüfen kann.
 
-Da es sich bei dem Paket um einen reinen Bildgenerator handelt, übernimmt es weder die Netzwerk- noch die Sitzungsverwaltung alleine. Es soll in einen größeren Challenge-Flow integriert werden – beispielsweise als einer der Challenge-Typen, die von [Spam Blocker](./spam-blocker.md) unterstützt werden.
+Da es sich bei dem Paket um einen reinen Bildgenerator handelt, übernimmt es weder die Netzwerk- noch die Sitzungsverwaltung alleine. Es soll in einen größeren Challenge-Flow integriert werden – beispielsweise als einer der Challenge-Typen, die von [Spam-Blocker](./spam-blocker.md) unterstützt werden.

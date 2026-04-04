@@ -6,11 +6,7 @@ sidebar_position: 4
 
 # EVM Contract Call Challenge
 
-:::warning Legacy Naming
-This package was originally published under the `@plebbit` scope. It has been renamed to `@bitsocial/evm-contract-challenge`. References to the old name may still appear in older documentation or codebases.
-:::
-
-EVM Contract Call Challenge is an anti-spam mechanism that verifies on-chain conditions before allowing a publication. Originally extracted from `plebbit-js` as a standalone package, it lets community owners require authors to meet smart-contract-defined criteria -- for example, holding a minimum token balance -- in order to post.
+EVM Contract Call Challenge is an anti-spam mechanism that verifies on-chain conditions before allowing a publication. It lets community owners require authors to meet smart-contract-defined criteria -- for example, holding a minimum token balance -- in order to post.
 
 **Source code:** [github.com/bitsocialnet/evm-contract-call](https://github.com/bitsocialnet/evm-contract-call)
 
@@ -18,7 +14,6 @@ EVM Contract Call Challenge is an anti-spam mechanism that verifies on-chain con
 
 - **Node.js** >= 22
 - **ESM-only** -- this package does not ship CommonJS builds.
-- **Runtime peer dependency:** `@plebbit/plebbit-js` (migrating to `@pkc/pkc-js`)
 
 ## Installation
 

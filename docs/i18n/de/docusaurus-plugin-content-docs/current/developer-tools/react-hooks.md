@@ -1,21 +1,17 @@
 ---
-title: React Hooks
+title: Reagieren Sie auf Hooks
 description: React-Hooks-Bibliothek zum Aufbau dezentraler sozialer Anwendungen auf dem Bitsocial-Protokoll.
 sidebar_position: 1
 ---
 
-# React Hooks
-
-:::warning Legacy-Benennung
-Dieses Paket verwendet derzeit alte Namenskonventionen, die von seinem Upstream-Zweig übernommen wurden. Verweise auf „plebbit“ in Code, APIs und Konfiguration werden in einer zukünftigen Version zu „bitsocial“ migriert. Die Funktionalität bleibt davon unberührt.
-:::
+# Reagieren Sie auf Hooks
 
 Das `bitsocial-react-hooks`-Paket bietet eine bekannte React-Hooks-API für die Interaktion mit dem Bitsocial-Protokoll. Es übernimmt das Abrufen von Feeds, Kommentaren und Autorenprofilen, das Verwalten von Konten, das Veröffentlichen von Inhalten und das Abonnieren von Communities – und das alles, ohne auf einen zentralen Server angewiesen zu sein.
 
 Diese Bibliothek ist die primäre Schnittstelle, die von [5chan](/apps/5chan/) und anderen Bitsocial-Clientanwendungen verwendet wird.
 
 :::note
-`bitsocial-react-hooks` ist eine temporäre Abzweigung von `plebbit/plebbit-react-hooks`, die für die KI-gestützte Entwicklung gepflegt wird. Es wird direkt von GitHub genutzt und nicht auf npm veröffentlicht.
+`bitsocial-react-hooks` wird derzeit direkt von GitHub genutzt und nicht auf npm veröffentlicht.
 :::
 
 ## Installation
@@ -30,7 +26,7 @@ Ersetzen Sie `<commit-hash>` durch den Commit, auf den Sie abzielen möchten.
 
 ## API-Übersicht
 
-Die Haken sind in funktionale Kategorien unterteilt. Nachfolgend finden Sie eine Zusammenfassung der am häufigsten verwendeten Haken in jeder Kategorie. Vollständige Signaturen, Parameter und Rückgabetypen finden Sie in der [vollständige API-Referenz auf GitHub](https://github.com/bitsocialnet/bitsocial-react-hooks).
+Die Haken sind in funktionale Kategorien unterteilt. Nachfolgend finden Sie eine Zusammenfassung der am häufigsten verwendeten Haken in jeder Kategorie. Vollständige Signaturen, Parameter und Rückgabetypen finden Sie in der [vollständigen API-Referenz auf GitHub](https://github.com/bitsocialnet/bitsocial-react-hooks).
 
 ### Konten
 
@@ -50,11 +46,11 @@ Rufen Sie einzelne Kommentare und Threads ab und interagieren Sie mit ihnen.
 
 ### Gemeinschaften
 
-Rufen Sie Community-Metadaten und -Einstellungen ab.
+Community-Metadaten und -Einstellungen abrufen.
 
-- `useSubplebbit(subplebbitAddress?)` – ruft eine Community nach Adresse ab
-- `useSubplebbits(subplebbitAddresses?)` – ruft mehrere Communities ab
-- `useSubplebbitStats(subplebbitAddress?)` – gibt Abonnenten- und Beitragszahlen zurück
+- Such-Hook für eine einzelne Community – ruft eine Community anhand der Adresse ab
+- Multi-Community-Lookup-Hook – ruft mehrere Communities ab
+- Community-Statistik-Hook – gibt Abonnenten- und Beitragszahlen zurück
 
 ### Autoren
 
@@ -85,7 +81,7 @@ Veröffentlichen Sie Inhalte und führen Sie Schreibvorgänge durch.
 Überwachen Sie den Verbindungsstatus und interagieren Sie mit einem Remote-Bitsocial-Daemon.
 
 - `useClientsStates(options?)` – gibt den Verbindungsstatus von IPFS/Pubsub-Clients zurück
-- `usePlebbitRpcSettings()` – gibt die aktuelle RPC-Daemon-Konfiguration zurück
+- RPC-Einstellungs-Hook – gibt die aktuelle RPC-Daemon-Konfiguration zurück
 
 ## Entwicklung
 
@@ -104,5 +100,5 @@ Informationen zu Test- und Build-Befehlen finden Sie in der README-Datei des Rep
 
 ## Links
 
-- **GitHub:** [vollständige API-Referenz auf GitHub](https://github.com/bitsocialnet/bitsocial-react-hooks)
+- **GitHub:** [bitsocialnet/bitsocial-react-hooks](https://github.com/bitsocialnet/bitsocial-react-hooks)
 - **Lizenz:** Nur GPL-2.0

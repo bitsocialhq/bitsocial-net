@@ -6,11 +6,7 @@ sidebar_position: 4
 
 # EVM Contract Call Challenge
 
-:::warning Noms heretats
-Aquest paquet es va publicar originalment sota l'àmbit `@plebbit`. S'ha canviat de nom a `@bitsocial/evm-contract-challenge`. Les referències al nom antic encara poden aparèixer a la documentació o bases de codi més antigues.
-:::
-
-EVM Contract Call Challenge és un mecanisme anti-spam que verifica les condicions de la cadena abans de permetre una publicació. Originalment extret de `plebbit-js` com a paquet autònom, permet als propietaris de comunitats exigir als autors que compleixin criteris definits per contractes intel·ligents, per exemple, tenir un saldo mínim de testimonis per poder publicar.
+EVM Contract Call Challenge és un mecanisme anti-spam que verifica les condicions de la cadena abans de permetre una publicació. Permet als propietaris de comunitats exigir als autors que compleixin els criteris definits pel contracte intel·ligent (per exemple, tenir un saldo mínim de testimonis) per publicar.
 
 **Codi font:** [github.com/bitsocialnet/evm-contract-call](https://github.com/bitsocialnet/evm-contract-call)
 
@@ -18,7 +14,6 @@ EVM Contract Call Challenge és un mecanisme anti-spam que verifica les condicio
 
 - **Node.js** >= 22
 - **Només per ESM**: aquest paquet no inclou compilacions CommonJS.
-- **Dependència entre iguals en temps d'execució:** `@plebbit/plebbit-js` (migració a `@pkc/pkc-js`)
 
 ## Instal·lació
 
@@ -53,7 +48,7 @@ Quan un autor intenta publicar, el repte truca a `balanceOf` amb l'adreça de l'
 EVM Contract Call Challenge és ideal per a:
 
 - **Comunitats controlades per tokens** que restringeixen la publicació als titulars de fitxes.
-- **Accés NFT tancat** on es requereix la propietat d'una NFT específica.
+- **Accés amb control NFT** on es requereix la propietat d'una NFT específica.
 - **Espais de govern de DAO** on la participació es limita als titulars de fitxes de govern.
 
-Per a les comunitats que no es basen en la identitat en cadena, considereu [Spam Blocker](./spam-blocker.md) o [Voucher Challenge](./voucher-challenge.md).
+Per a les comunitats que no es basen en la identitat en cadena, considereu [Bloquejador de correu brossa](./spam-blocker.md) o [Repte de vals](./voucher-challenge.md).

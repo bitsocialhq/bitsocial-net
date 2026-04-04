@@ -32,13 +32,13 @@ Si 5chan ne correspond pas à la communauté ou à l'interface souhaitée, crée
    - [Crochets Bitsocial React](../react-hooks/)
    - [CLI Bitsocial](../cli/)
 2. Décidez quel type de tableau d’images vous construisez réellement.
-Choisissez d'abord la structure du conseil d'administration, les hypothèses d'identité, le modèle de modération, le flux de découverte et le langage visuel.
+   Choisissez d'abord la structure du conseil d'administration, les hypothèses d'identité, le modèle de modération, le flux de découverte et le langage visuel.
 3. Choisissez le chemin de mise en œuvre qui correspond au projet.
-Fork 5chan si vous souhaitez avancer rapidement avec une base de tableau d'images familière. Repartez à zéro si l’interface utilisateur ou le modèle d’interaction doit être radicalement différent.
+   Fork 5chan si vous souhaitez avancer rapidement avec une base de tableau d'images familière. Repartez à zéro si l’interface utilisateur ou le modèle d’interaction doit être radicalement différent.
 4. Expédiez une première version étroite.
-Un client qui sert bien une véritable communauté a plus de valeur qu’un vague clone destiné à satisfaire tout le monde.
+   Un client qui sert bien une véritable communauté a plus de valeur qu’un vague clone destiné à satisfaire tout le monde.
 5. Publiez le résultat et laissez les communautés le tester.
-Bitsocial s'améliore lorsque des constructeurs extérieurs expédient des clients avisés qui rivalisent sur la qualité des produits au lieu d'attendre qu'une seule application officielle fasse tout.
+   Bitsocial s'améliore lorsque des constructeurs extérieurs expédient des clients avisés qui rivalisent sur la qualité des produits au lieu d'attendre qu'une seule application officielle fasse tout.
 
 ## Principe de conception
 

@@ -5,7 +5,7 @@ description: Usulan desain untuk layanan RPC Bitsocial publik dengan pengguna te
 
 # RPC Publik Tanpa Izin
 
-Proposal RPC publik asli berlaku sebagai terbitan GitHub yang ditulis dalam terminologi plebbit lama. Halaman ini menulis ulang ide tersebut dalam bahasa Bitsocial dan membingkainya sebagai proposal tingkat produk, bukan sebagai dinding detail implementasi.
+Halaman ini membingkai RPC publik sebagai proposal Bitsocial tingkat produk, bukan sebagai dinding detail implementasi.
 
 ## Tujuan bahasa sederhana
 
@@ -56,7 +56,7 @@ RPC publik sendiri harus tetap fokus pada perilaku RPC yang dihadapi pengguna. T
 
 Dokumentasi yang dapat dilihat pengguna harus menggunakan istilah Bitsocial seperti **komunitas** dan **profil**.
 
-Pada level wire, peluncuran pertama masih dapat mempertahankan bentuk transport dan payload JSON-RPC saat ini yang berguna untuk kompatibilitas. Dengan kata lain: dokumen tidak perlu lagi berbicara seperti dokumen plebbit lama, meskipun masa transisi menyimpan beberapa nama metode lama atau bentuk permintaan di belakang layar.
+Pada level wire, peluncuran pertama masih dapat mempertahankan bentuk transport dan payload JSON-RPC saat ini yang berguna untuk kompatibilitas. Dengan kata lain: dokumen dapat tetap asli Bitsocial meskipun masa transisi menyimpan beberapa nama metode yang berorientasi kompatibilitas atau bentuk permintaan di belakang layar.
 
 ## Paket izin yang diusulkan
 
@@ -173,9 +173,9 @@ Otentikasi untuk API operator ini harus benar-benar terpisah dari autentikasi RP
 
 Jika pembuatan autentikasi berbiaya rendah, layanan publik mungkin memerlukan lapisan tantangan sebelum menerbitkan kredensial. Salah satu cara yang mungkin dilakukan adalah dengan menggunakan kembali model tantangan komunitas itu sendiri sehingga penerbitan kredensial mewarisi filosofi anti-penyalahgunaan yang sama dengan jaringan lainnya.
 
-### Penamaan warisan
+### Detail migrasi
 
-Beberapa implementasi awal mungkin masih menampilkan nama metode lama secara internal untuk kompatibilitas. Hal ini harus dianggap sebagai detail migrasi, bukan sebagai kosa kata publik permanen dari dokumen Bitsocial.
+Beberapa implementasi awal mungkin masih menampilkan nama metode yang berorientasi kompatibilitas secara internal. Hal ini harus dianggap sebagai detail migrasi, bukan sebagai kosa kata publik permanen dari dokumen Bitsocial.
 
 ## Ringkasan
 

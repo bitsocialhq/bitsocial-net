@@ -63,14 +63,14 @@ Mạng pubsub mở dễ bị tấn công bởi lũ thư rác. Bitsocial giải q
 
 Hệ thống thử thách rất linh hoạt: mỗi nhà điều hành cộng đồng định cấu hình chính sách của riêng họ. Các tùy chọn bao gồm:
 
-| Loại thử thách | Nó hoạt động như thế nào |
-| ----------------- | ------------------------------------------------- |
-| **Hình ảnh xác thực** | Câu đố trực quan hoặc tương tác được trình bày trong ứng dụng |
-| **Giới hạn tỷ lệ** | Giới hạn bài đăng trên mỗi khoảng thời gian cho mỗi danh tính |
-| **Cổng mã thông báo** | Yêu cầu bằng chứng về số dư của một mã thông báo cụ thể |
-| **Thanh toán** | Yêu cầu một khoản thanh toán nhỏ cho mỗi bài viết |
-| **Danh sách cho phép** | Chỉ những danh tính được phê duyệt trước mới có thể đăng |
-| **Mã tùy chỉnh** | Bất kỳ chính sách nào có thể thể hiện bằng mã |
+| Loại thử thách         | Nó hoạt động như thế nào                                      |
+| ---------------------- | ------------------------------------------------------------- |
+| **Hình ảnh xác thực**  | Câu đố trực quan hoặc tương tác được trình bày trong ứng dụng |
+| **Giới hạn tỷ lệ**     | Giới hạn bài đăng trên mỗi khoảng thời gian cho mỗi danh tính |
+| **Cổng mã thông báo**  | Yêu cầu bằng chứng về số dư của một mã thông báo cụ thể       |
+| **Thanh toán**         | Yêu cầu một khoản thanh toán nhỏ cho mỗi bài viết             |
+| **Danh sách cho phép** | Chỉ những danh tính được phê duyệt trước mới có thể đăng      |
+| **Mã tùy chỉnh**       | Bất kỳ chính sách nào có thể thể hiện bằng mã                 |
 
 Các thiết bị ngang hàng chuyển tiếp quá nhiều lần thử thách không thành công sẽ bị chặn khỏi chủ đề pubsub, điều này ngăn chặn các cuộc tấn công từ chối dịch vụ trên lớp mạng.
 
@@ -101,11 +101,11 @@ sequenceDiagram
 
 1. Người dùng mở ứng dụng và nhìn thấy giao diện xã hội.
 2. Máy khách tham gia mạng ngang hàng và thực hiện truy vấn DHT cho từng cộng đồng mà người dùng
-theo sau. Mỗi truy vấn mất vài giây nhưng chạy đồng thời.
+   theo sau. Mỗi truy vấn mất vài giây nhưng chạy đồng thời.
 3. Mỗi truy vấn trả về con trỏ nội dung và siêu dữ liệu mới nhất của cộng đồng (tiêu đề, mô tả,
-danh sách người điều hành, cấu hình thử thách).
+   danh sách người điều hành, cấu hình thử thách).
 4. Máy khách tìm nạp nội dung bài đăng thực tế bằng cách sử dụng các con trỏ đó, sau đó hiển thị mọi thứ trong một
-giao diện xã hội quen thuộc.
+   giao diện xã hội quen thuộc.
 
 ---
 
@@ -154,7 +154,7 @@ sequenceDiagram
 7. Khách hàng gửi bài đăng cùng với câu trả lời thử thách qua pubsub.
 8. Nút của nhà điều hành cộng đồng xác nhận câu trả lời. Nếu đúng thì bài viết được chấp nhận.
 9. Nút phát kết quả qua pubsub để các mạng ngang hàng biết tiếp tục chuyển tiếp
-tin nhắn từ người dùng này.
+   tin nhắn từ người dùng này.
 10. Nút cập nhật nội dung của cộng đồng tại địa chỉ khóa công khai của nó.
 11. Trong vòng vài phút, mọi độc giả trong cộng đồng đều nhận được bản cập nhật.
 
@@ -191,11 +191,11 @@ graph TB
     PK --> TR
 ```
 
-| Lớp | Vai trò |
-| ------------ | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| **Ứng dụng** | Giao diện người dùng. Nhiều ứng dụng có thể tồn tại, mỗi ứng dụng có thiết kế riêng, tất cả đều có chung cộng đồng và danh tính.                       |
-| **Giao thức** | Xác định cách giải quyết các cộng đồng, cách xuất bản bài đăng và cách ngăn chặn thư rác.                                                |
-| **Mạng** | Cơ sở hạ tầng ngang hàng cơ bản: DHT để khám phá, tin đồn để nhắn tin theo thời gian thực và truyền nội dung để trao đổi dữ liệu. |
+| Lớp           | Vai trò                                                                                                                           |
+| ------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| **Ứng dụng**  | Giao diện người dùng. Nhiều ứng dụng có thể tồn tại, mỗi ứng dụng có thiết kế riêng, tất cả đều có chung cộng đồng và danh tính.  |
+| **Giao thức** | Xác định cách giải quyết các cộng đồng, cách xuất bản bài đăng và cách ngăn chặn thư rác.                                         |
+| **Mạng**      | Cơ sở hạ tầng ngang hàng cơ bản: DHT để khám phá, tin đồn để nhắn tin theo thời gian thực và truyền nội dung để trao đổi dữ liệu. |
 
 ---
 
@@ -243,7 +243,7 @@ Sự đánh đổi là Bitsocial không đảm bảo tính sẵn có vĩnh viễ
 Các mạng liên kết (như email hoặc nền tảng dựa trên ActPub) cải thiện khả năng tập trung hóa nhưng vẫn có những hạn chế về cấu trúc:
 
 - **Phụ thuộc máy chủ** — mỗi cộng đồng cần một máy chủ có miền, TLS và hoạt động liên tục
-BẢO TRÌ
+  BẢO TRÌ
 - **Sự tin cậy của quản trị viên** — quản trị viên máy chủ có toàn quyền kiểm soát tài khoản và nội dung người dùng
 - **Phân mảnh** — di chuyển giữa các máy chủ thường đồng nghĩa với việc mất người theo dõi, lịch sử hoặc danh tính
 - **Chi phí** — ai đó phải trả tiền cho việc lưu trữ, điều này tạo ra áp lực cho việc hợp nhất

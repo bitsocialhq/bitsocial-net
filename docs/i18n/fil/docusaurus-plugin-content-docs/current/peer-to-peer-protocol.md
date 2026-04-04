@@ -63,14 +63,14 @@ Ang isang bukas na network ng pubsub ay mahina sa pagbaha ng spam. Niresolba ito
 
 Ang sistema ng hamon ay nababaluktot: ang bawat operator ng komunidad ay nagko-configure ng kanilang sariling patakaran. Kasama sa mga opsyon ang:
 
-| Uri ng hamon | Paano ito gumagana |
-| ----------------- | ------------------------------------------------- |
-| **Captcha** | Visual o interactive na puzzle na ipinakita sa app |
-| **Paglilimita sa rate** | Limitahan ang mga post sa bawat window ng oras bawat pagkakakilanlan |
-| **Token gate** | Nangangailangan ng patunay ng balanse ng isang partikular na token |
-| **Pagbabayad** | Nangangailangan ng maliit na pagbabayad sa bawat post |
-| **Allowlist** | Tanging mga pre-approved na pagkakakilanlan lamang ang maaaring mag-post ng |
-| **Custom na code** | Anumang patakarang maipahayag sa code |
+| Uri ng hamon            | Paano ito gumagana                                                          |
+| ----------------------- | --------------------------------------------------------------------------- |
+| **Captcha**             | Visual o interactive na puzzle na ipinakita sa app                          |
+| **Paglilimita sa rate** | Limitahan ang mga post sa bawat window ng oras bawat pagkakakilanlan        |
+| **Token gate**          | Nangangailangan ng patunay ng balanse ng isang partikular na token          |
+| **Pagbabayad**          | Nangangailangan ng maliit na pagbabayad sa bawat post                       |
+| **Allowlist**           | Tanging mga pre-approved na pagkakakilanlan lamang ang maaaring mag-post ng |
+| **Custom na code**      | Anumang patakarang maipahayag sa code                                       |
 
 Ang mga kapantay na naghahatid ng napakaraming nabigong pagsubok sa paghamon ay naharang mula sa paksang pubsub, na pumipigil sa mga pag-atake ng pagtanggi sa serbisyo sa layer ng network.
 
@@ -101,11 +101,11 @@ sequenceDiagram
 
 1. Binubuksan ng user ang app at nakakita ng isang social interface.
 2. Sumasali ang kliyente sa peer-to-peer network at gumagawa ng DHT query para sa bawat komunidad ng user
-sumusunod. Ang mga query ay tumatagal ng ilang segundo bawat isa ngunit tumatakbo nang sabay-sabay.
+   sumusunod. Ang mga query ay tumatagal ng ilang segundo bawat isa ngunit tumatakbo nang sabay-sabay.
 3. Ibinabalik ng bawat query ang pinakabagong content pointer at metadata ng komunidad (pamagat, paglalarawan,
-listahan ng moderator, configuration ng hamon).
+   listahan ng moderator, configuration ng hamon).
 4. Kinukuha ng kliyente ang aktwal na nilalaman ng post gamit ang mga pointer na iyon, pagkatapos ay ire-render ang lahat sa a
-pamilyar na interface ng lipunan.
+   pamilyar na interface ng lipunan.
 
 ---
 
@@ -154,7 +154,7 @@ sequenceDiagram
 7. Isusumite ng kliyente ang post kasama ang sagot sa hamon sa pubsub.
 8. Pinapatunayan ng node ng operator ng komunidad ang sagot. Kung tama, tinatanggap ang post.
 9. Ibina-broadcast ng node ang resulta sa pubsub para malaman ng mga kasamahan sa network na magpatuloy sa pag-relay
-mga mensahe mula sa user na ito.
+   mga mensahe mula sa user na ito.
 10. Ina-update ng node ang nilalaman ng komunidad sa pampublikong-key address nito.
 11. Sa loob ng ilang minuto, natatanggap ng bawat mambabasa ng komunidad ang update.
 
@@ -191,11 +191,11 @@ graph TB
     PK --> TR
 ```
 
-| Layer | Tungkulin |
-| ------------ | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| **App** | User interface. Maaaring umiral ang maraming app, bawat isa ay may sariling disenyo, lahat ay nagbabahagi ng parehong mga komunidad at pagkakakilanlan.                       |
-| **Protocol** | Tinutukoy kung paano tinutugunan ang mga komunidad, kung paano na-publish ang mga post, at kung paano pinipigilan ang spam.                                                |
-| **Network** | Ang pinagbabatayan na imprastraktura ng peer-to-peer: DHT para sa pagtuklas, gossipsub para sa real-time na pagmemensahe, at paglilipat ng nilalaman para sa pagpapalitan ng data. |
+| Layer        | Tungkulin                                                                                                                                                                          |
+| ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **App**      | User interface. Maaaring umiral ang maraming app, bawat isa ay may sariling disenyo, lahat ay nagbabahagi ng parehong mga komunidad at pagkakakilanlan.                            |
+| **Protocol** | Tinutukoy kung paano tinutugunan ang mga komunidad, kung paano na-publish ang mga post, at kung paano pinipigilan ang spam.                                                        |
+| **Network**  | Ang pinagbabatayan na imprastraktura ng peer-to-peer: DHT para sa pagtuklas, gossipsub para sa real-time na pagmemensahe, at paglilipat ng nilalaman para sa pagpapalitan ng data. |
 
 ---
 
@@ -243,7 +243,7 @@ Ang tradeoff ay hindi ginagarantiya ng Bitsocial ang permanenteng pagkakaroon ng
 Ang mga federated network (tulad ng email o mga platform na nakabatay sa ActivityPub) ay bumubuti sa sentralisasyon ngunit mayroon pa ring mga limitasyon sa istruktura:
 
 - **Server dependency** — bawat komunidad ay nangangailangan ng isang server na may domain, TLS, at patuloy
-pagpapanatili
+  pagpapanatili
 - **Admin trust** — ang server admin ay may ganap na kontrol sa mga user account at content
 - **Fragmentation** — ang paglipat sa pagitan ng mga server ay kadalasang nangangahulugan ng pagkawala ng mga tagasunod, kasaysayan, o pagkakakilanlan
 - **Gastos** — kailangang magbayad ng isang tao para sa pagho-host, na nagdudulot ng pressure tungo sa pagsasama-sama

@@ -1,14 +1,10 @@
 ---
-title: Spam Blocker
-description: Centraliseret spamdetektionstjeneste med risikoscoring, OAuth-udfordringer og konfigurerbare niveautærskler.
+title: Spam-blokering
+description: Centraliseret spam-detektionstjeneste med risikoscoring, OAuth-udfordringer og konfigurerbare niveautærskler.
 sidebar_position: 1
 ---
 
-# Spam Blocker
-
-:::warning Ældre navngivning
-Denne pakke blev oprindeligt udgivet under `@plebbit`-omfanget. Den er blevet omdøbt til `@bitsocial/spam-blocker-server` og `@bitsocial/spam-blocker-challenge`. Referencer til de gamle navne kan stadig forekomme i ældre dokumentation eller kodebaser.
-:::
+# Spam-blokering
 
 Spam Blocker er en centraliseret spam-detektionstjeneste, der evaluerer indkommende publikationer og tildeler risikoscore. Den består af to pakker:
 

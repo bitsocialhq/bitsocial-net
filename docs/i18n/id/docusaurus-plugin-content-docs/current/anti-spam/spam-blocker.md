@@ -1,18 +1,14 @@
 ---
-title: Spam Blocker
+title: Pemblokir Spam
 description: Layanan deteksi spam terpusat dengan penilaian risiko, tantangan OAuth, dan ambang batas tingkat yang dapat dikonfigurasi.
 sidebar_position: 1
 ---
 
-# Spam Blocker
-
-:::warning Penamaan Warisan
-Paket ini awalnya diterbitkan dalam lingkup `@plebbit`. Telah diubah namanya menjadi `@bitsocial/spam-blocker-server` dan `@bitsocial/spam-blocker-challenge`. Referensi ke nama lama mungkin masih muncul di dokumentasi atau basis kode lama.
-:::
+# Pemblokir Spam
 
 Pemblokir Spam adalah layanan pendeteksi spam terpusat yang mengevaluasi publikasi masuk dan memberikan skor risiko. Terdiri dari dua paket:
 
-- **`@bitsocial/spam-blocker-server`** -- server HTTP yang menampung API evaluasi dan tantangan.
+- **`@bitsocial/spam-blocker-server`** -- server HTTP yang menghosting API evaluasi dan tantangan.
 - **`@bitsocial/spam-blocker-challenge`** -- paket klien ringan yang diintegrasikan komunitas untuk mengirim publikasi untuk evaluasi.
 
 **Kode sumber:** [github.com/bitsocialnet/spam-blocker](https://github.com/bitsocialnet/spam-blocker)
@@ -21,14 +17,14 @@ Pemblokir Spam adalah layanan pendeteksi spam terpusat yang mengevaluasi publika
 
 Setiap publikasi yang dikirimkan ke titik akhir `/evaluate` menerima skor risiko numerik. Skor tersebut merupakan kombinasi tertimbang dari beberapa sinyal:
 
-| Sinyal                          | Keterangan                                                                                                                                   |
-| ------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
-| Usia akun                       | Akun yang lebih baru menerima skor risiko yang lebih tinggi.                                                                                 |
-| karma                           | Akumulasi karma komunitas mengurangi risiko.                                                                                                 |
-| Reputasi penulis                | Data reputasi dikumpulkan oleh pengindeks jaringan latar belakang.                                                                           |
-| Analisis konten                 | Heuristik tingkat teks (kepadatan tautan, pola spam yang diketahui, dll.).                                                                   |
-| Kecepatan                       | Postingan cepat yang berurutan dari penulis yang sama meningkatkan risiko.                                                                   |
-| Kecerdasan kekayaan intelektual | Pencarian geolokasi dan ancaman tingkat negara. Hanya kode negara yang disimpan -- alamat IP mentah tidak pernah dibagikan kepada komunitas. |
+| Sinyal           | Deskripsi                                                                                                                                    |
+| ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| Usia akun        | Akun yang lebih baru menerima skor risiko yang lebih tinggi.                                                                                 |
+| karma            | Akumulasi karma komunitas mengurangi risiko.                                                                                                 |
+| Reputasi penulis | Data reputasi dikumpulkan oleh pengindeks jaringan latar belakang.                                                                           |
+| Analisis isi     | Heuristik tingkat teks (kepadatan tautan, pola spam yang diketahui, dll.).                                                                   |
+| Kecepatan        | Postingan cepat yang berurutan dari penulis yang sama meningkatkan risiko.                                                                   |
+| Kecerdasan IP    | Pencarian geolokasi dan ancaman tingkat negara. Hanya kode negara yang disimpan -- alamat IP mentah tidak pernah dibagikan kepada komunitas. |
 
 ## Ambang Batas Tingkat
 
@@ -71,7 +67,7 @@ Batasan tarif diterapkan secara dinamis berdasarkan usia dan reputasi penulis. P
 
 Server menjalankan pengindeks latar belakang yang terus merayapi jaringan untuk membangun dan memelihara data reputasi penulis. Data ini dimasukkan langsung ke dalam jalur penilaian risiko, sehingga memungkinkan sistem untuk mengenali peserta yang berulang kali mempunyai niat baik di seluruh komunitas.
 
-## Pribadi
+## Privasi
 
 Pemblokir Spam dirancang dengan mempertimbangkan privasi:
 

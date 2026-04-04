@@ -5,7 +5,7 @@ description: Iminungkahing disenyo para sa isang pampublikong serbisyo ng Bitsoc
 
 # Walang pahintulot na Pampublikong RPC
 
-Ang orihinal na panukala ng pampublikong RPC ay nabuhay bilang isang isyu sa GitHub na nakasulat sa lumang terminolohiya ng plebbit. Isinulat muli ng page na ito ang ideyang iyon sa wikang Bitsocial at binabalangkas ito bilang panukala sa antas ng produkto sa halip na isang pader ng detalye ng pagpapatupad.
+Binabalangkas ng page na ito ang pampublikong RPC bilang isang panukalang Bitsocial sa antas ng produkto sa halip na isang pader ng detalye ng pagpapatupad.
 
 ## Layunin sa simpleng wika
 
@@ -19,14 +19,14 @@ Dapat gawing praktikal ng serbisyo ang mga mobile at magaan na kliyente habang p
 
 ## Anong problema ang nilulutas nito
 
-Sa ngayon, ang pinakasimpleng modelo ng RPC ay karaniwang all-or-nothing: isang auth key, isang domain ng awtoridad, ganap na access. Gumagana iyon para sa isang operator ngunit hindi para sa isang pampublikong serbisyo ng maraming gumagamit.
+Ngayon, ang pinakasimpleng modelo ng RPC ay karaniwang all-or-nothing: isang auth key, isang domain ng awtoridad, ganap na access. Gumagana iyon para sa isang operator ngunit hindi para sa isang pampublikong serbisyo ng maraming gumagamit.
 
 Ang isang walang pahintulot na pampublikong RPC ay nangangailangan ng mas malakas na modelo:
 
 - ang isang serbisyo ay maaaring mag-host ng maraming user
 - bawat user ay nakakakuha ng sarili nilang mga komunidad at limitasyon
 - Ang mga patakarang tinukoy ng operator ay maaaring maiwasan ang pang-aabuso
-- ang gumagamit ay maaari pa ring lumayo o mag-self-host sa ibang pagkakataon
+- ang user ay maaari pa ring lumayo o mag-self-host sa ibang pagkakataon
 
 ## Pangunahing modelo
 
@@ -56,7 +56,7 @@ Ang pampublikong RPC mismo ay dapat manatiling nakatutok sa gawi ng RPC na nakah
 
 Ang dokumentasyong nakaharap sa user ay dapat gumamit ng mga Bitsocial na termino gaya ng **komunidad** at **profile**.
 
-Sa antas ng wire, mapapanatili pa rin ng unang rollout ang kasalukuyang JSON-RPC na transport at payload na hugis kung saan ito ay kapaki-pakinabang para sa compatibility. Sa madaling salita: ang mga doc ay hindi na kailangang magsalita tulad ng mga lumang plebbit doc, kahit na ang panahon ng paglipat ay nagpapanatili ng ilang pangalan ng legacy na pamamaraan o humiling ng mga hugis sa likod ng mga eksena.
+Sa antas ng wire, mapapanatili pa rin ng unang rollout ang kasalukuyang JSON-RPC na transport at payload na hugis kung saan ito ay kapaki-pakinabang para sa compatibility. Sa madaling salita: maaaring manatiling Bitsocial-native ang mga doc kahit na ang panahon ng paglipat ay nagpapanatili ng ilang pangalan ng pamamaraan na nakatuon sa compatibility o humiling ng mga hugis sa likod ng mga eksena.
 
 ## Iminungkahing bundle ng pahintulot
 
@@ -104,7 +104,7 @@ type PermissionBundle = {
 };
 ```
 
-Ang eksaktong mga pangalan ng pamamaraan ay naglalarawan. Ang mahalagang bahagi ay ang hugis ng patakaran: ang mga indibidwal na kakayahan ay hiwalay na kinokontrol sa halip na i-bundle sa isang superuser token.
+Ang eksaktong mga pangalan ng pamamaraan ay naglalarawan. Ang mahalagang bahagi ay ang hugis ng patakaran: ang mga indibidwal na kakayahan ay independiyenteng kinokontrol sa halip na i-bundle sa isang superuser token.
 
 ## Daloy ng koneksyon
 
@@ -116,7 +116,7 @@ client connects with auth credential
 -> client proceeds with the subset of actions it is allowed to use
 ```
 
-Dapat manatiling opsyonal ang kaalaman sa pahintulot. Ang isang kliyente na binabalewala ang abiso ay maaari pa ring kumilos nang tama sa pamamagitan ng paghawak ng mga karaniwang pagpalya ng awtorisasyon mula sa server.
+Ang kaalaman sa pahintulot ay dapat manatiling opsyonal. Ang isang kliyente na binabalewala ang abiso ay maaari pa ring kumilos nang tama sa pamamagitan ng paghawak ng mga karaniwang pagpalya ng awtorisasyon mula sa server.
 
 ## Pagpapatupad ng pagmamay-ari
 
@@ -171,11 +171,11 @@ Ang pagpapatotoo para sa operator API na ito ay dapat na ganap na hiwalay sa end
 
 ### Spam ng kredensyal ng pagpapatotoo
 
-Kung mura ang paggawa ng auth, maaaring kailanganin ng mga pampublikong serbisyo ang isang layer ng hamon bago mag-isyu ng mga kredensyal. Ang isang posibleng ruta ay ang muling paggamit ng mismong modelo ng hamon ng komunidad upang ang pagpapalabas ng kredensyal ay magmana ng parehong pilosopiya laban sa pang-aabuso gaya ng iba pang bahagi ng network.
+Kung mura ang paggawa ng auth, maaaring kailanganin ng mga pampublikong serbisyo ang isang layer ng hamon bago mag-isyu ng mga kredensyal. Ang isang posibleng ruta ay muling gamitin ang mismong modelo ng hamon ng komunidad upang ang pagpapalabas ng kredensyal ay magmana ng parehong pilosopiya laban sa pang-aabuso gaya ng iba pang network.
 
-### Legacy na pagpapangalan
+### Mga detalye ng paglilipat
 
-Ang ilang mga maagang pagpapatupad ay maaari pa ring ilantad ang mga pangalan ng legacy na pamamaraan sa loob para sa pagiging tugma. Iyon ay dapat ituring bilang isang detalye ng paglilipat, hindi bilang permanenteng pampublikong bokabularyo ng Bitsocial docs.
+Ang ilang mga maagang pagpapatupad ay maaari pa ring ilantad ang mga pangalan ng pamamaraan na nakatuon sa compatibility sa loob. Iyon ay dapat ituring bilang isang detalye ng paglilipat, hindi bilang permanenteng pampublikong bokabularyo ng Bitsocial docs.
 
 ## Buod
 

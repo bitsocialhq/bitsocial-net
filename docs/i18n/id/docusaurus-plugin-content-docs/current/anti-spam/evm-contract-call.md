@@ -1,16 +1,12 @@
 ---
-title: EVM Contract Call Challenge
+title: Tantangan Panggilan Kontrak EVM
 description: Tantangan anti-spam yang memverifikasi kondisi on-chain dengan memanggil kontrak pintar EVM.
 sidebar_position: 4
 ---
 
-# EVM Contract Call Challenge
+# Tantangan Panggilan Kontrak EVM
 
-:::warning Penamaan Warisan
-Paket ini awalnya diterbitkan dalam lingkup `@plebbit`. Telah diubah namanya menjadi `@bitsocial/evm-contract-challenge`. Referensi ke nama lama mungkin masih muncul di dokumentasi atau basis kode lama.
-:::
-
-Tantangan Panggilan Kontrak EVM adalah mekanisme anti-spam yang memverifikasi kondisi on-chain sebelum mengizinkan publikasi. Awalnya diambil dari `plebbit-js` sebagai paket mandiri, paket ini memungkinkan pemilik komunitas mewajibkan penulis untuk memenuhi kriteria yang ditentukan dalam kontrak cerdas -- misalnya, memiliki saldo token minimum -- untuk dapat memposting.
+Tantangan Panggilan Kontrak EVM adalah mekanisme anti-spam yang memverifikasi kondisi on-chain sebelum mengizinkan publikasi. Hal ini memungkinkan pemilik komunitas mewajibkan penulis untuk memenuhi kriteria yang ditentukan dalam kontrak pintar -- misalnya, memiliki saldo token minimum -- untuk dapat memposting.
 
 **Kode sumber:** [github.com/bitsocialnet/evm-contract-call](https://github.com/bitsocialnet/evm-contract-call)
 
@@ -18,7 +14,6 @@ Tantangan Panggilan Kontrak EVM adalah mekanisme anti-spam yang memverifikasi ko
 
 - **Node.js** >= 22
 - **Khusus ESM** -- paket ini tidak mengirimkan build CommonJS.
-- **Ketergantungan rekan runtime:** `@plebbit/plebbit-js` (bermigrasi ke `@pkc/pkc-js`)
 
 ## Instalasi
 
@@ -28,7 +23,7 @@ npm install @bitsocial/evm-contract-challenge
 
 ## Opsi Konfigurasi
 
-| Pilihan       | Jenis    | Keterangan                                                                                      |
+| Pilihan       | Ketik    | Deskripsi                                                                                       |
 | ------------- | -------- | ----------------------------------------------------------------------------------------------- |
 | `chainTicker` | `string` | Rantai yang akan dikueri (misalnya, `eth`, `matic`, `avax`).                                    |
 | `address`     | `string` | Alamat kontrak pintar untuk dihubungi.                                                          |
@@ -46,7 +41,7 @@ Pemilik komunitas yang ingin membatasi pengeposan kepada penulis yang memiliki l
 - `condition`: `"> 1000"`
 - `error`: `"You must hold more than 1,000 tokens to post in this community."`
 
-Ketika seorang penulis mencoba untuk mempublikasikan, tantangan memanggil `balanceOf` dengan alamat penulis dan memeriksa apakah nilai yang dikembalikan memenuhi ketentuan. Jika ya, publikasi akan dilanjutkan; jika tidak, pesan kesalahan yang dikonfigurasi akan dikembalikan.
+Saat penulis mencoba menerbitkan, tantangan memanggil `balanceOf` dengan alamat penulis dan memeriksa apakah nilai yang dikembalikan memenuhi ketentuan. Jika ya, publikasi akan dilanjutkan; jika tidak, pesan kesalahan yang dikonfigurasi akan dikembalikan.
 
 ## Kapan Menggunakannya
 
@@ -56,4 +51,4 @@ Tantangan Panggilan Kontrak EVM sangat ideal untuk:
 - **Akses dengan gerbang NFT** yang memerlukan kepemilikan NFT tertentu.
 - **Ruang tata kelola DAO** yang partisipasinya terbatas pada pemegang token tata kelola.
 
-Untuk komunitas yang tidak bergantung pada identitas on-chain, pertimbangkan [Spam Blocker](./spam-blocker.md) atau [Voucher Challenge](./voucher-challenge.md) sebagai gantinya.
+Untuk komunitas yang tidak bergantung pada identitas on-chain, pertimbangkan [Pemblokiran Spam](./spam-blocker.md) atau [Tantangan Voucher](./voucher-challenge.md) sebagai gantinya.

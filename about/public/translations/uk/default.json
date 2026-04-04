@@ -149,7 +149,8 @@
         "description": "Imageboard-и — це найпростіша форма соціальних медіа для децентралізації: анонімні публікації, небагато дошок за замовчуванням і жодного графа профілів. Саме тому ми запускаємо 5chan, перший застосунок Bitsocial. 5chan доводить, що Bitsocial може замінити централізовані imageboard-и, прибравши глобальних адміністраторів із рівняння.",
         "callout": {
           "description": "5chan — це перша точка підтвердження, а не фінішна лінія. Ми хочемо кілька клієнтів imageboard із різними культурами, інтерфейсами та налаштуваннями за замовчуванням: дошки в стилі altchan, mobile-first експерименти, нішеві спільноти та форки, що вирішують потреби, які 5chan ніколи не вирішить.",
-          "ctaLabel": "Створіть свій власний"
+          "ctaLabel": "Створіть свій власний",
+          "separator": "- або -"
         }
       },
       "phase2": {
@@ -185,5 +186,25 @@
   "home": {
     "dismissDevOnlyRouteNotice": "Закрити сповіщення",
     "devOnlyRouteNotice": "{{path}} ще перебуває в розробці. Вас перенаправлено на головну сторінку."
+  },
+  "apps": {
+    "allProjects": "All Projects",
+    "allProjectsDescription": "The full Bitsocial ecosystem, from user-facing clients to protocol tools.",
+    "linksSectionDescription": "Launch the app, grab a build, or use a mirror without leaving the directory.",
+    "searchPlaceholder": "Search apps, tools, or tags",
+    "clearSearch": "Clear search",
+    "clearFilters": "Clear filters",
+    "noMatches": "No projects match these filters",
+    "noMatchesDescription": "Try a different search, platform, or category combination.",
+    "viewDetails": "Details",
+    "readyToUse": "Ready to use",
+    "webLinks": "Open on the web",
+    "mobileDownloads": "Mobile downloads",
+    "desktopDownloads": "Desktop downloads",
+    "extraDownloads": "Extra builds",
+    "subtitle": "Open the clients, tools, and modules already live on Bitsocial. Search fast, filter by platform, and jump straight into the links that matter.",
+    "experimental": "Experimental",
+    "sectionLabel": "Каталог застосунків",
+    "directoryLabel": "Каталог"
   }
 }

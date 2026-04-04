@@ -149,7 +149,8 @@
         "description": "Imageboards sind die einfachste Form sozialer Medien, die sich dezentralisieren lässt: anonyme Beiträge, wenige Standard-Boards und kein Profilgraph. Deshalb bringen wir 5chan an den Start, die erste Bitsocial-App. 5chan zeigt, dass Bitsocial zentralisierte Imageboards ersetzen kann, während globale Admins aus der Gleichung verschwinden.",
         "callout": {
           "description": "5chan ist der erste Beleg, nicht die Ziellinie. Wir wollen mehrere Imageboard-Clients mit unterschiedlichen Kulturen, Oberflächen und Standardwerten: Boards im Altchan-Stil, Mobile-first-Experimente, Nischen-Communities und Forks, die Bedürfnisse lösen, die 5chan nie lösen wird.",
-          "ctaLabel": "Erstelle deine eigene"
+          "ctaLabel": "Erstelle deine eigene",
+          "separator": "- oder -"
         }
       },
       "phase2": {
@@ -185,5 +186,25 @@
   "home": {
     "devOnlyRouteNotice": "{{path}} befindet sich noch im Aufbau. Du wurdest zur Startseite weitergeleitet.",
     "dismissDevOnlyRouteNotice": "Hinweis schließen"
+  },
+  "apps": {
+    "allProjects": "All Projects",
+    "allProjectsDescription": "The full Bitsocial ecosystem, from user-facing clients to protocol tools.",
+    "linksSectionDescription": "Launch the app, grab a build, or use a mirror without leaving the directory.",
+    "searchPlaceholder": "Search apps, tools, or tags",
+    "clearSearch": "Clear search",
+    "clearFilters": "Clear filters",
+    "noMatches": "No projects match these filters",
+    "noMatchesDescription": "Try a different search, platform, or category combination.",
+    "viewDetails": "Details",
+    "readyToUse": "Ready to use",
+    "webLinks": "Open on the web",
+    "mobileDownloads": "Mobile downloads",
+    "desktopDownloads": "Desktop downloads",
+    "extraDownloads": "Extra builds",
+    "subtitle": "Open the clients, tools, and modules already live on Bitsocial. Search fast, filter by platform, and jump straight into the links that matter.",
+    "experimental": "Experimental",
+    "sectionLabel": "App-Verzeichnis",
+    "directoryLabel": "Katalog"
   }
 }

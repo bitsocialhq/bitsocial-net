@@ -63,14 +63,14 @@ Ein offenes Pubsub-Netzwerk ist anfällig für Spam-Flut. Bitsocial löst dieses
 
 Das Challenge-System ist flexibel: Jeder Community-Betreiber konfiguriert seine eigenen Richtlinien. Zu den Optionen gehören:
 
-| Herausforderungstyp | Wie es funktioniert |
-| ----------------- | ------------------------------------------------- |
-| **Captcha** | Visuelles oder interaktives Puzzle, präsentiert in der App |
-| **Ratenbegrenzung** | Beiträge pro Zeitfenster pro Identität begrenzen |
-| **Token-Gate** | Erfordern einen Guthabennachweis für einen bestimmten Token |
-| **Zahlung** | Erfordern Sie eine kleine Zahlung pro Post |
-| **Zulassungsliste** | Nur vorab genehmigte Identitäten können | posten
-| **Benutzerdefinierter Code** | Jede im Code | ausdrückbare Richtlinie
+| Herausforderungstyp          | Wie es funktioniert                                         |
+| ---------------------------- | ----------------------------------------------------------- | ----------------------- |
+| **Captcha**                  | Visuelles oder interaktives Puzzle, präsentiert in der App  |
+| **Ratenbegrenzung**          | Beiträge pro Zeitfenster pro Identität begrenzen            |
+| **Token-Gate**               | Erfordern einen Guthabennachweis für einen bestimmten Token |
+| **Zahlung**                  | Erfordern Sie eine kleine Zahlung pro Post                  |
+| **Zulassungsliste**          | Nur vorab genehmigte Identitäten können                     | posten                  |
+| **Benutzerdefinierter Code** | Jede im Code                                                | ausdrückbare Richtlinie |
 
 Peers, die zu viele fehlgeschlagene Challenge-Versuche weiterleiten, werden vom Pubsub-Thema blockiert, was Denial-of-Service-Angriffe auf der Netzwerkebene verhindert.
 
@@ -101,11 +101,11 @@ sequenceDiagram
 
 1. Der Benutzer öffnet die App und sieht eine soziale Schnittstelle.
 2. Der Client tritt dem Peer-to-Peer-Netzwerk bei und führt eine DHT-Abfrage für jede Community des Benutzers durch
-folgt. Die Abfragen dauern jeweils einige Sekunden, werden jedoch gleichzeitig ausgeführt.
+   folgt. Die Abfragen dauern jeweils einige Sekunden, werden jedoch gleichzeitig ausgeführt.
 3. Jede Abfrage gibt die neuesten Inhaltshinweise und Metadaten der Community (Titel, Beschreibung,
-Moderatorenliste, Challenge-Konfiguration).
+   Moderatorenliste, Challenge-Konfiguration).
 4. Der Client ruft mithilfe dieser Zeiger den eigentlichen Beitragsinhalt ab und rendert dann alles in einem
-vertraute soziale Schnittstelle.
+   vertraute soziale Schnittstelle.
 
 ---
 
@@ -154,7 +154,7 @@ sequenceDiagram
 7. Der Kunde sendet den Beitrag zusammen mit der Challenge-Antwort über Pubsub.
 8. Der Knoten des Community-Betreibers validiert die Antwort. Wenn korrekt, wird der Beitrag angenommen.
 9. Der Knoten sendet das Ergebnis über Pubsub, sodass Netzwerkpartner wissen, dass sie mit der Weiterleitung fortfahren müssen
-Nachrichten von diesem Benutzer.
+   Nachrichten von diesem Benutzer.
 10. Der Knoten aktualisiert den Inhalt der Community unter seiner Public-Key-Adresse.
 11. Innerhalb weniger Minuten erhält jeder Leser der Community das Update.
 
@@ -191,11 +191,11 @@ graph TB
     PK --> TR
 ```
 
-| Schicht | Rolle |
-| ------------ | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| **App** | Benutzeroberfläche. Es können mehrere Apps vorhanden sein, jede mit eigenem Design und mit denselben Communities und Identitäten.                       |
-| **Protokoll** | Definiert, wie Communities angesprochen werden, wie Beiträge veröffentlicht werden und wie Spam verhindert wird.                                                |
-| **Netzwerk** | Die zugrunde liegende Peer-to-Peer-Infrastruktur: DHT für die Erkennung, Gossipsub für Echtzeit-Messaging und Content Transfer für den Datenaustausch. |
+| Schicht       | Rolle                                                                                                                                                  |
+| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **App**       | Benutzeroberfläche. Es können mehrere Apps vorhanden sein, jede mit eigenem Design und mit denselben Communities und Identitäten.                      |
+| **Protokoll** | Definiert, wie Communities angesprochen werden, wie Beiträge veröffentlicht werden und wie Spam verhindert wird.                                       |
+| **Netzwerk**  | Die zugrunde liegende Peer-to-Peer-Infrastruktur: DHT für die Erkennung, Gossipsub für Echtzeit-Messaging und Content Transfer für den Datenaustausch. |
 
 ---
 
@@ -243,7 +243,7 @@ Der Nachteil besteht darin, dass Bitsocial keine dauerhafte Verfügbarkeit alter
 Föderierte Netzwerke (wie E-Mail oder ActivityPub-basierte Plattformen) verbessern die Zentralisierung, weisen jedoch immer noch strukturelle Einschränkungen auf:
 
 - **Serverabhängigkeit** – jede Community benötigt einen Server mit einer Domäne, TLS und fortlaufend
-Wartung
+  Wartung
 - **Administratorvertrauen** – Der Serveradministrator hat die volle Kontrolle über Benutzerkonten und Inhalte
 - **Fragmentierung** – Der Wechsel zwischen Servern bedeutet oft den Verlust von Followern, Verlauf oder Identität
 - **Kosten** – Jemand muss für das Hosting bezahlen, was Druck zur Konsolidierung erzeugt

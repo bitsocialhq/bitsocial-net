@@ -4,10 +4,6 @@ description: Un tableau d'images décentralisé et sans serveur construit sur le
 sidebar_position: 1
 ---
 
-:::warning[Dénomination héritée]
-La base de code de ce projet utilise toujours l'ancienne dénomination « plebbit » d'avant le changement de nom de Bitsocial. Les noms des packages, les références API et certaines terminologies internes seront mis à jour dans une prochaine version. La fonctionnalité décrite ici est actuelle — seule la dénomination est obsolète.
-:::
-
 # 5chan
 
 5chan est un tableau d'images sans serveur, sans administrateur et entièrement décentralisé qui fonctionne sur le protocole Bitsocial. Il suit la structure familière du répertoire Imageboard tout en introduisant une propriété décentralisée : n'importe qui peut créer un tableau, et plusieurs tableaux peuvent concourir pour le même emplacement de répertoire via un mécanisme de vote.
@@ -34,7 +30,7 @@ Les attributions d'emplacements de répertoire (quelle carte apparaît sur quel 
 
 ## Internes
 
-Sous le capot, 5chan utilise la couche API plebbit-js pour ses interactions protocolaires. Comme indiqué dans l'avertissement ci-dessus, ces références internes portent toujours une dénomination héritée antérieure au changement de marque Bitsocial.
+Sous le capot, 5chan utilise la couche client du protocole Bitsocial partagé pour ses interactions réseau.
 
 ## Liens
 

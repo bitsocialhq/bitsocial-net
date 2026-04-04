@@ -5,7 +5,7 @@ description: Diseño propuesto para un servicio público Bitsocial RPC con usuar
 
 # RPC público sin permiso
 
-La propuesta pública original de RPC se desarrolló como una edición de GitHub escrita en terminología plebbit antigua. Esta página reescribe esa idea en el lenguaje Bitsocial y la enmarca como una propuesta a nivel de producto en lugar de un muro de detalles de implementación.
+Esta página enmarca el RPC público como una propuesta Bitsocial a nivel de producto en lugar de un muro de detalles de implementación.
 
 ## Objetivo en lenguaje sencillo
 
@@ -56,7 +56,7 @@ El propio RPC público debería centrarse en el comportamiento del RPC de cara a
 
 La documentación orientada al usuario debe utilizar términos de Bitsocial como **comunidad** y **perfil**.
 
-A nivel de cable, la primera implementación aún puede preservar el transporte JSON-RPC actual y la forma de carga útil cuando sea útil para la compatibilidad. En otras palabras: los documentos ya no necesitan hablar como los viejos documentos plebbit, incluso si el período de transición mantiene algunos nombres de métodos heredados o formas de solicitud detrás de escena.
+A nivel de cable, la primera implementación aún puede preservar el transporte JSON-RPC actual y la forma de carga útil cuando sea útil para la compatibilidad. En otras palabras: los documentos pueden permanecer nativos de Bitsocial incluso si el período de transición mantiene algunos nombres de métodos orientados a la compatibilidad o formas de solicitud detrás de escena.
 
 ## Paquete de permisos propuesto
 
@@ -173,9 +173,9 @@ La autenticación para esta API de operador debe estar completamente separada de
 
 Si la creación de autenticación es barata, los servicios públicos pueden necesitar una capa de desafío antes de emitir credenciales. Una ruta posible es reutilizar el propio modelo de desafío comunitario para que la emisión de credenciales herede la misma filosofía antiabuso que el resto de la red.
 
-### Nomenclatura heredada
+### Detalles de migración
 
-Es posible que algunas implementaciones iniciales aún expongan internamente los nombres de métodos heredados por motivos de compatibilidad. Esto debe tratarse como un detalle de migración, no como el vocabulario público permanente de los documentos de Bitsocial.
+Algunas implementaciones tempranas aún pueden exponer internamente nombres de métodos orientados a la compatibilidad. Esto debe tratarse como un detalle de migración, no como el vocabulario público permanente de los documentos de Bitsocial.
 
 ## Resumen
 

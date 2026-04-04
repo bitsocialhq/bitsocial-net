@@ -63,14 +63,14 @@ Një rrjet i hapur pubs është i prekshëm nga përmbytjet e postës së padës
 
 Sistemi i sfidës është fleksibël: çdo operator i komunitetit konfiguron politikën e vet. Opsionet përfshijnë:
 
-| Lloji i sfidës | Si funksionon |
-| ----------------- | ------------------------------------------------- |
-| **Captcha** | Puzzle vizuale ose interaktive e paraqitur në aplikacion |
-| **Kufizimi i tarifave ** | Kufizoni postimet për dritare kohore për identitet |
-| **Gate Token** | Kërkoni dëshmi të bilancit të një token specifik |
-| **Pagesa** | Kërkoni një pagesë të vogël për postim |
-| **Lista e lejimeve** | Vetëm identitetet e miratuara paraprakisht mund të postojnë |
-| **Kodi i personalizuar** | Çdo politikë e shprehur në kod |
+| Lloji i sfidës           | Si funksionon                                               |
+| ------------------------ | ----------------------------------------------------------- |
+| **Captcha**              | Puzzle vizuale ose interaktive e paraqitur në aplikacion    |
+| **Kufizimi i tarifave ** | Kufizoni postimet për dritare kohore për identitet          |
+| **Gate Token**           | Kërkoni dëshmi të bilancit të një token specifik            |
+| **Pagesa**               | Kërkoni një pagesë të vogël për postim                      |
+| **Lista e lejimeve**     | Vetëm identitetet e miratuara paraprakisht mund të postojnë |
+| **Kodi i personalizuar** | Çdo politikë e shprehur në kod                              |
 
 Kolegët që transmetojnë shumë përpjekje sfidash të dështuara bllokohen nga tema e pubsub, gjë që parandalon sulmet e mohimit të shërbimit në shtresën e rrjetit.
 
@@ -101,11 +101,11 @@ sequenceDiagram
 
 1. Përdoruesi hap aplikacionin dhe sheh një ndërfaqe sociale.
 2. Klienti bashkohet me rrjetin peer-to-peer dhe bën një pyetje DHT për çdo komunitet përdoruesi
-vijon. Pyetjet zgjasin disa sekonda secila, por ekzekutohen njëkohësisht.
+   vijon. Pyetjet zgjasin disa sekonda secila, por ekzekutohen njëkohësisht.
 3. Çdo pyetje kthen treguesit dhe meta të dhënat më të fundit të përmbajtjes së komunitetit (titulli, përshkrimi,
-lista e moderatorëve, konfigurimi i sfidave).
+   lista e moderatorëve, konfigurimi i sfidave).
 4. Klienti merr përmbajtjen aktuale të postimit duke përdorur ata tregues, më pas jep gjithçka në a
-ndërfaqe e njohur sociale.
+   ndërfaqe e njohur sociale.
 
 ---
 
@@ -154,7 +154,7 @@ sequenceDiagram
 7. Klienti dorëzon postimin së bashku me përgjigjen e sfidës në pubsub.
 8. Nyja e operatorit të komunitetit vërteton përgjigjen. Nëse është e saktë, postimi pranohet.
 9. Nyja transmeton rezultatin në pubsub në mënyrë që kolegët e rrjetit të dinë të vazhdojnë transmetimin
-mesazhe nga ky përdorues.
+   mesazhe nga ky përdorues.
 10. Nyja përditëson përmbajtjen e komunitetit në adresën e saj me çelës publik.
 11. Brenda pak minutash, çdo lexues i komunitetit merr përditësimin.
 
@@ -191,11 +191,11 @@ graph TB
     PK --> TR
 ```
 
-| Shtresa | Roli |
-| ------------ | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| **Aplikacioni ** | Ndërfaqja e përdoruesit. Mund të ekzistojnë shumë aplikacione, secila me dizajnin e vet, që të gjithë ndajnë të njëjtat komunitete dhe identitete.                       |
-| **Protokolli** | Përcakton se si adresohen komunitetet, si publikohen postimet dhe si parandalohen postimet e padëshiruara.                                                |
-| **Rrjeti ** | Infrastruktura bazë peer-to-peer: DHT për zbulim, gossip për mesazhe në kohë reale dhe transferim i përmbajtjes për shkëmbimin e të dhënave. |
+| Shtresa          | Roli                                                                                                                                               |
+| ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Aplikacioni ** | Ndërfaqja e përdoruesit. Mund të ekzistojnë shumë aplikacione, secila me dizajnin e vet, që të gjithë ndajnë të njëjtat komunitete dhe identitete. |
+| **Protokolli**   | Përcakton se si adresohen komunitetet, si publikohen postimet dhe si parandalohen postimet e padëshiruara.                                         |
+| **Rrjeti **      | Infrastruktura bazë peer-to-peer: DHT për zbulim, gossip për mesazhe në kohë reale dhe transferim i përmbajtjes për shkëmbimin e të dhënave.       |
 
 ---
 
@@ -243,7 +243,7 @@ Kombinimi është se Bitsocial nuk garanton disponueshmërinë e përhershme të
 Rrjetet e federuara (si emaili ose platformat e bazuara në ActivityPub) përmirësohen në centralizimin, por ende kanë kufizime strukturore:
 
 - **Varësia e serverit ** - çdo komunitet ka nevojë për një server me një domen, TLS dhe në vazhdim
-mirëmbajtjen
+  mirëmbajtjen
 - **Besimi i administratorit** — administratori i serverit ka kontroll të plotë mbi llogaritë e përdoruesve dhe përmbajtjen
 - **Fragmentimi** — lëvizja midis serverëve shpesh nënkupton humbjen e ndjekësve, historisë ose identitetit
 - **Kosto** — dikush duhet të paguajë për pritjen, gjë që krijon presion drejt konsolidimit

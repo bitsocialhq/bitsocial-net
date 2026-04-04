@@ -6,16 +6,12 @@ sidebar_position: 1
 
 # React Hooks
 
-:::warning Legacy na Pangalan
-Ang package na ito ay kasalukuyang gumagamit ng legacy na mga convention sa pagbibigay ng pangalan na minana mula sa upstream fork nito. Ang mga sanggunian sa "plebbit" sa code, mga API, at configuration ay ililipat sa "bitsocial" sa isang release sa hinaharap. Ang pag-andar ay hindi naaapektuhan.
-:::
-
 Ang `bitsocial-react-hooks` package ay nagbibigay ng pamilyar na React hooks API para sa pakikipag-ugnayan sa Bitsocial protocol. Pinangangasiwaan nito ang pagkuha ng mga feed, komento, at profile ng may-akda, pamamahala ng mga account, pag-publish ng nilalaman, at pag-subscribe sa mga komunidad -- lahat nang hindi umaasa sa isang sentral na server.
 
 Ang library na ito ay ang pangunahing interface na ginagamit ng [5chan](/apps/5chan/) at iba pang mga application ng Bitsocial client.
 
 :::note
-Ang `bitsocial-react-hooks` ay isang pansamantalang tinidor ng `plebbit/plebbit-react-hooks` na pinananatili para sa AI-aided development. Direktang ginagamit ito mula sa GitHub sa halip na na-publish sa npm.
+Ang `bitsocial-react-hooks` ay kasalukuyang ginagamit nang direkta mula sa GitHub sa halip na na-publish sa npm.
 :::
 
 ## Pag-install
@@ -30,7 +26,7 @@ Palitan ang `<commit-hash>` ng commit na gusto mong i-target.
 
 ## Pangkalahatang-ideya ng API
 
-Ang mga kawit ay isinaayos sa mga functional na kategorya. Nasa ibaba ang isang buod ng pinakakaraniwang ginagamit na mga kawit sa bawat kategorya. Para sa kumpletong mga lagda, parameter, at uri ng pagbabalik, tingnan ang [buong API reference sa GitHub](https://github.com/bitsocialnet/bitsocial-react-hooks).
+Ang mga kawit ay isinaayos sa mga functional na kategorya. Nasa ibaba ang isang buod ng pinakakaraniwang ginagamit na mga kawit sa bawat kategorya. Para sa kumpletong mga lagda, parameter, at uri ng pagbabalik, tingnan ang [buong sanggunian ng API sa GitHub](https://github.com/bitsocialnet/bitsocial-react-hooks).
 
 ### Mga account
 
@@ -52,9 +48,9 @@ Kunin at makipag-ugnayan sa mga indibidwal na komento at thread.
 
 Kunin ang metadata at mga setting ng komunidad.
 
-- `useSubplebbit(subplebbitAddress?)` -- kinukuha ang isang komunidad ayon sa address
-- `useSubplebbits(subplebbitAddresses?)` -- kumukuha ng maraming komunidad
-- `useSubplebbitStats(subplebbitAddress?)` -- ibinabalik ang bilang ng subscriber at post
+- Single-community lookup hook -- kinukuha ang isang komunidad ayon sa address
+- Multi-community lookup hook -- kumukuha ng maraming komunidad
+- Community stats hook -- nagbabalik ng subscriber at mga bilang ng post
 
 ### Mga may-akda
 
@@ -66,7 +62,7 @@ Hanapin ang mga profile ng may-akda at metadata.
 
 ### Mga feed
 
-Mag-subscribe sa at pahinate ng mga feed ng nilalaman.
+Mag-subscribe sa at pagbilang ng pahina sa mga feed ng nilalaman.
 
 - `useFeed(options?)` -- nagbabalik ng paginated feed ng mga post mula sa isa o higit pang mga komunidad
 - `useBufferedFeeds(feedOptions?)` -- nag-pre-buffer ng maraming feed para sa mas mabilis na pag-render
@@ -84,12 +80,12 @@ Mag-publish ng nilalaman at magsagawa ng mga operasyon sa pagsulat.
 
 Subaybayan ang estado ng koneksyon at makipag-ugnayan sa isang malayuang Bitsocial daemon.
 
-- `useClientsStates(options?)` -- ibinabalik ang estado ng koneksyon ng mga IPFS/pubsub client
-- `usePlebbitRpcSettings()` -- nagbabalik ng kasalukuyang RPC na configuration ng daemon
+- `useClientsStates(options?)` -- ibinabalik ang estado ng koneksyon ng mga kliyenteng IPFS/pubsub
+- Hook ng mga setting ng RPC -- ibinabalik ang kasalukuyang configuration ng RPC daemon
 
 ## Pag-unlad
 
-Upang magtrabaho sa library ng hooks nang lokal:
+Upang magtrabaho sa library ng mga kawit nang lokal:
 
 **Mga Kinakailangan:** Node.js, pinagana ang Corepack, Yarn 4
 
@@ -104,5 +100,5 @@ Sumangguni sa repositoryong README para sa pagsubok at pagbuo ng mga utos.
 
 ## Mga link
 
-- **GitHub:** [buong API reference sa GitHub](https://github.com/bitsocialnet/bitsocial-react-hooks)
+- **GitHub:** [bitsocialnet/bitsocial-react-hooks](https://github.com/bitsocialnet/bitsocial-react-hooks)
 - **Lisensya:** GPL-2.0-lamang

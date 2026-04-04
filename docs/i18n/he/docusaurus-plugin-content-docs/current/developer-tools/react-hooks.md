@@ -6,16 +6,12 @@ sidebar_position: 1
 
 # React Hooks
 
-:::warning מתן שמות מדור קודם
-חבילה זו משתמשת כעת במוסכמות שמות מדור קודם שעברו בירושה מהמזלג שלה במעלה הזרם. הפניות ל-"plebbit" בקוד, בממשקי API ובתצורה יועברו ל-"bitsocial" במהדורה עתידית. הפונקציונליות אינה מושפעת.
-:::
-
-חבילת `bitsocial-react-hooks` מספקת API מוכר של React hooks לאינטראקציה עם פרוטוקול Bitsocial. הוא מטפל בהבאת עדכונים, הערות ופרופילי מחבר, ניהול חשבונות, פרסום תוכן והרשמה לקהילות - כל זאת מבלי להסתמך על שרת מרכזי.
+חבילת `bitsocial-react-hooks` מספקת API מוכר של React hooks לאינטראקציה עם פרוטוקול Bitsocial. הוא מטפל בהבאת עדכונים, הערות ופרופילי מחבר, ניהול חשבונות, פרסום תוכן והרשמה לקהילות -- כל זאת מבלי להסתמך על שרת מרכזי.
 
 ספריה זו היא הממשק העיקרי המשמש את [5chan](/apps/5chan/) ויישומי לקוח Bitsocial אחרים.
 
 :::note
-`bitsocial-react-hooks` הוא מזלג זמני של `plebbit/plebbit-react-hooks` המתוחזק לפיתוח בעזרת AI. הוא נצרך ישירות מ-GitHub במקום מפורסם ב-npm.
+`bitsocial-react-hooks` נצרך כעת ישירות מ-GitHub במקום מפורסם ב-npm.
 :::
 
 ## התקנה
@@ -36,7 +32,7 @@ yarn add https://github.com/bitsocialnet/bitsocial-react-hooks.git#<commit-hash>
 
 נהל חשבונות משתמש מקומיים, זהות והגדרות.
 
-- `useAccount(accountName?)` -- returns the active (or named) account object
+- `useAccount(accountName?)` -- מחזירה את אובייקט החשבון הפעיל (או בעל השם).
 - `useAccounts()` -- מחזירה את כל החשבונות המאוחסנים מקומית
 - `useAccountComments(options?)` -- מחזיר הערות שפורסמו על ידי החשבון הפעיל
 
@@ -52,9 +48,9 @@ yarn add https://github.com/bitsocialnet/bitsocial-react-hooks.git#<commit-hash>
 
 אחזר מטא נתונים והגדרות של הקהילה.
 
-- `useSubplebbit(subplebbitAddress?)` -- מביא קהילה לפי כתובת
-- `useSubplebbits(subplebbitAddresses?)` -- מביא מספר קהילות
-- `useSubplebbitStats(subplebbitAddress?)` -- מחזירה ספירת מנויים ופוסטים
+- וו בדיקה של קהילה אחת -- מביא קהילה לפי כתובת
+- וו חיפוש מרובות קהילה -- מביא מספר קהילות
+- הוק לנתונים סטטיסטיים של הקהילה -- מחזיר ספירת מנויים ופוסטים
 
 ### מחברים
 
@@ -77,7 +73,7 @@ yarn add https://github.com/bitsocialnet/bitsocial-react-hooks.git#<commit-hash>
 פרסום תוכן וביצוע פעולות כתיבה.
 
 - `usePublishComment(options?)` -- פרסם תגובה או תשובה חדשה
-- `usePublishVote(options?)` -- cast an upvote or downvote
+- `usePublishVote(options?)` -- הצביעו בעד או נגד
 - `useSubscribe(options?)` -- הירשם או בטל את הרישום לקהילה
 
 ### מדינות ו-RPC
@@ -85,13 +81,13 @@ yarn add https://github.com/bitsocialnet/bitsocial-react-hooks.git#<commit-hash>
 עקוב אחר מצב החיבור וקיים אינטראקציה עם דמון Bitsocial מרוחק.
 
 - `useClientsStates(options?)` -- מחזירה את מצב החיבור של לקוחות IPFS/pubsub
-- `usePlebbitRpcSettings()` -- מחזיר את תצורת הדמון הנוכחית של RPC
+- Hook להגדרות RPC -- מחזיר את תצורת הדמון הנוכחית של RPC
 
 ## פיתוח
 
 כדי לעבוד על ספריית הוקס באופן מקומי:
 
-**דרישות מוקדמות:** Node.js, Corepack מאופשר, Yarn 4
+**דרישות מוקדמות:** Node.js, Corepack מופעלת, Yarn 4
 
 ```bash
 git clone https://github.com/bitsocialnet/bitsocial-react-hooks.git
@@ -104,5 +100,5 @@ yarn install
 
 ## קישורים
 
-- **GitHub:** [הפניה מלאה ל-API ב-GitHub](https://github.com/bitsocialnet/bitsocial-react-hooks)
+- **GitHub:** [bitsocialnet/bitsocial-react-hooks](https://github.com/bitsocialnet/bitsocial-react-hooks)
 - **רישיון:** GPL-2.0 בלבד

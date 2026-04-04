@@ -5,13 +5,13 @@ description: Ehdotettu suunnittelu julkiselle Bitsocial RPC -palvelulle, jossa o
 
 # Luvaton julkinen RPC
 
-Alkuperäinen julkinen RPC-ehdotus toimi GitHub-ongelmana, joka oli kirjoitettu vanhalla plebbit-terminologialla. Tämä sivu kirjoittaa tämän idean uudelleen Bitsocial-kielellä ja kehystää sen tuotetason ehdotukseksi toteutusyksityiskohtien seinän sijaan.
+Tämä sivu kehystää julkisen RPC:n tuotetason Bitsocial-ehdotukseksi toteutustietojen seinän sijaan.
 
 ## Selkeäkielinen tavoite
 
-Bitsocial Forge voi käyttää julkista RPC-palvelua, jonka avulla monet käyttäjät voivat hallita omia Bitsocial-yhteisöjään etänä ilman, että operaattori tulee näiden yhteisöjen ylläpitäjäksi.
+Bitsocial Forge voi käyttää julkista RPC-palvelua, jonka avulla monet käyttäjät voivat hallita omia Bitsocial-yhteisöjään etäältä ilman, että operaattorista tulee näiden yhteisöjen ylläpitäjä.
 
-Palvelun tulee tehdä mobiili- ja kevyistä asiakkaista käytännöllisiä säilyttäen samalla kolme rajoitusta:
+Palvelun tulee tehdä mobiili- ja kevytasiakkaista käytännöllisiä, mutta silti kolme rajoitusta säilytetään:
 
 1. Käyttäjät pysyvät oletuksena eristettyinä toisistaan.
 2. Luvat pysyvät yksiselitteisinä ja yksityiskohtaisina.
@@ -40,7 +40,7 @@ Palvelun kautta luodut yhteisöt liitetään omistajatietueeseen. Omistajuutta s
 
 ### Käyttöoikeudet
 
-Käyttöoikeudet ovat kykyperusteisia. Yhden loogisen arvon "voi käyttää RPC:tä" sijaan palvelin voi hallita:
+Käyttöoikeudet ovat kykyperusteisia. Yhden boolen sijaan "voi käyttää RPC:tä" palvelin voi hallita:
 
 - kuinka monta yhteisöä käyttäjä voi luoda
 - mitä hallintamenetelmiä on saatavilla
@@ -50,13 +50,13 @@ Käyttöoikeudet ovat kykyperusteisia. Yhden loogisen arvon "voi käyttää RPC:
 
 ### Admin pinta
 
-Julkisen RPC:n tulisi itse keskittyä käyttäjien osoittamaan RPC-käyttäytymiseen. Hallinnolliset tehtävät, kuten käyttäjien luominen, omistajuuden siirto ja tarkastusten tarkistus, kuuluvat erilliseen operaattorin sovellusliittymään ja kojelautaan.
+Itse julkisen RPC:n tulisi keskittyä käyttäjien osoittamaan RPC-käyttäytymiseen. Hallinnolliset tehtävät, kuten käyttäjien luominen, omistajuuden siirto ja tarkastusten tarkistus, kuuluvat erilliseen operaattorin sovellusliittymään ja kojelautaan.
 
 ## Yhteensopivuusasento
 
 Käyttäjille tarkoitetussa dokumentaatiossa tulee käyttää Bitsocial-termejä, kuten **yhteisö** ja **profiili**.
 
-Langatasolla ensimmäinen käyttöönotto voi silti säilyttää nykyisen JSON-RPC-kuljetuksen ja hyötykuorman muodon, jos se on hyödyllistä yhteensopivuuden kannalta. Toisin sanoen: dokumenttien ei enää tarvitse puhua kuten vanhoja plebbit-dokumentteja, vaikka siirtymäkauden aikana säilyisikin joitain vanhoja menetelmien nimiä tai pyyntömuotoja kulissien takana.
+Langatasolla ensimmäinen käyttöönotto voi silti säilyttää nykyisen JSON-RPC-kuljetuksen ja hyötykuorman muodon, jos se on hyödyllistä yhteensopivuuden kannalta. Toisin sanoen: dokumentit voivat pysyä Bitsocial-natiivina, vaikka siirtymäaika säilyttää joitain yhteensopivuussuuntautuneita menetelmänimiä tai pyytää muotoja kulissien takana.
 
 ## Ehdotettu lupapaketti
 
@@ -171,12 +171,12 @@ Tämän operaattorin API:n todennuksen tulee olla täysin erillään loppukäytt
 
 ### Todennettu roskaposti
 
-Jos todennusten luominen on halpaa, julkiset palvelut saattavat tarvita haastekerroksen ennen valtuustietojen myöntämistä. Yksi mahdollinen tapa on käyttää itse yhteisön haastemallia uudelleen, jotta valtakirjojen myöntäminen perii saman väärinkäytösten vastaisen filosofian kuin muu verkosto.
+Jos todennusten luominen on halpaa, julkiset palvelut saattavat tarvita haastekerroksen ennen valtuustietojen myöntämistä. Yksi mahdollinen tapa on käyttää itse yhteisöhaastemallia uudelleen, jotta valtakirjojen myöntäminen perii saman väärinkäytösten vastaisen filosofian kuin muu verkosto.
 
-### Perinnöllinen nimeäminen
+### Siirron tiedot
 
-Jotkut varhaiset toteutukset saattavat silti paljastaa vanhoja menetelmänimiä sisäisesti yhteensopivuuden vuoksi. Sitä tulisi käsitellä siirtymäyksityiskohtana, ei Bitsocial-dokumenttien pysyvänä julkisena sanastona.
+Jotkin varhaiset toteutukset saattavat silti paljastaa yhteensopivuussuuntautuneita menetelmänimiä sisäisesti. Sitä tulisi käsitellä siirtymäyksityiskohtana, ei Bitsocial-dokumenttien pysyvänä julkisena sanastona.
 
 ## Yhteenveto
 
-Tässä ehdotuksessa on oikeastaan kyse yhdestä asiasta: julkisen RPC-infrastruktuurin tekemisestä hyödylliseksi ilman, että siitä tehdään säilöönottoa. Hyvän julkisen Bitsocial RPC:n pitäisi tuntua valinnaiselta apuyhteisöltä, ei uudelta keskusalustalta, joka palauttaa omistuksen takaoven kautta.
+Tässä ehdotuksessa on oikeastaan kyse yhdestä asiasta: julkisen RPC-infrastruktuurin tekemisestä hyödylliseksi ilman, että siitä tehdään säilöönottoa. Hyvän julkisen Bitsocial RPC:n tulisi tuntua valinnaiselta apuyhteisöltä, ei uudelta keskusalustalta, joka palauttaa omistuksen takaoven kautta.

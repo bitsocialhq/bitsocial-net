@@ -6,11 +6,7 @@ sidebar_position: 2
 
 # Captcha Canvas Challenge
 
-:::warning Legacy navngivning
-Denne pakken ble opprinnelig publisert under `@plebbit`-omfanget. Den har fått nytt navn til `@bitsocial/captcha-canvas-challenge`. Referanser til det gamle navnet kan fortsatt forekomme i eldre dokumentasjon eller kodebaser.
-:::
-
-Captcha Canvas Challenge er en frittstående bilde-captcha-generator opprinnelig hentet fra `plebbit-js`. Den gjengir randomisert tekst på et HTML-lerret og returnerer det resulterende bildet, som fellesskap kan presentere for forfattere som en spam-utfordring.
+Captcha Canvas Challenge er en frittstående bilde-captcha-generator. Den gjengir randomisert tekst på et HTML-lerret og returnerer det resulterende bildet, som fellesskap kan presentere for forfattere som en spam-utfordring.
 
 **Kildekode:** [github.com/bitsocialnet/captcha-canvas-challenge](https://github.com/bitsocialnet/captcha-canvas-challenge)
 
@@ -18,7 +14,6 @@ Captcha Canvas Challenge er en frittstående bilde-captcha-generator opprinnelig
 
 - **Node.js** >= 22
 - **Kun ESM** -- denne pakken sender ikke CommonJS-bygg.
-- **Runtime peer-avhengighet:** `@plebbit/plebbit-js` (migrerer til `@pkc/pkc-js`)
 
 ## Installasjon
 
@@ -41,4 +36,4 @@ npm install @bitsocial/captcha-canvas-challenge
 2. Strengen gjengis på et lerret med visuell støy for å motstå OCR.
 3. Det resulterende bildet (og det forventede svaret) returneres slik at den anropende applikasjonen kan presentere utfordringen og senere bekrefte svaret.
 
-Fordi pakken er en ren bildegenerator, håndterer den ikke nettverksbygging eller øktadministrasjon alene. Den er ment å integreres i en større utfordringsflyt -- for eksempel som en av utfordringstypene som støttes av [Spam Blocker](./spam-blocker.md).
+Fordi pakken er en ren bildegenerator, håndterer den ikke nettverksbygging eller øktadministrasjon alene. Den er ment å integreres i en større utfordringsflyt -- for eksempel som en av utfordringstypene som støttes av [Spamblokkering](./spam-blocker.md).

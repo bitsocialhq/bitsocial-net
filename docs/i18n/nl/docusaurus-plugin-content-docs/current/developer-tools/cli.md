@@ -6,19 +6,15 @@ sidebar_position: 2
 
 # CLI
 
-:::warning Oude naamgeving
-Dit pakket maakt momenteel gebruik van verouderde naamgevingsconventies die zijn overgenomen van de upstream-afhankelijkheid. Verwijzingen naar "plebbit" in opdrachten, uitvoer en configuratie zullen in een toekomstige release worden gemigreerd naar "bitsocial". De functionaliteit wordt niet beïnvloed.
-:::
-
 De `bitsocial-cli` is een opdrachtregelprogramma voor interactie met de backend van het Bitsocial-protocol. Hiermee kunt u een lokale P2P-daemon uitvoeren, communities maken en configureren en inhoud publiceren - allemaal vanaf de terminal.
 
-Het is gebouwd bovenop `plebbit-js` en wordt gebruikt door [5chan](/apps/5chan/) en [Seedit](/apps/seedit/) voor het creëren van community's en knooppuntbeheer.
+Het is gebouwd bovenop de gedeelde clientlaag van het Bitsocial-protocol en wordt gebruikt door [5kan](/apps/5chan/) en [Zaad](/apps/seedit/) voor het creëren van community's en knooppuntbeheer.
 
 ## Installatie
 
 Vooraf gebouwde binaire bestanden zijn beschikbaar voor Windows, macOS en Linux. Download de nieuwste release voor uw platform vanaf GitHub:
 
-**[Download van GitHub Releases](https://github.com/bitsocialnet/bitsocial-cli/releases)**
+**[Downloaden van GitHub-releases](https://github.com/bitsocialnet/bitsocial-cli/releases)**
 
 Maak na het downloaden het binaire bestand uitvoerbaar (macOS/Linux):
 
@@ -36,22 +32,22 @@ bitsocial-cli daemon
 
 Bij de eerste keer opstarten voert de daemon links uit naar de **WebUI**, een browsergebaseerde grafische interface voor het beheren van uw knooppunt, communities en instellingen. Dit is handig als u de voorkeur geeft aan een GUI boven terminalopdrachten.
 
-## Sleutelopdrachten
+## Belangrijkste acties
 
-| Commando            | Beschrijving                                                   |
-| ------------------- | -------------------------------------------------------------- |
-| `daemon`            | Start het Bitsocial P2P-knooppunt                              |
-| `create subplebbit` | Creëer een nieuwe gemeenschap                                  |
-| `subplebbit edit`   | Community-instellingen bijwerken (titel, beschrijving, regels) |
-| `subplebbit list`   | Geef community's weer die op dit knooppunt worden gehost       |
-| `subplebbit start`  | Begin met het bedienen van een specifieke gemeenschap          |
-| `subplebbit stop`   | Stop met het dienen van een specifieke gemeenschap             |
+| Actie                       | Beschrijving                                                   |
+| --------------------------- | -------------------------------------------------------------- |
+| Start de daemon             | Start het Bitsocial P2P-knooppunt                              |
+| Creëer een community        | Creëer een nieuwe community                                    |
+| Een community bewerken      | Community-instellingen bijwerken (titel, beschrijving, regels) |
+| Lijst lokale gemeenschappen | Geef community's weer die op dit knooppunt worden gehost       |
+| Start een community         | Begin met het bedienen van een specifieke gemeenschap          |
+| Stop een gemeenschap        | Stop met het bedienen van een specifieke community             |
 
-Voer een willekeurige opdracht uit met `--help` om de beschikbare opties en vlaggen te zien:
+Voer de CLI uit met `--help` om de huidige opdrachtnamen en vlaggen te zien die worden weergegeven door uw geïnstalleerde release:
 
 ```bash
+bitsocial-cli --help
 bitsocial-cli daemon --help
-bitsocial-cli create subplebbit --help
 ```
 
 ## Typische workflow
@@ -62,17 +58,11 @@ Een algemene installatiestroom voor het hosten van een nieuwe community:
 # 1. Start the daemon
 bitsocial-cli daemon
 
-# 2. In another terminal, create a community
-bitsocial-cli create subplebbit
-
-# 3. Configure the community
-bitsocial-cli subplebbit edit <address> --title "My Community" --description "A decentralized forum"
-
-# 4. Start serving it
-bitsocial-cli subplebbit start <address>
+# 2. In another terminal, inspect the available community-management commands
+bitsocial-cli --help
 ```
 
-De community is nu live op het Bitsocial-netwerk en toegankelijk vanaf elke compatibele client.
+Van daaruit gebruikt u de communitybeheeropdrachten van de geïnstalleerde release om een community te maken, te configureren en te bedienen. Eenmaal gestart, is de community live op het Bitsocial-netwerk en toegankelijk via compatibele klanten.
 
 ## Koppelingen
 

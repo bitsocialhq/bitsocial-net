@@ -149,7 +149,8 @@
         "description": "इमेजबोर्ड सोशल मीडिया का विकेंद्रीकरण करने का सबसे सरल रूप हैं: गुमनाम पोस्टिंग, कुछ ही डिफ़ॉल्ट बोर्ड, और कोई प्रोफ़ाइल ग्राफ़ नहीं। इसी वजह से हम 5chan लॉन्च कर रहे हैं, जो पहला Bitsocial ऐप है। 5chan दिखाता है कि Bitsocial केंद्रीकृत इमेजबोर्ड्स की जगह ले सकता है, जबकि वैश्विक एडमिन्स को समीकरण से बाहर कर देता है.",
         "callout": {
           "description": "5chan पहला सबूत है, मंज़िल नहीं। हम अलग-अलग संस्कृतियों, इंटरफेसों और डिफ़ॉल्ट्स वाले कई imageboard क्लाइंट चाहते हैं: altchan-शैली के बोर्ड, मोबाइल-फर्स्ट प्रयोग, निच समुदाय, और ऐसे forks जो उन ज़रूरतों को पूरा करें जिन्हें 5chan कभी पूरा नहीं करेगा।",
-          "ctaLabel": "अपना खुद का बनाएं"
+          "ctaLabel": "अपना खुद का बनाएं",
+          "separator": "- या -"
         }
       },
       "phase2": {
@@ -185,5 +186,25 @@
   "home": {
     "devOnlyRouteNotice": "{{path}} अभी निर्माणाधीन है। आपको मुख्य पृष्ठ पर भेज दिया गया है।",
     "dismissDevOnlyRouteNotice": "सूचना बंद करें"
+  },
+  "apps": {
+    "allProjects": "All Projects",
+    "allProjectsDescription": "The full Bitsocial ecosystem, from user-facing clients to protocol tools.",
+    "linksSectionDescription": "Launch the app, grab a build, or use a mirror without leaving the directory.",
+    "searchPlaceholder": "Search apps, tools, or tags",
+    "clearSearch": "Clear search",
+    "clearFilters": "Clear filters",
+    "noMatches": "No projects match these filters",
+    "noMatchesDescription": "Try a different search, platform, or category combination.",
+    "viewDetails": "Details",
+    "readyToUse": "Ready to use",
+    "webLinks": "Open on the web",
+    "mobileDownloads": "Mobile downloads",
+    "desktopDownloads": "Desktop downloads",
+    "extraDownloads": "Extra builds",
+    "subtitle": "Open the clients, tools, and modules already live on Bitsocial. Search fast, filter by platform, and jump straight into the links that matter.",
+    "experimental": "Experimental",
+    "sectionLabel": "ऐप निर्देशिका",
+    "directoryLabel": "निर्देशिका"
   }
 }

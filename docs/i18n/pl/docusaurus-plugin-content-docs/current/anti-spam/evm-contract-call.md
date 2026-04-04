@@ -1,16 +1,12 @@
 ---
-title: EVM Contract Call Challenge
+title: Wyzwanie wywołania kontraktu EVM
 description: Wyzwanie antyspamowe, które weryfikuje warunki w łańcuchu poprzez wywołanie inteligentnego kontraktu EVM.
 sidebar_position: 4
 ---
 
-# EVM Contract Call Challenge
+# Wyzwanie wywołania kontraktu EVM
 
-:::warning Starsze nazewnictwo
-Ten pakiet został pierwotnie opublikowany w zakresie `@plebbit`. Jego nazwa została zmieniona na `@bitsocial/evm-contract-challenge`. Odniesienia do starej nazwy mogą nadal pojawiać się w starszej dokumentacji lub bazach kodów.
-:::
-
-EVM Contract Call Challenge to mechanizm antyspamowy, który weryfikuje warunki w łańcuchu przed zezwoleniem na publikację. Oryginalnie wyodrębniony z `plebbit-js` jako samodzielny pakiet, pozwala właścicielom społeczności wymagać od autorów spełnienia kryteriów zdefiniowanych w inteligentnych kontraktach – na przykład posiadania minimalnego salda tokenów – aby móc publikować.
+EVM Contract Call Challenge to mechanizm antyspamowy, który weryfikuje warunki w łańcuchu przed zezwoleniem na publikację. Dzięki temu właściciele społeczności mogą wymagać od autorów spełnienia kryteriów określonych w inteligentnych kontraktach – na przykład posiadania minimalnego salda tokenów – aby móc publikować.
 
 **Kod źródłowy:** [github.com/bitsocialnet/evm-contract-call](https://github.com/bitsocialnet/evm-contract-call)
 
@@ -18,7 +14,6 @@ EVM Contract Call Challenge to mechanizm antyspamowy, który weryfikuje warunki 
 
 - **Node.js** >= 22
 - **Tylko ESM** — ten pakiet nie zawiera kompilacji CommonJS.
-- **Zależność równorzędna w czasie wykonywania:** `@plebbit/plebbit-js` (migracja do `@pkc/pkc-js`)
 
 ## Instalacja
 
@@ -38,7 +33,7 @@ npm install @bitsocial/evm-contract-challenge
 
 ## Przykład
 
-Właściciel społeczności, który chce ograniczyć publikowanie do autorów posiadających ponad 1000 tokenów ERC-20, mógłby skonfigurować wyzwanie w następujący sposób:
+Właściciel społeczności, który chce ograniczyć publikowanie do autorów posiadających ponad 1000 danego tokena ERC-20, mógłby skonfigurować wyzwanie w następujący sposób:
 
 - `chainTicker`: `"eth"`
 - `address`: adres kontraktu tokena
@@ -56,4 +51,4 @@ Wyzwanie wywołania kontraktu EVM jest idealne dla:
 - **Dostęp bramkowany NFT**, gdzie wymagane jest posiadanie określonego NFT.
 - **Przestrzenie zarządzania DAO**, w których udział jest ograniczony do posiadaczy tokenów zarządzania.
 
-W przypadku społeczności, które nie polegają na tożsamości w łańcuchu, zamiast tego rozważ opcję [Spam Blocker](./spam-blocker.md) lub [Voucher Challenge](./voucher-challenge.md).
+W przypadku społeczności, które nie polegają na tożsamości w łańcuchu, rozważ zamiast tego opcję [Spam Blocker](./spam-blocker.md) lub [Voucher Challenge](./voucher-challenge.md).

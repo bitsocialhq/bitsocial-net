@@ -153,7 +153,12 @@ export default function MasterPlan() {
             transition={{ duration: 0.6 }}
             className="block text-xs md:text-sm font-display tracking-[0.2em] uppercase text-center mb-6 text-muted-foreground/50"
           >
-            {t("masterPlan.sectionLabel")}
+            <a
+              href="#master-plan"
+              className="rounded-md transition-[color,box-shadow] duration-300 hover:text-muted-foreground/70"
+            >
+              {t("masterPlan.sectionLabel")}
+            </a>
           </m.div>
         </div>
         <m.h2

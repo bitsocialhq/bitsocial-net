@@ -1,6 +1,6 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { Github, Send } from "lucide-react";
+import { Github } from "lucide-react";
 import { useState } from "react";
 import EasterEggOverlay from "@/components/easter-egg-overlay";
 import { DOCS_LINKS, STATS_LINKS, isDocsPath, isStatsPath } from "@/lib/docs-links";
@@ -139,17 +139,6 @@ export default function Footer() {
                 >
                   <XIcon className="h-3.5 w-3.5" />
                   {t("footer.twitter")}
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://t.me/bitsocialnet"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`${linkClassName} inline-flex items-center gap-2`}
-                >
-                  <Send className="h-3.5 w-3.5" />
-                  {t("footer.telegram")}
                 </a>
               </li>
             </ul>

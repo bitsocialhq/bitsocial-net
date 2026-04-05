@@ -93,11 +93,7 @@ function buildOrganizationSchema(): StructuredDataValue {
     url: SITE_ORIGIN,
     description: SITE_DESCRIPTION,
     logo: toAbsoluteUrl("/logo.png"),
-    sameAs: [
-      "https://github.com/bitsocialnet",
-      "https://twitter.com/bitsocialnet",
-      "https://t.me/bitsocialnet",
-    ],
+    sameAs: ["https://github.com/bitsocialnet", "https://twitter.com/bitsocialnet"],
   };
 }
 

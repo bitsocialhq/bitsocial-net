@@ -4,7 +4,7 @@ import { domAnimation, LazyMotion, MotionConfig } from "framer-motion";
 import App from "./app.tsx";
 import { ThemeProvider } from "./components/theme-provider";
 import { GraphicsModeProvider } from "@/lib/graphics-mode";
-import "@/lib/i18n";
+import { i18nReady } from "@/lib/i18n";
 import "@/lib/react-scan";
 import "./index.css";
 
@@ -16,14 +16,20 @@ function AnimationGate({ children }: { children: React.ReactNode }) {
   );
 }
 
-ReactDOM.createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
-    <ThemeProvider>
-      <GraphicsModeProvider>
-        <AnimationGate>
-          <App />
-        </AnimationGate>
-      </GraphicsModeProvider>
-    </ThemeProvider>
-  </React.StrictMode>,
-);
+async function bootstrap() {
+  await i18nReady;
+
+  ReactDOM.createRoot(document.getElementById("root")!).render(
+    <React.StrictMode>
+      <ThemeProvider>
+        <GraphicsModeProvider>
+          <AnimationGate>
+            <App />
+          </AnimationGate>
+        </GraphicsModeProvider>
+      </ThemeProvider>
+    </React.StrictMode>,
+  );
+}
+
+void bootstrap();

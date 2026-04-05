@@ -61,7 +61,7 @@ function updateDocumentDirection(language: string | null | undefined) {
   document.documentElement.lang = normalizedLanguage;
 }
 
-void i18n
+export const i18nReady = i18n
   .use(HttpBackend)
   .use(languageDetector)
   .use(initReactI18next)
@@ -95,6 +95,14 @@ void i18n
   })
   .then(() => {
     updateDocumentDirection(i18n.resolvedLanguage ?? i18n.language);
+    return i18n;
+  })
+  .catch((error) => {
+    console.error("Failed to initialize translations before first render.", error);
+    updateDocumentDirection(i18n.resolvedLanguage ?? i18n.language);
+    return i18n;
   });
 
 i18n.on("languageChanged", updateDocumentDirection);
+
+export default i18n;

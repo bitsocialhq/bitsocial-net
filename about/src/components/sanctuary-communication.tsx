@@ -551,22 +551,32 @@ export default function SanctuaryCommunication() {
   const defaultApproachIndex = useDefaultApproachIndex(approaches);
 
   return (
-    <section id="sanctuary-communication" className="scroll-mt-24 py-24 px-6">
+    <section className="py-24 px-6">
       <div className="max-w-7xl mx-auto">
         {/* Section label — reads last (smallest, muted) per visual hierarchy principle */}
-        <m.a
-          data-sanctuary-label
-          href="https://x.com/VitalikButerin/status/2030781981706051769#:~:text=Some%20%22sanctuary%20technology%22%20is%20sanctuary%20money.%20Other%20times%2C%20it%27s%20sanctuary%20communication.%20But%20we%20need%20sanctuary%20tools%20for%20collective%20voice%20too."
-          target="_blank"
-          rel="noopener noreferrer"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="block text-xs md:text-sm font-display tracking-[0.2em] uppercase text-center mb-6 text-muted-foreground/50 rounded-md hover:text-muted-foreground/70 transition-[color,box-shadow] duration-300"
+        <div
+          id="sanctuary-communication"
+          data-home-section-label
+          className="scroll-mt-[99px] md:scroll-mt-[103px]"
         >
-          {t("sanctuary.sectionLabel")}
-        </m.a>
+          <m.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="block text-xs md:text-sm font-display tracking-[0.2em] uppercase text-center mb-6 text-muted-foreground/50"
+          >
+            <a
+              data-sanctuary-label
+              href="https://x.com/VitalikButerin/status/2030781981706051769#:~:text=Some%20%22sanctuary%20technology%22%20is%20sanctuary%20money.%20Other%20times%2C%20it%27s%20sanctuary%20communication.%20But%20we%20need%20sanctuary%20tools%20for%20collective%20voice%20too."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-md transition-[color,box-shadow] duration-300 hover:text-muted-foreground/70"
+            >
+              {t("sanctuary.sectionLabel")}
+            </a>
+          </m.div>
+        </div>
 
         {/* Hero statement — reads first (biggest, boldest) */}
         <m.h2

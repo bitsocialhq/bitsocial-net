@@ -411,23 +411,14 @@ export default function Features() {
 
   const handleSanctuaryClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
     event.preventDefault();
-    const sanctuarySection = document.getElementById("sanctuary-communication");
-    if (!sanctuarySection) return;
-    const sanctuaryLabel =
-      sanctuarySection.querySelector<HTMLElement>("[data-sanctuary-label]") ?? sanctuarySection;
-    const topbar = document.querySelector<HTMLElement>("nav");
-    const topbarBottom = topbar?.getBoundingClientRect().bottom ?? 0;
-    const targetOffset = topbarBottom + 30;
-    const scrollTarget = sanctuaryLabel;
-    const rect = scrollTarget.getBoundingClientRect();
-    const targetTop = rect.top + window.scrollY - targetOffset;
-    const scrollBehavior = getScrollBehavior();
+    const sanctuaryTarget = document.getElementById("sanctuary-communication");
+    if (!sanctuaryTarget) return;
     window.history.pushState(
       null,
       "",
       `${window.location.pathname}${window.location.search}#sanctuary-communication`,
     );
-    window.scrollTo({ top: Math.max(0, targetTop), behavior: scrollBehavior });
+    sanctuaryTarget.scrollIntoView({ behavior: getScrollBehavior(), block: "start" });
   };
 
   return (

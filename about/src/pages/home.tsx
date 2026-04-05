@@ -11,6 +11,36 @@ import SanctuaryCommunication from "@/components/sanctuary-communication";
 import Topbar from "@/components/topbar";
 import Features from "@/components/features";
 import { MAILING_LIST_HASH, scheduleMailingListHashScroll } from "@/lib/mailing-list-nav";
+import { getScrollBehavior } from "@/lib/utils";
+
+const HOME_SECTION_HASHES = new Set(["#sanctuary-communication", "#master-plan"]);
+const HOME_SECTION_LAYOUT_DELTA_PX = 1;
+const HOME_SECTION_LAYOUT_STABLE_FRAMES = 2;
+const HOME_SECTION_SCROLL_MAX_WAIT_MS = 1400;
+
+function scrollToHomeSectionHash(hash: string) {
+  const sectionId = hash.slice(1);
+  if (!sectionId) return;
+
+  document.getElementById(sectionId)?.scrollIntoView({
+    behavior: getScrollBehavior(),
+    block: "start",
+  });
+}
+
+function getHomeSectionScrollSample(hash: string) {
+  const sectionId = hash.slice(1);
+  if (!sectionId) return null;
+
+  const target = document.getElementById(sectionId);
+  if (!target) return null;
+
+  return {
+    navBottom: document.querySelector<HTMLElement>("nav")?.getBoundingClientRect().bottom ?? 0,
+    scrollHeight: document.documentElement.scrollHeight,
+    targetTop: target.getBoundingClientRect().top + window.scrollY,
+  };
+}
 
 function getUnavailablePath(state: unknown) {
   if (!state || typeof state !== "object" || !("unavailablePath" in state)) {
@@ -34,6 +64,82 @@ export default function Home() {
     if (location.hash !== MAILING_LIST_HASH) return;
     return scheduleMailingListHashScroll();
   }, [location.pathname, location.hash]);
+
+  useEffect(() => {
+    if (!HOME_SECTION_HASHES.has(location.hash)) return;
+
+    let cancelled = false;
+    let frameId: number | null = null;
+    let lastSample: ReturnType<typeof getHomeSectionScrollSample> = null;
+    let stableFrameCount = 0;
+    let pageLoaded = document.readyState === "complete";
+    let fontsReady = !("fonts" in document) || document.fonts.status === "loaded";
+    const startedAt = performance.now();
+
+    const scheduleTick = () => {
+      if (frameId !== null || cancelled) return;
+      frameId = window.requestAnimationFrame(tick);
+    };
+
+    const tick = () => {
+      frameId = null;
+      if (cancelled) return;
+
+      const sample = getHomeSectionScrollSample(location.hash);
+      if (!sample) {
+        scheduleTick();
+        return;
+      }
+
+      if (
+        lastSample &&
+        Math.abs(sample.targetTop - lastSample.targetTop) <= HOME_SECTION_LAYOUT_DELTA_PX &&
+        Math.abs(sample.navBottom - lastSample.navBottom) <= HOME_SECTION_LAYOUT_DELTA_PX &&
+        Math.abs(sample.scrollHeight - lastSample.scrollHeight) <= HOME_SECTION_LAYOUT_DELTA_PX
+      ) {
+        stableFrameCount += 1;
+      } else {
+        stableFrameCount = 0;
+      }
+
+      lastSample = sample;
+
+      const layoutReady = pageLoaded && fontsReady;
+      const exceededWait = performance.now() - startedAt >= HOME_SECTION_SCROLL_MAX_WAIT_MS;
+      if ((layoutReady && stableFrameCount >= HOME_SECTION_LAYOUT_STABLE_FRAMES) || exceededWait) {
+        scrollToHomeSectionHash(location.hash);
+        return;
+      }
+
+      scheduleTick();
+    };
+
+    const handleLoad = () => {
+      pageLoaded = true;
+      scheduleTick();
+    };
+
+    if (!pageLoaded) {
+      window.addEventListener("load", handleLoad, { once: true });
+    }
+
+    if (!fontsReady && "fonts" in document) {
+      void document.fonts.ready.then(() => {
+        fontsReady = true;
+        scheduleTick();
+      });
+    }
+
+    scheduleTick();
+
+    return () => {
+      cancelled = true;
+      if (frameId !== null) {
+        window.cancelAnimationFrame(frameId);
+      }
+      window.removeEventListener("load", handleLoad);
+    };
+  }, [location.hash]);
 
   useEffect(() => {
     const redirectedPath = getUnavailablePath(location.state);

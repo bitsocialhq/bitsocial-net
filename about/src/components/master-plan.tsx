@@ -141,15 +141,21 @@ export default function MasterPlan() {
   return (
     <section className="py-24 px-6">
       <div className="max-w-7xl mx-auto">
-        <m.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="block text-xs md:text-sm font-display tracking-[0.2em] uppercase text-center mb-6 text-muted-foreground/50"
+        <div
+          id="master-plan"
+          data-home-section-label
+          className="scroll-mt-[99px] md:scroll-mt-[103px]"
         >
-          {t("masterPlan.sectionLabel")}
-        </m.div>
+          <m.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="block text-xs md:text-sm font-display tracking-[0.2em] uppercase text-center mb-6 text-muted-foreground/50"
+          >
+            {t("masterPlan.sectionLabel")}
+          </m.div>
+        </div>
         <m.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

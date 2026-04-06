@@ -24,7 +24,6 @@
   "footer": {
     "tagline": "सोशल अॅप्ससाठी ओपन सोर्स P2P नेटवर्क",
     "bottomTagline": "सर्व सोशल मीडिया विकेंद्रीकृत करूया",
-    "product": "उत्पाद",
     "apps": "अॅप्स",
     "docs": "दस्तऐवज",
     "status": "स्थिती",
@@ -37,7 +36,8 @@
     "telegram": "Telegram",
     "newsletter": "बातमीपत्र",
     "contribute": "हे पेज सुधारित करा",
-    "privacy": "गोपनीयता"
+    "privacy": "गोपनीयता",
+    "explore": "शोधा"
   },
   "mailingList": {
     "title": "अपडेट रहा",

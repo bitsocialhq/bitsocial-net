@@ -24,7 +24,6 @@
   "footer": {
     "tagline": "Rete P2P open source per app social",
     "bottomTagline": "Decentralizziamo tutti i social media",
-    "product": "Prodotto",
     "apps": "App",
     "docs": "Documentazione",
     "status": "Stato",
@@ -37,7 +36,8 @@
     "telegram": "Telegram",
     "newsletter": "Newsletter",
     "contribute": "Migliora questa pagina",
-    "privacy": "Privacy"
+    "privacy": "Privacy",
+    "explore": "Esplora"
   },
   "mailingList": {
     "title": "Resta aggiornato",

@@ -23,7 +23,7 @@ export default function Footer() {
   const location = useLocation();
   const navigate = useNavigate();
   const [showDominoEffect, setShowDominoEffect] = useState(false);
-  const productLinks = [
+  const exploreLinks = [
     { label: t("footer.apps"), to: "/apps" },
     { label: t("footer.docs"), to: DOCS_LINKS.home },
     { label: t("footer.status"), to: STATS_LINKS.home },
@@ -75,13 +75,13 @@ export default function Footer() {
           </div>
 
           {/* Product */}
-          {productLinks.length > 0 ? (
+          {exploreLinks.length > 0 ? (
             <div>
               <h4 className="text-xs font-display font-semibold uppercase tracking-widest text-foreground/70 mb-5">
-                {t("footer.product")}
+                {t("footer.explore")}
               </h4>
               <ul className="space-y-2.5">
-                {productLinks.map((link) => (
+                {exploreLinks.map((link) => (
                   <li key={link.to}>
                     {isDocsPath(link.to) || isStatsPath(link.to) ? (
                       <a href={link.to} className={linkClassName}>

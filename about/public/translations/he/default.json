@@ -24,7 +24,6 @@
   "footer": {
     "tagline": "רשת P2P קוד פתוח לאפליקציות חברתיות",
     "bottomTagline": "בואו נבזר את כל רשתות החברתיות",
-    "product": "מוצר",
     "apps": "אפליקציות",
     "docs": "תיעוד",
     "status": "סטטוס",
@@ -37,7 +36,8 @@
     "telegram": "Telegram",
     "newsletter": "ניוזלטר",
     "contribute": "שפרו את הדף הזה",
-    "privacy": "פרטיות"
+    "privacy": "פרטיות",
+    "explore": "גלה"
   },
   "mailingList": {
     "title": "הישארו מעודכנים",

@@ -24,7 +24,6 @@
   "footer": {
     "tagline": "Rede P2P de código aberto para aplicativos sociais",
     "bottomTagline": "Descentralizemos todas as redes sociais",
-    "product": "Produto",
     "apps": "Aplicativos",
     "docs": "Documentação",
     "status": "Estado",
@@ -37,7 +36,8 @@
     "telegram": "Telegram",
     "newsletter": "Boletim",
     "contribute": "Melhore esta página",
-    "privacy": "Privacidade"
+    "privacy": "Privacidade",
+    "explore": "Explorar"
   },
   "mailingList": {
     "title": "Fique por dentro",

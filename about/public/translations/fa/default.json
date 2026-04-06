@@ -24,7 +24,6 @@
   "footer": {
     "tagline": "شبکه P2P متن‌باز برای اپلیکیشن‌های اجتماعی",
     "bottomTagline": "بیایید همه شبکه‌های اجتماعی را غیرمتمرکز کنیم",
-    "product": "محصول",
     "apps": "برنامه‌ها",
     "docs": "مستندات",
     "status": "وضعیت",
@@ -37,7 +36,8 @@
     "telegram": "Telegram",
     "newsletter": "خبرنامه",
     "contribute": "این صفحه را بهبود دهید",
-    "privacy": "حریم خصوصی"
+    "privacy": "حریم خصوصی",
+    "explore": "کاوش"
   },
   "mailingList": {
     "title": "در جریان باشید",

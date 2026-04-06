@@ -24,7 +24,6 @@
   "footer": {
     "tagline": "Mạng P2P mã nguồn mở cho ứng dụng xã hội",
     "bottomTagline": "Cùng nhau phi tập trung hóa tất cả mạng xã hội",
-    "product": "Sản phẩm",
     "apps": "Ứng dụng",
     "docs": "Tài liệu",
     "status": "Trạng thái",
@@ -37,7 +36,8 @@
     "telegram": "Telegram",
     "newsletter": "Bản tin",
     "contribute": "Cải thiện trang này",
-    "privacy": "Quyền riêng tư"
+    "privacy": "Quyền riêng tư",
+    "explore": "Khám phá"
   },
   "mailingList": {
     "title": "Luôn cập nhật",

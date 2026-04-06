@@ -24,7 +24,6 @@
   "footer": {
     "tagline": "Rețea P2P open source pentru aplicații sociale",
     "bottomTagline": "Descentralizăm toate rețelele sociale",
-    "product": "Produs",
     "apps": "Aplicații",
     "docs": "Documentație",
     "status": "Status",
@@ -37,7 +36,8 @@
     "telegram": "Telegram",
     "newsletter": "Buletin",
     "contribute": "Îmbunătățește această pagină",
-    "privacy": "Confidențialitate"
+    "privacy": "Confidențialitate",
+    "explore": "Explorează"
   },
   "mailingList": {
     "title": "Rămâi la curent",

@@ -24,7 +24,6 @@
   "footer": {
     "tagline": "Nyílt forráskódú P2P hálózat közösségi alkalmazásokhoz",
     "bottomTagline": "Decentralizáljuk az összes közösségi médiát",
-    "product": "Termék",
     "apps": "Alkalmazások",
     "docs": "Dokumentáció",
     "status": "Állapot",
@@ -37,7 +36,8 @@
     "telegram": "Telegram",
     "newsletter": "Hírlevél",
     "contribute": "Tedd jobbá ezt az oldalt",
-    "privacy": "Adatvédelem"
+    "privacy": "Adatvédelem",
+    "explore": "Felfedezés"
   },
   "mailingList": {
     "title": "Maradjon naprakész",

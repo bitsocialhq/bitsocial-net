@@ -24,7 +24,6 @@
   "footer": {
     "tagline": "سوشل ایپس کے لیے اوپن سورس P2P نیٹ ورک",
     "bottomTagline": "آئیے تمام سوشل میڈیا کو غیر مرکزی بنائیں",
-    "product": "پروڈکٹ",
     "apps": "ایپس",
     "docs": "دستاویزات",
     "status": "حیثیت",
@@ -37,7 +36,8 @@
     "telegram": "Telegram",
     "newsletter": "نیوزلیٹر",
     "contribute": "اس صفحے کو بہتر بنائیں",
-    "privacy": "رازداری"
+    "privacy": "رازداری",
+    "explore": "دریافت کریں"
   },
   "mailingList": {
     "title": "باخبر رہیں",

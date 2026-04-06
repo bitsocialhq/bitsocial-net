@@ -24,7 +24,6 @@
   "footer": {
     "tagline": "Open Source P2P-netværk til sociale apps",
     "bottomTagline": "Lad os decentralisere alle sociale medier",
-    "product": "Produkt",
     "apps": "Apps",
     "docs": "Dokumentation",
     "status": "Status",
@@ -37,7 +36,8 @@
     "telegram": "Telegram",
     "newsletter": "Nyhedsbrev",
     "contribute": "Forbedr denne side",
-    "privacy": "Privatliv"
+    "privacy": "Privatliv",
+    "explore": "Udforsk"
   },
   "mailingList": {
     "title": "Hold dig opdateret",

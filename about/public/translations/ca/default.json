@@ -24,7 +24,6 @@
   "footer": {
     "tagline": "Xarxa P2P de codi obert per a aplicacions socials",
     "bottomTagline": "Descentralitzem totes les xarxes socials",
-    "product": "Producte",
     "apps": "Aplicacions",
     "docs": "Documentació",
     "status": "Estat",
@@ -37,7 +36,8 @@
     "telegram": "Telegram",
     "newsletter": "Butlletí",
     "contribute": "Millora aquesta pàgina",
-    "privacy": "Privacitat"
+    "privacy": "Privacitat",
+    "explore": "Explora"
   },
   "mailingList": {
     "title": "No et perdis res",

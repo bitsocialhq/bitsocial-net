@@ -24,7 +24,6 @@
   "footer": {
     "tagline": "Rrjet P2P me burim të hapur për aplikacione sociale",
     "bottomTagline": "Descentralizojmë të gjitha rrjetet sociale",
-    "product": "Produkti",
     "apps": "Aplikacionet",
     "docs": "Dokumentacioni",
     "status": "Statusi",
@@ -37,7 +36,8 @@
     "telegram": "Telegram",
     "newsletter": "Buletini",
     "contribute": "Përmirëso këtë faqe",
-    "privacy": "Privatësia"
+    "privacy": "Privatësia",
+    "explore": "Eksploro"
   },
   "mailingList": {
     "title": "Qëndro në hap",

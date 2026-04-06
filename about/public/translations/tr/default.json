@@ -24,7 +24,6 @@
   "footer": {
     "tagline": "Sosyal uygulamalar için açık kaynak P2P ağı",
     "bottomTagline": "Tüm sosyal medyayı birlikte merkeziyetsizleştirelim",
-    "product": "Ürün",
     "apps": "Uygulamalar",
     "docs": "Dokümantasyon",
     "status": "Durum",
@@ -37,7 +36,8 @@
     "telegram": "Telegram",
     "newsletter": "Bülten",
     "contribute": "Bu sayfayı iyileştir",
-    "privacy": "Gizlilik"
+    "privacy": "Gizlilik",
+    "explore": "Keşfet"
   },
   "mailingList": {
     "title": "Haberdar olun",

@@ -24,7 +24,6 @@
   "footer": {
     "tagline": "Open Source P2P-netwerk voor sociale apps",
     "bottomTagline": "Laten we alle sociale media decentraliseren",
-    "product": "Product",
     "apps": "Apps",
     "docs": "Documentatie",
     "status": "Status",
@@ -37,7 +36,8 @@
     "telegram": "Telegram",
     "newsletter": "Nieuwsbrief",
     "contribute": "Verbeter deze pagina",
-    "privacy": "Privacy"
+    "privacy": "Privacy",
+    "explore": "Ontdekken"
   },
   "mailingList": {
     "title": "Blijf op de hoogte",

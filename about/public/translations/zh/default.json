@@ -24,7 +24,6 @@
   "footer": {
     "tagline": "面向社交应用的开放源码 P2P 网络",
     "bottomTagline": "一起去中心化所有社交媒体",
-    "product": "产品",
     "apps": "应用",
     "docs": "文档",
     "status": "状态",
@@ -37,7 +36,8 @@
     "telegram": "Telegram",
     "newsletter": "通讯",
     "contribute": "改进此页面",
-    "privacy": "隐私"
+    "privacy": "隐私",
+    "explore": "探索"
   },
   "mailingList": {
     "title": "保持关注",

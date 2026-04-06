@@ -24,7 +24,6 @@
   "footer": {
     "tagline": "Jaringan P2P sumber terbuka untuk aplikasi sosial",
     "bottomTagline": "Mari desentralisasikan semua media sosial",
-    "product": "Produk",
     "apps": "Aplikasi",
     "docs": "Dokumentasi",
     "status": "Status",
@@ -37,7 +36,8 @@
     "telegram": "Telegram",
     "newsletter": "Buletin",
     "contribute": "Tingkatkan halaman ini",
-    "privacy": "Privasi"
+    "privacy": "Privasi",
+    "explore": "Jelajahi"
   },
   "mailingList": {
     "title": "Tetap ikuti perkembangan",

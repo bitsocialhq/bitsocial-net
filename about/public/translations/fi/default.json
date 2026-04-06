@@ -24,7 +24,6 @@
   "footer": {
     "tagline": "Avoimen lähdekoodin P2P-verkko sosiaalisille sovelluksille",
     "bottomTagline": "Hajautetaan kaikki sosiaalisen median palvelut yhdessä",
-    "product": "Tuote",
     "apps": "Sovellukset",
     "docs": "Dokumentaatio",
     "status": "Tila",
@@ -37,7 +36,8 @@
     "telegram": "Telegram",
     "newsletter": "Uutiskirje",
     "contribute": "Paranna tätä sivua",
-    "privacy": "Tietosuoja"
+    "privacy": "Tietosuoja",
+    "explore": "Tutki"
   },
   "mailingList": {
     "title": "Pysy kärryillä",

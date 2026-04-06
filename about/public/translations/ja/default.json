@@ -24,7 +24,6 @@
   "footer": {
     "tagline": "ソーシャルアプリ向けオープンソースP2Pネットワーク",
     "bottomTagline": "すべてのソーシャルメディアを分散化しよう",
-    "product": "製品",
     "apps": "アプリ",
     "docs": "ドキュメント",
     "status": "ステータス",
@@ -37,7 +36,8 @@
     "telegram": "Telegram",
     "newsletter": "ニュースレター",
     "contribute": "このページを改善する",
-    "privacy": "プライバシー"
+    "privacy": "プライバシー",
+    "explore": "探索"
   },
   "mailingList": {
     "title": "最新情報を受け取る",

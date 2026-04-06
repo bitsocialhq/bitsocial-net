@@ -24,7 +24,6 @@
   "footer": {
     "tagline": "Open Source na P2P Network para sa mga Social App",
     "bottomTagline": "I-decentralize natin ang lahat ng social media",
-    "product": "Produkto",
     "apps": "Mga App",
     "docs": "Mga Dokumento",
     "status": "Status",
@@ -37,7 +36,8 @@
     "telegram": "Telegram",
     "newsletter": "Newsletter",
     "contribute": "Pagbutihin ang pahinang ito",
-    "privacy": "Privacy"
+    "privacy": "Privacy",
+    "explore": "Tuklasin"
   },
   "mailingList": {
     "title": "Manatiling naka-antabay",

@@ -24,7 +24,6 @@
   "footer": {
     "tagline": "Síť P2P s otevřeným zdrojovým kódem pro sociální aplikace",
     "bottomTagline": "Dekentralizujme všechna sociální média",
-    "product": "Produkt",
     "apps": "Aplikace",
     "docs": "Dokumentace",
     "status": "Stav",
@@ -37,7 +36,8 @@
     "telegram": "Telegram",
     "newsletter": "Zpravodaj",
     "contribute": "Vylepšit tuto stránku",
-    "privacy": "Soukromí"
+    "privacy": "Soukromí",
+    "explore": "Prozkoumat"
   },
   "mailingList": {
     "title": "Buďte v obraze",

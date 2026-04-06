@@ -1,12 +1,12 @@
 ---
-title: seedit
+title: Seedit
 description: Szerver nélküli, decentralizált Reddit-stílusú fórum, amely a Bitsocial protokollra épül, ahol bárki létrehozhat és birtokolhat közösségeket.
 sidebar_position: 2
 ---
 
-# seedit
+# Seedit
 
-A seedit a régi stílusú Reddit szerver nélküli, adminisztrátor nélküli és teljesen decentralizált alternatívája, amely a Bitsocial protokollra épül. Teljes tulajdonjogot biztosít a felhasználóknak közösségeik felett – bárki létrehozhat egyet, és több közösség versenghet az alapértelmezett listázási helyekért.
+A Seedit a régi stílusú Reddit szerver nélküli, adminisztrátor nélküli és teljesen decentralizált alternatívája, amely a Bitsocial protokollra épül. Teljes tulajdonjogot biztosít a felhasználóknak közösségeik felett – bárki létrehozhat egyet, és több közösség versenghet az alapértelmezett listázási helyekért.
 
 ## Letöltések
 
@@ -19,7 +19,7 @@ A seedit a régi stílusú Reddit szerver nélküli, adminisztrátor nélküli �
 
 ## Hogyan működnek a közösségek
 
-A seedit a subredditekhez hasonló közösségekbe rendezi a tartalmat. Minden közösség a létrehozója tulajdonában van, és központosított adminisztráció nélkül működik. Ha több közösség ugyanazt az alapértelmezett helyet célozza meg, versenyezhetnek az adott pozícióért.
+A Seedit a subredditekhez hasonló közösségekbe rendezi a tartalmat. Minden közösség a létrehozója tulajdonában van, és központosított adminisztráció nélkül működik. Ha több közösség ugyanazt az alapértelmezett helyet célozza meg, versenyezhetnek az adott pozícióért.
 
 ### Közösség létrehozása
 

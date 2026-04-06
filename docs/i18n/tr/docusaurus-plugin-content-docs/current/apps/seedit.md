@@ -1,10 +1,10 @@
 ---
-title: seedit
+title: Seedit
 description: Herkesin topluluk oluşturup sahip olabileceği, Bitsocial protokolü üzerine kurulu, sunucusuz, merkezi olmayan Reddit tarzı bir forum.
 sidebar_position: 2
 ---
 
-# seedit
+# Seedit
 
 Seedit, Bitsocial protokolü üzerine kurulu, eski tarz Reddit'e sunucusuz, yöneticisiz ve tamamen merkezi olmayan bir alternatiftir. Kullanıcılara toplulukları üzerinde tam sahiplik sağlar; herkes bir topluluk oluşturabilir ve birden fazla topluluk, varsayılan listeleme alanları için rekabet edebilir.
 

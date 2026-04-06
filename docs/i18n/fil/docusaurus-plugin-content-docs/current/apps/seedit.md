@@ -1,12 +1,12 @@
 ---
-title: seedit
+title: Seedit
 description: Isang walang server, desentralisadong Reddit-style na forum na binuo sa Bitsocial protocol kung saan sinuman ay maaaring lumikha at magmay-ari ng mga komunidad.
 sidebar_position: 2
 ---
 
-# seedit
+# Seedit
 
-Ang seedit ay isang walang server, walang admin, at ganap na desentralisadong alternatibo sa lumang istilong Reddit, na binuo sa Bitsocial protocol. Binibigyan nito ang mga user ng kumpletong pagmamay-ari sa kanilang mga komunidad — kahit sino ay maaaring gumawa ng isa, at maraming komunidad ang maaaring makipagkumpitensya para sa mga default na slot ng listahan.
+Ang Seedit ay isang walang server, walang admin, at ganap na desentralisadong alternatibo sa lumang istilong Reddit, na binuo sa Bitsocial protocol. Binibigyan nito ang mga user ng kumpletong pagmamay-ari sa kanilang mga komunidad — kahit sino ay maaaring gumawa ng isa, at maraming komunidad ang maaaring makipagkumpitensya para sa mga default na slot ng listahan.
 
 ## Mga download
 
@@ -19,7 +19,7 @@ Ang seedit ay isang walang server, walang admin, at ganap na desentralisadong al
 
 ## Paano gumagana ang mga komunidad
 
-Ang seedit ay nag-aayos ng nilalaman sa mga komunidad na katulad ng mga subreddits. Ang bawat komunidad ay pagmamay-ari ng lumikha nito at nagpapatakbo nang walang sentralisadong pangangasiwa. Kapag maraming komunidad ang nagta-target sa parehong default na slot, maaari silang makipagkumpetensya para sa posisyong iyon.
+Ang Seedit ay nag-aayos ng nilalaman sa mga komunidad na katulad ng mga subreddits. Ang bawat komunidad ay pagmamay-ari ng lumikha nito at nagpapatakbo nang walang sentralisadong pangangasiwa. Kapag maraming komunidad ang nagta-target sa parehong default na slot, maaari silang makipagkumpetensya para sa posisyong iyon.
 
 ### Paglikha ng isang komunidad
 

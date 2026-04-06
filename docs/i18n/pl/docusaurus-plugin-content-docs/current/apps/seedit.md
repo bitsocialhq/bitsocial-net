@@ -1,10 +1,10 @@
 ---
-title: seedit
+title: Seedit
 description: Bezserwerowe, zdecentralizowane forum w stylu Reddit zbudowane na protokole Bitsocial, na którym każdy może tworzyć społeczności i posiadać je.
 sidebar_position: 2
 ---
 
-# seedit
+# Seedit
 
 nasionko to bezserwerowa, pozbawiona administratora i w pełni zdecentralizowana alternatywa dla Reddita w starym stylu, zbudowana na protokole Bitsocial. Daje użytkownikom pełną własność nad swoimi społecznościami — każdy może je utworzyć, a wiele społeczności może konkurować o domyślne miejsca na listy.
 

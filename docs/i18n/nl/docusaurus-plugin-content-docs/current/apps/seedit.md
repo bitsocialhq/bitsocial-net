@@ -1,12 +1,12 @@
 ---
-title: seedit
+title: Seedit
 description: Een serverloos, gedecentraliseerd forum in Reddit-stijl gebouwd op het Bitsocial-protocol waar iedereen communities kan creëren en bezitten.
 sidebar_position: 2
 ---
 
-# seedit
+# Seedit
 
-seedit is een serverloos, beheerdersloos en volledig gedecentraliseerd alternatief voor de oude stijl Reddit, gebouwd op het Bitsocial-protocol. Het geeft gebruikers het volledige eigendom over hun community's: iedereen kan er een maken, en meerdere community's kunnen strijden om standaard vermeldingsplaatsen.
+Seedit is een serverloos, beheerdersloos en volledig gedecentraliseerd alternatief voor de oude stijl Reddit, gebouwd op het Bitsocial-protocol. Het geeft gebruikers het volledige eigendom over hun community's: iedereen kan er een maken, en meerdere community's kunnen strijden om standaard vermeldingsplaatsen.
 
 ## Downloads
 
@@ -19,7 +19,7 @@ seedit is een serverloos, beheerdersloos en volledig gedecentraliseerd alternati
 
 ## Hoe communities werken
 
-seedit organiseert inhoud in vergelijkbare communities naar subreddits. Elke community is eigendom van de maker ervan en werkt zonder gecentraliseerd beheer. Wanneer meerdere community's zich op dezelfde standaardpositie richten, kunnen ze strijden om die positie.
+Seedit organiseert inhoud in vergelijkbare communities naar subreddits. Elke community is eigendom van de maker ervan en werkt zonder gecentraliseerd beheer. Wanneer meerdere community's zich op dezelfde standaardpositie richten, kunnen ze strijden om die positie.
 
 ### Een community maken
 

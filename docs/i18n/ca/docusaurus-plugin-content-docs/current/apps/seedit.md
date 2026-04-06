@@ -1,12 +1,12 @@
 ---
-title: seedit
+title: Seedit
 description: Un fòrum sense servidor i descentralitzat d'estil Reddit basat en el protocol Bitsocial on qualsevol pot crear i tenir comunitats.
 sidebar_position: 2
 ---
 
-# seedit
+# Seedit
 
-seedit és una alternativa sense servidor, sense administrador i totalment descentralitzada a Reddit d'estil antic, basada en el protocol Bitsocial. Ofereix als usuaris la propietat total de les seves comunitats: qualsevol pot crear-ne una i diverses comunitats poden competir per les places de llista predeterminades.
+Seedit és una alternativa sense servidor, sense administrador i totalment descentralitzada a Reddit d'estil antic, basada en el protocol Bitsocial. Ofereix als usuaris la propietat total de les seves comunitats: qualsevol pot crear-ne una i diverses comunitats poden competir per les places de llista predeterminades.
 
 ## Descàrregues
 
@@ -19,7 +19,7 @@ seedit és una alternativa sense servidor, sense administrador i totalment desce
 
 ## Com funcionen les comunitats
 
-seedit organitza el contingut en comunitats semblants als subreddits. Cada comunitat és propietat del seu creador i funciona sense administració centralitzada. Quan diverses comunitats apunten al mateix espai predeterminat, poden competir per aquesta posició.
+Seedit organitza el contingut en comunitats semblants als subreddits. Cada comunitat és propietat del seu creador i funciona sense administració centralitzada. Quan diverses comunitats apunten al mateix espai predeterminat, poden competir per aquesta posició.
 
 ### Creant una comunitat
 

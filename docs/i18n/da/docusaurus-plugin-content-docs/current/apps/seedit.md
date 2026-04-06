@@ -1,12 +1,12 @@
 ---
-title: seedit
+title: Seedit
 description: Et serverløst, decentraliseret Reddit-stil forum bygget på Bitsocial-protokollen, hvor alle kan oprette og eje fællesskaber.
 sidebar_position: 2
 ---
 
-# seedit
+# Seedit
 
-seedit er et serverløst, adminløst og fuldt decentraliseret alternativ til gammeldags Reddit, bygget på Bitsocial-protokollen. Det giver brugerne fuldstændigt ejerskab over deres fællesskaber - alle kan oprette et, og flere fællesskaber kan konkurrere om standardlistepladser.
+Seedit er et serverløst, adminløst og fuldt decentraliseret alternativ til gammeldags Reddit, bygget på Bitsocial-protokollen. Det giver brugerne fuldstændigt ejerskab over deres fællesskaber - alle kan oprette et, og flere fællesskaber kan konkurrere om standardlistepladser.
 
 ## Downloads
 
@@ -19,7 +19,7 @@ seedit er et serverløst, adminløst og fuldt decentraliseret alternativ til gam
 
 ## Hvordan fællesskaber fungerer
 
-seedit organiserer indhold i fællesskaber, der ligner subreddits. Hvert fællesskab ejes af dets skaber og fungerer uden centraliseret administration. Når flere fællesskaber målretter mod den samme standardplads, kan de konkurrere om den position.
+Seedit organiserer indhold i fællesskaber, der ligner subreddits. Hvert fællesskab ejes af dets skaber og fungerer uden centraliseret administration. Når flere fællesskaber målretter mod den samme standardplads, kan de konkurrere om den position.
 
 ### At skabe et fællesskab
 

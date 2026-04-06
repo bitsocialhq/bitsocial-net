@@ -1,12 +1,12 @@
 ---
-title: seedit
+title: Seedit
 description: Bezserverové decentralizované fórum ve stylu Reddit postavené na protokolu Bitsocial, kde může kdokoli vytvářet a vlastnit komunity.
 sidebar_position: 2
 ---
 
-# seedit
+# Seedit
 
-seedit je bezserverová, správná a plně decentralizovaná alternativa ke starému Redditu, postavená na protokolu Bitsocial. Poskytuje uživatelům úplné vlastnictví jejich komunit – kdokoli může jednu vytvořit a několik komunit může soutěžit o výchozí bloky.
+Seedit je bezserverová, správná a plně decentralizovaná alternativa ke starému Redditu, postavená na protokolu Bitsocial. Poskytuje uživatelům úplné vlastnictví jejich komunit – kdokoli může jednu vytvořit a několik komunit může soutěžit o výchozí bloky.
 
 ## Stahování
 
@@ -19,7 +19,7 @@ seedit je bezserverová, správná a plně decentralizovaná alternativa ke star
 
 ## Jak fungují komunity
 
-seedit organizuje obsah do komunit podobně jako subreddits. Každá komunita je vlastněna jejím tvůrcem a funguje bez centralizované správy. Když více komunit cílí na stejný výchozí slot, mohou soutěžit o tuto pozici.
+Seedit organizuje obsah do komunit podobně jako subreddits. Každá komunita je vlastněna jejím tvůrcem a funguje bez centralizované správy. Když více komunit cílí na stejný výchozí slot, mohou soutěžit o tuto pozici.
 
 ### Vytváření komunity
 

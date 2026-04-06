@@ -1,12 +1,12 @@
 ---
-title: seedit
+title: Seedit
 description: Forum bergaya Reddit terdesentralisasi dan tanpa server yang dibangun di atas protokol Bitsocial tempat siapa pun dapat membuat dan memiliki komunitas.
 sidebar_position: 2
 ---
 
-# seedit
+# Seedit
 
-seedit adalah alternatif tanpa server, tanpa admin, dan terdesentralisasi sepenuhnya untuk Reddit gaya lama, yang dibangun di atas protokol Bitsocial. Hal ini memberi pengguna kepemilikan penuh atas komunitas mereka — siapa pun dapat membuatnya, dan beberapa komunitas dapat bersaing untuk mendapatkan slot daftar default.
+Seedit adalah alternatif tanpa server, tanpa admin, dan terdesentralisasi sepenuhnya untuk Reddit gaya lama, yang dibangun di atas protokol Bitsocial. Hal ini memberi pengguna kepemilikan penuh atas komunitas mereka — siapa pun dapat membuatnya, dan beberapa komunitas dapat bersaing untuk mendapatkan slot daftar default.
 
 ## Unduhan
 
@@ -19,7 +19,7 @@ seedit adalah alternatif tanpa server, tanpa admin, dan terdesentralisasi sepenu
 
 ## Bagaimana komunitas bekerja
 
-seedit mengatur konten ke dalam komunitas yang mirip dengan subreddits. Setiap komunitas dimiliki oleh penciptanya dan beroperasi tanpa administrasi terpusat. Ketika beberapa komunitas menargetkan slot default yang sama, mereka dapat bersaing untuk mendapatkan posisi tersebut.
+Seedit mengatur konten ke dalam komunitas yang mirip dengan subreddits. Setiap komunitas dimiliki oleh penciptanya dan beroperasi tanpa administrasi terpusat. Ketika beberapa komunitas menargetkan slot default yang sama, mereka dapat bersaing untuk mendapatkan posisi tersebut.
 
 ### Menciptakan komunitas
 

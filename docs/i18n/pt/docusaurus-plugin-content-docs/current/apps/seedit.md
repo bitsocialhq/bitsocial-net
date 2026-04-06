@@ -1,12 +1,12 @@
 ---
-title: seedit
+title: Seedit
 description: Um fórum descentralizado e sem servidor no estilo Reddit, construído no protocolo Bitsocial, onde qualquer pessoa pode criar e possuir comunidades.
 sidebar_position: 2
 ---
 
-# seedit
+# Seedit
 
-seedit é uma alternativa sem servidor, sem administração e totalmente descentralizada ao antigo Reddit, construído no protocolo Bitsocial. Ele dá aos usuários propriedade total sobre suas comunidades – qualquer um pode criar uma, e várias comunidades podem competir por vagas de listagem padrão.
+Seedit é uma alternativa sem servidor, sem administração e totalmente descentralizada ao antigo Reddit, construído no protocolo Bitsocial. Ele dá aos usuários propriedade total sobre suas comunidades – qualquer um pode criar uma, e várias comunidades podem competir por vagas de listagem padrão.
 
 ## Transferências
 
@@ -19,7 +19,7 @@ seedit é uma alternativa sem servidor, sem administração e totalmente descent
 
 ## Como funcionam as comunidades
 
-seedit organiza o conteúdo em comunidades semelhantes aos subreddits. Cada comunidade pertence ao seu criador e opera sem administração centralizada. Quando várias comunidades têm como alvo o mesmo slot padrão, elas podem competir por essa posição.
+Seedit organiza o conteúdo em comunidades semelhantes aos subreddits. Cada comunidade pertence ao seu criador e opera sem administração centralizada. Quando várias comunidades têm como alvo o mesmo slot padrão, elas podem competir por essa posição.
 
 ### Criando uma comunidade
 

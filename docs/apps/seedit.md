@@ -1,12 +1,12 @@
 ---
-title: seedit
+title: Seedit
 description: A serverless, decentralized Reddit-style forum built on the Bitsocial protocol where anyone can create and own communities.
 sidebar_position: 2
 ---
 
-# seedit
+# Seedit
 
-seedit is a serverless, adminless, and fully decentralized alternative to old-style Reddit, built on the Bitsocial protocol. It gives users complete ownership over their communities — anyone can create one, and multiple communities can compete for default listing slots.
+Seedit is a serverless, adminless, and fully decentralized alternative to old-style Reddit, built on the Bitsocial protocol. It gives users complete ownership over their communities — anyone can create one, and multiple communities can compete for default listing slots.
 
 ## Downloads
 
@@ -19,7 +19,7 @@ seedit is a serverless, adminless, and fully decentralized alternative to old-st
 
 ## How communities work
 
-seedit organizes content into communities similar to subreddits. Each community is owned by its creator and operates without centralized administration. When multiple communities target the same default slot, they can compete for that position.
+Seedit organizes content into communities similar to subreddits. Each community is owned by its creator and operates without centralized administration. When multiple communities target the same default slot, they can compete for that position.
 
 ### Creating a community
 

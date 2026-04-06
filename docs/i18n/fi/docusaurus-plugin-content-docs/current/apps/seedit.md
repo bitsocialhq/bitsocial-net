@@ -1,12 +1,12 @@
 ---
-title: seedit
+title: Seedit
 description: Palvelimeton, hajautettu Reddit-tyylinen foorumi, joka on rakennettu Bitsocial-protokollalle, jossa kuka tahansa voi luoda ja omistaa yhteisöjä.
 sidebar_position: 2
 ---
 
-# seedit
+# Seedit
 
-seedit on palvelimeton, järjestelmänvalvojaton ja täysin hajautettu vaihtoehto vanhanaikaiselle Redditille, joka on rakennettu Bitsocial-protokollalle. Se antaa käyttäjille täyden omistusoikeuden yhteisöihinsä – kuka tahansa voi luoda sellaisen, ja useat yhteisöt voivat kilpailla oletuslistauspaikoista.
+Seedit on palvelimeton, järjestelmänvalvojaton ja täysin hajautettu vaihtoehto vanhanaikaiselle Redditille, joka on rakennettu Bitsocial-protokollalle. Se antaa käyttäjille täyden omistusoikeuden yhteisöihinsä – kuka tahansa voi luoda sellaisen, ja useat yhteisöt voivat kilpailla oletuslistauspaikoista.
 
 ## Lataukset
 
@@ -19,7 +19,7 @@ seedit on palvelimeton, järjestelmänvalvojaton ja täysin hajautettu vaihtoeht
 
 ## Miten yhteisöt toimivat
 
-seedit järjestää sisällön subreddittien kaltaisiin yhteisöihin. Jokainen yhteisö on luojansa omistama ja toimii ilman keskitettyä hallintoa. Kun useat yhteisöt kohdistavat samaan oletuspaikkaan, ne voivat kilpailla kyseisestä paikasta.
+Seedit järjestää sisällön subreddittien kaltaisiin yhteisöihin. Jokainen yhteisö on luojansa omistama ja toimii ilman keskitettyä hallintoa. Kun useat yhteisöt kohdistavat samaan oletuspaikkaan, ne voivat kilpailla kyseisestä paikasta.
 
 ### Yhteisön luominen
 

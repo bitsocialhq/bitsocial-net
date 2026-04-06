@@ -1,12 +1,12 @@
 ---
-title: seedit
+title: Seedit
 description: Un forum descentralizat, în stil Reddit, fără server, construit pe protocolul Bitsocial, unde oricine poate crea și deține comunități.
 sidebar_position: 2
 ---
 
-# seedit
+# Seedit
 
-seedit este o alternativă fără server, fără administrator și complet descentralizată la stilul vechi Reddit, construită pe protocolul Bitsocial. Oferă utilizatorilor proprietatea completă asupra comunităților lor - oricine poate crea una, iar mai multe comunități pot concura pentru spațiile prestabilite de listă.
+Seedit este o alternativă fără server, fără administrator și complet descentralizată la stilul vechi Reddit, construită pe protocolul Bitsocial. Oferă utilizatorilor proprietatea completă asupra comunităților lor - oricine poate crea una, iar mai multe comunități pot concura pentru spațiile prestabilite de listă.
 
 ## Descărcări
 
@@ -19,7 +19,7 @@ seedit este o alternativă fără server, fără administrator și complet desce
 
 ## Cum funcționează comunitățile
 
-seedit organizează conținutul în comunități similare subreddit-urilor. Fiecare comunitate este deținută de creatorul ei și funcționează fără administrare centralizată. Când mai multe comunități vizează același slot implicit, pot concura pentru acea poziție.
+Seedit organizează conținutul în comunități similare subreddit-urilor. Fiecare comunitate este deținută de creatorul ei și funcționează fără administrare centralizată. Când mai multe comunități vizează același slot implicit, pot concura pentru acea poziție.
 
 ### Crearea unei comunități
 

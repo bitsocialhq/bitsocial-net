@@ -1,10 +1,10 @@
 ---
-title: seedit
+title: Seedit
 description: Ein serverloses, dezentrales Forum im Reddit-Stil, das auf dem Bitsocial-Protokoll basiert und in dem jeder Communities erstellen und besitzen kann.
 sidebar_position: 2
 ---
 
-# seedit
+# Seedit
 
 Seedit ist eine serverlose, verwaltungslose und vollständig dezentrale Alternative zum altmodischen Reddit, die auf dem Bitsocial-Protokoll basiert. Es gibt Benutzern die vollständige Kontrolle über ihre Communities – jeder kann eine erstellen und mehrere Communities können um Standardeintragsplätze konkurrieren.
 

@@ -1,10 +1,10 @@
 ---
-title: seedit
+title: Seedit
 description: 一个基于 Bitsocial 协议构建的无服务器、去中心化 Reddit 风格的论坛，任何人都可以在其中创建和拥有社区。
 sidebar_position: 2
 ---
 
-# seedit
+# Seedit
 
 Seedit 是一种无服务器、无管理且完全去中心化的旧式 Reddit 替代方案，基于 Bitsocial 协议构建。它赋予用户对其社区的完全所有权——任何人都可以创建社区，多个社区可以竞争默认列表位置。
 

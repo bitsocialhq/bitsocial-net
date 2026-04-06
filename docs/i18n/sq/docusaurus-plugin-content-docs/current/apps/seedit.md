@@ -1,10 +1,10 @@
 ---
-title: seedit
+title: Seedit
 description: Një forum pa server, i decentralizuar i stilit Reddit, i ndërtuar mbi protokollin Bitsocial, ku çdokush mund të krijojë dhe të zotërojë komunitete.
 sidebar_position: 2
 ---
 
-# seedit
+# Seedit
 
 sedit është një alternativë pa server, pa administrim dhe plotësisht e decentralizuar ndaj Reddit të stilit të vjetër, e ndërtuar mbi protokollin Bitsocial. Ai u jep përdoruesve pronësi të plotë mbi komunitetet e tyre – çdokush mund të krijojë një të tillë dhe shumë komunitete mund të konkurrojnë për lojëra elektronike të paracaktuara të listimit.
 

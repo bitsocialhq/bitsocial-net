@@ -1,10 +1,10 @@
 ---
-title: seedit
+title: Seedit
 description: Một diễn đàn kiểu Reddit phi tập trung, không có máy chủ được xây dựng trên giao thức Bitsocial nơi mọi người có thể tạo và sở hữu các cộng đồng.
 sidebar_position: 2
 ---
 
-# seedit
+# Seedit
 
 Seedit là một giải pháp thay thế không cần máy chủ, không cần quản trị viên và được phân quyền hoàn toàn cho Reddit kiểu cũ, được xây dựng trên giao thức Bitsocial. It gives users complete ownership over their communities — anyone can create one, and multiple communities can compete for default listing slots.
 

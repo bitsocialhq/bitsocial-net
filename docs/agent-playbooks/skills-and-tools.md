@@ -48,3 +48,8 @@ Avoid GitHub MCP and browser MCP servers for this project because they add signi
 
 - GitHub operations: use `gh` CLI.
 - Browser operations: use `playwright-cli`.
+
+## Model Availability
+
+- `composer-2` is available only in Cursor. Do not configure it under `.claude/` or `.codex/`.
+- For `.codex/agents/**`, use `gpt-5.4` by default and reserve `gpt-5.4-mini` for intentionally lightweight tasks. Do not use `gpt-5.3-codex` or `gpt-5.3-codex-spark`.

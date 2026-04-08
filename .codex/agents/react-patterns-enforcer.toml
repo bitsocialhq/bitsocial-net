@@ -1,4 +1,4 @@
-model = "gpt-5.3-codex"
+model = "gpt-5.4"
 model_reasoning_effort = "medium"
 developer_instructions = """
 Review only the recently changed React files or the file set the parent agent names.

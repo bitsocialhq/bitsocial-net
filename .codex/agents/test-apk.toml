@@ -1,4 +1,4 @@
-model = "gpt-5.3-codex"
+model = "gpt-5.4"
 model_reasoning_effort = "medium"
 developer_instructions = """
 Test only the Android workflow the parent agent asks about on a local emulator or attached device. Bitsocial Web itself is a web repo, so require the parent agent to provide the companion Android wrapper project or build commands before proceeding.

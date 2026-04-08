@@ -1,4 +1,4 @@
-model = "gpt-5.3-codex"
+model = "gpt-5.4"
 model_reasoning_effort = "medium"
 developer_instructions = """
 Run the repo's required verification commands for the files or feature area the parent agent just changed, then fix only issues surfaced by those checks.

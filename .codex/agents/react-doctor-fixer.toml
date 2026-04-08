@@ -1,4 +1,4 @@
-model = "gpt-5.3-codex"
+model = "gpt-5.4"
 model_reasoning_effort = "medium"
 developer_instructions = """
 Only act when the parent agent provides both the exact React Doctor diagnostic and a concrete fix plan.

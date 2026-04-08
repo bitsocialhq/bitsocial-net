@@ -20,7 +20,13 @@ function getLanguageEntry(code: string | null | undefined): LanguageEntry {
   return getSupportedLanguage(normalizeLanguageCode(code)) ?? DEFAULT_LANGUAGE;
 }
 
-export default function LanguageSelector({ mobile }: { mobile?: boolean }) {
+export default function LanguageSelector({
+  mobile,
+  mobileMenuInteractionGuardAttribute,
+}: {
+  mobile?: boolean;
+  mobileMenuInteractionGuardAttribute?: string;
+}) {
   const { i18n, t } = useTranslation();
   const [open, setOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
@@ -185,6 +191,9 @@ export default function LanguageSelector({ mobile }: { mobile?: boolean }) {
       <SheetContent
         side="right"
         className="flex h-full min-h-0 flex-col w-full sm:max-w-md [&>button]:rounded-full"
+        {...(mobile && mobileMenuInteractionGuardAttribute
+          ? { [mobileMenuInteractionGuardAttribute]: "" }
+          : {})}
         onOpenAutoFocus={(event) => {
           event.preventDefault();
           focusSearchInputAfterOpen();

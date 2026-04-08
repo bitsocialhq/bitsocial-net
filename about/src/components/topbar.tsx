@@ -16,6 +16,7 @@ const navLinkClassName =
   "text-muted-foreground hover:text-foreground transition-colors relative group text-lg md:text-base font-display leading-none py-2 px-2 block";
 // Trigger the compact nav before the desktop layout looks cramped.
 const compactNavigationTriggerBufferPx = 24;
+const MOBILE_MENU_INTERACTION_GUARD_ATTRIBUTE = "data-mobile-menu-interaction-guard";
 
 function NavLink({
   to,
@@ -220,6 +221,16 @@ export default function Topbar() {
         return;
       }
 
+      const eventTarget =
+        e.target instanceof Element
+          ? e.target
+          : e.target instanceof Node
+            ? e.target.parentElement
+            : null;
+      if (eventTarget?.closest(`[${MOBILE_MENU_INTERACTION_GUARD_ATTRIBUTE}]`)) {
+        return;
+      }
+
       e.preventDefault();
       closeMobileMenu();
     };
@@ -359,7 +370,10 @@ export default function Topbar() {
 
             <div className="mt-2 flex flex-row gap-2 border-t border-border/30 pt-4">
               <div className="flex-1">
-                <LanguageSelector mobile />
+                <LanguageSelector
+                  mobile
+                  mobileMenuInteractionGuardAttribute={MOBILE_MENU_INTERACTION_GUARD_ATTRIBUTE}
+                />
               </div>
               <div className="flex-1">
                 <ThemeToggle mobile />

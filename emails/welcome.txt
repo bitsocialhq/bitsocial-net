@@ -1,0 +1,16 @@
+{{ app_name }}
+
+You're in.
+
+Thanks for signing up for the {{ app_name }} newsletter with {{ email }}.
+
+You're now on the list. No further action is required.
+
+We'll use this to send occasional product updates, experiments, and noteworthy things worth reading.
+
+If this address was entered by mistake, unsubscribe immediately:
+{{ unsubscribe_url }}
+
+Sent by Bitsocial Forge, Inc. (https://bitsocialforge.com) for the Bitsocial newsletter.
+Privacy notice: https://bitsocial.net/privacy
+This welcome email does not use open or click tracking.

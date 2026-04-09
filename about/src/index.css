@@ -186,25 +186,25 @@
   .dark {
     color-scheme: dark;
     --background: 0 0% 0%;
-    /* Slide-over panels (e.g. language sheet): slightly above the page surface, with a cool tint. */
-    --sheet-surface: 222 18% 10%;
-    --foreground: 220 18% 93%;
-    --card: 222 16% 11%;
-    --card-foreground: 220 18% 93%;
-    --popover: 222 16% 11%;
-    --popover-foreground: 220 18% 93%;
+    /* Slide-over panels (e.g. language sheet): slightly above black, still neutral. */
+    --sheet-surface: 0 0% 9%;
+    --foreground: 0 0% 93%;
+    --card: 0 0% 12%;
+    --card-foreground: 0 0% 93%;
+    --popover: 0 0% 12%;
+    --popover-foreground: 0 0% 93%;
     --primary: 0 0% 98%;
     --primary-foreground: 0 0% 9%;
-    --secondary: 220 12% 18%;
-    --secondary-foreground: 220 18% 93%;
-    --muted: 220 12% 18%;
-    --muted-foreground: 220 10% 70%;
-    --accent: 220 12% 18%;
-    --accent-foreground: 220 18% 93%;
+    --secondary: 0 0% 20%;
+    --secondary-foreground: 0 0% 93%;
+    --muted: 0 0% 20%;
+    --muted-foreground: 0 0% 68%;
+    --accent: 0 0% 20%;
+    --accent-foreground: 0 0% 93%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 220 10% 24%;
-    --input: 220 10% 24%;
+    --border: 0 0% 27%;
+    --input: 0 0% 27%;
     --ring: 0 0% 83.1%;
     --chart-1: 220 70% 50%;
     --chart-2: 160 60% 45%;

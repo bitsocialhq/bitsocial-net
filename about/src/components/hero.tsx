@@ -20,6 +20,7 @@ import {
   TAGLINE_INTRO_START_MS,
 } from "@/lib/hero-intro-timing";
 import { useGraphicsMode } from "@/lib/graphics-mode";
+import { highlightedCtaClassName } from "@/components/card-inline-cta";
 import { cn, triggerFeatureGlow } from "@/lib/utils";
 
 const PlanetGraphic = lazy(() => import("./planet-graphic"));
@@ -322,10 +323,7 @@ export default function Hero() {
         >
           {t("hero.readDocs")}
         </a>
-        <Link
-          to="/apps"
-          className="px-8 py-3 rounded-full border border-blue-core/30 bg-blue-core/[0.08] backdrop-blur-[10px] text-foreground/90 hover:text-foreground font-display font-semibold hover:bg-blue-core/[0.14] hover:border-blue-glow ring-glow cta-glow text-center md:text-start dark:border-blue-core/45 dark:bg-blue-core/[0.18] dark:hover:bg-blue-core/[0.24]"
-        >
+        <Link to="/apps" className={`${highlightedCtaClassName} md:text-start`}>
           {t("hero.exploreApps")}
         </Link>
       </m.div>

@@ -4,9 +4,9 @@ import { isDocsPath } from "@/lib/docs-links";
 import { cn } from "@/lib/utils";
 
 export const prominentCtaClassName =
-  "px-8 py-3 rounded-full glass-card text-foreground/82 hover:text-foreground font-display font-semibold hover:border-blue-glow ring-glow cta-glow text-center";
+  "inline-flex items-center justify-center px-8 py-3 rounded-full glass-card text-foreground/82 hover:text-foreground font-display font-semibold hover:border-blue-glow ring-glow cta-glow text-center";
 export const highlightedCtaClassName =
-  "px-8 py-3 rounded-full border border-blue-core/30 bg-blue-core/[0.08] backdrop-blur-[10px] text-foreground/90 hover:text-foreground font-display font-semibold hover:bg-blue-core/[0.14] hover:border-blue-glow ring-glow cta-glow text-center dark:border-border/70 dark:bg-foreground/[0.04] dark:hover:bg-foreground/[0.08]";
+  "inline-flex items-center justify-center px-8 py-3 rounded-full border border-blue-core/30 bg-blue-core/[0.08] backdrop-blur-[10px] text-foreground/90 hover:text-foreground font-display font-semibold hover:bg-blue-core/[0.14] hover:border-blue-glow ring-glow cta-glow text-center dark:border-blue-core/45 dark:bg-blue-core/[0.18] dark:hover:bg-blue-core/[0.24]";
 export const cardInlineCtaClassName =
   "inline-flex items-center justify-center glass-card !rounded-3xl px-5 py-2 text-center text-sm text-foreground/82 hover:border-blue-glow hover:text-foreground ring-glow cta-glow font-display font-semibold";
 
@@ -18,7 +18,7 @@ interface CardInlineCtaProps {
 }
 
 export default function CardInlineCta({ children, className, href, onClick }: CardInlineCtaProps) {
-  const resolvedClassName = cn(cardInlineCtaClassName, className);
+  const resolvedClassName = cn(className ?? cardInlineCtaClassName);
 
   if (href.startsWith("http://") || href.startsWith("https://")) {
     return (

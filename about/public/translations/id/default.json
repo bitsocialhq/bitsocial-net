@@ -222,7 +222,120 @@
     "sourceCode": "Kode sumber",
     "notFound": "Aplikasi tidak ditemukan",
     "notFoundBack": "Kembali ke Apps",
-    "mirrors": "Mirror"
+    "mirrors": "Mirror",
+    "catalog": {
+      "categories": {
+        "apps": {
+          "label": "Aplikasi",
+          "description": "Klien Bitsocial yang berfokus pada pengguna dan bisa Anda buka atau instal hari ini."
+        },
+        "anti-spam": {
+          "label": "Anti-spam",
+          "description": "Modul autentikasi, penyaringan, dan moderasi untuk komunitas Bitsocial."
+        },
+        "tools": {
+          "label": "Alat",
+          "description": "Utilitas CLI dan admin untuk menjalankan atau memperluas aplikasi Bitsocial."
+        }
+      },
+      "platforms": {
+        "web": {
+          "label": "Web",
+          "shortLabel": "Web",
+          "description": "Aplikasi berbasis browser dan mirror web langsung."
+        },
+        "android": {
+          "label": "Android",
+          "shortLabel": "Android",
+          "description": "Unduhan APK langsung untuk perangkat Android."
+        },
+        "ios": {
+          "label": "iOS",
+          "shortLabel": "iOS",
+          "description": "Aplikasi native atau yang bisa dipasang untuk iPhone dan iPad."
+        },
+        "desktop": {
+          "label": "Desktop",
+          "shortLabel": "Desktop",
+          "description": "Unduhan untuk Windows, macOS, dan Linux."
+        }
+      },
+      "tags": {
+        "accessControl": "Kontrol akses",
+        "automation": "Otomatisasi",
+        "boardAdmin": "Admin papan",
+        "bots": "Bot",
+        "captcha": "Captcha",
+        "cli": "CLI",
+        "contracts": "Kontrak",
+        "downloadable": "Dapat diunduh",
+        "feeds": "Umpan",
+        "forums": "Forum",
+        "humanChecks": "Pemeriksaan manusia",
+        "imageboard": "Imageboard",
+        "invites": "Undangan",
+        "mirrors": "Mirror",
+        "moderation": "Moderasi",
+        "onChain": "On-chain",
+        "riskScores": "Skor risiko",
+        "telegram": "Telegram",
+        "verification": "Verifikasi"
+      },
+      "linkLabels": {
+        "androidApk": "APK Android",
+        "linux": "Linux",
+        "linuxArm": "Linux ARM",
+        "linuxX64": "Linux x64",
+        "macosApple": "macOS Apple Silicon",
+        "macosIntel": "macOS Intel",
+        "openWebApp": "Buka aplikasi web",
+        "openWebsite": "Buka situs web",
+        "windows": "Windows",
+        "windowsPortable": "Windows portabel"
+      },
+      "items": {
+        "5chan": {
+          "tagline": "Imageboard terdesentralisasi dengan unduhan langsung untuk web, APK, dan desktop.",
+          "description": "5chan adalah client publik pertama Bitsocial. Ia merekonstruksi alur imageboard anonim di jaringan peer-to-peer: board, thread, posting gambar, moderasi komunitas, dan beberapa mirror publik tanpa bergantung pada server pusat."
+        },
+        "seedit": {
+          "tagline": "Client Bitsocial bergaya forum dengan build web, APK, dan desktop.",
+          "description": "Seedit membawa diskusi ala Reddit ke Bitsocial dengan thread, identitas, pengelolaan komunitas, dan banyak jalur distribusi. Ini cara tercepat untuk mencoba sisi forum jaringan dari browser, ponsel Android, atau aplikasi desktop."
+        },
+        "mintpass": {
+          "tagline": "Kontrol akses berbasis NFT untuk komunitas yang butuh gerbang anti-spam lebih kuat.",
+          "description": "Mintpass adalah lapisan autentikasi fleksibel untuk komunitas Bitsocial. Ini memungkinkan moderator menggabungkan kepemilikan NFT, alur verifikasi, dan modul challenge kustom tanpa memaksa semua orang ke sistem login terpusat."
+        },
+        "spam-blocker": {
+          "tagline": "Lapisan penilaian risiko terpusat untuk menyaring publikasi abusif.",
+          "description": "Spam Blocker mengevaluasi publikasi dan mengembalikan risk score yang bisa dipadukan komunitas dengan logika moderasi mereka sendiri. Ini berguna saat Anda ingin lapisan tambahan yang praktis sebelum membangun aturan anti-spam yang lebih kustom."
+        },
+        "captcha-canvas-challenge": {
+          "tagline": "Captcha gambar kustom untuk komunitas yang ingin verifikasi manusia.",
+          "description": "Captcha Canvas Challenge menghasilkan captcha visual yang bisa ditanamkan komunitas ke alur publikasi mereka sendiri. Ini opsi ringan untuk komunitas yang ingin pemeriksaan manusia langsung tanpa meninggalkan moderasi self-hosted."
+        },
+        "voucher-challenge": {
+          "tagline": "Kode voucher bergaya undangan untuk komunitas yang lebih suka pertumbuhan terkontrol.",
+          "description": "Voucher Challenge memungkinkan moderator mendistribusikan kode voucher tepercaya yang membuka publikasi tanpa identity provider global. Ini cocok untuk komunitas berbasis undangan, board niche, dan rollout bertahap."
+        },
+        "evm-contract-call": {
+          "tagline": "Gating on-chain untuk komunitas yang ingin pengecekan token atau contract.",
+          "description": "EVM Contract Call memverifikasi publikasi dengan memanggil contract EVM sebelum post diterima. Ini memungkinkan komunitas membangun token gate, aturan staking, atau pengecekan on-chain lain ke dalam alur moderasi mereka."
+        },
+        "bitsocial-cli": {
+          "tagline": "Kontrol command-line untuk node, komunitas, dan workflow automasi.",
+          "description": "Bitsocial CLI adalah antarmuka terminal resmi untuk protokol ini. Gunakan untuk mengelola node, mempublikasikan konten, mengotomatiskan alur admin, dan bekerja langsung dengan primitive Bitsocial tanpa client GUI."
+        },
+        "telegram-bots": {
+          "tagline": "Feed bot yang meneruskan posting Bitsocial baru ke channel atau group Telegram.",
+          "description": "Bitsocial Telegram Bots memantau daftar komunitas client dan meneruskan posting baru ke tujuan Telegram dengan inline link kembali ke client Bitsocial. Bot aktif saat ini mencakup feed 5chan, dan repositori disusun agar bot khusus client lain bisa ditambahkan seiring waktu."
+        },
+        "5chan-board-manager": {
+          "tagline": "Tool administrasi board untuk komunitas 5chan kustom.",
+          "description": "5chan Board Manager dibangun di atas Bitsocial CLI untuk membantu administrator membuat, mengonfigurasi, dan memoderasi board imageboard kustom. Ini adalah lapisan utilitas untuk pemilik board yang ingin kontrol operasional."
+        }
+      }
+    }
   },
   "privacy": {
     "eyebrow": "Cara bitsocial.net menangani data",

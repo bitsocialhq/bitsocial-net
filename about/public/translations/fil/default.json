@@ -222,7 +222,120 @@
     "sourceCode": "Source code",
     "notFound": "Hindi nahanap ang app",
     "notFoundBack": "Bumalik sa Apps",
-    "mirrors": "Mga salamin"
+    "mirrors": "Mga salamin",
+    "catalog": {
+      "categories": {
+        "apps": {
+          "label": "Mga app",
+          "description": "Mga client ng Bitsocial na nakatuon sa user na puwede mong buksan o i-install ngayon."
+        },
+        "anti-spam": {
+          "label": "Anti-spam",
+          "description": "Mga module para sa pagpapatunay, pag-filter, at pagmo-moderate para sa mga komunidad ng Bitsocial."
+        },
+        "tools": {
+          "label": "Mga tool",
+          "description": "Mga utility sa CLI at admin para sa pagpapatakbo o pagpapalawak ng mga app ng Bitsocial."
+        }
+      },
+      "platforms": {
+        "web": {
+          "label": "Web",
+          "shortLabel": "Web",
+          "description": "Mga app na tumatakbo sa browser at mga live web mirror."
+        },
+        "android": {
+          "label": "Android",
+          "shortLabel": "Android",
+          "description": "Direktang APK download para sa mga Android device."
+        },
+        "ios": {
+          "label": "iOS",
+          "shortLabel": "iOS",
+          "description": "Mga native o puwedeng i-install na app para sa iPhone at iPad."
+        },
+        "desktop": {
+          "label": "Desktop",
+          "shortLabel": "Desktop",
+          "description": "Mga download para sa Windows, macOS, at Linux."
+        }
+      },
+      "tags": {
+        "accessControl": "Kontrol sa access",
+        "automation": "Awtomasyon",
+        "boardAdmin": "Pangangasiwa ng board",
+        "bots": "Mga bot",
+        "captcha": "Captcha",
+        "cli": "CLI",
+        "contracts": "Mga kontrata",
+        "downloadable": "Nai-download",
+        "feeds": "Mga feed",
+        "forums": "Mga forum",
+        "humanChecks": "Mga pagsusuri ng tao",
+        "imageboard": "Imageboard",
+        "invites": "Mga imbitasyon",
+        "mirrors": "Mga mirror",
+        "moderation": "Moderasyon",
+        "onChain": "On-chain",
+        "riskScores": "Mga score ng panganib",
+        "telegram": "Telegram",
+        "verification": "Beripikasyon"
+      },
+      "linkLabels": {
+        "androidApk": "APK ng Android",
+        "linux": "Linux",
+        "linuxArm": "Linux ARM",
+        "linuxX64": "Linux x64",
+        "macosApple": "macOS Apple Silicon",
+        "macosIntel": "macOS Intel",
+        "openWebApp": "Buksan ang web app",
+        "openWebsite": "Buksan ang website",
+        "windows": "Windows",
+        "windowsPortable": "Portable na Windows"
+      },
+      "items": {
+        "5chan": {
+          "tagline": "Mga desentralisadong imageboard na may direktang web, APK, at desktop na download.",
+          "description": "Ang 5chan ang unang pampublikong Bitsocial client. Binibigyan nito ng bagong anyo ang anonymous imageboard flow sa peer-to-peer network: boards, threads, pag-post ng larawan, community moderation, at maraming public mirror nang hindi umaasa sa central server."
+        },
+        "seedit": {
+          "tagline": "Bitsocial client na parang forum, may web, APK, at desktop builds.",
+          "description": "Dinadala ng Seedit ang Reddit-style na diskusyon sa Bitsocial gamit ang threads, identities, community management, at maraming paraan ng distribusyon. Ito ang pinakamabilis na paraan para subukan ang forum side ng network mula sa browser, Android phone, o desktop app."
+        },
+        "mintpass": {
+          "tagline": "NFT-backed na access control para sa mga komunidad na nangangailangan ng mas matibay na anti-spam gate.",
+          "description": "Ang Mintpass ay isang flexible authentication layer para sa mga Bitsocial community. Pinapahintulutan nito ang mga moderator na pagsamahin ang NFT ownership, verification flow, at custom challenge modules nang hindi inililipat ang lahat sa central login system."
+        },
+        "spam-blocker": {
+          "tagline": "Centralized na risk scoring layer para salain ang mapang-abusong publikasyon.",
+          "description": "Sinusuri ng Spam Blocker ang mga publikasyon at nagbabalik ng risk score na puwedeng iugnay ng mga komunidad sa sarili nilang moderation logic. Kapaki-pakinabang ito kapag gusto mo ng praktikal na dagdag na layer bago bumuo ng mas custom na anti-spam rules."
+        },
+        "captcha-canvas-challenge": {
+          "tagline": "Custom na image captcha para sa mga komunidad na gusto ng human verification.",
+          "description": "Lumilikha ang Captcha Canvas Challenge ng visual captcha na puwedeng isama ng mga komunidad sa sarili nilang publishing flow. Isang magaan na opsyon ito para sa mga komunidad na gusto ng direktang human checks nang hindi isinusuko ang self-hosted moderation."
+        },
+        "voucher-challenge": {
+          "tagline": "Invite-style na voucher code para sa mga komunidad na mas gusto ang kontroladong paglago.",
+          "description": "Hinahayaan ng Voucher Challenge ang mga moderator na mamahagi ng trusted voucher code na nagbubukas ng publishing nang walang global identity provider. Bagay ito sa invite-driven na mga komunidad, niche board, at unti-unting rollout."
+        },
+        "evm-contract-call": {
+          "tagline": "On-chain gating para sa mga komunidad na gusto ng token o contract checks.",
+          "description": "Tinitiyak ng EVM Contract Call ang mga publikasyon sa pamamagitan ng pagtawag sa isang EVM contract bago tanggapin ang post. Hinahayaan nito ang mga komunidad na maglagay ng token gate, staking rules, o iba pang on-chain checks sa kanilang moderation flow."
+        },
+        "bitsocial-cli": {
+          "tagline": "Command-line control para sa nodes, komunidad, at automation workflows.",
+          "description": "Ang Bitsocial CLI ang opisyal na terminal interface ng protocol. Gamitin ito para mag-manage ng nodes, mag-publish ng content, mag-automate ng admin flows, at direktang makipagtrabaho sa Bitsocial primitives nang walang GUI client."
+        },
+        "telegram-bots": {
+          "tagline": "Feed bots na nagpapasa ng bagong Bitsocial post sa Telegram channels o groups.",
+          "description": "Mino-monitor ng Bitsocial Telegram Bots ang mga listahan ng community ng client at ipapasa ang mga bagong post sa mga Telegram destination na may inline links pabalik sa Bitsocial clients. Sinasaklaw ng aktibong bot ngayon ang 5chan feeds, at nakaayos ang repo para makapagdagdag ng mas marami pang client-specific bot sa paglipas ng panahon."
+        },
+        "5chan-board-manager": {
+          "tagline": "Mga tool para sa board administration ng custom 5chan communities.",
+          "description": "Binubuo ng 5chan Board Manager ang Bitsocial CLI para tulungan ang mga administrator na gumawa, mag-configure, at mag-moderate ng custom na imageboard boards. Ito ang utility layer para sa mga board owner na gusto ng operational control."
+        }
+      }
+    }
   },
   "privacy": {
     "eyebrow": "Paano hinahandle ng bitsocial.net ang data",

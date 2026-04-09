@@ -222,7 +222,120 @@
     "sourceCode": "Code source",
     "notFound": "App introuvable",
     "notFoundBack": "Retour aux Apps",
-    "mirrors": "Miroirs"
+    "mirrors": "Miroirs",
+    "catalog": {
+      "categories": {
+        "apps": {
+          "label": "Apps",
+          "description": "Clients Bitsocial pensés pour les utilisateurs, que vous pouvez ouvrir ou installer dès aujourd’hui."
+        },
+        "anti-spam": {
+          "label": "Anti-spam",
+          "description": "Modules d’authentification, de filtrage et de modération pour les communautés Bitsocial."
+        },
+        "tools": {
+          "label": "Outils",
+          "description": "Utilitaires CLI et d’administration pour faire tourner ou étendre les apps Bitsocial."
+        }
+      },
+      "platforms": {
+        "web": {
+          "label": "Web",
+          "shortLabel": "Web",
+          "description": "Applications dans le navigateur et miroirs web en direct."
+        },
+        "android": {
+          "label": "Android",
+          "shortLabel": "Android",
+          "description": "Téléchargements APK directs pour les appareils Android."
+        },
+        "ios": {
+          "label": "iOS",
+          "shortLabel": "iOS",
+          "description": "Applications natives ou installables pour iPhone et iPad."
+        },
+        "desktop": {
+          "label": "Bureau",
+          "shortLabel": "Bureau",
+          "description": "Téléchargements pour Windows, macOS et Linux."
+        }
+      },
+      "tags": {
+        "accessControl": "Contrôle d'accès",
+        "automation": "Automatisation",
+        "boardAdmin": "Administration du tableau",
+        "bots": "Bots",
+        "captcha": "Captcha",
+        "cli": "CLI",
+        "contracts": "Contrats",
+        "downloadable": "Téléchargeable",
+        "feeds": "Flux",
+        "forums": "Forums",
+        "humanChecks": "Vérifications humaines",
+        "imageboard": "Imageboard",
+        "invites": "Invitations",
+        "mirrors": "Miroirs",
+        "moderation": "Modération",
+        "onChain": "On-chain",
+        "riskScores": "Scores de risque",
+        "telegram": "Telegram",
+        "verification": "Vérification"
+      },
+      "linkLabels": {
+        "androidApk": "APK Android",
+        "linux": "Linux",
+        "linuxArm": "Linux ARM",
+        "linuxX64": "Linux x64",
+        "macosApple": "macOS Apple Silicon",
+        "macosIntel": "macOS Intel",
+        "openWebApp": "Ouvrir l'application web",
+        "openWebsite": "Ouvrir le site web",
+        "windows": "Windows",
+        "windowsPortable": "Version portable pour Windows"
+      },
+      "items": {
+        "5chan": {
+          "tagline": "Imageboards décentralisés avec téléchargements directs pour le web, APK et desktop.",
+          "description": "5chan est le premier client public de Bitsocial. Il recrée le flux anonyme d’un imageboard sur un réseau pair-à-pair : boards, threads, publication d’images, modération communautaire et plusieurs miroirs publics sans dépendre d’un serveur central."
+        },
+        "seedit": {
+          "tagline": "Client Bitsocial de style forum avec versions web, APK et desktop.",
+          "description": "Seedit apporte à Bitsocial des discussions à la manière de Reddit avec threads, identités, gestion de communauté et plusieurs chemins de distribution. C’est le moyen le plus rapide d’essayer la partie forum du réseau depuis un navigateur, un téléphone Android ou une app desktop."
+        },
+        "mintpass": {
+          "tagline": "Contrôle d’accès adossé aux NFT pour les communautés qui ont besoin de barrières anti-spam plus fortes.",
+          "description": "Mintpass est une couche d’authentification flexible pour les communautés Bitsocial. Elle permet aux modérateurs de mêler propriété de NFT, flux de vérification et modules de challenge personnalisés sans pousser tout le monde vers un système de connexion centralisé."
+        },
+        "spam-blocker": {
+          "tagline": "Couche centralisée de score de risque pour filtrer les publications abusives.",
+          "description": "Spam Blocker évalue les publications et renvoie un score de risque que les communautés peuvent combiner avec leur propre logique de modération. C’est utile quand vous voulez une couche supplémentaire pragmatique avant de construire des règles anti-spam plus personnalisées."
+        },
+        "captcha-canvas-challenge": {
+          "tagline": "CAPTCHA image personnalisés pour les communautés qui veulent une vérification humaine.",
+          "description": "Captcha Canvas Challenge génère des CAPTCHA visuels que les communautés peuvent brancher dans leur propre flux de publication. C’est une option légère pour les communautés qui veulent des contrôles humains directs sans renoncer à une modération auto-hébergée."
+        },
+        "voucher-challenge": {
+          "tagline": "Codes voucher façon invitation pour les communautés qui préfèrent une croissance contrôlée.",
+          "description": "Voucher Challenge permet aux modérateurs de distribuer des codes voucher de confiance qui débloquent la publication sans fournisseur d’identité global. C’est un bon choix pour les communautés fondées sur les invitations, les boards de niche et les déploiements progressifs."
+        },
+        "evm-contract-call": {
+          "tagline": "Gating on-chain pour les communautés qui veulent des vérifications de token ou de contrat.",
+          "description": "EVM Contract Call vérifie les publications en appelant un contrat EVM avant l’acceptation d’un post. Il permet aux communautés d’intégrer des token gates, des règles de staking ou d’autres vérifications on-chain dans leur flux de modération."
+        },
+        "bitsocial-cli": {
+          "tagline": "Contrôle en ligne de commande pour les nœuds, les communautés et les workflows d’automatisation.",
+          "description": "Bitsocial CLI est l’interface terminal officielle du protocole. Utilisez-la pour gérer les nœuds, publier du contenu, automatiser les flux d’administration et travailler directement avec les primitives Bitsocial sans client GUI."
+        },
+        "telegram-bots": {
+          "tagline": "Bots de flux qui relayent les nouveaux posts Bitsocial vers des canaux ou groupes Telegram.",
+          "description": "Bitsocial Telegram Bots surveille les listes de communautés du client et transfère les nouveaux posts vers des destinations Telegram avec des liens inline vers les clients Bitsocial. Le bot actif couvre aujourd’hui les flux 5chan, et le dépôt est structuré pour ajouter d’autres bots spécifiques à chaque client au fil du temps."
+        },
+        "5chan-board-manager": {
+          "tagline": "Outils d’administration de boards pour les communautés 5chan personnalisées.",
+          "description": "5chan Board Manager s’appuie sur Bitsocial CLI pour aider les administrateurs à créer, configurer et modérer des boards imageboard personnalisés. C’est la couche utilitaire pour les propriétaires de boards qui veulent un contrôle opérationnel."
+        }
+      }
+    }
   },
   "privacy": {
     "eyebrow": "Comment bitsocial.net traite les données",

@@ -222,7 +222,120 @@
     "sourceCode": "Codi font",
     "notFound": "No s'ha trobat l'app",
     "notFoundBack": "Torna a Apps",
-    "mirrors": "Miralls"
+    "mirrors": "Miralls",
+    "catalog": {
+      "categories": {
+        "apps": {
+          "label": "Aplicacions",
+          "description": "Clients de Bitsocial orientats a l'usuari que pots obrir o instal·lar avui mateix."
+        },
+        "anti-spam": {
+          "label": "Anti-spam",
+          "description": "Mòduls d'autenticació, filtratge i moderació per a les comunitats de Bitsocial."
+        },
+        "tools": {
+          "label": "Eines",
+          "description": "Utilitats de CLI i d'administració per executar o ampliar les apps de Bitsocial."
+        }
+      },
+      "platforms": {
+        "web": {
+          "label": "Web",
+          "shortLabel": "Web",
+          "description": "Aplicacions basades en navegador i miralls web en directe."
+        },
+        "android": {
+          "label": "Android",
+          "shortLabel": "Android",
+          "description": "Baixades directes d'APK per a dispositius Android."
+        },
+        "ios": {
+          "label": "iOS",
+          "shortLabel": "iOS",
+          "description": "Aplicacions natives o instal·lables per a iPhone i iPad."
+        },
+        "desktop": {
+          "label": "Escriptori",
+          "shortLabel": "Escriptori",
+          "description": "Baixades per a Windows, macOS i Linux."
+        }
+      },
+      "tags": {
+        "accessControl": "Control d'accés",
+        "automation": "Automatització",
+        "boardAdmin": "Administració del tauler",
+        "bots": "Bots",
+        "captcha": "Captcha",
+        "cli": "CLI",
+        "contracts": "Contractes",
+        "downloadable": "Descarregable",
+        "feeds": "Feeds",
+        "forums": "Fòrums",
+        "humanChecks": "Comprovacions humanes",
+        "imageboard": "Imageboard",
+        "invites": "Invitacions",
+        "mirrors": "Miralls",
+        "moderation": "Moderació",
+        "onChain": "On-chain",
+        "riskScores": "Puntuacions de risc",
+        "telegram": "Telegram",
+        "verification": "Verificació"
+      },
+      "linkLabels": {
+        "androidApk": "APK d'Android",
+        "linux": "Linux",
+        "linuxArm": "Linux ARM",
+        "linuxX64": "Linux x64",
+        "macosApple": "macOS Apple Silicon",
+        "macosIntel": "macOS Intel",
+        "openWebApp": "Obre l'aplicació web",
+        "openWebsite": "Obre el lloc web",
+        "windows": "Windows",
+        "windowsPortable": "Windows portable"
+      },
+      "items": {
+        "5chan": {
+          "tagline": "Imageboards descentralitzats amb descàrregues directes per a web, APK i escriptori.",
+          "description": "5chan és el primer client públic de Bitsocial. Reprodueix el flux anònim d’un imageboard sobre una xarxa peer-to-peer: taulers, fils, publicació d’imatges, moderació comunitària i diversos miralls públics sense dependre d’un servidor central."
+        },
+        "seedit": {
+          "tagline": "Client de Bitsocial d’estil fòrum amb versions per a web, APK i escriptori.",
+          "description": "Seedit porta a Bitsocial la conversa a l’estil Reddit amb fils, identitats, gestió de comunitats i múltiples vies de distribució. És la manera més ràpida de provar la cara més de fòrum de la xarxa des d’un navegador, un mòbil Android o una app d’escriptori."
+        },
+        "mintpass": {
+          "tagline": "Control d’accés recolzat per NFT per a comunitats que necessiten defenses més fortes contra l’spam.",
+          "description": "Mintpass és una capa d’autenticació flexible per a comunitats de Bitsocial. Permet als moderadors combinar la propietat d’NFT, fluxos de verificació i mòduls de repte personalitzats sense portar tothom a un sistema d’inici de sessió centralitzat."
+        },
+        "spam-blocker": {
+          "tagline": "Capa centralitzada de puntuació de risc per filtrar publicacions abusives.",
+          "description": "Spam Blocker avalua publicacions i retorna una puntuació de risc que les comunitats poden combinar amb la seva pròpia lògica de moderació. És útil quan vols una capa extra pràctica abans de crear regles anti-spam més personalitzades."
+        },
+        "captcha-canvas-challenge": {
+          "tagline": "CAPTCHA d’imatge personalitzats per a comunitats que volen verificació humana.",
+          "description": "Captcha Canvas Challenge genera CAPTCHA visuals que les comunitats poden integrar al seu propi flux de publicació. És una opció lleugera per a comunitats que volen comprovacions humanes directes sense renunciar a una moderació autogestionada."
+        },
+        "voucher-challenge": {
+          "tagline": "Codis de val estil invitació per a comunitats que prefereixen un creixement controlat.",
+          "description": "Voucher Challenge permet als moderadors distribuir codis de val de confiança que desbloquegen la publicació sense un proveïdor d’identitat global. És una bona opció per a comunitats basades en invitacions, taulers de nínxol i desplegaments graduals."
+        },
+        "evm-contract-call": {
+          "tagline": "Gating on-chain per a comunitats que volen comprovacions de token o de contracte.",
+          "description": "EVM Contract Call verifica les publicacions fent una crida a un contracte EVM abans d’acceptar un post. Permet a les comunitats incorporar token gates, regles de staking o altres comprovacions on-chain en el seu flux de moderació."
+        },
+        "bitsocial-cli": {
+          "tagline": "Control per línia d’ordres per a nodes, comunitats i fluxos d’automatització.",
+          "description": "Bitsocial CLI és la interfície de terminal oficial del protocol. Fes-lo servir per gestionar nodes, publicar contingut, automatitzar fluxos d’administració i treballar directament amb les primitives de Bitsocial sense cap client amb GUI."
+        },
+        "telegram-bots": {
+          "tagline": "Bots de feed que envien publicacions noves de Bitsocial a canals o grups de Telegram.",
+          "description": "Bitsocial Telegram Bots monitoritza les llistes de comunitats del client i reenvia les publicacions noves a destinacions de Telegram amb enllaços inline de retorn als clients de Bitsocial. El bot actiu cobreix avui els feeds de 5chan, i el repositori està preparat per afegir-hi més bots específics de client amb el temps."
+        },
+        "5chan-board-manager": {
+          "tagline": "Eines d’administració de taulers per a comunitats 5chan personalitzades.",
+          "description": "5chan Board Manager es basa en Bitsocial CLI per ajudar els administradors a crear, configurar i moderar taulers d’imageboard personalitzats. És la capa d’utilitat per als propietaris de taulers que volen control operatiu."
+        }
+      }
+    }
   },
   "privacy": {
     "eyebrow": "Com gestiona bitsocial.net les dades",

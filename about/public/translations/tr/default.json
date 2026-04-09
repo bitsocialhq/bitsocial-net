@@ -222,7 +222,120 @@
     "sourceCode": "Kaynak kodu",
     "notFound": "Uygulama bulunamadı",
     "notFoundBack": "Apps'e geri dön",
-    "mirrors": "Yansımalar"
+    "mirrors": "Yansımalar",
+    "catalog": {
+      "categories": {
+        "apps": {
+          "label": "Uygulamalar",
+          "description": "Bugün açabileceğiniz veya yükleyebileceğiniz kullanıcıya dönük Bitsocial istemcileri."
+        },
+        "anti-spam": {
+          "label": "Anti-spam",
+          "description": "Bitsocial toplulukları için kimlik doğrulama, filtreleme ve moderasyon modülleri."
+        },
+        "tools": {
+          "label": "Araçlar",
+          "description": "Bitsocial uygulamalarını çalıştırmak veya genişletmek için CLI ve yönetim araçları."
+        }
+      },
+      "platforms": {
+        "web": {
+          "label": "Web",
+          "shortLabel": "Web",
+          "description": "Tarayıcı tabanlı uygulamalar ve canlı web aynaları."
+        },
+        "android": {
+          "label": "Android",
+          "shortLabel": "Android",
+          "description": "Android cihazlar için doğrudan APK indirmeleri."
+        },
+        "ios": {
+          "label": "iOS",
+          "shortLabel": "iOS",
+          "description": "iPhone ve iPad için yerel veya kurulabilir uygulamalar."
+        },
+        "desktop": {
+          "label": "Masaüstü",
+          "shortLabel": "Masaüstü",
+          "description": "Windows, macOS ve Linux için indirmeler."
+        }
+      },
+      "tags": {
+        "accessControl": "Erişim denetimi",
+        "automation": "Otomasyon",
+        "boardAdmin": "Pano yönetimi",
+        "bots": "Botlar",
+        "captcha": "Captcha",
+        "cli": "CLI",
+        "contracts": "Sözleşmeler",
+        "downloadable": "İndirilebilir",
+        "feeds": "Akışlar",
+        "forums": "Forumlar",
+        "humanChecks": "İnsan kontrolleri",
+        "imageboard": "Imageboard",
+        "invites": "Davetler",
+        "mirrors": "Yansılar",
+        "moderation": "Moderasyon",
+        "onChain": "On-chain",
+        "riskScores": "Risk puanları",
+        "telegram": "Telegram",
+        "verification": "Doğrulama"
+      },
+      "linkLabels": {
+        "androidApk": "Android APK",
+        "linux": "Linux",
+        "linuxArm": "Linux ARM",
+        "linuxX64": "Linux x64",
+        "macosApple": "macOS Apple Silicon",
+        "macosIntel": "macOS Intel",
+        "openWebApp": "Web uygulamasını aç",
+        "openWebsite": "Web sitesini aç",
+        "windows": "Windows",
+        "windowsPortable": "Windows taşınabilir sürüm"
+      },
+      "items": {
+        "5chan": {
+          "tagline": "web, APK ve desktop için doğrudan indirmeler sunan merkeziyetsiz imageboard'lar.",
+          "description": "5chan, Bitsocial'ın ilk herkese açık client'ıdır. Anonim imageboard akışını peer-to-peer bir ağ üzerinde yeniden kurar: board'lar, thread'ler, görsel paylaşımı, topluluk moderasyonu ve merkezi bir sunucuya ihtiyaç duymadan birden fazla public mirror."
+        },
+        "seedit": {
+          "tagline": "web, APK ve desktop build'leri olan forum tarzı Bitsocial client'ı.",
+          "description": "Seedit, Reddit tarzı tartışmayı thread'ler, kimlikler, topluluk yönetimi ve birden fazla dağıtım yolu ile Bitsocial'a getirir. Ağın forum tarafını bir tarayıcıdan, Android telefondan veya desktop uygulamasından denemenin en hızlı yoludur."
+        },
+        "mintpass": {
+          "tagline": "Daha güçlü anti-spam kapılarına ihtiyaç duyan topluluklar için NFT destekli erişim kontrolü.",
+          "description": "Mintpass, Bitsocial toplulukları için esnek bir authentication katmanıdır. Moderatörlerin NFT ownership, verification akışları ve özel challenge modüllerini birleştirmesine izin verir; herkesi merkezi bir login system'e zorlamaz."
+        },
+        "spam-blocker": {
+          "tagline": "Kötüye kullanılan yayınları filtrelemek için merkezi risk puanlama katmanı.",
+          "description": "Spam Blocker yayınları değerlendirir ve toplulukların kendi moderasyon logic'leri ile birleştirebileceği bir risk score döndürür. Daha özel anti-spam kuralları oluşturmadan önce pratik bir ek katman istediğinizde kullanışlıdır."
+        },
+        "captcha-canvas-challenge": {
+          "tagline": "İnsan doğrulaması isteyen topluluklar için özel görsel captcha'lar.",
+          "description": "Captcha Canvas Challenge, toplulukların kendi publishing akışına bağlayabileceği görsel captcha'lar üretir. Self-hosted moderation'dan vazgeçmeden doğrudan insan kontrolü isteyen topluluklar için hafif bir seçenektir."
+        },
+        "voucher-challenge": {
+          "tagline": "Kontrollü büyümeyi tercih eden topluluklar için davet tarzı voucher kodları.",
+          "description": "Voucher Challenge, moderatörlerin global bir identity provider olmadan publishing'i açan güvenilir voucher kodları dağıtmasına izin verir. Davet odaklı topluluklar, niş board'lar ve kademeli rollouts için iyi bir uyumdur."
+        },
+        "evm-contract-call": {
+          "tagline": "Token veya contract kontrolü isteyen topluluklar için on-chain gating.",
+          "description": "EVM Contract Call, bir post kabul edilmeden önce bir EVM contract çağırarak yayınları doğrular. Toplulukların moderation akışına token gate'ler, staking kuralları veya başka on-chain kontroller eklemesini sağlar."
+        },
+        "bitsocial-cli": {
+          "tagline": "node'lar, topluluklar ve automation workflow'ları için command-line kontrolü.",
+          "description": "Bitsocial CLI, protocol'ün resmi terminal arayüzüdür. Node'ları yönetmek, içerik yayınlamak, admin akışlarını otomatikleştirmek ve GUI client olmadan doğrudan Bitsocial primitives ile çalışmak için kullanın."
+        },
+        "telegram-bots": {
+          "tagline": "Yeni Bitsocial gönderilerini Telegram channel veya group'lara aktaran feed bot'lar.",
+          "description": "Bitsocial Telegram Bots, client topluluk listelerini izler ve yeni gönderileri Telegram destination'larına inline link'lerle birlikte, Bitsocial client'larına geri dönecek şekilde iletir. Aktif bot bugün 5chan feed'lerini kapsıyor ve repo, zaman içinde daha fazla client-specific bot eklenebilecek şekilde düzenlendi."
+        },
+        "5chan-board-manager": {
+          "tagline": "Özel 5chan toplulukları için board yönetim araçları.",
+          "description": "5chan Board Manager, yöneticilerin özel imageboard board'ları oluşturmasına, yapılandırmasına ve moderasyon yapmasına yardımcı olmak için Bitsocial CLI üzerine kurulmuştur. Operasyonel kontrol isteyen board sahipleri için yardımcı katmandır."
+        }
+      }
+    }
   },
   "privacy": {
     "eyebrow": "bitsocial.net verileri nasıl işler",

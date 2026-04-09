@@ -222,7 +222,120 @@
     "sourceCode": "Πηγαίος κώδικας",
     "notFound": "Η εφαρμογή δεν βρέθηκε",
     "notFoundBack": "Πίσω στις εφαρμογές",
-    "mirrors": "Καθρεφτίσματα"
+    "mirrors": "Καθρεφτίσματα",
+    "catalog": {
+      "categories": {
+        "apps": {
+          "label": "Εφαρμογές",
+          "description": "Πελάτες Bitsocial για τους χρήστες που μπορείτε να ανοίξετε ή να εγκαταστήσετε σήμερα."
+        },
+        "anti-spam": {
+          "label": "Αντι-spam",
+          "description": "Μονάδες ταυτοποίησης, φιλτραρίσματος και διαχείρισης για τις κοινότητες Bitsocial."
+        },
+        "tools": {
+          "label": "Εργαλεία",
+          "description": "Εργαλεία CLI και διαχείρισης για την εκτέλεση ή επέκταση εφαρμογών Bitsocial."
+        }
+      },
+      "platforms": {
+        "web": {
+          "label": "Ιστός",
+          "shortLabel": "Ιστός",
+          "description": "Εφαρμογές που τρέχουν στον browser και ζωντανά web mirrors."
+        },
+        "android": {
+          "label": "Android",
+          "shortLabel": "Android",
+          "description": "Άμεσες λήψεις APK για συσκευές Android."
+        },
+        "ios": {
+          "label": "iOS",
+          "shortLabel": "iOS",
+          "description": "Εγγενείς ή εγκαταστάσιμες εφαρμογές για iPhone και iPad."
+        },
+        "desktop": {
+          "label": "Επιφάνεια εργασίας",
+          "shortLabel": "Επιφάνεια εργασίας",
+          "description": "Λήψεις για Windows, macOS και Linux."
+        }
+      },
+      "tags": {
+        "accessControl": "Έλεγχος πρόσβασης",
+        "automation": "Αυτοματοποίηση",
+        "boardAdmin": "Διαχείριση πίνακα",
+        "bots": "Bots",
+        "captcha": "Captcha",
+        "cli": "CLI",
+        "contracts": "Συμβόλαια",
+        "downloadable": "Λήψη διαθέσιμη",
+        "feeds": "Ροές",
+        "forums": "Φόρουμ",
+        "humanChecks": "Ανθρώπινοι έλεγχοι",
+        "imageboard": "Imageboard",
+        "invites": "Προσκλήσεις",
+        "mirrors": "Καθρέφτες",
+        "moderation": "Συντονισμός",
+        "onChain": "On-chain",
+        "riskScores": "Βαθμολογίες κινδύνου",
+        "telegram": "Telegram",
+        "verification": "Επαλήθευση"
+      },
+      "linkLabels": {
+        "androidApk": "APK για Android",
+        "linux": "Linux",
+        "linuxArm": "Linux ARM",
+        "linuxX64": "Linux x64",
+        "macosApple": "macOS Apple Silicon",
+        "macosIntel": "macOS Intel",
+        "openWebApp": "Άνοιγμα web app",
+        "openWebsite": "Άνοιγμα ιστότοπου",
+        "windows": "Windows",
+        "windowsPortable": "Φορητή έκδοση για Windows"
+      },
+      "items": {
+        "5chan": {
+          "tagline": "Αποκεντρωμένα imageboards με άμεσες λήψεις για web, APK και desktop.",
+          "description": "Το 5chan είναι ο πρώτος δημόσιος Bitsocial client. Αναπαράγει τη ροή ενός ανώνυμου imageboard πάνω σε δίκτυο peer-to-peer: boards, threads, ανάρτηση εικόνων, moderation κοινότητας και πολλαπλά δημόσια mirrors χωρίς να βασίζεται σε κεντρικό server."
+        },
+        "seedit": {
+          "tagline": "Bitsocial client σε στυλ forum με εκδόσεις για web, APK και desktop.",
+          "description": "Το Seedit φέρνει στο Bitsocial συζητήσεις τύπου Reddit με threads, ταυτότητες, διαχείριση κοινότητας και πολλαπλές διαδρομές διανομής. Είναι ο πιο γρήγορος τρόπος να δοκιμάσεις την πλευρά forum του δικτύου από browser, Android τηλέφωνο ή desktop app."
+        },
+        "mintpass": {
+          "tagline": "Έλεγχος πρόσβασης με NFT για κοινότητες που χρειάζονται πιο ισχυρά anti-spam φράγματα.",
+          "description": "Το Mintpass είναι ένα ευέλικτο επίπεδο αυθεντικοποίησης για κοινότητες Bitsocial. Επιτρέπει στους moderators να συνδυάζουν ownership NFT, ροές επαλήθευσης και custom challenge modules χωρίς να σπρώχνουν όλους σε ένα κεντρικό σύστημα login."
+        },
+        "spam-blocker": {
+          "tagline": "Κεντρικοποιημένο επίπεδο βαθμολόγησης κινδύνου για φιλτράρισμα καταχρηστικών δημοσιεύσεων.",
+          "description": "Το Spam Blocker αξιολογεί δημοσιεύσεις και επιστρέφει ένα risk score που οι κοινότητες μπορούν να συνδυάσουν με τη δική τους λογική moderation. Είναι χρήσιμο όταν θέλεις ένα πρακτικό επιπλέον επίπεδο πριν χτίσεις πιο εξατομικευμένους anti-spam κανόνες."
+        },
+        "captcha-canvas-challenge": {
+          "tagline": "Προσαρμοσμένα image CAPTCHA για κοινότητες που θέλουν ανθρώπινη επαλήθευση.",
+          "description": "Το Captcha Canvas Challenge δημιουργεί οπτικά CAPTCHA που οι κοινότητες μπορούν να ενσωματώσουν στη δική τους ροή δημοσίευσης. Είναι μια ελαφριά επιλογή για κοινότητες που θέλουν άμεσους ανθρώπινους ελέγχους χωρίς να εγκαταλείπουν το self-hosted moderation."
+        },
+        "voucher-challenge": {
+          "tagline": "Κωδικοί voucher σε στυλ πρόσκλησης για κοινότητες που προτιμούν ελεγχόμενη ανάπτυξη.",
+          "description": "Το Voucher Challenge επιτρέπει στους moderators να διανέμουν έμπιστους voucher codes που ξεκλειδώνουν τη δημοσίευση χωρίς global identity provider. Ταιριάζει καλά σε invite-driven κοινότητες, niche boards και σταδιακά rollouts."
+        },
+        "evm-contract-call": {
+          "tagline": "On-chain gating για κοινότητες που θέλουν ελέγχους token ή contract.",
+          "description": "Το EVM Contract Call επαληθεύει δημοσιεύσεις καλώντας ένα EVM contract πριν γίνει αποδεκτό το post. Επιτρέπει στις κοινότητες να ενσωματώνουν token gates, κανόνες staking ή άλλους on-chain ελέγχους στη ροή moderation."
+        },
+        "bitsocial-cli": {
+          "tagline": "Έλεγχος από γραμμή εντολών για nodes, κοινότητες και workflows αυτοματοποίησης.",
+          "description": "Το Bitsocial CLI είναι το επίσημο terminal interface του πρωτοκόλλου. Χρησιμοποίησέ το για διαχείριση nodes, δημοσίευση περιεχομένου, αυτοματοποίηση admin flows και απευθείας εργασία με τα primitives του Bitsocial χωρίς GUI client."
+        },
+        "telegram-bots": {
+          "tagline": "Feed bots που διοχετεύουν νέες δημοσιεύσεις Bitsocial σε κανάλια ή ομάδες Telegram.",
+          "description": "Τα Bitsocial Telegram Bots παρακολουθούν τις λίστες κοινοτήτων του client και προωθούν νέες δημοσιεύσεις σε προορισμούς Telegram με inline links πίσω στους Bitsocial clients. Το ενεργό bot καλύπτει σήμερα τα feeds του 5chan, ενώ το repo είναι δομημένο ώστε να προστεθούν με τον χρόνο και άλλα client-specific bots."
+        },
+        "5chan-board-manager": {
+          "tagline": "Εργαλεία διαχείρισης boards για προσαρμοσμένες κοινότητες 5chan.",
+          "description": "Το 5chan Board Manager βασίζεται στο Bitsocial CLI για να βοηθά τους administrators να δημιουργούν, να ρυθμίζουν και να moderatάρουν custom imageboard boards. Είναι το επίπεδο βοηθητικών εργαλείων για owners boards που θέλουν επιχειρησιακό έλεγχο."
+        }
+      }
+    }
   },
   "privacy": {
     "eyebrow": "Πώς το bitsocial.net χειρίζεται τα δεδομένα",

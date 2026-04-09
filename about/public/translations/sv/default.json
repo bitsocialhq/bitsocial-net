@@ -222,7 +222,120 @@
     "sourceCode": "Källkod",
     "notFound": "Appen hittades inte",
     "notFoundBack": "Tillbaka till Apps",
-    "mirrors": "Speglar"
+    "mirrors": "Speglar",
+    "catalog": {
+      "categories": {
+        "apps": {
+          "label": "Appar",
+          "description": "Bitsocial-klienter för användare som du kan öppna eller installera redan idag."
+        },
+        "anti-spam": {
+          "label": "Antispam",
+          "description": "Moduler för autentisering, filtrering och moderering för Bitsocial-gemenskaper."
+        },
+        "tools": {
+          "label": "Verktyg",
+          "description": "CLI- och administrationsverktyg för att köra eller bygga vidare på Bitsocial-appar."
+        }
+      },
+      "platforms": {
+        "web": {
+          "label": "Webb",
+          "shortLabel": "Webb",
+          "description": "Webbläsarbaserade appar och live-webbspeglar."
+        },
+        "android": {
+          "label": "Android",
+          "shortLabel": "Android",
+          "description": "Direkta APK-nedladdningar för Android-enheter."
+        },
+        "ios": {
+          "label": "iOS",
+          "shortLabel": "iOS",
+          "description": "Nativa eller installerbara appar för iPhone och iPad."
+        },
+        "desktop": {
+          "label": "Skrivbord",
+          "shortLabel": "Skrivbord",
+          "description": "Nedladdningar för Windows, macOS och Linux."
+        }
+      },
+      "tags": {
+        "accessControl": "Åtkomstkontroll",
+        "automation": "Automatisering",
+        "boardAdmin": "Boardadministration",
+        "bots": "Botar",
+        "captcha": "Captcha",
+        "cli": "CLI",
+        "contracts": "Kontrakt",
+        "downloadable": "Nedladdningsbar",
+        "feeds": "Flöden",
+        "forums": "Forum",
+        "humanChecks": "Mänskliga kontroller",
+        "imageboard": "Imageboard",
+        "invites": "Inbjudningar",
+        "mirrors": "Speglar",
+        "moderation": "Moderering",
+        "onChain": "On-chain",
+        "riskScores": "Riskpoäng",
+        "telegram": "Telegram",
+        "verification": "Verifiering"
+      },
+      "linkLabels": {
+        "androidApk": "Android APK",
+        "linux": "Linux",
+        "linuxArm": "Linux ARM",
+        "linuxX64": "Linux x64",
+        "macosApple": "macOS Apple Silicon",
+        "macosIntel": "macOS Intel",
+        "openWebApp": "Öppna webbappen",
+        "openWebsite": "Öppna webbplatsen",
+        "windows": "Windows",
+        "windowsPortable": "Bärbar version för Windows"
+      },
+      "items": {
+        "5chan": {
+          "tagline": "Decentraliserade imageboards med direktnedladdningar för webb, APK och desktop.",
+          "description": "5chan är den första offentliga Bitsocial-klienten. Den återskapar det anonyma imageboard-flödet på ett peer-to-peer-nätverk: boards, trådar, bildpublicering, communitymoderering och flera publika mirrors utan att förlita sig på en central server."
+        },
+        "seedit": {
+          "tagline": "Bitsocial-klient i forumstil med webb-, APK- och desktopbyggen.",
+          "description": "Seedit för in Reddit-liknande diskussion i Bitsocial med trådar, identiteter, communityhantering och flera distributionsvägar. Det är det snabbaste sättet att prova nätverkets forumsida från en webbläsare, Android-telefon eller desktopapp."
+        },
+        "mintpass": {
+          "tagline": "NFT-baserad åtkomstkontroll för communities som behöver starkare anti-spam-gates.",
+          "description": "Mintpass är ett flexibelt autentiseringslager för Bitsocial-communities. Det låter moderatorer kombinera NFT-ägande, verifieringsflöden och anpassade challenge-moduler utan att tvinga alla in i ett centralt inloggningssystem."
+        },
+        "spam-blocker": {
+          "tagline": "Centraliserat riskpoängslager för filtrering av missbrukande publikationer.",
+          "description": "Spam Blocker utvärderar publikationer och returnerar ett riskpoäng som communities kan kombinera med sin egen modereringslogik. Det är användbart när du vill ha ett pragmatiskt extra lager innan du bygger mer anpassade anti-spam-regler."
+        },
+        "captcha-canvas-challenge": {
+          "tagline": "Anpassade bild-captcha för communities som vill ha mänsklig verifiering.",
+          "description": "Captcha Canvas Challenge genererar visuella captcha som communities kan koppla in i sitt eget publiceringsflöde. Det är ett lättviktigt alternativ för communities som vill ha direkta mänskliga kontroller utan att ge upp self-hosted moderation."
+        },
+        "voucher-challenge": {
+          "tagline": "Inbjudningsliknande voucher-koder för communities som föredrar kontrollerad tillväxt.",
+          "description": "Voucher Challenge låter moderatorer distribuera pålitliga voucher-koder som låser upp publicering utan en global identity provider. Det passar bra för invite-drivna communities, nischboards och gradvisa utrullningar."
+        },
+        "evm-contract-call": {
+          "tagline": "On-chain gating för communities som vill ha token- eller kontraktskontroller.",
+          "description": "EVM Contract Call verifierar publikationer genom att anropa ett EVM contract innan ett inlägg accepteras. Det låter communities bygga token gates, stakingregler eller andra on-chain-kontroller in i sitt modereringsflöde."
+        },
+        "bitsocial-cli": {
+          "tagline": "Kommandoradskontroll för noder, communities och automatiseringsflöden.",
+          "description": "Bitsocial CLI är protokollets officiella terminalgränssnitt. Använd det för att hantera noder, publicera innehåll, automatisera adminflöden och arbeta direkt mot Bitsocial-primitiver utan en GUI-klient."
+        },
+        "telegram-bots": {
+          "tagline": "Feed-botar som skickar nya Bitsocial-inlägg till Telegram-kanaler eller -grupper.",
+          "description": "Bitsocial Telegram Bots övervakar klientens communitylistor och skickar vidare nya inlägg till Telegram-destinationer med inline-länkar tillbaka till Bitsocial-klienter. Den aktiva boten täcker idag 5chan-flöden, och repot är strukturerat för att lägga till fler klientspecifika botar över tid."
+        },
+        "5chan-board-manager": {
+          "tagline": "Board-administrationsverktyg för anpassade 5chan-communities.",
+          "description": "5chan Board Manager bygger på Bitsocial CLI för att hjälpa administratörer skapa, konfigurera och moderera anpassade imageboard-board. Det är utility-lagret för board-ägare som vill ha operativ kontroll."
+        }
+      }
+    }
   },
   "privacy": {
     "eyebrow": "Hur bitsocial.net hanterar data",

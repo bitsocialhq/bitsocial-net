@@ -1,3 +1,5 @@
+import type { TFunction } from "i18next";
+
 export type AppCategorySlug = "apps" | "anti-spam" | "tools";
 
 export type AppPlatformSlug = "web" | "android" | "ios" | "desktop";
@@ -113,6 +115,202 @@ const DESKTOP_VARIANT_ORDER: DesktopVariant[] = [
   "linux",
   "linux-arm",
 ];
+
+const CATEGORY_TRANSLATION_KEYS: Record<AppCategorySlug, { label: string; description: string }> = {
+  apps: {
+    label: "apps.catalog.categories.apps.label",
+    description: "apps.catalog.categories.apps.description",
+  },
+  "anti-spam": {
+    label: "apps.catalog.categories.anti-spam.label",
+    description: "apps.catalog.categories.anti-spam.description",
+  },
+  tools: {
+    label: "apps.catalog.categories.tools.label",
+    description: "apps.catalog.categories.tools.description",
+  },
+};
+
+const PLATFORM_TRANSLATION_KEYS: Record<
+  AppPlatformSlug,
+  { label: string; shortLabel: string; description: string }
+> = {
+  web: {
+    label: "apps.catalog.platforms.web.label",
+    shortLabel: "apps.catalog.platforms.web.shortLabel",
+    description: "apps.catalog.platforms.web.description",
+  },
+  android: {
+    label: "apps.catalog.platforms.android.label",
+    shortLabel: "apps.catalog.platforms.android.shortLabel",
+    description: "apps.catalog.platforms.android.description",
+  },
+  ios: {
+    label: "apps.catalog.platforms.ios.label",
+    shortLabel: "apps.catalog.platforms.ios.shortLabel",
+    description: "apps.catalog.platforms.ios.description",
+  },
+  desktop: {
+    label: "apps.catalog.platforms.desktop.label",
+    shortLabel: "apps.catalog.platforms.desktop.shortLabel",
+    description: "apps.catalog.platforms.desktop.description",
+  },
+};
+
+const APP_TAG_TRANSLATION_KEYS: Record<string, string> = {
+  "Access control": "apps.catalog.tags.accessControl",
+  Automation: "apps.catalog.tags.automation",
+  "Board admin": "apps.catalog.tags.boardAdmin",
+  Bots: "apps.catalog.tags.bots",
+  CLI: "apps.catalog.tags.cli",
+  Captcha: "apps.catalog.tags.captcha",
+  Contracts: "apps.catalog.tags.contracts",
+  Downloadable: "apps.catalog.tags.downloadable",
+  Feeds: "apps.catalog.tags.feeds",
+  Forums: "apps.catalog.tags.forums",
+  "Human checks": "apps.catalog.tags.humanChecks",
+  Imageboard: "apps.catalog.tags.imageboard",
+  Invites: "apps.catalog.tags.invites",
+  Mirrors: "apps.catalog.tags.mirrors",
+  Moderation: "apps.catalog.tags.moderation",
+  "On-chain": "apps.catalog.tags.onChain",
+  "Risk scores": "apps.catalog.tags.riskScores",
+  Telegram: "apps.catalog.tags.telegram",
+  Verification: "apps.catalog.tags.verification",
+};
+
+const APP_LINK_LABEL_TRANSLATION_KEYS: Record<string, string> = {
+  "Android APK": "apps.catalog.linkLabels.androidApk",
+  Linux: "apps.catalog.linkLabels.linux",
+  "Linux ARM": "apps.catalog.linkLabels.linuxArm",
+  "Linux x64": "apps.catalog.linkLabels.linuxX64",
+  "Open web app": "apps.catalog.linkLabels.openWebApp",
+  "Open website": "apps.catalog.linkLabels.openWebsite",
+  Windows: "apps.catalog.linkLabels.windows",
+  "Windows Portable": "apps.catalog.linkLabels.windowsPortable",
+  "macOS Apple": "apps.catalog.linkLabels.macosApple",
+  "macOS Intel": "apps.catalog.linkLabels.macosIntel",
+};
+
+const APP_COPY_TRANSLATION_KEYS: Record<string, { tagline: string; description: string }> = {
+  "5chan": {
+    tagline: "apps.catalog.items.5chan.tagline",
+    description: "apps.catalog.items.5chan.description",
+  },
+  seedit: {
+    tagline: "apps.catalog.items.seedit.tagline",
+    description: "apps.catalog.items.seedit.description",
+  },
+  mintpass: {
+    tagline: "apps.catalog.items.mintpass.tagline",
+    description: "apps.catalog.items.mintpass.description",
+  },
+  "spam-blocker": {
+    tagline: "apps.catalog.items.spam-blocker.tagline",
+    description: "apps.catalog.items.spam-blocker.description",
+  },
+  "captcha-canvas-challenge": {
+    tagline: "apps.catalog.items.captcha-canvas-challenge.tagline",
+    description: "apps.catalog.items.captcha-canvas-challenge.description",
+  },
+  "voucher-challenge": {
+    tagline: "apps.catalog.items.voucher-challenge.tagline",
+    description: "apps.catalog.items.voucher-challenge.description",
+  },
+  "evm-contract-call": {
+    tagline: "apps.catalog.items.evm-contract-call.tagline",
+    description: "apps.catalog.items.evm-contract-call.description",
+  },
+  "bitsocial-cli": {
+    tagline: "apps.catalog.items.bitsocial-cli.tagline",
+    description: "apps.catalog.items.bitsocial-cli.description",
+  },
+  "telegram-bots": {
+    tagline: "apps.catalog.items.telegram-bots.tagline",
+    description: "apps.catalog.items.telegram-bots.description",
+  },
+  "5chan-board-manager": {
+    tagline: "apps.catalog.items.5chan-board-manager.tagline",
+    description: "apps.catalog.items.5chan-board-manager.description",
+  },
+};
+
+function translateCatalogValue(t: TFunction, key: string, fallback: string): string {
+  const translatedValue = t(key, { defaultValue: fallback });
+  return typeof translatedValue === "string" ? translatedValue : fallback;
+}
+
+export function getCategoryLabel(
+  categoryOrSlug: CategoryData | AppCategorySlug,
+  t: TFunction,
+): string {
+  const slug: AppCategorySlug =
+    typeof categoryOrSlug === "string" ? categoryOrSlug : categoryOrSlug.slug;
+  const fallback =
+    typeof categoryOrSlug === "string"
+      ? (getCategoryBySlug(categoryOrSlug)?.label ?? categoryOrSlug)
+      : categoryOrSlug.label;
+
+  return translateCatalogValue(t, CATEGORY_TRANSLATION_KEYS[slug].label, fallback);
+}
+
+export function getCategoryDescription(
+  categoryOrSlug: CategoryData | AppCategorySlug,
+  t: TFunction,
+): string {
+  const slug: AppCategorySlug =
+    typeof categoryOrSlug === "string" ? categoryOrSlug : categoryOrSlug.slug;
+  const fallback =
+    typeof categoryOrSlug === "string"
+      ? (getCategoryBySlug(categoryOrSlug)?.description ?? categoryOrSlug)
+      : categoryOrSlug.description;
+
+  return translateCatalogValue(t, CATEGORY_TRANSLATION_KEYS[slug].description, fallback);
+}
+
+export function getPlatformLabel(platform: AppPlatformSlug, t: TFunction) {
+  return translateCatalogValue(
+    t,
+    PLATFORM_TRANSLATION_KEYS[platform].label,
+    PLATFORM_META[platform].label,
+  );
+}
+
+export function getPlatformShortLabel(platform: AppPlatformSlug, t: TFunction) {
+  return translateCatalogValue(
+    t,
+    PLATFORM_TRANSLATION_KEYS[platform].shortLabel,
+    PLATFORM_META[platform].shortLabel,
+  );
+}
+
+export function getPlatformDescription(platform: AppPlatformSlug, t: TFunction) {
+  return translateCatalogValue(
+    t,
+    PLATFORM_TRANSLATION_KEYS[platform].description,
+    PLATFORM_META[platform].description,
+  );
+}
+
+export function getAppTagLabel(tag: string, t: TFunction) {
+  const key = APP_TAG_TRANSLATION_KEYS[tag];
+  return key ? translateCatalogValue(t, key, tag) : tag;
+}
+
+export function getAppLinkLabel(link: AppLink, t: TFunction) {
+  const key = APP_LINK_LABEL_TRANSLATION_KEYS[link.label];
+  return key ? translateCatalogValue(t, key, link.label) : link.label;
+}
+
+export function getAppTagline(app: AppData, t: TFunction) {
+  const key = APP_COPY_TRANSLATION_KEYS[app.slug]?.tagline;
+  return key ? translateCatalogValue(t, key, app.tagline) : app.tagline;
+}
+
+export function getAppDescription(app: AppData, t: TFunction) {
+  const key = APP_COPY_TRANSLATION_KEYS[app.slug]?.description;
+  return key ? translateCatalogValue(t, key, app.description) : app.description;
+}
 
 // Release asset URLs were verified on 2026-04-03 via `gh release view`.
 export const APPS: AppData[] = [
@@ -428,17 +626,41 @@ export function appMatchesPlatform(app: AppData, platform: AppPlatformSlug): boo
   return app.links.some((link) => link.platform === platform);
 }
 
-export function appMatchesSearch(app: AppData, query: string): boolean {
+export function appMatchesSearch(app: AppData, query: string, t?: TFunction): boolean {
   const normalizedQuery = query.trim().toLowerCase();
 
   if (!normalizedQuery) return true;
 
+  const category = getCategoryBySlug(app.category);
+  const localizedTagline = t ? getAppTagline(app, t) : app.tagline;
+  const localizedDescription = t ? getAppDescription(app, t) : app.description;
+  const localizedCategoryLabel = t && category ? getCategoryLabel(category, t) : category?.label;
+  const localizedCategoryDescription =
+    t && category ? getCategoryDescription(category, t) : category?.description;
+  const localizedTags = t ? app.tags.map((tag) => getAppTagLabel(tag, t)) : app.tags;
+  const localizedLinkLabels = t ? app.links.map((link) => getAppLinkLabel(link, t)) : [];
+  const localizedPlatformTerms = t
+    ? getAppPlatforms(app).flatMap((platform) => [
+        getPlatformLabel(platform, t),
+        getPlatformShortLabel(platform, t),
+        getPlatformDescription(platform, t),
+      ])
+    : [];
+
   const haystack = [
     app.name,
     app.tagline,
+    localizedTagline,
     app.description,
+    localizedDescription,
     app.category,
+    localizedCategoryLabel,
+    localizedCategoryDescription,
     ...app.tags,
+    ...localizedTags,
+    ...app.links.map((link) => link.label),
+    ...localizedLinkLabels,
+    ...localizedPlatformTerms,
     ...(app.searchTerms ?? []),
   ]
     .join(" ")

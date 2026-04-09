@@ -222,7 +222,78 @@
     "sourceCode": "Kildekode",
     "notFound": "Appen blev ikke fundet",
     "notFoundBack": "Tilbage til Apps",
-    "mirrors": "Spejle"
+    "mirrors": "Spejle",
+    "catalog": {
+      "categories": {
+        "apps": {
+          "label": "Apps",
+          "description": "Bitsocial-klienter vendt mod brugeren, som du kan åbne eller installere i dag."
+        },
+        "anti-spam": {
+          "label": "Antispam",
+          "description": "Moduler til autentificering, filtrering og moderation til Bitsocial-fællesskaber."
+        },
+        "tools": {
+          "label": "Værktøjer",
+          "description": "CLI- og administrationsværktøjer til at køre eller udvide Bitsocial-apps."
+        }
+      },
+      "platforms": {
+        "web": {
+          "label": "Web",
+          "shortLabel": "Web",
+          "description": "Browserbaserede apps og levende webspejle."
+        },
+        "android": {
+          "label": "Android",
+          "shortLabel": "Android",
+          "description": "Direkte APK-downloads til Android-enheder."
+        },
+        "ios": {
+          "label": "iOS",
+          "shortLabel": "iOS",
+          "description": "Native eller installerbare apps til iPhone og iPad."
+        },
+        "desktop": {
+          "label": "Desktop",
+          "shortLabel": "Desktop",
+          "description": "Downloads til Windows, macOS og Linux."
+        }
+      },
+      "tags": {
+        "accessControl": "Adgangskontrol",
+        "automation": "Automatisering",
+        "boardAdmin": "Bestyring af opslagstavle",
+        "bots": "Bots",
+        "captcha": "Captcha",
+        "cli": "CLI",
+        "contracts": "Kontrakter",
+        "downloadable": "Kan downloades",
+        "feeds": "Feeds",
+        "forums": "Fora",
+        "humanChecks": "Menneskelige kontroller",
+        "imageboard": "Imageboard",
+        "invites": "Invitationer",
+        "mirrors": "Spejle",
+        "moderation": "Moderation",
+        "onChain": "On-chain",
+        "riskScores": "Risikoscorer",
+        "telegram": "Telegram",
+        "verification": "Verificering"
+      },
+      "linkLabels": {
+        "androidApk": "Android APK",
+        "linux": "Linux",
+        "linuxArm": "Linux ARM",
+        "linuxX64": "Linux x64",
+        "macosApple": "macOS Apple Silicon",
+        "macosIntel": "macOS Intel",
+        "openWebApp": "Åbn webappen",
+        "openWebsite": "Åbn webstedet",
+        "windows": "Windows",
+        "windowsPortable": "Bærbar version til Windows"
+      }
+    }
   },
   "privacy": {
     "eyebrow": "Sådan håndterer bitsocial.net data",

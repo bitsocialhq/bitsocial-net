@@ -222,7 +222,120 @@
     "sourceCode": "קוד מקור",
     "notFound": "האפליקציה לא נמצאה",
     "notFoundBack": "חזרה לאפליקציות",
-    "mirrors": "מראות"
+    "mirrors": "מראות",
+    "catalog": {
+      "categories": {
+        "apps": {
+          "label": "אפליקציות",
+          "description": "לקוחות Bitsocial המיועדים למשתמשים, שאפשר לפתוח או להתקין כבר היום."
+        },
+        "anti-spam": {
+          "label": "אנטי-ספאם",
+          "description": "מודולים לאימות, סינון וניהול עבור קהילות Bitsocial."
+        },
+        "tools": {
+          "label": "כלים",
+          "description": "כלי CLI וכלי ניהול להפעלה או הרחבה של אפליקציות Bitsocial."
+        }
+      },
+      "platforms": {
+        "web": {
+          "label": "אינטרנט",
+          "shortLabel": "אינטרנט",
+          "description": "אפליקציות שפועלות בדפדפן ומראות אינטרנט חיות."
+        },
+        "android": {
+          "label": "אנדרואיד",
+          "shortLabel": "אנדרואיד",
+          "description": "הורדות APK ישירות למכשירי Android."
+        },
+        "ios": {
+          "label": "iOS",
+          "shortLabel": "iOS",
+          "description": "אפליקציות מקוריות או ניתנות להתקנה ל‑iPhone ול‑iPad."
+        },
+        "desktop": {
+          "label": "שולחן עבודה",
+          "shortLabel": "שולחן עבודה",
+          "description": "הורדות ל‑Windows, macOS ו‑Linux."
+        }
+      },
+      "tags": {
+        "accessControl": "בקרת גישה",
+        "automation": "אוטומציה",
+        "boardAdmin": "ניהול לוח",
+        "bots": "בוטים",
+        "captcha": "Captcha",
+        "cli": "CLI",
+        "contracts": "חוזים",
+        "downloadable": "להורדה",
+        "feeds": "פידים",
+        "forums": "פורומים",
+        "humanChecks": "בדיקות אנושיות",
+        "imageboard": "Imageboard",
+        "invites": "הזמנות",
+        "mirrors": "מראות",
+        "moderation": "ניהול תוכן",
+        "onChain": "On-chain",
+        "riskScores": "ציוני סיכון",
+        "telegram": "Telegram",
+        "verification": "אימות"
+      },
+      "linkLabels": {
+        "androidApk": "קובץ APK לאנדרואיד",
+        "linux": "לינוקס",
+        "linuxArm": "לינוקס ARM",
+        "linuxX64": "לינוקס x64",
+        "macosApple": "macOS Apple Silicon",
+        "macosIntel": "macOS Intel",
+        "openWebApp": "פתיחת אפליקציית אינטרנט",
+        "openWebsite": "פתיחת האתר",
+        "windows": "Windows",
+        "windowsPortable": "גרסה ניידת ל-Windows"
+      },
+      "items": {
+        "5chan": {
+          "tagline": "לוחות תמונות מבוזרים עם הורדות ישירות ל-web, ל-APK ול-desktop.",
+          "description": "5chan הוא ה-client הציבורי הראשון של Bitsocial. הוא משחזר את הזרימה האנונימית של imageboard על רשת peer-to-peer: boards, threads, פרסום תמונות, moderation קהילתי ומספר mirrors ציבוריים בלי להישען על server מרכזי."
+        },
+        "seedit": {
+          "tagline": "Bitsocial client בסגנון forum עם גרסאות web, APK ו-desktop.",
+          "description": "Seedit מביא ל-Bitsocial דיון בסגנון Reddit עם threads, identities, ניהול קהילה ומסלולי הפצה מרובים. זהו הדרך המהירה ביותר לנסות את צד ה-forum של הרשת מתוך דפדפן, טלפון Android או אפליקציית desktop."
+        },
+        "mintpass": {
+          "tagline": "בקרת גישה מבוססת NFT לקהילות שצריכות שערי anti-spam חזקים יותר.",
+          "description": "Mintpass הוא שכבת אימות גמישה לקהילות Bitsocial. הוא מאפשר למנהלים לשלב בעלות על NFT, זרימות verification ומודולי challenge מותאמים מבלי לדחוף את כולם למערכת login מרכזית."
+        },
+        "spam-blocker": {
+          "tagline": "שכבת דירוג סיכון מרכזית לסינון פרסומים פוגעניים.",
+          "description": "Spam Blocker מעריך פרסומים ומחזיר risk score שהקהילות יכולות לשלב עם לוגיקת moderation משלהן. הוא שימושי כשאתם רוצים שכבה נוספת פרקטית לפני בניית כללי anti-spam מותאמים יותר."
+        },
+        "captcha-canvas-challenge": {
+          "tagline": "CAPTCHA תמונה מותאמים לקהילות שרוצות verification אנושי.",
+          "description": "Captcha Canvas Challenge יוצר captcha חזותיים שהקהילות יכולות לחבר לזרימת הפרסום שלהן. זו אפשרות קלה לקהילות שרוצות בדיקות אנושיות ישירות בלי לוותר על moderation באירוח עצמי."
+        },
+        "voucher-challenge": {
+          "tagline": "קודי voucher בסגנון הזמנה לקהילות שמעדיפות צמיחה מבוקרת.",
+          "description": "Voucher Challenge מאפשר למנהלים להפיץ קודי voucher מהימנים שפותחים פרסום בלי identity provider גלובלי. הוא מתאים לקהילות מבוססות הזמנות, boards נישתיים והשקות הדרגתיות."
+        },
+        "evm-contract-call": {
+          "tagline": "gating on-chain לקהילות שרוצות בדיקות token או contract.",
+          "description": "EVM Contract Call מאמת פרסומים על ידי קריאה ל-EVM contract לפני קבלת post. הוא מאפשר לקהילות לשלב token gates, כללי staking או בדיקות on-chain אחרות לתוך זרימת ה-moderation שלהן."
+        },
+        "bitsocial-cli": {
+          "tagline": "שליטה משורת הפקודה ל-nodes, לקהילות ול-workflows של automation.",
+          "description": "Bitsocial CLI הוא ממשק ה-terminal הרשמי של הפרוטוקול. השתמשו בו כדי לנהל nodes, לפרסם content, לבצע automation של זרימות admin ולעבוד ישירות מול primitive-ים של Bitsocial בלי client GUI."
+        },
+        "telegram-bots": {
+          "tagline": "feed bots שמעבירים פוסטים Bitsocial חדשים ל-channelים או groupים ב-Telegram.",
+          "description": "Bitsocial Telegram Bots עוקב אחרי רשימות הקהילה של ה-client ומעביר פוסטים חדשים ליעדי Telegram עם קישורי inline חזרה ל-clients של Bitsocial. ה-bot הפעיל מכסה היום feed של 5chan, וה-repo בנוי כך שאפשר יהיה להוסיף עם הזמן עוד bots ייעודיים ל-client."
+        },
+        "5chan-board-manager": {
+          "tagline": "כלי ניהול boards עבור קהילות 5chan מותאמות.",
+          "description": "5chan Board Manager נבנה על גבי Bitsocial CLI כדי לעזור למנהלים ליצור, להגדיר ולבצע moderation ל-imageboard boards מותאמים. זו שכבת utility לבעלי boards שרוצים שליטה תפעולית."
+        }
+      }
+    }
   },
   "privacy": {
     "eyebrow": "איך bitsocial.net מטפל בנתונים",

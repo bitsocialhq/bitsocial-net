@@ -222,7 +222,120 @@
     "sourceCode": "ソースコード",
     "notFound": "アプリが見つかりません",
     "notFoundBack": "Apps に戻る",
-    "mirrors": "ミラー"
+    "mirrors": "ミラー",
+    "catalog": {
+      "categories": {
+        "apps": {
+          "label": "アプリ",
+          "description": "今日すぐに開いたりインストールしたりできる、ユーザー向けの Bitsocial クライアント。"
+        },
+        "anti-spam": {
+          "label": "アンチスパム",
+          "description": "Bitsocial コミュニティ向けの認証、フィルタリング、モデレーション用モジュール。"
+        },
+        "tools": {
+          "label": "ツール",
+          "description": "Bitsocial アプリを実行したり拡張したりするための CLI および管理用ユーティリティ。"
+        }
+      },
+      "platforms": {
+        "web": {
+          "label": "Web",
+          "shortLabel": "Web",
+          "description": "ブラウザベースのアプリとライブWebミラー。"
+        },
+        "android": {
+          "label": "Android",
+          "shortLabel": "Android",
+          "description": "Android端末向けのAPKを直接ダウンロード。"
+        },
+        "ios": {
+          "label": "iOS",
+          "shortLabel": "iOS",
+          "description": "iPhone と iPad 向けのネイティブまたはインストール可能なアプリ。"
+        },
+        "desktop": {
+          "label": "デスクトップ",
+          "shortLabel": "デスクトップ",
+          "description": "Windows、macOS、Linux 向けのダウンロード。"
+        }
+      },
+      "tags": {
+        "accessControl": "アクセス制御",
+        "automation": "自動化",
+        "boardAdmin": "掲示板管理",
+        "bots": "ボット",
+        "captcha": "Captcha",
+        "cli": "CLI",
+        "contracts": "契約",
+        "downloadable": "ダウンロード可",
+        "feeds": "フィード",
+        "forums": "フォーラム",
+        "humanChecks": "人間チェック",
+        "imageboard": "画像掲示板",
+        "invites": "招待",
+        "mirrors": "ミラー",
+        "moderation": "投稿管理",
+        "onChain": "オンチェーン",
+        "riskScores": "リスクスコア",
+        "telegram": "Telegram",
+        "verification": "本人確認"
+      },
+      "linkLabels": {
+        "androidApk": "Android APK",
+        "linux": "Linux",
+        "linuxArm": "Linux ARM",
+        "linuxX64": "Linux x64",
+        "macosApple": "macOS Apple Silicon",
+        "macosIntel": "macOS Intel",
+        "openWebApp": "Webアプリを開く",
+        "openWebsite": "ウェブサイトを開く",
+        "windows": "Windows",
+        "windowsPortable": "Windows ポータブル版"
+      },
+      "items": {
+        "5chan": {
+          "tagline": "ウェブ、APK、デスクトップ版を直接ダウンロードできる分散型画像掲示板。",
+          "description": "5chan は Bitsocial 最初の公開クライアントです。匿名画像掲示板の流れをピア・ツー・ピアネットワーク上で再現し、掲示板、スレッド、画像投稿、コミュニティのモデレーション、そして中央サーバーに頼らない複数の公開ミラーを備えています。"
+        },
+        "seedit": {
+          "tagline": "ウェブ、APK、デスクトップ版を備えた掲示板型の Bitsocial クライアント。",
+          "description": "Seedit は Reddit 風の議論を Bitsocial に持ち込み、スレッド、アイデンティティ、コミュニティ管理、複数の配布経路を備えています。ブラウザ、Android のスマートフォン、デスクトップアプリから、ネットワークの掲示板側を最短で試せます。"
+        },
+        "mintpass": {
+          "tagline": "より強いスパム対策の入り口が必要なコミュニティ向けの NFT ベースのアクセス制御。",
+          "description": "Mintpass は Bitsocial コミュニティ向けの柔軟な認証層です。NFT の所有確認、認証の流れ、独自のチャレンジモジュールを組み合わせながら、全員を中央集約型のログインシステムに寄せる必要がありません。"
+        },
+        "spam-blocker": {
+          "tagline": "悪質な投稿をふるい分ける中央集約型のリスク判定層。",
+          "description": "Spam Blocker は投稿を評価してリスクスコアを返し、コミュニティはそれを独自のモデレーションロジックと組み合わせられます。より独自のスパム対策ルールを作る前の、実用的な追加層として役立ちます。"
+        },
+        "captcha-canvas-challenge": {
+          "tagline": "人間確認を求めるコミュニティ向けの独自画像 CAPTCHA。",
+          "description": "Captcha Canvas Challenge は視覚的な CAPTCHA を生成し、コミュニティが自分たちの投稿フローに組み込めます。セルフホストのモデレーションを手放さずに、直接的な人間確認を取り入れたい場合の軽量な選択肢です。"
+        },
+        "voucher-challenge": {
+          "tagline": "管理された成長を好むコミュニティ向けの招待制バウチャーコード。",
+          "description": "Voucher Challenge はモデレーターが信頼できるバウチャーコードを配布し、グローバルな認証基盤なしで投稿を解放できます。招待制のコミュニティ、ニッチな掲示板、段階的な展開に向いています。"
+        },
+        "evm-contract-call": {
+          "tagline": "トークンやコントラクトの確認を行いたいコミュニティ向けのオンチェーン制御。",
+          "description": "EVM Contract Call は、投稿を受理する前に EVM コントラクトを呼び出して投稿内容を確認します。トークンゲート、ステーキング条件、その他のオンチェーン確認をモデレーションの流れに組み込めます。"
+        },
+        "bitsocial-cli": {
+          "tagline": "ノード、コミュニティ、自動化ワークフローを操るコマンドライン制御。",
+          "description": "Bitsocial CLI はプロトコルの公式ターミナルインターフェースです。ノード管理、コンテンツ投稿、管理フローの自動化、GUI クライアントを使わずに Bitsocial の基本要素へ直接アクセスする用途に使えます。"
+        },
+        "telegram-bots": {
+          "tagline": "新しい Bitsocial 投稿を Telegram のチャンネルやグループへ中継するフィードボット。",
+          "description": "Bitsocial Telegram Bots はクライアントのコミュニティ一覧を監視し、新しい投稿を Telegram の配信先へ転送しながら、Bitsocial クライアントへ戻るインラインリンクを付けます。現在の稼働ボットは 5chan のフィードを対象にしており、将来的にさらにクライアント固有のボットを追加できる構成になっています。"
+        },
+        "5chan-board-manager": {
+          "tagline": "カスタム 5chan コミュニティ向けの掲示板管理ツール。",
+          "description": "5chan Board Manager は Bitsocial CLI の上に構築され、管理者がカスタム画像掲示板を作成、設定、モデレーションするのを助けます。掲示板運営者が運用を細かく管理したいときの実用的な管理層です。"
+        }
+      }
+    }
   },
   "privacy": {
     "eyebrow": "bitsocial.net がデータをどのように扱うか",

@@ -222,7 +222,120 @@
     "sourceCode": "Broncode",
     "notFound": "App niet gevonden",
     "notFoundBack": "Terug naar Apps",
-    "mirrors": "Spiegels"
+    "mirrors": "Spiegels",
+    "catalog": {
+      "categories": {
+        "apps": {
+          "label": "Apps",
+          "description": "Bitsocial-clients voor gebruikers die je vandaag nog kunt openen of installeren."
+        },
+        "anti-spam": {
+          "label": "Anti-spam",
+          "description": "Modules voor authenticatie, filtering en moderatie voor Bitsocial-gemeenschappen."
+        },
+        "tools": {
+          "label": "Hulpmiddelen",
+          "description": "CLI- en beheertools om Bitsocial-apps uit te voeren of uit te breiden."
+        }
+      },
+      "platforms": {
+        "web": {
+          "label": "Web",
+          "shortLabel": "Web",
+          "description": "Browsergebaseerde apps en live webmirrors."
+        },
+        "android": {
+          "label": "Android",
+          "shortLabel": "Android",
+          "description": "Directe APK-downloads voor Android-apparaten."
+        },
+        "ios": {
+          "label": "iOS",
+          "shortLabel": "iOS",
+          "description": "Native of installeerbare apps voor iPhone en iPad."
+        },
+        "desktop": {
+          "label": "Desktop",
+          "shortLabel": "Desktop",
+          "description": "Downloads voor Windows, macOS en Linux."
+        }
+      },
+      "tags": {
+        "accessControl": "Toegangsbeheer",
+        "automation": "Automatisering",
+        "boardAdmin": "Bordbeheer",
+        "bots": "Bots",
+        "captcha": "Captcha",
+        "cli": "CLI",
+        "contracts": "Contracten",
+        "downloadable": "Downloadbaar",
+        "feeds": "Feeds",
+        "forums": "Forums",
+        "humanChecks": "Menselijke controles",
+        "imageboard": "Imageboard",
+        "invites": "Uitnodigingen",
+        "mirrors": "Mirrors",
+        "moderation": "Moderatie",
+        "onChain": "On-chain",
+        "riskScores": "Risicoscores",
+        "telegram": "Telegram",
+        "verification": "Verificatie"
+      },
+      "linkLabels": {
+        "androidApk": "Android-APK",
+        "linux": "Linux",
+        "linuxArm": "Linux ARM",
+        "linuxX64": "Linux x64",
+        "macosApple": "macOS Apple Silicon",
+        "macosIntel": "macOS Intel",
+        "openWebApp": "Webapp openen",
+        "openWebsite": "Website openen",
+        "windows": "Windows",
+        "windowsPortable": "Draagbare versie voor Windows"
+      },
+      "items": {
+        "5chan": {
+          "tagline": "Gedecentraliseerde imageboards met directe downloads voor web, APK en desktop.",
+          "description": "5chan is de eerste publieke Bitsocial-client. Het herbouwt de anonieme imageboard-flow op een peer-to-peer netwerk: boards, threads, afbeeldingen plaatsen, communitymoderatie en meerdere publieke mirrors zonder afhankelijk te zijn van een centrale server."
+        },
+        "seedit": {
+          "tagline": "Bitsocial-client in forumstijl met web-, APK- en desktopbuilds.",
+          "description": "Seedit brengt Reddit-achtige discussies naar Bitsocial met threads, identiteiten, communitybeheer en meerdere distributiepaden. Het is de snelste manier om de forumkant van het netwerk te proberen vanuit een browser, Android-telefoon of desktopapp."
+        },
+        "mintpass": {
+          "tagline": "NFT-ondersteunde toegangscontrole voor communities die sterkere anti-spam poorten nodig hebben.",
+          "description": "Mintpass is een flexibele authenticatielaag voor Bitsocial-communities. Het laat moderators NFT-eigendom, verificatieflows en aangepaste challenge-modules combineren zonder iedereen naar een centraal inlogsysteem te duwen."
+        },
+        "spam-blocker": {
+          "tagline": "Gecentraliseerde risicoscorelaag voor het filteren van misbruikte publicaties.",
+          "description": "Spam Blocker beoordeelt publicaties en geeft een risicoscore terug die communities kunnen combineren met hun eigen moderatielogica. Het is handig wanneer je een pragmatische extra laag wilt voordat je meer aangepaste anti-spamregels bouwt."
+        },
+        "captcha-canvas-challenge": {
+          "tagline": "Aangepaste afbeeldings-captcha's voor communities die menselijke verificatie willen.",
+          "description": "Captcha Canvas Challenge genereert visuele captcha's die communities in hun eigen publicatieflow kunnen inbouwen. Het is een lichte optie voor communities die directe menselijke controles willen zonder self-hosted moderatie op te geven."
+        },
+        "voucher-challenge": {
+          "tagline": "Voucher codes in uitnodigingsstijl voor communities die gecontroleerde groei verkiezen.",
+          "description": "Voucher Challenge laat moderators vertrouwde voucher codes uitdelen waarmee publiceren wordt ontgrendeld zonder een globale identity provider. Het past goed bij invite-driven communities, nicheboards en geleidelijke uitrol."
+        },
+        "evm-contract-call": {
+          "tagline": "On-chain gating voor communities die token- of contractchecks willen.",
+          "description": "EVM Contract Call verifieert publicaties door een EVM contract aan te roepen voordat een post wordt geaccepteerd. Het laat communities token gates, stakingregels of andere on-chain controles in hun moderatieflow bouwen."
+        },
+        "bitsocial-cli": {
+          "tagline": "Command-line controle voor nodes, communities en automatiseringsworkflows.",
+          "description": "Bitsocial CLI is de officiële terminalinterface voor het protocol. Gebruik het om nodes te beheren, content te publiceren, adminflows te automatiseren en direct met Bitsocial-primitieven te werken zonder GUI-client."
+        },
+        "telegram-bots": {
+          "tagline": "Feedbots die nieuwe Bitsocial-posts doorsturen naar Telegram-kanalen of -groepen.",
+          "description": "Bitsocial Telegram Bots bewaakt de communitylijsten van de client en stuurt nieuwe posts door naar Telegram-bestemmingen met inline links terug naar Bitsocial-clients. De actieve bot dekt vandaag 5chan-feeds, en de repo is zo gestructureerd dat er in de loop van de tijd meer client-specifieke bots kunnen worden toegevoegd."
+        },
+        "5chan-board-manager": {
+          "tagline": "Boardbeheer voor aangepaste 5chan-communities.",
+          "description": "5chan Board Manager bouwt voort op Bitsocial CLI om beheerders te helpen aangepaste imageboard-boards te maken, configureren en modereren. Het is de utilitylaag voor boardeigenaren die operationele controle willen."
+        }
+      }
+    }
   },
   "privacy": {
     "eyebrow": "Hoe bitsocial.net met gegevens omgaat",

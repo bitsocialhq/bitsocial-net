@@ -222,7 +222,78 @@
     "sourceCode": "Zdrojový kód",
     "notFound": "Aplikace nenalezena",
     "notFoundBack": "Zpět na Apps",
-    "mirrors": "Zrcadla"
+    "mirrors": "Zrcadla",
+    "catalog": {
+      "categories": {
+        "apps": {
+          "label": "Aplikace",
+          "description": "Uživatelské aplikace Bitsocial, které můžete dnes otevřít nebo nainstalovat."
+        },
+        "anti-spam": {
+          "label": "Anti-spam",
+          "description": "Moduly pro ověřování, filtrování a moderaci pro komunity Bitsocial."
+        },
+        "tools": {
+          "label": "Nástroje",
+          "description": "Nástroje CLI a administrátorské utility pro provoz nebo rozšiřování aplikací Bitsocial."
+        }
+      },
+      "platforms": {
+        "web": {
+          "label": "Web",
+          "shortLabel": "Web",
+          "description": "Aplikace v prohlížeči a živé webové zrcadla."
+        },
+        "android": {
+          "label": "Android",
+          "shortLabel": "Android",
+          "description": "Přímé stahování APK pro zařízení Android."
+        },
+        "ios": {
+          "label": "iOS",
+          "shortLabel": "iOS",
+          "description": "Nativní nebo instalovatelné aplikace pro iPhone a iPad."
+        },
+        "desktop": {
+          "label": "Desktop",
+          "shortLabel": "Desktop",
+          "description": "Stahování pro Windows, macOS a Linux."
+        }
+      },
+      "tags": {
+        "accessControl": "Řízení přístupu",
+        "automation": "Automatizace",
+        "boardAdmin": "Správa nástěnky",
+        "bots": "Boty",
+        "captcha": "Captcha",
+        "cli": "CLI",
+        "contracts": "Smlouvy",
+        "downloadable": "Ke stažení",
+        "feeds": "Kanály",
+        "forums": "Fóra",
+        "humanChecks": "Lidské kontroly",
+        "imageboard": "Imageboard",
+        "invites": "Pozvánky",
+        "mirrors": "Zrcadla",
+        "moderation": "Moderování",
+        "onChain": "On-chain",
+        "riskScores": "Riziková skóre",
+        "telegram": "Telegram",
+        "verification": "Ověření"
+      },
+      "linkLabels": {
+        "androidApk": "APK pro Android",
+        "linux": "Linux",
+        "linuxArm": "Linux ARM",
+        "linuxX64": "Linux x64",
+        "macosApple": "macOS Apple Silicon",
+        "macosIntel": "macOS Intel",
+        "openWebApp": "Otevřít webovou aplikaci",
+        "openWebsite": "Otevřít web",
+        "windows": "Windows",
+        "windowsPortable": "Přenosná verze pro Windows"
+      }
+    }
   },
   "privacy": {
     "eyebrow": "Jak bitsocial.net zachází s daty",

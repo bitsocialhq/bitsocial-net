@@ -8,15 +8,20 @@ import CardInlineCta, {
   highlightedCtaClassName,
 } from "@/components/card-inline-cta";
 import {
-  PLATFORM_META,
   type AppCategorySlug,
   type AppData,
   type AppLink,
   type AppPlatformSlug,
+  getAppDescription,
+  getAppLinkLabel,
   getAppPlatforms,
+  getAppTagLabel,
+  getAppTagline,
   getCategoryBySlug,
+  getCategoryLabel,
   getGithubUrl,
   getMirrorLinks,
+  getPlatformShortLabel,
   getPrimaryLinks,
   tagsMatchFilter,
 } from "@/lib/apps-data";
@@ -53,6 +58,8 @@ export default function AppCard({
   const primaryActionLink = primaryLinks[0];
   const quickLinks = primaryLinks.slice(1, compact ? 3 : app.featured ? 5 : 4);
   const sourceUrl = getGithubUrl(app);
+  const tagline = getAppTagline(app, t);
+  const description = getAppDescription(app, t);
 
   return (
     <article
@@ -93,15 +100,11 @@ export default function AppCard({
             ) : null}
           </div>
 
-          <p className="mt-2 text-sm font-medium leading-relaxed text-foreground/70">
-            {app.tagline}
-          </p>
+          <p className="mt-2 text-sm font-medium leading-relaxed text-foreground/70">{tagline}</p>
         </div>
       </div>
 
-      {!compact ? (
-        <p className="text-sm leading-6 text-muted-foreground">{app.description}</p>
-      ) : null}
+      {!compact ? <p className="text-sm leading-6 text-muted-foreground">{description}</p> : null}
 
       <div className="flex flex-wrap gap-2">
         {category ? (
@@ -110,7 +113,7 @@ export default function AppCard({
             href={
               onCategorySelect ? undefined : `/apps?category=${encodeURIComponent(category.slug)}`
             }
-            label={category.label}
+            label={getCategoryLabel(category, t)}
             onClick={onCategorySelect ? () => onCategorySelect(category.slug) : undefined}
           />
         ) : null}
@@ -119,7 +122,7 @@ export default function AppCard({
             key={tag}
             active={tagsMatchFilter(activeTag, tag)}
             href={onTagSelect ? undefined : `/apps?tag=${encodeURIComponent(tag)}`}
-            label={tag}
+            label={getAppTagLabel(tag, t)}
             onClick={onTagSelect ? () => onTagSelect(tag) : undefined}
           />
         ))}
@@ -128,7 +131,7 @@ export default function AppCard({
             key={platform}
             active={activePlatform === platform}
             href={onPlatformSelect ? undefined : `/apps?platform=${encodeURIComponent(platform)}`}
-            label={PLATFORM_META[platform].shortLabel}
+            label={getPlatformShortLabel(platform, t)}
             onClick={onPlatformSelect ? () => onPlatformSelect(platform) : undefined}
           />
         ))}
@@ -153,7 +156,7 @@ export default function AppCard({
             >
               <span className="inline-flex items-center gap-2">
                 {getLinkIcon(primaryActionLink)}
-                <span>{primaryActionLink.label}</span>
+                <span>{getAppLinkLabel(primaryActionLink, t)}</span>
               </span>
             </CardInlineCta>
           ) : null}
@@ -169,7 +172,7 @@ export default function AppCard({
               >
                 <span className="inline-flex items-center gap-2">
                   {getLinkIcon(link)}
-                  <span>{link.label}</span>
+                  <span>{getAppLinkLabel(link, t)}</span>
                 </span>
               </CardInlineCta>
             ))}
@@ -190,7 +193,7 @@ export default function AppCard({
                 >
                   <span className="inline-flex items-center gap-1.5">
                     <ArrowUpRight className="h-3.5 w-3.5" />
-                    <span>{mirror.label}</span>
+                    <span>{getAppLinkLabel(mirror, t)}</span>
                   </span>
                 </CardInlineCta>
               ))}

@@ -222,7 +222,120 @@
     "sourceCode": "সোর্স কোড",
     "notFound": "অ্যাপটি পাওয়া যায়নি",
     "notFoundBack": "অ্যাপসে ফিরে যান",
-    "mirrors": "মিরর"
+    "mirrors": "মিরর",
+    "catalog": {
+      "categories": {
+        "apps": {
+          "label": "অ্যাপস",
+          "description": "Bitsocial-এর ব্যবহারমুখী ক্লায়েন্ট, যা আপনি আজই খুলতে বা ইনস্টল করতে পারেন।"
+        },
+        "anti-spam": {
+          "label": "অ্যান্টি-স্প্যাম",
+          "description": "Bitsocial কমিউনিটির জন্য প্রমাণীকরণ, ফিল্টারিং, ও মডারেশন মডিউল।"
+        },
+        "tools": {
+          "label": "টুলস",
+          "description": "Bitsocial অ্যাপ চালানো বা সম্প্রসারণের জন্য CLI ও অ্যাডমিন ইউটিলিটি।"
+        }
+      },
+      "platforms": {
+        "web": {
+          "label": "ওয়েব",
+          "shortLabel": "ওয়েব",
+          "description": "ব্রাউজার-ভিত্তিক অ্যাপ এবং লাইভ ওয়েব মিরর।"
+        },
+        "android": {
+          "label": "অ্যান্ড্রয়েড",
+          "shortLabel": "অ্যান্ড্রয়েড",
+          "description": "অ্যান্ড্রয়েড ডিভাইসের জন্য সরাসরি APK ডাউনলোড।"
+        },
+        "ios": {
+          "label": "iOS",
+          "shortLabel": "iOS",
+          "description": "iPhone ও iPad-এর জন্য নেটিভ বা ইনস্টলযোগ্য অ্যাপ।"
+        },
+        "desktop": {
+          "label": "ডেস্কটপ",
+          "shortLabel": "ডেস্কটপ",
+          "description": "Windows, macOS, এবং Linux-এর ডাউনলোড।"
+        }
+      },
+      "tags": {
+        "accessControl": "প্রবেশাধিকার নিয়ন্ত্রণ",
+        "automation": "স্বয়ংক্রিয়করণ",
+        "boardAdmin": "বোর্ড প্রশাসন",
+        "bots": "বট",
+        "captcha": "Captcha",
+        "cli": "CLI",
+        "contracts": "চুক্তি",
+        "downloadable": "ডাউনলোডযোগ্য",
+        "feeds": "ফিড",
+        "forums": "ফোরাম",
+        "humanChecks": "মানব যাচাই",
+        "imageboard": "ইমেজবোর্ড",
+        "invites": "আমন্ত্রণ",
+        "mirrors": "মিরর",
+        "moderation": "মডারেশন",
+        "onChain": "অন-চেইন",
+        "riskScores": "ঝুঁকির স্কোর",
+        "telegram": "Telegram",
+        "verification": "যাচাইকরণ"
+      },
+      "linkLabels": {
+        "androidApk": "অ্যান্ড্রয়েড APK",
+        "linux": "লিনাক্স",
+        "linuxArm": "লিনাক্স ARM",
+        "linuxX64": "লিনাক্স x64",
+        "macosApple": "macOS Apple Silicon",
+        "macosIntel": "macOS Intel",
+        "openWebApp": "ওয়েব অ্যাপ খুলুন",
+        "openWebsite": "ওয়েবসাইট খুলুন",
+        "windows": "উইন্ডোজ",
+        "windowsPortable": "পোর্টেবল উইন্ডোজ"
+      },
+      "items": {
+        "5chan": {
+          "tagline": "বিকেন্দ্রীভূত imageboard, যেখানে web, APK, আর desktop ডাউনলোড সরাসরি পাওয়া যায়।",
+          "description": "5chan হলো প্রথম পাবলিক Bitsocial client। এটি peer-to-peer নেটওয়ার্কে anonymous imageboard-এর অভিজ্ঞতাকে আবার তৈরি করে: boards, threads, image posting, community moderation, আর central server-এর ওপর নির্ভর না করে একাধিক public mirror।"
+        },
+        "seedit": {
+          "tagline": "forum-style Bitsocial client, web, APK, আর desktop build সহ।",
+          "description": "Seedit Reddit-এর মতো আলোচনা Bitsocial-এ আনে threads, identities, community management, আর একাধিক distribution path-এর মাধ্যমে। ব্রাউজার, Android ফোন, বা desktop app থেকে নেটওয়ার্কের forum দিকটা চেষ্টা করার সবচেয়ে দ্রুত উপায় এটি।"
+        },
+        "mintpass": {
+          "tagline": "NFT-ভিত্তিক access control, যেসব community-র আরও শক্ত anti-spam gate দরকার তাদের জন্য।",
+          "description": "Mintpass হলো Bitsocial community-গুলোর জন্য একটি flexible authentication layer। এটি moderator-দের NFT ownership, verification flow, আর custom challenge module একসাথে ব্যবহার করতে দেয়, সবাইকে central login system-এ ঠেলে না দিয়েই।"
+        },
+        "spam-blocker": {
+          "tagline": "অবমাননাকর publication filter করার জন্য centralized risk scoring layer।",
+          "description": "Spam Blocker publication মূল্যায়ন করে একটি risk score ফেরত দেয়, যা community-গুলো তাদের moderation logic-এর সঙ্গে মিলিয়ে নিতে পারে। আরও custom anti-spam rule বানানোর আগে practical extra layer চাইলে এটি কাজে লাগে।"
+        },
+        "captcha-canvas-challenge": {
+          "tagline": "human verification চাই এমন community-গুলোর জন্য custom image CAPTCHA।",
+          "description": "Captcha Canvas Challenge visual CAPTCHA তৈরি করে, যা community-গুলো তাদের publishing flow-এ বসাতে পারে। নিজস্ব hosting-এর moderation ছাড়তে না চেয়েও direct human check চাইলে এটি একটি lightweight option।"
+        },
+        "voucher-challenge": {
+          "tagline": "invite-style voucher code, controlled growth পছন্দ করা community-গুলোর জন্য।",
+          "description": "Voucher Challenge moderator-দের trusted voucher code বিতরণ করতে দেয়, যা global identity provider ছাড়াই publishing unlock করে। invite-driven community, niche board, আর gradual rollout-এর জন্য এটি ভালো মানায়।"
+        },
+        "evm-contract-call": {
+          "tagline": "token বা contract check চাই এমন community-গুলোর জন্য on-chain gating।",
+          "description": "EVM Contract Call post গ্রহণের আগে একটি EVM contract call করে publication verify করে। এতে community-গুলো token gate, staking rule, বা অন্য on-chain check moderation flow-এ যুক্ত করতে পারে।"
+        },
+        "bitsocial-cli": {
+          "tagline": "node, community, আর automation workflow-এর জন্য command-line control।",
+          "description": "Bitsocial CLI হলো protocol-এর official terminal interface। এটি ব্যবহার করে node manage করুন, content publish করুন, admin flow automate করুন, আর GUI client ছাড়াই সরাসরি Bitsocial primitive-এর সঙ্গে কাজ করুন।"
+        },
+        "telegram-bots": {
+          "tagline": "feed bot, যা নতুন Bitsocial post Telegram channel বা group-এ পাঠায়।",
+          "description": "Bitsocial Telegram Bots client community list monitor করে এবং নতুন post-গুলোকে Telegram destination-এ forward করে, Bitsocial client-এ ফিরে যাওয়ার জন্য inline link সহ। সক্রিয় bot এখন 5chan feed cover করে, আর repository এমনভাবে সাজানো যাতে সময়ের সঙ্গে আরও client-specific bot যোগ করা যায়।"
+        },
+        "5chan-board-manager": {
+          "tagline": "custom 5chan community-র জন্য board administration tooling।",
+          "description": "5chan Board Manager, Bitsocial CLI-এর ওপর তৈরি, যাতে administrator-রা custom imageboard board তৈরি, configure, আর moderate করতে পারেন। যারা operational control চান, তাদের জন্য এটি board owner-এর utility layer।"
+        }
+      }
+    }
   },
   "privacy": {
     "eyebrow": "bitsocial.net কীভাবে ডেটা পরিচালনা করে",

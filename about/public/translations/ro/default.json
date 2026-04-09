@@ -222,7 +222,120 @@
     "sourceCode": "Cod sursă",
     "notFound": "Aplicația nu a fost găsită",
     "notFoundBack": "Înapoi la Apps",
-    "mirrors": "Oglinzi"
+    "mirrors": "Oglinzi",
+    "catalog": {
+      "categories": {
+        "apps": {
+          "label": "Aplicații",
+          "description": "Clienți Bitsocial destinați utilizatorilor, pe care îi poți deschide sau instala astăzi."
+        },
+        "anti-spam": {
+          "label": "Anti-spam",
+          "description": "Module de autentificare, filtrare și moderare pentru comunitățile Bitsocial."
+        },
+        "tools": {
+          "label": "Unelte",
+          "description": "Utilitare CLI și de administrare pentru rularea sau extinderea aplicațiilor Bitsocial."
+        }
+      },
+      "platforms": {
+        "web": {
+          "label": "Web",
+          "shortLabel": "Web",
+          "description": "Aplicații bazate pe browser și oglinzi web live."
+        },
+        "android": {
+          "label": "Android",
+          "shortLabel": "Android",
+          "description": "Descărcări directe de APK pentru dispozitive Android."
+        },
+        "ios": {
+          "label": "iOS",
+          "shortLabel": "iOS",
+          "description": "Aplicații native sau instalabile pentru iPhone și iPad."
+        },
+        "desktop": {
+          "label": "Desktop",
+          "shortLabel": "Desktop",
+          "description": "Descărcări pentru Windows, macOS și Linux."
+        }
+      },
+      "tags": {
+        "accessControl": "Controlul accesului",
+        "automation": "Automatizare",
+        "boardAdmin": "Administrarea panoului",
+        "bots": "Boți",
+        "captcha": "Captcha",
+        "cli": "CLI",
+        "contracts": "Contracte",
+        "downloadable": "Descărcabil",
+        "feeds": "Fluxuri",
+        "forums": "Forumuri",
+        "humanChecks": "Verificări umane",
+        "imageboard": "Imageboard",
+        "invites": "Invitații",
+        "mirrors": "Oglinzi",
+        "moderation": "Moderare",
+        "onChain": "On-chain",
+        "riskScores": "Scoruri de risc",
+        "telegram": "Telegram",
+        "verification": "Verificare"
+      },
+      "linkLabels": {
+        "androidApk": "APK Android",
+        "linux": "Linux",
+        "linuxArm": "Linux ARM",
+        "linuxX64": "Linux x64",
+        "macosApple": "macOS Apple Silicon",
+        "macosIntel": "macOS Intel",
+        "openWebApp": "Deschide aplicația web",
+        "openWebsite": "Deschide site-ul",
+        "windows": "Windows",
+        "windowsPortable": "Versiune portabilă pentru Windows"
+      },
+      "items": {
+        "5chan": {
+          "tagline": "Imageboarduri descentralizate cu descărcări directe pentru web, APK și desktop.",
+          "description": "5chan este primul client public Bitsocial. Reproduce fluxul anonim de imageboard pe o rețea peer-to-peer: boarduri, thread-uri, postare de imagini, moderare de comunitate și mai multe mirror-uri publice fără a depinde de un server central."
+        },
+        "seedit": {
+          "tagline": "Client Bitsocial în stil forum, cu build-uri pentru web, APK și desktop.",
+          "description": "Seedit aduce discuția în stil Reddit în Bitsocial, cu thread-uri, identități, administrarea comunității și mai multe căi de distribuție. Este cea mai rapidă metodă de a încerca partea de forum a rețelei din browser, telefon Android sau aplicație desktop."
+        },
+        "mintpass": {
+          "tagline": "Control al accesului susținut de NFT pentru comunități care au nevoie de porți anti-spam mai puternice.",
+          "description": "Mintpass este un strat de autentificare flexibil pentru comunitățile Bitsocial. Le permite moderatorilor să combine deținerea de NFT, fluxuri de verificare și module de challenge personalizate fără să împingă pe toată lumea către un sistem central de login."
+        },
+        "spam-blocker": {
+          "tagline": "Strat centralizat de scorare a riscului pentru filtrarea publicațiilor abuzive.",
+          "description": "Spam Blocker evaluează publicațiile și returnează un risk score pe care comunitățile îl pot combina cu propria logică de moderare. Este util când vrei un strat suplimentar pragmatic înainte de a construi reguli anti-spam mai personalizate."
+        },
+        "captcha-canvas-challenge": {
+          "tagline": "Captcha-uri cu imagine personalizată pentru comunități care vor verificare umană.",
+          "description": "Captcha Canvas Challenge generează captcha-uri vizuale pe care comunitățile le pot integra în propriul flux de publicare. Este o opțiune ușoară pentru comunități care vor verificări umane directe fără să renunțe la moderarea self-hosted."
+        },
+        "voucher-challenge": {
+          "tagline": "Coduri voucher în stil invitație pentru comunități care preferă creștere controlată.",
+          "description": "Voucher Challenge le permite moderatorilor să distribuie coduri voucher de încredere care deblochează publicarea fără un identity provider global. Se potrivește bine comunităților bazate pe invitații, boardurilor de nișă și rollout-urilor treptate."
+        },
+        "evm-contract-call": {
+          "tagline": "Gating on-chain pentru comunități care vor verificări de token sau contract.",
+          "description": "EVM Contract Call verifică publicațiile apelând un contract EVM înainte ca un post să fie acceptat. Le permite comunităților să construiască token gates, reguli de staking sau alte verificări on-chain în fluxul lor de moderare."
+        },
+        "bitsocial-cli": {
+          "tagline": "Control din linia de comandă pentru noduri, comunități și fluxuri de automatizare.",
+          "description": "Bitsocial CLI este interfața oficială de terminal a protocolului. Folosește-l pentru a gestiona noduri, a publica conținut, a automatiza fluxuri de administrare și a lucra direct cu primitivele Bitsocial fără un client GUI."
+        },
+        "telegram-bots": {
+          "tagline": "Boți de feed care trimit noile postări Bitsocial în canale sau grupuri Telegram.",
+          "description": "Bitsocial Telegram Bots monitorizează listele de comunități ale clientului și redirecționează noile postări către destinații Telegram cu linkuri inline înapoi la clienții Bitsocial. Botul activ acoperă astăzi feed-urile 5chan, iar repo-ul este structurat astfel încât să poată adăuga în timp și alți boți specifici clientului."
+        },
+        "5chan-board-manager": {
+          "tagline": "Instrumente de administrare board pentru comunități 5chan personalizate.",
+          "description": "5chan Board Manager se bazează pe Bitsocial CLI pentru a ajuta administratorii să creeze, să configureze și să modereze boarduri imageboard personalizate. Este stratul de utilitare pentru proprietarii de boarduri care vor control operațional."
+        }
+      }
+    }
   },
   "privacy": {
     "eyebrow": "Cum gestionează bitsocial.net datele",

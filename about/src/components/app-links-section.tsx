@@ -5,6 +5,7 @@ import CardInlineCta, {
   highlightedCtaClassName,
 } from "@/components/card-inline-cta";
 import {
+  getAppLinkLabel,
   getGithubUrl,
   getMirrorLinks,
   getSecondaryLinks,
@@ -48,18 +49,20 @@ export default function AppLinksSection({ app }: AppLinksSectionProps) {
       </div>
 
       <div className="space-y-4">
-        {webLinks.length > 0 ? <LinkGroup title={t("apps.webLinks")} links={webLinks} /> : null}
+        {webLinks.length > 0 ? (
+          <LinkGroup title={t("apps.webLinks")} links={webLinks} t={t} />
+        ) : null}
         {mobileLinks.length > 0 ? (
-          <LinkGroup title={t("apps.mobileDownloads")} links={mobileLinks} />
+          <LinkGroup title={t("apps.mobileDownloads")} links={mobileLinks} t={t} />
         ) : null}
         {desktopLinks.length > 0 ? (
-          <LinkGroup title={t("apps.desktopDownloads")} links={desktopLinks} />
+          <LinkGroup title={t("apps.desktopDownloads")} links={desktopLinks} t={t} />
         ) : null}
         {extraLinks.length > 0 ? (
-          <LinkGroup title={t("apps.extraDownloads")} links={extraLinks} />
+          <LinkGroup title={t("apps.extraDownloads")} links={extraLinks} t={t} />
         ) : null}
         {mirrorLinks.length > 0 ? (
-          <LinkGroup title={t("apps.mirrors")} links={mirrorLinks} />
+          <LinkGroup title={t("apps.mirrors")} links={mirrorLinks} t={t} />
         ) : null}
 
         <div className="rounded-[1.4rem] border border-border/60 p-4">
@@ -81,7 +84,15 @@ export default function AppLinksSection({ app }: AppLinksSectionProps) {
   );
 }
 
-function LinkGroup({ title, links }: { title: string; links: AppLink[] }) {
+function LinkGroup({
+  title,
+  links,
+  t,
+}: {
+  title: string;
+  links: AppLink[];
+  t: ReturnType<typeof useTranslation>["t"];
+}) {
   return (
     <div className="rounded-[1.4rem] border border-border/60 p-4">
       <h3 className="mb-3 font-display text-lg text-foreground">{title}</h3>
@@ -98,7 +109,7 @@ function LinkGroup({ title, links }: { title: string; links: AppLink[] }) {
           >
             <span className="inline-flex items-center gap-2">
               {getLinkIcon(link)}
-              <span>{link.label}</span>
+              <span>{getAppLinkLabel(link, t)}</span>
             </span>
           </CardInlineCta>
         ))}

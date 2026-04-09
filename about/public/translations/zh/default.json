@@ -222,7 +222,120 @@
     "sourceCode": "源代码",
     "notFound": "未找到应用",
     "notFoundBack": "返回 Apps",
-    "mirrors": "镜像"
+    "mirrors": "镜像",
+    "catalog": {
+      "categories": {
+        "apps": {
+          "label": "应用",
+          "description": "你今天就可以打开或安装的面向用户的 Bitsocial 客户端。"
+        },
+        "anti-spam": {
+          "label": "反垃圾",
+          "description": "面向 Bitsocial 社区的认证、过滤和审核模块。"
+        },
+        "tools": {
+          "label": "工具",
+          "description": "用于运行或扩展 Bitsocial 应用的 CLI 和管理工具。"
+        }
+      },
+      "platforms": {
+        "web": {
+          "label": "网页",
+          "shortLabel": "网页",
+          "description": "基于浏览器的应用和实时网页镜像。"
+        },
+        "android": {
+          "label": "Android",
+          "shortLabel": "Android",
+          "description": "适用于 Android 设备的 APK 直接下载。"
+        },
+        "ios": {
+          "label": "iOS",
+          "shortLabel": "iOS",
+          "description": "适用于 iPhone 和 iPad 的原生或可安装应用。"
+        },
+        "desktop": {
+          "label": "桌面",
+          "shortLabel": "桌面",
+          "description": "适用于 Windows、macOS 和 Linux 的下载。"
+        }
+      },
+      "tags": {
+        "accessControl": "访问控制",
+        "automation": "自动化",
+        "boardAdmin": "版块管理",
+        "bots": "机器人",
+        "captcha": "Captcha",
+        "cli": "CLI",
+        "contracts": "合约",
+        "downloadable": "可下载",
+        "feeds": "信息流",
+        "forums": "论坛",
+        "humanChecks": "人工检查",
+        "imageboard": "图像板",
+        "invites": "邀请",
+        "mirrors": "镜像",
+        "moderation": "审核",
+        "onChain": "链上",
+        "riskScores": "风险分数",
+        "telegram": "Telegram",
+        "verification": "验证"
+      },
+      "linkLabels": {
+        "androidApk": "Android APK",
+        "linux": "Linux",
+        "linuxArm": "Linux ARM",
+        "linuxX64": "Linux x64",
+        "macosApple": "macOS Apple Silicon",
+        "macosIntel": "macOS Intel",
+        "openWebApp": "打开网页应用",
+        "openWebsite": "打开网站",
+        "windows": "Windows",
+        "windowsPortable": "Windows 便携版"
+      },
+      "items": {
+        "5chan": {
+          "tagline": "去中心化 imageboard，支持 web、APK 和 desktop 的直接下载。",
+          "description": "5chan 是 Bitsocial 的第一个公开 client。它在 peer-to-peer 网络上重建匿名 imageboard 流程：boards、threads、图片发布、社区 moderation，以及多个 public mirror，而不依赖中心 server。"
+        },
+        "seedit": {
+          "tagline": "论坛风格的 Bitsocial client，提供 web、APK 和 desktop 构建。",
+          "description": "Seedit 把 Reddit 风格的讨论带到 Bitsocial，包含 threads、identities、community management 和多种分发路径。它是从浏览器、Android phone 或 desktop app 试用网络 forum 侧的最快方式。"
+        },
+        "mintpass": {
+          "tagline": "面向需要更强 anti-spam gate 的社区的 NFT 驱动访问控制。",
+          "description": "Mintpass 是 Bitsocial 社区的灵活 authentication layer。它允许 moderators 组合 NFT ownership、verification flows 和 custom challenge modules，而不用把所有人推向一个中心 login system。"
+        },
+        "spam-blocker": {
+          "tagline": "用于过滤 abusive publications 的集中式风险评分层。",
+          "description": "Spam Blocker 会评估 publications 并返回一个 risk score，社区可以把它和自己的 moderation logic 结合起来使用。当你想在构建更自定义的 anti-spam rules 之前先加一层实用的额外保护时，它很有用。"
+        },
+        "captcha-canvas-challenge": {
+          "tagline": "面向希望进行人工 verification 的社区的自定义图片验证码。",
+          "description": "Captcha Canvas Challenge 会生成视觉验证码，社区可以把它接入自己的 publishing flow。对于想要直接人工检查、又不想放弃 self-hosted moderation 的社区来说，这是一个轻量选择。"
+        },
+        "voucher-challenge": {
+          "tagline": "适合偏好受控增长的社区的邀请码式 voucher code。",
+          "description": "Voucher Challenge 让 moderators 分发可信的 voucher code，在不依赖全局 identity provider 的情况下解锁 publishing。它很适合 invite-driven community、niche board 和逐步 rollout。"
+        },
+        "evm-contract-call": {
+          "tagline": "面向想要 token 或 contract 检查的社区的 on-chain gating。",
+          "description": "EVM Contract Call 会在 post 被接受之前调用 EVM contract 来验证 publications。它让社区可以把 token gate、staking rules 或其他 on-chain checks 集成到 moderation flow 中。"
+        },
+        "bitsocial-cli": {
+          "tagline": "用于 nodes、communities 和 automation workflows 的命令行控制。",
+          "description": "Bitsocial CLI 是该 protocol 的官方 terminal interface。你可以用它来管理 nodes、发布 content、自动化 admin flows，并且无需 GUI client 就能直接操作 Bitsocial primitives。"
+        },
+        "telegram-bots": {
+          "tagline": "将新的 Bitsocial posts 转发到 Telegram channels 或 groups 的 feed bots。",
+          "description": "Bitsocial Telegram Bots 会监控 client 的 community lists，并把新的 posts 转发到 Telegram destinations，同时附带返回 Bitsocial clients 的 inline links。当前 active bot 覆盖 5chan feeds，repo 也已按可持续扩展的方式组织，便于未来加入更多 client-specific bots。"
+        },
+        "5chan-board-manager": {
+          "tagline": "用于自定义 5chan communities 的 board 管理工具。",
+          "description": "5chan Board Manager 建立在 Bitsocial CLI 之上，帮助 administrators 创建、配置和 moderation 自定义 imageboard boards。它是面向希望获得运营控制的 board owners 的实用工具层。"
+        }
+      }
+    }
   },
   "privacy": {
     "eyebrow": "bitsocial.net 如何处理数据",

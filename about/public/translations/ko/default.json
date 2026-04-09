@@ -222,7 +222,120 @@
     "sourceCode": "소스 코드",
     "notFound": "앱을 찾을 수 없습니다",
     "notFoundBack": "Apps로 돌아가기",
-    "mirrors": "미러"
+    "mirrors": "미러",
+    "catalog": {
+      "categories": {
+        "apps": {
+          "label": "앱",
+          "description": "오늘 바로 열거나 설치할 수 있는 사용자용 Bitsocial 클라이언트."
+        },
+        "anti-spam": {
+          "label": "스팸 방지",
+          "description": "Bitsocial 커뮤니티를 위한 인증, 필터링, 중재 모듈."
+        },
+        "tools": {
+          "label": "도구",
+          "description": "Bitsocial 앱을 실행하거나 확장하는 CLI 및 관리용 유틸리티."
+        }
+      },
+      "platforms": {
+        "web": {
+          "label": "웹",
+          "shortLabel": "웹",
+          "description": "브라우저 기반 앱과 실시간 웹 미러."
+        },
+        "android": {
+          "label": "Android",
+          "shortLabel": "Android",
+          "description": "Android 기기를 위한 직접 APK 다운로드."
+        },
+        "ios": {
+          "label": "iOS",
+          "shortLabel": "iOS",
+          "description": "iPhone과 iPad용 네이티브 또는 설치형 앱."
+        },
+        "desktop": {
+          "label": "데스크톱",
+          "shortLabel": "데스크톱",
+          "description": "Windows, macOS, Linux용 다운로드."
+        }
+      },
+      "tags": {
+        "accessControl": "접근 제어",
+        "automation": "자동화",
+        "boardAdmin": "게시판 관리",
+        "bots": "봇",
+        "captcha": "Captcha",
+        "cli": "CLI",
+        "contracts": "계약",
+        "downloadable": "다운로드 가능",
+        "feeds": "피드",
+        "forums": "포럼",
+        "humanChecks": "사람 확인",
+        "imageboard": "이미지보드",
+        "invites": "초대",
+        "mirrors": "미러",
+        "moderation": "운영",
+        "onChain": "온체인",
+        "riskScores": "위험 점수",
+        "telegram": "Telegram",
+        "verification": "검증"
+      },
+      "linkLabels": {
+        "androidApk": "Android APK",
+        "linux": "Linux",
+        "linuxArm": "Linux ARM",
+        "linuxX64": "Linux x64",
+        "macosApple": "macOS Apple Silicon",
+        "macosIntel": "macOS Intel",
+        "openWebApp": "웹 앱 열기",
+        "openWebsite": "웹사이트 열기",
+        "windows": "Windows",
+        "windowsPortable": "Windows 휴대용 버전"
+      },
+      "items": {
+        "5chan": {
+          "tagline": "web, APK, desktop 직접 다운로드를 제공하는 분산형 imageboard.",
+          "description": "5chan은 Bitsocial의 첫 번째 공개 client입니다. peer-to-peer network 위에서 익명 imageboard 흐름을 그대로 재현하며, boards, threads, image posting, community moderation, 그리고 central server에 의존하지 않는 여러 public mirror를 제공합니다."
+        },
+        "seedit": {
+          "tagline": "web, APK, desktop build를 갖춘 forum 스타일 Bitsocial client.",
+          "description": "Seedit는 Reddit 스타일의 토론을 Bitsocial로 가져오며 threads, identities, community management, 여러 distribution path를 제공합니다. browser, Android phone, desktop app에서 network의 forum 측면을 가장 빠르게 시험해 볼 수 있는 방법입니다."
+        },
+        "mintpass": {
+          "tagline": "더 강한 anti-spam gate가 필요한 community를 위한 NFT 기반 access control.",
+          "description": "Mintpass는 Bitsocial community를 위한 유연한 authentication layer입니다. moderator가 NFT ownership, verification flow, custom challenge module을 섞어 쓸 수 있게 해 주며, 모두를 central login system으로 몰아넣지 않습니다."
+        },
+        "spam-blocker": {
+          "tagline": "악성 publication을 걸러내는 centralized risk scoring layer.",
+          "description": "Spam Blocker는 publication을 평가해 risk score를 반환하고, community는 이를 자체 moderation logic과 결합할 수 있습니다. 더 custom한 anti-spam rule을 만들기 전에 실용적인 추가 계층이 필요할 때 유용합니다."
+        },
+        "captcha-canvas-challenge": {
+          "tagline": "사람 확인이 필요한 community를 위한 custom image captcha.",
+          "description": "Captcha Canvas Challenge는 visual captcha를 생성해 community가 자체 publishing flow에 붙일 수 있게 해 줍니다. self-hosted moderation을 포기하지 않으면서 직접적인 human check가 필요한 경우 가벼운 선택지입니다."
+        },
+        "voucher-challenge": {
+          "tagline": "통제된 성장을 선호하는 community를 위한 invite-style voucher code.",
+          "description": "Voucher Challenge는 moderator가 신뢰할 수 있는 voucher code를 배포해 global identity provider 없이 publishing을 열 수 있게 합니다. invite-driven community, niche board, 점진적 rollout에 잘 맞습니다."
+        },
+        "evm-contract-call": {
+          "tagline": "token 또는 contract 검사를 원하는 community를 위한 on-chain gating.",
+          "description": "EVM Contract Call은 post가 승인되기 전에 EVM contract를 호출해 publication을 verify합니다. community가 token gate, staking rule, 또는 다른 on-chain check를 moderation flow에 넣을 수 있게 해 줍니다."
+        },
+        "bitsocial-cli": {
+          "tagline": "node, community, automation workflow를 위한 command-line control.",
+          "description": "Bitsocial CLI는 protocol의 공식 terminal interface입니다. node 관리, content 게시, admin flow 자동화, GUI client 없이 Bitsocial primitive에 직접 작업할 때 사용하세요."
+        },
+        "telegram-bots": {
+          "tagline": "새로운 Bitsocial post를 Telegram channel이나 group으로 전달하는 feed bot.",
+          "description": "Bitsocial Telegram Bots는 client community list를 모니터링하고 새 post를 Telegram destination으로 전달하며 Bitsocial client로 돌아가는 inline link를 붙입니다. 현재 활성 bot은 5chan feed를 다루고 있고, repo는 앞으로 더 많은 client별 bot을 추가할 수 있게 구성되어 있습니다."
+        },
+        "5chan-board-manager": {
+          "tagline": "맞춤형 5chan community를 위한 board 관리 도구.",
+          "description": "5chan Board Manager는 Bitsocial CLI 위에 만들어져 administrator가 맞춤형 imageboard board를 만들고, 설정하고, moderation할 수 있도록 돕습니다. 운영 제어가 필요한 board owner를 위한 utility layer입니다."
+        }
+      }
+    }
   },
   "privacy": {
     "eyebrow": "bitsocial.net이 데이터를 처리하는 방식",

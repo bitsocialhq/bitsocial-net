@@ -222,7 +222,120 @@
     "sourceCode": "Lähdekoodi",
     "notFound": "Sovellusta ei löytynyt",
     "notFoundBack": "Takaisin Appseihin",
-    "mirrors": "Peilit"
+    "mirrors": "Peilit",
+    "catalog": {
+      "categories": {
+        "apps": {
+          "label": "Sovellukset",
+          "description": "Käyttäjille suunnatut Bitsocial-asiakkaat, jotka voit avata tai asentaa tänään."
+        },
+        "anti-spam": {
+          "label": "Roskapostin esto",
+          "description": "Tunnistautumis-, suodatus- ja moderointimoduulit Bitsocial-yhteisöille."
+        },
+        "tools": {
+          "label": "Työkalut",
+          "description": "CLI- ja ylläpitotyökalut Bitsocial-sovellusten ajamiseen tai laajentamiseen."
+        }
+      },
+      "platforms": {
+        "web": {
+          "label": "Verkko",
+          "shortLabel": "Verkko",
+          "description": "Selaimessa toimivat sovellukset ja live-verkkokopiot."
+        },
+        "android": {
+          "label": "Android",
+          "shortLabel": "Android",
+          "description": "Suorat APK-lataukset Android-laitteille."
+        },
+        "ios": {
+          "label": "iOS",
+          "shortLabel": "iOS",
+          "description": "Natiivit tai asennettavat sovellukset iPhonelle ja iPadille."
+        },
+        "desktop": {
+          "label": "Työpöytä",
+          "shortLabel": "Työpöytä",
+          "description": "Lataukset Windowsille, macOS:lle ja Linuxille."
+        }
+      },
+      "tags": {
+        "accessControl": "Pääsynhallinta",
+        "automation": "Automaatio",
+        "boardAdmin": "Taulun ylläpito",
+        "bots": "Botit",
+        "captcha": "Captcha",
+        "cli": "CLI",
+        "contracts": "Sopimukset",
+        "downloadable": "Ladattava",
+        "feeds": "Syötteet",
+        "forums": "Foorumit",
+        "humanChecks": "Ihmistarkistukset",
+        "imageboard": "Imageboard",
+        "invites": "Kutsut",
+        "mirrors": "Peilit",
+        "moderation": "Moderointi",
+        "onChain": "On-chain",
+        "riskScores": "Riskipisteet",
+        "telegram": "Telegram",
+        "verification": "Vahvistus"
+      },
+      "linkLabels": {
+        "androidApk": "Android APK",
+        "linux": "Linux",
+        "linuxArm": "Linux ARM",
+        "linuxX64": "Linux x64",
+        "macosApple": "macOS Apple Silicon",
+        "macosIntel": "macOS Intel",
+        "openWebApp": "Avaa verkkosovellus",
+        "openWebsite": "Avaa verkkosivusto",
+        "windows": "Windows",
+        "windowsPortable": "Windowsin kannettava versio"
+      },
+      "items": {
+        "5chan": {
+          "tagline": "Hajautetut imageboardit, joista saa suorat lataukset webiin, APK:lle ja työpöydälle.",
+          "description": "5chan on Bitsocialin ensimmäinen julkinen client. Se toistaa anonyymin imageboard-virran peer-to-peer-verkossa: boardit, threadit, kuvien julkaisu, yhteisön moderointi ja useat julkiset mirrorit ilman keskitettyä palvelinta."
+        },
+        "seedit": {
+          "tagline": "Foorumityylinen Bitsocial-client web-, APK- ja desktop-versioina.",
+          "description": "Seedit tuo Reddit-tyylisen keskustelun Bitsocialiin threadien, identiteettien, yhteisön hallinnan ja useiden jakelureittien kautta. Se on nopein tapa kokeilla verkon forum-puolta selaimesta, Android-puhelimesta tai työpöytäsovelluksesta."
+        },
+        "mintpass": {
+          "tagline": "NFT-pohjainen pääsynhallinta yhteisöille, jotka tarvitsevat vahvempia anti-spam-portteja.",
+          "description": "Mintpass on joustava tunnistautumiskerros Bitsocial-yhteisöille. Sen avulla moderaattorit voivat yhdistää NFT-omistuksen, vahvistusvirrat ja omat challenge-moduulit ilman että kaikki pakotetaan keskitettyyn kirjautumisjärjestelmään."
+        },
+        "spam-blocker": {
+          "tagline": "Keskitetty riskipisteytyskerros haitallisten julkaisujen suodattamiseen.",
+          "description": "Spam Blocker arvioi julkaisuja ja palauttaa riskipisteen, jonka yhteisöt voivat yhdistää omaan moderointilogiikkaansa. Se on hyödyllinen, kun haluat käytännöllisen lisäkerroksen ennen kuin rakennat tarkempia anti-spam-sääntöjä."
+        },
+        "captcha-canvas-challenge": {
+          "tagline": "Mukautetut kuvacaptcha:t yhteisöille, jotka haluavat ihmisen tekemän varmistuksen.",
+          "description": "Captcha Canvas Challenge generoi visuaalisia captcha-tehtäviä, jotka yhteisöt voivat liittää omaan julkaisuvirtaansa. Se on kevyt vaihtoehto yhteisöille, jotka haluavat suorat ihmistarkistukset luopumatta itse hostatusta moderoinnista."
+        },
+        "voucher-challenge": {
+          "tagline": "Kutsutyyppiset voucher-koodit yhteisöille, jotka suosivat hallittua kasvua.",
+          "description": "Voucher Challenge antaa moderaattoreille mahdollisuuden jakaa luotettavia voucher-koodeja, jotka avaavat julkaisemisen ilman globaalia identity provideria. Se sopii hyvin kutsuihin perustuville yhteisöille, niche-boardeille ja vaiheittaisille käyttöönotolle."
+        },
+        "evm-contract-call": {
+          "tagline": "On-chain gating yhteisöille, jotka haluavat token- tai contract-tarkistuksia.",
+          "description": "EVM Contract Call varmistaa julkaisut kutsumalla EVM contractia ennen kuin postaus hyväksytään. Sen avulla yhteisöt voivat rakentaa token gateja, staking-sääntöjä tai muita on-chain-tarkistuksia moderointivirtaansa."
+        },
+        "bitsocial-cli": {
+          "tagline": "Komentorivikontrolli nodeille, yhteisöille ja automaatio-workflowille.",
+          "description": "Bitsocial CLI on protokollan virallinen terminaaliliittymä. Käytä sitä nodejen hallintaan, sisällön julkaisuun, admin-virtojen automatisointiin ja työskentelyyn suoraan Bitsocialin primitiivien kanssa ilman GUI-clientia."
+        },
+        "telegram-bots": {
+          "tagline": "Feed-botit, jotka välittävät uudet Bitsocial-julkaisut Telegram-kanaviin tai -ryhmiin.",
+          "description": "Bitsocial Telegram Bots seuraa clientin yhteisölistoja ja välittää uudet julkaisut Telegram-kohteisiin inline-linkeillä takaisin Bitsocial-clientteihin. Aktiivinen botti kattaa tänään 5chan-feedit, ja repo on rakennettu niin, että siihen voidaan lisätä lisää client-kohtaisia botteja ajan myötä."
+        },
+        "5chan-board-manager": {
+          "tagline": "Board-hallintatyökalut mukautetuille 5chan-yhteisöille.",
+          "description": "5chan Board Manager rakentuu Bitsocial CLI:n päälle auttaakseen ylläpitäjiä luomaan, määrittämään ja moderomaan mukautettuja imageboard-boardeja. Se on utility-kerros board-omistajille, jotka haluavat operatiivista hallintaa."
+        }
+      }
+    }
   },
   "privacy": {
     "eyebrow": "Miten bitsocial.net käsittelee tietoja",

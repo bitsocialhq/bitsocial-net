@@ -222,7 +222,120 @@
     "sourceCode": "Forráskód",
     "notFound": "Az app nem található",
     "notFoundBack": "Vissza az Appshez",
-    "mirrors": "Tükrök"
+    "mirrors": "Tükrök",
+    "catalog": {
+      "categories": {
+        "apps": {
+          "label": "Alkalmazások",
+          "description": "Felhasználóbarát Bitsocial-kliensek, amelyeket ma megnyithatsz vagy telepíthetsz."
+        },
+        "anti-spam": {
+          "label": "Spam elleni",
+          "description": "Hitelesítési, szűrési és moderálási modulok a Bitsocial-közösségekhez."
+        },
+        "tools": {
+          "label": "Eszközök",
+          "description": "CLI- és adminisztrációs segédprogramok a Bitsocial appok futtatásához vagy bővítéséhez."
+        }
+      },
+      "platforms": {
+        "web": {
+          "label": "Web",
+          "shortLabel": "Web",
+          "description": "Böngészőalapú appok és élő webtükrök."
+        },
+        "android": {
+          "label": "Android",
+          "shortLabel": "Android",
+          "description": "Közvetlen APK-letöltések Android-eszközökre."
+        },
+        "ios": {
+          "label": "iOS",
+          "shortLabel": "iOS",
+          "description": "Natív vagy telepíthető appok iPhone-ra és iPadre."
+        },
+        "desktop": {
+          "label": "Asztali",
+          "shortLabel": "Asztali",
+          "description": "Letöltések Windowsra, macOS-re és Linuxra."
+        }
+      },
+      "tags": {
+        "accessControl": "Hozzáférés-szabályozás",
+        "automation": "Automatizálás",
+        "boardAdmin": "Fórumkezelés",
+        "bots": "Botok",
+        "captcha": "Captcha",
+        "cli": "CLI",
+        "contracts": "Szerződések",
+        "downloadable": "Letölthető",
+        "feeds": "Hírcsatornák",
+        "forums": "Fórumok",
+        "humanChecks": "Emberi ellenőrzések",
+        "imageboard": "Imageboard",
+        "invites": "Meghívók",
+        "mirrors": "Tükrök",
+        "moderation": "Moderálás",
+        "onChain": "On-chain",
+        "riskScores": "Kockázati pontszámok",
+        "telegram": "Telegram",
+        "verification": "Ellenőrzés"
+      },
+      "linkLabels": {
+        "androidApk": "Android APK",
+        "linux": "Linux",
+        "linuxArm": "Linux ARM",
+        "linuxX64": "Linux x64",
+        "macosApple": "macOS Apple Silicon",
+        "macosIntel": "macOS Intel",
+        "openWebApp": "Webalkalmazás megnyitása",
+        "openWebsite": "Webhely megnyitása",
+        "windows": "Windows",
+        "windowsPortable": "Hordozható Windows-verzió"
+      },
+      "items": {
+        "5chan": {
+          "tagline": "Decentralizált imageboardok közvetlen webes, APK- és desktop letöltésekkel.",
+          "description": "A 5chan a Bitsocial első nyilvános kliense. Újraalkotja az anonim imageboard-folyamatot egy peer-to-peer hálózaton: boardok, threadek, képfeltöltés, közösségi moderálás és több nyilvános mirror központi szerver nélkül."
+        },
+        "seedit": {
+          "tagline": "Forum-stílusú Bitsocial client webes, APK-s és desktop buildekkel.",
+          "description": "A Seedit Reddit-szerű beszélgetést hoz a Bitsocialba threadekkel, identitásokkal, közösségkezeléssel és több terjesztési úttal. Ez a leggyorsabb módja annak, hogy a hálózat fórum oldalát böngészőből, Android telefonról vagy desktop appból kipróbáld."
+        },
+        "mintpass": {
+          "tagline": "NFT-alapú hozzáférés-vezérlés azoknak a közösségeknek, amelyek erősebb anti-spam kapukra szorulnak.",
+          "description": "A Mintpass egy rugalmas hitelesítési réteg a Bitsocial közösségek számára. Lehetővé teszi a moderátoroknak, hogy NFT tulajdonlást, ellenőrzési folyamatokat és egyedi challenge modulokat kombináljanak anélkül, hogy mindenkit központi bejelentkezési rendszerre kényszerítenének."
+        },
+        "spam-blocker": {
+          "tagline": "Központosított kockázati pontozási réteg a visszaélésszerű publikációk szűrésére.",
+          "description": "A Spam Blocker értékeli a publikációkat, és kockázati pontszámot ad vissza, amelyet a közösségek a saját moderálási logikájukkal kombinálhatnak. Hasznos, ha egy pragmatikus extra rétegre van szükséged, mielőtt még több egyedi anti-spam szabályt építenél."
+        },
+        "captcha-canvas-challenge": {
+          "tagline": "Egyedi képes captcha-k azoknak a közösségeknek, amelyek emberi ellenőrzést akarnak.",
+          "description": "A Captcha Canvas Challenge vizuális captcha-kat generál, amelyeket a közösségek a saját publikálási folyamatukba illeszthetnek. Könnyű megoldás azoknak, akik közvetlen emberi ellenőrzést szeretnének anélkül, hogy feladnák a saját hosztolású moderálást."
+        },
+        "voucher-challenge": {
+          "tagline": "Meghívó jellegű voucher kódok azoknak a közösségeknek, amelyek a kontrollált növekedést részesítik előnyben.",
+          "description": "A Voucher Challenge lehetővé teszi a moderátoroknak, hogy megbízható voucher kódokat osszanak ki, amelyek globális identity provider nélkül oldják fel a publikálást. Jól illik meghívásalapú közösségekhez, niche boardokhoz és fokozatos bevezetésekhez."
+        },
+        "evm-contract-call": {
+          "tagline": "On-chain gating azoknak a közösségeknek, amelyek token- vagy contract ellenőrzéseket akarnak.",
+          "description": "Az EVM Contract Call egy EVM contract meghívásával ellenőrzi a publikációkat, mielőtt egy poszt elfogadásra kerül. Lehetővé teszi, hogy a közösségek token gate-eket, staking szabályokat vagy más on-chain ellenőrzéseket építsenek a moderálási folyamatukba."
+        },
+        "bitsocial-cli": {
+          "tagline": "Parancssoros vezérlés node-okhoz, közösségekhez és automatizálási workflow-khoz.",
+          "description": "A Bitsocial CLI a protokoll hivatalos terminálfelülete. Használd node-ok kezelésére, tartalom publikálására, admin folyamatok automatizálására és a Bitsocial primitívekkel való közvetlen munkára GUI kliens nélkül."
+        },
+        "telegram-bots": {
+          "tagline": "Feed botok, amelyek az új Bitsocial posztokat Telegram csatornákba vagy csoportokba továbbítják.",
+          "description": "A Bitsocial Telegram Bots figyeli a kliens közösségi listáit, és az új posztokat inline linkekkel továbbítja Telegram célpontokba, vissza a Bitsocial kliensekhez. Az aktív bot ma a 5chan feedeket fedi le, és a repo úgy van felépítve, hogy idővel több kliensspecifikus bot is hozzáadható legyen."
+        },
+        "5chan-board-manager": {
+          "tagline": "Board-adminisztrációs eszközök egyedi 5chan közösségekhez.",
+          "description": "A 5chan Board Manager a Bitsocial CLI-re épül, hogy segítse az adminisztrátorokat egyedi imageboard boardok létrehozásában, konfigurálásában és moderálásában. Ez a utility réteg azoknak a board tulajdonosoknak, akik operatív kontrollt akarnak."
+        }
+      }
+    }
   },
   "privacy": {
     "eyebrow": "Hogyan kezeli a bitsocial.net az adatokat",

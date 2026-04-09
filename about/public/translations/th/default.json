@@ -222,7 +222,120 @@
     "sourceCode": "ซอร์สโค้ด",
     "notFound": "ไม่พบแอป",
     "notFoundBack": "กลับไปที่ Apps",
-    "mirrors": "มิเรอร์"
+    "mirrors": "มิเรอร์",
+    "catalog": {
+      "categories": {
+        "apps": {
+          "label": "แอป",
+          "description": "ไคลเอนต์ Bitsocial สำหรับผู้ใช้ที่คุณสามารถเปิดหรือติดตั้งได้วันนี้"
+        },
+        "anti-spam": {
+          "label": "ป้องกันสแปม",
+          "description": "โมดูลสำหรับการยืนยันตัวตน การกรอง และการดูแลสำหรับชุมชน Bitsocial"
+        },
+        "tools": {
+          "label": "เครื่องมือ",
+          "description": "ยูทิลิตีสำหรับ CLI และแอดมินเพื่อรันหรือขยายแอป Bitsocial"
+        }
+      },
+      "platforms": {
+        "web": {
+          "label": "เว็บ",
+          "shortLabel": "เว็บ",
+          "description": "แอปที่ทำงานบนเบราว์เซอร์และเว็บมิเรอร์แบบสด"
+        },
+        "android": {
+          "label": "Android",
+          "shortLabel": "Android",
+          "description": "ดาวน์โหลด APK โดยตรงสำหรับอุปกรณ์ Android"
+        },
+        "ios": {
+          "label": "iOS",
+          "shortLabel": "iOS",
+          "description": "แอปแบบเนทีฟหรือที่ติดตั้งได้สำหรับ iPhone และ iPad"
+        },
+        "desktop": {
+          "label": "เดสก์ท็อป",
+          "shortLabel": "เดสก์ท็อป",
+          "description": "ดาวน์โหลดสำหรับ Windows, macOS, และ Linux"
+        }
+      },
+      "tags": {
+        "accessControl": "การควบคุมการเข้าถึง",
+        "automation": "ระบบอัตโนมัติ",
+        "boardAdmin": "การดูแลบอร์ด",
+        "bots": "บอต",
+        "captcha": "Captcha",
+        "cli": "CLI",
+        "contracts": "สัญญา",
+        "downloadable": "ดาวน์โหลดได้",
+        "feeds": "ฟีด",
+        "forums": "ฟอรัม",
+        "humanChecks": "การตรวจสอบโดยมนุษย์",
+        "imageboard": "อิมเมจบอร์ด",
+        "invites": "คำเชิญ",
+        "mirrors": "มิเรอร์",
+        "moderation": "การกลั่นกรอง",
+        "onChain": "บนเชน",
+        "riskScores": "คะแนนความเสี่ยง",
+        "telegram": "Telegram",
+        "verification": "การยืนยัน"
+      },
+      "linkLabels": {
+        "androidApk": "APK สำหรับ Android",
+        "linux": "Linux",
+        "linuxArm": "Linux ARM",
+        "linuxX64": "Linux x64",
+        "macosApple": "macOS Apple Silicon",
+        "macosIntel": "macOS Intel",
+        "openWebApp": "เปิดเว็บแอป",
+        "openWebsite": "เปิดเว็บไซต์",
+        "windows": "Windows",
+        "windowsPortable": "Windows แบบพกพา"
+      },
+      "items": {
+        "5chan": {
+          "tagline": "imageboard แบบกระจายศูนย์ พร้อมดาวน์โหลดตรงสำหรับ web, APK และ desktop.",
+          "description": "5chan คือ Bitsocial client สาธารณะตัวแรก มันจำลองการทำงานของ imageboard แบบไม่ระบุตัวตนบนเครือข่าย peer-to-peer: boards, threads, การโพสต์ภาพ, community moderation และ public mirrors หลายแห่งโดยไม่ต้องพึ่ง server ส่วนกลาง"
+        },
+        "seedit": {
+          "tagline": "Bitsocial client สไตล์ forum ที่มี build สำหรับ web, APK และ desktop.",
+          "description": "Seedit นำการสนทนาแบบ Reddit มาสู่ Bitsocial ด้วย threads, identities, community management และช่องทางการแจกจ่ายหลายแบบ เป็นวิธีที่เร็วที่สุดในการลองด้าน forum ของเครือข่ายจาก browser, โทรศัพท์ Android หรือ desktop app"
+        },
+        "mintpass": {
+          "tagline": "ระบบควบคุมการเข้าถึงที่อิง NFT สำหรับ communities ที่ต้องการ anti-spam gate ที่แข็งแรงกว่าเดิม.",
+          "description": "Mintpass เป็น authentication layer ที่ยืดหยุ่นสำหรับ Bitsocial communities มันช่วยให้ moderator ผสม NFT ownership, verification flows และ custom challenge modules ได้ โดยไม่ต้องบังคับทุกคนเข้า central login system"
+        },
+        "spam-blocker": {
+          "tagline": "layer การให้คะแนนความเสี่ยงแบบรวมศูนย์สำหรับกรอง publications ที่เป็นการละเมิด.",
+          "description": "Spam Blocker ประเมิน publications และส่งคืน risk score ที่ communities นำไปผสมกับ moderation logic ของตัวเองได้ มันมีประโยชน์เมื่อคุณต้องการชั้นเสริมที่ใช้งานได้จริงก่อนสร้างกฎ anti-spam แบบ custom เพิ่มเติม"
+        },
+        "captcha-canvas-challenge": {
+          "tagline": "image captcha แบบกำหนดเองสำหรับ communities ที่ต้องการ human verification.",
+          "description": "Captcha Canvas Challenge สร้าง visual captchas ที่ communities สามารถเสียบเข้าไปใน publishing flow ของตัวเองได้ เป็นตัวเลือกที่เบาและเหมาะกับ communities ที่ต้องการ human checks โดยตรงแต่ไม่อยากละทิ้ง self-hosted moderation"
+        },
+        "voucher-challenge": {
+          "tagline": "voucher code แบบ invite สำหรับ communities ที่ชอบการเติบโตแบบควบคุมได้.",
+          "description": "Voucher Challenge ให้ moderator แจก trusted voucher codes ที่ปลดล็อกการโพสต์ได้โดยไม่ต้องมี global identity provider เหมาะกับ communities แบบ invite-driven, niche boards และ rollout แบบค่อยเป็นค่อยไป"
+        },
+        "evm-contract-call": {
+          "tagline": "on-chain gating สำหรับ communities ที่ต้องการตรวจ token หรือ contract.",
+          "description": "EVM Contract Call ตรวจสอบ publications โดยเรียก EVM contract ก่อนที่จะยอมรับ post ช่วยให้ communities สร้าง token gates, staking rules หรือ on-chain checks อื่น ๆ เข้าไปใน moderation flow ของตัวเองได้"
+        },
+        "bitsocial-cli": {
+          "tagline": "การควบคุมผ่าน command-line สำหรับ nodes, communities และ automation workflows.",
+          "description": "Bitsocial CLI คือ terminal interface อย่างเป็นทางการของ protocol ใช้สำหรับจัดการ nodes, เผยแพร่ content, ทำ admin flows ให้เป็นอัตโนมัติ และทำงานกับ Bitsocial primitives โดยตรงโดยไม่ต้องใช้ GUI client"
+        },
+        "telegram-bots": {
+          "tagline": "feed bots ที่ส่งต่อโพสต์ Bitsocial ใหม่ไปยัง Telegram channels หรือ groups.",
+          "description": "Bitsocial Telegram Bots เฝ้าดู community lists ของ client และส่งต่อโพสต์ใหม่ไปยัง Telegram destinations พร้อม inline links กลับไปยัง Bitsocial clients บอทที่ใช้งานอยู่ตอนนี้ครอบคลุม 5chan feeds และ repo ถูกจัดไว้เพื่อเพิ่ม client-specific bots อื่น ๆ ได้ในอนาคต"
+        },
+        "5chan-board-manager": {
+          "tagline": "เครื่องมือจัดการ board สำหรับ communities 5chan แบบกำหนดเอง.",
+          "description": "5chan Board Manager สร้างอยู่บน Bitsocial CLI เพื่อช่วย administrator สร้าง กำหนดค่า และ moderate custom imageboard boards มันเป็น utility layer สำหรับ board owner ที่ต้องการการควบคุมด้านการปฏิบัติงาน"
+        }
+      }
+    }
   },
   "privacy": {
     "eyebrow": "bitsocial.net จัดการข้อมูลอย่างไร",

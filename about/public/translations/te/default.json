@@ -222,7 +222,120 @@
     "sourceCode": "సోర్స్ కోడ్",
     "notFound": "యాప్ కనుగొనబడలేదు",
     "notFoundBack": "Apps కి తిరిగి వెళ్ళు",
-    "mirrors": "మిరర్లు"
+    "mirrors": "మిరర్లు",
+    "catalog": {
+      "categories": {
+        "apps": {
+          "label": "యాప్‌లు",
+          "description": "మీరు ఇవాళే తెరవగల లేదా ఇన్‌స్టాల్ చేయగల వినియోగదారులకు అనుకూల Bitsocial క్లయింట్లు."
+        },
+        "anti-spam": {
+          "label": "యాంటీ-స్పామ్",
+          "description": "Bitsocial కమ్యూనిటీల కోసం ధృవీకరణ, ఫిల్టరింగ్, మరియు మోడరేషన్ మాడ్యూళ్లు."
+        },
+        "tools": {
+          "label": "టూల్స్",
+          "description": "Bitsocial యాప్‌లను నడపడానికి లేదా విస్తరించడానికి CLI మరియు అడ్మిన్ యుటిలిటీస్."
+        }
+      },
+      "platforms": {
+        "web": {
+          "label": "వెబ్",
+          "shortLabel": "వెబ్",
+          "description": "బ్రౌజర్‌లో పనిచేసే యాప్‌లు మరియు ప్రత్యక్ష వెబ్ మిర్రర్లు."
+        },
+        "android": {
+          "label": "Android",
+          "shortLabel": "Android",
+          "description": "Android పరికరాల కోసం నేరుగా APK డౌన్‌లోడ్లు."
+        },
+        "ios": {
+          "label": "iOS",
+          "shortLabel": "iOS",
+          "description": "iPhone మరియు iPad కోసం నేటివ్ లేదా ఇన్‌స్టాల్ చేయగల యాప్‌లు."
+        },
+        "desktop": {
+          "label": "డెస్క్‌టాప్",
+          "shortLabel": "డెస్క్‌టాప్",
+          "description": "Windows, macOS, మరియు Linux కోసం డౌన్‌లోడ్లు."
+        }
+      },
+      "tags": {
+        "accessControl": "ప్రవేశ నియంత్రణ",
+        "automation": "ఆటోమేషన్",
+        "boardAdmin": "బోర్డు పరిపాలన",
+        "bots": "బాట్లు",
+        "captcha": "Captcha",
+        "cli": "CLI",
+        "contracts": "ఒప్పందాలు",
+        "downloadable": "డౌన్‌లోడ్ చేయదగిన",
+        "feeds": "ఫీడ్లు",
+        "forums": "ఫోరమ్‌లు",
+        "humanChecks": "మానవ తనిఖీలు",
+        "imageboard": "ఇమేజ్‌బోర్డు",
+        "invites": "ఆహ్వానాలు",
+        "mirrors": "మిర్రర్లు",
+        "moderation": "మోడరేషన్",
+        "onChain": "ఆన్-చెయిన్",
+        "riskScores": "ప్రమాద స్కోర్లు",
+        "telegram": "Telegram",
+        "verification": "ధృవీకరణ"
+      },
+      "linkLabels": {
+        "androidApk": "Android APK",
+        "linux": "Linux",
+        "linuxArm": "Linux ARM",
+        "linuxX64": "Linux x64",
+        "macosApple": "macOS Apple Silicon",
+        "macosIntel": "macOS Intel",
+        "openWebApp": "వెబ్ యాప్‌ను తెరవండి",
+        "openWebsite": "వెబ్‌సైట్‌ను తెరవండి",
+        "windows": "Windows",
+        "windowsPortable": "Windows పోర్టబుల్"
+      },
+      "items": {
+        "5chan": {
+          "tagline": "web, APK, desktop కోసం నేరుగా downloads ఉన్న decentralized imageboards.",
+          "description": "5chan అనేది Bitsocial యొక్క మొదటి public client. ఇది peer-to-peer network మీద anonymous imageboard flow ను తిరిగి రూపొందిస్తుంది: boards, threads, image posting, community moderation, మరియు central server మీద ఆధారపడకుండా multiple public mirrors."
+        },
+        "seedit": {
+          "tagline": "web, APK, desktop builds తో forum-style Bitsocial client.",
+          "description": "Seedit Reddit-style discussion ను Bitsocial కు threads, identities, community management, మరియు multiple distribution paths తో తీసుకువస్తుంది. browser, Android phone, లేదా desktop app నుండి network యొక్క forum side ను ప్రయత్నించడానికి ఇదే వేగవంతమైన మార్గం."
+        },
+        "mintpass": {
+          "tagline": "మరింత బలమైన anti-spam gates అవసరమైన communities కోసం NFT-backed access control.",
+          "description": "Mintpass అనేది Bitsocial communities కోసం ఒక flexible authentication layer. ఇది moderators కు NFT ownership, verification flows, మరియు custom challenge modules ను కలపడానికి వీలు ఇస్తుంది, అందరినీ central login system వైపు నెట్టకుండా."
+        },
+        "spam-blocker": {
+          "tagline": "abusive publications ను filter చేయడానికి centralized risk scoring layer.",
+          "description": "Spam Blocker publications ను evaluate చేసి ఒక risk score ఇస్తుంది, దాన్ని communities తమ moderation logic తో కలపవచ్చు. మరింత custom anti-spam rules నిర్మించేముందు ఒక practical extra layer కావాలనుకుంటే ఇది ఉపయోగపడుతుంది."
+        },
+        "captcha-canvas-challenge": {
+          "tagline": "human verification కోరే communities కోసం custom image captchas.",
+          "description": "Captcha Canvas Challenge visual captchas ను తయారు చేస్తుంది, వాటిని communities తమ publishing flow లో plug చేయవచ్చు. self-hosted moderation ను వదలకుండా direct human checks కావాలనుకునే communities కోసం ఇది ఒక lightweight option."
+        },
+        "voucher-challenge": {
+          "tagline": "controlled growth ను ఇష్టపడే communities కోసం invite-style voucher codes.",
+          "description": "Voucher Challenge moderators కు trusted voucher codes ను distribute చేయడానికి వీలు ఇస్తుంది, ఇవి global identity provider లేకుండానే publishing ను unlock చేస్తాయి. invite-driven communities, niche boards, మరియు gradual rollouts కి ఇది మంచి fit."
+        },
+        "evm-contract-call": {
+          "tagline": "token లేదా contract checks కావాలనుకునే communities కోసం on-chain gating.",
+          "description": "EVM Contract Call ఒక post accept చేయబడే ముందు EVM contract ను call చేసి publications ను verify చేస్తుంది. ఇది communities కు token gates, staking rules, లేదా ఇతర on-chain checks ను moderation flow లో పెట్టడానికి సహాయపడుతుంది."
+        },
+        "bitsocial-cli": {
+          "tagline": "nodes, communities, automation workflows కోసం command-line control.",
+          "description": "Bitsocial CLI protocol యొక్క అధికారిక terminal interface. nodes ని manage చేయడానికి, content publish చేయడానికి, admin flows ను automate చేయడానికి, మరియు GUI client లేకుండా Bitsocial primitives తో నేరుగా పని చేయడానికి దీనిని ఉపయోగించండి."
+        },
+        "telegram-bots": {
+          "tagline": "కొత్త Bitsocial posts ను Telegram channels లేదా groups కు relay చేసే feed bots.",
+          "description": "Bitsocial Telegram Bots client community lists ను monitor చేసి కొత్త posts ను Telegram destinations కు inline links తో forward చేస్తాయి, Bitsocial clients కి తిరిగి వెళ్లేలా. active bot ప్రస్తుతం 5chan feeds ను cover చేస్తుంది, మరియు repo ను కాలక్రమేణా మరిన్ని client-specific bots ను add చేయగలిగేలా రూపొందించారు."
+        },
+        "5chan-board-manager": {
+          "tagline": "custom 5chan communities కోసం board administration tooling.",
+          "description": "5chan Board Manager Bitsocial CLI పై నిర్మించబడింది, administrators కు custom imageboard boards ను create, configure, మరియు moderate చేయడంలో సహాయపడుతుంది. operational control కావాలనుకునే board owners కోసం ఇది utility layer."
+        }
+      }
+    }
   },
   "privacy": {
     "eyebrow": "bitsocial.net డేటాను ఎలా నిర్వహిస్తుంది",

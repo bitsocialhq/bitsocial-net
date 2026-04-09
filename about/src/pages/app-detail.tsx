@@ -13,12 +13,17 @@ import PolygonMeshBackground from "@/components/polygon-mesh-background";
 import RelatedApps from "@/components/related-apps";
 import Topbar from "@/components/topbar";
 import {
-  PLATFORM_META,
+  getAppDescription,
+  getAppLinkLabel,
   getAppBySlug,
   getAppPlatforms,
+  getAppTagLabel,
+  getAppTagline,
   getCategoryBySlug,
+  getCategoryLabel,
   getGithubUrl,
   getMirrorLinks,
+  getPlatformShortLabel,
   getPrimaryLinks,
 } from "@/lib/apps-data";
 import { cn } from "@/lib/utils";
@@ -65,6 +70,8 @@ export default function AppDetail() {
   const primaryLinks = getPrimaryLinks(app);
   const mirrors = getMirrorLinks(app);
   const githubUrl = getGithubUrl(app);
+  const tagline = getAppTagline(app, t);
+  const description = getAppDescription(app, t);
 
   return (
     <div className="min-h-screen overflow-x-hidden">
@@ -98,7 +105,7 @@ export default function AppDetail() {
                     <div className="flex flex-wrap items-center gap-2">
                       {category ? (
                         <span className="rounded-full border border-border/70 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-foreground/60">
-                          {category.label}
+                          {getCategoryLabel(category, t)}
                         </span>
                       ) : null}
                       {platformTags.map((platform) => (
@@ -106,7 +113,7 @@ export default function AppDetail() {
                           key={platform}
                           className="rounded-full border border-border/70 px-3 py-1 text-xs font-medium text-muted-foreground"
                         >
-                          {PLATFORM_META[platform].shortLabel}
+                          {getPlatformShortLabel(platform, t)}
                         </span>
                       ))}
                       {app.status ? (
@@ -120,10 +127,10 @@ export default function AppDetail() {
                       {app.name}
                     </h1>
                     <p className="mt-3 text-lg font-medium leading-7 text-foreground/70">
-                      {app.tagline}
+                      {tagline}
                     </p>
                     <p className="mt-4 max-w-3xl text-sm leading-7 text-muted-foreground">
-                      {app.description}
+                      {description}
                     </p>
                   </div>
                 </div>
@@ -131,7 +138,11 @@ export default function AppDetail() {
 
               <div className="mt-6 flex flex-wrap gap-2">
                 {app.tags.map((tag) => (
-                  <AppTagPill key={tag} href={`/apps?tag=${encodeURIComponent(tag)}`} label={tag} />
+                  <AppTagPill
+                    key={tag}
+                    href={`/apps?tag=${encodeURIComponent(tag)}`}
+                    label={getAppTagLabel(tag, t)}
+                  />
                 ))}
               </div>
 
@@ -148,7 +159,7 @@ export default function AppDetail() {
                   >
                     <span className="inline-flex items-center gap-2">
                       <ArrowUpRight className="h-4 w-4" />
-                      <span>{link.label}</span>
+                      <span>{getAppLinkLabel(link, t)}</span>
                     </span>
                   </CardInlineCta>
                 ))}
@@ -178,7 +189,7 @@ export default function AppDetail() {
                       >
                         <span className="inline-flex items-center gap-1.5">
                           <ArrowUpRight className="h-3.5 w-3.5" />
-                          <span>{mirror.label}</span>
+                          <span>{getAppLinkLabel(mirror, t)}</span>
                         </span>
                       </CardInlineCta>
                     ))}

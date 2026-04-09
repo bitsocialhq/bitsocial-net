@@ -222,7 +222,120 @@
     "sourceCode": "سورس کوڈ",
     "notFound": "ایپ نہیں ملی",
     "notFoundBack": "Apps پر واپس جائیں",
-    "mirrors": "مررز"
+    "mirrors": "مررز",
+    "catalog": {
+      "categories": {
+        "apps": {
+          "label": "ایپس",
+          "description": "Bitsocial کے صارف دوست کلائنٹس جنہیں آپ آج ہی کھول یا انسٹال کر سکتے ہیں۔"
+        },
+        "anti-spam": {
+          "label": "اینٹی اسپام",
+          "description": "Bitsocial کمیونٹیز کے لیے تصدیق، فلٹرنگ، اور ماڈریشن کے ماڈیولز۔"
+        },
+        "tools": {
+          "label": "ٹولز",
+          "description": "Bitsocial ایپس چلانے یا بڑھانے کے لیے CLI اور انتظامی یوٹیلیٹیز۔"
+        }
+      },
+      "platforms": {
+        "web": {
+          "label": "ویب",
+          "shortLabel": "ویب",
+          "description": "براؤزر پر مبنی ایپس اور لائیو ویب مررز۔"
+        },
+        "android": {
+          "label": "Android",
+          "shortLabel": "Android",
+          "description": "Android ڈیوائسز کے لیے براہِ راست APK ڈاؤن لوڈز۔"
+        },
+        "ios": {
+          "label": "iOS",
+          "shortLabel": "iOS",
+          "description": "iPhone اور iPad کے لیے نیٹو یا انسٹال ہونے والی ایپس۔"
+        },
+        "desktop": {
+          "label": "ڈیسک ٹاپ",
+          "shortLabel": "ڈیسک ٹاپ",
+          "description": "Windows، macOS، اور Linux کے لیے ڈاؤن لوڈز۔"
+        }
+      },
+      "tags": {
+        "accessControl": "رسائی کا کنٹرول",
+        "automation": "خودکاری",
+        "boardAdmin": "بورڈ انتظامیہ",
+        "bots": "بوٹس",
+        "captcha": "Captcha",
+        "cli": "CLI",
+        "contracts": "معاہدے",
+        "downloadable": "ڈاؤن لوڈ کے قابل",
+        "feeds": "فیڈز",
+        "forums": "فورمز",
+        "humanChecks": "انسانی جانچیں",
+        "imageboard": "امیج بورڈ",
+        "invites": "دعوتیں",
+        "mirrors": "مررز",
+        "moderation": "نگرانی",
+        "onChain": "آن چین",
+        "riskScores": "رسک اسکور",
+        "telegram": "Telegram",
+        "verification": "تصدیق"
+      },
+      "linkLabels": {
+        "androidApk": "Android APK",
+        "linux": "Linux",
+        "linuxArm": "Linux ARM",
+        "linuxX64": "Linux x64",
+        "macosApple": "macOS Apple Silicon",
+        "macosIntel": "macOS Intel",
+        "openWebApp": "ویب ایپ کھولیں",
+        "openWebsite": "ویب سائٹ کھولیں",
+        "windows": "Windows",
+        "windowsPortable": "Windows پورٹیبل"
+      },
+      "items": {
+        "5chan": {
+          "tagline": "web، APK، اور desktop کے لیے direct downloads کے ساتھ decentralized imageboards۔",
+          "description": "5chan Bitsocial کا پہلا public client ہے۔ یہ peer-to-peer network پر anonymous imageboard flow کو دوبارہ بناتا ہے: boards، threads، image posting، community moderation، اور central server پر انحصار کیے بغیر multiple public mirrors۔"
+        },
+        "seedit": {
+          "tagline": "forum-style Bitsocial client جس میں web، APK، اور desktop builds موجود ہیں۔",
+          "description": "Seedit Reddit-style discussion کو Bitsocial میں threads، identities، community management، اور multiple distribution paths کے ساتھ لاتا ہے۔ browser، Android phone، یا desktop app سے network کے forum side کو آزمانے کا یہ سب سے تیز طریقہ ہے۔"
+        },
+        "mintpass": {
+          "tagline": "NFT-backed access control ان communities کے لیے جنہیں مضبوط anti-spam gates چاہیے۔",
+          "description": "Mintpass Bitsocial communities کے لیے ایک flexible authentication layer ہے۔ یہ moderators کو NFT ownership، verification flows، اور custom challenge modules ملانے دیتا ہے، بغیر سب کو central login system پر دھکیلنے کے۔"
+        },
+        "spam-blocker": {
+          "tagline": "abusive publications کو filter کرنے کے لیے centralized risk scoring layer۔",
+          "description": "Spam Blocker publications کا جائزہ لیتا ہے اور ایک risk score واپس کرتا ہے جسے communities اپنی moderation logic کے ساتھ ملا سکتی ہیں۔ جب آپ مزید custom anti-spam rules بنانے سے پہلے ایک practical اضافی layer چاہتے ہوں، یہ مفید ہے۔"
+        },
+        "captcha-canvas-challenge": {
+          "tagline": "human verification چاہنے والی communities کے لیے custom image captchas۔",
+          "description": "Captcha Canvas Challenge visual captchas تیار کرتا ہے جنہیں communities اپنے publishing flow میں plug کر سکتی ہیں۔ یہ اُن communities کے لیے ہلکا پھلکا option ہے جو self-hosted moderation چھوڑے بغیر direct human checks چاہتی ہیں۔"
+        },
+        "voucher-challenge": {
+          "tagline": "controlled growth پسند کرنے والی communities کے لیے invite-style voucher codes۔",
+          "description": "Voucher Challenge moderators کو trusted voucher codes distribute کرنے دیتا ہے جو global identity provider کے بغیر publishing unlock کرتے ہیں۔ یہ invite-driven communities، niche boards، اور gradual rollouts کے لیے اچھا fit ہے۔"
+        },
+        "evm-contract-call": {
+          "tagline": "token یا contract checks چاہنے والی communities کے لیے on-chain gating۔",
+          "description": "EVM Contract Call post accept ہونے سے پہلے EVM contract کو call کر کے publications verify کرتا ہے۔ یہ communities کو token gates، staking rules، یا دوسری on-chain checks اپنی moderation flow میں شامل کرنے دیتا ہے۔"
+        },
+        "bitsocial-cli": {
+          "tagline": "nodes، communities، اور automation workflows کے لیے command-line control۔",
+          "description": "Bitsocial CLI protocol کا official terminal interface ہے۔ اسے nodes manage کرنے، content publish کرنے، admin flows automate کرنے، اور GUI client کے بغیر براہِ راست Bitsocial primitives کے ساتھ کام کرنے کے لیے استعمال کریں۔"
+        },
+        "telegram-bots": {
+          "tagline": "feed bots جو نئے Bitsocial posts کو Telegram channels یا groups میں relay کرتے ہیں۔",
+          "description": "Bitsocial Telegram Bots client community lists کو monitor کرتے ہیں اور نئے posts کو Telegram destinations تک inline links کے ساتھ آگے بھیجتے ہیں جو Bitsocial clients کی طرف واپس جاتی ہیں۔ فعال bot آج 5chan feeds کو cover کرتا ہے، اور repo کو اس طرح structure کیا گیا ہے کہ وقت کے ساتھ مزید client-specific bots شامل کیے جا سکیں۔"
+        },
+        "5chan-board-manager": {
+          "tagline": "custom 5chan communities کے لیے board administration tooling۔",
+          "description": "5chan Board Manager Bitsocial CLI پر بنایا گیا ہے تاکہ administrators custom imageboard boards بنا، configure، اور moderate کر سکیں۔ یہ board owners کے لیے utility layer ہے جو operational control چاہتے ہیں۔"
+        }
+      }
+    }
   },
   "privacy": {
     "eyebrow": "bitsocial.net ڈیٹا کو کیسے سنبھالتا ہے",

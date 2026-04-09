@@ -222,7 +222,120 @@
     "sourceCode": "Исходный код",
     "notFound": "Приложение не найдено",
     "notFoundBack": "Назад к Apps",
-    "mirrors": "Зеркала"
+    "mirrors": "Зеркала",
+    "catalog": {
+      "categories": {
+        "apps": {
+          "label": "Приложения",
+          "description": "Клиентские приложения Bitsocial для пользователей, которые можно открыть или установить уже сегодня."
+        },
+        "anti-spam": {
+          "label": "Антиспам",
+          "description": "Модули аутентификации, фильтрации и модерации для сообществ Bitsocial."
+        },
+        "tools": {
+          "label": "Инструменты",
+          "description": "CLI- и админ-утилиты для запуска или расширения приложений Bitsocial."
+        }
+      },
+      "platforms": {
+        "web": {
+          "label": "Веб",
+          "shortLabel": "Веб",
+          "description": "Приложения в браузере и живые веб-зеркала."
+        },
+        "android": {
+          "label": "Android",
+          "shortLabel": "Android",
+          "description": "Прямые APK-загрузки для устройств Android."
+        },
+        "ios": {
+          "label": "iOS",
+          "shortLabel": "iOS",
+          "description": "Нативные или устанавливаемые приложения для iPhone и iPad."
+        },
+        "desktop": {
+          "label": "Рабочий стол",
+          "shortLabel": "Рабочий стол",
+          "description": "Загрузки для Windows, macOS и Linux."
+        }
+      },
+      "tags": {
+        "accessControl": "Контроль доступа",
+        "automation": "Автоматизация",
+        "boardAdmin": "Администрирование доски",
+        "bots": "Боты",
+        "captcha": "Captcha",
+        "cli": "CLI",
+        "contracts": "Контракты",
+        "downloadable": "Можно скачать",
+        "feeds": "Ленты",
+        "forums": "Форумы",
+        "humanChecks": "Проверки человеком",
+        "imageboard": "Имиджборд",
+        "invites": "Приглашения",
+        "mirrors": "Зеркала",
+        "moderation": "Модерация",
+        "onChain": "On-chain",
+        "riskScores": "Оценки риска",
+        "telegram": "Telegram",
+        "verification": "Проверка"
+      },
+      "linkLabels": {
+        "androidApk": "APK для Android",
+        "linux": "Linux",
+        "linuxArm": "Linux ARM",
+        "linuxX64": "Linux x64",
+        "macosApple": "macOS Apple Silicon",
+        "macosIntel": "macOS Intel",
+        "openWebApp": "Открыть веб-приложение",
+        "openWebsite": "Открыть сайт",
+        "windows": "Windows",
+        "windowsPortable": "Портативная версия для Windows"
+      },
+      "items": {
+        "5chan": {
+          "tagline": "Децентрализованные imageboard с прямыми загрузками для web, APK и desktop.",
+          "description": "5chan — первый публичный client Bitsocial. Он воссоздаёт анонимный поток imageboard в peer-to-peer сети: доски, треды, публикацию изображений, модерацию сообщества и несколько публичных зеркал без зависимости от центрального server."
+        },
+        "seedit": {
+          "tagline": "Client Bitsocial в стиле forum с web, APK и desktop build-ами.",
+          "description": "Seedit приносит в Bitsocial обсуждения в стиле Reddit с тредами, идентичностями, управлением сообществом и несколькими путями распространения. Это самый быстрый способ попробовать forum-сторону сети из браузера, Android phone или desktop app."
+        },
+        "mintpass": {
+          "tagline": "Контроль доступа на базе NFT для сообществ, которым нужны более сильные anti-spam барьеры.",
+          "description": "Mintpass — гибкий слой аутентификации для сообществ Bitsocial. Он позволяет модераторам сочетать владение NFT, потоки верификации и собственные challenge-модули, не загоняя всех в центральную систему входа."
+        },
+        "spam-blocker": {
+          "tagline": "Централизованный слой оценки риска для фильтрации злоупотребляющих publications.",
+          "description": "Spam Blocker оценивает publications и возвращает risk score, который сообщества могут сочетать со своей логикой moderation. Это полезно, когда нужен практичный дополнительный слой до построения более кастомных anti-spam rules."
+        },
+        "captcha-canvas-challenge": {
+          "tagline": "Пользовательские image captcha для сообществ, которым нужна human verification.",
+          "description": "Captcha Canvas Challenge генерирует визуальные captcha, которые сообщества могут встроить в свой поток публикации. Это лёгкий вариант для сообществ, которым нужны прямые проверки человеком без отказа от self-hosted moderation."
+        },
+        "voucher-challenge": {
+          "tagline": "Коды voucher в стиле приглашений для сообществ, предпочитающих контролируемый рост.",
+          "description": "Voucher Challenge позволяет модераторам распространять доверенные voucher-коды, которые открывают публикацию без глобального identity provider. Это хорошо подходит для сообществ на приглашениях, нишевых board и постепенных запусков."
+        },
+        "evm-contract-call": {
+          "tagline": "On-chain gating для сообществ, которым нужны проверки token или contract.",
+          "description": "EVM Contract Call проверяет публикации, вызывая EVM contract перед принятием поста. Это позволяет сообществам встраивать token gate, staking rules или другие on-chain проверки в свой модерационный поток."
+        },
+        "bitsocial-cli": {
+          "tagline": "Управление из командной строки для node, сообществ и automation workflows.",
+          "description": "Bitsocial CLI — официальный terminal интерфейс протокола. Используйте его для управления node, публикации content, автоматизации admin flows и работы напрямую с примитивами Bitsocial без GUI клиента."
+        },
+        "telegram-bots": {
+          "tagline": "Feed-боты, которые пересылают новые посты Bitsocial в каналы или группы Telegram.",
+          "description": "Bitsocial Telegram Bots отслеживают списки сообществ клиента и пересылают новые посты в Telegram destinations с inline ссылками обратно на клиенты Bitsocial. Активный бот сегодня покрывает ленты 5chan, а репозиторий устроен так, чтобы со временем добавить больше client-specific ботов."
+        },
+        "5chan-board-manager": {
+          "tagline": "Инструменты администрирования board для кастомных сообществ 5chan.",
+          "description": "5chan Board Manager построен поверх Bitsocial CLI, чтобы помогать администраторам создавать, настраивать и модерировать кастомные imageboard board. Это utility-слой для владельцев board, которым нужен операционный контроль."
+        }
+      }
+    }
   },
   "privacy": {
     "eyebrow": "Как bitsocial.net обрабатывает данные",

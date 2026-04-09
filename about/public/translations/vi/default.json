@@ -222,7 +222,120 @@
     "sourceCode": "Mã nguồn",
     "notFound": "Không tìm thấy ứng dụng",
     "notFoundBack": "Quay lại Apps",
-    "mirrors": "Bản sao"
+    "mirrors": "Bản sao",
+    "catalog": {
+      "categories": {
+        "apps": {
+          "label": "Ứng dụng",
+          "description": "Các client Bitsocial hướng tới người dùng mà bạn có thể mở hoặc cài đặt ngay hôm nay."
+        },
+        "anti-spam": {
+          "label": "Chống spam",
+          "description": "Các mô-đun xác thực, lọc và kiểm duyệt cho cộng đồng Bitsocial."
+        },
+        "tools": {
+          "label": "Công cụ",
+          "description": "Tiện ích CLI và quản trị để chạy hoặc mở rộng các ứng dụng Bitsocial."
+        }
+      },
+      "platforms": {
+        "web": {
+          "label": "Web",
+          "shortLabel": "Web",
+          "description": "Ứng dụng chạy trên trình duyệt và bản sao web trực tiếp."
+        },
+        "android": {
+          "label": "Android",
+          "shortLabel": "Android",
+          "description": "Tải APK trực tiếp cho thiết bị Android."
+        },
+        "ios": {
+          "label": "iOS",
+          "shortLabel": "iOS",
+          "description": "Ứng dụng gốc hoặc có thể cài đặt cho iPhone và iPad."
+        },
+        "desktop": {
+          "label": "Máy tính để bàn",
+          "shortLabel": "Máy tính để bàn",
+          "description": "Tải xuống cho Windows, macOS và Linux."
+        }
+      },
+      "tags": {
+        "accessControl": "Kiểm soát truy cập",
+        "automation": "Tự động hóa",
+        "boardAdmin": "Quản trị bảng",
+        "bots": "Bot",
+        "captcha": "Captcha",
+        "cli": "CLI",
+        "contracts": "Hợp đồng",
+        "downloadable": "Có thể tải xuống",
+        "feeds": "Nguồn cấp",
+        "forums": "Diễn đàn",
+        "humanChecks": "Kiểm tra của con người",
+        "imageboard": "Imageboard",
+        "invites": "Lời mời",
+        "mirrors": "Bản sao",
+        "moderation": "Kiểm duyệt",
+        "onChain": "On-chain",
+        "riskScores": "Điểm rủi ro",
+        "telegram": "Telegram",
+        "verification": "Xác minh"
+      },
+      "linkLabels": {
+        "androidApk": "APK Android",
+        "linux": "Linux",
+        "linuxArm": "Linux ARM",
+        "linuxX64": "Linux x64",
+        "macosApple": "macOS Apple Silicon",
+        "macosIntel": "macOS Intel",
+        "openWebApp": "Mở ứng dụng web",
+        "openWebsite": "Mở trang web",
+        "windows": "Windows",
+        "windowsPortable": "Phiên bản di động cho Windows"
+      },
+      "items": {
+        "5chan": {
+          "tagline": "imageboard phi tập trung với tải xuống trực tiếp cho web, APK và desktop.",
+          "description": "5chan là client công khai đầu tiên của Bitsocial. Nó tái tạo luồng imageboard ẩn danh trên mạng peer-to-peer: boards, threads, đăng ảnh, moderation cộng đồng và nhiều public mirror mà không phụ thuộc vào server trung tâm."
+        },
+        "seedit": {
+          "tagline": "Bitsocial client kiểu forum với bản web, APK và desktop.",
+          "description": "Seedit mang thảo luận kiểu Reddit đến Bitsocial với threads, identities, quản lý cộng đồng và nhiều đường phân phối. Đây là cách nhanh nhất để thử phần forum của mạng từ trình duyệt, điện thoại Android hoặc desktop app."
+        },
+        "mintpass": {
+          "tagline": "Kiểm soát truy cập dựa trên NFT cho các cộng đồng cần hàng rào anti-spam mạnh hơn.",
+          "description": "Mintpass là một lớp xác thực linh hoạt cho cộng đồng Bitsocial. Nó cho phép moderator kết hợp quyền sở hữu NFT, luồng verification và custom challenge modules mà không ép mọi người vào một hệ thống login trung tâm."
+        },
+        "spam-blocker": {
+          "tagline": "Lớp chấm điểm rủi ro tập trung để lọc các publication gây hại.",
+          "description": "Spam Blocker đánh giá các publication và trả về risk score mà cộng đồng có thể kết hợp với logic moderation của riêng mình. Nó hữu ích khi bạn muốn thêm một lớp thực dụng trước khi xây dựng các quy tắc anti-spam custom hơn."
+        },
+        "captcha-canvas-challenge": {
+          "tagline": "image captcha tùy chỉnh cho các cộng đồng muốn verification từ con người.",
+          "description": "Captcha Canvas Challenge tạo captcha trực quan mà cộng đồng có thể gắn vào luồng publishing của riêng mình. Đây là một lựa chọn nhẹ cho những cộng đồng muốn kiểm tra trực tiếp từ con người mà không phải bỏ self-hosted moderation."
+        },
+        "voucher-challenge": {
+          "tagline": "voucher code kiểu lời mời cho các cộng đồng thích tăng trưởng có kiểm soát.",
+          "description": "Voucher Challenge cho phép moderator phân phối các voucher code tin cậy để mở khóa publishing mà không cần global identity provider. Nó phù hợp với cộng đồng dựa trên lời mời, board niche và rollout theo từng giai đoạn."
+        },
+        "evm-contract-call": {
+          "tagline": "gating on-chain cho các cộng đồng muốn kiểm tra token hoặc contract.",
+          "description": "EVM Contract Call xác minh publication bằng cách gọi một EVM contract trước khi post được chấp nhận. Nó cho phép cộng đồng xây dựng token gate, quy tắc staking hoặc các kiểm tra on-chain khác vào luồng moderation của mình."
+        },
+        "bitsocial-cli": {
+          "tagline": "Điều khiển bằng command-line cho node, cộng đồng và workflow automation.",
+          "description": "Bitsocial CLI là terminal interface chính thức của protocol. Hãy dùng nó để quản lý node, xuất bản content, tự động hóa admin flows và làm việc trực tiếp với Bitsocial primitives mà không cần GUI client."
+        },
+        "telegram-bots": {
+          "tagline": "feed bot chuyển các bài viết Bitsocial mới vào Telegram channels hoặc groups.",
+          "description": "Bitsocial Telegram Bots theo dõi danh sách cộng đồng của client và chuyển các bài viết mới sang các đích Telegram với inline links quay lại Bitsocial clients. Bot đang hoạt động hiện hỗ trợ feed 5chan, và repo được thiết kế để có thể thêm nhiều bot dành riêng cho từng client theo thời gian."
+        },
+        "5chan-board-manager": {
+          "tagline": "Công cụ quản trị board cho các cộng đồng 5chan tùy chỉnh.",
+          "description": "5chan Board Manager được xây trên Bitsocial CLI để giúp administrators tạo, cấu hình và moderate các imageboard boards tùy chỉnh. Đây là lớp tiện ích cho board owner muốn kiểm soát vận hành."
+        }
+      }
+    }
   },
   "privacy": {
     "eyebrow": "bitsocial.net xử lý dữ liệu như thế nào",

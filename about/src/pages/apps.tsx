@@ -11,11 +11,14 @@ import Topbar from "@/components/topbar";
 import {
   APPS,
   CATEGORIES,
-  PLATFORM_META,
   PLATFORM_ORDER,
   appMatchesPlatform,
   appMatchesSearch,
   appMatchesTag,
+  getAppTagLabel,
+  getCategoryDescription,
+  getCategoryLabel,
+  getPlatformShortLabel,
   tagsMatchFilter,
   type AppCategorySlug,
   type AppPlatformSlug,
@@ -59,7 +62,7 @@ export default function Apps() {
   const activeTag = tagParam && tagParam.trim().length > 0 ? tagParam.trim() : null;
   const query = searchParams.get("q") ?? "";
 
-  const searchFilteredApps = APPS.filter((app) => appMatchesSearch(app, query)).filter((app) =>
+  const searchFilteredApps = APPS.filter((app) => appMatchesSearch(app, query, t)).filter((app) =>
     appMatchesTag(app, activeTag),
   );
   const appsForCategoryCounts = activePlatform
@@ -71,6 +74,8 @@ export default function Apps() {
 
   const categorySummaries = CATEGORIES.map((category) => ({
     ...category,
+    label: getCategoryLabel(category, t),
+    description: getCategoryDescription(category, t),
     count: appsForCategoryCounts.filter((app) => app.category === category.slug).length,
   })).filter((category) => category.count > 0 || category.slug === activeCategory);
 
@@ -154,14 +159,14 @@ export default function Apps() {
                   {activeTag ? (
                     <AppTagPill
                       active
-                      label={activeTag}
+                      label={getAppTagLabel(activeTag, t)}
                       onClick={() => handleTagSelect(activeTag)}
                     />
                   ) : null}
                   {activePlatform ? (
                     <AppTagPill
                       active
-                      label={PLATFORM_META[activePlatform].shortLabel}
+                      label={getPlatformShortLabel(activePlatform, t)}
                       onClick={() => handlePlatformChange(null)}
                     />
                   ) : null}
@@ -169,8 +174,9 @@ export default function Apps() {
                     <AppTagPill
                       active
                       label={
-                        CATEGORIES.find((category) => category.slug === activeCategory)?.label ??
-                        activeCategory
+                        CATEGORIES.find((category) => category.slug === activeCategory)
+                          ? getCategoryLabel(activeCategory, t)
+                          : activeCategory
                       }
                       onClick={() => handleCategoryChange(null)}
                     />
@@ -230,7 +236,7 @@ export default function Apps() {
                         )}
                       >
                         <Icon className="h-4 w-4" />
-                        <span>{PLATFORM_META[platform.slug].shortLabel}</span>
+                        <span>{getPlatformShortLabel(platform.slug, t)}</span>
                         <span
                           className={cn(
                             "rounded-full border px-2 py-0.5 text-[11px]",

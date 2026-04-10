@@ -6,6 +6,22 @@ allowed-tools: Bash(playwright-cli:*)
 
 # Browser Automation with playwright-cli
 
+## Cross-Browser UI Verification
+
+When using `playwright-cli` to verify rendering, styling, layout, or interactions in this repo, run the relevant flow in all three major browser engines:
+
+- `chrome` for Blink
+- `firefox` for Gecko
+- `webkit` for Safari/WebKit coverage
+
+Use separate named sessions per engine, compare the results, and record any engine-specific differences instead of treating Chromium output as sufficient.
+
+```bash
+playwright-cli -s=verify-chrome open http://example.com --browser=chrome
+playwright-cli -s=verify-firefox open http://example.com --browser=firefox
+playwright-cli -s=verify-webkit open http://example.com --browser=webkit
+```
+
 ## Quick start
 
 ```bash

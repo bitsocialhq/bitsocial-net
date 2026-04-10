@@ -86,14 +86,7 @@ function App() {
           }
         />
         <Route path="/privacy" element={<Privacy />} />
-        <Route
-          path="/about"
-          element={
-            <DevelopmentOnlyRoute>
-              <About />
-            </DevelopmentOnlyRoute>
-          }
-        />
+        <Route path="/about" element={<About />} />
         <Route
           path="/blog"
           element={

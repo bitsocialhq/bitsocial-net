@@ -158,7 +158,7 @@ export default function About() {
               {TEAM_MEMBERS.map((member) => (
                 <article key={member.name} className="glass-card p-6 md:p-7">
                   <div className="flex flex-col gap-5 md:flex-row md:items-start md:justify-between">
-                    <div className="flex items-start gap-4">
+                    <div className="flex min-w-0 items-start gap-4">
                       <img
                         src={getGithubAvatarUrl(member.githubLogin)}
                         alt={t("about.memberProfileAlt", { name: member.name })}
@@ -167,7 +167,7 @@ export default function About() {
                         height={80}
                         className="h-16 w-16 shrink-0 rounded-full border border-border/60 bg-background/70 object-cover md:h-20 md:w-20"
                       />
-                      <div className="space-y-2">
+                      <div className="min-w-0 space-y-2">
                         <h3 className="text-2xl font-display font-semibold text-foreground">
                           {member.name}
                         </h3>
@@ -192,7 +192,7 @@ export default function About() {
                         </p>
                       </div>
                     </div>
-                    <div className="flex flex-wrap gap-2 md:max-w-xs md:justify-end">
+                    <div className="flex shrink-0 flex-nowrap gap-2 md:justify-end">
                       {member.links.map((link) => (
                         <ExternalLinkPill key={link.href} {...link} />
                       ))}

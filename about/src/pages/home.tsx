@@ -6,7 +6,6 @@ import Footer from "@/components/footer";
 import Hero from "@/components/hero";
 import MailingList from "@/components/mailing-list";
 import MasterPlan from "@/components/master-plan";
-import PolygonMeshBackground from "@/components/polygon-mesh-background";
 import SanctuaryCommunication from "@/components/sanctuary-communication";
 import Topbar from "@/components/topbar";
 import Features from "@/components/features";
@@ -160,27 +159,28 @@ export default function Home() {
 
   return (
     <div className="min-h-screen">
-      <Topbar />
-      {unavailablePath ? (
-        <div className="px-6 pt-28 md:pt-32">
-          <div className="mx-auto flex max-w-4xl items-start justify-between gap-4 rounded-3xl border border-border/60 bg-background/85 px-5 py-4 text-sm text-muted-foreground shadow-lg backdrop-blur">
-            <p className="leading-relaxed">
-              {t("home.devOnlyRouteNotice", { path: unavailablePath })}
-            </p>
-            <button
-              type="button"
-              onClick={() => setUnavailablePath(null)}
-              className="rounded-full p-1 text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-              aria-label={t("home.dismissDevOnlyRouteNotice")}
-            >
-              <X className="h-4 w-4" />
-            </button>
+      <div className="bg-background">
+        <Topbar />
+        {unavailablePath ? (
+          <div className="px-6 pt-28 md:pt-32">
+            <div className="mx-auto flex max-w-4xl items-start justify-between gap-4 rounded-3xl border border-border/60 bg-background/85 px-5 py-4 text-sm text-muted-foreground shadow-lg backdrop-blur">
+              <p className="leading-relaxed">
+                {t("home.devOnlyRouteNotice", { path: unavailablePath })}
+              </p>
+              <button
+                type="button"
+                onClick={() => setUnavailablePath(null)}
+                className="rounded-full p-1 text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                aria-label={t("home.dismissDevOnlyRouteNotice")}
+              >
+                <X className="h-4 w-4" />
+              </button>
+            </div>
           </div>
-        </div>
-      ) : null}
-      <Hero />
+        ) : null}
+        <Hero />
+      </div>
       <div className="relative">
-        <PolygonMeshBackground />
         <div className="absolute inset-x-0 top-0 hidden md:block h-[clamp(8rem,calc(11rem-2vw),10rem)] pointer-events-none z-[1]">
           <div className="absolute inset-x-6 md:inset-x-16 -top-10 md:-top-12 h-20 md:h-24 rounded-[999px] bg-background/85 blur-3xl" />
           <div

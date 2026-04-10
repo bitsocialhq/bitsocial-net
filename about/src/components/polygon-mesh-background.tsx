@@ -314,6 +314,7 @@ function initMesh(
     }, 200);
   });
   ro.observe(viewport);
+  ro.observe(root);
 
   let af: number | null = null;
   let lt = 0;

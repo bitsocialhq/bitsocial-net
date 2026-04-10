@@ -6,7 +6,6 @@ import AppTagPill from "@/components/app-tag-pill";
 import CardInlineCta, { highlightedCtaClassName } from "@/components/card-inline-cta";
 import CategoryFilter from "@/components/category-filter";
 import Footer from "@/components/footer";
-import PolygonMeshBackground from "@/components/polygon-mesh-background";
 import Topbar from "@/components/topbar";
 import {
   APPS,
@@ -136,185 +135,178 @@ export default function Apps() {
       data-surface-mode={useSimplifiedSurfaces ? "simplified" : "default"}
     >
       <Topbar />
-      <div className="relative">
-        <PolygonMeshBackground />
-
-        <main className="relative z-10 px-4 pb-16 pt-28 sm:px-6">
-          <div className="mx-auto max-w-7xl">
-            <section className="mb-6">
-              <p className="text-xs font-display uppercase tracking-[0.2em] text-foreground/45">
-                {t("apps.sectionLabel")}
-              </p>
-              <div className="mt-4 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
-                <div className="max-w-2xl">
-                  <h1 className="optical-display-start text-4xl font-display font-semibold leading-[1.1] text-balance text-muted-foreground md:text-6xl lg:text-7xl">
-                    {t("apps.title")}
-                  </h1>
-                  <p className="mt-3 max-w-2xl text-base md:text-lg text-balance leading-relaxed text-muted-foreground">
-                    {t("apps.subtitle")}
-                  </p>
-                </div>
-
-                <div className="flex flex-wrap items-center gap-2">
-                  {activeTag ? (
-                    <AppTagPill
-                      active
-                      label={getAppTagLabel(activeTag, t)}
-                      onClick={() => handleTagSelect(activeTag)}
-                    />
-                  ) : null}
-                  {activePlatform ? (
-                    <AppTagPill
-                      active
-                      label={getPlatformShortLabel(activePlatform, t)}
-                      onClick={() => handlePlatformChange(null)}
-                    />
-                  ) : null}
-                  {activeCategory ? (
-                    <AppTagPill
-                      active
-                      label={
-                        CATEGORIES.find((category) => category.slug === activeCategory)
-                          ? getCategoryLabel(activeCategory, t)
-                          : activeCategory
-                      }
-                      onClick={() => handleCategoryChange(null)}
-                    />
-                  ) : null}
-                  {isFiltered ? (
-                    <button
-                      type="button"
-                      onClick={clearFilters}
-                      className="inline-flex items-center gap-2 rounded-full border border-border/70 px-4 py-2 text-sm font-semibold text-foreground/80 transition-all duration-300 hover:border-blue-glow hover:text-foreground"
-                    >
-                      <X className="h-4 w-4" />
-                      <span>{t("apps.clearFilters")}</span>
-                    </button>
-                  ) : null}
-                </div>
+      <main className="px-4 pb-16 pt-28 sm:px-6">
+        <div className="mx-auto max-w-7xl">
+          <section className="mb-6">
+            <p className="text-xs font-display uppercase tracking-[0.2em] text-foreground/45">
+              {t("apps.sectionLabel")}
+            </p>
+            <div className="mt-4 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+              <div className="max-w-2xl">
+                <h1 className="optical-display-start text-4xl font-display font-semibold leading-[1.1] text-balance text-muted-foreground md:text-6xl lg:text-7xl">
+                  {t("apps.title")}
+                </h1>
+                <p className="mt-3 max-w-2xl text-base md:text-lg text-balance leading-relaxed text-muted-foreground">
+                  {t("apps.subtitle")}
+                </p>
               </div>
-            </section>
 
-            <section className="glass-card mb-6 p-4 md:p-5">
-              <div className="flex flex-col gap-4 xl:flex-row xl:items-center">
-                <label className="relative block flex-1">
-                  <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-                  <input
-                    type="search"
-                    value={query}
-                    onChange={(event) => updateSearchParams({ q: event.target.value || null })}
-                    placeholder={t("apps.searchPlaceholder")}
-                    className="h-12 w-full rounded-full border border-border/70 bg-background/70 px-11 pr-11 text-sm text-foreground shadow-[0_12px_28px_rgba(15,23,42,0.05)] placeholder:text-muted-foreground/80"
+              <div className="flex flex-wrap items-center gap-2">
+                {activeTag ? (
+                  <AppTagPill
+                    active
+                    label={getAppTagLabel(activeTag, t)}
+                    onClick={() => handleTagSelect(activeTag)}
                   />
-                  {query ? (
+                ) : null}
+                {activePlatform ? (
+                  <AppTagPill
+                    active
+                    label={getPlatformShortLabel(activePlatform, t)}
+                    onClick={() => handlePlatformChange(null)}
+                  />
+                ) : null}
+                {activeCategory ? (
+                  <AppTagPill
+                    active
+                    label={
+                      CATEGORIES.find((category) => category.slug === activeCategory)
+                        ? getCategoryLabel(activeCategory, t)
+                        : activeCategory
+                    }
+                    onClick={() => handleCategoryChange(null)}
+                  />
+                ) : null}
+                {isFiltered ? (
+                  <button
+                    type="button"
+                    onClick={clearFilters}
+                    className="inline-flex items-center gap-2 rounded-full border border-border/70 px-4 py-2 text-sm font-semibold text-foreground/80 transition-all duration-300 hover:border-blue-glow hover:text-foreground"
+                  >
+                    <X className="h-4 w-4" />
+                    <span>{t("apps.clearFilters")}</span>
+                  </button>
+                ) : null}
+              </div>
+            </div>
+          </section>
+
+          <section className="glass-card mb-6 p-4 md:p-5">
+            <div className="flex flex-col gap-4 xl:flex-row xl:items-center">
+              <label className="relative block flex-1">
+                <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+                <input
+                  type="search"
+                  value={query}
+                  onChange={(event) => updateSearchParams({ q: event.target.value || null })}
+                  placeholder={t("apps.searchPlaceholder")}
+                  className="h-12 w-full rounded-full border border-border/70 bg-background/70 px-11 pr-11 text-sm text-foreground shadow-[0_12px_28px_rgba(15,23,42,0.05)] placeholder:text-muted-foreground/80"
+                />
+                {query ? (
+                  <button
+                    type="button"
+                    onClick={() => updateSearchParams({ q: null })}
+                    className="absolute right-3 top-1/2 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-foreground/5 hover:text-foreground"
+                    aria-label={t("apps.clearSearch")}
+                  >
+                    <X className="h-4 w-4" />
+                  </button>
+                ) : null}
+              </label>
+
+              <div className="flex flex-wrap gap-2">
+                {platformSummaries.map((platform) => {
+                  const Icon = platformIconMap[platform.slug];
+                  const active = activePlatform === platform.slug;
+
+                  return (
                     <button
+                      key={platform.slug}
                       type="button"
-                      onClick={() => updateSearchParams({ q: null })}
-                      className="absolute right-3 top-1/2 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-foreground/5 hover:text-foreground"
-                      aria-label={t("apps.clearSearch")}
+                      onClick={() => handlePlatformChange(active ? null : platform.slug)}
+                      className={cn(
+                        "inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-semibold transition-all duration-300",
+                        active
+                          ? "border-blue-core/30 text-foreground ring-glow shadow-[0_0_24px_rgba(37,99,235,0.12)] dark:border-blue-core/55"
+                          : "border-border/70 text-foreground/80 hover:border-blue-glow hover:text-foreground",
+                      )}
                     >
-                      <X className="h-4 w-4" />
-                    </button>
-                  ) : null}
-                </label>
-
-                <div className="flex flex-wrap gap-2">
-                  {platformSummaries.map((platform) => {
-                    const Icon = platformIconMap[platform.slug];
-                    const active = activePlatform === platform.slug;
-
-                    return (
-                      <button
-                        key={platform.slug}
-                        type="button"
-                        onClick={() => handlePlatformChange(active ? null : platform.slug)}
+                      <Icon className="h-4 w-4" />
+                      <span>{getPlatformShortLabel(platform.slug, t)}</span>
+                      <span
                         className={cn(
-                          "inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-semibold transition-all duration-300",
+                          "rounded-full border px-2 py-0.5 text-[11px]",
                           active
-                            ? "border-blue-core/30 text-foreground ring-glow shadow-[0_0_24px_rgba(37,99,235,0.12)] dark:border-blue-core/55"
-                            : "border-border/70 text-foreground/80 hover:border-blue-glow hover:text-foreground",
+                            ? "border-blue-core/20 text-foreground"
+                            : "border-border/60 text-foreground/65",
                         )}
                       >
-                        <Icon className="h-4 w-4" />
-                        <span>{getPlatformShortLabel(platform.slug, t)}</span>
-                        <span
-                          className={cn(
-                            "rounded-full border px-2 py-0.5 text-[11px]",
-                            active
-                              ? "border-blue-core/20 text-foreground"
-                              : "border-border/60 text-foreground/65",
-                          )}
-                        >
-                          {platform.count}
-                        </span>
-                      </button>
-                    );
-                  })}
-                </div>
-
-                <CardInlineCta
-                  href={SUBMIT_APP_URL}
-                  className={`apps-frosted-cta apps-frosted-cta-highlighted ${highlightedCtaClassName} !px-6 !py-3 text-sm`}
-                >
-                  {t("apps.submitApp")}
-                </CardInlineCta>
-              </div>
-            </section>
-
-            <div className="grid gap-6 lg:grid-cols-[320px_minmax(0,1fr)]">
-              <CategoryFilter
-                categories={categorySummaries}
-                activeCategory={activeCategory}
-                onCategoryChange={handleCategoryChange}
-                allLabel={t("apps.allProjects")}
-                allDescription={t("apps.allProjectsDescription")}
-                directoryLabel={t("apps.directoryLabel")}
-                totalCount={appsForCategoryCounts.length}
-              />
-
-              <section className="space-y-5">
-                {filteredApps.length === 0 ? (
-                  <div className="glass-card p-8 md:p-10">
-                    <h2 className="text-2xl font-display font-normal text-muted-foreground">
-                      {t("apps.noMatches")}
-                    </h2>
-                    <p className="mt-3 max-w-xl text-sm leading-6 text-muted-foreground">
-                      {t("apps.noMatchesDescription")}
-                    </p>
-                    <button
-                      type="button"
-                      onClick={clearFilters}
-                      className={`${highlightedCtaClassName} mt-6 !px-5 !py-2 text-sm`}
-                    >
-                      {t("apps.clearFilters")}
+                        {platform.count}
+                      </span>
                     </button>
-                  </div>
-                ) : (
-                  <div className="grid gap-5 xl:grid-cols-2">
-                    {filteredApps.map((app) => (
-                      <AppCard
-                        key={app.slug}
-                        activeCategory={activeCategory}
-                        activePlatform={activePlatform}
-                        activeTag={activeTag}
-                        app={app}
-                        onCategorySelect={(slug) => handleCategoryChange(slug)}
-                        onPlatformSelect={(platform) => handlePlatformChange(platform)}
-                        onTagSelect={handleTagSelect}
-                        preferredPlatform={activePlatform}
-                      />
-                    ))}
-                  </div>
-                )}
-              </section>
-            </div>
-          </div>
-        </main>
+                  );
+                })}
+              </div>
 
-        <div className="relative z-10">
-          <Footer />
+              <CardInlineCta
+                href={SUBMIT_APP_URL}
+                className={`apps-frosted-cta apps-frosted-cta-highlighted ${highlightedCtaClassName} !px-6 !py-3 text-sm`}
+              >
+                {t("apps.submitApp")}
+              </CardInlineCta>
+            </div>
+          </section>
+
+          <div className="grid gap-6 lg:grid-cols-[320px_minmax(0,1fr)]">
+            <CategoryFilter
+              categories={categorySummaries}
+              activeCategory={activeCategory}
+              onCategoryChange={handleCategoryChange}
+              allLabel={t("apps.allProjects")}
+              allDescription={t("apps.allProjectsDescription")}
+              directoryLabel={t("apps.directoryLabel")}
+              totalCount={appsForCategoryCounts.length}
+            />
+
+            <section className="space-y-5">
+              {filteredApps.length === 0 ? (
+                <div className="glass-card p-8 md:p-10">
+                  <h2 className="text-2xl font-display font-normal text-muted-foreground">
+                    {t("apps.noMatches")}
+                  </h2>
+                  <p className="mt-3 max-w-xl text-sm leading-6 text-muted-foreground">
+                    {t("apps.noMatchesDescription")}
+                  </p>
+                  <button
+                    type="button"
+                    onClick={clearFilters}
+                    className={`${highlightedCtaClassName} mt-6 !px-5 !py-2 text-sm`}
+                  >
+                    {t("apps.clearFilters")}
+                  </button>
+                </div>
+              ) : (
+                <div className="grid gap-5 xl:grid-cols-2">
+                  {filteredApps.map((app) => (
+                    <AppCard
+                      key={app.slug}
+                      activeCategory={activeCategory}
+                      activePlatform={activePlatform}
+                      activeTag={activeTag}
+                      app={app}
+                      onCategorySelect={(slug) => handleCategoryChange(slug)}
+                      onPlatformSelect={(platform) => handlePlatformChange(platform)}
+                      onTagSelect={handleTagSelect}
+                      preferredPlatform={activePlatform}
+                    />
+                  ))}
+                </div>
+              )}
+            </section>
+          </div>
         </div>
-      </div>
+      </main>
+      <Footer />
     </div>
   );
 }

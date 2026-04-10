@@ -14,6 +14,7 @@ import Apps from "@/pages/apps";
 import About from "@/pages/about";
 import Blog from "@/pages/blog";
 import Privacy from "@/pages/privacy";
+import PolygonMeshBackground from "@/components/polygon-mesh-background";
 import SeoHead from "@/components/seo-head";
 import { isRouteAccessible } from "@/lib/dev-only-routes";
 import { normalizeInitialHomeScrollPosition } from "@/lib/initial-scroll";
@@ -74,28 +75,33 @@ function App() {
       <SeoHead />
       <InitialHomeScrollGuard />
       <RouteScrollReset />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/apps" element={<Apps />} />
-        <Route
-          path="/apps/:slug"
-          element={
-            <Suspense fallback={<RouteLoadingFallback />}>
-              <AppDetail />
-            </Suspense>
-          }
-        />
-        <Route path="/privacy" element={<Privacy />} />
-        <Route path="/about" element={<About />} />
-        <Route
-          path="/blog"
-          element={
-            <DevelopmentOnlyRoute>
-              <Blog />
-            </DevelopmentOnlyRoute>
-          }
-        />
-      </Routes>
+      <div className="relative min-h-screen overflow-x-hidden">
+        <PolygonMeshBackground />
+        <div className="relative z-10">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/apps" element={<Apps />} />
+            <Route
+              path="/apps/:slug"
+              element={
+                <Suspense fallback={<RouteLoadingFallback />}>
+                  <AppDetail />
+                </Suspense>
+              }
+            />
+            <Route path="/privacy" element={<Privacy />} />
+            <Route path="/about" element={<About />} />
+            <Route
+              path="/blog"
+              element={
+                <DevelopmentOnlyRoute>
+                  <Blog />
+                </DevelopmentOnlyRoute>
+              }
+            />
+          </Routes>
+        </div>
+      </div>
       <Analytics />
       <SpeedInsights />
     </Router>

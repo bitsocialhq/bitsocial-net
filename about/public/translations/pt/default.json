@@ -332,7 +332,7 @@
         },
         "5chan-board-manager": {
           "tagline": "Ferramentas de administração de board para comunidades 5chan personalizadas.",
-          "description": "5chan Board Manager foi construído em cima do Bitsocial CLI para ajudar administradores a criar, configurar e moderar boards de imageboard personalizados. É a camada de utilitários para donos de boards que querem controle operacional."
+          "description": "O 5chan Board Manager se conecta ao Bitsocial CLI para ajudar administradores a criar, configurar e moderar boards de imageboard personalizados. É a camada de utilitários para donos de boards que querem controle operacional."
         }
       }
     }

@@ -332,7 +332,7 @@
         },
         "5chan-board-manager": {
           "tagline": "כלי ניהול boards עבור קהילות 5chan מותאמות.",
-          "description": "5chan Board Manager נבנה על גבי Bitsocial CLI כדי לעזור למנהלים ליצור, להגדיר ולבצע moderation ל-imageboard boards מותאמים. זו שכבת utility לבעלי boards שרוצים שליטה תפעולית."
+          "description": "5chan Board Manager מתחבר ל-Bitsocial CLI כדי לעזור למנהלים ליצור, להגדיר ולנהל לוחות imageboard מותאמים אישית. זו שכבת הכלים לבעלי לוחות שרוצים שליטה תפעולית."
         }
       }
     }

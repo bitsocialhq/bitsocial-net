@@ -292,6 +292,11 @@
         "openWebsite": "Åbn webstedet",
         "windows": "Windows",
         "windowsPortable": "Bærbar version til Windows"
+      },
+      "items": {
+        "5chan-board-manager": {
+          "description": "5chan Board Manager forbinder til Bitsocial CLI for at hjælpe administratorer med at oprette, konfigurere og moderere tilpassede imageboard-tavler. Det er værktøjslaget for tavleejere, der ønsker driftsmæssig kontrol."
+        }
       }
     }
   },

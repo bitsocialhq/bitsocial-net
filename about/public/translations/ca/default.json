@@ -332,7 +332,7 @@
         },
         "5chan-board-manager": {
           "tagline": "Eines d’administració de taulers per a comunitats 5chan personalitzades.",
-          "description": "5chan Board Manager es basa en Bitsocial CLI per ajudar els administradors a crear, configurar i moderar taulers d’imageboard personalitzats. És la capa d’utilitat per als propietaris de taulers que volen control operatiu."
+          "description": "5chan Board Manager es connecta amb Bitsocial CLI per ajudar els administradors a crear, configurar i moderar taulers d'imatges personalitzats. És la capa d'utilitat per als propietaris de taulers que volen control operatiu."
         }
       }
     }

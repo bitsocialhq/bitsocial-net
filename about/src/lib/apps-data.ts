@@ -527,7 +527,7 @@ export const APPS: AppData[] = [
     name: "Bitsocial CLI",
     tagline: "Command-line control for nodes, communities, and automation workflows.",
     description:
-      "Bitsocial CLI is the official terminal interface for the protocol. Use it to manage nodes, publish content, automate admin flows, and work directly against Bitsocial primitives without a GUI client.",
+      "Bitsocial CLI is the official terminal interface for the protocol. Use it to manage nodes, publish content, start a WebSocket server for code automation, automate admin flows, and work directly against Bitsocial primitives without a GUI client.",
     category: "tools",
     tags: ["CLI", "Automation"],
     icon: "terminal",
@@ -555,7 +555,7 @@ export const APPS: AppData[] = [
     name: "5chan Board Manager",
     tagline: "Board administration tooling for custom 5chan communities.",
     description:
-      "5chan Board Manager builds on top of Bitsocial CLI to help administrators create, configure, and moderate custom imageboard boards. It is the utility layer for board owners who want operational control.",
+      "5chan Board Manager connects to Bitsocial CLI to help administrators create, configure, and moderate custom imageboard boards. It is the utility layer for board owners who want operational control.",
     category: "tools",
     tags: ["Board admin", "CLI"],
     icon: "clipboard",

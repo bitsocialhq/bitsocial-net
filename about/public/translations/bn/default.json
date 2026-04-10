@@ -332,7 +332,7 @@
         },
         "5chan-board-manager": {
           "tagline": "custom 5chan community-র জন্য board administration tooling।",
-          "description": "5chan Board Manager, Bitsocial CLI-এর ওপর তৈরি, যাতে administrator-রা custom imageboard board তৈরি, configure, আর moderate করতে পারেন। যারা operational control চান, তাদের জন্য এটি board owner-এর utility layer।"
+          "description": "5chan Board Manager Bitsocial CLI-এর সাথে সংযুক্ত হয়ে প্রশাসকদের কাস্টম ইমেজবোর্ড বোর্ড তৈরি, কনফিগার ও মডারেট করতে সাহায্য করে। এটি বোর্ড মালিকদের জন্য অপারেশনাল নিয়ন্ত্রণের ইউটিলিটি স্তর।"
         }
       }
     }

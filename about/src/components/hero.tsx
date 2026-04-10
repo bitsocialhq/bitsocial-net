@@ -10,16 +10,16 @@ import {
   useState,
 } from "react";
 import { m } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Trans, useTranslation } from "react-i18next";
 import { useTheme } from "next-themes";
-import { DOCS_LINKS } from "@/lib/docs-links";
 import {
   registerHeroMountForIntroSync,
   resetHeroMountForIntroSync,
   TAGLINE_INTRO_START_MS,
 } from "@/lib/hero-intro-timing";
 import { useGraphicsMode } from "@/lib/graphics-mode";
+import { goToMailingListSection } from "@/lib/mailing-list-nav";
 import { highlightedCtaClassName } from "@/components/card-inline-cta";
 import { cn, triggerFeatureGlow } from "@/lib/utils";
 
@@ -219,6 +219,8 @@ function useTaglineIntro() {
 
 export default function Hero() {
   const { t } = useTranslation();
+  const location = useLocation();
+  const navigate = useNavigate();
   const graphicsMode = useGraphicsMode();
   const [graphicsInitFailed, setGraphicsInitFailed] = useState(false);
   const showGraphics = graphicsMode === "full" && !graphicsInitFailed;
@@ -242,6 +244,13 @@ export default function Hero() {
   const handleGraphicsInitError = useCallback(() => {
     setGraphicsInitFailed(true);
   }, []);
+  const handleNewsletterClick = useCallback(
+    (e: React.MouseEvent<HTMLAnchorElement>) => {
+      e.preventDefault();
+      goToMailingListSection(location.pathname, location.hash, navigate);
+    },
+    [location.hash, location.pathname, navigate],
+  );
 
   const staticFallback = (
     <HeroFallbackGraphic className="absolute bottom-4 md:bottom-8 overflow-visible" />
@@ -318,10 +327,11 @@ export default function Hero() {
         className="flex flex-col sm:flex-row gap-4 relative z-40"
       >
         <a
-          href={DOCS_LINKS.home}
+          href="/#mailing-list"
+          onClick={handleNewsletterClick}
           className="px-8 py-3 rounded-full glass-card text-foreground/82 hover:text-foreground font-display font-semibold hover:border-blue-glow ring-glow cta-glow text-center md:text-start"
         >
-          {t("hero.readDocs")}
+          {t("nav.newsletter")}
         </a>
         <Link to="/apps" className={`${highlightedCtaClassName} md:text-start`}>
           {t("hero.exploreApps")}

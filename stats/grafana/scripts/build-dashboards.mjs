@@ -87,7 +87,7 @@ const communityMetricPrefixes = [
   "bitsocial_stats_ipfs_gateway_last_community_",
 ];
 
-const dedupeIgnoredLabels = ["instance", "job", "service"];
+const dedupeIgnoredLabels = ["client_id", "instance", "job", "service", "subplebbit_address"];
 
 let nextGeneratedPanelId = GENERATED_PANEL_ID_START;
 
@@ -209,6 +209,20 @@ const normalizeTransformations = (panel) => {
       "subplebbit_address",
       "community_address",
     );
+    for (const hiddenFieldName of [
+      "client_id",
+      "client_id 1",
+      "client_id 2",
+      "client_id 3",
+      "subplebbit_address",
+      "subplebbit_address 1",
+      "subplebbit_address 2",
+      "subplebbit_address 3",
+    ]) {
+      transformation.options.excludeByName[hiddenFieldName] = true;
+      delete transformation.options.indexByName[hiddenFieldName];
+      delete transformation.options.renameByName[hiddenFieldName];
+    }
     delete transformation.options.excludeByName.subplebbit_address;
   }
 

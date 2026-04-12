@@ -527,7 +527,7 @@ export const APPS: AppData[] = [
     name: "Bitsocial CLI",
     tagline: "Command-line control for nodes, communities, and automation workflows.",
     description:
-      "Bitsocial CLI is the official terminal interface for the protocol. Use it to manage nodes, publish content, start a WebSocket server for code automation, automate admin flows, and work directly against Bitsocial primitives without a GUI client.",
+      "Bitsocial CLI is the official terminal interface for the protocol. Use it to manage nodes, publish content, start a WebSocket JSON-RPC server for programmatic control and code automation, automate admin flows, and work directly against Bitsocial primitives without a GUI client.",
     category: "tools",
     tags: ["CLI", "Automation"],
     icon: "terminal",

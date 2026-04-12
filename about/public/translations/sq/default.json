@@ -324,7 +324,7 @@
         },
         "bitsocial-cli": {
           "tagline": "Kontroll nga linja e komandës për node, komunitete dhe workflows automatizimi.",
-          "description": "Bitsocial CLI është ndërfaqja zyrtare terminale për protokollin. Përdoreni për të menaxhuar nyje, për të publikuar përmbajtje, për të nisur një server WebSocket për automatizim kodi, për të automatizuar rrjedhat e administrimit dhe për të punuar drejtpërdrejt me primitivat e Bitsocial pa një klient GUI."
+          "description": "Bitsocial CLI është ndërfaqja zyrtare terminale për protokollin. Përdore për të menaxhuar nyje, për të publikuar përmbajtje, për të nisur një server WebSocket JSON-RPC për kontroll programatik dhe automatizim kodi, për të automatizuar rrjedhat administrative dhe për të punuar drejtpërdrejt me primitivët e Bitsocial pa një klient GUI."
         },
         "telegram-bots": {
           "tagline": "Feed bot që përcjellin postimet e reja të Bitsocial në kanale ose grupe Telegram.",

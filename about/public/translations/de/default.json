@@ -324,7 +324,7 @@
         },
         "bitsocial-cli": {
           "tagline": "Kommandozeilensteuerung für Nodes, Communities und Automatisierungs-Workflows.",
-          "description": "Bitsocial CLI ist die offizielle Terminaloberfläche für das Protokoll. Verwende sie, um Nodes zu verwalten, Inhalte zu veröffentlichen, einen WebSocket-Server für Code-Automatisierung zu starten, Admin-Flows zu automatisieren und direkt mit Bitsocial-Primitiven zu arbeiten, ohne einen GUI-Client."
+          "description": "Bitsocial CLI ist die offizielle Terminaloberfläche für das Protokoll. Verwende sie, um Knoten zu verwalten, Inhalte zu veröffentlichen, einen WebSocket-JSON-RPC-Server für programmatische Steuerung und Code-Automatisierung zu starten, Admin-Abläufe zu automatisieren und direkt mit Bitsocial-Primitiven ohne GUI-Client zu arbeiten."
         },
         "telegram-bots": {
           "tagline": "Feed-Bots, die neue Bitsocial-Beiträge in Telegram-Kanäle oder -Gruppen weiterleiten.",

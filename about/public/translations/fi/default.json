@@ -324,7 +324,7 @@
         },
         "bitsocial-cli": {
           "tagline": "Komentorivikontrolli nodeille, yhteisöille ja automaatio-workflowille.",
-          "description": "Bitsocial CLI on protokollan virallinen päätelaitekäyttöliittymä. Sillä voit hallita nodeja, julkaista sisältöä, käynnistää WebSocket-palvelimen koodiautomaatiota varten, automatisoida ylläpitovirtoja ja työskennellä suoraan Bitsocial-primitiiivien kanssa ilman GUI-asiakasohjelmaa."
+          "description": "Bitsocial CLI on protokollan virallinen terminaalikäyttöliittymä. Käytä sitä solmujen hallintaan, sisällön julkaisemiseen, WebSocket JSON-RPC -palvelimen käynnistämiseen ohjelmallista ohjausta ja koodiautomaatiota varten, hallintavirtojen automatisointiin ja työskentelyyn suoraan Bitsocial-primitiivien kanssa ilman GUI-asiakasta."
         },
         "telegram-bots": {
           "tagline": "Feed-botit, jotka välittävät uudet Bitsocial-julkaisut Telegram-kanaviin tai -ryhmiin.",

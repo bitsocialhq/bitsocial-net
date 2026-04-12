@@ -324,7 +324,7 @@
         },
         "bitsocial-cli": {
           "tagline": "Điều khiển bằng command-line cho node, cộng đồng và workflow automation.",
-          "description": "Bitsocial CLI là giao diện terminal chính thức cho giao thức. Hãy dùng nó để quản lý các node, xuất bản nội dung, khởi động một WebSocket server để tự động hóa mã, tự động hóa các luồng quản trị và làm việc trực tiếp với các primitives của Bitsocial mà không cần một GUI client."
+          "description": "Bitsocial CLI là giao diện terminal chính thức của giao thức. Hãy dùng nó để quản lý node, đăng nội dung, khởi chạy một máy chủ WebSocket JSON-RPC cho việc điều khiển bằng chương trình và tự động hóa mã, tự động hóa các luồng quản trị, và làm việc trực tiếp với các nguyên thủy của Bitsocial mà không cần client GUI."
         },
         "telegram-bots": {
           "tagline": "feed bot chuyển các bài viết Bitsocial mới vào Telegram channels hoặc groups.",

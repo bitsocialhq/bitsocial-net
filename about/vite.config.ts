@@ -86,6 +86,11 @@ function ssrServerBuildPlugin() {
         return;
       }
 
+      const builtClientTemplateHtml = await fs.readFile(
+        path.resolve(configRoot, "../dist/index.html"),
+        "utf8",
+      );
+
       await build({
         configFile: false,
         root: configRoot,
@@ -118,6 +123,7 @@ function ssrServerBuildPlugin() {
         },
         define: {
           "process.env.BITSOCIAL_SSR_SERVER_BUILD": JSON.stringify("1"),
+          "import.meta.env.BITSOCIAL_SSR_CLIENT_TEMPLATE": JSON.stringify(builtClientTemplateHtml),
         },
       });
     },

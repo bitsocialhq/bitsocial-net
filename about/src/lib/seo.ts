@@ -20,6 +20,38 @@ const NOINDEX_ROBOTS =
 const TWITTER_HANDLE = "@bitsocialnet";
 const SEO_MARKER_START = "<!-- SEO_START -->";
 const SEO_MARKER_END = "<!-- SEO_END -->";
+const ROOT_MARKER_REGEX = /<div id="root"><\/div>/;
+
+const HOME_SEO_FEATURES = [
+  {
+    title: "Pure peer-to-peer communities",
+    description:
+      "Bitsocial communities run as swarms instead of company-controlled servers, so they can stay online without a global platform backend.",
+    href: "/docs/peer-to-peer-protocol/",
+    cta: "Read the peer-to-peer protocol",
+  },
+  {
+    title: "Local moderation instead of global bans",
+    description:
+      "Community owners decide how their own spaces work, without a protocol-wide super-admin who can erase every identity or forum at once.",
+    href: "/docs/local-moderation/",
+    cta: "Read the moderation notes",
+  },
+  {
+    title: "User-owned identities and communities",
+    description:
+      "Profiles and communities are controlled by keys, so ownership behaves more like property than a revocable account on a company platform.",
+    href: "/docs/identity-and-ownership/",
+    cta: "Read the ownership notes",
+  },
+  {
+    title: "Apps can share one open network",
+    description:
+      "Different Bitsocial apps can compete on product quality while sharing the same communities, identities, and underlying network.",
+    href: "/apps",
+    cta: "Explore Bitsocial apps",
+  },
+] as const;
 
 type StructuredDataValue = Record<string, unknown>;
 
@@ -90,9 +122,13 @@ function buildOrganizationSchema(): StructuredDataValue {
     "@type": "Organization",
     "@id": `${SITE_ORIGIN}/#organization`,
     name: SITE_NAME,
+    alternateName: "Bitsocial Protocol",
     url: SITE_ORIGIN,
     description: SITE_DESCRIPTION,
+    foundingDate: "2022",
+    image: toAbsoluteUrl(DEFAULT_IMAGE_PATH),
     logo: toAbsoluteUrl("/logo.png"),
+    slogan: "Decentralize all social media",
     sameAs: ["https://github.com/bitsocialnet", "https://twitter.com/bitsocialnet"],
   };
 }
@@ -127,6 +163,49 @@ function buildBreadcrumbSchema(items: Array<{ name: string; url: string }>): Str
   };
 }
 
+function buildHomeItemListSchema(): StructuredDataValue {
+  const featuredApps = APPS.filter((app) => app.featured).slice(0, 4);
+
+  return {
+    "@type": "ItemList",
+    "@id": `${SITE_ORIGIN}/#featured-apps`,
+    name: "Featured Bitsocial apps",
+    itemListOrder: "https://schema.org/ItemListOrderAscending",
+    numberOfItems: featuredApps.length,
+    itemListElement: featuredApps.map((app, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: app.name,
+      url: toAbsoluteUrl(`/apps/${app.slug}`),
+      description: app.description,
+    })),
+  };
+}
+
+function buildHomeWebPageSchema(): StructuredDataValue {
+  return {
+    "@type": "WebPage",
+    "@id": `${SITE_ORIGIN}/#webpage`,
+    url: SITE_ORIGIN,
+    name: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    isPartOf: {
+      "@id": `${SITE_ORIGIN}/#website`,
+    },
+    about: {
+      "@id": `${SITE_ORIGIN}/#organization`,
+    },
+    mainEntity: {
+      "@id": `${SITE_ORIGIN}/#featured-apps`,
+    },
+    primaryImageOfPage: {
+      "@type": "ImageObject",
+      url: toAbsoluteUrl(DEFAULT_IMAGE_PATH),
+      caption: DEFAULT_IMAGE_ALT,
+    },
+  };
+}
+
 function buildHomeSeoMetadata(search: string): SeoMetadata {
   const hasSearchParams = new URLSearchParams(search).size > 0;
 
@@ -138,7 +217,12 @@ function buildHomeSeoMetadata(search: string): SeoMetadata {
     ogType: "website",
     imageUrl: toAbsoluteUrl(DEFAULT_IMAGE_PATH),
     imageAlt: DEFAULT_IMAGE_ALT,
-    structuredData: createStructuredData([buildOrganizationSchema(), buildWebsiteSchema()]),
+    structuredData: createStructuredData([
+      buildOrganizationSchema(),
+      buildWebsiteSchema(),
+      buildHomeItemListSchema(),
+      buildHomeWebPageSchema(),
+    ]),
   };
 }
 
@@ -482,12 +566,198 @@ export function injectSeoHead(html: string, seo: SeoMetadata) {
   return html.replace(new RegExp(`${SEO_MARKER_START}[\\s\\S]*?${SEO_MARKER_END}`), replacement);
 }
 
-function renderSitemapEntry(pathname: string) {
-  return `  <url>\n    <loc>${toAbsoluteUrl(pathname)}</loc>\n  </url>`;
+function renderStaticShell(content: string) {
+  return [
+    '<div data-seo-prerender="true" class="min-h-screen bg-background text-foreground">',
+    '  <div class="mx-auto max-w-6xl px-6 pb-16 pt-8 md:px-8">',
+    '    <nav aria-label="Primary" class="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">',
+    '      <a href="/" class="font-display font-semibold text-foreground transition-colors hover:text-blue-glow">Bitsocial</a>',
+    '      <a href="/apps" class="transition-colors hover:text-foreground">Apps</a>',
+    '      <a href="/docs/" class="transition-colors hover:text-foreground">Docs</a>',
+    '      <a href="https://github.com/bitsocialnet" target="_blank" rel="noopener noreferrer" class="transition-colors hover:text-foreground">Source code</a>',
+    "    </nav>",
+    content,
+    "  </div>",
+    "</div>",
+  ].join("\n");
+}
+
+function renderHomeStaticBody() {
+  const featuredApps = APPS.filter((app) => app.featured).slice(0, 4);
+  const featuresMarkup = HOME_SEO_FEATURES.map(
+    (
+      feature,
+    ) => `            <li class="rounded-[1.5rem] border border-border/60 bg-background/80 p-5">
+              <h2 class="text-xl font-display font-semibold text-foreground">${escapeHtml(feature.title)}</h2>
+              <p class="mt-3 leading-7 text-muted-foreground">${escapeHtml(feature.description)}</p>
+              <a href="${escapeHtml(feature.href)}" class="mt-4 inline-flex text-sm font-semibold text-foreground underline decoration-border underline-offset-4 transition-colors hover:text-blue-glow">${escapeHtml(feature.cta)}</a>
+            </li>`,
+  ).join("\n");
+  const featuredAppsMarkup = featuredApps
+    .map(
+      (
+        app,
+      ) => `            <li class="rounded-[1.5rem] border border-border/60 bg-background/80 p-5">
+              <h3 class="text-lg font-display font-semibold text-foreground">
+                <a href="/apps/${escapeHtml(app.slug)}" class="transition-colors hover:text-blue-glow">${escapeHtml(app.name)}</a>
+              </h3>
+              <p class="mt-2 text-sm font-medium text-foreground/70">${escapeHtml(app.tagline)}</p>
+              <p class="mt-3 leading-7 text-muted-foreground">${escapeHtml(app.description)}</p>
+            </li>`,
+    )
+    .join("\n");
+
+  return renderStaticShell(`
+    <main class="pt-14">
+      <section class="max-w-4xl">
+        <p class="text-xs font-display uppercase tracking-[0.24em] text-foreground/45">${SITE_NAME}</p>
+        <h1 class="mt-4 max-w-4xl text-4xl font-display font-semibold leading-[1.05] text-balance text-foreground md:text-6xl">${escapeHtml(SITE_DESCRIPTION)}</h1>
+        <p class="mt-5 max-w-3xl text-lg leading-8 text-muted-foreground">${escapeHtml(SITE_DESCRIPTION)}</p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="/apps" class="rounded-full border border-border/70 px-5 py-3 text-sm font-semibold text-foreground transition-colors hover:border-blue-glow hover:text-blue-glow">Explore Bitsocial apps</a>
+          <a href="/docs/" class="rounded-full border border-border/70 px-5 py-3 text-sm font-semibold text-foreground transition-colors hover:border-blue-glow hover:text-blue-glow">Read the docs</a>
+          <a href="https://github.com/bitsocialnet" target="_blank" rel="noopener noreferrer" class="rounded-full border border-border/70 px-5 py-3 text-sm font-semibold text-foreground transition-colors hover:border-blue-glow hover:text-blue-glow">Browse the source code</a>
+        </div>
+      </section>
+
+      <section class="mt-14">
+        <h2 class="text-2xl font-display font-semibold text-foreground md:text-3xl">Why developers and communities use Bitsocial</h2>
+        <ul class="mt-6 grid gap-4 md:grid-cols-2">
+${featuresMarkup}
+        </ul>
+      </section>
+
+      <section class="mt-14">
+        <h2 class="text-2xl font-display font-semibold text-foreground md:text-3xl">Featured Bitsocial apps</h2>
+        <p class="mt-3 max-w-3xl leading-7 text-muted-foreground">Browse live Bitsocial clients, moderation modules, and protocol tools built on the same open peer-to-peer network.</p>
+        <ul class="mt-6 grid gap-4 md:grid-cols-2">
+${featuredAppsMarkup}
+        </ul>
+      </section>
+    </main>`);
+}
+
+function renderAppsStaticBody() {
+  const appsMarkup = APPS.map(
+    (app) => `            <li class="rounded-[1.5rem] border border-border/60 bg-background/80 p-5">
+              <h2 class="text-xl font-display font-semibold text-foreground">
+                <a href="/apps/${escapeHtml(app.slug)}" class="transition-colors hover:text-blue-glow">${escapeHtml(app.name)}</a>
+              </h2>
+              <p class="mt-2 text-sm font-medium text-foreground/70">${escapeHtml(app.tagline)}</p>
+              <p class="mt-3 leading-7 text-muted-foreground">${escapeHtml(app.description)}</p>
+            </li>`,
+  ).join("\n");
+
+  return renderStaticShell(`
+    <main class="pt-14">
+      <section class="max-w-4xl">
+        <p class="text-xs font-display uppercase tracking-[0.24em] text-foreground/45">Bitsocial app directory</p>
+        <h1 class="mt-4 text-4xl font-display font-semibold leading-[1.05] text-balance text-foreground md:text-6xl">Bitsocial Apps</h1>
+        <p class="mt-5 max-w-3xl text-lg leading-8 text-muted-foreground">Explore user-facing Bitsocial clients, anti-spam modules, and developer tools that run on the open peer-to-peer Bitsocial network.</p>
+      </section>
+
+      <section class="mt-12">
+        <ul class="grid gap-4 md:grid-cols-2">
+${appsMarkup}
+        </ul>
+      </section>
+    </main>`);
+}
+
+function renderAppDetailStaticBody(app: AppData) {
+  const platformSummary = getAppPlatforms(app).join(", ");
+  const primaryLinks = app.links
+    .filter((link) => link.primary || link.kind !== "mirror")
+    .slice(0, 4);
+  const linkMarkup = primaryLinks
+    .map(
+      (link) => `          <li>
+            <a href="${escapeHtml(link.url)}" target="_blank" rel="noopener noreferrer" class="text-foreground underline decoration-border underline-offset-4 transition-colors hover:text-blue-glow">${escapeHtml(link.label)}</a>
+          </li>`,
+    )
+    .join("\n");
+
+  return renderStaticShell(`
+    <main class="pt-14">
+      <a href="/apps" class="text-sm text-muted-foreground transition-colors hover:text-foreground">All apps</a>
+      <section class="mt-6 max-w-4xl rounded-[2rem] border border-border/60 bg-background/80 p-6 md:p-8">
+        <p class="text-xs font-display uppercase tracking-[0.24em] text-foreground/45">${escapeHtml(getApplicationCategory(app.category))}</p>
+        <h1 class="mt-4 text-4xl font-display font-semibold leading-[1.05] text-balance text-foreground md:text-5xl">${escapeHtml(app.name)}</h1>
+        <p class="mt-3 text-lg font-medium leading-7 text-foreground/70">${escapeHtml(app.tagline)}</p>
+        <p class="mt-5 max-w-3xl leading-8 text-muted-foreground">${escapeHtml(app.description)}</p>
+        <p class="mt-4 text-sm text-muted-foreground">Platforms: ${escapeHtml(platformSummary || "Web")}</p>
+        <h2 class="mt-8 text-xl font-display font-semibold text-foreground">Links</h2>
+        <ul class="mt-4 space-y-2 text-muted-foreground">
+${linkMarkup}
+          <li>
+            <a href="https://github.com/${escapeHtml(app.githubRepo)}" target="_blank" rel="noopener noreferrer" class="text-foreground underline decoration-border underline-offset-4 transition-colors hover:text-blue-glow">Source code</a>
+          </li>
+        </ul>
+      </section>
+    </main>`);
+}
+
+function renderStaticSeoBody(pathname: string) {
+  if (pathname === "/") {
+    return renderHomeStaticBody();
+  }
+
+  if (pathname === "/apps") {
+    return renderAppsStaticBody();
+  }
+
+  const appSlugMatch = pathname.match(/^\/apps\/([^/]+)$/);
+  if (appSlugMatch?.[1]) {
+    const app = getAppBySlug(appSlugMatch[1]);
+    if (app) {
+      return renderAppDetailStaticBody(app);
+    }
+  }
+
+  return "";
+}
+
+export function injectSeoBody(html: string, pathname: string) {
+  const body = renderStaticSeoBody(pathname);
+  if (!body) {
+    return html;
+  }
+
+  return html.replace(ROOT_MARKER_REGEX, `<div id="root">${body}</div>`);
+}
+
+function getRouteLastModified() {
+  return new Date().toISOString().split("T", 1)[0] ?? new Date().toISOString();
+}
+
+function getRouteChangeFrequency(pathname: string) {
+  if (pathname === "/") return "weekly";
+  if (pathname === "/apps") return "weekly";
+  if (pathname.startsWith("/apps/")) return "monthly";
+  return "yearly";
+}
+
+function getRoutePriority(pathname: string) {
+  if (pathname === "/") return "1.0";
+  if (pathname === "/apps") return "0.9";
+  if (pathname.startsWith("/apps/")) return "0.7";
+  return "0.3";
+}
+
+function renderSitemapEntry(route: StaticSeoRoute, lastModified: string) {
+  return [
+    "  <url>",
+    `    <loc>${route.seo.canonicalUrl}</loc>`,
+    `    <lastmod>${lastModified}</lastmod>`,
+    `    <changefreq>${getRouteChangeFrequency(route.pathname)}</changefreq>`,
+    `    <priority>${getRoutePriority(route.pathname)}</priority>`,
+    "  </url>",
+  ].join("\n");
 }
 
 export function renderSitemapXml(routes: StaticSeoRoute[]) {
-  const entries = routes.map((route) => renderSitemapEntry(route.pathname)).join("\n");
+  const lastModified = getRouteLastModified();
+  const entries = routes.map((route) => renderSitemapEntry(route, lastModified)).join("\n");
 
   return [
     '<?xml version="1.0" encoding="UTF-8"?>',

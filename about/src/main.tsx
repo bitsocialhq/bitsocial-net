@@ -19,7 +19,16 @@ function AnimationGate({ children }: { children: React.ReactNode }) {
 async function bootstrap() {
   await i18nReady;
 
-  ReactDOM.createRoot(document.getElementById("root")!).render(
+  const rootElement = document.getElementById("root");
+  if (!rootElement) {
+    throw new Error("Expected #root to exist before bootstrapping the app.");
+  }
+
+  if (rootElement.hasChildNodes()) {
+    rootElement.replaceChildren();
+  }
+
+  ReactDOM.createRoot(rootElement).render(
     <React.StrictMode>
       <ThemeProvider>
         <GraphicsModeProvider>

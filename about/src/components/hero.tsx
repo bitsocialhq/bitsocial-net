@@ -264,9 +264,9 @@ export default function Hero() {
         transition={{ delay: 0.3, duration: 0.6 }}
         className="max-w-3xl text-center mb-12 px-4 relative z-10"
       >
-        <p
+        <h1
           data-hero-tagline
-          className="text-xl md:text-2xl lg:text-3xl text-muted-foreground leading-relaxed font-display font-normal text-balance"
+          className="m-0 text-xl md:text-2xl lg:text-3xl text-muted-foreground leading-relaxed font-display font-normal text-balance"
         >
           <HighlightIndexCtx.Provider value={highlightedIndex}>
             <Trans
@@ -317,7 +317,7 @@ export default function Hero() {
               }}
             />
           </HighlightIndexCtx.Provider>
-        </p>
+        </h1>
       </m.div>
 
       <m.div

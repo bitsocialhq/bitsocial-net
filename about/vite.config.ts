@@ -9,6 +9,7 @@ import tailwindcss from "tailwindcss";
 import {
   getStaticSeoRoutes,
   injectSeoHead,
+  injectSeoBody,
   renderRobotsTxt,
   renderSitemapXml,
 } from "./src/lib/seo";
@@ -85,7 +86,7 @@ function staticSeoPlugin() {
       await Promise.all(
         routes.map(async (route) => {
           const outputPath = routeToOutputPath(route.pathname);
-          const html = injectSeoHead(baseHtml, route.seo);
+          const html = injectSeoBody(injectSeoHead(baseHtml, route.seo), route.pathname);
           await fs.mkdir(path.dirname(outputPath), { recursive: true });
           await fs.writeFile(outputPath, html);
         }),

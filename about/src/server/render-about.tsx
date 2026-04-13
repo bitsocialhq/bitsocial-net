@@ -1,7 +1,3 @@
-import { existsSync } from "node:fs";
-import { readFile } from "node:fs/promises";
-import path from "node:path";
-import { fileURLToPath } from "node:url";
 import React from "react";
 import { renderToString } from "react-dom/server";
 import { createInstance, type i18n as I18nInstance } from "i18next";
@@ -23,27 +19,23 @@ import { getSeoMetadata, injectSeoHead } from "@/lib/seo";
 import { resolveRequestTheme } from "@/lib/theme";
 import { GraphicsModeProvider } from "@/lib/graphics-mode";
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
+import clientTemplateHtml from "../../index.html?raw";
 
-function resolveRuntimePaths() {
-  const distTemplatePath = path.resolve(__dirname, "../index.html");
-  const distTranslationsDirectory = path.resolve(__dirname, "../translations");
+const translationModules = import.meta.glob<Record<string, unknown>>(
+  "../../public/translations/*/default.json",
+  {
+    eager: true,
+    import: "default",
+  },
+);
 
-  if (existsSync(distTemplatePath) && existsSync(distTranslationsDirectory)) {
-    return {
-      clientTemplatePath: distTemplatePath,
-      translationsDirectory: distTranslationsDirectory,
-    };
-  }
+const TRANSLATION_RESOURCES = Object.fromEntries(
+  Object.entries(translationModules).flatMap(([modulePath, resource]) => {
+    const languageMatch = modulePath.match(/\/translations\/([^/]+)\/default\.json$/);
 
-  return {
-    clientTemplatePath: path.resolve(__dirname, "../../index.html"),
-    translationsDirectory: path.resolve(__dirname, "../../public/translations"),
-  };
-}
-
-const { clientTemplatePath: CLIENT_TEMPLATE_PATH, translationsDirectory: TRANSLATIONS_DIRECTORY } =
-  resolveRuntimePaths();
+    return languageMatch ? [[languageMatch[1], resource]] : [];
+  }),
+) as Record<string, Record<string, unknown>>;
 
 interface RenderRequest {
   url: string;
@@ -72,9 +64,18 @@ function getHeaderValue(
 }
 
 async function readLocaleResources(language: string) {
-  const translationPath = path.join(TRANSLATIONS_DIRECTORY, language, "default.json");
-  const contents = await readFile(translationPath, "utf8");
-  return JSON.parse(contents) as Record<string, unknown>;
+  const resources = TRANSLATION_RESOURCES[language];
+
+  if (resources) {
+    return resources;
+  }
+
+  const fallbackResources = TRANSLATION_RESOURCES.en;
+  if (fallbackResources) {
+    return fallbackResources;
+  }
+
+  throw new Error(`Missing bundled translation resources for locale "${language}"`);
 }
 
 async function createServerI18n(payload: BootstrapPayload) {
@@ -156,7 +157,7 @@ export async function renderAboutRequest(request: RenderRequest) {
   const i18nInstance = await createServerI18n(bootstrapPayload);
   const appHtml = renderApplication(`${requestUrl.pathname}${requestUrl.search}`, i18nInstance);
   const seo = getSeoMetadata(requestUrl.pathname, requestUrl.search);
-  const template = request.templateHtml ?? (await readFile(CLIENT_TEMPLATE_PATH, "utf8"));
+  const template = request.templateHtml ?? clientTemplateHtml;
   const htmlWithSeo = injectSeoHead(template, seo);
   const htmlWithAttributes = injectHtmlAttributes(htmlWithSeo, bootstrapPayload, theme);
   const html = htmlWithAttributes

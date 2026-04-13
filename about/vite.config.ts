@@ -74,12 +74,16 @@ function staticMetadataPlugin() {
 
 function ssrServerBuildPlugin() {
   let configRoot = __dirname;
+  let clientOutDir = path.resolve(__dirname, "../dist");
 
   return {
     name: "bitsocial-ssr-server-build",
     apply: "build" as const,
     configResolved(config) {
       configRoot = config.root;
+      clientOutDir = path.isAbsolute(config.build.outDir)
+        ? config.build.outDir
+        : path.resolve(config.root, config.build.outDir);
     },
     async closeBundle() {
       if (process.env.BITSOCIAL_SSR_SERVER_BUILD === "1") {
@@ -87,7 +91,7 @@ function ssrServerBuildPlugin() {
       }
 
       const builtClientTemplateHtml = await fs.readFile(
-        path.resolve(configRoot, "../dist/index.html"),
+        path.join(clientOutDir, "index.html"),
         "utf8",
       );
 
